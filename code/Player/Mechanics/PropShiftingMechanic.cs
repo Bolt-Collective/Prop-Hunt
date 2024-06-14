@@ -12,7 +12,7 @@ public class PropShiftingMechanic : Component
 		}
 		var pc = Components.Get<Player>();
 
-		Gizmo.Draw.LineBBox( pc.Body.GetBounds() );
+		Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
 
 
 		if ( Input.Pressed("Use"))
@@ -88,5 +88,7 @@ public class PropShiftingMechanic : Component
 		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
+		pcModel.GameObject.Enabled = false;
+		pcModel.GameObject.Enabled = true;
 	}
 }

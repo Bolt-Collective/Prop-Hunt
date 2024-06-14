@@ -19,7 +19,7 @@ public class Player : Component
 	[Property] public GameObject Body { get; set; }
 	[Property] public GameObject Eye { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
-	[Property] public float CameraDistance { get; set; }
+	[Property, Sync] public float CameraDistance { get; set; }
 
 	[Sync]
 	public Angles EyeAngles { get; set; }
@@ -160,6 +160,7 @@ public void FreeLook()
 			FreeLook();
 			EyeInput();
 			CameraPosition();
+			ChangeDistance();
 			IsRunning = Input.Down( "Run" );
 		}
 
@@ -173,7 +174,14 @@ public void FreeLook()
 
 		
 	}
-
+	public void ChangeDistance()
+	{
+		if (Input.MouseWheel != 0)
+		{
+			CameraDistance -= Input.MouseWheel.y * 10;
+		}
+		CameraDistance = CameraDistance.Clamp(0, 1000);
+	}
 	private void UpdateBodyVisibility()
 	{
 		if ( AnimationHelper is null )
