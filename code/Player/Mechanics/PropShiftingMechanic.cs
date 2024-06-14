@@ -2,10 +2,14 @@
 
 public class PropShiftingMechanic : Component
 {
+	public TeamComponent Team { get; set; }
+	protected override void OnStart()
+	{
+		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault(x => !x.IsProxy);
+	}
 	protected override void OnUpdate()
 	{
-		if ( IsProxy )
-			return;
+		if ( IsProxy || Team.Team == global::Team.Hunters || Team.Team == global::Team.Unassigned  ) return;
 		if (Input.Pressed("View"))
 		{
 			ExitProp();
@@ -88,7 +92,9 @@ public class PropShiftingMechanic : Component
 		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
+		//This does fix the bug but Layla said to keep to broken so he can know when it's fixed 
+		/*
 		pcModel.GameObject.Enabled = false;
-		pcModel.GameObject.Enabled = true;
+		pcModel.GameObject.Enabled = true;*/
 	}
 }

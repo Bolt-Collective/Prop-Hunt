@@ -3,6 +3,10 @@ using Sandbox.Citizen;
 
 public class Player : Component
 {
+	public Inventory Inventory { get; set; }
+	public delegate void PlayerDelegate(Player player, Inventory inventory);
+	[Property] public PlayerDelegate OnDeath { get; set; }
+	[Property] public PlayerDelegate OnJumpEvent { get; set; }
 	public static Player Local
 	{
 		get
@@ -31,7 +35,7 @@ public class Player : Component
 	[RequireComponent] public TeamComponent TeamComponent { get; private set; }
 
 	public float MaxHealth = 100;
-	public float Health { get; set; }
+	[Sync] public float Health { get; set; }
 	[Sync] public bool FreeLooking { get; set; }
 
 	protected override void OnAwake()
@@ -42,6 +46,11 @@ public class Player : Component
 	}
 	private Rotation oldRotation;
 	private Angles oldEyeAngles;
+
+	protected override void OnStart()
+	{
+		Inventory = Scene.GetAllComponents<Inventory>().FirstOrDefault( x => !x.IsProxy );
+	}
 public void FreeLook()
 {
     var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
@@ -203,6 +212,10 @@ public void FreeLook()
 	public void OnJump()
 	{
 		AnimationHelper?.TriggerJump();
+		if (!IsProxy)
+		{
+			OnJumpEvent?.Invoke(this, Inventory);
+		}
 	}
 
 	protected override void OnPreRender()
@@ -265,5 +278,16 @@ public void FreeLook()
 
 		if ( Input.Down( "Run" ) ) WishVelocity *= 320.0f;
 		else WishVelocity *= 110.0f;
+	}
+
+	[Broadcast]
+	public void TakeDamage( float damage )
+	{
+		Health -= damage;
+		if ( Health <= 0 )
+		{
+			Health = 0;
+			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
+		}
 	}
 }

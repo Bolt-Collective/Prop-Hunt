@@ -59,35 +59,6 @@
       ]
     },
     {
-      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
-      "Flags": 0,
-      "Name": "Plane",
-      "Scale": "17.4574,17.4574,17.4574",
-      "Tags": "solid",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "f9d3fa39-37fb-4d21-997c-9be3f822d85a",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/plane.vmdl",
-          "RenderType": "On",
-          "Tint": "0.18518,0.3258,0.49767,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "0b1d35df-d1bf-48c7-a411-4a2a9da77de9",
-          "Center": "0,0,-5",
-          "IsTrigger": false,
-          "Scale": "100,100,10",
-          "Static": false
-        }
-      ]
-    },
-    {
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
@@ -242,12 +213,11 @@
             "_type": "gameobject",
             "go": "4290f0bf-f13b-4750-8eb3-631ca2362c72"
           },
+          "CameraDistance": 0,
           "Eye": {
             "_type": "gameobject",
             "go": "fe7ab240-e775-477b-a1a8-221a31799b68"
-          },
-          "FirstPerson": false,
-          "Gravity": "0,0,800"
+          }
         },
         {
           "__type": "PlayerDresser",
@@ -1688,13 +1658,14 @@
       "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "228f6d75-3184-45b8-9d6f-3df1be49b61c",
+          "__type": "Network",
+          "__guid": "48d1751b-f75e-4582-9c21-694f0965bef2",
+          "CustomSpawnPoints": false,
           "PlayerPrefab": {
             "_type": "gameobject",
-            "go": "b867151c-f22d-4898-94f1-38cccb2207d2"
+            "go": "59196d1b-a7c9-4f8f-b54d-9d16ea474427"
           },
-          "SpawnPoints": [],
+          "Spawns": [],
           "StartServer": true
         }
       ]
@@ -1703,7 +1674,6 @@
       "__guid": "42edc442-8aa2-444f-ba0c-fd2b615dcb66",
       "Flags": 0,
       "Name": "Object",
-      "Position": "-79.75311,-84.04037,79.34186",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -1976,6 +1946,135 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "859d9427-c851-4946-bf75-676a603008c5",
+      "Flags": 0,
+      "Name": "Box",
+      "Position": "28.44324,29.4447,0",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MeshComponent",
+          "__guid": "5efada19-8f3b-453f-ad98-8fa4e90de300",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "HideInGame": false,
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+            "Positions": [
+              "-486.8475,-610.8829,0",
+              "486.8475,-610.8829,0",
+              "486.8475,610.8829,0",
+              "-486.8475,610.8829,0",
+              "-486.8475,610.8829,-32",
+              "486.8475,610.8829,-32",
+              "486.8475,-610.8829,-32",
+              "-486.8475,-610.8829,-32"
+            ],
+            "TextureCoord": [
+              "4.803496,4.772523",
+              "NaN,NaN",
+              "4.803496,-4.772523",
+              "NaN,NaN",
+              "-2.803496,-4.772523",
+              "NaN,NaN",
+              "-2.803496,4.772523",
+              "NaN,NaN",
+              "4.803496,-4.772523",
+              "NaN,NaN",
+              "4.803496,4.772523",
+              "NaN,NaN",
+              "-2.803496,4.772523",
+              "NaN,NaN",
+              "-2.803496,-4.772523",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,-0",
+              "NaN,NaN,NaN",
+              "NaN,NaN,NaN",
+              "NaN,NaN,NaN",
+              "NaN,NaN,NaN"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "NaN,NaN,NaN",
+              "NaN,NaN,NaN",
+              "NaN,NaN,NaN",
+              "NaN,NaN,NaN"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN"
+            ],
+            "TextureOffset": [
+              "398.2271,117.7788",
+              "398.2271,117.7788",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN",
+              "NaN,NaN"
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "EdgeFlags": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat"
+            ]
+          },
+          "SmoothingAngle": 40,
+          "Static": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2001,7 +2100,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-09T22:49:22.071836\u002B02:00",
+  "LastSaved": "2024-06-14T13:31:23.3317226-04:00",
   "ResourceVersion": 1,
   "__references": [
     "additionproject.paintedchair1",

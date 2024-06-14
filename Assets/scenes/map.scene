@@ -1619,6 +1619,15 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "db397682-adf3-44df-95c8-b96eb421601b",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "-6.25499,-267.7513,221.1104",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true
     }
   ],
   "SceneProperties": {
@@ -1644,7 +1653,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-14T13:08:13.5854789-04:00",
+  "LastSaved": "2024-06-14T13:31:23.3457457-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.wooden_crate"
