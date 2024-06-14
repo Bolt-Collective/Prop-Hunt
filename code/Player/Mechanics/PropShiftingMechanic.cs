@@ -6,7 +6,10 @@ public class PropShiftingMechanic : Component
 	{
 		if ( IsProxy )
 			return;
-
+		if (Input.Pressed("Exitprop"))
+		{
+			ExitProp();
+		}
 		var pc = Components.Get<Player>();
 
 		Gizmo.Draw.LineBBox( pc.Body.GetBounds() );
@@ -18,6 +21,23 @@ public class PropShiftingMechanic : Component
 		}
 
 	}
+	[Broadcast]
+	public void ExitProp()
+	{
+		var pc = Components.Get<Player>();
+		var pcModel = pc.Body.Components.Get<SkinnedModelRenderer>();
+		var clothes = pc.Body.GetAllObjects(false).Where( c => c.Tags.Has( "clothing" ) );
+		if ( clothes.Any() )
+		{
+			foreach ( var cloth in clothes )
+			{
+				cloth.Enabled = true;
+			}
+		}
+		pcModel.Model = Model.Load("models/citizen/citizen.vmdl_c");
+		pcModel.Tint = Color.White;
+	}
+
 
 	[Broadcast]
 	private void ShiftIntoProp()
@@ -51,13 +71,14 @@ public class PropShiftingMechanic : Component
 	{
 		var pcModel = player.Body.Components.Get<SkinnedModelRenderer>();
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();
+		if (tr.Body.BodyType == PhysicsBodyType.Static) return;
 
 		var clothes = player.Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) );
 		if ( clothes.Any() )
 		{
 			foreach ( var cloth in clothes )
 			{
-				cloth.Destroy();
+				cloth.Enabled = false;
 			}
 		}
 
