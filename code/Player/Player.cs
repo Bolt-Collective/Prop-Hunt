@@ -230,7 +230,7 @@ public void FreeLook()
 		}
 		else
 		{
-			cc.Velocity -= Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
+			cc.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
 			cc.Accelerate( WishVelocity.ClampLength( 50 ) );
 			cc.ApplyFriction( 0.1f );
 		}
@@ -239,7 +239,7 @@ public void FreeLook()
 
 		if ( !cc.IsOnGround )
 		{
-			cc.Velocity -= Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
+			cc.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
 		}
 		else
 		{
