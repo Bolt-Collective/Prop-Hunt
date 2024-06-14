@@ -3,6 +3,8 @@
 public class PropShiftingMechanic : Component
 {
 	public TeamComponent Team { get; set; }
+	public delegate void PropShiftingDelegate(PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory);
+	[Property] public PropShiftingDelegate OnPropShift { get; set; }
 	protected override void OnStart()
 	{
 		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault(x => !x.IsProxy);
@@ -68,6 +70,10 @@ public class PropShiftingMechanic : Component
 		TryChangeModel( tr, pc );
 
 		Log.Info( "changed model" );
+		if (!IsProxy)
+		{
+			OnPropShift?.Invoke(this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory);
+		}
 	}
 
 
