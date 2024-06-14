@@ -22,7 +22,7 @@ public class Player : Component
 	[Property] public GameObject Body { get; set; }
 	[Property] public GameObject Eye { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
-	[Property] public bool FirstPerson { get; set; }
+	[Property] public float CameraDistance { get; set; }
 
 	[Sync]
 	public Angles EyeAngles { get; set; }
@@ -59,10 +59,30 @@ public void FreeLook()
     if (Input.Down("attack2"))
     {
         FreeLooking = true;
-
-        var lookDir = EyeAngles.ToRotation();
-		cam.Transform.Position = Transform.Position + lookDir.Backward * 300 + Vector3.Up * 75.0f;
-		cam.Transform.Rotation = lookDir;
+		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera);
+		camera.FieldOfView = Preferences.FieldOfView;
+		var lookDirection = EyeAngles.ToRotation();
+		var center = Transform.Position + Vector3.Up * 64;
+        if (CameraDistance != 0)
+		{
+		
+		var tr = Scene.Trace.Ray(center, center - (EyeAngles.Forward * CameraDistance)).WithoutTags("player", "barrier").Run();
+		if (tr.Hit)
+		{
+			camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
+		}
+		else
+		{
+			camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
+		}
+		}
+		else
+		{
+			var targetPos = Transform.Position + Vector3.Up * 64;
+			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
+		}
+	
+		camera.Transform.Rotation = lookDirection;
 
     }
 
@@ -97,22 +117,30 @@ public void FreeLook()
 	}
 	public void CameraPosition()
 	{
-		if (FreeLooking) return;
-			var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
-
-			var lookDir = EyeAngles.ToRotation();
-
-			if ( FirstPerson )
-			{
-				cam.Transform.Position = Eye.Transform.Position;
-				cam.Transform.Rotation = lookDir;
-			}
-			else
-			{
-				cam.Transform.Position = Transform.Position + lookDir.Backward * 300 + Vector3.Up * 75.0f;
-				cam.Transform.Rotation = lookDir;
-			}
-
+		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
+		camera.FieldOfView = Preferences.FieldOfView;
+		var lookDirection = EyeAngles.ToRotation();
+		var center = Transform.Position + Vector3.Up * 64;
+		//Trace to see if the camera is inside a wall
+		if (CameraDistance != 0)
+		{
+		var tr = Scene.Trace.Ray(center, center - (EyeAngles.Forward * CameraDistance)).WithoutTags("player", "barrier").Run();
+		if (tr.Hit)
+		{
+			camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
+		}
+		else
+		{
+			camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
+		}
+		}
+		else
+		{
+			var targetPos = Transform.Position + Vector3.Up * 64;
+			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
+		}
+	
+		camera.Transform.Rotation = lookDirection;
 	}
 	public void Animations(CharacterController cc)
 	{
@@ -154,7 +182,7 @@ public void FreeLook()
 		if ( AnimationHelper is null )
 			return;
 
-		var renderType = (!IsProxy && FirstPerson) ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+		var renderType = (!IsProxy && CameraDistance == 0) ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
 
 		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
