@@ -188,7 +188,7 @@
           "GroupName": "Other"
         },
         {
-          "Name": "Exitprop",
+          "Name": "flashlight",
           "KeyboardCode": "f",
           "GamepadCode": "DpadNorth",
           "GroupName": "Other"

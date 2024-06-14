@@ -181,7 +181,6 @@ public void FreeLook()
 
 		var renderType = (!IsProxy && CameraDistance == 0) ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
-
 		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
 		{
 			if ( !clothing.Tags.Has( "clothing" ) )

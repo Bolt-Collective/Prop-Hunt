@@ -31,7 +31,7 @@ public sealed class MapChanger : Component
 		}
 	}
 
-	[ConCmd("change_map")]
+	[ConCmd("map")]
 	public static void LoadMapCmd(string Indent)
 	{
 		var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();

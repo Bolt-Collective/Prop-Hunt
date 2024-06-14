@@ -6,7 +6,7 @@ public class PropShiftingMechanic : Component
 	{
 		if ( IsProxy )
 			return;
-		if (Input.Pressed("Exitprop"))
+		if (Input.Pressed("View"))
 		{
 			ExitProp();
 		}
