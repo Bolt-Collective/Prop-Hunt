@@ -155,11 +155,11 @@
             "_type": "gameobject",
             "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
           },
+          "CameraDistance": 300,
           "Eye": {
             "_type": "gameobject",
             "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
           },
-          "FirstPerson": false,
           "Gravity": "0,0,800"
         },
         {
@@ -1625,7 +1625,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-14T10:44:13.0683883-04:00",
+  "LastSaved": "2024-06-14T11:15:18.3389726-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
