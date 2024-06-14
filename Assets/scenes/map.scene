@@ -60,9 +60,13 @@
         {
           "__type": "Sandbox.Tonemapping",
           "__guid": "e1466fd4-aa9e-469c-9ad8-bdc55c54a850",
+          "__version": 1,
+          "ExposureBias": 2,
           "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
           "MaximumExposure": 2,
           "MinimumExposure": 1,
+          "Mode": "Legacy",
           "Rate": 1
         },
         {
@@ -82,13 +86,14 @@
       "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "e1743ce9-268b-4ea1-8882-6d35de6bef5b",
+          "__type": "Network",
+          "__guid": "4977f9f8-576a-4753-84db-930dd0dec1bb",
+          "CustomSpawnPoints": false,
           "PlayerPrefab": {
             "_type": "gameobject",
             "go": "13cdc0ba-6159-43e7-b648-238afaf50f27"
           },
-          "SpawnPoints": [],
+          "Spawns": [],
           "StartServer": true
         }
       ]
@@ -179,6 +184,11 @@
         {
           "__type": "PropShiftingMechanic",
           "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6"
+        },
+        {
+          "__type": "TeamComponent",
+          "__guid": "248a97ea-5d84-4338-b5fe-9e2776a9a355",
+          "Team": "Props"
         }
       ],
       "Children": [
@@ -1615,7 +1625,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-01T23:23:54.9700322\u002B02:00",
+  "LastSaved": "2024-06-14T10:24:22.2797411-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
