@@ -18,7 +18,7 @@ public class PropShiftingMechanic : Component
 		}
 		var pc = Components.Get<Player>();
 
-		Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
+		//Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
 
 
 		if ( Input.Pressed("Use"))
@@ -98,9 +98,5 @@ public class PropShiftingMechanic : Component
 		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
-		//This does fix the bug but Layla said to keep to broken so he can know when it's fixed 
-		/*
-		pcModel.GameObject.Enabled = false;
-		pcModel.GameObject.Enabled = true;*/
 	}
 }

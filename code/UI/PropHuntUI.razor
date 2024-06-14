@@ -1,11 +1,12 @@
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
-
-<root>
+@if (Manager is not null)
+{
+	<root>
 	<div class="round-timer">
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">0:00</div>
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">Round Starting</div>
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Manager.Countdown</div>
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.CurrentGameState</div>
 	</div>
 	@if (Player.Local is not null)
 	{
@@ -36,10 +37,16 @@
 
 	<div class="right"></div>
 </root>
+}
+
 
 @code
 {
-
+	public PropHuntManager Manager { get; set; }
+	protected override void OnStart()
+	{
+		Manager = Scene.GetAllComponents<PropHuntManager>().FirstOrDefault();
+	}
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt

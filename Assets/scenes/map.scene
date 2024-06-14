@@ -82,7 +82,7 @@
       "Name": "NetworkManager",
       "Position": "-37.26695,-4.443764,96.23308",
       "Enabled": true,
-      "NetworkMode": 2,
+      "NetworkMode": 1,
       "NetworkInterpolation": true,
       "Components": [
         {
@@ -93,8 +93,27 @@
             "_type": "gameobject",
             "go": "13cdc0ba-6159-43e7-b648-238afaf50f27"
           },
+          "PropHuntManager": {
+            "_type": "component",
+            "component_id": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
+            "go": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
+            "component_type": "PropHuntManager"
+          },
           "Spawns": [],
           "StartServer": true
+        },
+        {
+          "__type": "PropHuntManager",
+          "__guid": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
+          "Countdown": {
+            "Relative": -109.872215,
+            "Passed": 109.872215,
+            "Fraction": 1
+          },
+          "CurrentGameState": "None",
+          "CurrentRound": 0,
+          "Players": [],
+          "PlayersNeededToStart": 0
         }
       ]
     },
@@ -155,7 +174,7 @@
             "_type": "gameobject",
             "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
           },
-          "CameraDistance": 300,
+          "CameraDistance": 0,
           "Eye": {
             "_type": "gameobject",
             "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
@@ -1623,11 +1642,25 @@
     {
       "__guid": "db397682-adf3-44df-95c8-b96eb421601b",
       "Flags": 0,
-      "Name": "Object",
+      "Name": "Ui",
       "Position": "-6.25499,-267.7513,221.1104",
       "Enabled": true,
       "NetworkMode": 2,
-      "NetworkInterpolation": true
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "65966290-ac00-429a-8523-a38925f378ac",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "PropHuntUI",
+          "__guid": "6198673f-3d13-4c58-826f-76993e57daa9"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -1653,7 +1686,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-14T13:31:23.3457457-04:00",
+  "LastSaved": "2024-06-14T18:19:35.4003834-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.wooden_crate"
