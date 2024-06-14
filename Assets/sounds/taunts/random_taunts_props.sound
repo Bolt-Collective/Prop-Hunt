@@ -1,0 +1,19 @@
+{
+  "UI": false,
+  "Volume": "0.71,0.71,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 90,
+  "SelectionMode": "RandomExclusive",
+  "Sounds": [
+    "sounds/taunts/perfect-fart.vsnd",
+    "sounds/taunts/bone-crack.vsnd",
+    "sounds/taunts/anime-wow-sound-effect.vsnd",
+    "sounds/taunts/im-gonna-break-my-monitor-i-swear.vsnd",
+    "sounds/taunts/joerogan.vsnd",
+    "sounds/taunts/laugh.vsnd",
+    "sounds/taunts/laugh2.vsnd",
+    "sounds/taunts/whatsup.vsnd"
+  ],
+  "MaximumDistance": 1870.0942,
+  "MinimumDistance": 93.504715
+}

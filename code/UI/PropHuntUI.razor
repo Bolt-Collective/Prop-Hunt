@@ -1,0 +1,47 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="round-timer">
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">0:00</div>
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">Round Starting</div>
+	</div>
+	
+	<div class="health">
+		+ <strong>@(Player.Local.Health)</strong>
+	</div>
+
+	<div class="inventory">
+		<div class="item">
+			<div class="number">1</div>
+			<div class="weapon">pistol</div>
+		</div>
+		<div class="item">
+			<div class="number">2</div>
+			<div class="weapon">not a pistol</div>
+		</div>
+		<div class="item">
+			<div class="number">3</div>
+			<div class="weapon">shotgun</div>
+		</div>
+		<div class="item">
+			<div class="number">4</div>
+			<div class="weapon">rifle</div>
+		</div>
+	</div>
+
+	<Scoreboard/>
+
+	<div class="right"></div>
+</root>
+
+@code
+{
+
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( Time.Now );
+}

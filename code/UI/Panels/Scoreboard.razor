@@ -1,0 +1,68 @@
+﻿@using Sandbox.UI;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root class="@(Input.Down("Score") ? "" : "hidden")">
+	<div class="teams">
+		<div class="title">
+			Props
+		</div>
+		<div class="team-player-list">
+			@foreach (Connection conn in Connection.All)
+			{
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+								<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+				<div class="player">
+					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
+					<label class="name">@conn.DisplayName</label>
+				</div>
+			}
+
+		</div>
+
+		<div class="title">
+			Hunters
+		</div>
+		<div class="team-player-list">
+
+		</div>
+	</div>
+</root>

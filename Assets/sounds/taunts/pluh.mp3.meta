@@ -1,0 +1,19 @@
+{
+  "phonemes": [
+    {
+      "phoneme": 112,
+      "start": 0.256,
+      "end": 0.383
+    },
+    {
+      "phoneme": 108,
+      "start": 0.38,
+      "end": 0.496
+    },
+    {
+      "phoneme": 596,
+      "start": 0.495,
+      "end": 0.693
+    }
+  ]
+}
