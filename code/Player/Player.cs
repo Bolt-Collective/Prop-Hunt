@@ -19,7 +19,6 @@ public class Player : Component
 	[Property] public Vector3 Gravity { get; set; } = new Vector3( 0, 0, 800 );
 
 	public Vector3 WishVelocity { get; private set; }
-
 	[Property] public GameObject Body { get; set; }
 	[Property] public GameObject Eye { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
@@ -36,6 +35,7 @@ public class Player : Component
 
 	public float MaxHealth = 100;
 	public float Health { get; set; }
+	[Sync] public bool FreeLooking { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -43,7 +43,36 @@ public class Player : Component
 
 		Health = MaxHealth;
 	}
+	private Rotation oldRotation;
+	private Angles oldEyeAngles;
+public void FreeLook()
+{
+    var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+    if (cam is null) return;
 
+    if (Input.Pressed("attack2"))
+    {
+        oldRotation = cam.Transform.Rotation;
+		oldEyeAngles = EyeAngles;
+    }
+
+    if (Input.Down("attack2"))
+    {
+        FreeLooking = true;
+
+        var lookDir = EyeAngles.ToRotation();
+		cam.Transform.Position = Transform.Position + lookDir.Backward * 300 + Vector3.Up * 75.0f;
+		cam.Transform.Rotation = lookDir;
+
+    }
+
+    if (Input.Released("attack2"))
+    {
+		cam.Transform.Rotation = Rotation.Slerp(cam.Transform.Rotation, oldRotation, Time.Delta * 10.0f);
+		EyeAngles = oldEyeAngles;
+        FreeLooking = false;
+    }
+}
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
@@ -58,18 +87,17 @@ public class Player : Component
 			EyeAngles = ee;
 		}
 	}
-
-	protected override void OnUpdate()
+	public void EyeInput()
 	{
-		// Eye input
-		if ( !IsProxy )
-		{
-			var ee = EyeAngles;
-			ee += Input.AnalogLook * 0.9f;
-			ee.roll = 0;
-			ee.pitch = ee.pitch.Clamp( -89, 89 );
-			EyeAngles = ee;
-
+		var ee = EyeAngles;
+		ee += Input.AnalogLook * 0.9f;
+		ee.roll = 0;
+		ee.pitch = ee.pitch.Clamp( -89, 89 );
+		EyeAngles = ee;
+	}
+	public void CameraPosition()
+	{
+		if (FreeLooking) return;
 			var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 
 			var lookDir = EyeAngles.ToRotation();
@@ -85,52 +113,40 @@ public class Player : Component
 				cam.Transform.Rotation = lookDir;
 			}
 
-
-
-			IsRunning = Input.Down( "Run" );
-		}
-
-		var cc = GameObject.Components.Get<CharacterController>();
-		if ( cc is null ) return;
-
-		float moveRotationSpeed = 0;
-
-		// rotate body to look angles
-		if ( Body is not null )
-		{
-			var targetAngle = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
-
-			var v = cc.Velocity.WithZ( 0 );
-
-			if ( v.Length > 10.0f )
-			{
-				targetAngle = Rotation.LookAt( v, Vector3.Up );
-			}
-
-			float rotateDifference = Body.Transform.Rotation.Distance( targetAngle );
-
-			if ( rotateDifference > 50.0f || cc.Velocity.Length > 10.0f )
-			{
-				var newRotation = Rotation.Lerp( Body.Transform.Rotation, targetAngle, Time.Delta * 2.0f );
-
-				// We won't end up actually moving to the targetAngle, so calculate how much we're actually moving
-				var angleDiff = Body.Transform.Rotation.Angles() - newRotation.Angles(); // Rotation.Distance is unsigned
-				moveRotationSpeed = angleDiff.yaw / Time.Delta;
-
-				Body.Transform.Rotation = newRotation;
-			}
-		}
-
-
+	}
+	public void Animations(CharacterController cc)
+	{
 		if ( AnimationHelper is not null )
 		{
 			AnimationHelper.WithVelocity( cc.Velocity );
 			AnimationHelper.WithWishVelocity( WishVelocity );
 			AnimationHelper.IsGrounded = cc.IsOnGround;
-			AnimationHelper.MoveRotationSpeed = moveRotationSpeed;
-			AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
+			if (!FreeLooking)
+			{
+				AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
+			}
 			AnimationHelper.MoveStyle = IsRunning ? CitizenAnimationHelper.MoveStyles.Run : CitizenAnimationHelper.MoveStyles.Walk;
 		}
+	}
+	protected override void OnUpdate()
+	{
+		if ( !IsProxy )
+		{
+			FreeLook();
+			EyeInput();
+			CameraPosition();
+			IsRunning = Input.Down( "Run" );
+		}
+
+		var cc = GameObject.Components.Get<CharacterController>();
+		if ( cc is null ) return;
+		Animations( cc );
+		if (!FreeLooking)
+		{
+			Body.Transform.Rotation = Rotation.Slerp(Body.Transform.Rotation, new Angles(0, EyeAngles.yaw, 0).ToRotation(), Time.Delta * 10.0f);
+		}
+
+		
 	}
 
 	private void UpdateBodyVisibility()
