@@ -37,6 +37,8 @@ public class Player : Component
 	public float MaxHealth = 100;
 	[Sync] public float Health { get; set; }
 	[Sync] public bool FreeLooking { get; set; }
+	//Going to be used for spectating for unassigned players
+	[Sync] Transform CameraPosWorld { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -170,6 +172,7 @@ public void FreeLook()
 			EyeInput();
 			CameraPosition();
 			ChangeDistance();
+			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera).Transform.World;
 			IsRunning = Input.Down( "Run" );
 		}
 
