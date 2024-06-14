@@ -15,9 +15,6 @@ public class Player : Component
 		}
 	}
 	private static Player _local;
-
-	[Property] public Vector3 Gravity { get; set; } = new Vector3( 0, 0, 800 );
-
 	public Vector3 WishVelocity { get; private set; }
 	[Property] public GameObject Body { get; set; }
 	[Property] public GameObject Eye { get; set; }
@@ -233,7 +230,7 @@ public void FreeLook()
 		}
 		else
 		{
-			cc.Velocity -= Gravity * Time.Delta * 0.5f;
+			cc.Velocity -= Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
 			cc.Accelerate( WishVelocity.ClampLength( 50 ) );
 			cc.ApplyFriction( 0.1f );
 		}
@@ -242,7 +239,7 @@ public void FreeLook()
 
 		if ( !cc.IsOnGround )
 		{
-			cc.Velocity -= Gravity * Time.Delta * 0.5f;
+			cc.Velocity -= Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
 		}
 		else
 		{
