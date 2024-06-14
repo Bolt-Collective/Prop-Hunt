@@ -6,7 +6,21 @@ public class PropHuntManager : Component
 	[Property] public GameState CurrentGameState { get; set; } = GameState.None;
 	[Property] public int PlayersNeededToStart { get; set; } = 2;
 	[Property] public int CurrentRound { get; set; } = 0;
+	private Task GameLoopTask { get; set; }
 	
+	protected override void OnStart()
+	{
+		if (IsProxy)
+		return;
+		ResumeGame();
+	}
+
+	public Task ResumeGame()
+	{
+		return GameLoopTask ??= GameLoop();
+	}
+
+
 	public async Task GameLoop()
 	{
 		while (CurrentGameState != GameState.Ended)
@@ -14,11 +28,16 @@ public class PropHuntManager : Component
 			switch (CurrentGameState)
 			{
 				case GameState.None:
+					CurrentGameState = GameState.WaitingForPlayers;
 					break;
 				case GameState.WaitingForPlayers:
 					if (Scene.GetAllComponents<Player>().Count() >= PlayersNeededToStart)
 					{
 						StartGame();
+					}
+					else
+					{
+						await GameTask.DelaySeconds(5);
 					}
 					break;
 				case GameState.Preparing:
@@ -36,10 +55,13 @@ public class PropHuntManager : Component
 					CurrentGameState = GameState.Ended;
 					break;
 				case GameState.Ended:
+					await GameTask.DelaySeconds(5);
 					break;
 				case GameState.Voting:
+					await GameTask.DelaySeconds(5);
 					break;
 				default:
+					await GameTask.DelaySeconds(5);
 					break;
 			}
 		}
