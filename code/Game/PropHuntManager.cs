@@ -1,23 +1,21 @@
 ﻿
-[Title("Game Manager")]
-[Description("The brains of Prop Hunt. Controls rounds, teams, etc.")]
+[Title( "Game Manager" )]
+[Description( "The brains of Prop Hunt. Controls rounds, teams, etc." )]
 public class PropHuntManager : Component, Component.INetworkListener
 {
 	[Property] public GameState CurrentGameState { get; set; } = GameState.None;
 	[Property] public int PlayersNeededToStart { get; set; } = 2;
-	[Property] public int CurrentRound { get; set; } = 0;
-	[Property] public int RoundsToWin { get; set; } = 3;
 	[Property] public int PropsWin { get; set; }
-	[Property] public int HuntersWin { get; set; } 
+	[Property] public int HuntersWin { get; set; }
 	[Property, Sync] public TimeUntil Countdown { get; set; }
 	[Property] public List<GameObject> Props { get; set; } = new List<GameObject>();
 	[Property] public List<GameObject> Hunters { get; set; } = new List<GameObject>();
 	private Task GameLoopTask { get; set; }
-	
+
 	protected override void OnStart()
 	{
-		if (IsProxy)
-		return;
+		if ( IsProxy )
+			return;
 		_ = ResumeGame();
 	}
 
@@ -33,17 +31,17 @@ public class PropHuntManager : Component, Component.INetworkListener
 
 	public async Task GameLoop()
 	{
-		while (CurrentGameState != GameState.Ended)
+		while ( CurrentGameState != GameState.Ended )
 		{
-			switch (CurrentGameState)
+			switch ( CurrentGameState )
 			{
 
 				case GameState.None:
 					CurrentGameState = GameState.WaitingForPlayers;
 					break;
-					
+
 				case GameState.WaitingForPlayers:
-					if (Scene.GetAllComponents<Player>().Count() >= PlayersNeededToStart)
+					if ( Scene.GetAllComponents<Player>().Count() >= PlayersNeededToStart )
 					{
 						CurrentGameState = GameState.Preparing;
 					}
@@ -71,23 +69,23 @@ public class PropHuntManager : Component, Component.INetworkListener
 					break;
 
 				case GameState.Ended:
-					Log.Info("Game has ended");
-					await GameTask.DelaySeconds(5);
+					Log.Info( "Game has ended" );
+					await GameTask.DelaySeconds( 5 );
 					break;
 
 				case GameState.Voting:
-					await GameTask.DelaySeconds(5);
+					await GameTask.DelaySeconds( 5 );
 					break;
 
 				default:
-					await GameTask.DelaySeconds(5);
+					await GameTask.DelaySeconds( 5 );
 					break;
 			}
 		}
 	}
 	public string GetGameStateString()
 	{
-		switch (CurrentGameState)
+		switch ( CurrentGameState )
 		{
 			case GameState.None:
 				return "None";
@@ -107,41 +105,40 @@ public class PropHuntManager : Component, Component.INetworkListener
 				return "Voting";
 			default:
 				return "None";
-		
-	}
+
+		}
 	}
 	public void StartGame()
 	{
-	Log.Info("Starting game");
-	CurrentRound++;
-	var spawnList = Scene.GetAllComponents<SpawnPoint>().ToList();
-	foreach (var player in Scene.GetAllComponents<Player>())
-	{
-    player.Transform.World = Game.Random.FromList(spawnList).Transform.World;
-    if (player.Components.Get<PropShiftingMechanic>().IsProp)
-    {
-        player.Body.Components.Get<PropShiftingMechanic>().ExitProp();
-    }
-    var teamComponent = player.Components.Get<TeamComponent>();
-    teamComponent.GetRandomTeam();
-    Log.Info("Assigned team");
-    if (teamComponent.Team == Team.Props)
-    {
-        Props.Add(player.GameObject);
-    }
-    else
-    {
-        Hunters.Add(player.GameObject);
-    }
-	}
-		Log.Info("Game started");
+		Log.Info( "Starting game" );
+		var spawnList = Scene.GetAllComponents<SpawnPoint>().ToList();
+		foreach ( var player in Scene.GetAllComponents<Player>() )
+		{
+			player.Transform.World = Game.Random.FromList( spawnList ).Transform.World;
+			if ( player.Components.Get<PropShiftingMechanic>().IsProp )
+			{
+				player.Body.Components.Get<PropShiftingMechanic>().ExitProp();
+			}
+			var teamComponent = player.Components.Get<TeamComponent>();
+			teamComponent.GetRandomTeam();
+			Log.Info( "Assigned team" );
+			if ( teamComponent.Team == Team.Props )
+			{
+				Props.Add( player.GameObject );
+			}
+			else
+			{
+				Hunters.Add( player.GameObject );
+			}
+		}
+		Log.Info( "Game started" );
 		CurrentGameState = GameState.Started;
 	}
 
 	public async Task Round()
 	{
 		Countdown = 120;
-		await Task.DelayRealtimeSeconds(120);
+		await Task.DelayRealtimeSeconds( 120 );
 	}
-	
+
 }

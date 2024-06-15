@@ -157,7 +157,14 @@ public class Player : Component
 		else
 		{
 			var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-			camera.Transform.Position = targetPos;
+			if ( PropShiftingMechanic.IsProp )
+			{
+				camera.Transform.Position = Vector3.Lerp( camera.Transform.Position, targetPos, Time.Delta * 50 );
+			}
+			else
+			{
+				camera.Transform.Position = targetPos;
+			}
 		}
 
 		camera.Transform.Rotation = lookDirection;
