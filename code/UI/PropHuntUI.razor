@@ -6,7 +6,7 @@
 	<root>
 	<div class="round-timer">
 		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Manager.Countdown</div>
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.CurrentGameState</div>
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.GetGameStateString()</div>
 	</div>
 	@if (Player.Local is not null)
 	{
@@ -14,24 +14,24 @@
 		+ <strong>@(Player.Local.Health)</strong>
 	</div>
 	}
-	@if (Inventory is not null)
+	@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
 	{
 		<div class="inventory">
 		<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
 			<img class="number" src=@Key1.ResourcePath>
-			<div class="weapon">pistol</div>
+			<div class="weapon">Pistol</div>
 		</div>
 		<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
 			<img class="number" src=@Key2.ResourcePath>
-			<div class="weapon">not a pistol</div>
+			<div class="weapon">Knife</div>
 		</div>
 		<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
 			<img class="number" src=@Key3.ResourcePath>
-			<div class="weapon">shotgun</div>
+			<div class="weapon">MP5</div>
 		</div>
 		<div class="item @(Inventory.ActiveIndex == 3 ? "active" : "")">
 			<img class="number" src=@Key4.ResourcePath>
-			<div class="weapon">rifle</div>
+			<div class="weapon">M4A4</div>
 		</div>
 	</div>
 	}

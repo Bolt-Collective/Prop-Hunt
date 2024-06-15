@@ -8,6 +8,7 @@ public class Player : Component
 	[Property] public PlayerDelegate OnDeath { get; set; }
 	[Property] public PlayerDelegate OnJumpEvent { get; set; }
 	[Sync] public bool IsGrabbing { get; set; }
+	[Property] public CharacterController characterController { get; set; }
 	public static Player Local
 	{
 		get

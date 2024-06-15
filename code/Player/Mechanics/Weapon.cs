@@ -57,6 +57,7 @@ public sealed class Weapon : Component
 	}
 	protected override void OnFixedUpdate()
 	{
+		if (IsProxy) return;
 		if (Input.Down("attack1") && !IsProxy && Ammo > 0 && TimeSinceReload > ReloadTime && TimeSinceFire > FireRate)
 		{
 			Fire();
@@ -66,6 +67,7 @@ public sealed class Weapon : Component
 		{
 			Reload();
 		}
+		
 	}
 	[Broadcast]
 	public void BroadcastShootSound(Vector3 HitPos)

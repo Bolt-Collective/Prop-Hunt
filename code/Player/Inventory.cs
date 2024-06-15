@@ -19,7 +19,7 @@ public sealed class Inventory : Component
 		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault(x => !x.IsProxy);
 		if (IsProxy) return;
 		Items = new List<GameObject>(new GameObject[Size]);
-		if (StartingItems.Count != 0)
+		if (StartingItems.Count != 0 && Team.Team == global::Team.Hunters)
 		{
 			for (int i = 0; i < StartingItems.Count; i++)
 			{
