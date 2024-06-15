@@ -70,7 +70,7 @@ public class PropShiftingMechanic : Component
 		if ( go.Tags.Has( "solid" ) )
 			return;
 		
-		IsProp = await TryChangeModel( tr, pc );
+		IsProp = await TryChangeModel( tr, pc, this );
 
 		Log.Info( "changed model" );
 		if (!IsProxy)
@@ -80,7 +80,7 @@ public class PropShiftingMechanic : Component
 	}
 
 
-	private static async Task<bool> TryChangeModel(SceneTraceResult tr, Player player)
+	private static async Task<bool> TryChangeModel(SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic)
 	{
 		var pcModel = player.Body.Components.Get<SkinnedModelRenderer>();
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();
@@ -100,7 +100,7 @@ public class PropShiftingMechanic : Component
 
 		if ( pcModel.Model.Name == propModel.Model.Name )
 		{
-			return false;
+			return propShiftingMechanic.IsProp ? true : false;
 		}
 		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
 		pcModel.Model = finalModel;
