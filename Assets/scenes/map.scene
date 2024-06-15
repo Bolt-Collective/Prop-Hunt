@@ -2,6 +2,34 @@
   "__guid": "38470add-1503-4b11-8d2e-da4380e1a4ad",
   "GameObjects": [
     {
+      "__guid": "b68859b2-314d-4052-906e-6cf7a0c60f83",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "-137.2537,98.41324,104.326",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "386ef78f-6bfa-49ed-8e31-82edf84ad6d8",
+          "MapName": "facepunch.flatgrass",
+          "UseMapFromLaunch": false
+        },
+        {
+          "__type": "MapChanger",
+          "__guid": "318494e0-b0d9-4d01-bf42-37791491e5a6",
+          "MapInstance": {
+            "_type": "component",
+            "component_id": "386ef78f-6bfa-49ed-8e31-82edf84ad6d8",
+            "go": "b68859b2-314d-4052-906e-6cf7a0c60f83",
+            "component_type": "MapInstance"
+          }
+        }
+      ],
+      "Children": []
+    },
+    {
       "__guid": "4e164292-58a2-46bf-953b-fbd8fac5a645",
       "Flags": 0,
       "Name": "Camera",
@@ -60,8 +88,8 @@
           "__type": "PropHuntManager",
           "__guid": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
           "Countdown": {
-            "Relative": -2798.822,
-            "Passed": 2798.822,
+            "Relative": -632.763,
+            "Passed": 632.763,
             "Fraction": 1
           },
           "CurrentGameState": "None",
@@ -132,6 +160,41 @@
           "Eye": {
             "_type": "gameobject",
             "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
+          },
+          "OnDeath": {
+            "__version": 7,
+            "__guid": "224886dd-f2ff-41f5-87cf-b75f8a79f10f",
+            "UserData": {
+              "Title": "On Death",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              },
+              {
+                "Id": 1,
+                "Type": "log.info",
+                "UserData": {
+                  "Position": "240,-0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 1,
+                "DstName": "_signal"
+              },
+              {
+                "Value": "You died!",
+                "DstId": 1,
+                "DstName": "format"
+              }
+            ]
           }
         },
         {
@@ -185,6 +248,10 @@
           "__guid": "629c2308-87ed-4f5a-b051-ce2d36d5f19d",
           "Ammo": 10,
           "MaxAmmo": 10
+        },
+        {
+          "__type": "Kicks.Interactor",
+          "__guid": "4a6212e6-98d6-4a12-a2b8-b97d35af475f"
         }
       ],
       "Children": [
@@ -233,6 +300,15 @@
               "MotionEnabled": false,
               "RigidbodyFlags": 0,
               "StartAsleep": false
+            },
+            {
+              "__type": "Sandbox.CapsuleCollider",
+              "__guid": "42add687-3d13-42ef-9c59-29c5a475bdb5",
+              "End": "0,0,10",
+              "IsTrigger": false,
+              "Radius": 5,
+              "Start": "0,0,0",
+              "Static": false
             }
           ],
           "Children": [
@@ -1541,7 +1617,6 @@
           "Flags": 0,
           "Name": "Physics Push",
           "Position": "0,0,0",
-          "Tags": "player",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -1579,23 +1654,6 @@
           ]
         }
       ]
-    },
-    {
-      "__guid": "6c4c7112-1ddb-4b97-b4ac-1d144f3a83a9",
-      "Flags": 0,
-      "Name": "Map",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "6ee0b6ad-2a3a-481a-bead-90d135a9b238",
-          "MapName": "facepunch.flatgrass",
-          "UseMapFromLaunch": false
-        }
-      ],
-      "Children": []
     },
     {
       "__guid": "2f01ac00-842e-4dee-844d-3f3b62cc49e2",
@@ -1844,19 +1902,19 @@
               }
             ],
             "Defaults": {
-              "$27._value": {
-                "_type": "component",
-                "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
-                "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
-                "component_type": "SkinnedModelRenderer"
-              },
-              "$29._value": {
-                "_type": "component",
-                "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
-                "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
-                "component_type": "SkinnedModelRenderer"
-              },
               "$40._value": {
+                "_type": "component",
+                "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
+                "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "$43._value": {
+                "_type": "component",
+                "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
+                "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "$46._value": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
@@ -1919,7 +1977,7 @@
               }
             ],
             "Defaults": {
-              "$10._value": {
+              "$2._value": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
@@ -2132,13 +2190,13 @@
               }
             ],
             "Defaults": {
-              "$25._value": {
+              "$31._value": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$27._value": {
+              "$34._value": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
@@ -2262,7 +2320,7 @@
           "Ammo": 10,
           "Damage": 25,
           "FireLength": 1000,
-          "FireRate": 0.1,
+          "FireRate": 0.5,
           "FireSound": "sounds/toolgun/toolgun-fire.sound",
           "MaxAmmo": 10,
           "OnComponentEnabled": {
@@ -2360,13 +2418,13 @@
               }
             ],
             "Defaults": {
-              "$9._value": {
+              "$3._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$10._value": {
+              "$6._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -2540,13 +2598,13 @@
               }
             ],
             "Defaults": {
-              "$19._value": {
+              "$27._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$26._value": {
+              "$30._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -2717,13 +2775,13 @@
               }
             ],
             "Defaults": {
-              "$2._value": {
+              "$10._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$11._value": {
+              "$14._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -2786,7 +2844,7 @@
               }
             ],
             "Defaults": {
-              "$5._value": {
+              "$2._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -2985,7 +3043,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-14T20:07:11.5389292-04:00",
+  "LastSaved": "2024-06-14T22:29:47.1643561-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_trenchknife",

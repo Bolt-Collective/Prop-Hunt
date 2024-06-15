@@ -7,6 +7,7 @@ public class Player : Component
 	public delegate void PlayerDelegate(Player player, Inventory inventory);
 	[Property] public PlayerDelegate OnDeath { get; set; }
 	[Property] public PlayerDelegate OnJumpEvent { get; set; }
+	[Sync] public bool IsGrabbing { get; set; }
 	public static Player Local
 	{
 		get
@@ -24,6 +25,7 @@ public class Player : Component
 	[Property] public GameObject Eye { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	[Property, Sync] public float CameraDistance { get; set; }
+	[Sync] public bool IsCrouching { get; set; }
 
 	[Sync]
 	public Angles EyeAngles { get; set; }
@@ -144,7 +146,7 @@ public void FreeLook()
 		}
 		else
 		{
-			var targetPos = Transform.Position + Vector3.Up * 64;
+			var targetPos = Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
 			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
 		}
 	
@@ -162,12 +164,14 @@ public void FreeLook()
 				AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
 			}
 			AnimationHelper.MoveStyle = IsRunning ? CitizenAnimationHelper.MoveStyles.Run : CitizenAnimationHelper.MoveStyles.Walk;
+			AnimationHelper.DuckLevel = IsCrouching ? 1 : 0;
 		}
 	}
 	protected override void OnUpdate()
 	{
 		if ( !IsProxy )
 		{
+			Crouch();
 			FreeLook();
 			EyeInput();
 			CameraPosition();
@@ -269,7 +273,28 @@ public void FreeLook()
 			cc.Velocity = cc.Velocity.WithZ( 0 );
 		}
 	}
+	public bool CanUncrouch()
+	{
+		var controller = GameObject.Components.Get<CharacterController>();
+		var tr = controller.TraceDirection( Vector3.Up * 32 );
+		return !tr.Hit;
+	}
 
+	public void Crouch()
+	{
+		var controller = GameObject.Components.Get<CharacterController>();
+		if (!Input.Down("duck"))
+		{
+			if (!CanUncrouch()) return;
+			controller.Height = 64;
+			IsCrouching = false;
+		}
+		else
+		{
+			controller.Height = 32;
+		IsCrouching = true;
+		}
+	}
 	public void BuildWishVelocity()
 	{
 		var rot = EyeAngles.ToRotation();

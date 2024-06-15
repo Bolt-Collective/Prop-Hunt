@@ -72,7 +72,7 @@ public sealed class Item : Component
 		if (tr.Hit)
 		{
 			TraceObject = tr.GameObject;
-			if (tr.GameObject.Parent.Components.TryGet<Player>(out var enemy, FindMode.EnabledInSelfAndChildren))
+			if (tr.GameObject.Components.TryGet<Player>(out var enemy, FindMode.EnabledInSelfAndChildren))
 			{
 				enemy.TakeDamage(damage);
 			}

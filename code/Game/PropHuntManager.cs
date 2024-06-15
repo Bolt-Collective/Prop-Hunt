@@ -83,7 +83,31 @@ public class PropHuntManager : Component, Component.INetworkListener
 			}
 		}
 	}
-
+	public string GetGameStateString()
+	{
+		switch (CurrentGameState)
+		{
+			case GameState.None:
+				return "None";
+			case GameState.WaitingForPlayers:
+				return "Waiting For Players";
+			case GameState.Preparing:
+				return "Preparing";
+			case GameState.Starting:
+				return "Starting";
+			case GameState.Started:
+				return "Started";
+			case GameState.Ending:
+				return "Ending";
+			case GameState.Ended:
+				return "Ended";
+			case GameState.Voting:
+				return "Voting";
+			default:
+				return "None";
+		
+	}
+	}
 	public async Task Started()
 	{
 		Countdown = 10;

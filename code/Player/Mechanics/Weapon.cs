@@ -78,7 +78,6 @@ public sealed class Weapon : Component
 	}
 	public void Fire()
 	{
-		
 		var ray = new Ray(Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * FireLength);
 		ray.Forward += Vector3.Random * Spread;
 		Player.EyeAngles += new Angles(-Recoil, GetRandomFloat(), 0);
@@ -91,6 +90,7 @@ public sealed class Weapon : Component
 		OnFire?.Invoke(Player, tr.EndPosition, tr.Normal, tr.Hit);
 		if (tr.Hit && tr.GameObject.Components.TryGet<Player>(out var enemy, FindMode.EnabledInSelfAndChildren))
 		{
+			if (Player.IsFriendly(enemy)) return;
 			enemy.TakeDamage(25);
 			OnHit?.Invoke(Player, enemy, tr.EndPosition, tr.Normal);
 		}

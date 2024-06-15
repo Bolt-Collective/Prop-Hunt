@@ -16,7 +16,7 @@ public sealed class Interactor : Component
 	}
 	protected override void OnUpdate()
 	{
-		if (IsProxy) return;
+		if (IsProxy || PlayerController is null || PlayerController.FreeLooking) return;
 		Transform aimTransform = Scene.Camera.Transform.World;
 		var ray = Scene.Camera.ScreenNormalToRay(0.5f);
 		var tr = Scene.Trace.Ray(ray, 500).WithoutTags("player").Run();
@@ -46,7 +46,7 @@ public sealed class Interactor : Component
 						PhysicsGameObject.Network.TakeOwnership();
 			}
 				var targetTx = aimTransform.ToWorld( grabbedOffset );
-				grabbedBody.SmoothMove( targetTx, Time.Delta * 100, Time.Delta );
+				grabbedBody.SmoothMove( targetTx, Time.Delta * 10, Time.Delta );
 				return;
 		}
 		else
