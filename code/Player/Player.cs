@@ -158,7 +158,7 @@ public void FreeLook()
     else
     {
         var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-		if (PropShiftingMechanic.IsProp && CameraDistance == 0 && Vector3.DistanceBetween(camera.Transform.LocalPosition.z, bodyRenderer.Bounds.Size.z) > 5)
+		if (PropShiftingMechanic.IsProp && CameraDistance == 0 && Vector3.DistanceBetween(camera.Transform.LocalPosition.z, bodyRenderer.Bounds.Size.z) > 0.1f)
         {
 			targetPos += Vector3.Up * bodyRenderer.Bounds.Size.z;
         }
