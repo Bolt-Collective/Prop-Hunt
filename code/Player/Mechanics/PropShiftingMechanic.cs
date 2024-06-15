@@ -70,7 +70,7 @@ public class PropShiftingMechanic : Component
 		if ( go.Tags.Has( "solid" ) )
 			return;
 		
-		IsProp = await TryChangeModel( tr, pc, this );
+		IsProp = await TryChangeModel( tr, pc, this ).ContinueWith(x => x.Result);
 
 		Log.Info( "changed model" );
 		if (!IsProxy)
