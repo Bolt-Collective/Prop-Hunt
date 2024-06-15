@@ -36,7 +36,7 @@ public class Player : Component
 
 
 	[RequireComponent] public TeamComponent TeamComponent { get; private set; }
-
+	public PropShiftingMechanic PropShiftingMechanic { get; set; }
 	public float MaxHealth = 100;
 	[Sync] public float Health { get; set; }
 	[Sync] public bool FreeLooking { get; set; }
@@ -55,6 +55,8 @@ public class Player : Component
 	protected override void OnStart()
 	{
 		Inventory = Scene.GetAllComponents<Inventory>().FirstOrDefault( x => !x.IsProxy );
+		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
+		PropShiftingMechanic = Scene.GetAllComponents<PropShiftingMechanic>().FirstOrDefault( x => !x.IsProxy );
 	}
 public void FreeLook()
 {
@@ -73,7 +75,7 @@ public void FreeLook()
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera);
 		camera.FieldOfView = Preferences.FieldOfView;
 		var lookDirection = EyeAngles.ToRotation();
-		var center = Transform.Position + Vector3.Up * 64;
+		var center = PropShiftingMechanic.IsProp ? Body.GetBounds().Center : Transform.Position + Vector3.Up * 64;
         if (CameraDistance != 0)
 		{
 		
@@ -89,7 +91,7 @@ public void FreeLook()
 		}
 		else
 		{
-			var targetPos = Transform.Position + Vector3.Up * 64;
+			var targetPos = PropShiftingMechanic.IsProp ? Vector3.Lerp(camera.Transform.Position, center, 0.5f) : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
 			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
 		}
 	
@@ -120,6 +122,7 @@ public void FreeLook()
 	}
 	public void EyeInput()
 	{
+		if (IsProxy) return;
 		var ee = EyeAngles;
 		ee += Input.AnalogLook * 0.9f;
 		ee.roll = 0;
@@ -129,9 +132,10 @@ public void FreeLook()
 	public void CameraPosition()
 	{
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
+		var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
 		camera.FieldOfView = Preferences.FieldOfView;
 		var lookDirection = EyeAngles.ToRotation();
-		var center = Transform.Position + Vector3.Up * 64;
+		var center = PropShiftingMechanic.IsProp ? bodyRenderer.Bounds.Center : Transform.Position + Vector3.Up * 64;
 		//Trace to see if the camera is inside a wall
 		if (CameraDistance != 0)
 		{
@@ -147,11 +151,11 @@ public void FreeLook()
 		}
 		else
 		{
-			var targetPos = Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+			var targetPos = PropShiftingMechanic.IsProp ? Vector3.Lerp(camera.Transform.Position, center, 0.5f) : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
 			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
 		}
 	
-		camera.Transform.Rotation = lookDirection;
+		camera.Transform.Rotation = PropShiftingMechanic.IsProp ? Rotation.Slerp(camera.Transform.Rotation, lookDirection, 0.5f) : lookDirection;
 	}
 	public void Animations(CharacterController cc)
 	{
@@ -177,6 +181,16 @@ public void FreeLook()
 			EyeInput();
 			CameraPosition();
 			ChangeDistance();
+			if (PropShiftingMechanic.IsProp)
+			{
+				characterController.Height = Body.GetBounds().Size.z;
+				characterController.Radius = Body.GetBounds().Size.x / 2;
+			}
+			else
+			{
+				characterController.Height = 64;
+				characterController.Radius = 16;
+			}
 			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera).Transform.World;
 			IsRunning = Input.Down( "Run" );
 		}
@@ -238,7 +252,7 @@ public void FreeLook()
 
 		BuildWishVelocity();
 
-		var cc = GameObject.Components.Get<CharacterController>();
+		var cc = characterController;
 
 		if ( cc.IsOnGround && Input.Down( "Jump" ) )
 		{
@@ -276,23 +290,22 @@ public void FreeLook()
 	}
 	public bool CanUncrouch()
 	{
-		var controller = GameObject.Components.Get<CharacterController>();
-		var tr = controller.TraceDirection( Vector3.Up * 32 );
+		var tr = characterController.TraceDirection( Vector3.Up * 32 );
 		return !tr.Hit;
 	}
 
 	public void Crouch()
 	{
-		var controller = GameObject.Components.Get<CharacterController>();
+		if (PropShiftingMechanic.IsProp) return;
 		if (!Input.Down("duck"))
 		{
 			if (!CanUncrouch()) return;
-			controller.Height = 64;
+			characterController.Height = 64;
 			IsCrouching = false;
 		}
 		else
 		{
-			controller.Height = 32;
+		characterController.Height = 32;
 		IsCrouching = true;
 		}
 	}

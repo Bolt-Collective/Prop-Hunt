@@ -88,8 +88,8 @@
           "__type": "PropHuntManager",
           "__guid": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
           "Countdown": {
-            "Relative": -829.0454,
-            "Passed": 829.0454,
+            "Relative": -120.50594,
+            "Passed": 120.50594,
             "Fraction": 1
           },
           "CurrentGameState": "None",
@@ -224,12 +224,13 @@
         },
         {
           "__type": "PropShiftingMechanic",
-          "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6"
+          "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6",
+          "IsProp": false
         },
         {
           "__type": "TeamComponent",
           "__guid": "248a97ea-5d84-4338-b5fe-9e2776a9a355",
-          "Team": "Hunters"
+          "Team": "Props"
         },
         {
           "__type": "Inventory",
@@ -1753,8 +1754,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "GetIsProxy",
+                  "_isStatic": false,
                   "_type": "Item"
                 },
                 "UserData": {
@@ -1772,8 +1773,8 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -1784,8 +1785,8 @@
                 "Id": 28,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -1796,8 +1797,8 @@
                 "Id": 39,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -1953,8 +1954,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2036,8 +2037,8 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Trace",
+                  "_isStatic": false,
                   "_type": "Item"
                 },
                 "UserData": {
@@ -2048,8 +2049,8 @@
                 "Id": 10,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "FireDelay",
+                  "_isStatic": false,
                   "_type": "Item"
                 },
                 "UserData": {
@@ -2067,8 +2068,8 @@
                 "Id": 14,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2079,8 +2080,8 @@
                 "Id": 26,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2091,8 +2092,8 @@
                 "Id": 37,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2274,19 +2275,19 @@
               }
             ],
             "Defaults": {
-              "$31._value": {
+              "$57._value": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$34._value": {
+              "$60._value": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$38._value": {
+              "$63._value": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
@@ -2432,8 +2433,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2444,8 +2445,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2577,8 +2578,8 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2589,8 +2590,8 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2601,8 +2602,8 @@
                 "Id": 33,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2613,10 +2614,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
+                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet",
-                  "_type": "Sandbox.IComponentLister",
-                  "T": "Sandbox.CharacterController"
+                  "_isStatic": false,
+                  "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
                   "Position": "-512,-224"
@@ -2785,19 +2786,19 @@
               }
             ],
             "Defaults": {
-              "$27._value": {
+              "$52._value": {
                 "_type": "component",
                 "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
                 "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$30._value": {
+              "$55._value": {
                 "_type": "component",
                 "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
                 "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$34._value": {
+              "$58._value": {
                 "_type": "component",
                 "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
                 "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -2824,8 +2825,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2869,8 +2870,8 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -2999,8 +3000,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3062,8 +3063,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3248,8 +3249,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3260,8 +3261,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3393,8 +3394,8 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3405,8 +3406,8 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3417,8 +3418,8 @@
                 "Id": 36,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3429,10 +3430,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
+                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet",
-                  "_type": "Sandbox.IComponentLister",
-                  "T": "Sandbox.CharacterController"
+                  "_isStatic": false,
+                  "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
                   "Position": "-352,-224"
@@ -3601,19 +3602,19 @@
               }
             ],
             "Defaults": {
-              "$27._value": {
+              "$52._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$30._value": {
+              "$55._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$37._value": {
+              "$58._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -3640,8 +3641,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3685,8 +3686,8 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3815,8 +3816,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -3878,8 +3879,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4064,8 +4065,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4076,8 +4077,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4209,8 +4210,8 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4221,8 +4222,8 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4233,8 +4234,8 @@
                 "Id": 33,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4245,10 +4246,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
+                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet",
-                  "_type": "Sandbox.IComponentLister",
-                  "T": "Sandbox.CharacterController"
+                  "_isStatic": false,
+                  "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
                   "Position": "-368,-272"
@@ -4417,19 +4418,19 @@
               }
             ],
             "Defaults": {
-              "$27._value": {
+              "$53._value": {
                 "_type": "component",
                 "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
                 "go": "f4e155a0-087a-4646-a49e-078b81e40257",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$30._value": {
+              "$56._value": {
                 "_type": "component",
                 "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
                 "go": "f4e155a0-087a-4646-a49e-078b81e40257",
                 "component_type": "SkinnedModelRenderer"
               },
-              "$34._value": {
+              "$59._value": {
                 "_type": "component",
                 "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
                 "go": "f4e155a0-087a-4646-a49e-078b81e40257",
@@ -4456,8 +4457,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4501,8 +4502,8 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4631,8 +4632,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4694,8 +4695,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Set",
+                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
@@ -4868,7 +4869,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-15T14:14:23.6164365-04:00",
+  "LastSaved": "2024-06-15T14:27:28.4806555-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_m4a1",

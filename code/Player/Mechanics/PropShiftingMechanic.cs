@@ -5,6 +5,7 @@ public class PropShiftingMechanic : Component
 	public TeamComponent Team { get; set; }
 	public delegate void PropShiftingDelegate(PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory);
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
+	[Property, Sync] public bool IsProp { get; set; } = false;
 	protected override void OnStart()
 	{
 		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault(x => !x.IsProxy);
@@ -42,11 +43,12 @@ public class PropShiftingMechanic : Component
 		}
 		pcModel.Model = Model.Load("models/citizen/citizen.vmdl_c");
 		pcModel.Tint = Color.White;
+		IsProp = false;
 	}
 
 
 	[Broadcast]
-	private void ShiftIntoProp()
+	private async void ShiftIntoProp()
 	{
 		var pc = Components.Get<Player>();
 		var lookDir = pc.EyeAngles.ToRotation();
@@ -67,7 +69,7 @@ public class PropShiftingMechanic : Component
 		if ( go.Tags.Has( "solid" ) )
 			return;
 		
-		TryChangeModel( tr, pc );
+		IsProp = await TryChangeModel( tr, pc );
 
 		Log.Info( "changed model" );
 		if (!IsProxy)
@@ -77,11 +79,14 @@ public class PropShiftingMechanic : Component
 	}
 
 
-	private static async void TryChangeModel(SceneTraceResult tr, Player player)
+	private static async Task<bool> TryChangeModel(SceneTraceResult tr, Player player)
 	{
 		var pcModel = player.Body.Components.Get<SkinnedModelRenderer>();
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();
-		if (tr.Body.BodyType == PhysicsBodyType.Static) return;
+		if (tr.Body.BodyType == PhysicsBodyType.Static) 
+		{
+			return false;
+		}
 
 		var clothes = player.Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) );
 		if ( clothes.Any() )
@@ -93,10 +98,12 @@ public class PropShiftingMechanic : Component
 		}
 
 		if ( pcModel.Model.Name == propModel.Model.Name )
-			return;
-
+		{
+			return false;
+		}
 		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
+		return true;
 	}
 }
