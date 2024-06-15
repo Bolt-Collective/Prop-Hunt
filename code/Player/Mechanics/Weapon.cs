@@ -6,35 +6,35 @@ public sealed class Weapon : Component
 {
 	public Player Player { get; set; }
 	public AmmoContainer AmmoContainer { get; set; }
-	[Property, Category("Weapon Properties")] public float FireLength { get; set; } = 1000;
-	[Property, Category("Weapon Properties")] public float Damage { get; set; } = 25;
-	[Property, Category("Weapon Properties")] public float ReloadTime { get; set; } = 1;
-	[Property, Category("Weapon Properties")] public int Ammo { get; set; } = 10;
-	[Property, Category("Weapon Properties")] public int MaxAmmo { get; set; } = 10;
-	[Property, Category("Weapon Properties")] public float FireRate { get; set; } = 1;
-	[Property, Category("Weapon Properties")] public float Spread { get; set; } = 0.1f;
-	[Property, Category("Weapon Properties")] public float Recoil { get; set; } = 0.1f;
-	[Property, Category("Weapon Properties")] public SoundEvent FireSound { get; set; }
-	public delegate void HitDelegate(Player Self, Player Enemy, Vector3 hitPos, Vector3 traceNormal);
-	public delegate void FireDelegate(Player Self, Vector3 endPos, Vector3 traceNormal, bool hit);
-	public delegate void ReloadDelegate(Player Self);
-	public delegate void PickupDelegate(Player Self, Weapon weapon, Inventory inventory);
-	[Property, Category("Weapon Actions")] public HitDelegate OnHit { get; set; }
-	[Property, Category("Weapon Actions")] public FireDelegate OnFire { get; set; }
-	[Property, Category("Weapon Actions")] public ReloadDelegate OnReload { get; set; }
-	[Property, Category("Weapon Actions")] public PickupDelegate OnPickup { get; set; }
-	[Property, Category("Weapon Actions")] public Player.PlayerDelegate OnPlayerJump { get; set; }
+	[Property, Category( "Weapon Properties" )] public float FireLength { get; set; } = 1000;
+	[Property, Category( "Weapon Properties" )] public float Damage { get; set; } = 25;
+	[Property, Category( "Weapon Properties" )] public float ReloadTime { get; set; } = 1;
+	[Property, Category( "Weapon Properties" )] public int Ammo { get; set; } = 10;
+	[Property, Category( "Weapon Properties" )] public int MaxAmmo { get; set; } = 10;
+	[Property, Category( "Weapon Properties" )] public float FireRate { get; set; } = 1;
+	[Property, Category( "Weapon Properties" )] public float Spread { get; set; } = 0.1f;
+	[Property, Category( "Weapon Properties" )] public float Recoil { get; set; } = 0.1f;
+	[Property, Category( "Weapon Properties" )] public SoundEvent FireSound { get; set; }
+	public delegate void HitDelegate( Player Self, Player Enemy, Vector3 hitPos, Vector3 traceNormal );
+	public delegate void FireDelegate( Player Self, Vector3 endPos, Vector3 traceNormal, bool hit );
+	public delegate void ReloadDelegate( Player Self );
+	public delegate void PickupDelegate( Player Self, Weapon weapon, Inventory inventory );
+	[Property, Category( "Weapon Actions" )] public HitDelegate OnHit { get; set; }
+	[Property, Category( "Weapon Actions" )] public FireDelegate OnFire { get; set; }
+	[Property, Category( "Weapon Actions" )] public ReloadDelegate OnReload { get; set; }
+	[Property, Category( "Weapon Actions" )] public PickupDelegate OnPickup { get; set; }
+	[Property, Category( "Weapon Actions" )] public Player.PlayerDelegate OnPlayerJump { get; set; }
 	TimeSince TimeSinceFire;
 	TimeSince TimeSinceReload;
 	[Sync] public int ShotsFired { get; set; } = 0;
 	protected override void OnStart()
 	{
-		Player = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
-		AmmoContainer = Scene.GetAllComponents<AmmoContainer>().FirstOrDefault(x => !x.IsProxy);
-		if (IsProxy) return;
+		Player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+		AmmoContainer = Scene.GetAllComponents<AmmoContainer>().FirstOrDefault( x => !x.IsProxy );
+		if ( IsProxy ) return;
 		TimeSinceReload = ReloadTime;
 		TimeSinceFire = FireRate;
-		OnPickup?.Invoke(Player, this, Player.Inventory);
+		OnPickup?.Invoke( Player, this, Player.Inventory );
 		Player.OnJumpEvent += OnJump;
 	}
 	public bool GetIsProxy()
@@ -43,50 +43,50 @@ public sealed class Weapon : Component
 	}
 	protected override void OnEnabled()
 	{
-		if (Player is null) return;
+		if ( Player is null ) return;
 		Player.OnJumpEvent += OnJump;
 	}
 	protected override void OnDisabled()
 	{
-		if (Player is null) return;
+		if ( Player is null ) return;
 		Player.OnJumpEvent -= OnJump;
 	}
-	public void OnJump(Player Player, Inventory Inventory)
+	public void OnJump( Player Player, Inventory Inventory )
 	{
-		OnPlayerJump?.Invoke(Player, Inventory);
+		OnPlayerJump?.Invoke( Player, Inventory );
 	}
 	protected override void OnFixedUpdate()
 	{
-		if (IsProxy) return;
-		if (Input.Down("attack1") && !IsProxy && Ammo > 0 && TimeSinceReload > ReloadTime && TimeSinceFire > FireRate)
+		if ( IsProxy ) return;
+		if ( Input.Down( "attack1" ) && !IsProxy && Ammo > 0 && TimeSinceReload > ReloadTime && TimeSinceFire > FireRate )
 		{
 			Fire();
 			TimeSinceFire = 0;
 		}
-		if (Input.Pressed("reload") && !IsProxy)
+		if ( Input.Pressed( "reload" ) && !IsProxy )
 		{
 			Reload();
 		}
-		
+
 	}
 	[Broadcast]
-	public void BroadcastShootSound(Vector3 HitPos)
+	public void BroadcastShootSound( Vector3 HitPos )
 	{
-		Sound.Play(FireSound, HitPos);
+		Sound.Play( FireSound, HitPos );
 	}
 	public float GetRandomFloat()
 	{
-		return Random.Shared.Float(-1, 1);
+		return Random.Shared.Float( -1, 1 );
 	}
 	public void Fire()
 	{
-		var ray = new Ray(Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * FireLength);
+		var ray = new Ray( Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * FireLength );
 		ray.Forward += Vector3.Random * Spread;
 
-		Player.EyeAngles += new Angles(-Recoil, GetRandomFloat(), 0);
+		Player.EyeAngles += new Angles( -Recoil, GetRandomFloat(), 0 );
 
-		var tr = Scene.Trace.Ray(ray, FireLength)
-			.WithoutTags("player")
+		var tr = Scene.Trace.Ray( ray, FireLength )
+			.WithoutTags( "player" )
 			.Run();
 
 		ShotsFired++;

@@ -18,9 +18,9 @@ public sealed class TauntComponent : Component
 		if ( IsProxy )
 			return;
 
-		if (Input.Pressed("Flashlight") && TimeSinceTaunted > TauntCooldown)
+		if ( Input.Pressed( "Flashlight" ) && TimeSinceTaunted > TauntCooldown )
 		{
-			Sound.Play(PropTaunts, GameObject.Transform.Position);
+			Sound.Play( PropTaunts, GameObject.Transform.Position );
 			TimeSinceTaunted = 0;
 		}
 	}

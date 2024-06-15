@@ -7,11 +7,11 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 
 	}
 
-	void ITriggerListener.OnTriggerEnter(Sandbox.Collider other)
+	void ITriggerListener.OnTriggerEnter( Sandbox.Collider other )
 	{
-		if (other.GameObject.Components.TryGet<Player>(out var player, FindMode.EverythingInSelfAndParent))
+		if ( other.GameObject.Components.TryGet<Player>( out var player, FindMode.EverythingInSelfAndParent ) )
 		{
-			player.TakeDamage(100);
+			player.TakeDamage( 100 );
 		}
 	}
 

@@ -30,7 +30,7 @@
       "Children": []
     },
     {
-      "__guid": "4e164292-58a2-46bf-953b-fbd8fac5a645",
+      "__guid": "be43cb37-c16b-4c1c-8c3b-25027a294a5a",
       "Flags": 0,
       "Name": "Camera",
       "Position": "-267.452,-379.653,297.7903",
@@ -41,7 +41,7 @@
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
-          "__guid": "5ae816af-d22a-4214-a88d-1744224c3810",
+          "__guid": "9bcd10ab-049f-429f-ba67-4dff5ca29772",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
           "FieldOfView": 95.27,
@@ -49,12 +49,58 @@
           "Orthographic": false,
           "OrthographicHeight": 1204,
           "Priority": 1,
-          "RenderExcludeTags": "viewmodel",
+          "RenderExcludeTags": "",
           "RenderTags": "",
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
-          "ZNear": 10
+          "ZNear": 0.1
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "fc404c3d-1454-4330-9b6c-e5f2cef4cfbe",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Additive",
+          "Strength": 0.5,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0.5
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "8c7f80db-0ad0-4325-a43d-a78118a7b4f5",
+          "__version": 1,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Mode": "Legacy",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.Sharpen",
+          "__guid": "3987301e-cb86-4939-b0ca-c0fcf4f1cb0e",
+          "Scale": 0.2
         }
       ]
     },
@@ -88,16 +134,18 @@
           "__type": "PropHuntManager",
           "__guid": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
           "Countdown": {
-            "Relative": -4632.8394,
-            "Passed": 4632.8394,
+            "Relative": -3327.2515,
+            "Passed": 3327.2515,
             "Fraction": 1
           },
           "CurrentGameState": "None",
           "CurrentRound": 0,
           "Hunters": [],
-          "Players": [],
+          "HuntersWin": 0,
           "PlayersNeededToStart": 1,
-          "Props": []
+          "Props": [],
+          "PropsWin": 0,
+          "RoundsToWin": 3
         }
       ]
     },
@@ -148,6 +196,7 @@
         {
           "__type": "Player",
           "__guid": "2e0e0531-044e-4d4c-a0e6-230f3cc36389",
+          "AbleToMove": true,
           "AnimationHelper": {
             "_type": "component",
             "component_id": "2cc56ca5-b7e8-41cb-b3c5-3a5c2e466eb4",
@@ -232,7 +281,7 @@
         {
           "__type": "TeamComponent",
           "__guid": "248a97ea-5d84-4338-b5fe-9e2776a9a355",
-          "Team": "Props"
+          "Team": "Hunters"
         },
         {
           "__type": "Inventory",
@@ -1624,7 +1673,7 @@
           "__guid": "bb88240a-9648-4257-be93-4ab6eb39fb97",
           "Flags": 0,
           "Name": "EyePos",
-          "Position": "7.680382,-0.9769211,69.29917",
+          "Position": "0,0,64",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true
@@ -1669,6 +1718,15 @@
               "WorldspacePlayback": true
             }
           ]
+        },
+        {
+          "__guid": "6646c44e-a94a-40a7-a310-6e2a7104372c",
+          "Flags": 0,
+          "Name": "eye",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true
         }
       ]
     },
@@ -1756,9 +1814,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "GetIsProxy",
                   "_isStatic": false,
-                  "_type": "Item"
+                  "_type": "Item",
+                  "_name": "GetIsProxy"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -1775,9 +1833,9 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "784,0"
@@ -1787,9 +1845,9 @@
                 "Id": 28,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1040,0"
@@ -1799,9 +1857,9 @@
                 "Id": 39,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1280,-0"
@@ -1956,9 +2014,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "240,-0"
@@ -2039,9 +2097,9 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Trace",
                   "_isStatic": false,
-                  "_type": "Item"
+                  "_type": "Item",
+                  "_name": "Trace"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -2051,9 +2109,9 @@
                 "Id": 10,
                 "Type": "call",
                 "Properties": {
-                  "_name": "FireDelay",
                   "_isStatic": false,
-                  "_type": "Item"
+                  "_type": "Item",
+                  "_name": "FireDelay"
                 },
                 "UserData": {
                   "Position": "1024,0"
@@ -2070,9 +2128,9 @@
                 "Id": 14,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "800,0"
@@ -2082,9 +2140,9 @@
                 "Id": 26,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1264,0"
@@ -2094,9 +2152,9 @@
                 "Id": 37,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "112,-128"
@@ -2107,8 +2165,8 @@
                 "Type": "property",
                 "ParentId": 0,
                 "Properties": {
-                  "_name": "characterController",
-                  "_type": "Player"
+                  "_type": "Player",
+                  "_name": "characterController"
                 }
               },
               {
@@ -2116,8 +2174,8 @@
                 "Type": "property",
                 "ParentId": 51,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -2311,36 +2369,17 @@
           "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "Sandbox.CameraComponent",
-              "__guid": "04fc1433-7899-4b91-adf5-472932a488ec",
-              "BackgroundColor": "0.33333,0.46275,0.52157,1",
-              "ClearFlags": "Depth, Stencil",
-              "FieldOfView": 80,
-              "IsMainCamera": false,
-              "Orthographic": false,
-              "OrthographicHeight": 1204,
-              "Priority": 1,
-              "RenderExcludeTags": "",
-              "RenderTags": "viewmodel,light",
-              "TargetEye": "None",
-              "Viewport": "0,0,1,1",
-              "ZFar": 10000,
-              "ZNear": 0.1
-            },
-            {
               "__type": "ViewModel",
               "__guid": "28d4322e-4853-4ba4-9da9-72c7af82972f",
-              "Camera": {
-                "_type": "component",
-                "component_id": "04fc1433-7899-4b91-adf5-472932a488ec",
-                "go": "b8cae699-275a-4d63-b81e-c35972eaed2d",
-                "component_type": "CameraComponent"
-              },
               "Gun": {
                 "_type": "component",
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
                 "component_type": "SkinnedModelRenderer"
+              },
+              "Main": {
+                "_type": "gameobject",
+                "go": "6d8fd097-9717-4391-96b4-31a5989ebf03"
               }
             }
           ],
@@ -2361,7 +2400,7 @@
                   "BodyGroups": 18446744073709551615,
                   "CreateBoneObjects": false,
                   "Model": "models/weapons/sbox_melee_trenchknife/v_trenchknife.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -2389,7 +2428,7 @@
                   },
                   "CreateBoneObjects": false,
                   "Model": "models/first_person/first_person_arms.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -2435,9 +2474,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -2447,9 +2486,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -2565,8 +2604,8 @@
                 "Type": "property",
                 "ParentId": 2,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -2580,9 +2619,9 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -2592,9 +2631,9 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -2604,9 +2643,9 @@
                 "Id": 33,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "48,-112"
@@ -2616,10 +2655,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "T": "Sandbox.CharacterController",
-                  "_name": "TryGet",
                   "_isStatic": false,
-                  "_type": "Sandbox.IComponentLister"
+                  "_type": "Sandbox.IComponentLister",
+                  "T": "Sandbox.CharacterController",
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "-512,-224"
@@ -2637,8 +2676,8 @@
                 "Type": "property",
                 "ParentId": 48,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -2827,9 +2866,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -2857,8 +2896,8 @@
                 "Type": "property",
                 "ParentId": 6,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -2872,9 +2911,9 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -3002,9 +3041,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -3065,9 +3104,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -3127,36 +3166,17 @@
           "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "Sandbox.CameraComponent",
-              "__guid": "1640b958-f86a-4ae0-9f2c-60ba9c454455",
-              "BackgroundColor": "0.33333,0.46275,0.52157,1",
-              "ClearFlags": "Depth, Stencil",
-              "FieldOfView": 80,
-              "IsMainCamera": false,
-              "Orthographic": false,
-              "OrthographicHeight": 1204,
-              "Priority": 1,
-              "RenderExcludeTags": "",
-              "RenderTags": "viewmodel,light",
-              "TargetEye": "None",
-              "Viewport": "0,0,1,1",
-              "ZFar": 10000,
-              "ZNear": 0.1
-            },
-            {
               "__type": "ViewModel",
               "__guid": "62530b87-2717-4e14-93a6-49bf8104e496",
-              "Camera": {
-                "_type": "component",
-                "component_id": "1640b958-f86a-4ae0-9f2c-60ba9c454455",
-                "go": "ec33ccf3-a027-4332-aa60-7555d696f8e5",
-                "component_type": "CameraComponent"
-              },
               "Gun": {
                 "_type": "component",
                 "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
                 "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
                 "component_type": "SkinnedModelRenderer"
+              },
+              "Main": {
+                "_type": "gameobject",
+                "go": "3a78d028-236e-4531-b966-5d50caf00037"
               }
             }
           ],
@@ -3177,7 +3197,7 @@
                   "BodyGroups": 75,
                   "CreateBoneObjects": false,
                   "Model": "models/weapons/sbox_smg_mp5/v_mp5.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -3205,7 +3225,7 @@
                   },
                   "CreateBoneObjects": false,
                   "Model": "models/first_person/first_person_arms.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -3251,9 +3271,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -3263,9 +3283,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -3381,8 +3401,8 @@
                 "Type": "property",
                 "ParentId": 2,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -3396,9 +3416,9 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -3408,9 +3428,9 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -3420,9 +3440,9 @@
                 "Id": 36,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "208,-128"
@@ -3432,10 +3452,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "T": "Sandbox.CharacterController",
-                  "_name": "TryGet",
                   "_isStatic": false,
-                  "_type": "Sandbox.IComponentLister"
+                  "_type": "Sandbox.IComponentLister",
+                  "T": "Sandbox.CharacterController",
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "-352,-224"
@@ -3453,8 +3473,8 @@
                 "Type": "property",
                 "ParentId": 48,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -3643,9 +3663,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -3673,8 +3693,8 @@
                 "Type": "property",
                 "ParentId": 6,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -3688,9 +3708,9 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -3818,9 +3838,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -3881,9 +3901,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -3943,36 +3963,17 @@
           "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "Sandbox.CameraComponent",
-              "__guid": "a020f373-12b5-4f31-83f2-8fc4317ce89d",
-              "BackgroundColor": "0.33333,0.46275,0.52157,1",
-              "ClearFlags": "Depth, Stencil",
-              "FieldOfView": 80,
-              "IsMainCamera": false,
-              "Orthographic": false,
-              "OrthographicHeight": 1204,
-              "Priority": 1,
-              "RenderExcludeTags": "",
-              "RenderTags": "viewmodel,light",
-              "TargetEye": "None",
-              "Viewport": "0,0,1,1",
-              "ZFar": 10000,
-              "ZNear": 0.1
-            },
-            {
               "__type": "ViewModel",
               "__guid": "9e746ffe-b940-4586-a2ef-e366847ad7b7",
-              "Camera": {
-                "_type": "component",
-                "component_id": "a020f373-12b5-4f31-83f2-8fc4317ce89d",
-                "go": "d53887e5-cd17-430a-907a-92a3b3873816",
-                "component_type": "CameraComponent"
-              },
               "Gun": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                 "component_type": "SkinnedModelRenderer"
+              },
+              "Main": {
+                "_type": "gameobject",
+                "go": "01255748-faa9-4ebb-a41c-c33afc26ea7b"
               }
             }
           ],
@@ -3993,7 +3994,7 @@
                   "BodyGroups": 17685,
                   "CreateBoneObjects": false,
                   "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -4021,7 +4022,7 @@
                   },
                   "CreateBoneObjects": false,
                   "Model": "models/first_person/first_person_arms.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -4067,9 +4068,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -4079,9 +4080,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -4197,8 +4198,8 @@
                 "Type": "property",
                 "ParentId": 2,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -4212,9 +4213,9 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -4224,9 +4225,9 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -4236,9 +4237,9 @@
                 "Id": 33,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "240,-176"
@@ -4248,10 +4249,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "T": "Sandbox.CharacterController",
-                  "_name": "TryGet",
                   "_isStatic": false,
-                  "_type": "Sandbox.IComponentLister"
+                  "_type": "Sandbox.IComponentLister",
+                  "T": "Sandbox.CharacterController",
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "-368,-272"
@@ -4269,8 +4270,8 @@
                 "Type": "property",
                 "ParentId": 48,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -4459,9 +4460,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -4489,8 +4490,8 @@
                 "Type": "property",
                 "ParentId": 6,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -4504,9 +4505,9 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -4634,9 +4635,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -4697,9 +4698,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -4759,36 +4760,17 @@
           "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "Sandbox.CameraComponent",
-              "__guid": "09c971d0-dacd-4513-8ceb-1e20d364e410",
-              "BackgroundColor": "0.33333,0.46275,0.52157,1",
-              "ClearFlags": "Depth, Stencil",
-              "FieldOfView": 80,
-              "IsMainCamera": false,
-              "Orthographic": false,
-              "OrthographicHeight": 1204,
-              "Priority": 1,
-              "RenderExcludeTags": "",
-              "RenderTags": "viewmodel,light",
-              "TargetEye": "None",
-              "Viewport": "0,0,1,1",
-              "ZFar": 10000,
-              "ZNear": 0.1
-            },
-            {
               "__type": "ViewModel",
               "__guid": "dac874bf-9c6f-414f-b2f1-33ea1d179b8f",
-              "Camera": {
-                "_type": "component",
-                "component_id": "09c971d0-dacd-4513-8ceb-1e20d364e410",
-                "go": "5774942c-26bc-4079-8a04-14fca070f2d5",
-                "component_type": "CameraComponent"
-              },
               "Gun": {
                 "_type": "component",
                 "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
                 "go": "f4e155a0-087a-4646-a49e-078b81e40257",
                 "component_type": "SkinnedModelRenderer"
+              },
+              "Main": {
+                "_type": "gameobject",
+                "go": "5ca2f89f-545f-4bc3-86f8-2059fac4e7fc"
               }
             }
           ],
@@ -4809,7 +4791,7 @@
                   "BodyGroups": 5203,
                   "CreateBoneObjects": false,
                   "Model": "models/weapons/sbox_assault_m4a1/v_m4a1.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -4837,7 +4819,7 @@
                   },
                   "CreateBoneObjects": false,
                   "Model": "models/first_person/first_person_arms.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -4891,7 +4873,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-15T15:42:40.8146774-04:00",
+  "LastSaved": "2024-06-15T19:21:14.7783069-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.soda_can",

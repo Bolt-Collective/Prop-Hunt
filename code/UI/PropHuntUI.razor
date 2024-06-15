@@ -4,43 +4,43 @@
 @if (Manager is not null)
 {
 	<root>
-	<div class="round-timer">
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Manager.Countdown</div>
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.GetGameStateString()</div>
-	</div>
-	@if (Player.Local is not null)
-	{
-		<div class="health">
-		+ <strong>@(Player.Local.Health)</strong>
-	</div>
-	}
-	@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
-	{
-		<div class="inventory">
-		<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
-			<img class="number" src=@Key1.ResourcePath>
-			<div class="weapon">Pistol</div>
+		<div class="round-timer">
+			<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Manager.Countdown</div>
+			<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.GetGameStateString()</div>
 		</div>
-		<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
-			<img class="number" src=@Key2.ResourcePath>
-			<div class="weapon">Knife</div>
-		</div>
-		<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
-			<img class="number" src=@Key3.ResourcePath>
-			<div class="weapon">MP5</div>
-		</div>
-		<div class="item @(Inventory.ActiveIndex == 3 ? "active" : "")">
-			<img class="number" src=@Key4.ResourcePath>
-			<div class="weapon">M4A4</div>
-		</div>
-	</div>
-	}
+		@if (Player.Local is not null)
+		{
+			<div class="health">
+				+ <strong>@(Player.Local.Health)</strong>
+			</div>
+		}
+		@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
+		{
+			<div class="inventory">
+				<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
+					<img class="number" src=@Key1.ResourcePath>
+					<div class="weapon">Pistol</div>
+				</div>
+				<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
+					<img class="number" src=@Key2.ResourcePath>
+					<div class="weapon">Knife</div>
+				</div>
+				<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
+					<img class="number" src=@Key3.ResourcePath>
+					<div class="weapon">MP5</div>
+				</div>
+				<div class="item @(Inventory.ActiveIndex == 3 ? "active" : "")">
+					<img class="number" src=@Key4.ResourcePath>
+					<div class="weapon">M4A4</div>
+				</div>
+			</div>
+		}
 
-	<PopupList/>
-	<Scoreboard/>
+		<PopupList />
+		<Scoreboard />
 
-	<div class="right"></div>
-</root>
+		<div class="right"></div>
+	</root>
 }
 
 
@@ -60,11 +60,11 @@
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault();
 	}
 
-public string RoundTimeUntil()
-{
-    var time = Manager.Countdown;
-    return Math.Round(time).ToString();
-}
+	public string RoundTimeUntil()
+	{
+		var time = Manager.Countdown;
+		return Math.Round(time).ToString();
+	}
 
 	protected override void OnUpdate()
 	{
@@ -77,5 +77,5 @@ public string RoundTimeUntil()
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( Time.Now );
+	protected override int BuildHash() => System.HashCode.Combine(Time.Now);
 }

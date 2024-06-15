@@ -6,6 +6,9 @@ public class PropHuntManager : Component, Component.INetworkListener
 	[Property] public GameState CurrentGameState { get; set; } = GameState.None;
 	[Property] public int PlayersNeededToStart { get; set; } = 2;
 	[Property] public int CurrentRound { get; set; } = 0;
+	[Property] public int RoundsToWin { get; set; } = 3;
+	[Property] public int PropsWin { get; set; }
+	[Property] public int HuntersWin { get; set; } 
 	[Property, Sync] public TimeUntil Countdown { get; set; }
 	[Property] public List<GameObject> Props { get; set; } = new List<GameObject>();
 	[Property] public List<GameObject> Hunters { get; set; } = new List<GameObject>();
@@ -110,7 +113,7 @@ public class PropHuntManager : Component, Component.INetworkListener
 	public void StartGame()
 	{
 	Log.Info("Starting game");
-	CurrentRound = 1;
+	CurrentRound++;
 	var spawnList = Scene.GetAllComponents<SpawnPoint>().ToList();
 	foreach (var player in Scene.GetAllComponents<Player>())
 	{

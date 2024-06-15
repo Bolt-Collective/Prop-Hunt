@@ -4,7 +4,7 @@ using Sandbox.Citizen;
 public class Player : Component
 {
 	public Inventory Inventory { get; set; }
-	public delegate void PlayerDelegate(Player player, Inventory inventory);
+	public delegate void PlayerDelegate( Player player, Inventory inventory );
 	[Property] public PlayerDelegate OnDeath { get; set; }
 	[Property] public PlayerDelegate OnJumpEvent { get; set; }
 	[Sync] public bool IsGrabbing { get; set; }
@@ -24,6 +24,7 @@ public class Player : Component
 	public Vector3 WishVelocity { get; private set; }
 	[Property] public GameObject Body { get; set; }
 	[Property] public GameObject Eye { get; set; }
+	[Property, Sync] public bool AbleToMove { get; set; } = true;
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	[Property, Sync] public float CameraDistance { get; set; }
 	[Sync] public bool IsCrouching { get; set; }
@@ -58,55 +59,55 @@ public class Player : Component
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
 		PropShiftingMechanic = Scene.GetAllComponents<PropShiftingMechanic>().FirstOrDefault( x => !x.IsProxy );
 	}
-public void FreeLook()
-{
-    var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
-    if (cam is null) return;
+	public void FreeLook()
+	{
+		var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
+		if ( cam is null ) return;
 
-    if (Input.Pressed("attack2"))
-    {
-        oldRotation = cam.Transform.Rotation;
-		oldEyeAngles = EyeAngles;
-    }
+		if ( Input.Pressed( "attack2" ) )
+		{
+			oldRotation = cam.Transform.Rotation;
+			oldEyeAngles = EyeAngles;
+		}
 
-    if (Input.Down("attack2"))
-    {
-        FreeLooking = true;
-		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera);
-		var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
-		camera.FieldOfView = Preferences.FieldOfView;
-		var lookDirection = EyeAngles.ToRotation();
-		var center = PropShiftingMechanic.IsProp ? Body.GetBounds().Center : Transform.Position + Vector3.Up * 64;
-        if (CameraDistance != 0)
+		if ( Input.Down( "attack2" ) )
 		{
-		
-		var tr = Scene.Trace.Ray(center, center - (EyeAngles.Forward * CameraDistance)).WithoutTags("player", "barrier").Run();
-		if (tr.Hit)
-		{
-			camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
-		}
-		else
-		{
-			camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
-		}
-		}
-		else
-		{
-			var targetPos = PropShiftingMechanic.IsProp ? Vector3.Lerp(camera.Transform.Position, center, 0.5f) : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
-		}
-	
-		camera.Transform.Rotation = lookDirection;
+			FreeLooking = true;
+			var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
+			var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
+			camera.FieldOfView = Preferences.FieldOfView;
+			var lookDirection = EyeAngles.ToRotation();
+			var center = PropShiftingMechanic.IsProp ? Body.GetBounds().Center : Transform.Position + Vector3.Up * 64;
+			if ( CameraDistance != 0 )
+			{
 
-    }
+				var tr = Scene.Trace.Ray( center, center - (EyeAngles.Forward * CameraDistance) ).WithoutTags( "player", "barrier" ).Run();
+				if ( tr.Hit )
+				{
+					camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
+				}
+				else
+				{
+					camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
+				}
+			}
+			else
+			{
+				var targetPos = PropShiftingMechanic.IsProp ? Vector3.Lerp( camera.Transform.Position, center, 0.5f ) : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+				camera.Transform.Position = targetPos;
+			}
 
-    if (Input.Released("attack2"))
-    {
-		cam.Transform.Rotation = Rotation.Slerp(cam.Transform.Rotation, oldRotation, Time.Delta * 10.0f);
-		EyeAngles = oldEyeAngles;
-        FreeLooking = false;
-    }
-}
+			camera.Transform.Rotation = lookDirection;
+
+		}
+
+		if ( Input.Released( "attack2" ) )
+		{
+			cam.Transform.Rotation = Rotation.Slerp( cam.Transform.Rotation, oldRotation, Time.Delta * 10.0f );
+			EyeAngles = oldEyeAngles;
+			FreeLooking = false;
+		}
+	}
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
@@ -123,7 +124,7 @@ public void FreeLook()
 	}
 	public void EyeInput()
 	{
-		if (IsProxy) return;
+		if ( IsProxy ) return;
 		var ee = EyeAngles;
 		ee += Input.AnalogLook * 0.9f;
 		ee.roll = 0;
@@ -132,44 +133,43 @@ public void FreeLook()
 	}
 
 	public void CameraPosition()
-{
-    var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera);
-    var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
-    camera.FieldOfView = Preferences.FieldOfView;
-    var lookDirection = EyeAngles.ToRotation();
-    var center = PropShiftingMechanic.IsProp ? bodyRenderer.Bounds.Center : Transform.Position + Vector3.Up * 64;
-	var localCameraPos = Transform.World.PointToLocal(camera.Transform.Position);
+	{
+		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
+		var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
+		camera.FieldOfView = Preferences.FieldOfView;
+		var lookDirection = EyeAngles.ToRotation();
+		var center = PropShiftingMechanic.IsProp ? bodyRenderer.Bounds.Center : Transform.Position + Vector3.Up * 64;
+		var localCameraPos = Transform.World.PointToLocal( camera.Transform.Position );
 
-    //Trace to see if the camera is inside a wall
-    if (CameraDistance != 0)
-    {
-        var tr = Scene.Trace.Ray(center, center - (EyeAngles.Forward * CameraDistance)).WithoutTags("player", "barrier").Run();
-        if (tr.Hit)
-        {
-            camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
-        }
-        else
-        {
-            camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
-        }
-    }
-   else
-{
-    var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-    
-    camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
-}
+		//Trace to see if the camera is inside a wall
+		if ( CameraDistance != 0 )
+		{
+			var tr = Scene.Trace.Ray( center, center - (EyeAngles.Forward * CameraDistance) ).WithoutTags( "player", "barrier" ).Run();
+			if ( tr.Hit )
+			{
+				camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
+			}
+			else
+			{
+				camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
+			}
+		}
+		else
+		{
+			var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+			camera.Transform.Position = targetPos;
+		}
 
-    camera.Transform.Rotation = lookDirection;
-}
-	public void Animations(CharacterController cc)
+		camera.Transform.Rotation = lookDirection;
+	}
+	public void Animations( CharacterController cc )
 	{
 		if ( AnimationHelper is not null )
 		{
 			AnimationHelper.WithVelocity( cc.Velocity );
 			AnimationHelper.WithWishVelocity( WishVelocity );
 			AnimationHelper.IsGrounded = cc.IsOnGround;
-			if (!FreeLooking)
+			if ( !FreeLooking )
 			{
 				AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
 			}
@@ -177,16 +177,25 @@ public void FreeLook()
 			AnimationHelper.DuckLevel = IsCrouching ? 1 : 0;
 		}
 	}
+
 	protected override void OnUpdate()
 	{
+
 		if ( !IsProxy )
 		{
-			Crouch();
-			FreeLook();
-			EyeInput();
+			if ( AbleToMove )
+			{
+				UpdateCrouch();
+				FreeLook();
+				EyeInput();
+				ChangeDistance();
+				var eyePos = Eye.Transform.Position;
+				eyePos = Body.Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+				Eye.Transform.Position = eyePos;
+				Eye.Transform.Rotation = EyeAngles.ToRotation();
+			}
 			CameraPosition();
-			ChangeDistance();
-			if (PropShiftingMechanic.IsProp)
+			if ( PropShiftingMechanic.IsProp )
 			{
 				characterController.Height = Body.GetBounds().Size.z;
 				characterController.Radius = Body.GetBounds().Size.x / 2;
@@ -196,27 +205,27 @@ public void FreeLook()
 				characterController.Height = 64;
 				characterController.Radius = 16;
 			}
-			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera).Transform.World;
+			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Transform.World;
 			IsRunning = Input.Down( "Run" );
 		}
 
 		var cc = GameObject.Components.Get<CharacterController>();
 		if ( cc is null ) return;
 		Animations( cc );
-		if (!FreeLooking)
+		if ( !FreeLooking )
 		{
-			Body.Transform.Rotation = Rotation.Slerp(Body.Transform.Rotation, new Angles(0, EyeAngles.yaw, 0).ToRotation(), Time.Delta * 10.0f);
+			Body.Transform.Rotation = Rotation.Slerp( Body.Transform.Rotation, new Angles( 0, EyeAngles.yaw, 0 ).ToRotation(), Time.Delta * 10.0f );
 		}
 
-		
+
 	}
 	public void ChangeDistance()
 	{
-		if (Input.MouseWheel != 0)
+		if ( Input.MouseWheel != 0 )
 		{
 			CameraDistance -= Input.MouseWheel.y * 10;
 		}
-		CameraDistance = CameraDistance.Clamp(0, 1000);
+		CameraDistance = CameraDistance.Clamp( 0, 1000 );
 	}
 	private void UpdateBodyVisibility()
 	{
@@ -239,9 +248,9 @@ public void FreeLook()
 	public void OnJump()
 	{
 		AnimationHelper?.TriggerJump();
-		if (!IsProxy)
+		if ( !IsProxy )
 		{
-			OnJumpEvent?.Invoke(this, Inventory);
+			OnJumpEvent?.Invoke( this, Inventory );
 		}
 	}
 
@@ -299,19 +308,19 @@ public void FreeLook()
 		return !tr.Hit;
 	}
 
-	public void Crouch()
+	public void UpdateCrouch()
 	{
-		if (PropShiftingMechanic.IsProp) return;
-		if (!Input.Down("duck"))
+		if ( PropShiftingMechanic.IsProp ) return;
+		if ( !Input.Down( "duck" ) )
 		{
-			if (!CanUncrouch()) return;
+			if ( !CanUncrouch() ) return;
 			characterController.Height = 64;
 			IsCrouching = false;
 		}
 		else
 		{
-		characterController.Height = 32;
-		IsCrouching = true;
+			characterController.Height = 32;
+			IsCrouching = true;
 		}
 	}
 	public void BuildWishVelocity()

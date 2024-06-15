@@ -3,8 +3,8 @@ using Sandbox;
 public sealed class ViewModel : Component
 {
 	public Player Player { get; set; }
-	[Property] public CameraComponent Camera { get; set; }
 	[Property] public SkinnedModelRenderer Gun { get; set; }
+	[Property] public GameObject Main { get; set; }
 	float lastPitch;
 	float lastYaw;
 	float yawInertia;
@@ -17,10 +17,10 @@ public sealed class ViewModel : Component
 
 	void ApplyInertia()
 	{
-		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => !x.IsProxy);
+		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => !x.IsProxy );
 		var cameraRot = camera.Transform.Rotation;
 
-		if (!UseInteria)
+		if ( !UseInteria )
 		{
 			lastPitch = cameraRot.Pitch();
 			lastYaw = cameraRot.Yaw();
@@ -30,29 +30,33 @@ public sealed class ViewModel : Component
 		}
 		var pitch = cameraRot.Pitch();
 		var yaw = cameraRot.Yaw();
-		pitchInertia = Angles.NormalizeAngle(pitch - lastPitch);
-		yawInertia = Angles.NormalizeAngle(yaw - lastYaw);
+		pitchInertia = Angles.NormalizeAngle( pitch - lastPitch );
+		yawInertia = Angles.NormalizeAngle( yaw - lastYaw );
 		lastPitch = pitch;
 		lastYaw = yaw;
-		Gun.Set("aim_yaw_inertia", yawInertia * 2);
-		Gun.Set("aim_pitch_inertia", pitchInertia * 2);
+		Gun.Set( "aim_yaw_inertia", yawInertia * 2 );
+		Gun.Set( "aim_pitch_inertia", pitchInertia * 2 );
 	}
 
 	void GroundSpeed()
 	{
-		Gun.Set("move_groundspeed", Player.GameObject.Components.Get<CharacterController>().Velocity.Length);
+		Gun.Set( "move_groundspeed", Player.GameObject.Components.Get<CharacterController>().Velocity.Length );
 	}
+	Vector3 LocalPos = Vector3.Zero;
 	protected override void OnUpdate()
 	{
-		Camera.Enabled = !IsProxy && Player.CameraDistance == 0;
-		if (IsProxy) return;
+		GameObject.Enabled = !IsProxy;
+		if ( IsProxy ) return;
+
+		Main.Parent = Player.Eye;
+		LocalPos = LocalPos.LerpTo( LocalPos, Time.Delta * 10f );
 		ApplyInertia();
 		GroundSpeed();
 	}
 
 	protected override void OnEnabled()
 	{
-		if (IsProxy) return;
-		Gun.Set("b_deploy_dry", true);
+		if ( IsProxy ) return;
+		Gun.Set( "b_deploy_dry", true );
 	}
 }

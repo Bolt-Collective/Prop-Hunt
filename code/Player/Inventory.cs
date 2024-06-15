@@ -10,70 +10,70 @@ public sealed class Inventory : Component
 	[Property] public List<GameObject> StartingItems { get; set; } = new();
 	[Property] public GameObject ActiveItem { get; set; }
 	[Property] public int ActiveIndex { get; set; }
-	[Property, Sync] public bool AbleToSwitch { get; set; } = true; 
+	[Property, Sync] public bool AbleToSwitch { get; set; } = true;
 	public Player Player { get; set; }
 	public TeamComponent Team { get; set; }
 	protected override void OnStart()
 	{
-		Player = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
-		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault(x => !x.IsProxy);
-		if (IsProxy) return;
-		Items = new List<GameObject>(new GameObject[Size]);
-		if (StartingItems.Count != 0 && Team.Team == global::Team.Hunters)
+		Player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
+		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
+		if ( IsProxy ) return;
+		Items = new List<GameObject>( new GameObject[Size] );
+		if ( StartingItems.Count != 0 && Team.Team == global::Team.Hunters )
 		{
-			for (int i = 0; i < StartingItems.Count; i++)
+			for ( int i = 0; i < StartingItems.Count; i++ )
 			{
-				AddItem(StartingItems[i], i);
+				AddItem( StartingItems[i], i );
 			}
 		}
 	}
 	protected override void OnUpdate()
 	{
-		if (!IsProxy && Team.Team == global::Team.Hunters)
+		if ( !IsProxy && Team.Team == global::Team.Hunters )
 		{
 			ItemInputs();
-			for (int i = 0; i < Items.Count; i++)
+			for ( int i = 0; i < Items.Count; i++ )
 			{
-				if (i == ActiveIndex)
+				if ( i == ActiveIndex )
 				{
 					ActiveItem = Items[i];
 				}
-				else if (Items[i] is not null)
+				else if ( Items[i] is not null )
 				{
 					Items[i].Enabled = false;
 				}
 			}
-			if (ActiveItem is not null)
+			if ( ActiveItem is not null )
 			{
 				ActiveItem.Enabled = true;
 			}
 		}
 	}
 
-	public void AddItem(GameObject item, int slot)
+	public void AddItem( GameObject item, int slot )
 	{
-		if (IsProxy) return;
-		if (Items[slot] is null)
+		if ( IsProxy ) return;
+		if ( Items[slot] is null )
 		{
 			var clone = item.Clone();
-			clone.Transform.LocalPosition = new Vector3(0, 0, 64);
+			clone.Transform.LocalPosition = new Vector3( 0, 0, 0 );
 			clone.Parent = GameObject;
-			if (clone.Components.TryGet<Weapon>(out var weapon))
+			if ( clone.Components.TryGet<Weapon>( out var weapon ) )
 			{
-				weapon.OnPickup?.Invoke(Player, weapon, this);
+				weapon.OnPickup?.Invoke( Player, weapon, this );
 			}
-			if (clone.Components.TryGet<Item>(out var itemComponent))
+			if ( clone.Components.TryGet<Item>( out var itemComponent ) )
 			{
-				itemComponent.OnPickup?.Invoke(Player, itemComponent, this);
+				itemComponent.OnPickup?.Invoke( Player, itemComponent, this );
 			}
 			clone.NetworkSpawn();
 			Items[slot] = clone;
 		}
 	}
 
-	public void RemoveItem(int slot)
+	public void RemoveItem( int slot )
 	{
-		if (Items[slot] is not null)
+		if ( Items[slot] is not null )
 		{
 			Items[slot].Destroy();
 			Items[slot] = null;
@@ -82,20 +82,20 @@ public sealed class Inventory : Component
 
 	void ItemInputs()
 	{
-		if (!AbleToSwitch) return;
-		if (Input.Pressed("slot1"))
+		if ( !AbleToSwitch ) return;
+		if ( Input.Pressed( "slot1" ) )
 		{
 			ActiveIndex = 0;
 		}
-		if (Input.Pressed("slot2"))
+		if ( Input.Pressed( "slot2" ) )
 		{
 			ActiveIndex = 1;
 		}
-		if (Input.Pressed("slot3"))
+		if ( Input.Pressed( "slot3" ) )
 		{
 			ActiveIndex = 2;
 		}
-		if (Input.Pressed("slot4"))
+		if ( Input.Pressed( "slot4" ) )
 		{
 			ActiveIndex = 3;
 		}
