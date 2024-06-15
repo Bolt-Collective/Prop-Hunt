@@ -43,6 +43,7 @@ public class PropShiftingMechanic : Component
 		}
 		pcModel.Model = Model.Load("models/citizen/citizen.vmdl_c");
 		pcModel.Tint = Color.White;
+		pcModel.GameObject.Transform.Scale = Vector3.One;
 		IsProp = false;
 	}
 
@@ -104,6 +105,7 @@ public class PropShiftingMechanic : Component
 		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
+		pcModel.GameObject.Transform.Scale = propModel.GameObject.Transform.Scale;
 		return true;
 	}
 }
