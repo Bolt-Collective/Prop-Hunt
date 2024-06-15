@@ -72,7 +72,7 @@ public sealed class Weapon : Component
 	[Broadcast]
 	public void BroadcastShootSound(Vector3 HitPos)
 	{
-		Sound.Play(FireSound);
+		Sound.Play(FireSound, HitPos);
 	}
 	public float GetRandomFloat()
 	{

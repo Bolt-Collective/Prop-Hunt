@@ -28,6 +28,15 @@ public class TeamComponent : Component
 	{
 		OnTeamChanged?.Invoke( before, after );
 	}
+
+	public void GetRandomTeam()
+	{
+		Team = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
+	}
+	int GetRandom(int min, int max)
+	{
+		return Random.Shared.Int(min, max);
+	}
 }
 
 public static class TeamExtensions

@@ -7,7 +7,8 @@ public class PropHuntManager : Component, Component.INetworkListener
 	[Property] public int PlayersNeededToStart { get; set; } = 2;
 	[Property] public int CurrentRound { get; set; } = 0;
 	[Property, Sync] public TimeUntil Countdown { get; set; }
-	[Property] public List<GameObject> Players { get; set; } = new List<GameObject>();
+	[Property] public List<GameObject> Props { get; set; } = new List<GameObject>();
+	[Property] public List<GameObject> Hunters { get; set; } = new List<GameObject>();
 	private Task GameLoopTask { get; set; }
 	
 	protected override void OnStart()
@@ -41,7 +42,7 @@ public class PropHuntManager : Component, Component.INetworkListener
 				case GameState.WaitingForPlayers:
 					if (Scene.GetAllComponents<Player>().Count() >= PlayersNeededToStart)
 					{
-						await Started();
+						CurrentGameState = GameState.Preparing;
 					}
 					else
 					{
@@ -52,12 +53,10 @@ public class PropHuntManager : Component, Component.INetworkListener
 
 				case GameState.Preparing:
 					CurrentGameState = GameState.Starting;
-					await Task.Frame();
 					break;
 
 				case GameState.Starting:
-					CurrentGameState = GameState.Started;
-					await Task.Frame();
+					StartGame();
 					break;
 
 				case GameState.Started:
@@ -65,12 +64,12 @@ public class PropHuntManager : Component, Component.INetworkListener
 					break;
 
 				case GameState.Ending:
-					await Task.Frame();
 					CurrentGameState = GameState.Ended;
 					break;
 
 				case GameState.Ended:
 					Log.Info("Game has ended");
+					await GameTask.DelaySeconds(5);
 					break;
 
 				case GameState.Voting:
@@ -108,24 +107,32 @@ public class PropHuntManager : Component, Component.INetworkListener
 		
 	}
 	}
-	public async Task Started()
-	{
-		Countdown = 10;
-		await Task.DelayRealtimeSeconds(10);
-		StartGame();
-		CurrentGameState = GameState.Started;
-	}
 	public void StartGame()
 	{
-		//Change the gamestate to preparing
-		CurrentGameState = GameState.Preparing;
-		CurrentRound = 1;
-		var players = Scene.GetAllComponents<Player>();
-		var spawnList = Scene.GetAllComponents<SpawnPoint>().ToList();
-		foreach (var player in players)
-		{
-			player.Transform.World = Game.Random.FromList(spawnList).Transform.World;
-		}
+	Log.Info("Starting game");
+	CurrentRound = 1;
+	var spawnList = Scene.GetAllComponents<SpawnPoint>().ToList();
+	foreach (var player in Scene.GetAllComponents<Player>())
+	{
+    player.Transform.World = Game.Random.FromList(spawnList).Transform.World;
+    if (player.Components.Get<PropShiftingMechanic>().IsProp)
+    {
+        player.Body.Components.Get<PropShiftingMechanic>().ExitProp();
+    }
+    var teamComponent = player.Components.Get<TeamComponent>();
+    teamComponent.GetRandomTeam();
+    Log.Info("Assigned team");
+    if (teamComponent.Team == Team.Props)
+    {
+        Props.Add(player.GameObject);
+    }
+    else
+    {
+        Hunters.Add(player.GameObject);
+    }
+	}
+		Log.Info("Game started");
+		CurrentGameState = GameState.Started;
 	}
 
 	public async Task Round()

@@ -130,6 +130,7 @@ public void FreeLook()
 		ee.pitch = ee.pitch.Clamp( -89, 89 );
 		EyeAngles = ee;
 	}
+
 	public void CameraPosition()
 {
     var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera);
@@ -137,6 +138,7 @@ public void FreeLook()
     camera.FieldOfView = Preferences.FieldOfView;
     var lookDirection = EyeAngles.ToRotation();
     var center = PropShiftingMechanic.IsProp ? bodyRenderer.Bounds.Center : Transform.Position + Vector3.Up * 64;
+	var localCameraPos = Transform.World.PointToLocal(camera.Transform.Position);
 
     //Trace to see if the camera is inside a wall
     if (CameraDistance != 0)
@@ -151,13 +153,12 @@ public void FreeLook()
             camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
         }
     }
-    else
-    {
-        var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-        camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
-
-       
-    }
+   else
+{
+    var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+    
+    camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
+}
 
     camera.Transform.Rotation = lookDirection;
 }

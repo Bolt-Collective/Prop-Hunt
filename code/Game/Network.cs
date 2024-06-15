@@ -38,15 +38,5 @@ public sealed class Network : Component, Component.INetworkListener
 		var playerClone = PlayerPrefab.Clone(SpawnPoint);
 		playerClone.NetworkSpawn(conn);
 		playerClone.Name = conn.DisplayName;
-		PropHuntManager.Players.Add(playerClone);
-	}
-
-	void INetworkListener.OnDisconnected(Sandbox.Connection conn)
-	{
-		var player = PropHuntManager.Players.Find(x => x.Network.OwnerConnection == conn);
-		if (player != null)
-		{
-			PropHuntManager.Players.Remove(player);
-		}
 	}
 }

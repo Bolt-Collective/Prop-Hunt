@@ -88,14 +88,16 @@
           "__type": "PropHuntManager",
           "__guid": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
           "Countdown": {
-            "Relative": -120.50594,
-            "Passed": 120.50594,
+            "Relative": -4632.8394,
+            "Passed": 4632.8394,
             "Fraction": 1
           },
           "CurrentGameState": "None",
           "CurrentRound": 0,
+          "Hunters": [],
           "Players": [],
-          "PlayersNeededToStart": 3
+          "PlayersNeededToStart": 1,
+          "Props": []
         }
       ]
     },
@@ -4844,6 +4846,26 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "41420460-b306-4b9f-a327-e7db47deecf4",
+      "Flags": 0,
+      "Name": "cola_can",
+      "Position": "-222.5637,82.04604,132.0343",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "cb57caeb-d8a5-4c6f-a626-4200ee30e452",
+          "BodyGroups": 18446744073709551615,
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/sbox_props/cola_can/cola_can.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -4869,9 +4891,10 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-15T14:27:28.4806555-04:00",
+  "LastSaved": "2024-06-15T15:42:40.8146774-04:00",
   "ResourceVersion": 1,
   "__references": [
+    "facepunch.soda_can",
     "facepunch.v_m4a1",
     "facepunch.v_mp5",
     "facepunch.v_trenchknife",
