@@ -82,56 +82,62 @@ public sealed class Weapon : Component
 	{
 		var ray = new Ray(Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * FireLength);
 		ray.Forward += Vector3.Random * Spread;
+
 		Player.EyeAngles += new Angles(-Recoil, GetRandomFloat(), 0);
+
 		var tr = Scene.Trace.Ray(ray, FireLength)
-		.WithoutTags("player")
-		.Run();
+			.WithoutTags("player")
+			.Run();
+
 		ShotsFired++;
 		Ammo--;
-		BroadcastShootSound(tr.EndPosition);
-		OnFire?.Invoke(Player, tr.EndPosition, tr.Normal, tr.Hit);
-		if (tr.Hit && tr.GameObject.Components.TryGet<Player>(out var enemy, FindMode.EnabledInSelfAndChildren))
+
+		BroadcastShootSound( tr.EndPosition );
+		OnFire?.Invoke( Player, tr.EndPosition, tr.Normal, tr.Hit );
+
+		if ( tr.Hit && tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EnabledInSelfAndChildren ) )
 		{
-			if (Player.IsFriendly(enemy)) return;
-			enemy.TakeDamage(25);
-			OnHit?.Invoke(Player, enemy, tr.EndPosition, tr.Normal);
+			if ( Player.IsFriendly( enemy ) ) return;
+			enemy.TakeDamage( 25 );
+			OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );
 		}
-		if (tr.Hit)
+		if ( tr.Hit )
 		{
-			
 			if ( tr.Body is not null )
-		{
-			tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
-		}
-		var damage = new DamageInfo(Damage, GameObject, GameObject, tr.Hitbox);
-		damage.Position = tr.HitPosition;
-		damage.Shape = tr.Shape;
-		foreach (var damageAble in tr.GameObject.Components.GetAll<IDamageable>())
-		{
-			damageAble.OnDamage(damage);
-		}
+			{
+				tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
+			}
+
+			var damage = new DamageInfo( Damage, GameObject, GameObject, tr.Hitbox );
+			damage.Position = tr.HitPosition;
+			damage.Shape = tr.Shape;
+
+			foreach ( var damageAble in tr.GameObject.Components.GetAll<IDamageable>() )
+			{
+				damageAble.OnDamage( damage );
+			}
 		}
 	}
-	
+
 	public async void Reload()
 	{
-		if (MaxAmmo <= AmmoContainer.Ammo && AmmoContainer.Ammo != 0)
+		if ( MaxAmmo <= AmmoContainer.Ammo && AmmoContainer.Ammo != 0 )
 		{
-			OnReload?.Invoke(Player);
+			OnReload?.Invoke( Player );
 			TimeSinceReload = 0;
-			await Task.DelaySeconds(ReloadTime);
+			await Task.DelaySeconds( ReloadTime );
 			Ammo = MaxAmmo;
-			AmmoContainer.SubtractAmmo(ShotsFired);
+			AmmoContainer.SubtractAmmo( ShotsFired );
 			TimeSinceReload = 0;
 		}
-		else if (MaxAmmo >= AmmoContainer.Ammo && AmmoContainer.Ammo != 0)
+		else if ( MaxAmmo >= AmmoContainer.Ammo && AmmoContainer.Ammo != 0 )
 		{
-			OnReload?.Invoke(Player);
-			await Task.DelaySeconds(ReloadTime);
+			OnReload?.Invoke( Player );
+			await Task.DelaySeconds( ReloadTime );
 			TimeSinceReload = 0;
 			Ammo = AmmoContainer.Ammo;
-			AmmoContainer.SubtractAmmo(AmmoContainer.Ammo);
-			
+			AmmoContainer.SubtractAmmo( AmmoContainer.Ammo );
+
 		}
 		ShotsFired = 0;
 	}
