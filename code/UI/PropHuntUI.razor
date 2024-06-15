@@ -58,6 +58,12 @@
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault();
 	}
 
+public string RoundTimeUntil()
+{
+    var time = Manager.Countdown;
+    return Math.Round(time).ToString();
+}
+
 	protected override void OnUpdate()
 	{
 		Key1 = Input.GetGlyph("slot1", InputGlyphSize.Medium, false);

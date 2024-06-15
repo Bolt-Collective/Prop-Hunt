@@ -88,8 +88,8 @@
           "__type": "PropHuntManager",
           "__guid": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
           "Countdown": {
-            "Relative": -119.59353,
-            "Passed": 119.59353,
+            "Relative": -829.0454,
+            "Passed": 829.0454,
             "Fraction": 1
           },
           "CurrentGameState": "None",
@@ -2098,6 +2098,24 @@
                 "UserData": {
                   "Position": "112,-128"
                 }
+              },
+              {
+                "Id": 51,
+                "Type": "property",
+                "ParentId": 0,
+                "Properties": {
+                  "_name": "characterController",
+                  "_type": "Player"
+                }
+              },
+              {
+                "Id": 52,
+                "Type": "property",
+                "ParentId": 51,
+                "Properties": {
+                  "_name": "IsOnGround",
+                  "_type": "Sandbox.CharacterController"
+                }
               }
             ],
             "Links": [
@@ -2216,6 +2234,12 @@
                 "DstName": "value"
               },
               {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 37,
+                "DstName": "_signal"
+              },
+              {
                 "Value": {
                   "_type": "component",
                   "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
@@ -2226,14 +2250,27 @@
                 "DstName": "_target"
               },
               {
-                "Value": "b_attack",
+                "Value": "b_grounded",
                 "DstId": 37,
                 "DstName": "v"
               },
               {
-                "Value": true,
+                "SrcId": 52,
+                "SrcName": "_result",
                 "DstId": 37,
                 "DstName": "value"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "Self",
+                "DstId": 51,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 51,
+                "SrcName": "_result",
+                "DstId": 52,
+                "DstName": "_target"
               }
             ],
             "Defaults": {
@@ -2559,6 +2596,47 @@
                 "UserData": {
                   "Position": "512,144"
                 }
+              },
+              {
+                "Id": 33,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
+                },
+                "UserData": {
+                  "Position": "48,-112"
+                }
+              },
+              {
+                "Id": 48,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister",
+                  "T": "Sandbox.CharacterController"
+                },
+                "UserData": {
+                  "Position": "-512,-224"
+                }
+              },
+              {
+                "Id": 49,
+                "Type": "if",
+                "UserData": {
+                  "Position": "-128,-192"
+                }
+              },
+              {
+                "Id": 50,
+                "Type": "property",
+                "ParentId": 48,
+                "Properties": {
+                  "_name": "IsOnGround",
+                  "_type": "Sandbox.CharacterController"
+                }
               }
             ],
             "Links": [
@@ -2648,6 +2726,62 @@
                 "Value": false,
                 "DstId": 25,
                 "DstName": "value"
+              },
+              {
+                "SrcId": 49,
+                "SrcName": "true",
+                "DstId": 33,
+                "DstName": "_signal"
+              },
+              {
+                "Value": {
+                  "_type": "component",
+                  "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
+                  "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "DstId": 33,
+                "DstName": "_target"
+              },
+              {
+                "Value": "b_grounded",
+                "DstId": 33,
+                "DstName": "v"
+              },
+              {
+                "SrcId": 50,
+                "SrcName": "_result",
+                "DstId": 33,
+                "DstName": "value"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_target",
+                "DstId": 48,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelf, InParent",
+                "DstId": 48,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 49,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 48,
+                "SrcName": "_result",
+                "DstId": 49,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 48,
+                "SrcName": "component",
+                "DstId": 50,
+                "DstName": "_target"
               }
             ],
             "Defaults": {
@@ -2658,6 +2792,12 @@
                 "component_type": "SkinnedModelRenderer"
               },
               "$30._value": {
+                "_type": "component",
+                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
+                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "$34._value": {
                 "_type": "component",
                 "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
                 "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -3272,6 +3412,47 @@
                 "UserData": {
                   "Position": "512,144"
                 }
+              },
+              {
+                "Id": 36,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
+                },
+                "UserData": {
+                  "Position": "208,-128"
+                }
+              },
+              {
+                "Id": 48,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister",
+                  "T": "Sandbox.CharacterController"
+                },
+                "UserData": {
+                  "Position": "-352,-224"
+                }
+              },
+              {
+                "Id": 49,
+                "Type": "if",
+                "UserData": {
+                  "Position": "32,-208"
+                }
+              },
+              {
+                "Id": 50,
+                "Type": "property",
+                "ParentId": 48,
+                "Properties": {
+                  "_name": "IsOnGround",
+                  "_type": "Sandbox.CharacterController"
+                }
               }
             ],
             "Links": [
@@ -3361,6 +3542,62 @@
                 "Value": false,
                 "DstId": 25,
                 "DstName": "value"
+              },
+              {
+                "SrcId": 49,
+                "SrcName": "true",
+                "DstId": 36,
+                "DstName": "_signal"
+              },
+              {
+                "Value": {
+                  "_type": "component",
+                  "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
+                  "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "DstId": 36,
+                "DstName": "_target"
+              },
+              {
+                "Value": "b_grounded",
+                "DstId": 36,
+                "DstName": "v"
+              },
+              {
+                "SrcId": 50,
+                "SrcName": "_result",
+                "DstId": 36,
+                "DstName": "value"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_target",
+                "DstId": 48,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelf, InParent",
+                "DstId": 48,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 49,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 48,
+                "SrcName": "_result",
+                "DstId": 49,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 48,
+                "SrcName": "component",
+                "DstId": 50,
+                "DstName": "_target"
               }
             ],
             "Defaults": {
@@ -3371,6 +3608,12 @@
                 "component_type": "SkinnedModelRenderer"
               },
               "$30._value": {
+                "_type": "component",
+                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
+                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "$37._value": {
                 "_type": "component",
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -3985,6 +4228,47 @@
                 "UserData": {
                   "Position": "512,144"
                 }
+              },
+              {
+                "Id": 33,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
+                },
+                "UserData": {
+                  "Position": "240,-176"
+                }
+              },
+              {
+                "Id": 48,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister",
+                  "T": "Sandbox.CharacterController"
+                },
+                "UserData": {
+                  "Position": "-368,-272"
+                }
+              },
+              {
+                "Id": 50,
+                "Type": "if",
+                "UserData": {
+                  "Position": "16,-256"
+                }
+              },
+              {
+                "Id": 51,
+                "Type": "property",
+                "ParentId": 48,
+                "Properties": {
+                  "_name": "IsOnGround",
+                  "_type": "Sandbox.CharacterController"
+                }
               }
             ],
             "Links": [
@@ -4074,6 +4358,62 @@
                 "Value": false,
                 "DstId": 25,
                 "DstName": "value"
+              },
+              {
+                "SrcId": 50,
+                "SrcName": "true",
+                "DstId": 33,
+                "DstName": "_signal"
+              },
+              {
+                "Value": {
+                  "_type": "component",
+                  "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                  "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "DstId": 33,
+                "DstName": "_target"
+              },
+              {
+                "Value": "b_grounded",
+                "DstId": 33,
+                "DstName": "v"
+              },
+              {
+                "SrcId": 51,
+                "SrcName": "_result",
+                "DstId": 33,
+                "DstName": "value"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_target",
+                "DstId": 48,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelf, InParent",
+                "DstId": 48,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 50,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 48,
+                "SrcName": "_result",
+                "DstId": 50,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 48,
+                "SrcName": "component",
+                "DstId": 51,
+                "DstName": "_target"
               }
             ],
             "Defaults": {
@@ -4084,6 +4424,12 @@
                 "component_type": "SkinnedModelRenderer"
               },
               "$30._value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "$34._value": {
                 "_type": "component",
                 "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
                 "go": "f4e155a0-087a-4646-a49e-078b81e40257",
@@ -4522,7 +4868,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-15T14:02:34.1532403-04:00",
+  "LastSaved": "2024-06-15T14:14:23.6164365-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_m4a1",
