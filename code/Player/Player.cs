@@ -155,7 +155,7 @@ public void FreeLook()
 			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
 		}
 	
-		camera.Transform.Rotation = PropShiftingMechanic.IsProp ? Rotation.Slerp(camera.Transform.Rotation, lookDirection, 0.5f) : lookDirection;
+		camera.Transform.Rotation = lookDirection;
 	}
 	public void Animations(CharacterController cc)
 	{
