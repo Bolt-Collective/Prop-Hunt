@@ -50,7 +50,7 @@ public class PropShiftingMechanic : Component
 	{
 		var pc = Components.Get<Player>();
 		var lookDir = pc.EyeAngles.ToRotation();
-		var eyePos = Transform.Position + Vector3.Up * 60;
+		var eyePos = Transform.Position + Vector3.Up * 64;
 
 		var tr = Scene.Trace
 			.WithoutTags( "player" )

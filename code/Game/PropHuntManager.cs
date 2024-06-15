@@ -45,6 +45,7 @@ public class PropHuntManager : Component, Component.INetworkListener
 					}
 					else
 					{
+						Countdown = 0;
 						await Task.Frame();
 					}
 					break;

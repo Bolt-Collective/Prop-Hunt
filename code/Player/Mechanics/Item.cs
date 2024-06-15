@@ -11,6 +11,7 @@ public sealed class Item : Component
 	public AmmoContainer AmmoContainer { get; set; }
 	public delegate void PickupDelegate(Player Self, Item item, Inventory inventory);
 	public delegate void UseDelegate(Player Self, Item item, Inventory inventory, bool AbleToUse);
+	[Property, Category("Item Actions")] public Player.PlayerDelegate OnPlayerJump { get; set; }
 	[Property, Category("Item Actions")] public PickupDelegate OnPickup { get; set; }
 	[Property, Category("Item Actions")] public UseDelegate OnUse { get; set; }
 	[Property, Category("Item Properties"), Sync] public bool UsesAmmo { get; set; }
@@ -21,6 +22,22 @@ public sealed class Item : Component
 	{
 		Player = Scene.GetAllComponents<Player>().FirstOrDefault(x => !x.IsProxy);
 		AmmoContainer = Scene.GetAllComponents<AmmoContainer>().FirstOrDefault(x => !x.IsProxy);
+		if (IsProxy) return;
+		Player.OnJumpEvent += OnJump;
+	}
+	protected override void OnEnabled()
+	{
+		if (Player is null) return;
+		Player.OnJumpEvent += OnJump;
+	}
+	protected override void OnDisabled()
+	{
+		if (Player is null) return;
+		Player.OnJumpEvent -= OnJump;
+	}
+	public void OnJump(Player Player, Inventory Inventory)
+	{
+		OnPlayerJump?.Invoke(Player, Inventory);
 	}
 	protected override void OnUpdate()
 	{
@@ -45,7 +62,7 @@ public sealed class Item : Component
 	public void Trace(float TraceDistance, int damage, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject)
 	{
 		var tr = Scene.Trace.Ray(Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * TraceDistance)
-		.WithoutTags(Steam.SteamId.ToString())
+		.WithoutTags("player")
 		.Run();
 		Ammo--;
 		ShotsFired++;
@@ -59,6 +76,17 @@ public sealed class Item : Component
 			{
 				enemy.TakeDamage(damage);
 			}
+			if ( tr.Body is not null )
+		{
+			tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
+		}
+		var trDamage = new DamageInfo(damage, GameObject, GameObject, tr.Hitbox);
+		trDamage.Position = tr.HitPosition;
+		trDamage.Shape = tr.Shape;
+		foreach (var damageAble in tr.GameObject.Components.GetAll<IDamageable>())
+		{
+			damageAble.OnDamage(trDamage);
+		}
 		}
 		else
 		{
@@ -113,7 +141,12 @@ public sealed class Item : Component
 	public async Task FireDelay(float delay)
 	{
 		AbleToUse = false;
-		await Task.DelaySeconds(delay);
+		await GameTask.DelaySeconds(delay);
 		AbleToUse = true;
+	}
+
+	public bool GetIsProxy()
+	{
+		return IsProxy;
 	}
 }

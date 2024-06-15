@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
 using System.Net.NetworkInformation;
 using Sandbox;
@@ -33,9 +34,13 @@ public sealed class Inventory : Component
 			ItemInputs();
 			for (int i = 0; i < Items.Count; i++)
 			{
-				if (Items[i] is not null && i == ActiveIndex)
+				if (i == ActiveIndex)
 				{
 					ActiveItem = Items[i];
+				}
+				else if (Items[i] is not null)
+				{
+					Items[i].Enabled = false;
 				}
 			}
 			if (ActiveItem is not null)
@@ -51,6 +56,7 @@ public sealed class Inventory : Component
 		if (Items[slot] is null)
 		{
 			var clone = item.Clone();
+			clone.Transform.LocalPosition = new Vector3(0, 0, 64);
 			clone.Parent = GameObject;
 			if (clone.Components.TryGet<Weapon>(out var weapon))
 			{
@@ -92,30 +98,6 @@ public sealed class Inventory : Component
 		if (Input.Pressed("slot4"))
 		{
 			ActiveIndex = 3;
-		}
-		if (Input.Pressed("slot5"))
-		{
-			ActiveIndex = 4;
-		}
-		if (Input.Pressed("slot6"))
-		{
-			ActiveIndex = 5;
-		}
-		if (Input.Pressed("slot7"))
-		{
-			ActiveIndex = 6;
-		}
-		if (Input.Pressed("slot8"))
-		{
-			ActiveIndex = 7;
-		}
-		if (Input.Pressed("slot9"))
-		{
-			ActiveIndex = 8;
-		}
-		if (Input.Pressed("slot0"))
-		{
-			ActiveIndex = 9;
 		}
 	}
 }
