@@ -86,7 +86,7 @@ public class PropShiftingMechanic : Component
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();
 		if (tr.Body.BodyType == PhysicsBodyType.Static) 
 		{
-			return false;
+			return propShiftingMechanic.IsProp ? true : false;
 		}
 
 		var clothes = player.Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) );
