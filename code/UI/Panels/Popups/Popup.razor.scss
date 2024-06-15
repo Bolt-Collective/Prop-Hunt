@@ -1,0 +1,32 @@
+﻿Popup {
+    top: 32px;
+    left: 32px;
+    background-color: rgba(26, 26, 26, 0.72);
+    backdrop-filter: blur(32px);
+    font-family: Poppins;
+    flex-direction: column;
+    border-left-width: 6px;
+    border-left: yellow;
+    transition: all 0.5s;
+
+    &:intro {
+        left: -1000px;
+    }
+
+    &:outro {
+        left: -1000px;
+    }
+
+    .title {
+        padding: 8px;
+        font-size: 18px;
+        background-color: rgba(32, 32, 32, 0.7);
+        color: white;
+    }
+
+    .text {
+        padding: 8px;
+        font-size: 14px;
+        color: white;
+    }
+}

@@ -1,0 +1,11 @@
+﻿@using Sandbox.UI;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	@if (Title != string.Empty)
+	{
+		<div class="title">@Title</div>
+		<div class="text">@Text</div>
+	}
+</root>
