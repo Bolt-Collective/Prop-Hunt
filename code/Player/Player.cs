@@ -93,10 +93,6 @@ public void FreeLook()
 		else
 		{
 			var targetPos = PropShiftingMechanic.IsProp ? Vector3.Lerp(camera.Transform.Position, center, 0.5f) : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-			if (PropShiftingMechanic.IsProp && CameraDistance == 0 && Vector3.DistanceBetween(camera.Transform.LocalPosition.z, bodyRenderer.Bounds.Size.z) > 0.1f)
-        {
-			targetPos += Vector3.Up * bodyRenderer.Bounds.Size.z;
-        }
 			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
 		}
 	
@@ -158,10 +154,6 @@ public void FreeLook()
     else
     {
         var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-		if (PropShiftingMechanic.IsProp && CameraDistance == 0 && Vector3.DistanceBetween(camera.Transform.LocalPosition.z, bodyRenderer.Bounds.Size.z) > 0.1f)
-        {
-			targetPos += Vector3.Up * bodyRenderer.Bounds.Size.z;
-        }
         camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
 
        
