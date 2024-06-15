@@ -73,6 +73,7 @@ public void FreeLook()
     {
         FreeLooking = true;
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera);
+		var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
 		camera.FieldOfView = Preferences.FieldOfView;
 		var lookDirection = EyeAngles.ToRotation();
 		var center = PropShiftingMechanic.IsProp ? Body.GetBounds().Center : Transform.Position + Vector3.Up * 64;
@@ -92,6 +93,10 @@ public void FreeLook()
 		else
 		{
 			var targetPos = PropShiftingMechanic.IsProp ? Vector3.Lerp(camera.Transform.Position, center, 0.5f) : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+			if (PropShiftingMechanic.IsProp && CameraDistance == 0 && Vector3.DistanceBetween(camera.Transform.LocalPosition.z, bodyRenderer.Bounds.Size.z) > 0.1f)
+        {
+			targetPos += Vector3.Up * bodyRenderer.Bounds.Size.z;
+        }
 			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
 		}
 	
@@ -130,33 +135,40 @@ public void FreeLook()
 		EyeAngles = ee;
 	}
 	public void CameraPosition()
-	{
-		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
-		var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
-		camera.FieldOfView = Preferences.FieldOfView;
-		var lookDirection = EyeAngles.ToRotation();
-		var center = PropShiftingMechanic.IsProp ? bodyRenderer.Bounds.Center : Transform.Position + Vector3.Up * 64;
-		//Trace to see if the camera is inside a wall
-		if (CameraDistance != 0)
-		{
-		var tr = Scene.Trace.Ray(center, center - (EyeAngles.Forward * CameraDistance)).WithoutTags("player", "barrier").Run();
-		if (tr.Hit)
-		{
-			camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
-		}
-		else
-		{
-			camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
-		}
-		}
-		else
-		{
-			var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
-			camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
-		}
-	
-		camera.Transform.Rotation = lookDirection;
-	}
+{
+    var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault(x => x.IsMainCamera);
+    var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
+    camera.FieldOfView = Preferences.FieldOfView;
+    var lookDirection = EyeAngles.ToRotation();
+    var center = PropShiftingMechanic.IsProp ? bodyRenderer.Bounds.Center : Transform.Position + Vector3.Up * 64;
+
+    //Trace to see if the camera is inside a wall
+    if (CameraDistance != 0)
+    {
+        var tr = Scene.Trace.Ray(center, center - (EyeAngles.Forward * CameraDistance)).WithoutTags("player", "barrier").Run();
+        if (tr.Hit)
+        {
+            camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
+        }
+        else
+        {
+            camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
+        }
+    }
+    else
+    {
+        var targetPos = PropShiftingMechanic.IsProp ? center : Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+		if (PropShiftingMechanic.IsProp && CameraDistance == 0 && Vector3.DistanceBetween(camera.Transform.LocalPosition.z, bodyRenderer.Bounds.Size.z) > 5)
+        {
+			targetPos += Vector3.Up * bodyRenderer.Bounds.Size.z;
+        }
+        camera.Transform.Position = camera.Transform.Position.LerpTo(targetPos, Time.Delta * 60);
+
+       
+    }
+
+    camera.Transform.Rotation = lookDirection;
+}
 	public void Animations(CharacterController cc)
 	{
 		if ( AnimationHelper is not null )
