@@ -5,10 +5,17 @@
 @if (Manager is not null)
 {
 	<root>
-	<div class="round-timer">
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format(TimeSpan.FromSeconds( Manager.Countdown.Relative.CeilToInt() ))</div>
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.GetGameStateString()</div>
-	</div>
+		<div class="round-timer">
+			@if ( Manager.RoundState == GameState.WaitingForPlayers )
+			{
+				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format( TimeSpan.FromSeconds( Manager.TimeSinceRoundStateChanged.Relative.CeilToInt() ) )</div>
+			}
+			else
+			{
+				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format( TimeSpan.FromSeconds( Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt() ) )</div>
+			}
+			<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.RoundStateText</div>
+		</div>
 	@if (Player.Local is not null)
 	{
 		<div class="health">
@@ -59,19 +66,6 @@
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault();
 	}
 
-	public string RoundTimeUntil()
-	{
-		var time = Manager.Countdown;
-		return Math.Round(time).ToString();
-	}
-
-
-	public static string Format(TimeSpan timespan)
-	{
-		var format = timespan.Hours >= 1 ? @"h\:mm\:ss" : @"m\:ss";
-		return timespan.ToString(format);
-	}
-
 	protected override void OnUpdate()
 	{
 		
@@ -81,6 +75,12 @@
 	{
 		var inputGlyph = Input.GetGlyph( keybind, InputGlyphSize.Medium, false );
 		return inputGlyph;
+	}
+
+	public static string Format(TimeSpan timespan)
+	{
+		var format = timespan.Hours >= 1 ? @"h\:mm\:ss" : @"m\:ss";
+		return timespan.ToString(format);
 	}
 
 	/// <summary>
