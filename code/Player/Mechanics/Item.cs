@@ -103,6 +103,7 @@ public sealed class Item : Component
 		{
 			rendererComponent.Set( AnimName, True );
 		}
+		Log.Info( "Broadcast Holdtype" );
 	}
 
 	[ActionGraphNode( "Broadcast Holdtype" ), Broadcast]

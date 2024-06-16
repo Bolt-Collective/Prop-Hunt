@@ -1,5 +1,4 @@
 ﻿using Sandbox.Utility;
-
 [Title( "Game Manager" )]
 [Description( "The brains of Prop Hunt. Controls rounds, teams, etc." )]
 public partial class PropHuntManager : Component, Component.INetworkListener
@@ -50,7 +49,22 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	protected override void OnUpdate()
 	{
-		base.OnUpdate();
+		// Network spawn all props and gibs
+		foreach ( var prop in Scene.GetAllComponents<Prop>() )
+		{
+			if ( prop.GameObject.NetworkMode != NetworkMode.Object )
+			{
+				prop.GameObject.NetworkSpawn( null );
+			}
+		}
+
+		foreach ( var gib in Scene.GetAllComponents<Gib>() )
+		{
+			if ( gib.GameObject.NetworkMode != NetworkMode.Object )
+			{
+				gib.GameObject.NetworkSpawn( null );
+			}
+		}
 
 		switch ( RoundState )
 		{
@@ -60,10 +74,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				break;
 			case GameState.WaitingForPlayers:
 				RoundStateText = "Waiting For Players";
-				
+
 				if ( AllPlayers.Count() >= MaxPlayersToStart )
 					OnRoundPreparing();
-				
+
 				break;
 			case GameState.Preparing:
 				RoundStateText = "Intermission";
@@ -71,9 +85,9 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 					OnRoundStarting();
 				break;
 			case GameState.Starting:
-				RoundStateText = "Preparing"; 
-				if (TimeSinceRoundStateChanged > RoundLength)
-					OnRoundStart();	
+				RoundStateText = "Preparing";
+				if ( TimeSinceRoundStateChanged > RoundLength )
+					OnRoundStart();
 				break;
 			case GameState.Started:
 				RoundStateText = "Ongoing";
@@ -148,7 +162,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 
 		if ( NextMap != null )
-		{ 
+		{
 			var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();
 			mapChanger?.LoadMap( NextMap );
 
