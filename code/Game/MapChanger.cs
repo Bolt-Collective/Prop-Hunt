@@ -1,4 +1,3 @@
-using System.Formats.Tar;
 using Sandbox;
 
 public sealed class MapChanger : Component
@@ -6,21 +5,21 @@ public sealed class MapChanger : Component
 	[Property] public MapInstance MapInstance { get; set; }
 	protected override void OnEnabled()
 	{
-		MapInstance.OnMapLoaded += HandelMap;
+		MapInstance.OnMapLoaded += HandleMap;
 	}
 
 	protected override void OnDisabled()
 	{
-		MapInstance.OnMapLoaded -= HandelMap;
+		MapInstance.OnMapLoaded -= HandleMap;
 	}
 	[Broadcast]
-	public void LoadMap( string Indent )
+	public void LoadMap( string ident )
 	{
-		MapInstance.MapName = Indent;
+		MapInstance.MapName = ident;
 	}
 
 	[Broadcast]
-	public void HandelMap()
+	public void HandleMap()
 	{
 		var playerList = Scene.GetAllComponents<Player>().ToList();
 		var spawns = Scene.GetAllComponents<SpawnPoint>().ToList();
@@ -32,7 +31,7 @@ public sealed class MapChanger : Component
 	}
 
 	[ConCmd( "map" )]
-	public static void LoadMapCmd( string Indent )
+	public static void LoadMapCmd( string ident )
 	{
 		var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();
 		if ( mapChanger == null )
@@ -42,7 +41,7 @@ public sealed class MapChanger : Component
 		}
 		else
 		{
-			mapChanger.LoadMap( Indent );
+			mapChanger.LoadMap( ident );
 		}
 	}
 }
