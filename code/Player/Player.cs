@@ -147,11 +147,25 @@ public class Player : Component
 			var tr = Scene.Trace.Ray( center, center - (EyeAngles.Forward * CameraDistance) ).WithoutTags( "player", "barrier" ).Run();
 			if ( tr.Hit )
 			{
-				camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
+				if ( PropShiftingMechanic.IsProp )
+				{
+					camera.Transform.Position = Vector3.Lerp( camera.Transform.Position, tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10, Time.Delta * 50 );
+				}
+				else
+				{
+					camera.Transform.Position = tr.EndPosition + tr.Normal * 2 + Vector3.Up * 10;
+				}
 			}
 			else
 			{
-				camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
+				if ( PropShiftingMechanic.IsProp )
+				{
+					camera.Transform.Position = Vector3.Lerp( camera.Transform.Position, center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10, Time.Delta * 50 );
+				}
+				else
+				{
+					camera.Transform.Position = center - (EyeAngles.Forward * CameraDistance) + Vector3.Up * 10;
+				}
 			}
 		}
 		else
@@ -167,7 +181,14 @@ public class Player : Component
 			}
 		}
 
-		camera.Transform.Rotation = lookDirection;
+		if ( PropShiftingMechanic.IsProp && CameraDistance != 0 )
+		{
+			camera.Transform.Rotation = Rotation.Slerp( camera.Transform.Rotation, lookDirection, Time.Delta * 50 );
+		}
+		else
+		{
+			camera.Transform.Rotation = lookDirection;
+		}
 	}
 	public void Animations( CharacterController cc )
 	{
