@@ -3,7 +3,10 @@
 @inherits PanelComponent
 
 <root>
-	<div class="title">@TeamComponent.TeamName</div>
+	@foreach (var player in Scene.GetAllComponents<Player>())
+	{
+		<div class="title">@player.GameObject.Network.OwnerConnection.DisplayName: @player.TeamComponent.TeamName</div>
+	}
 </root>
 
 @code
@@ -19,5 +22,5 @@
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine(TeamComponent.TeamName);
+	protected override int BuildHash() => System.HashCode.Combine(Time.Now);
 }
