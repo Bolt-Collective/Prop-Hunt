@@ -1,6 +1,6 @@
 using Sandbox;
 using Sandbox.Network;
-
+namespace PropHunt;
 public sealed class Network : Component, Component.INetworkListener
 {
 	[Property] public bool StartServer { get; set; } = true;

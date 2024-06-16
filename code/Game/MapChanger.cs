@@ -1,5 +1,5 @@
 using Sandbox;
-
+namespace PropHunt;
 public sealed class MapChanger : Component
 {
 	[Property] public MapInstance MapInstance { get; set; }
@@ -21,12 +21,22 @@ public sealed class MapChanger : Component
 	[Broadcast]
 	public void HandleMap()
 	{
-		var playerList = Scene.GetAllComponents<Player>().ToList();
-		var spawns = Scene.GetAllComponents<SpawnPoint>().ToList();
-		foreach ( var player in playerList )
+		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
+		foreach ( var player in Scene.GetAllComponents<Player>().ToArray() )
 		{
-			var randomSpawnPoint = Game.Random.FromList( spawns );
+			if ( player.IsProxy )
+				continue;
+
+			var randomSpawnPoint = Random.Shared.FromArray( spawnPoints );
+			if ( randomSpawnPoint is null ) continue;
+
 			player.Transform.Position = randomSpawnPoint.Transform.Position;
+
+			if ( player.Components.TryGet<Player>( out var pc ) )
+			{
+				pc.EyeAngles = randomSpawnPoint.Transform.Rotation.Angles();
+			}
+
 		}
 	}
 

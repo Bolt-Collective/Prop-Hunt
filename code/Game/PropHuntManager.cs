@@ -1,13 +1,16 @@
-﻿using Sandbox.Utility;
+﻿using System.Net.Http.Headers;
+using Sandbox.Utility;
+namespace PropHunt;
+
 [Title( "Game Manager" )]
 [Description( "The brains of Prop Hunt. Controls rounds, teams, etc." )]
 public partial class PropHuntManager : Component, Component.INetworkListener
 {
-	[HostSync] public GameState RoundState { get; set; } = GameState.None;
-	[HostSync] public string RoundStateText { get; set; }
+	[Sync] public GameState RoundState { get; set; } = GameState.None;
+	[Sync] public string RoundStateText { get; set; }
 
-	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
-	[HostSync] public int RoundLength { get; set; } = 0;
+	[Sync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
+	[Sync] public int RoundLength { get; set; } = 120;
 
 	public static int PreRoundTime { get; set; } = 30;
 
@@ -46,10 +49,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 	public string NextMap { get; set; } = null;
 	public static bool IsFirstRound { get; set; } = true;
+	public List<(string, int)> Votes { get; set; } = new();
 
 	protected override void OnUpdate()
 	{
-		// Network spawn all props and gibs
 		foreach ( var prop in Scene.GetAllComponents<Prop>() )
 		{
 			if ( prop.GameObject.NetworkMode != NetworkMode.Object )
@@ -108,20 +111,28 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				throw new ArgumentOutOfRangeException();
 		}
 	}
-
-	protected void OnRoundPreparing()
+	[Broadcast]
+	public void OnRoundPreparing()
 	{
 		RoundState = GameState.Preparing;
 		RoundLength = PreRoundTime;
 		TimeSinceRoundStateChanged = 0;
 	}
-
-	protected void OnRoundStarting()
+	[Broadcast]
+	public void OnRoundStarting()
 	{
+		Log.Info( "Round starting" );
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
-
+		Log.Info( GetRandom( 0, 5 ) );
+		foreach ( var player in AllPlayers )
+		{
+			if ( player.TeamComponent.Team == Team.Hunters )
+			{
+				player.Inventory.SpawnStartingItems();
+			}
+		}
 		if ( IsFirstRound )
 		{
 			// Make intermission time 1 second after round 1
@@ -132,32 +143,40 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		PopupSystem.DisplayPopup( "Hide or die", "The seekers will be unblinded in 30 seconds", 30f );
 	}
 
-	protected void OnRoundStart()
+	[Broadcast]
+	public void OnRoundStart()
 	{
 		RoundState = GameState.Started;
 		RoundLength = RoundTime; // 360 seconds
 		TimeSinceRoundStateChanged = 0;
 	}
 
-
-	public virtual void OnRoundEnding()
+	[Broadcast]
+	public void OnRoundEnding()
 	{
 		RoundState = GameState.Ending;
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = 15;
-
-
 	}
 
-	[HostSync] public int RoundNumber { get; set; } = 0;
-	public virtual void OnRoundEnd()
+	[Sync] public int RoundNumber { get; set; } = 0;
+	public int GetRandom( int min, int max )
+	{
+		return Random.Shared.Int( min, max );
+	}
+	[Broadcast]
+	public void OnRoundEnd()
 	{
 		RoundState = GameState.Ended;
 		TimeSinceRoundStateChanged = 0;
 
 		GetPlayers( Team.Props ).ToList().Clear();
 		GetPlayers( Team.Hunters ).ToList().Clear();
-
+		foreach ( var player in AllPlayers )
+		{
+			player.ResetStats();
+			player.Network.Refresh();
+		}
 		// TODO: implement RTV and map votes
 
 
@@ -179,13 +198,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			ResetRound();
 		}
 	}
-
+	[Broadcast]
 	public void DoMapVote()
 	{
 		// TODO: do map vote
 		Log.Info( "map vote" );
 	}
-
+	[Broadcast]
 	public void ResetRound()
 	{
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
@@ -203,22 +222,22 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// <summary>
 	/// Logic happening every update
 	/// </summary>
-	protected void RoundTick()
+	[Broadcast]
+	public void RoundTick()
 	{
 		if ( TimeSinceRoundStateChanged > RoundLength && GetPlayers( Team.Hunters ).Count( x => x.Health <= 0 ) <= 0 )
 		{
-			ForceWin( Team.Props );
+			//ForceWin( Team.Props );
 		}
 		else if ( GetPlayers( Team.Props ).Count( x => x.Health > 0 ) <= 0 )
 		{
-			ForceWin( Team.Hunters );
+			//ForceWin( Team.Hunters );
 		}
 
 	}
 
 	private Team WinningTeam { get; set; }
 	[HostSync] public string WinningTeamName { get; set; }
-
 
 	public void ForceWin( Team team )
 	{

@@ -56,10 +56,10 @@ public class Player : Component
 
 	protected override void OnStart()
 	{
-		Inventory = Scene.GetAllComponents<Inventory>().FirstOrDefault( x => !x.IsProxy );
-		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
-		PropShiftingMechanic = Scene.GetAllComponents<PropShiftingMechanic>().FirstOrDefault( x => !x.IsProxy );
-		AmmoContainer = Scene.GetAllComponents<AmmoContainer>().FirstOrDefault( x => !x.IsProxy );
+		Inventory = Components.Get<Inventory>();
+		TeamComponent = Components.Get<TeamComponent>();
+		PropShiftingMechanic = Components.Get<PropShiftingMechanic>();
+		AmmoContainer = Components.Get<AmmoContainer>();
 	}
 	public void FreeLook()
 	{
@@ -235,7 +235,6 @@ public class Player : Component
 			AnimationHelper.DuckLevel = IsCrouching ? 1 : 0;
 		}
 	}
-
 	protected override void OnUpdate()
 	{
 		if ( !IsProxy )

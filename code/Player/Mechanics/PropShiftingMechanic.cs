@@ -46,6 +46,7 @@ public class PropShiftingMechanic : Component
 		pcModel.Tint = Color.White;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		IsProp = false;
+		pcModel.Network.Refresh();
 	}
 
 

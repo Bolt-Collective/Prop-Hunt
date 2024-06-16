@@ -1,53 +1,61 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using PropHunt;
 @inherits PanelComponent
 
 @if (Manager is not null)
 {
-	<root>
+	<root style="pointer-events: @(ShowMapVoting ? "all" : "none")">
 		<div class="round-timer">
-			@if ( Manager.RoundState == GameState.WaitingForPlayers )
+			@if (Manager.RoundState == GameState.WaitingForPlayers)
 			{
-				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format( TimeSpan.FromSeconds( Manager.TimeSinceRoundStateChanged.Relative.CeilToInt() ) )</div>
+				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format(TimeSpan.FromSeconds(
+			Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			else
 			{
-				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format( TimeSpan.FromSeconds( Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt() ) )</div>
+				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format(TimeSpan.FromSeconds(
+			Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.RoundStateText</div>
 		</div>
-	@if (Player.Local is not null)
-	{
-		<div class="health">
-		+ <strong>@(Player.Local.Health)</strong>
-	</div>
-	}
-	@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
-	{
-		<div class="inventory">
-		<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
-			<img class="number" src=@CreateInputGlyph( "slot1" ).ResourcePath>
-			<div class="weapon">Pistol</div>
-		</div>
-		<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
-			<img class="number" src=@CreateInputGlyph( "slot2" ).ResourcePath>
-			<div class="weapon">Knife</div>
-		</div>
-		<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
-			<img class="number" src=@CreateInputGlyph( "slot3" ).ResourcePath>
-			<div class="weapon">MP5</div>
-		</div>
-		<div class="item @( Inventory.ActiveIndex == 3 ? "active" : "" )">
-			<img class="number" src=@CreateInputGlyph( "slot4" ).ResourcePath>
-			<div class="weapon">M4A4</div>
-		</div>
-	</div>
-	}
+		@if (Player.Local is not null)
+		{
+			<div class="health">
+				+ <strong>@(Player.Local.Health)</strong>
+			</div>
+		}
+		@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
+		{
+			<div class="inventory">
+				<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
+					<img class="number" src=@CreateInputGlyph( "slot1" ).ResourcePath>
+					<div class="weapon">Pistol</div>
+				</div>
+				<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
+					<img class="number" src=@CreateInputGlyph( "slot2" ).ResourcePath>
+					<div class="weapon">Knife</div>
+				</div>
+				<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
+					<img class="number" src=@CreateInputGlyph( "slot3" ).ResourcePath>
+					<div class="weapon">MP5</div>
+				</div>
+				<div class="item @( Inventory.ActiveIndex == 3 ? "active" : "" )">
+					<img class="number" src=@CreateInputGlyph( "slot4" ).ResourcePath>
+					<div class="weapon">M4A4</div>
+				</div>
+			</div>
+		}
 
 		<PopupList />
 		<Scoreboard />
 		<Crosshair />
+
 		<div class="right"></div>
+		@if (ShowMapVoting)
+		{
+			<PackageList ShowFilters="@true" Query="type:map sort:trending" OnSelected="@OnPackageSelected" Take=@(50) />
+		}
 	</root>
 }
 
@@ -57,6 +65,7 @@
 	public PropHuntManager Manager { get; set; }
 	public Inventory Inventory { get; set; }
 	public TeamComponent TeamComponent { get; set; }
+	[Property] public bool ShowMapVoting { get; set; } = true;
 
 
 	protected override void OnStart()
@@ -65,15 +74,16 @@
 		Inventory = Scene.GetAllComponents<Inventory>().FirstOrDefault(x => !x.IsProxy);
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault();
 	}
-
-	protected override void OnUpdate()
+	void OnPackageSelected(Package package)
 	{
-		
+		var mapSelector = Scene.GetAllComponents<MapChanger>().FirstOrDefault();
+		mapSelector?.LoadMap(package.FullIdent);
+		ShowMapVoting = false;
 	}
 
 	public static Texture CreateInputGlyph(string keybind)
 	{
-		var inputGlyph = Input.GetGlyph( keybind, InputGlyphSize.Medium, false );
+		var inputGlyph = Input.GetGlyph(keybind, InputGlyphSize.Medium, false);
 		return inputGlyph;
 	}
 

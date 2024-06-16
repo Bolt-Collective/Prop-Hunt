@@ -16,8 +16,8 @@ public class TeamComponent : Component
 	/// <summary>
 	/// The team this player is on.
 	/// </summary>
-	[Property, Group( "Setup" ), HostSync, Change( nameof( OnTeamPropertyChanged ) )]
-	public Team Team { get; set; }
+	[Property, Group( "Setup" ), Change( nameof( OnTeamPropertyChanged ) )] public Team Team { get; set; }
+	[Sync, Property] public string TeamName { get; set; }
 
 	/// <summary>
 	/// Called when <see cref="Team"/> changes across the network.
@@ -28,14 +28,25 @@ public class TeamComponent : Component
 	{
 		OnTeamChanged?.Invoke( before, after );
 	}
-
 	public void GetRandomTeam()
 	{
 		Team = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
 	}
-	int GetRandom(int min, int max)
+	int GetRandom( int min, int max )
 	{
-		return Random.Shared.Int(min, max);
+		return Random.Shared.Int( min, max );
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( IsProxy ) return;
+		TeamName = Team.ToString();
+	}
+	[Broadcast]
+	public void ChangeTeam( Team team )
+	{
+		if ( IsProxy ) return;
+		this.Team = team;
 	}
 }
 
@@ -96,6 +107,8 @@ public static class TeamExtensions
 			_ => "Unassigned",
 		};
 	}
+
+
 
 	public static Color GetColor( this Team team )
 	{
