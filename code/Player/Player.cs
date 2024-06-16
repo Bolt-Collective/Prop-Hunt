@@ -43,6 +43,7 @@ public class Player : Component
 	[Sync] public bool FreeLooking { get; set; }
 	//Going to be used for spectating for unassigned players
 	[Sync] Transform CameraPosWorld { get; set; }
+	[Property] public AmmoContainer AmmoContainer { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -58,6 +59,7 @@ public class Player : Component
 		Inventory = Scene.GetAllComponents<Inventory>().FirstOrDefault( x => !x.IsProxy );
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
 		PropShiftingMechanic = Scene.GetAllComponents<PropShiftingMechanic>().FirstOrDefault( x => !x.IsProxy );
+		AmmoContainer = Scene.GetAllComponents<AmmoContainer>().FirstOrDefault( x => !x.IsProxy );
 	}
 	public void FreeLook()
 	{
@@ -208,7 +210,6 @@ public class Player : Component
 
 	protected override void OnUpdate()
 	{
-
 		if ( !IsProxy )
 		{
 			if ( AbleToMove )
@@ -373,5 +374,17 @@ public class Player : Component
 			Health = 0;
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
+	}
+
+	public void ResetStats()
+	{
+		Inventory.Clear();
+		AmmoContainer.ResetAmmo();
+		Health = MaxHealth;
+		IsCrouching = false;
+		IsRunning = false;
+		FreeLooking = false;
+		CameraDistance = 0;
+		IsGrabbing = false;
 	}
 }

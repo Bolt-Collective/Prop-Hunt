@@ -1798,8 +1798,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "GetIsProxy",
-                  "_type": "Item"
+                  "_type": "Item",
+                  "_name": "GetIsProxy"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -1817,8 +1817,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "784,0"
@@ -1829,8 +1829,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1040,0"
@@ -1841,8 +1841,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1280,-0"
@@ -1998,8 +1998,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "240,-0"
@@ -2081,8 +2081,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Trace",
-                  "_type": "Item"
+                  "_type": "Item",
+                  "_name": "Trace"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -2093,8 +2093,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "FireDelay",
-                  "_type": "Item"
+                  "_type": "Item",
+                  "_name": "FireDelay"
                 },
                 "UserData": {
                   "Position": "1024,0"
@@ -2112,8 +2112,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "800,0"
@@ -2124,8 +2124,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1264,0"
@@ -2136,8 +2136,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "112,-128"
@@ -2148,8 +2148,8 @@
                 "Type": "property",
                 "ParentId": 0,
                 "Properties": {
-                  "_name": "characterController",
-                  "_type": "Player"
+                  "_type": "Player",
+                  "_name": "characterController"
                 }
               },
               {
@@ -2157,8 +2157,8 @@
                 "Type": "property",
                 "ParentId": 51,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -2458,8 +2458,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -2470,8 +2470,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -2587,8 +2587,8 @@
                 "Type": "property",
                 "ParentId": 2,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -2603,8 +2603,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -2615,8 +2615,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -2627,8 +2627,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "48,-112"
@@ -2639,9 +2639,9 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "Sandbox.CharacterController",
+                  "_type": "Sandbox.IComponentLister",
                   "_name": "TryGet",
-                  "_type": "Sandbox.IComponentLister"
+                  "T": "Sandbox.CharacterController"
                 },
                 "UserData": {
                   "Position": "-512,-224"
@@ -2659,8 +2659,8 @@
                 "Type": "property",
                 "ParentId": 48,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -2786,7 +2786,7 @@
                 "DstName": "_target"
               },
               {
-                "Value": "EnabledInSelf, InParent",
+                "Value": "InParent, InAncestors, InChildren, EnabledInSelfAndDescendants",
                 "DstId": 48,
                 "DstName": "search"
               },
@@ -2850,8 +2850,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -2879,8 +2879,8 @@
                 "Type": "property",
                 "ParentId": 6,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -2895,8 +2895,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -3025,8 +3025,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -3088,8 +3088,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -3255,8 +3255,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -3267,8 +3267,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -3384,8 +3384,8 @@
                 "Type": "property",
                 "ParentId": 2,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -3400,8 +3400,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -3412,8 +3412,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -3424,8 +3424,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "208,-128"
@@ -3436,9 +3436,9 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "Sandbox.CharacterController",
+                  "_type": "Sandbox.IComponentLister",
                   "_name": "TryGet",
-                  "_type": "Sandbox.IComponentLister"
+                  "T": "Sandbox.CharacterController"
                 },
                 "UserData": {
                   "Position": "-352,-224"
@@ -3456,8 +3456,8 @@
                 "Type": "property",
                 "ParentId": 48,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -3583,7 +3583,7 @@
                 "DstName": "_target"
               },
               {
-                "Value": "EnabledInSelf, InParent",
+                "Value": "InParent, InAncestors, InChildren, EnabledInSelfAndDescendants",
                 "DstId": 48,
                 "DstName": "search"
               },
@@ -3647,8 +3647,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -3676,8 +3676,8 @@
                 "Type": "property",
                 "ParentId": 6,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -3692,8 +3692,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -3822,8 +3822,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -3885,8 +3885,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -4052,8 +4052,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -4064,8 +4064,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -4181,8 +4181,8 @@
                 "Type": "property",
                 "ParentId": 2,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -4197,8 +4197,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -4209,8 +4209,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -4221,8 +4221,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "240,-176"
@@ -4233,9 +4233,9 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "Sandbox.CharacterController",
+                  "_type": "Sandbox.IComponentLister",
                   "_name": "TryGet",
-                  "_type": "Sandbox.IComponentLister"
+                  "T": "Sandbox.CharacterController"
                 },
                 "UserData": {
                   "Position": "-368,-272"
@@ -4253,8 +4253,8 @@
                 "Type": "property",
                 "ParentId": 48,
                 "Properties": {
-                  "_name": "IsOnGround",
-                  "_type": "Sandbox.CharacterController"
+                  "_type": "Sandbox.CharacterController",
+                  "_name": "IsOnGround"
                 }
               }
             ],
@@ -4380,7 +4380,7 @@
                 "DstName": "_target"
               },
               {
-                "Value": "EnabledInSelf, InParent",
+                "Value": "InParent, InAncestors, EnabledInSelfAndChildren",
                 "DstId": 48,
                 "DstName": "search"
               },
@@ -4444,8 +4444,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -4473,8 +4473,8 @@
                 "Type": "property",
                 "ParentId": 6,
                 "Properties": {
-                  "_name": "Ammo",
-                  "_type": "Weapon"
+                  "_type": "Weapon",
+                  "_name": "Ammo"
                 }
               },
               {
@@ -4489,8 +4489,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -4619,8 +4619,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -4682,8 +4682,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_name": "Set",
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -4845,14 +4845,14 @@
           "__type": "PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
           "Countdown": {
-            "Relative": -1026.943,
-            "Passed": 1026.943,
+            "Relative": -641.85175,
+            "Passed": 641.85175,
             "Fraction": 1
           },
           "CurrentGameState": "None",
           "Hunters": [],
           "HuntersWin": 0,
-          "PlayersNeededToStart": 2,
+          "PlayersNeededToStart": 1,
           "Props": [],
           "PropsWin": 0
         }
@@ -4897,8 +4897,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": true,
-                  "_name": "DisplayPopup",
-                  "_type": "PopupSystem"
+                  "_type": "PopupSystem",
+                  "_name": "DisplayPopup"
                 },
                 "UserData": {
                   "Position": "272,0"
@@ -4953,7 +4953,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-15T23:08:15.3958155-04:00",
+  "LastSaved": "2024-06-15T23:34:17.5505367-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.soda_can",

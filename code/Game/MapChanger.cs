@@ -14,7 +14,7 @@ public sealed class MapChanger : Component
 		MapInstance.OnMapLoaded -= HandelMap;
 	}
 	[Broadcast]
-	public void LoadMap(string Indent)
+	public void LoadMap( string Indent )
 	{
 		MapInstance.MapName = Indent;
 	}
@@ -24,25 +24,25 @@ public sealed class MapChanger : Component
 	{
 		var playerList = Scene.GetAllComponents<Player>().ToList();
 		var spawns = Scene.GetAllComponents<SpawnPoint>().ToList();
-		foreach (var player in playerList)
+		foreach ( var player in playerList )
 		{
-			var randomSpawnPoint = Game.Random.FromList(spawns);
+			var randomSpawnPoint = Game.Random.FromList( spawns );
 			player.Transform.Position = randomSpawnPoint.Transform.Position;
 		}
 	}
 
-	[ConCmd("map")]
-	public static void LoadMapCmd(string Indent)
+	[ConCmd( "map" )]
+	public static void LoadMapCmd( string Indent )
 	{
 		var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();
-		if (mapChanger == null)
+		if ( mapChanger == null )
 		{
-			Log.Error("No MapChanger component found in the scene");
+			Log.Error( "No MapChanger component found in the scene" );
 			return;
 		}
 		else
 		{
-			mapChanger.LoadMap(Indent);
+			mapChanger.LoadMap( Indent );
 		}
 	}
 }

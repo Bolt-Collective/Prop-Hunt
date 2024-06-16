@@ -31,7 +31,7 @@ public class PropHuntManager : Component, Component.INetworkListener
 
 	public async Task GameLoop()
 	{
-		while ( CurrentGameState != GameState.Ended )
+		while ( true )
 		{
 			switch ( CurrentGameState )
 			{
@@ -54,31 +54,34 @@ public class PropHuntManager : Component, Component.INetworkListener
 
 				case GameState.Preparing:
 					CurrentGameState = GameState.Starting;
+					await Task.Frame();
 					break;
 
 				case GameState.Starting:
 					StartGame();
+					CurrentGameState = GameState.Started;
+					await Task.Frame();
 					break;
 
 				case GameState.Started:
 					await Round();
+					CurrentGameState = GameState.Ending;
 					break;
 
 				case GameState.Ending:
+					await Ending();
 					CurrentGameState = GameState.Ended;
 					break;
 
 				case GameState.Ended:
-					Log.Info( "Game has ended" );
-					await GameTask.DelaySeconds( 5 );
+					await Ended();
+					CurrentGameState = GameState.Voting;
 					break;
 
 				case GameState.Voting:
+					Countdown = 5;
 					await GameTask.DelaySeconds( 5 );
-					break;
-
-				default:
-					await GameTask.DelaySeconds( 5 );
+					CurrentGameState = GameState.WaitingForPlayers;
 					break;
 			}
 		}
@@ -130,15 +133,41 @@ public class PropHuntManager : Component, Component.INetworkListener
 			{
 				Hunters.Add( player.GameObject );
 			}
+			foreach ( var hunter in Hunters )
+			{
+				hunter.Components.Get<Inventory>().SpawnStartingItems();
+			}
 		}
 		Log.Info( "Game started" );
-		CurrentGameState = GameState.Started;
 	}
 
 	public async Task Round()
 	{
-		Countdown = 120;
-		await Task.DelayRealtimeSeconds( 120 );
+		if ( Props.Count == 0 )
+		{
+			HuntersWin++;
+		}
+		else if ( Hunters.Count == 0 )
+		{
+			PropsWin++;
+		}
+		Countdown = 2;
+		await Task.DelayRealtimeSeconds( 2 );
+	}
+
+	public async Task Ending()
+	{
+		Countdown = 5;
+		await Task.DelayRealtimeSeconds( 5 );
+	}
+
+	public async Task Ended()
+	{
+		foreach ( var player in Scene.GetAllComponents<Player>() )
+		{
+			player.ResetStats();
+		}
+		await Task.Frame();
 	}
 
 }

@@ -122,6 +122,7 @@ public sealed class Weapon : Component
 
 	public async void Reload()
 	{
+		if ( Ammo == MaxAmmo || AmmoContainer.Ammo == 0 ) return;
 		if ( MaxAmmo <= AmmoContainer.Ammo && AmmoContainer.Ammo != 0 )
 		{
 			OnReload?.Invoke( Player );
