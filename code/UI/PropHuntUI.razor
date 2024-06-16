@@ -1,40 +1,41 @@
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
+
 @if (Manager is not null)
 {
 	<root>
-		<div class="round-timer">
-			<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Manager.Countdown</div>
-			<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.GetGameStateString()</div>
+	<div class="round-timer">
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Manager.Countdown</div>
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.GetGameStateString()</div>
+	</div>
+	@if (Player.Local is not null)
+	{
+		<div class="health">
+		+ <strong>@(Player.Local.Health)</strong>
+	</div>
+	}
+	@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
+	{
+		<div class="inventory">
+		<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
+			<img class="number" src=@CreateInputGlyph( "slot1" ).ResourcePath>
+			<div class="weapon">Pistol</div>
 		</div>
-		@if (Player.Local is not null)
-		{
-			<div class="health">
-				+ <strong>@(Player.Local.Health)</strong>
-			</div>
-		}
-		@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
-		{
-			<div class="inventory">
-				<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
-					<img class="number" src=@Key1.ResourcePath>
-					<div class="weapon">Pistol</div>
-				</div>
-				<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
-					<img class="number" src=@Key2.ResourcePath>
-					<div class="weapon">Knife</div>
-				</div>
-				<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
-					<img class="number" src=@Key3.ResourcePath>
-					<div class="weapon">MP5</div>
-				</div>
-				<div class="item @(Inventory.ActiveIndex == 3 ? "active" : "")">
-					<img class="number" src=@Key4.ResourcePath>
-					<div class="weapon">M4A4</div>
-				</div>
-			</div>
-		}
+		<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
+			<img class="number" src=@CreateInputGlyph( "slot2" ).ResourcePath>
+			<div class="weapon">Knife</div>
+		</div>
+		<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
+			<img class="number" src=@CreateInputGlyph( "slot3" ).ResourcePath>
+			<div class="weapon">MP5</div>
+		</div>
+		<div class="item @( Inventory.ActiveIndex == 3 ? "active" : "" )">
+			<img class="number" src=@CreateInputGlyph( "slot4" ).ResourcePath>
+			<div class="weapon">M4A4</div>
+		</div>
+	</div>
+	}
 
 		<PopupList />
 		<Scoreboard />
@@ -49,10 +50,8 @@
 	public PropHuntManager Manager { get; set; }
 	public Inventory Inventory { get; set; }
 	public TeamComponent TeamComponent { get; set; }
-	public Texture Key1 { get; set; }
-	public Texture Key2 { get; set; }
-	public Texture Key3 { get; set; }
-	public Texture Key4 { get; set; }
+
+
 	protected override void OnStart()
 	{
 		Manager = Scene.GetAllComponents<PropHuntManager>().FirstOrDefault();
@@ -68,10 +67,13 @@
 
 	protected override void OnUpdate()
 	{
-		Key1 = Input.GetGlyph("slot1", InputGlyphSize.Medium, false);
-		Key2 = Input.GetGlyph("slot2", InputGlyphSize.Medium, false);
-		Key3 = Input.GetGlyph("slot3", InputGlyphSize.Medium, false);
-		Key4 = Input.GetGlyph("slot4", InputGlyphSize.Medium, false);
+		
+	}
+
+	public static Texture CreateInputGlyph(string keybind)
+	{
+		var inputGlyph = Input.GetGlyph( keybind, InputGlyphSize.Medium, false );
+		return inputGlyph;
 	}
 
 	/// <summary>
