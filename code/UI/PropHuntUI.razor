@@ -6,7 +6,7 @@
 {
 	<root>
 	<div class="round-timer">
-		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Manager.Countdown</div>
+		<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format(TimeSpan.FromSeconds( Manager.Countdown.Relative.CeilToInt() ))</div>
 		<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.GetGameStateString()</div>
 	</div>
 	@if (Player.Local is not null)
@@ -63,6 +63,13 @@
 	{
 		var time = Manager.Countdown;
 		return Math.Round(time).ToString();
+	}
+
+
+	public static string Format(TimeSpan timespan)
+	{
+		var format = timespan.Hours >= 1 ? @"h\:mm\:ss" : @"m\:ss";
+		return timespan.ToString(format);
 	}
 
 	protected override void OnUpdate()
