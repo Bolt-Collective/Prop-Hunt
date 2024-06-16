@@ -6,37 +6,38 @@ public sealed class Network : Component, Component.INetworkListener
 	[Property] public bool StartServer { get; set; } = true;
 	[Property] public GameObject PlayerPrefab { get; set; }
 	[Property] public bool CustomSpawnPoints { get; set; }
-	[Property, ShowIf("CustomSpawnPoints", true)] public List<GameObject> Spawns { get; set; } = new();
+	[Property, ShowIf( "CustomSpawnPoints", true )] public List<GameObject> Spawns { get; set; } = new();
 	[Property] public PropHuntManager PropHuntManager { get; set; }
 	protected override void OnAwake()
 	{
-		if (!GameNetworkSystem.IsActive && StartServer)
+		if ( !GameNetworkSystem.IsActive && StartServer )
 		{
 			GameNetworkSystem.CreateLobby();
 		}
 	}
 
-	void INetworkListener.OnActive(Sandbox.Connection conn)
+	void INetworkListener.OnActive( Sandbox.Connection conn )
 	{
 		Transform SpawnPoint;
-		if (!CustomSpawnPoints)
+		if ( !CustomSpawnPoints )
 		{
-		var spawn = Game.Random.FromList(Scene.GetAllComponents<SpawnPoint>().ToList());
-		SpawnPoint = spawn.Transform.World;
+			var spawn = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() );
+			SpawnPoint = spawn.Transform.World;
 		}
 		else
 		{
-			if (Spawns.Count == 0)
+			if ( Spawns.Count == 0 )
 			{
-			SpawnPoint = Transform.World;
+				SpawnPoint = Transform.World;
 			}
 			else
 			{
-			SpawnPoint = Game.Random.FromList(Spawns).Transform.World;
+				SpawnPoint = Game.Random.FromList( Spawns ).Transform.World;
 			}
 		}
-		var playerClone = PlayerPrefab.Clone(SpawnPoint);
-		playerClone.NetworkSpawn(conn);
+		var playerClone = PlayerPrefab.Clone( SpawnPoint );
+		playerClone.NetworkSpawn( conn );
+		conn.CanRefreshObjects = true;
 		playerClone.Name = conn.DisplayName;
 	}
 }

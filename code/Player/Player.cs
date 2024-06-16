@@ -192,7 +192,7 @@ public class Player : Component
 		{
 			if ( AbleToMove )
 			{
-				UpdateCrouch();
+				//UpdateCrouch();
 				FreeLook();
 				EyeInput();
 				ChangeDistance();

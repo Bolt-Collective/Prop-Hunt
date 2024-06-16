@@ -47,7 +47,20 @@ public sealed class ViewModel : Component
 	{
 		GameObject.Enabled = !IsProxy;
 		if ( IsProxy ) return;
-
+		if ( Player.CameraDistance != 0 )
+		{
+			foreach ( var model in GameObject.Components.GetAll<SkinnedModelRenderer>( FindMode.InDescendants ) )
+			{
+				model.Enabled = false;
+			}
+		}
+		else
+		{
+			foreach ( var model in GameObject.Components.GetAll<SkinnedModelRenderer>( FindMode.InDescendants ) )
+			{
+				model.Enabled = true;
+			}
+		}
 		Main.Parent = Player.Eye;
 		LocalPos = LocalPos.LerpTo( LocalPos, Time.Delta * 10f );
 		ApplyInertia();

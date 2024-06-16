@@ -31,6 +31,7 @@ public class PropShiftingMechanic : Component
 	[Broadcast]
 	public void ExitProp()
 	{
+		if ( IsProxy ) return;
 		var pc = Components.Get<Player>();
 		var pcModel = pc.Body.Components.Get<SkinnedModelRenderer>();
 		var clothes = pc.Body.GetAllObjects( false ).Where( c => c.Tags.Has( "clothing" ) );
@@ -51,6 +52,7 @@ public class PropShiftingMechanic : Component
 	[Broadcast]
 	private async void ShiftIntoProp()
 	{
+		if ( IsProxy ) return;
 		var pc = Components.Get<Player>();
 		var lookDir = pc.EyeAngles.ToRotation();
 		var eyePos = Transform.Position + Vector3.Up * 64;
@@ -106,6 +108,7 @@ public class PropShiftingMechanic : Component
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
 		pcModel.GameObject.Transform.Scale = propModel.GameObject.Transform.Scale;
+		pcModel.Network.Refresh();
 		return true;
 	}
 }

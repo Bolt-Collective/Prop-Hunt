@@ -24,8 +24,8 @@ public sealed class Weapon : Component
 	[Property, Category( "Weapon Actions" )] public ReloadDelegate OnReload { get; set; }
 	[Property, Category( "Weapon Actions" )] public PickupDelegate OnPickup { get; set; }
 	[Property, Category( "Weapon Actions" )] public Player.PlayerDelegate OnPlayerJump { get; set; }
-	TimeSince TimeSinceFire;
-	TimeSince TimeSinceReload;
+	[Sync] TimeSince TimeSinceFire { get; set; }
+	[Sync] TimeSince TimeSinceReload { get; set; }
 	[Sync] public int ShotsFired { get; set; } = 0;
 	protected override void OnStart()
 	{
@@ -80,6 +80,7 @@ public sealed class Weapon : Component
 	}
 	public void Fire()
 	{
+		if ( Player is null ) return;
 		var ray = new Ray( Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * FireLength );
 		ray.Forward += Vector3.Random * Spread;
 

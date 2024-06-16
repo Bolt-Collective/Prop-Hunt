@@ -1,5 +1,5 @@
 {
-  "__guid": "38470add-1503-4b11-8d2e-da4380e1a4ad",
+  "__guid": "0ee4053d-58ff-4feb-b8b6-faa17f0da696",
   "GameObjects": [
     {
       "__guid": "b68859b2-314d-4052-906e-6cf7a0c60f83",
@@ -110,7 +110,7 @@
       "Name": "NetworkManager",
       "Position": "-37.26695,-4.443764,96.23308",
       "Enabled": true,
-      "NetworkMode": 1,
+      "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
@@ -123,29 +123,12 @@
           },
           "PropHuntManager": {
             "_type": "component",
-            "component_id": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
-            "go": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
+            "component_id": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+            "go": "1ffeefdf-8655-452b-afaa-46f09e044a93",
             "component_type": "PropHuntManager"
           },
           "Spawns": [],
           "StartServer": true
-        },
-        {
-          "__type": "PropHuntManager",
-          "__guid": "200d2eb2-ec2b-4e0c-ab5f-90f779368d14",
-          "Countdown": {
-            "Relative": -3327.2515,
-            "Passed": 3327.2515,
-            "Fraction": 1
-          },
-          "CurrentGameState": "None",
-          "CurrentRound": 0,
-          "Hunters": [],
-          "HuntersWin": 0,
-          "PlayersNeededToStart": 1,
-          "Props": [],
-          "PropsWin": 0,
-          "RoundsToWin": 3
         }
       ]
     },
@@ -281,7 +264,7 @@
         {
           "__type": "TeamComponent",
           "__guid": "248a97ea-5d84-4338-b5fe-9e2776a9a355",
-          "Team": "Hunters"
+          "Team": "Props"
         },
         {
           "__type": "Inventory",
@@ -1846,8 +1829,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "1040,0"
@@ -1858,8 +1841,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "1280,-0"
@@ -2110,8 +2093,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Item",
-                  "_name": "FireDelay"
+                  "_name": "FireDelay",
+                  "_type": "Item"
                 },
                 "UserData": {
                   "Position": "1024,0"
@@ -2487,8 +2470,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -3284,8 +3267,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -4081,8 +4064,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -4848,6 +4831,32 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "1ffeefdf-8655-452b-afaa-46f09e044a93",
+      "Flags": 0,
+      "Name": "GameManager",
+      "Position": "-413.6376,843.2293,265.7083",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "PropHuntManager",
+          "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+          "Countdown": {
+            "Relative": -248.72096,
+            "Passed": 248.72096,
+            "Fraction": 1
+          },
+          "CurrentGameState": "None",
+          "Hunters": [],
+          "HuntersWin": 0,
+          "PlayersNeededToStart": 2,
+          "Props": [],
+          "PropsWin": 0
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -4873,7 +4882,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-15T19:21:14.7783069-04:00",
+  "LastSaved": "2024-06-15T22:55:17.1599126-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.soda_can",
