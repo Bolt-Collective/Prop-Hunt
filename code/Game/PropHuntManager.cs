@@ -1,173 +1,218 @@
-﻿
+﻿using Sandbox.Utility;
+
 [Title( "Game Manager" )]
 [Description( "The brains of Prop Hunt. Controls rounds, teams, etc." )]
-public class PropHuntManager : Component, Component.INetworkListener
+public partial class PropHuntManager : Component, Component.INetworkListener
 {
-	[Property] public GameState CurrentGameState { get; set; } = GameState.None;
-	[Property] public int PlayersNeededToStart { get; set; } = 2;
-	[Property] public int PropsWin { get; set; }
-	[Property] public int HuntersWin { get; set; }
-	[Property, Sync] public TimeUntil Countdown { get; set; }
-	[Property] public List<GameObject> Props { get; set; } = new List<GameObject>();
-	[Property] public List<GameObject> Hunters { get; set; } = new List<GameObject>();
-	private Task GameLoopTask { get; set; }
+	[HostSync] public GameState RoundState { get; set; } = GameState.None;
+	[HostSync] public string RoundStateText { get; set; }
 
-	protected override void OnStart()
+	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
+	[HostSync] public int RoundLength { get; set; } = 0;
+
+	public static int PreRoundTime { get; set; } = 30;
+
+	public static int RoundTime { get; set; } = 6 * 60;
+
+	/// <summary>
+	/// How many rounds to play before map voting
+	/// </summary>
+	public static int RoundCount { get; set; } = 6;
+
+
+	/// <summary>
+	/// All players, both assigned to a team and spectating.
+	/// </summary>
+	public static IEnumerable<Player> AllPlayers => Game.ActiveScene.GetAllComponents<Player>();
+
+	/// <summary>
+	/// Players assigned to a team, so not spectating.
+	/// </summary>
+	public static IEnumerable<Player> ActivePlayers => AllPlayers.Where( x => x.TeamComponent.Team != Team.Unassigned );
+
+	/// <summary>
+	/// Players not assigned to a team, or spectating.
+	/// </summary>
+	public static IEnumerable<Player> InactivePlayers => AllPlayers.Where( x => x.TeamComponent.Team == Team.Unassigned );
+
+	/// <summary>
+	/// Players assigned to a particular team.
+	/// </summary>
+	public static IEnumerable<Player> GetPlayers( Team team ) => AllPlayers.Where( x => x.TeamComponent.Team == team );
+
+	public static int MaxPlayersToStart { get; set; } = 2;
+
+	/// <summary>
+	/// Next map chosen by RTV
+	/// </summary>
+	public string NextMap { get; set; } = null;
+	public static bool IsFirstRound { get; set; } = true;
+
+	protected override void OnUpdate()
 	{
-		if ( IsProxy )
-			return;
-		_ = ResumeGame();
-	}
+		base.OnUpdate();
 
-	public Task ResumeGame()
-	{
-		return GameLoopTask ??= GameLoop();
-	}
-	void INetworkListener.OnBecameHost( Connection previousHost )
-	{
-		Log.Info( "Resuming game loop on second client" );
-		_ = ResumeGame();
-	}
-
-	public async Task GameLoop()
-	{
-		while ( true )
-		{
-			switch ( CurrentGameState )
-			{
-
-				case GameState.None:
-					CurrentGameState = GameState.WaitingForPlayers;
-					break;
-
-				case GameState.WaitingForPlayers:
-					if ( Scene.GetAllComponents<Player>().Count() >= PlayersNeededToStart )
-					{
-						CurrentGameState = GameState.Preparing;
-					}
-					else
-					{
-						Countdown = 0;
-						await Task.Frame();
-					}
-					break;
-
-				case GameState.Preparing:
-					CurrentGameState = GameState.Starting;
-					await Task.Frame();
-					break;
-
-				case GameState.Starting:
-					StartGame();
-					CurrentGameState = GameState.Started;
-					await Task.Frame();
-					break;
-
-				case GameState.Started:
-					await Round();
-					CurrentGameState = GameState.Ending;
-					break;
-
-				case GameState.Ending:
-					await Ending();
-					CurrentGameState = GameState.Ended;
-					break;
-
-				case GameState.Ended:
-					await Ended();
-					CurrentGameState = GameState.Voting;
-					break;
-
-				case GameState.Voting:
-					Countdown = 5;
-					await GameTask.DelaySeconds( 5 );
-					CurrentGameState = GameState.WaitingForPlayers;
-					break;
-			}
-		}
-	}
-	public string GetGameStateString()
-	{
-		switch ( CurrentGameState )
+		switch ( RoundState )
 		{
 			case GameState.None:
-				return "None";
+				RoundStateText = "";
+				RoundState = GameState.WaitingForPlayers;
+				break;
 			case GameState.WaitingForPlayers:
-				return "Waiting For Players";
+				RoundStateText = "Waiting For Players";
+				
+				if ( AllPlayers.Count() >= MaxPlayersToStart )
+					OnRoundPreparing();
+				
+				break;
 			case GameState.Preparing:
-				return "Preparing";
+				RoundStateText = "Intermission";
+				if ( TimeSinceRoundStateChanged > RoundLength )
+					OnRoundStarting();
+				break;
 			case GameState.Starting:
-				return "Starting";
+				RoundStateText = "Preparing"; 
+				if (TimeSinceRoundStateChanged > RoundLength)
+					OnRoundStart();	
+				break;
 			case GameState.Started:
-				return "Started";
+				RoundStateText = "Ongoing";
+				RoundTick();
+				break;
 			case GameState.Ending:
-				return "Ending";
+				RoundStateText = "Ending";
+				if ( TimeSinceRoundStateChanged > RoundLength )
+					OnRoundEnd();
+				break;
 			case GameState.Ended:
-				return "Ended";
+				RoundStateText = "Ended";
+
+				break;
 			case GameState.Voting:
-				return "Voting";
+				break;
 			default:
-				return "None";
-
+				throw new ArgumentOutOfRangeException();
 		}
 	}
-	public void StartGame()
+
+	protected void OnRoundPreparing()
 	{
-		Log.Info( "Starting game" );
-		var spawnList = Scene.GetAllComponents<SpawnPoint>().ToList();
-		foreach ( var player in Scene.GetAllComponents<Player>() )
-		{
-			player.Transform.World = Game.Random.FromList( spawnList ).Transform.World;
-			if ( player.Components.Get<PropShiftingMechanic>().IsProp )
-			{
-				player.Body.Components.Get<PropShiftingMechanic>().ExitProp();
-			}
-			var teamComponent = player.Components.Get<TeamComponent>();
-			teamComponent.GetRandomTeam();
-			Log.Info( "Assigned team" );
-			if ( teamComponent.Team == Team.Props )
-			{
-				Props.Add( player.GameObject );
-			}
-			else
-			{
-				Hunters.Add( player.GameObject );
-			}
-			foreach ( var hunter in Hunters )
-			{
-				hunter.Components.Get<Inventory>().SpawnStartingItems();
-			}
-		}
-		Log.Info( "Game started" );
+		RoundState = GameState.Preparing;
+		RoundLength = PreRoundTime;
+		TimeSinceRoundStateChanged = 0;
 	}
 
-	public async Task Round()
+	protected void OnRoundStarting()
 	{
-		if ( Props.Count == 0 )
+		RoundState = GameState.Starting;
+		RoundLength = 30;
+		TimeSinceRoundStateChanged = 0;
+
+		if ( IsFirstRound )
 		{
-			HuntersWin++;
+			// Make intermission time 1 second after round 1
+			PreRoundTime = 1;
+			IsFirstRound = false;
 		}
-		else if ( Hunters.Count == 0 )
-		{
-			PropsWin++;
-		}
-		Countdown = 2;
-		await Task.DelayRealtimeSeconds( 2 );
+
+		PopupSystem.DisplayPopup( "Hide or die", "The seekers will be unblinded in 30 seconds", 30f );
 	}
 
-	public async Task Ending()
+	protected void OnRoundStart()
 	{
-		Countdown = 5;
-		await Task.DelayRealtimeSeconds( 5 );
+		RoundState = GameState.Started;
+		RoundLength = RoundTime; // 360 seconds
+		TimeSinceRoundStateChanged = 0;
 	}
 
-	public async Task Ended()
+
+	public virtual void OnRoundEnding()
 	{
-		foreach ( var player in Scene.GetAllComponents<Player>() )
-		{
-			player.ResetStats();
-		}
-		await Task.Frame();
+		RoundState = GameState.Ending;
+		TimeSinceRoundStateChanged = 0;
+		RoundLength = 15;
+
+
 	}
 
+	[HostSync] public int RoundNumber { get; set; } = 0;
+	public virtual void OnRoundEnd()
+	{
+		RoundState = GameState.Ended;
+		TimeSinceRoundStateChanged = 0;
+
+		GetPlayers( Team.Props ).ToList().Clear();
+		GetPlayers( Team.Hunters ).ToList().Clear();
+
+		// TODO: implement RTV and map votes
+
+
+		if ( NextMap != null )
+		{ 
+			var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();
+			mapChanger?.LoadMap( NextMap );
+
+			return;
+		}
+
+		if ( RoundNumber >= RoundCount )
+		{
+			DoMapVote();
+		}
+		else
+		{
+			RoundNumber++;
+			ResetRound();
+		}
+	}
+
+	public void DoMapVote()
+	{
+		// TODO: do map vote
+		Log.Info( "map vote" );
+	}
+
+	public void ResetRound()
+	{
+		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
+
+		foreach ( var player in AllPlayers )
+		{
+			player?.ResetStats();
+			player.Transform.World = Game.Random.FromList( spawnPoints ).Transform.World;
+		}
+
+		RoundState = GameState.None;
+		TimeSinceRoundStateChanged = 0;
+	}
+
+	/// <summary>
+	/// Logic happening every update
+	/// </summary>
+	protected void RoundTick()
+	{
+		if ( TimeSinceRoundStateChanged > RoundLength && GetPlayers( Team.Hunters ).Count( x => x.Health <= 0 ) <= 0 )
+		{
+			ForceWin( Team.Props );
+		}
+		else if ( GetPlayers( Team.Props ).Count( x => x.Health > 0 ) <= 0 )
+		{
+			ForceWin( Team.Hunters );
+		}
+
+	}
+
+	private Team WinningTeam { get; set; }
+	[HostSync] public string WinningTeamName { get; set; }
+
+
+	public void ForceWin( Team team )
+	{
+		WinningTeam = team;
+		WinningTeamName = team.GetName();
+
+		Log.Info( WinningTeamName + " win!" );
+
+		OnRoundEnding();
+	}
 }
