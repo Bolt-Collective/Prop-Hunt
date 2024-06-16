@@ -4845,8 +4845,8 @@
           "__type": "PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
           "Countdown": {
-            "Relative": -793.19006,
-            "Passed": 793.19006,
+            "Relative": -1026.943,
+            "Passed": 1026.943,
             "Fraction": 1
           },
           "CurrentGameState": "None",
@@ -4855,6 +4855,77 @@
           "PlayersNeededToStart": 2,
           "Props": [],
           "PropsWin": 0
+        }
+      ]
+    },
+    {
+      "__guid": "4abbc2d3-f915-4ebd-816d-66e6fe49bc3b",
+      "Flags": 0,
+      "Name": "Hint Trigger",
+      "Position": "-182.9707,-136.7766,143.2783",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "7349ba00-affa-42d5-b286-841c6ef72812",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "38cfcd5f-6084-4d15-b829-5bf17e9cd239",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "OnTriggerEnter": {
+            "__version": 7,
+            "__guid": "91b67e02-749f-40d2-9b84-de02082d8ca0",
+            "UserData": {
+              "Title": "On Trigger Enter",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              },
+              {
+                "Id": 1,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": true,
+                  "_name": "DisplayPopup",
+                  "_type": "PopupSystem"
+                },
+                "UserData": {
+                  "Position": "272,0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 1,
+                "DstName": "_signal"
+              },
+              {
+                "Value": "This is a popup",
+                "DstId": 1,
+                "DstName": "text"
+              },
+              {
+                "Value": "Popup",
+                "DstId": 1,
+                "DstName": "title"
+              }
+            ]
+          },
+          "Scale": "50,50,50",
+          "Static": false
         }
       ]
     }
@@ -4882,7 +4953,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-15T23:04:21.629799-04:00",
+  "LastSaved": "2024-06-15T23:08:15.3958155-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.soda_can",
