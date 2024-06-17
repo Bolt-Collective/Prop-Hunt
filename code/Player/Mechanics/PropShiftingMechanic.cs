@@ -7,6 +7,8 @@ public class PropShiftingMechanic : Component
 	public TeamComponent Team { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
+	[Property] public CapsuleCollider CapsuleCollider { get; set; }
+	[Property] public BoxCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	protected override void OnStart()
 	{
@@ -14,6 +16,24 @@ public class PropShiftingMechanic : Component
 	}
 	protected override void OnUpdate()
 	{
+		if ( IsProp )
+		{
+			CapsuleCollider.Enabled = false;
+			Collider.Enabled = true;
+			Collider.Scale = Player.Local.AnimationHelper.Target.Bounds.Size;
+			Gizmo.Draw.LineBBox( Player.Local.AnimationHelper.Target.Bounds );
+		}
+		else
+		{
+			if ( CapsuleCollider is not null )
+			{
+				CapsuleCollider.Enabled = true;
+			}
+			if ( Collider is not null )
+			{
+				Collider.Enabled = false;
+			}
+		}
 		if ( IsProxy || Team.Team == global::Team.Hunters || Team.Team == global::Team.Unassigned || !Player.Local.AbleToMove ) return;
 		if ( Input.Pressed( "View" ) )
 		{

@@ -165,6 +165,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
 				blind.UseBlind = true;
+				Player.Local.AnimationHelper.Enabled = false;
 			}
 		}
 		if ( IsFirstRound )
@@ -195,6 +196,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
 				blind.UseBlind = false;
+				Player.Local.AnimationHelper.Enabled = true;
 			}
 		}
 		RoundState = GameState.Started;
