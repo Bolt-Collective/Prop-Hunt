@@ -40,7 +40,7 @@ public class Player : Component
 	[RequireComponent] public TeamComponent TeamComponent { get; private set; }
 	public PropShiftingMechanic PropShiftingMechanic { get; set; }
 	public float MaxHealth = 100;
-	[Sync] public float Health { get; set; }
+	[Sync, Property] public float Health { get; set; }
 	[Sync] public bool FreeLooking { get; set; }
 	//Going to be used for spectating for unassigned players
 	[Sync] public Transform CameraPosWorld { get; set; }
@@ -401,18 +401,23 @@ public class Player : Component
 	[Broadcast]
 	public void TakeDamage( float damage )
 	{
+		if ( !IsProxy ) return;
 		Health -= damage;
 		if ( Health <= 0 )
 		{
 			Health = 0;
-			DisableBody();
+			DisableBody( Body.Id );
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
 	}
 	[Broadcast]
-	public void DisableBody()
+	public void DisableBody( Guid bodyID )
 	{
-		Body.Enabled = false;
+		var body = Scene.Directory.FindByGuid( bodyID );
+		if ( body is not null )
+		{
+			body.Enabled = false;
+		}
 	}
 
 	public void ResetStats()

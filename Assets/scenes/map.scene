@@ -6,15 +6,18 @@
       "Flags": 0,
       "Name": "Map",
       "Position": "-64.03706,-206.7385,264.4784",
+      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "5409cd74-560f-48f7-a033-a0dd8e6f91c3",
+          "MapName": "apetavern.pp_streets",
           "UseMapFromLaunch": false
         }
-      ]
+      ],
+      "Children": []
     },
     {
       "__guid": "be43cb37-c16b-4c1c-8c3b-25027a294a5a",
@@ -213,6 +216,7 @@
             "_type": "gameobject",
             "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
           },
+          "Health": 0,
           "OnDeath": {
             "__version": 7,
             "__guid": "224886dd-f2ff-41f5-87cf-b75f8a79f10f",
@@ -5265,12 +5269,19 @@
       "Flags": 0,
       "Name": "Map Changer",
       "Position": "187.3595,121.2986,52.85176",
+      "Enabled": true,
       "NetworkMode": 1,
       "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "PropHunt.MapChanger",
-          "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24"
+          "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24",
+          "MapInstance": {
+            "_type": "component",
+            "component_id": "5409cd74-560f-48f7-a033-a0dd8e6f91c3",
+            "go": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
+            "component_type": "MapInstance"
+          }
         }
       ]
     },
@@ -5760,7 +5771,6 @@
       "Flags": 0,
       "Name": "Scene Map",
       "Position": "-64.15205,-206.5603,264.3589",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Children": [
@@ -6007,7 +6017,6 @@
       "Flags": 0,
       "Name": "toolbox_b",
       "Position": "-209.4363,-150.0029,128",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -6027,7 +6036,6 @@
       "Flags": 0,
       "Name": "cola_can",
       "Position": "-171.4202,-185.7812,128.0343",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -6047,7 +6055,6 @@
       "Flags": 0,
       "Name": "binbag_a1",
       "Position": "-166.4872,-147.7693,128.0577",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -6086,7 +6093,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-16T21:17:27.6198018-04:00",
+  "LastSaved": "2024-06-16T22:14:16.3965011-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.beer_keg_a1",
