@@ -54,10 +54,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	protected override void OnUpdate()
 	{
 		//Make sure non hunters are not blinded
-		var blur = Scene.GetAllComponents<Blur>().FirstOrDefault();
-		if ( (GetPlayers( Team.Props ).Contains( Player.Local ) || GetPlayers( Team.Unassigned ).Contains( Player.Local )) && blur is not null )
+		var blind = Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault();
+		if ( (GetPlayers( Team.Props ).Contains( Player.Local ) || GetPlayers( Team.Unassigned ).Contains( Player.Local )) && blind is not null )
 		{
-			blur.Size = 0;
+			blind.UseBlind = false;
 		}
 		if ( !IsProxy )
 		{
@@ -162,9 +162,9 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			player.Inventory.SpawnStartingItems();
 			player.AbleToMove = false;
-			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<Blur>( out var blur ) )
+			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
-				blur.Size = 3;
+				blind.UseBlind = true;
 			}
 		}
 		if ( IsFirstRound )
@@ -192,9 +192,9 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		foreach ( var player in GetPlayers( Team.Hunters ) )
 		{
 			player.AbleToMove = true;
-			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<Blur>( out var blur ) )
+			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
-				blur.Size = 0;
+				blind.UseBlind = false;
 			}
 		}
 		RoundState = GameState.Started;

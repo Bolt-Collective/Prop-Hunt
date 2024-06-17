@@ -86,11 +86,6 @@
           "Rate": 1
         },
         {
-          "__type": "Sandbox.Sharpen",
-          "__guid": "3987301e-cb86-4939-b0ca-c0fcf4f1cb0e",
-          "Scale": 0.2
-        },
-        {
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "8896749b-d477-4160-8df7-50aabccdb34b",
           "Intensity": 8,
@@ -98,9 +93,10 @@
           "Radius": 32
         },
         {
-          "__type": "Sandbox.Blur",
-          "__guid": "97d533f0-0666-44f2-98a0-b1ab5bd7561b",
-          "Size": 0
+          "__type": "BlindPostprocess",
+          "__guid": "99a7ecf3-7000-4afc-b6e9-3ffcda6b44b0",
+          "color": "0,0,0,1",
+          "UseBlind": false
         }
       ]
     },
@@ -5282,7 +5278,7 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-          "MaxPlayersToStart": 1
+          "MaxPlayersToStart": 2
         }
       ]
     },
@@ -6351,7 +6347,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-17T15:42:13.0580807-04:00",
+  "LastSaved": "2024-06-17T15:56:32.7619691-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.beer_keg_a1",
