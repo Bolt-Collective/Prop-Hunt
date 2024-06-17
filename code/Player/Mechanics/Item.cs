@@ -62,7 +62,7 @@ public sealed class Item : Component
 	public void Trace( float TraceDistance, int damage, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject )
 	{
 		var tr = Scene.Trace.Ray( Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * TraceDistance )
-		.WithoutTags( "player" )
+		.WithoutTags( Steam.SteamId.ToString() )
 		.Run();
 		Ammo--;
 		ShotsFired++;
@@ -72,8 +72,9 @@ public sealed class Item : Component
 		if ( tr.Hit )
 		{
 			TraceObject = tr.GameObject;
-			if ( tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EnabledInSelfAndChildren ) )
+			if ( tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 			{
+				if ( Player.IsFriendly( enemy ) ) return;
 				enemy.TakeDamage( damage );
 			}
 			if ( tr.Body is not null )

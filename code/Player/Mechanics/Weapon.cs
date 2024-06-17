@@ -87,7 +87,7 @@ public sealed class Weapon : Component
 		Player.EyeAngles += new Angles( -Recoil, GetRandomFloat(), 0 );
 
 		var tr = Scene.Trace.Ray( ray, FireLength )
-			.WithoutTags( "player" )
+			.WithoutTags( Steam.SteamId.ToString() )
 			.Run();
 
 		ShotsFired++;
@@ -96,8 +96,9 @@ public sealed class Weapon : Component
 		BroadcastShootSound( tr.EndPosition );
 		OnFire?.Invoke( Player, tr.EndPosition, tr.Normal, tr.Hit );
 
-		if ( tr.Hit && tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EnabledInSelfAndChildren ) )
+		if ( tr.Hit && tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 		{
+			Log.Info( Player.IsFriendly( enemy ).ToString() );
 			if ( Player.IsFriendly( enemy ) ) return;
 			enemy.TakeDamage( 25 );
 			OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );

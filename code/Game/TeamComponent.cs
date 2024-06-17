@@ -30,7 +30,8 @@ public class TeamComponent : Component
 	}
 	public void GetRandomTeam()
 	{
-		Team = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
+		var randomTeam = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
+		ChangeTeam( randomTeam );
 	}
 	int GetRandom( int min, int max )
 	{
@@ -73,9 +74,9 @@ public static class TeamExtensions
 	/// <param name="teamOne"></param>
 	/// <param name="teamTwo"></param>
 	/// <returns></returns>
-	private static bool IsFriendly( Team teamOne, Team teamTwo )
+	private static bool IsFriendly( string teamOne, string teamTwo )
 	{
-		if ( teamOne == Team.Unassigned || teamTwo == Team.Unassigned ) return false;
+		if ( teamOne == Team.Unassigned.ToString() || teamTwo == Team.Unassigned.ToString() ) return false;
 		return teamOne == teamTwo;
 	}
 
@@ -87,7 +88,7 @@ public static class TeamExtensions
 	/// <returns></returns>
 	public static bool IsFriendly( this GameObject self, GameObject other )
 	{
-		return IsFriendly( self.GetTeam(), other.GetTeam() );
+		return IsFriendly( self.GetTeam().ToString(), other.GetTeam().ToString() );
 	}
 
 	/// <summary>
@@ -95,7 +96,7 @@ public static class TeamExtensions
 	/// </summary>
 	public static bool IsFriendly( this Player self, Player other )
 	{
-		return IsFriendly( self.TeamComponent.Team, other.TeamComponent.Team );
+		return IsFriendly( self.TeamComponent.Team.ToString(), other.TeamComponent.Team.ToString() );
 	}
 
 	public static string GetName( this Team team )

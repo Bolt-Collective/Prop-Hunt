@@ -126,12 +126,32 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
 		Log.Info( GetRandom( 0, 5 ) );
-		foreach ( var player in AllPlayers )
+		if ( AllPlayers.Count() == 2 )
 		{
-			if ( player.TeamComponent.Team == Team.Hunters )
+			for ( int i = 0; i < 2; i++ )
 			{
-				player.Inventory.SpawnStartingItems();
+				if ( i == 0 )
+				{
+					var player = AllPlayers.ElementAt( i );
+					player.TeamComponent.ChangeTeam( Team.Hunters );
+				}
+				else
+				{
+					var player = AllPlayers.ElementAt( i );
+					player.TeamComponent.ChangeTeam( Team.Props );
+				}
 			}
+		}
+		else
+		{
+			foreach ( var player in AllPlayers )
+			{
+				player.TeamComponent.GetRandomTeam();
+			}
+		}
+		foreach ( var player in GetPlayers( Team.Hunters ) )
+		{
+			player.Inventory.SpawnStartingItems();
 		}
 		if ( IsFirstRound )
 		{

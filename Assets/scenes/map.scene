@@ -2,6 +2,21 @@
   "__guid": "782650af-b0d5-4dc9-a9ce-6bf80b194be9",
   "GameObjects": [
     {
+      "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "-64.03706,-206.7385,264.4784",
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "5409cd74-560f-48f7-a033-a0dd8e6f91c3",
+          "UseMapFromLaunch": false
+        }
+      ]
+    },
+    {
       "__guid": "be43cb37-c16b-4c1c-8c3b-25027a294a5a",
       "Flags": 0,
       "Name": "Camera",
@@ -145,7 +160,7 @@
           "Bounciness": 0.3,
           "GroundAngle": 45,
           "Height": 71.05,
-          "IgnoreLayers": "player,carrying",
+          "IgnoreLayers": "carrying",
           "Radius": 11.65,
           "StepHeight": 18,
           "UseCollisionRules": false
@@ -269,84 +284,6 @@
           "AbleToSwitch": true,
           "ActiveIndex": 0,
           "Items": [],
-          "OnComponentStart": {
-            "__version": 7,
-            "__guid": "69432805-0eef-48c5-9cb6-83fc07a3e203",
-            "UserData": {
-              "Title": "On Component Start",
-              "ReferencedComponentTypes": [
-                "Inventory"
-              ]
-            },
-            "Variables": [],
-            "Nodes": [
-              {
-                "Id": 0,
-                "Type": "input"
-              },
-              {
-                "Id": 1,
-                "Type": "scene.get",
-                "Properties": {
-                  "T": "Inventory"
-                },
-                "UserData": {
-                  "Position": "16,96"
-                }
-              },
-              {
-                "Id": 2,
-                "Type": "call",
-                "Properties": {
-                  "_isStatic": false,
-                  "_type": "Inventory",
-                  "_name": "AddItem"
-                },
-                "UserData": {
-                  "Position": "272,0"
-                }
-              }
-            ],
-            "Links": [
-              {
-                "SrcId": 0,
-                "SrcName": "_target",
-                "DstId": 1,
-                "DstName": "_this"
-              },
-              {
-                "SrcId": 0,
-                "SrcName": "_signal",
-                "DstId": 2,
-                "DstName": "_signal"
-              },
-              {
-                "SrcId": 1,
-                "SrcName": "_result",
-                "DstId": 2,
-                "DstName": "_target"
-              },
-              {
-                "Value": {
-                  "_type": "gameobject",
-                  "go": "2ed04a69-678c-4636-a3c7-6c64ccbbccec"
-                },
-                "DstId": 2,
-                "DstName": "item"
-              },
-              {
-                "Value": 0,
-                "DstId": 2,
-                "DstName": "slot"
-              }
-            ],
-            "Defaults": {
-              "$3._value": {
-                "_type": "gameobject",
-                "go": "2ed04a69-678c-4636-a3c7-6c64ccbbccec"
-              }
-            }
-          },
           "Size": 4,
           "StartingItems": [
             {
@@ -1731,7 +1668,7 @@
       "__guid": "2f01ac00-842e-4dee-844d-3f3b62cc49e2",
       "Flags": 0,
       "Name": "wooden_crate",
-      "Position": "-185.4416,105.7799,132",
+      "Position": "-185.4851,-105.3432,130.8416",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -5304,173 +5241,6 @@
       ]
     },
     {
-      "__guid": "88b9d8c7-9211-40a9-91ee-ef9ed12806ef",
-      "Flags": 0,
-      "Name": "Box",
-      "Position": "-178.1778,129.9339,64",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.MeshComponent",
-          "__guid": "cf0b583f-8212-4a89-b0d6-1ec110429fed",
-          "Collision": "Mesh",
-          "Color": "1,1,1,1",
-          "HideInGame": false,
-          "IsTrigger": false,
-          "Mesh": {
-            "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
-            "Positions": [
-              "-330.6944,-346.4276,64",
-              "330.6944,-346.4276,64",
-              "330.6944,346.4276,64",
-              "-330.6944,346.4276,64",
-              "-330.6944,346.4276,-64",
-              "330.6944,346.4276,-64",
-              "330.6944,-346.4276,-64",
-              "-330.6944,-346.4276,-64"
-            ],
-            "TextureCoord": [
-              "2.58355,2.706465",
-              "-2.58355,-0.5",
-              "2.58355,-2.706465",
-              "-2.706465,-0.5",
-              "-2.58355,-2.706465",
-              "-2.58355,-0.5",
-              "-2.58355,2.706465",
-              "-2.706465,-0.5",
-              "2.58355,-2.706465",
-              "2.58355,0.5",
-              "2.58355,2.706465",
-              "2.706465,0.5",
-              "-2.58355,2.706465",
-              "2.58355,0.5",
-              "-2.58355,-2.706465",
-              "2.706465,0.5",
-              "2.706465,-0.5",
-              "-2.58355,0.5",
-              "-2.706465,0.5",
-              "2.58355,-0.5",
-              "-2.706465,0.5",
-              "2.58355,-0.5",
-              "2.706465,-0.5",
-              "-2.58355,0.5"
-            ],
-            "TextureUAxis": [
-              "1,0,0",
-              "1,0,-0",
-              "0,-1,0",
-              "0,1,0",
-              "-1,0,0",
-              "1,-0,0"
-            ],
-            "TextureVAxis": [
-              "0,-1,0",
-              "0,-1,0",
-              "0,0,-1",
-              "-0,0,-1",
-              "0,0,-1",
-              "-0,0,-1"
-            ],
-            "TextureScale": [
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25",
-              "0.25,0.25"
-            ],
-            "TextureOffset": [
-              "200.7112,7.735596",
-              "200.7112,7.735596",
-              "7.735596,256",
-              "504.2644,256",
-              "311.2888,256",
-              "200.7112,256"
-            ],
-            "MaterialIndex": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "EdgeFlags": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
-            "Materials": [
-              "materials/dev/reflectivity_30.vmat"
-            ]
-          },
-          "SmoothingAngle": 40,
-          "Static": false
-        }
-      ]
-    },
-    {
-      "__guid": "8be59aa9-93bb-4ffe-ad45-18e70b73641f",
-      "Flags": 0,
-      "Name": "Sun",
-      "Position": "-70.3284,172.0752,153.3685",
-      "Rotation": "0,0.3826834,0,0.9238796",
-      "Tags": "light_directional,light",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.DirectionalLight",
-          "__guid": "bca3fc23-c8db-4fba-86f1-8732e3ca8c9d",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
-          "Shadows": true,
-          "SkyColor": "0.05882,0.07451,0.08235,1"
-        }
-      ]
-    },
-    {
-      "__guid": "da551c61-6a83-40da-9758-decab8107ff8",
-      "Flags": 0,
-      "Name": "Object",
-      "Position": "-45.89559,-47.56428,154.0613",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.SpawnPoint",
-          "__guid": "28edd60a-70de-435d-9ac9-5374134d5f03",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
       "__guid": "2ed04a69-678c-4636-a3c7-6c64ccbbccec",
       "Flags": 0,
       "Name": "Logger",
@@ -5950,6 +5720,313 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "a16fd360-a969-49d1-9805-67ee79371d7a",
+      "Flags": 0,
+      "Name": "Scene Map",
+      "Position": "-64.15205,-206.5603,264.3589",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Children": [
+        {
+          "__guid": "e205b1c1-c75a-4ee1-85aa-b084d67e6fd0",
+          "Flags": 0,
+          "Name": "2D Skybox",
+          "Position": "-201.0944,472.4585,-186.7364",
+          "Tags": "skybox",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkyBox2D",
+              "__guid": "17dda318-b068-4197-ab37-5238775d9bfa",
+              "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "07b30f25-424e-4b8d-af2c-f1fd7469e4d9",
+          "Flags": 0,
+          "Name": "Envmap Probe",
+          "Position": "-113.7482,387.9315,-75.10489",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.EnvmapProbe",
+              "__guid": "1e60aa46-45ee-42d2-8547-c51d18fe0a67",
+              "Texture": "textures/cubemaps/default2.vtex",
+              "Bounds": {
+                "Mins": "-1000,-1000,-1000",
+                "Maxs": "1000,1000,1000"
+              },
+              "DelayBetweenUpdates": 0.1,
+              "Feathering": 0.02,
+              "FrameInterval": 5,
+              "MaxDistance": 512,
+              "Projection": "Box",
+              "RenderDynamically": true,
+              "TintColor": "1,1,1,1",
+              "UpdateStrategy": "EveryFrame",
+              "ZFar": 4096,
+              "ZNear": 16
+            }
+          ]
+        },
+        {
+          "__guid": "da551c61-6a83-40da-9758-decab8107ff8",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "18.25646,158.996,-110.2976",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SpawnPoint",
+              "__guid": "28edd60a-70de-435d-9ac9-5374134d5f03",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "__guid": "8be59aa9-93bb-4ffe-ad45-18e70b73641f",
+          "Flags": 0,
+          "Name": "Sun",
+          "Position": "-6.176346,378.6355,-110.9903",
+          "Rotation": "0,0.3826834,0,0.9238796",
+          "Tags": "light_directional,light",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "bca3fc23-c8db-4fba-86f1-8732e3ca8c9d",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.91373,0.98039,1,1",
+              "Shadows": true,
+              "SkyColor": "0.05882,0.07451,0.08235,1"
+            }
+          ]
+        },
+        {
+          "__guid": "88b9d8c7-9211-40a9-91ee-ef9ed12806ef",
+          "Flags": 0,
+          "Name": "Box",
+          "Position": "-114.0257,336.4942,-200.3589",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.MeshComponent",
+              "__guid": "cf0b583f-8212-4a89-b0d6-1ec110429fed",
+              "Collision": "Mesh",
+              "Color": "1,1,1,1",
+              "HideInGame": false,
+              "IsTrigger": false,
+              "Mesh": {
+                "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
+                "Positions": [
+                  "-330.8453,-346.5555,63.99997",
+                  "330.5435,-346.5555,63.99997",
+                  "330.6944,346.4276,64",
+                  "-330.6944,346.4276,64",
+                  "-330.6944,346.4276,-64",
+                  "330.6944,346.4276,-64",
+                  "330.5435,-346.5555,-64.00003",
+                  "-330.8453,-346.5555,-64.00003"
+                ],
+                "TextureCoord": [
+                  "1.582371,1.707465",
+                  "-3.584729,-0.4999998",
+                  "1.58355,-3.706465",
+                  "-0.7074652,-0.4999998",
+                  "-3.58355,-3.706465",
+                  "-0.58355,-0.5",
+                  "-3.584729,1.707465",
+                  "-3.706465,-0.5",
+                  "1.58355,-3.706465",
+                  "4.58355,0.5",
+                  "1.582371,1.707465",
+                  "4.706465,0.5",
+                  "-3.584729,1.707465",
+                  "1.582371,0.5000002",
+                  "-3.58355,-3.706465",
+                  "1.707465,0.5000002",
+                  "1.707465,-0.4999998",
+                  "-3.584729,0.5000002",
+                  "-3.706465,0.5",
+                  "4.58355,-0.5",
+                  "-0.7074652,0.5000002",
+                  "1.582371,-0.4999998",
+                  "4.706465,-0.5",
+                  "-0.58355,0.5"
+                ],
+                "TextureUAxis": [
+                  "1,0,0",
+                  "1,0,-0",
+                  "0,-1,0",
+                  "0,1,0",
+                  "-1,0,0",
+                  "1,-0,0"
+                ],
+                "TextureVAxis": [
+                  "0,-1,0",
+                  "0,-1,0",
+                  "0,0,-1",
+                  "-0,0,-1",
+                  "0,0,-1",
+                  "-0,0,-1"
+                ],
+                "TextureScale": [
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25"
+                ],
+                "TextureOffset": [
+                  "200.7112,7.735596",
+                  "200.7112,7.735596",
+                  "7.735596,256",
+                  "504.2644,256",
+                  "311.2888,256",
+                  "200.7112,256"
+                ],
+                "MaterialIndex": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "EdgeFlags": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "Materials": [
+                  "materials/dev/reflectivity_30.vmat",
+                  "materials/decals/blood/blood_wipe_01.vmat"
+                ]
+              },
+              "SmoothingAngle": 40,
+              "Static": false
+            }
+          ]
+        },
+        {
+          "__guid": "8d5f2224-bf80-4512-8fdd-bf9167fdc652",
+          "Flags": 0,
+          "Name": "beer_keg_a1",
+          "Position": "-123.8006,30.47641,-137.5173",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "099b487a-61b2-495e-8611-a89eda3d275d",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f38b280b-8a5e-4d92-aeb3-a745a9bc3d2f",
+          "Flags": 0,
+          "Name": "toolbox_b",
+          "Position": "-145.2843,56.55743,-136.3589",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "53c898fb-b32f-48ed-a6d5-124ce163b5ba",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/props/toolbox/toolbox_b.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "5d013187-ff7b-433c-b037-62a4927872b2",
+          "Flags": 0,
+          "Name": "cola_can",
+          "Position": "-107.2682,20.77914,-136.3246",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "6153dbcc-4872-4f4d-a825-2e37d9bb2cda",
+              "BodyGroups": 18446744073709551615,
+              "Health": 10,
+              "IsStatic": false,
+              "Model": "models/sbox_props/cola_can/cola_can.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "7ab158f0-8816-4254-9a5c-6c848c2b3c77",
+          "Flags": 0,
+          "Name": "binbag_a1",
+          "Position": "-102.3351,58.79105,-136.3012",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "b74ea47c-6cbc-4cad-984f-7164ccfb4b27",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/sbox_props/binbags/binbag_a1.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -5975,9 +6052,12 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-16T19:44:46.4388182-04:00",
+  "LastSaved": "2024-06-16T20:20:39.2910641-04:00",
   "ResourceVersion": 1,
   "__references": [
+    "facepunch.beer_keg_a1",
+    "facepunch.binbag_a1",
+    "facepunch.soda_can",
     "facepunch.v_m4a1",
     "facepunch.v_mp5",
     "facepunch.v_trenchknife",
@@ -5987,6 +6067,8 @@
     "facepunch.w_trenchknife",
     "facepunch.w_usp",
     "facepunch.wooden_crate",
+    "fpopium.blood_wipe_01",
+    "fpopium.toolbox_b",
     "mdlresrc.toolgunshoot"
   ],
   "__version": 1

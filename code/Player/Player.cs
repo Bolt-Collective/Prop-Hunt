@@ -1,5 +1,6 @@
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.Utility;
 
 public class Player : Component
 {
@@ -60,6 +61,10 @@ public class Player : Component
 		TeamComponent = Components.Get<TeamComponent>();
 		PropShiftingMechanic = Components.Get<PropShiftingMechanic>();
 		AmmoContainer = Components.Get<AmmoContainer>();
+		if ( IsProxy ) return;
+		Tags.Add( Steam.SteamId.ToString() );
+		characterController.IgnoreLayers.Add( Steam.SteamId.ToString() );
+		Network.Refresh();
 	}
 	public void FreeLook()
 	{
