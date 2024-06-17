@@ -21,7 +21,7 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/minimal.scene",
+    "StartupScene": "scenes/map.scene",
     "ControlModes": {},
     "InputSettings": {
       "Actions": [
@@ -213,6 +213,7 @@
         }
       ],
       "__guid": "9317527a-9bfe-4b5a-b208-c20acb914998"
-    }
+    },
+    "LaunchMode": "QuickPlay"
   }
 }

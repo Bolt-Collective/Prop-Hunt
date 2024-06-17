@@ -21,7 +21,6 @@ public class PropShiftingMechanic : Component
 			CapsuleCollider.Enabled = false;
 			Collider.Enabled = true;
 			Collider.Scale = Player.Local.AnimationHelper.Target.Bounds.Size;
-			Gizmo.Draw.LineBBox( Player.Local.AnimationHelper.Target.Bounds );
 		}
 		else
 		{
