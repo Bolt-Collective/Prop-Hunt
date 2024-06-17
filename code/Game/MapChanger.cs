@@ -2,7 +2,7 @@ using Sandbox;
 namespace PropHunt;
 public sealed class MapChanger : Component
 {
-	[Property] public MapInstance MapInstance { get; set; }
+	[Property] public CustomMapLoader MapInstance { get; set; }
 	protected override void OnEnabled()
 	{
 		MapInstance.OnMapLoaded += HandleMap;
@@ -26,7 +26,6 @@ public sealed class MapChanger : Component
 		{
 			if ( player.IsProxy )
 				continue;
-
 			var randomSpawnPoint = Random.Shared.FromArray( spawnPoints );
 			if ( randomSpawnPoint is null ) continue;
 
@@ -39,6 +38,8 @@ public sealed class MapChanger : Component
 
 		}
 	}
+
+
 
 	[ConCmd( "map" )]
 	public static void LoadMapCmd( string ident )
