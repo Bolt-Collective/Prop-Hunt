@@ -176,14 +176,14 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 		if ( !IsProxy )
 		{
-			BroadcastPopup();
+			BroadcastPopup("Hide or die", "The seekers will be unblinded in 30s", 30f);
 		}
 	}
 
 	[Broadcast]
-	public void BroadcastPopup()
+	public void BroadcastPopup(string text, string title, float duration = 8f)
 	{
-		PopupSystem.DisplayPopup( "Hide or die", "The seekers will be unblinded in 30 seconds", 30f );
+		PopupSystem.DisplayPopup( text, title, duration );
 	}
 
 	[Broadcast]
