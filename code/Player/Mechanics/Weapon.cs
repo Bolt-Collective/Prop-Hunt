@@ -7,6 +7,7 @@ public sealed class Weapon : Component
 	public Player Player { get; set; }
 	public AmmoContainer AmmoContainer { get; set; }
 	[Property, Category( "Weapon Properties" )] public float FireLength { get; set; } = 1000;
+	[Property, Category( "Weapon Properties" )] public GameObject Decal { get; set; }
 	[Property, Category( "Weapon Properties" )] public float Damage { get; set; } = 25;
 	[Property, Category( "Weapon Properties" )] public float ReloadTime { get; set; } = 1;
 	[Property, Category( "Weapon Properties" )] public int Ammo { get; set; } = 10;
@@ -98,7 +99,6 @@ public sealed class Weapon : Component
 
 		if ( tr.Hit && tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 		{
-			Log.Info( Player.IsFriendly( enemy ).ToString() );
 			if ( Player.IsFriendly( enemy ) ) return;
 			enemy.TakeDamage( 25 );
 			OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );
@@ -113,11 +113,15 @@ public sealed class Weapon : Component
 			var damage = new DamageInfo( Damage, GameObject, GameObject, tr.Hitbox );
 			damage.Position = tr.HitPosition;
 			damage.Shape = tr.Shape;
-
+			var decalClone = Decal.Clone();
+			decalClone.Transform.Position = tr.HitPosition + tr.Normal * 5;
+			decalClone.Transform.Rotation = Rotation.LookAt( -tr.Normal );
+			decalClone.NetworkSpawn();
 			foreach ( var damageAble in tr.GameObject.Components.GetAll<IDamageable>() )
 			{
 				damageAble.OnDamage( damage );
 			}
+
 		}
 	}
 

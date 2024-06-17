@@ -270,6 +270,14 @@ public class Player : Component
 			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Transform.World;
 			IsRunning = Input.Down( "Run" );
 		}
+		else
+		{
+			//Have to do it again here, because if I do it outside of the proxy, the interp is weird
+			var eyePos = Eye.Transform.Position;
+			eyePos = Body.Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
+			Eye.Transform.Position = eyePos;
+			Eye.Transform.Rotation = EyeAngles.ToRotation();
+		}
 
 		var cc = GameObject.Components.Get<CharacterController>();
 		if ( cc is null ) return;
@@ -291,10 +299,11 @@ public class Player : Component
 	}
 	private void UpdateBodyVisibility()
 	{
+		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		if ( AnimationHelper is null )
 			return;
 
-		var renderType = !IsProxy && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+		var renderType = (!IsProxy || spectate.IsSpectating) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
 		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
 		{
@@ -401,34 +410,28 @@ public class Player : Component
 	[Broadcast]
 	public void TakeDamage( float damage )
 	{
-		if ( !IsProxy ) return;
 		Health -= damage;
 		if ( Health <= 0 )
 		{
 			Health = 0;
-			DisableBody( Body.Id );
+			Body.Enabled = false;
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
 	}
 	[Broadcast]
-	public void DisableBody( Guid bodyID )
-	{
-		var body = Scene.Directory.FindByGuid( bodyID );
-		if ( body is not null )
-		{
-			body.Enabled = false;
-		}
-	}
-
 	public void ResetStats()
 	{
+		if ( IsProxy ) return;
 		Inventory.Clear();
 		AmmoContainer.ResetAmmo();
+		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
+		spectate.IsSpectating = false;
 		Health = MaxHealth;
 		IsCrouching = false;
 		IsRunning = false;
 		FreeLooking = false;
 		CameraDistance = 0;
 		IsGrabbing = false;
+		Body.Enabled = true;
 	}
 }

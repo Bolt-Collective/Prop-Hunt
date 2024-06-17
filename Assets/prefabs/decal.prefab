@@ -1,0 +1,31 @@
+{
+  "RootObject": {
+    "__guid": "de6934ab-7073-4355-bce9-13fb5bf6b532",
+    "Flags": 0,
+    "Name": "decal",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "Sandbox.DecalRenderer",
+        "__guid": "c5873076-febc-45f3-af13-65e55940531b",
+        "CutoffAngle": 60,
+        "CutoffAngleSoftness": 5,
+        "Material": "materials/decals/bullethole.vmat",
+        "Mod2XBlending": false,
+        "Size": "32,32,256",
+        "TintColor": "1,1,1,1",
+        "TriPlanar": false
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
