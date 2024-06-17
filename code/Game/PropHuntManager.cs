@@ -12,7 +12,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Sync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
 	[Sync] public int RoundLength { get; set; } = 120;
 
-	public static int PreRoundTime { get; set; } = 30;
+	public static int PreRoundTime { get; set; } = 5;
 
 	public static int RoundTime { get; set; } = 6 * 60;
 
@@ -42,7 +42,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 	public static IEnumerable<Player> GetPlayers( Team team ) => AllPlayers.Where( x => x.TeamComponent.Team == team );
 
-	public static int MaxPlayersToStart { get; set; } = 2;
+	[Property] public int MaxPlayersToStart { get; set; } = 2;
 
 	/// <summary>
 	/// Next map chosen by RTV
@@ -53,19 +53,28 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	protected override void OnUpdate()
 	{
-		foreach ( var prop in Scene.GetAllComponents<Prop>() )
+		//Make sure non hunters are not blinded
+		var blur = Scene.GetAllComponents<Blur>().FirstOrDefault();
+		if ( (GetPlayers( Team.Props ).Contains( Player.Local ) || GetPlayers( Team.Unassigned ).Contains( Player.Local )) && blur is not null )
 		{
-			if ( prop.GameObject.NetworkMode != NetworkMode.Object )
-			{
-				prop.GameObject.NetworkSpawn( null );
-			}
+			blur.Size = 0;
 		}
-
-		foreach ( var gib in Scene.GetAllComponents<Gib>() )
+		if ( !IsProxy )
 		{
-			if ( gib.GameObject.NetworkMode != NetworkMode.Object )
+			foreach ( var prop in Scene.GetAllComponents<Prop>() )
 			{
-				gib.GameObject.NetworkSpawn( null );
+				if ( prop.GameObject.NetworkMode != NetworkMode.Object )
+				{
+					prop.GameObject.NetworkSpawn( null );
+				}
+			}
+
+			foreach ( var gib in Scene.GetAllComponents<Gib>() )
+			{
+				if ( gib.GameObject.NetworkMode != NetworkMode.Object )
+				{
+					gib.GameObject.NetworkSpawn( null );
+				}
 			}
 		}
 
@@ -152,6 +161,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		foreach ( var player in GetPlayers( Team.Hunters ) )
 		{
 			player.Inventory.SpawnStartingItems();
+			player.AbleToMove = false;
+			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<Blur>( out var blur ) )
+			{
+				blur.Size = 3;
+			}
 		}
 		if ( IsFirstRound )
 		{
@@ -160,12 +174,29 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			IsFirstRound = false;
 		}
 
+		if ( !IsProxy )
+		{
+			BroadcastPopup();
+		}
+	}
+
+	[Broadcast]
+	public void BroadcastPopup()
+	{
 		PopupSystem.DisplayPopup( "Hide or die", "The seekers will be unblinded in 30 seconds", 30f );
 	}
 
 	[Broadcast]
 	public void OnRoundStart()
 	{
+		foreach ( var player in GetPlayers( Team.Hunters ) )
+		{
+			player.AbleToMove = true;
+			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<Blur>( out var blur ) )
+			{
+				blur.Size = 0;
+			}
+		}
 		RoundState = GameState.Started;
 		RoundLength = RoundTime; // 360 seconds
 		TimeSinceRoundStateChanged = 0;
@@ -247,11 +278,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		if ( TimeSinceRoundStateChanged > RoundLength && GetPlayers( Team.Hunters ).Count( x => x.Health <= 0 ) <= 0 )
 		{
-			//ForceWin( Team.Props );
+			ForceWin( Team.Props );
 		}
 		else if ( GetPlayers( Team.Props ).Count( x => x.Health > 0 ) <= 0 )
 		{
-			//ForceWin( Team.Hunters );
+			ForceWin( Team.Hunters );
 		}
 
 	}

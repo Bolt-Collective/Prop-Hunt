@@ -12,7 +12,7 @@
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "5409cd74-560f-48f7-a033-a0dd8e6f91c3",
-          "MapName": "apetavern.pp_streets",
+          "MapName": "facepunch.construct",
           "UseMapFromLaunch": false
         }
       ]
@@ -96,6 +96,11 @@
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
+        },
+        {
+          "__type": "Sandbox.Blur",
+          "__guid": "97d533f0-0666-44f2-98a0-b1ab5bd7561b",
+          "Size": 0
         }
       ]
     },
@@ -104,7 +109,6 @@
       "Flags": 0,
       "Name": "TeamPanel",
       "Position": "-401.1281,103.5086,277.1339",
-      "Enabled": true,
       "NetworkMode": 1,
       "NetworkInterpolation": true,
       "Components": [
@@ -314,7 +318,8 @@
         {
           "__type": "TeamComponent",
           "__guid": "248a97ea-5d84-4338-b5fe-9e2776a9a355",
-          "Team": "Unassigned"
+          "Team": "Hunters",
+          "TeamName": "Hunters"
         },
         {
           "__type": "Inventory",
@@ -355,6 +360,7 @@
         {
           "__type": "HoldTypeManager",
           "__guid": "808adfaa-2499-4597-8958-d69e01ff212d",
+          "__enabled": false,
           "citizenAnimationHelper": {
             "_type": "component",
             "component_id": "2cc56ca5-b7e8-41cb-b3c5-3a5c2e466eb4",
@@ -946,7 +952,6 @@
                                                   "Flags": 0,
                                                   "Name": "Renderer",
                                                   "Position": "2.94209,0.4857687,-2.04898",
-                                                  "Enabled": true,
                                                   "NetworkMode": 2,
                                                   "NetworkInterpolation": true,
                                                   "Components": [
@@ -1712,7 +1717,6 @@
       "Flags": 0,
       "Name": "wooden_crate",
       "Position": "-185.4851,-105.3432,130.8416",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1995,8 +1999,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -2762,8 +2766,8 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Sandbox.CharacterController",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -2791,8 +2795,8 @@
                 "Id": 61,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -3409,7 +3413,7 @@
           },
           "Recoil": 0.1,
           "ReloadTime": 1,
-          "Spread": 0.1
+          "Spread": 0
         }
       ],
       "Children": [
@@ -3714,8 +3718,8 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Sandbox.CharacterController",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -3743,8 +3747,8 @@
                 "Id": 70,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -4296,7 +4300,7 @@
           },
           "Recoil": 0.1,
           "ReloadTime": 1,
-          "Spread": 0.1
+          "Spread": 0
         }
       ],
       "Children": [
@@ -4601,8 +4605,8 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Sandbox.CharacterController",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -4630,8 +4634,8 @@
                 "Id": 62,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -5183,7 +5187,7 @@
           },
           "Recoil": 0.1,
           "ReloadTime": 1,
-          "Spread": 0.1
+          "Spread": 0
         }
       ],
       "Children": [
@@ -5277,7 +5281,8 @@
       "Components": [
         {
           "__type": "PropHunt.PropHuntManager",
-          "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152"
+          "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+          "MaxPlayersToStart": 2
         }
       ]
     },
@@ -5361,8 +5366,8 @@
                 "Id": 11,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "TeamComponent",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -5525,8 +5530,8 @@
                 "Id": 23,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "TeamComponent",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -5632,7 +5637,6 @@
       "Flags": 0,
       "Name": "Props",
       "Position": "-132.1333,295.1838,146.3011",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -5674,8 +5678,8 @@
                 "Id": 31,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "TeamComponent",
+                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "_name": "TryGet"
                 },
@@ -5783,6 +5787,219 @@
       ]
     },
     {
+      "__guid": "ea47a5f6-04ac-4d99-8b09-33b29388cb46",
+      "Flags": 0,
+      "Name": "Restart Game",
+      "Position": "14.71959,295.1838,146.3011",
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "398d02eb-916f-435d-92cf-99c3b20bf814",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "cb7b3f0c-cf56-4573-80b4-4a340c1e17bd",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "OnTriggerEnter": {
+            "__version": 7,
+            "__guid": "a3d293aa-59ca-449c-b652-564af308202c",
+            "UserData": {
+              "Title": "On Trigger Enter",
+              "ReferencedComponentTypes": [
+                "PropHunt.PropHuntManager"
+              ]
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input",
+                "UserData": {
+                  "Position": "-384,-0"
+                }
+              },
+              {
+                "Id": 38,
+                "Type": "scene.ref",
+                "Properties": {
+                  "gameobject": {
+                    "_type": "gameobject",
+                    "go": "1ffeefdf-8655-452b-afaa-46f09e044a93"
+                  }
+                },
+                "UserData": {
+                  "Position": "-128,176"
+                }
+              },
+              {
+                "Id": 39,
+                "Type": "scene.get",
+                "Properties": {
+                  "T": "PropHunt.PropHuntManager"
+                },
+                "UserData": {
+                  "Position": "96,176"
+                }
+              },
+              {
+                "Id": 40,
+                "Type": "call",
+                "Properties": {
+                  "_type": "PropHunt.PropHuntManager",
+                  "_isStatic": false,
+                  "_name": "ForceWin"
+                },
+                "UserData": {
+                  "Position": "336,0"
+                }
+              },
+              {
+                "Id": 43,
+                "Type": "property",
+                "ParentId": 0,
+                "Properties": {
+                  "_type": "Sandbox.Component",
+                  "_name": "GameObject"
+                }
+              },
+              {
+                "Id": 44,
+                "Type": "property",
+                "ParentId": 43,
+                "Properties": {
+                  "_type": "Sandbox.GameObject",
+                  "_name": "Tags"
+                }
+              },
+              {
+                "Id": 45,
+                "Type": "call",
+                "Properties": {
+                  "_type": "Sandbox.GameTags",
+                  "_isStatic": false,
+                  "_name": "Has"
+                },
+                "UserData": {
+                  "Position": "-96,48"
+                }
+              },
+              {
+                "Id": 53,
+                "Type": "if",
+                "UserData": {
+                  "Position": "128,-0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 38,
+                "SrcName": "_result",
+                "DstId": 39,
+                "DstName": "_this"
+              },
+              {
+                "SrcId": 53,
+                "SrcName": "true",
+                "DstId": 40,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 39,
+                "SrcName": "_result",
+                "DstId": 40,
+                "DstName": "_target"
+              },
+              {
+                "Value": "Hunters",
+                "DstId": 40,
+                "DstName": "team"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "obj",
+                "DstId": 43,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 43,
+                "SrcName": "_result",
+                "DstId": 44,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 44,
+                "SrcName": "_result",
+                "DstId": 45,
+                "DstName": "_target"
+              },
+              {
+                "Value": true,
+                "DstId": 45,
+                "DstName": "includeAncestors"
+              },
+              {
+                "Value": "player",
+                "DstId": 45,
+                "DstName": "tag"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 53,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 45,
+                "SrcName": "_result",
+                "DstId": 53,
+                "DstName": "condition"
+              }
+            ],
+            "Defaults": {
+              "$38.gameobject": {
+                "_type": "gameobject",
+                "go": "1ffeefdf-8655-452b-afaa-46f09e044a93"
+              }
+            }
+          },
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "de9b607e-3ea8-4412-a6bb-903b32320aab",
+          "Flags": 0,
+          "Name": "Text",
+          "Position": "0,0,70.3602",
+          "Rotation": "0,0,0.7071067,0.7071068",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.TextRenderer",
+              "__guid": "69d502bf-bc21-434f-ac9e-21340a232e76",
+              "Color": "0.45103,0.47149,0.5297,1",
+              "FontFamily": "Poppins",
+              "FontSize": 64,
+              "FontWeight": 800,
+              "Scale": 0.3,
+              "Text": "Restart Game",
+              "TextAlignment": "Center"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__guid": "a16fd360-a969-49d1-9805-67ee79371d7a",
       "Flags": 0,
       "Name": "Scene Map",
@@ -5813,7 +6030,7 @@
           "__guid": "07b30f25-424e-4b8d-af2c-f1fd7469e4d9",
           "Flags": 0,
           "Name": "Envmap Probe",
-          "Position": "-113.7482,387.9315,-75.10489",
+          "Position": "-174.4421,387.9315,-75.10489",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -5843,7 +6060,7 @@
           "__guid": "da551c61-6a83-40da-9758-decab8107ff8",
           "Flags": 0,
           "Name": "Spawn",
-          "Position": "18.25646,158.996,-110.2976",
+          "Position": "18.25646,158.996,-135.1382",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -5896,72 +6113,72 @@
               "Mesh": {
                 "Topology": "H4sIAAAAAAAACl2Qiw6CUAxDh1flgg/wAfr/X2pP0iWLJA25W9t16xHxFc4C30E4\u002Bt2FWbgKd2Ew4NTvIZxcb9ZH4b5db\u002Bb9z/oUzVh8m7lPc9FOzjRYQ8ZXyXxxXvrw4e72wvtWdoEPdzMXj8We9OHDXcvO7EqdN396eKaeLHjkLciePeYxi4z0mMFtMisablFvRXZ2Tj158KQOF78f9WSROMQBAAA=",
                 "Positions": [
-                  "-330.8453,-346.5555,63.99997",
-                  "330.5435,-346.5555,63.99997",
-                  "330.6944,346.4276,64",
-                  "-330.6944,346.4276,64",
-                  "-330.6944,346.4276,-64",
-                  "330.6944,346.4276,-64",
-                  "330.5435,-346.5555,-64.00003",
-                  "-330.8453,-346.5555,-64.00003"
+                  "-333.873,-385.9344,63.99997",
+                  "306.1271,-385.9315,63.99997",
+                  "306.2791,382.0685,64",
+                  "-333.7209,382.0656,64",
+                  "-333.7209,382.0656,-63.99997",
+                  "306.2791,382.0685,-63.99997",
+                  "306.1271,-385.9315,-64",
+                  "-333.873,-385.9344,-64"
                 ],
                 "TextureCoord": [
-                  "1.582371,1.707465",
-                  "-3.584729,-0.4999998",
-                  "1.58355,-3.706465",
-                  "-0.7074652,-0.4999998",
-                  "-3.58355,-3.706465",
-                  "-0.58355,-0.5",
-                  "-3.584729,1.707465",
-                  "-3.706465,-0.5",
-                  "1.58355,-3.706465",
-                  "4.58355,0.5",
-                  "1.582371,1.707465",
-                  "4.706465,0.5",
-                  "-3.584729,1.707465",
-                  "1.582371,0.5000002",
-                  "-3.58355,-3.706465",
-                  "1.707465,0.5000002",
-                  "1.707465,-0.4999998",
-                  "-3.584729,0.5000002",
-                  "-3.706465,0.5",
-                  "4.58355,-0.5",
-                  "-0.7074652,0.5000002",
-                  "1.582371,-0.4999998",
-                  "4.706465,-0.5",
-                  "-0.58355,0.5"
+                  "0.9996041,1.999981",
+                  "-4.000397,-0.9999996",
+                  "1.000792,-4.000019",
+                  "-1.999981,-0.9999996",
+                  "-3.999208,-3.999996",
+                  "-1.000792,-0.9999999",
+                  "-4.000397,2.000004",
+                  "-3.999996,-0.9999999",
+                  "1.000792,-4.000019",
+                  "3.999208,-0.0000001192093",
+                  "0.9996041,1.999981",
+                  "4.000019,-0.0000001192093",
+                  "-4.000397,2.000004",
+                  "0.9996041,0.0000001192093",
+                  "-3.999208,-3.999996",
+                  "2.000004,0.0000001192093",
+                  "2.000004,-0.9999996",
+                  "-4.000397,0.0000001192093",
+                  "-3.999996,-0.0000001192093",
+                  "3.999208,-0.9999999",
+                  "-1.999981,0.0000001192093",
+                  "0.9996041,-0.9999996",
+                  "4.000019,-0.9999999",
+                  "-1.000792,-0.0000001192093"
                 ],
                 "TextureUAxis": [
-                  "1,-0.00000004404538,-0.00000000000000193967",
-                  "1,-0.00000004404538,-0.00000000000000193967",
-                  "-0.0002178118,-1,0",
-                  "0.0002177678,1,0",
-                  "-1,0,0",
-                  "1,-0,0"
+                  "1,0.00000005955807,-0.0000000000001776375",
+                  "1,0.00000005955807,-0.0000000000001776375",
+                  "-0.0001980464,-1,0",
+                  "0.0001979272,1,0",
+                  "-1,-0.000004577636,0",
+                  "1,0.000004529953,0"
                 ],
                 "TextureVAxis": [
-                  "0,-1,-0.00000004403798",
-                  "0,-1,-0.00000004403798",
-                  "0.000000000002397998,0.00000001100949,-1",
-                  "0.000000000001198757,0.000000005504747,-1",
+                  "-0.00000007152557,-1,-0.00000003973643",
+                  "-0.00000007152557,-1,-0.00000003973643",
+                  "-0.0000000000000000009381363,-0.000000000000004736953,-1",
+                  "-0.00000000000196623,-0.00000000993411,-1",
                   "0,0,-1",
                   "-0,0,-1"
                 ],
                 "TextureScale": [
                   "0.25,0.25",
                   "0.25,0.25",
-                  "0.2500001,0.25",
-                  "0.2500001,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
                   "0.25,0.25",
                   "0.25,0.25"
                 ],
                 "TextureOffset": [
-                  "200.7111,7.735779",
-                  "200.7111,7.735718",
-                  "7.292114,255.9999",
-                  "504.1316,255.9999",
-                  "311.289,255.9999",
-                  "200.711,255.9999"
+                  "511.9999,0",
+                  "511.9999,0",
+                  "511.5946,0.000000000007275958",
+                  "511.8987,0.00006103516",
+                  "0.009338379,0",
+                  "0.004455566,0.00003051758"
                 ],
                 "MaterialIndex": [
                   0,
@@ -6088,6 +6305,27 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "ed1dff93-1b3e-464d-8105-d12526f03715",
+      "Flags": 0,
+      "Name": "wooden_crate",
+      "Position": "-287.9993,-2560,-0.0002130744",
+      "Rotation": "0,-0.00000004299034,0.9999999,-0.000000128971",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "6e74d346-5ac6-44df-90fc-70ad93e193dd",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -6113,7 +6351,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-17T11:34:12.6252847-04:00",
+  "LastSaved": "2024-06-17T15:24:53.1181592-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.beer_keg_a1",

@@ -61,9 +61,17 @@ public sealed class Item : Component
 	[Impure]
 	public void Trace( float TraceDistance, int damage, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject )
 	{
-		var tr = Scene.Trace.Ray( Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * TraceDistance )
+		var tr = Scene.Trace.Ray( Player.Transform.Position + Vector3.Up * (Player.IsCrouching ? 32 : 64), Player.Transform.Position + Player.EyeAngles.Forward * TraceDistance )
 		.WithoutTags( Steam.SteamId.ToString() )
 		.Run();
+		if ( Player is null || !Player.AbleToMove )
+		{
+			hitPos = tr.EndPosition;
+			traceNormal = tr.Normal;
+			hit = tr.Hit;
+			TraceObject = tr.GameObject;
+			return;
+		}
 		Ammo--;
 		ShotsFired++;
 		hitPos = tr.EndPosition;

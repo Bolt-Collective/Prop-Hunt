@@ -25,7 +25,7 @@
 				+ <strong>@(Player.Local.Health)</strong>
 			</div>
 		}
-		@if (Inventory is not null && TeamComponent.Team == Team.Hunters)
+		@if (Inventory is not null && PropHuntManager.GetPlayers(Team.Hunters).Contains(Player.Local))
 		{
 			<div class="inventory">
 				<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">

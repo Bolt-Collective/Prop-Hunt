@@ -228,7 +228,7 @@ public class Player : Component
 	}
 	public void Animations( CharacterController cc )
 	{
-		if ( AnimationHelper is not null )
+		if ( AnimationHelper is not null && AbleToMove )
 		{
 			AnimationHelper.WithVelocity( cc.Velocity );
 			AnimationHelper.WithWishVelocity( WishVelocity );
@@ -334,43 +334,50 @@ public class Player : Component
 	{
 		if ( IsProxy )
 			return;
-
-		BuildWishVelocity();
-
-		var cc = characterController;
-
-		if ( cc.IsOnGround && Input.Down( "Jump" ) )
+		if ( AbleToMove )
 		{
-			float flGroundFactor = 1.0f;
-			float flMul = 268.3281572999747f * 1.2f;
+			BuildWishVelocity();
 
-			cc.Punch( Vector3.Up * flMul * flGroundFactor );
+			var cc = characterController;
 
-			OnJump();
-		}
+			if ( cc.IsOnGround && Input.Down( "Jump" ) )
+			{
+				float flGroundFactor = 1.0f;
+				float flMul = 268.3281572999747f * 1.2f;
 
-		if ( cc.IsOnGround )
-		{
-			cc.Velocity = cc.Velocity.WithZ( 0 );
-			cc.Accelerate( WishVelocity );
-			cc.ApplyFriction( 4.0f );
+				cc.Punch( Vector3.Up * flMul * flGroundFactor );
+
+				OnJump();
+			}
+
+			if ( cc.IsOnGround )
+			{
+				cc.Velocity = cc.Velocity.WithZ( 0 );
+				cc.Accelerate( WishVelocity );
+				cc.ApplyFriction( 4.0f );
+			}
+			else
+			{
+				cc.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
+				cc.Accelerate( WishVelocity.ClampLength( 50 ) );
+				cc.ApplyFriction( 0.1f );
+			}
+
+			cc.Move();
+
+			if ( !cc.IsOnGround )
+			{
+				cc.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
+			}
+			else
+			{
+				cc.Velocity = cc.Velocity.WithZ( 0 );
+			}
 		}
 		else
 		{
-			cc.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
-			cc.Accelerate( WishVelocity.ClampLength( 50 ) );
-			cc.ApplyFriction( 0.1f );
-		}
-
-		cc.Move();
-
-		if ( !cc.IsOnGround )
-		{
-			cc.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta * 0.5f;
-		}
-		else
-		{
-			cc.Velocity = cc.Velocity.WithZ( 0 );
+			WishVelocity = Vector3.Zero;
+			characterController.Velocity = Vector3.Zero;
 		}
 	}
 	public bool CanUncrouch()
@@ -414,14 +421,23 @@ public class Player : Component
 		if ( Health <= 0 )
 		{
 			Health = 0;
-			Body.Enabled = false;
+			DisableBody();
+			if ( Components.TryGet<CapsuleCollider>( out var collider, FindMode.EverythingInSelfAndParent & FindMode.EverythingInSelfAndAncestors ) )
+			{
+				collider.Enabled = false;
+			}
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
 	}
 	[Broadcast]
+	public void DisableBody()
+	{
+		Body.Enabled = false;
+
+	}
+	[Broadcast]
 	public void ResetStats()
 	{
-		if ( IsProxy ) return;
 		Inventory.Clear();
 		AmmoContainer.ResetAmmo();
 		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
@@ -433,5 +449,10 @@ public class Player : Component
 		CameraDistance = 0;
 		IsGrabbing = false;
 		Body.Enabled = true;
+		AbleToMove = true;
+		if ( PropShiftingMechanic.IsProp )
+		{
+			PropShiftingMechanic.ExitProp();
+		}
 	}
 }

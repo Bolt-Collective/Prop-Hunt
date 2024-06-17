@@ -64,8 +64,11 @@ public sealed class ViewModel : Component
 		}
 		Main.Parent = Player.Eye;
 		LocalPos = LocalPos.LerpTo( LocalPos, Time.Delta * 10f );
-		ApplyInertia();
-		GroundSpeed();
+		if ( Player.AbleToMove )
+		{
+			ApplyInertia();
+			GroundSpeed();
+		}
 	}
 
 	protected override void OnEnabled()

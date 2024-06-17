@@ -1,12 +1,33 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using PropHunt;
 @inherits PanelComponent
 
 <root>
-	@foreach (var player in Scene.GetAllComponents<Player>())
-	{
-		<div class="title">@player.GameObject.Network.OwnerConnection.DisplayName: @player.TeamComponent.TeamName</div>
-	}
+	<div class="props">
+		<div class="header">Props</div>
+		<div class="container">
+			@foreach (var player in PropHuntManager.GetPlayers(Team.Props))
+			{
+				<div class="prop">
+					<img class="avatar" src="@GetAvatar(player.Network.OwnerConnection.SteamId)" />
+					<div class="name">@player.Network.OwnerConnection.DisplayName</div>
+				</div>
+			}
+		</div>
+	</div>
+	<div class="hunters">
+		<div class="header">Hunters</div>
+		<div class="container">
+			@foreach (var player in PropHuntManager.GetPlayers(Team.Hunters))
+			{
+				<div class="hunter">
+					<img class="avatar" src="@GetAvatar(player.Network.OwnerConnection.SteamId)" />
+					<div class="name">@player.Network.OwnerConnection.DisplayName</div>
+				</div>
+			}
+		</div>
+	</div>
 </root>
 
 @code
@@ -14,9 +35,9 @@
 
 	public TeamComponent TeamComponent { get; set; }
 
-	protected override void OnUpdate()
+	public string GetAvatar(ulong steamId)
 	{
-		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault(x => !x.IsProxy);
+		return $"avatar:{steamId}";
 	}
 
 	/// <summary>

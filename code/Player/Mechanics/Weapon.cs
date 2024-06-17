@@ -81,9 +81,9 @@ public sealed class Weapon : Component
 	}
 	public void Fire()
 	{
-		if ( Player is null ) return;
-		var ray = new Ray( Player.Transform.Position + Vector3.Up * 64, Player.Transform.Position + Player.EyeAngles.Forward * FireLength );
-		ray.Forward += Vector3.Random * Spread;
+		if ( Player is null || !Player.AbleToMove ) return;
+		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
+		//ray.Forward += Vector3.Random * Spread;
 
 		Player.EyeAngles += new Angles( -Recoil, GetRandomFloat(), 0 );
 
@@ -113,10 +113,10 @@ public sealed class Weapon : Component
 			var damage = new DamageInfo( Damage, GameObject, GameObject, tr.Hitbox );
 			damage.Position = tr.HitPosition;
 			damage.Shape = tr.Shape;
-			var decalClone = Decal.Clone();
+			/*var decalClone = Decal.Clone();
 			decalClone.Transform.Position = tr.HitPosition + tr.Normal * 5;
 			decalClone.Transform.Rotation = Rotation.LookAt( -tr.Normal );
-			decalClone.NetworkSpawn();
+			decalClone.NetworkSpawn();*/
 			foreach ( var damageAble in tr.GameObject.Components.GetAll<IDamageable>() )
 			{
 				damageAble.OnDamage( damage );

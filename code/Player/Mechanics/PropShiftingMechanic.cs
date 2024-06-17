@@ -1,5 +1,7 @@
 ﻿
 
+using Sandbox.Utility;
+
 public class PropShiftingMechanic : Component
 {
 	public TeamComponent Team { get; set; }
@@ -59,7 +61,7 @@ public class PropShiftingMechanic : Component
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
 		var tr = Scene.Trace
-			.WithoutTags( "player" )
+			.WithoutTags( Steam.SteamId.ToString() )
 			.Sphere( 16, eyePos, eyePos + lookDir.Forward * 150 )
 			.Run();
 

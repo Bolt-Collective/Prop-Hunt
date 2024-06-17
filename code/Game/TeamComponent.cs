@@ -48,6 +48,7 @@ public class TeamComponent : Component
 	{
 		if ( IsProxy ) return;
 		this.Team = team;
+		Network.Refresh();
 	}
 }
 
