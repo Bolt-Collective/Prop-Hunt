@@ -14,7 +14,7 @@ public class PropShiftingMechanic : Component
 	}
 	protected override void OnUpdate()
 	{
-		if ( IsProxy || Team.Team == global::Team.Hunters || Team.Team == global::Team.Unassigned ) return;
+		if ( IsProxy || Team.Team == global::Team.Hunters || Team.Team == global::Team.Unassigned || !Player.Local.AbleToMove ) return;
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
