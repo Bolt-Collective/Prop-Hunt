@@ -25,6 +25,5 @@ public sealed class HoldTypeManager : Component
 		citizenAnimationHelper.HoldType = hold;
 		HoldBoneRenderer.Model = model;
 		HoldBoneRenderer.Transform.LocalPosition = Offset;
-		HoldBoneRenderer.Network.Refresh();
 	}
 }

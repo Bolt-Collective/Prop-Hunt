@@ -43,7 +43,7 @@ public class Player : Component
 	[Sync] public float Health { get; set; }
 	[Sync] public bool FreeLooking { get; set; }
 	//Going to be used for spectating for unassigned players
-	[Sync] Transform CameraPosWorld { get; set; }
+	[Sync] public Transform CameraPosWorld { get; set; }
 	[Property] public AmmoContainer AmmoContainer { get; set; }
 
 	protected override void OnAwake()
@@ -171,6 +171,7 @@ public class Player : Component
 	{
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
 		var bodyRenderer = Body.Components.Get<SkinnedModelRenderer>();
+		if ( bodyRenderer is null ) return;
 		camera.FieldOfView = Preferences.FieldOfView;
 		var lookDirection = EyeAngles.ToRotation();
 		var center = PropShiftingMechanic.IsProp ? bodyRenderer.Bounds.Center : Transform.Position + Vector3.Up * 64;
@@ -293,7 +294,7 @@ public class Player : Component
 		if ( AnimationHelper is null )
 			return;
 
-		var renderType = (!IsProxy && CameraDistance == 0) ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+		var renderType = !IsProxy && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
 		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
 		{
@@ -404,8 +405,14 @@ public class Player : Component
 		if ( Health <= 0 )
 		{
 			Health = 0;
+			DisableBody();
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
+	}
+	[Broadcast]
+	public void DisableBody()
+	{
+		Body.Enabled = false;
 	}
 
 	public void ResetStats()

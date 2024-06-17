@@ -218,7 +218,9 @@
             "__guid": "224886dd-f2ff-41f5-87cf-b75f8a79f10f",
             "UserData": {
               "Title": "On Death",
-              "ReferencedComponentTypes": []
+              "ReferencedComponentTypes": [
+                "SpectateSystem"
+              ]
             },
             "Variables": [],
             "Nodes": [
@@ -227,24 +229,51 @@
                 "Type": "input"
               },
               {
-                "Id": 1,
-                "Type": "log.info",
+                "Id": 3,
+                "Type": "scene.get",
+                "Properties": {
+                  "T": "SpectateSystem"
+                },
                 "UserData": {
-                  "Position": "240,-0"
+                  "Position": "0,144"
+                }
+              },
+              {
+                "Id": 4,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_type": "SpectateSystem",
+                  "_name": "SetIsSpecating"
+                },
+                "UserData": {
+                  "Position": "256,0"
                 }
               }
             ],
             "Links": [
               {
                 "SrcId": 0,
+                "SrcName": "_target",
+                "DstId": 3,
+                "DstName": "_this"
+              },
+              {
+                "SrcId": 0,
                 "SrcName": "_signal",
-                "DstId": 1,
+                "DstId": 4,
                 "DstName": "_signal"
               },
               {
-                "Value": "You died!",
-                "DstId": 1,
-                "DstName": "format"
+                "SrcId": 3,
+                "SrcName": "_result",
+                "DstId": 4,
+                "DstName": "_target"
+              },
+              {
+                "Value": true,
+                "DstId": 4,
+                "DstName": "value"
               }
             ]
           }
@@ -329,6 +358,11 @@
             "go": "30ab2711-c06f-4a4e-a3d2-d87083751795",
             "component_type": "SkinnedModelRenderer"
           }
+        },
+        {
+          "__type": "SpectateSystem",
+          "__guid": "9ef808e6-c3a1-4704-a473-cf095e5d7097",
+          "IsSpectating": false
         }
       ],
       "Children": [
@@ -1952,9 +1986,9 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
+                  "T": "HoldTypeManager",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -2715,9 +2749,9 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
+                  "T": "Sandbox.CharacterController",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -2744,9 +2778,9 @@
                 "Id": 61,
                 "Type": "call",
                 "Properties": {
+                  "T": "HoldTypeManager",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -3663,9 +3697,9 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
+                  "T": "Sandbox.CharacterController",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -3692,9 +3726,9 @@
                 "Id": 70,
                 "Type": "call",
                 "Properties": {
+                  "T": "HoldTypeManager",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -4546,9 +4580,9 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
+                  "T": "Sandbox.CharacterController",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -4575,9 +4609,9 @@
                 "Id": 62,
                 "Type": "call",
                 "Properties": {
+                  "T": "HoldTypeManager",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -5300,9 +5334,9 @@
                 "Id": 11,
                 "Type": "call",
                 "Properties": {
+                  "T": "TeamComponent",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "TeamComponent",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -5464,9 +5498,9 @@
                 "Id": 23,
                 "Type": "call",
                 "Properties": {
+                  "T": "TeamComponent",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "TeamComponent",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -5613,9 +5647,9 @@
                 "Id": 31,
                 "Type": "call",
                 "Properties": {
+                  "T": "TeamComponent",
                   "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
-                  "T": "TeamComponent",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -5871,36 +5905,36 @@
                   "-0.58355,0.5"
                 ],
                 "TextureUAxis": [
-                  "1,0,0",
-                  "1,0,-0",
-                  "0,-1,0",
-                  "0,1,0",
+                  "1,-0.00000004404538,-0.00000000000000193967",
+                  "1,-0.00000004404538,-0.00000000000000193967",
+                  "-0.0002178118,-1,0",
+                  "0.0002177678,1,0",
                   "-1,0,0",
                   "1,-0,0"
                 ],
                 "TextureVAxis": [
-                  "0,-1,0",
-                  "0,-1,0",
-                  "0,0,-1",
-                  "-0,0,-1",
+                  "0,-1,-0.00000004403798",
+                  "0,-1,-0.00000004403798",
+                  "0.000000000002397998,0.00000001100949,-1",
+                  "0.000000000001198757,0.000000005504747,-1",
                   "0,0,-1",
                   "-0,0,-1"
                 ],
                 "TextureScale": [
                   "0.25,0.25",
                   "0.25,0.25",
-                  "0.25,0.25",
-                  "0.25,0.25",
+                  "0.2500001,0.25",
+                  "0.2500001,0.25",
                   "0.25,0.25",
                   "0.25,0.25"
                 ],
                 "TextureOffset": [
-                  "200.7112,7.735596",
-                  "200.7112,7.735596",
-                  "7.735596,256",
-                  "504.2644,256",
-                  "311.2888,256",
-                  "200.7112,256"
+                  "200.7111,7.735779",
+                  "200.7111,7.735718",
+                  "7.292114,255.9999",
+                  "504.1316,255.9999",
+                  "311.289,255.9999",
+                  "200.711,255.9999"
                 ],
                 "MaterialIndex": [
                   0,
@@ -5942,7 +5976,7 @@
                 ]
               },
               "SmoothingAngle": 40,
-              "Static": false
+              "Static": true
             }
           ]
         },
@@ -5965,66 +5999,66 @@
               "Tint": "1,1,1,1"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "__guid": "f38b280b-8a5e-4d92-aeb3-a745a9bc3d2f",
+      "Flags": 0,
+      "Name": "toolbox_b",
+      "Position": "-209.4363,-150.0029,128",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
         {
-          "__guid": "f38b280b-8a5e-4d92-aeb3-a745a9bc3d2f",
-          "Flags": 0,
-          "Name": "toolbox_b",
-          "Position": "-145.2843,56.55743,-136.3589",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Prop",
-              "__guid": "53c898fb-b32f-48ed-a6d5-124ce163b5ba",
-              "BodyGroups": 18446744073709551615,
-              "Health": 0,
-              "IsStatic": false,
-              "Model": "models/props/toolbox/toolbox_b.vmdl",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        },
+          "__type": "Sandbox.Prop",
+          "__guid": "53c898fb-b32f-48ed-a6d5-124ce163b5ba",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/toolbox/toolbox_b.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "5d013187-ff7b-433c-b037-62a4927872b2",
+      "Flags": 0,
+      "Name": "cola_can",
+      "Position": "-171.4202,-185.7812,128.0343",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
         {
-          "__guid": "5d013187-ff7b-433c-b037-62a4927872b2",
-          "Flags": 0,
-          "Name": "cola_can",
-          "Position": "-107.2682,20.77914,-136.3246",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Prop",
-              "__guid": "6153dbcc-4872-4f4d-a825-2e37d9bb2cda",
-              "BodyGroups": 18446744073709551615,
-              "Health": 10,
-              "IsStatic": false,
-              "Model": "models/sbox_props/cola_can/cola_can.vmdl",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        },
+          "__type": "Sandbox.Prop",
+          "__guid": "6153dbcc-4872-4f4d-a825-2e37d9bb2cda",
+          "BodyGroups": 18446744073709551615,
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/sbox_props/cola_can/cola_can.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "7ab158f0-8816-4254-9a5c-6c848c2b3c77",
+      "Flags": 0,
+      "Name": "binbag_a1",
+      "Position": "-166.4872,-147.7693,128.0577",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
         {
-          "__guid": "7ab158f0-8816-4254-9a5c-6c848c2b3c77",
-          "Flags": 0,
-          "Name": "binbag_a1",
-          "Position": "-102.3351,58.79105,-136.3012",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Prop",
-              "__guid": "b74ea47c-6cbc-4cad-984f-7164ccfb4b27",
-              "BodyGroups": 18446744073709551615,
-              "Health": 0,
-              "IsStatic": false,
-              "Model": "models/sbox_props/binbags/binbag_a1.vmdl",
-              "Tint": "1,1,1,1"
-            }
-          ]
+          "__type": "Sandbox.Prop",
+          "__guid": "b74ea47c-6cbc-4cad-984f-7164ccfb4b27",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/binbags/binbag_a1.vmdl",
+          "Tint": "1,1,1,1"
         }
       ]
     }
@@ -6052,7 +6086,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-16T20:20:39.2910641-04:00",
+  "LastSaved": "2024-06-16T21:17:27.6198018-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.beer_keg_a1",
