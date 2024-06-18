@@ -33,14 +33,14 @@ public class TeamComponent : Component
 		var randomTeam = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
 		ChangeTeam( randomTeam );
 	}
-	int GetRandom( int min, int max )
-	{
-		return Random.Shared.Int( min, max );
-	}
 	protected override void OnUpdate()
 	{
 		if ( IsProxy ) return;
 		Log.Info( TeamName );
+	}
+	int GetRandom( int min, int max )
+	{
+		return Random.Shared.Int( min, max );
 	}
 	[Broadcast]
 	public void ChangeTeam( Team team )

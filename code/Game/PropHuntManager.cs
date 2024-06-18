@@ -30,17 +30,17 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// <summary>
 	/// Players assigned to a team, so not spectating.
 	/// </summary>
-	public static IEnumerable<Player> ActivePlayers => AllPlayers.Where( x => x.TeamComponent.Team != Team.Unassigned );
+	public static IEnumerable<Player> ActivePlayers => AllPlayers.Where( x => x.TeamComponent.TeamName != Team.Unassigned.ToString() );
 
 	/// <summary>
 	/// Players not assigned to a team, or spectating.
 	/// </summary>
-	public static IEnumerable<Player> InactivePlayers => AllPlayers.Where( x => x.TeamComponent.Team == Team.Unassigned );
+	public static IEnumerable<Player> InactivePlayers => AllPlayers.Where( x => x.TeamComponent.TeamName == Team.Unassigned.ToString() );
 
 	/// <summary>
 	/// Players assigned to a particular team.
 	/// </summary>
-	public static IEnumerable<Player> GetPlayers( Team team ) => AllPlayers.Where( x => x.TeamComponent.Team == team );
+	public static IEnumerable<Player> GetPlayers( Team team ) => AllPlayers.Where( x => x.TeamComponent.TeamName == team.ToString() );
 
 	[Property, Sync] public int MaxPlayersToStart { get; set; } = 2;
 
@@ -59,7 +59,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	}
 	protected override void OnUpdate()
 	{
-		Log.Info( OnGoingRound );
 		if ( !IsProxy )
 		{
 			//MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayers.txt" ).ToInt();
@@ -92,7 +91,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				}
 			}
 		}
+		if ( !Networking.IsHost ) return;
+		GameStateManager();
 
+	}
+	[Broadcast]
+	void GameStateManager()
+	{
 		switch ( RoundState )
 		{
 			case GameState.None:
@@ -161,7 +166,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 					player.Health = 100;
 					player.AbleToMove = true;
 					player.SpectateSystem.IsSpectating = false;
-					player.Network.Refresh();
 				}
 				else
 				{
@@ -170,7 +174,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 					player.Health = 100;
 					player.AbleToMove = true;
 					player.SpectateSystem.IsSpectating = false;
-					player.Network.Refresh();
 				}
 			}
 		}
@@ -182,7 +185,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				player.AbleToMove = true;
 				player.Health = 100;
 				player.SpectateSystem.IsSpectating = false;
-				player.Network.Refresh();
 			}
 		}
 		foreach ( var player in GetPlayers( Team.Hunters ) )
@@ -191,6 +193,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.AbleToMove = false;
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
+				Log.Info( "Blinding hunters" );
 				blind.UseBlind = true;
 				Player.Local.AnimationHelper.Enabled = false;
 				Player.Local.AnimationHelper.Network.Refresh();
@@ -240,11 +243,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Ending;
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = 15;
-		foreach ( var player in AllPlayers )
-		{
-			player.ResetStats();
-			player.Network.Refresh();
-		}
 	}
 
 	[Sync] public int RoundNumber { get; set; } = 0;
