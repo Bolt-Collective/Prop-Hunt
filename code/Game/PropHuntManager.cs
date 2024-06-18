@@ -190,6 +190,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		foreach ( var player in GetPlayers( Team.Hunters ) )
 		{
 			player.Inventory.SpawnStartingItems();
+			player.Inventory.Network.Refresh();
 			player.AbleToMove = false;
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{

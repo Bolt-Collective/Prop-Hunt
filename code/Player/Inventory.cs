@@ -12,11 +12,11 @@ public sealed class Inventory : Component
 	[Property] public int ActiveIndex { get; set; }
 	[Property, Sync] public bool AbleToSwitch { get; set; } = true;
 	public Player Player { get; set; }
-	public TeamComponent Team { get; set; }
+	public TeamComponent TeamComponent { get; set; }
 	protected override void OnStart()
 	{
 		Player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
-		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
+		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
 		if ( IsProxy ) return;
 		Items = new List<GameObject>( new GameObject[Size] );
 
@@ -24,7 +24,7 @@ public sealed class Inventory : Component
 	public void SpawnStartingItems()
 	{
 		if ( IsProxy ) return;
-		if ( StartingItems.Count != 0 && Team.Team == global::Team.Hunters )
+		if ( StartingItems.Count != 0 && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			for ( int i = 0; i < StartingItems.Count; i++ )
 			{
@@ -34,7 +34,7 @@ public sealed class Inventory : Component
 	}
 	protected override void OnUpdate()
 	{
-		if ( !IsProxy && Team.Team == global::Team.Hunters )
+		if ( !IsProxy && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			ItemInputs();
 			for ( int i = 0; i < Items.Count; i++ )
