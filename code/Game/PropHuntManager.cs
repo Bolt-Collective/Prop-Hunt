@@ -155,6 +155,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
+		foreach ( var player in AllPlayers )
+		{
+			player.Components.Get<PropShiftingMechanic>().ExitProp();
+		}
 		if ( AllPlayers.Count() == 2 )
 		{
 			for ( int i = 0; i < 2; i++ )

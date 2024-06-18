@@ -17,7 +17,7 @@ public class PropShiftingMechanic : Component
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 
-		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() || !Player.Local.AbleToMove ) return;
+		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() ) return;
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
@@ -36,13 +36,11 @@ public class PropShiftingMechanic : Component
 		{
 			ShiftIntoProp();
 		}
-
-
 	}
 	[Broadcast]
 	public void ExitProp()
 	{
-		if ( IsProxy ) return;
+		if ( IsProxy || !Player.Local.AbleToMove ) return;
 		var pc = Components.Get<Player>();
 		var pcModel = pc.Body.Components.Get<SkinnedModelRenderer>();
 		var clothes = pc.Body.GetAllObjects( false ).Where( c => c.Tags.Has( "clothing" ) );
@@ -64,7 +62,7 @@ public class PropShiftingMechanic : Component
 	[Broadcast]
 	private async void ShiftIntoProp()
 	{
-		if ( IsProxy ) return;
+		if ( IsProxy || !Player.Local.AbleToMove ) return;
 		var pc = Components.Get<Player>();
 		var lookDir = pc.EyeAngles.ToRotation();
 		var eyePos = Transform.Position + Vector3.Up * 64;
@@ -91,7 +89,7 @@ public class PropShiftingMechanic : Component
 	}
 
 
-	private static async Task<bool> TryChangeModel( SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic )
+	public async Task<bool> TryChangeModel( SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic )
 	{
 		var pcModel = player.Body.Components.Get<SkinnedModelRenderer>();
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();

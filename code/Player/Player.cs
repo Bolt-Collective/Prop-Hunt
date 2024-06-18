@@ -482,10 +482,6 @@ public class Player : Component
 			PropShiftingMechanic.Collider.Enabled = true;
 			PropShiftingMechanic.Collider.Network.Refresh();
 		}
-		if ( PropShiftingMechanic.IsProp )
-		{
-			PropShiftingMechanic.ExitProp();
-		}
 		spectate.Network.Refresh();
 		Network.Refresh();
 	}

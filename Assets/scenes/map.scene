@@ -5518,7 +5518,7 @@
       "__guid": "5cdff94b-5b07-4c0e-91c5-3351f93d59e3",
       "Flags": 0,
       "Name": "oil_drum_explosive",
-      "Position": "-256,-128,132.0425",
+      "Position": "-272,-144,128",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -5932,7 +5932,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-18T16:59:48.2052071-04:00",
+  "LastSaved": "2024-06-18T17:23:18.0695815-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.beer_keg_a1",
