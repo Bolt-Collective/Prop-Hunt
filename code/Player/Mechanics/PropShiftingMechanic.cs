@@ -7,49 +7,36 @@ public class PropShiftingMechanic : Component
 	public TeamComponent Team { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
-	[Property] public CapsuleCollider CapsuleCollider { get; set; }
 	[Property] public BoxCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
-	public GameObject ActiveCollider { get; set; }
 	protected override void OnStart()
 	{
 		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
 	}
 	protected override void OnUpdate()
 	{
-		if ( IsProp )
-		{
-			CapsuleCollider.Enabled = false;
-			Collider.Enabled = true;
-			Collider.Scale = Player.Local.AnimationHelper.Target.Bounds.Size;
-			ActiveCollider = Collider.GameObject;
-		}
-		else
-		{
-			if ( CapsuleCollider is not null )
-			{
-				CapsuleCollider.Enabled = true;
-				ActiveCollider = CapsuleCollider.GameObject;
-			}
-			if ( Collider is not null )
-			{
-				Collider.Enabled = false;
-			}
-		}
+		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
+
 		if ( IsProxy || Team.Team == global::Team.Hunters || Team.Team == global::Team.Unassigned || !Player.Local.AbleToMove ) return;
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
 		}
 		var pc = Components.Get<Player>();
-
+		if ( IsProp )
+		{
+			var bodyRenderer = Player.Local.BodyRenderer;
+			var renderType = Player.Local.CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+			bodyRenderer.RenderType = renderType;
+		}
 		//Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
-
+		Collider.Scale = pc.GameObject.GetBounds().Size;
 
 		if ( Input.Pressed( "Use" ) )
 		{
 			ShiftIntoProp();
 		}
+
 
 	}
 	[Broadcast]

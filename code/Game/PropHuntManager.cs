@@ -42,28 +42,31 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 	public static IEnumerable<Player> GetPlayers( Team team ) => AllPlayers.Where( x => x.TeamComponent.Team == team );
 
-	[Property] public int MaxPlayersToStart { get; set; } = 2;
+	[Property, Sync] public int MaxPlayersToStart { get; set; } = 2;
 
 	/// <summary>
 	/// Next map chosen by RTV
 	/// </summary>
 	public string NextMap { get; set; } = null;
 	public static bool IsFirstRound { get; set; } = true;
+	public static PropHuntManager Instance { get; set; }
 	public List<(string, int)> Votes { get; set; } = new();
+	[Property] public bool OnGoingRound { get; set; } = false;
 
 	protected override void OnStart()
 	{
-		if ( !IsProxy )
-		{
-			if ( FileSystem.Data.ReadAllText( "MinPlayersToStart.txt" ).ToInt() >= 2 )
-			{
-				MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayersToStart.txt" ).ToInt();
-			}
-
-		}
+		Instance = this;
 	}
 	protected override void OnUpdate()
 	{
+		if ( !IsProxy )
+		{
+			//MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayers.txt" ).ToInt();
+		}
+		if ( Connection.All.Count > MaxPlayersToStart )
+		{
+			MaxPlayersToStart = Connection.All.Count;
+		}
 		//Make sure non hunters are not blinded
 		var blind = Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault();
 		if ( (GetPlayers( Team.Props ).Contains( Player.Local ) || GetPlayers( Team.Unassigned ).Contains( Player.Local )) && blind is not null )
@@ -134,6 +137,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	public void OnRoundPreparing()
 	{
+		OnGoingRound = true;
 		RoundState = GameState.Preparing;
 		RoundLength = PreRoundTime;
 		TimeSinceRoundStateChanged = 0;
@@ -153,12 +157,14 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				{
 					var player = AllPlayers.ElementAt( i );
 					player.TeamComponent.ChangeTeam( Team.Hunters );
+					player.Health = 100;
 					player.AbleToMove = true;
 				}
 				else
 				{
 					var player = AllPlayers.ElementAt( i );
 					player.TeamComponent.ChangeTeam( Team.Props );
+					player.Health = 100;
 					player.AbleToMove = true;
 				}
 			}
@@ -169,6 +175,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			{
 				player.TeamComponent.GetRandomTeam();
 				player.AbleToMove = true;
+				player.Health = 100;
 				player.Network.Refresh();
 			}
 		}
@@ -223,6 +230,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	public void OnRoundEnding()
 	{
+		OnGoingRound = false;
 		RoundState = GameState.Ending;
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = 15;
@@ -317,4 +325,5 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 		OnRoundEnding();
 	}
+
 }

@@ -1,3 +1,4 @@
+using PropHunt;
 using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Utility;
@@ -45,6 +46,7 @@ public class Player : Component
 	//Going to be used for spectating for unassigned players
 	[Sync] public Transform CameraPosWorld { get; set; }
 	[Property] public AmmoContainer AmmoContainer { get; set; }
+	[Property] public SkinnedModelRenderer BodyRenderer { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -241,7 +243,7 @@ public class Player : Component
 	}
 	public void Animations( CharacterController cc )
 	{
-		if ( AnimationHelper is not null && AbleToMove )
+		if ( AnimationHelper is not null && AbleToMove && !PropShiftingMechanic.IsProp )
 		{
 			AnimationHelper.WithVelocity( cc.Velocity );
 			AnimationHelper.WithWishVelocity( WishVelocity );
@@ -317,7 +319,7 @@ public class Player : Component
 	private void UpdateBodyVisibility()
 	{
 		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		if ( AnimationHelper is null )
+		if ( AnimationHelper is null || Body is null || PropShiftingMechanic.IsProp )
 			return;
 
 		var renderType = (!IsProxy || spectate.IsSpectating) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
@@ -342,15 +344,17 @@ public class Player : Component
 		}
 	}
 
-	protected override void OnPreRender()
-	{
-		UpdateBodyVisibility();
-	}
 
 	protected override void OnFixedUpdate()
 	{
+		UpdateBodyVisibility();
 		if ( IsProxy )
 			return;
+
+		if ( PropHuntManager.Instance.OnGoingRound && TeamComponent.TeamName == Team.Unassigned.ToString() && Health > 0 )
+		{
+			TakeDamage( 100 );
+		}
 		if ( AbleToMove )
 		{
 			BuildWishVelocity();
@@ -439,10 +443,6 @@ public class Player : Component
 		{
 			Health = 0;
 			DisableBody();
-			if ( Components.TryGet<CapsuleCollider>( out var collider, FindMode.EverythingInSelfAndParent & FindMode.EverythingInSelfAndAncestors ) )
-			{
-				collider.Enabled = false;
-			}
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
 	}
@@ -453,10 +453,6 @@ public class Player : Component
 		if ( PropShiftingMechanic.Collider is not null )
 		{
 			PropShiftingMechanic.Collider.Enabled = false;
-		}
-		if ( PropShiftingMechanic.CapsuleCollider is not null )
-		{
-			PropShiftingMechanic.CapsuleCollider.Enabled = false;
 		}
 	}
 	[Broadcast]
@@ -478,11 +474,6 @@ public class Player : Component
 		{
 			PropShiftingMechanic.Collider.Enabled = true;
 			PropShiftingMechanic.Collider.Network.Refresh();
-		}
-		if ( PropShiftingMechanic.CapsuleCollider is not null )
-		{
-			PropShiftingMechanic.CapsuleCollider.Enabled = true;
-			PropShiftingMechanic.CapsuleCollider.Network.Refresh();
 		}
 		if ( PropShiftingMechanic.IsProp )
 		{

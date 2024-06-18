@@ -1,6 +1,6 @@
 using Sandbox;
 
-public class CustomMapLoader : MapInstance, Component.ExecuteInEditor
+public class CustomMapLoader : MapInstance
 {
 	protected override void OnCreateObject( GameObject gameObject, MapLoader.ObjectEntry objectEntry )
 	{

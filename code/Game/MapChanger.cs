@@ -17,15 +17,15 @@ public sealed class MapChanger : Component
 	{
 		MapInstance.MapName = ident;
 	}
-
-	[Broadcast]
 	public void HandleMap()
 	{
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
+
 		foreach ( var player in Scene.GetAllComponents<Player>().ToArray() )
 		{
 			if ( player.IsProxy )
 				continue;
+
 			var randomSpawnPoint = Random.Shared.FromArray( spawnPoints );
 			if ( randomSpawnPoint is null ) continue;
 
@@ -37,6 +37,7 @@ public sealed class MapChanger : Component
 			}
 
 		}
+
 	}
 
 
