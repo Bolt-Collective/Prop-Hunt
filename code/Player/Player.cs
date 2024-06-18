@@ -143,6 +143,19 @@ public class Player : Component
 			FreeLooking = false;
 		}
 	}
+	//Used with the IUse interface
+	public void UseItems()
+	{
+		Log.Info( "Using items" );
+		var tr = Scene.Trace.Ray( Scene.Camera.ScreenNormalToRay( 0.5f ), 500 ).WithoutTags( Steam.SteamId.ToString() ).Run();
+		if ( tr.Hit )
+		{
+			if ( tr.GameObject.Components.TryGet<IUse>( out var use, FindMode.EverythingInSelfAndParent ) )
+			{
+				use.OnUse( this );
+			}
+		}
+	}
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
@@ -248,6 +261,10 @@ public class Player : Component
 			if ( AbleToMove )
 			{
 				UpdateCrouch();
+				if ( Input.Pressed( "use" ) )
+				{
+					UseItems();
+				}
 				FreeLook();
 				EyeInput();
 				ChangeDistance();
@@ -433,7 +450,14 @@ public class Player : Component
 	public void DisableBody()
 	{
 		Body.Enabled = false;
-
+		if ( PropShiftingMechanic.Collider is not null )
+		{
+			PropShiftingMechanic.Collider.Enabled = false;
+		}
+		if ( PropShiftingMechanic.CapsuleCollider is not null )
+		{
+			PropShiftingMechanic.CapsuleCollider.Enabled = false;
+		}
 	}
 	[Broadcast]
 	public void ResetStats()
@@ -450,9 +474,21 @@ public class Player : Component
 		IsGrabbing = false;
 		Body.Enabled = true;
 		AbleToMove = true;
+		if ( PropShiftingMechanic.Collider is not null )
+		{
+			PropShiftingMechanic.Collider.Enabled = true;
+			PropShiftingMechanic.Collider.Network.Refresh();
+		}
+		if ( PropShiftingMechanic.CapsuleCollider is not null )
+		{
+			PropShiftingMechanic.CapsuleCollider.Enabled = true;
+			PropShiftingMechanic.CapsuleCollider.Network.Refresh();
+		}
 		if ( PropShiftingMechanic.IsProp )
 		{
 			PropShiftingMechanic.ExitProp();
 		}
+		spectate.Network.Refresh();
+		Network.Refresh();
 	}
 }

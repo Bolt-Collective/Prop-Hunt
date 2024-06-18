@@ -13,8 +13,8 @@
         {
           "__type": "CustomMapLoader",
           "__guid": "4749d0b5-8674-4a6a-b115-911689590cfd",
-          "MapName": "facepunch.construct",
-          "UseMapFromLaunch": false
+          "MapName": "leeroystuff.gm_flatgrass_cl",
+          "UseMapFromLaunch": true
         }
       ],
       "Children": []
@@ -309,8 +309,8 @@
         {
           "__type": "TeamComponent",
           "__guid": "248a97ea-5d84-4338-b5fe-9e2776a9a355",
-          "Team": "Hunters",
-          "TeamName": "Hunters"
+          "Team": "Unassigned",
+          "TeamName": "Unassigned"
         },
         {
           "__type": "Inventory",
@@ -1834,8 +1834,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "1632,-0"
@@ -1846,8 +1846,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "1872,-0"
@@ -2200,8 +2200,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Item",
-                  "_name": "FireDelay"
+                  "_name": "FireDelay",
+                  "_type": "Item"
                 },
                 "UserData": {
                   "Position": "1024,0"
@@ -2601,8 +2601,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "880,-0"
@@ -3553,8 +3553,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "832,-288"
@@ -4440,8 +4440,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set"
+                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer"
                 },
                 "UserData": {
                   "Position": "752,-288"
@@ -6163,7 +6163,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-17T18:05:44.5740534-04:00",
+  "LastSaved": "2024-06-17T23:48:17.2604024-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.beer_keg_a1",

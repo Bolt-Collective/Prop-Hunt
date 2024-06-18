@@ -10,6 +10,7 @@ public class PropShiftingMechanic : Component
 	[Property] public CapsuleCollider CapsuleCollider { get; set; }
 	[Property] public BoxCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
+	public GameObject ActiveCollider { get; set; }
 	protected override void OnStart()
 	{
 		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
@@ -21,12 +22,14 @@ public class PropShiftingMechanic : Component
 			CapsuleCollider.Enabled = false;
 			Collider.Enabled = true;
 			Collider.Scale = Player.Local.AnimationHelper.Target.Bounds.Size;
+			ActiveCollider = Collider.GameObject;
 		}
 		else
 		{
 			if ( CapsuleCollider is not null )
 			{
 				CapsuleCollider.Enabled = true;
+				ActiveCollider = CapsuleCollider.GameObject;
 			}
 			if ( Collider is not null )
 			{

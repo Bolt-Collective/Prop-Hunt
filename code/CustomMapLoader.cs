@@ -1,6 +1,6 @@
 using Sandbox;
 
-public class CustomMapLoader : MapInstance
+public class CustomMapLoader : MapInstance, Component.ExecuteInEditor
 {
 	protected override void OnCreateObject( GameObject gameObject, MapLoader.ObjectEntry objectEntry )
 	{
@@ -8,6 +8,10 @@ public class CustomMapLoader : MapInstance
 		{
 			var model = gameObject.Components.Create<ModelRenderer>();
 			model.Model = objectEntry.GetResource<Model>( "model" );
+			var collider = gameObject.Components.Create<ModelCollider>();
+			collider.Model = model.Model;
+			gameObject.Components.Create<Door>();
+			gameObject.NetworkSpawn( null );
 		}
 	}
 }

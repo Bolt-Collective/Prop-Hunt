@@ -32,21 +32,32 @@
       ]
     },
     {
-      "__guid": "993e6e01-8b94-45b6-98f4-f6942ef291f8",
+      "__guid": "8e703b88-a1e3-43ff-b7e4-1a1378bdf014",
       "Flags": 0,
-      "Name": "Map",
+      "Name": "Screen",
+      "Position": "74.06796,-165.9383,93.36504",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "5cc50934-ecad-4d50-8275-1c9600b08ac3",
-          "MapName": "narch.the_dunge",
-          "UseMapFromLaunch": false
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "407386fc-20ff-4ab7-8bae-334f3afbd527",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "MenuUi",
+          "__guid": "0b25cb71-4e08-4e57-9d14-262ad3b68e2a",
+          "GameScene": "scenes/map.scene",
+          "MyStringValue": "Hello World!",
+          "Refreshing": false,
+          "ShowMapList": false,
+          "ShowServerList": false
         }
-      ],
-      "Children": []
+      ]
     }
   ],
   "SceneProperties": {
@@ -72,7 +83,7 @@
   },
   "Title": "menu",
   "Description": "",
-  "LastSaved": "2024-05-29T19:40:07.8035855\u002B02:00",
+  "LastSaved": "2024-06-17T23:10:03.6401905-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

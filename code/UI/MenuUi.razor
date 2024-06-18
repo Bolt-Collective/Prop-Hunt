@@ -1,0 +1,126 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Network;
+@using System.Threading.Tasks;
+@inherits PanelComponent
+
+<root style="flex-direction: column;">
+
+
+	<div class="controls">
+		<div class="game-title">
+			Prop Hunt
+		</div>
+		<div class="button" onclick="@CreateNewGame">Create Game</div>
+
+		<div class="button" onclick="@OpenServerList">Find a Game</div>
+		<div class="button" onclick=@(() => Game.Overlay.ShowBinds())>Settings</div>
+	</div>
+
+
+
+	@if (ShowServerList)
+	{
+		<div class="serverlist">
+			<div class="header">
+				Lobbies
+			</div>
+			@if (Refreshing)
+			{
+				<div class="server">
+					<div class="server-name">Refreshing...</div>
+				</div>
+			}
+			else if (Lobbies.Count == 0)
+			{
+				<div class="server">
+					<div class="server-name">No servers found, create one</div>
+				</div>
+			}
+			@foreach (var lobby in Lobbies)
+			{
+				<div class="server">
+					<div class="server-name">@lobby.Map</div>
+					<div class="server-players">@lobby.Members</div>
+					<div class="server-join" onclick="@(() => ConnectToLobby(lobby))">Join</div>
+				</div>
+			}
+		</div>
+	}
+	@if (ShowMapList)
+	{
+		<div class="maplist">
+			<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending"
+				OnSelected="@OnPackageSelected" Take=@(50) />
+		</div>
+		<div class="minplayers">
+			<input type="range" @bind="minPlayers" min="0" max="10" />
+			Minimum Players:
+			<SliderControl style="width: 200px;" Min=@(2) Max=@(64) Value:bind=@minPlayers />
+
+		</div>
+	}
+</root>
+
+@code
+{
+	[Property] int minPlayers = 2;
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+	[Property] public bool ShowServerList { get; set; }
+	public List<LobbyInformation> Lobbies { get; set; } = new();
+	[Property] public bool Refreshing { get; set; } = false;
+	[Property] public bool ShowMapList { get; set; } = false;
+	[Property] public SceneFile GameScene { get; set; }
+
+	protected override void OnStart()
+	{
+		_ = FetchLobbies();
+	}
+	void CreateNewGame()
+	{
+		ShowMapList = !ShowMapList;
+		ShowServerList = false;
+	}
+	void OnPackageSelected(Package package)
+	{
+		LaunchArguments.Map = package.FullIdent;
+		Game.ActiveScene.Load(GameScene);
+	}
+	void LeaveGame()
+	{
+		Game.Close();
+	}
+
+	void OpenServerList()
+	{
+		ShowServerList = !ShowServerList;
+		ShowMapList = false;
+	}
+	protected override void OnUpdate()
+	{
+		FileSystem.Data.WriteAllText("MinPlayers", minPlayers.ToString());
+	}
+	void ConnectToLobby(LobbyInformation lobby)
+	{
+		GameNetworkSystem.Connect(lobby.LobbyId);
+	}
+
+	public async Task FetchLobbies()
+	{
+		while (true)
+		{
+			Refreshing = true;
+			StateHasChanged();
+			Lobbies = await Networking.QueryLobbies();
+			Refreshing = false;
+			StateHasChanged();
+			await GameTask.DelayRealtimeSeconds(5);
+		}
+	}
+
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(Time.Now);
+}

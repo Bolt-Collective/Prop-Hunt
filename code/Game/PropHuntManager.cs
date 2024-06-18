@@ -51,6 +51,17 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static bool IsFirstRound { get; set; } = true;
 	public List<(string, int)> Votes { get; set; } = new();
 
+	protected override void OnStart()
+	{
+		if ( !IsProxy )
+		{
+			if ( FileSystem.Data.ReadAllText( "MinPlayersToStart.txt" ).ToInt() >= 2 )
+			{
+				MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayersToStart.txt" ).ToInt();
+			}
+
+		}
+	}
 	protected override void OnUpdate()
 	{
 		//Make sure non hunters are not blinded
@@ -85,7 +96,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				RoundState = GameState.WaitingForPlayers;
 				break;
 			case GameState.WaitingForPlayers:
-				RoundStateText = "Waiting For Players";
+				RoundStateText = $"{"Waiting For Players"} {AllPlayers.Count()} / {MaxPlayersToStart}";
 
 				if ( AllPlayers.Count() >= MaxPlayersToStart )
 					OnRoundPreparing();
@@ -134,7 +145,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
-		Log.Info( GetRandom( 0, 5 ) );
 		if ( AllPlayers.Count() == 2 )
 		{
 			for ( int i = 0; i < 2; i++ )
@@ -143,11 +153,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				{
 					var player = AllPlayers.ElementAt( i );
 					player.TeamComponent.ChangeTeam( Team.Hunters );
+					player.AbleToMove = true;
 				}
 				else
 				{
 					var player = AllPlayers.ElementAt( i );
 					player.TeamComponent.ChangeTeam( Team.Props );
+					player.AbleToMove = true;
 				}
 			}
 		}
@@ -156,6 +168,8 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			foreach ( var player in AllPlayers )
 			{
 				player.TeamComponent.GetRandomTeam();
+				player.AbleToMove = true;
+				player.Network.Refresh();
 			}
 		}
 		foreach ( var player in GetPlayers( Team.Hunters ) )
@@ -166,6 +180,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			{
 				blind.UseBlind = true;
 				Player.Local.AnimationHelper.Enabled = false;
+				Player.Local.AnimationHelper.Network.Refresh();
 			}
 		}
 		if ( IsFirstRound )
@@ -177,12 +192,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 		if ( !IsProxy )
 		{
-			BroadcastPopup("Hide or die", "The seekers will be unblinded in 30s", 30f);
+			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", 30f );
 		}
 	}
 
 	[Broadcast]
-	public void BroadcastPopup(string text, string title, float duration = 8f)
+	public void BroadcastPopup( string text, string title, float duration = 8f )
 	{
 		PopupSystem.DisplayPopup( text, title, duration );
 	}
@@ -197,6 +212,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			{
 				blind.UseBlind = false;
 				Player.Local.AnimationHelper.Enabled = true;
+				Player.Local.AnimationHelper.Network.Refresh();
 			}
 		}
 		RoundState = GameState.Started;
