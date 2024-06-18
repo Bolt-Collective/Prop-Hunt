@@ -67,6 +67,10 @@ public class Player : Component
 		if ( IsProxy ) return;
 		Tags.Add( Steam.SteamId.ToString() );
 		characterController.IgnoreLayers.Add( Steam.SteamId.ToString() );
+		if ( PropHuntManager.Instance.OnGoingRound == true )
+		{
+			TakeDamage( 100 );
+		}
 		Network.Refresh();
 	}
 	public void FreeLook()
