@@ -51,7 +51,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static bool IsFirstRound { get; set; } = true;
 	public static PropHuntManager Instance { get; set; }
 	public List<(string, int)> Votes { get; set; } = new();
-	[Property] public bool OnGoingRound { get; set; } = false;
+	[Property, Sync] public bool OnGoingRound { get; set; } = false;
 
 	protected override void OnStart()
 	{
@@ -59,6 +59,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	}
 	protected override void OnUpdate()
 	{
+		Log.Info( OnGoingRound );
 		if ( !IsProxy )
 		{
 			//MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayers.txt" ).ToInt();
@@ -159,6 +160,8 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 					player.TeamComponent.ChangeTeam( Team.Hunters );
 					player.Health = 100;
 					player.AbleToMove = true;
+					player.SpectateSystem.IsSpectating = false;
+					player.Network.Refresh();
 				}
 				else
 				{
@@ -166,6 +169,8 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 					player.TeamComponent.ChangeTeam( Team.Props );
 					player.Health = 100;
 					player.AbleToMove = true;
+					player.SpectateSystem.IsSpectating = false;
+					player.Network.Refresh();
 				}
 			}
 		}
@@ -176,6 +181,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				player.TeamComponent.GetRandomTeam();
 				player.AbleToMove = true;
 				player.Health = 100;
+				player.SpectateSystem.IsSpectating = false;
 				player.Network.Refresh();
 			}
 		}
@@ -325,5 +331,4 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 		OnRoundEnding();
 	}
-
 }

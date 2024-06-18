@@ -11,6 +11,7 @@ public class Player : Component
 	[Property] public PlayerDelegate OnJumpEvent { get; set; }
 	[Sync] public bool IsGrabbing { get; set; }
 	[Property] public CharacterController characterController { get; set; }
+	[Property] public SpectateSystem SpectateSystem { get; set; }
 	public static Player Local
 	{
 		get
@@ -258,8 +259,14 @@ public class Player : Component
 	}
 	protected override void OnUpdate()
 	{
+		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		if ( !IsProxy )
 		{
+			if ( Health > 0 && TeamComponent.TeamName != Team.Unassigned.ToString() )
+			{
+				spectateSystem.IsSpectating = false;
+				AbleToMove = true;
+			}
 			if ( AbleToMove )
 			{
 				UpdateCrouch();
@@ -351,10 +358,6 @@ public class Player : Component
 		if ( IsProxy )
 			return;
 
-		if ( PropHuntManager.Instance.OnGoingRound && TeamComponent.TeamName == Team.Unassigned.ToString() && Health > 0 )
-		{
-			TakeDamage( 100 );
-		}
 		if ( AbleToMove )
 		{
 			BuildWishVelocity();
