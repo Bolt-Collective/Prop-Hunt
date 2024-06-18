@@ -240,6 +240,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Ending;
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = 15;
+		foreach ( var player in AllPlayers )
+		{
+			player.ResetStats();
+			player.Network.Refresh();
+		}
 	}
 
 	[Sync] public int RoundNumber { get; set; } = 0;

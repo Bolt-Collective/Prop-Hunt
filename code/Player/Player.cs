@@ -469,7 +469,7 @@ public class Player : Component
 		AmmoContainer.ResetAmmo();
 		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		spectate.IsSpectating = false;
-		Health = MaxHealth;
+		Health = 100;
 		IsCrouching = false;
 		IsRunning = false;
 		FreeLooking = false;
