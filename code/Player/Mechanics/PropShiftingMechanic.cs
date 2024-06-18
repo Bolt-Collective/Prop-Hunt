@@ -4,20 +4,20 @@ using Sandbox.Utility;
 
 public class PropShiftingMechanic : Component
 {
-	public TeamComponent Team { get; set; }
+	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
 	[Property] public BoxCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	protected override void OnStart()
 	{
-		Team = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
+		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
 	}
 	protected override void OnUpdate()
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 
-		if ( IsProxy || Team.Team == global::Team.Hunters || Team.Team == global::Team.Unassigned || !Player.Local.AbleToMove ) return;
+		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() || !Player.Local.AbleToMove ) return;
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
@@ -78,10 +78,7 @@ public class PropShiftingMechanic : Component
 
 		if ( !tr.Hit ) return;
 
-		if ( tr.Body.GetGameObject() is not GameObject go )
-			return;
-
-		if ( go.Tags.Has( "solid" ) )
+		if ( tr.GameObject.Tags.Has( "solid" ) )
 			return;
 
 		IsProp = await TryChangeModel( tr, pc, this ).ContinueWith( x => x.Result );

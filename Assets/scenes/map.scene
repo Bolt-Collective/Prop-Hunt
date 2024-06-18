@@ -247,8 +247,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "SpectateSystem",
-                  "_name": "SetIsSpecating",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "SetIsSpecating"
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -1806,8 +1806,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Item",
-                  "_name": "GetIsProxy",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "GetIsProxy"
                 },
                 "UserData": {
                   "Position": "848,-0"
@@ -1825,8 +1825,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1376,-0"
@@ -1836,9 +1836,9 @@
                 "Id": 28,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1632,-0"
@@ -1848,9 +1848,9 @@
                 "Id": 39,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "1872,-0"
@@ -2005,10 +2005,10 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "-32,144",
@@ -2029,8 +2029,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "HoldTypeManager",
-                  "_name": "SetHoldTypeRenderer",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
                   "Position": "576,416"
@@ -2108,8 +2108,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "240,-0"
@@ -2191,8 +2191,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Item",
-                  "_name": "Trace",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Trace"
                 },
                 "UserData": {
                   "Position": "496,0"
@@ -2202,9 +2202,9 @@
                 "Id": 10,
                 "Type": "call",
                 "Properties": {
-                  "_name": "FireDelay",
+                  "_type": "Item",
                   "_isStatic": false,
-                  "_type": "Item"
+                  "_name": "FireDelay"
                 },
                 "UserData": {
                   "Position": "1024,0"
@@ -2222,8 +2222,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "800,0"
@@ -2234,8 +2234,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "112,-128"
@@ -2592,8 +2592,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,-0"
@@ -2603,9 +2603,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "880,-0"
@@ -2737,8 +2737,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -2749,8 +2749,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -2761,8 +2761,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "48,-112"
@@ -2772,10 +2772,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Sandbox.CharacterController",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "-512,-224"
@@ -2801,10 +2801,10 @@
                 "Id": 61,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "528,-144",
@@ -2825,8 +2825,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "HoldTypeManager",
-                  "_name": "SetHoldTypeRenderer",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
                   "Position": "1136,128"
@@ -3072,8 +3072,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -3117,8 +3117,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -3309,8 +3309,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -3372,8 +3372,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -3544,8 +3544,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "592,-288"
@@ -3555,9 +3555,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "832,-288"
@@ -3689,8 +3689,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -3701,8 +3701,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -3713,8 +3713,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "208,-128"
@@ -3724,10 +3724,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Sandbox.CharacterController",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "-352,-224"
@@ -3753,10 +3753,10 @@
                 "Id": 70,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "592,-192",
@@ -3777,8 +3777,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "HoldTypeManager",
-                  "_name": "SetHoldTypeRenderer",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
                   "Position": "1168,272"
@@ -4021,8 +4021,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -4066,8 +4066,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -4196,8 +4196,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -4259,8 +4259,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -4431,8 +4431,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-288"
@@ -4442,9 +4442,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Set",
+                  "_type": "Sandbox.SkinnedModelRenderer",
                   "_isStatic": false,
-                  "_type": "Sandbox.SkinnedModelRenderer"
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "752,-288"
@@ -4576,8 +4576,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,-32"
@@ -4588,8 +4588,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "512,144"
@@ -4600,8 +4600,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "240,-176"
@@ -4611,10 +4611,10 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Sandbox.CharacterController",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "-368,-272"
@@ -4640,10 +4640,10 @@
                 "Id": 62,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "HoldTypeManager",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "672,-96",
@@ -4664,8 +4664,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "HoldTypeManager",
-                  "_name": "SetHoldTypeRenderer",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
                   "Position": "1280,176"
@@ -4908,8 +4908,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,128"
@@ -4953,8 +4953,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "640,0"
@@ -5083,8 +5083,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "272,-0"
@@ -5146,8 +5146,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Sandbox.SkinnedModelRenderer",
-                  "_name": "Set",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Set"
                 },
                 "UserData": {
                   "Position": "224,0"
@@ -5859,7 +5859,6 @@
       "Flags": 0,
       "Name": "Death Trigger",
       "Position": "0,224,144.0001",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -5933,7 +5932,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-18T14:36:33.7675935-04:00",
+  "LastSaved": "2024-06-18T16:11:24.8203727-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.beer_keg_a1",

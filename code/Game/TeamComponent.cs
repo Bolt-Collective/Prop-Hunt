@@ -37,18 +37,16 @@ public class TeamComponent : Component
 	{
 		return Random.Shared.Int( min, max );
 	}
-
 	protected override void OnUpdate()
 	{
 		if ( IsProxy ) return;
-		TeamName = Team.ToString();
+		Log.Info( TeamName );
 	}
 	[Broadcast]
 	public void ChangeTeam( Team team )
 	{
 		if ( IsProxy ) return;
-		this.Team = team;
-		Network.Refresh();
+		TeamName = team.ToString();
 	}
 }
 
