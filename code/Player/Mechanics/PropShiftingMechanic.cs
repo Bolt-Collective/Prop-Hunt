@@ -58,7 +58,7 @@ public class PropShiftingMechanic : Component
 	}
 
 
-	private void ShiftIntoProp()
+	private async void ShiftIntoProp()
 	{
 		if ( IsProxy || !Player.Local.AbleToMove ) return;
 		var pc = Components.Get<Player>();
@@ -77,7 +77,7 @@ public class PropShiftingMechanic : Component
 		if ( tr.GameObject.Tags.Has( "solid" ) )
 			return;
 
-		IsProp = TryChangeModel( tr, pc, this );
+		IsProp = await TryChangeModel( tr, pc, this ).ContinueWith( x => x.Result );
 
 		Log.Info( "changed model" );
 		if ( !IsProxy )
@@ -88,7 +88,7 @@ public class PropShiftingMechanic : Component
 	}
 
 
-	public bool TryChangeModel( SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic )
+	public async Task<bool> TryChangeModel( SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic )
 	{
 		var pcModel = player.Body.Components.Get<SkinnedModelRenderer>();
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();
@@ -110,7 +110,7 @@ public class PropShiftingMechanic : Component
 		{
 			return propShiftingMechanic.IsProp ? true : false;
 		}
-		var finalModel = propModel.Model;
+		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
 		pcModel.GameObject.Transform.Scale = propModel.GameObject.Transform.Scale;
