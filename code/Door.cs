@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.Utility;
 
 public sealed class Door : Component, IUse
 {
@@ -12,16 +13,28 @@ public sealed class Door : Component, IUse
 		IsOpened = !IsOpened;
 		if ( IsOpened )
 		{
-			GameObject.Transform.Rotation = Rotation.From( 0, 90, 0 );
+			_ = LerpDoor( 1, new Angles( 0, 90, 0 ), Easing.Linear );
 		}
 		else
 		{
-			GameObject.Transform.Rotation = Rotation.From( 0, 0, 0 );
+			_ = LerpDoor( 1, new Angles( 0, 0, 0 ), Easing.Linear );
 		}
 	}
 
 	bool IUse.CanUse( Player player )
 	{
 		return true;
+	}
+	public async Task LerpDoor( float seconds, Angles to, Easing.Function easer )
+	{
+		TimeSince timeSince = 0;
+		Rotation from = Transform.Rotation;
+
+		while ( timeSince < seconds )
+		{
+			var size = Rotation.Lerp( from, to, easer( timeSince / seconds ) );
+			Transform.Rotation = size;
+			await Task.Frame();
+		}
 	}
 }

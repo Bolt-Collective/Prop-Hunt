@@ -16,9 +16,10 @@ public sealed class SpectateSystem : Component
 			localPlayer.AbleToMove = false;
 			localPlayer.Body.Enabled = false;
 		}
-		else if ( IsSpectating )
+		else if ( !IsSpectating && !IsProxy )
 		{
-
+			localPlayer.AbleToMove = true;
+			localPlayer.Body.Enabled = true;
 		}
 	}
 

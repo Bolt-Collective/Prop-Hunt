@@ -2,7 +2,7 @@ using Sandbox;
 namespace PropHunt;
 public sealed class MapChanger : Component
 {
-	[Property] public CustomMapLoader MapInstance { get; set; }
+	[Property] public MapInstance MapInstance { get; set; }
 	protected override void OnEnabled()
 	{
 		MapInstance.OnMapLoaded += HandleMap;
@@ -45,6 +45,7 @@ public sealed class MapChanger : Component
 	[ConCmd( "map" )]
 	public static void LoadMapCmd( string ident )
 	{
+		if ( !Networking.IsHost ) return;
 		var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();
 		if ( mapChanger == null )
 		{

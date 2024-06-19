@@ -459,7 +459,6 @@ public class Player : Component
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
 	}
-	[Broadcast]
 	public void DisableBody()
 	{
 		Body.Enabled = false;
@@ -468,12 +467,12 @@ public class Player : Component
 			PropShiftingMechanic.Collider.Enabled = false;
 		}
 	}
-	[Broadcast]
 	public void ResetStats()
 	{
-		Inventory.Clear();
-		AmmoContainer.ResetAmmo();
 		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
+		if ( IsProxy || spectate is null ) return;
+		Inventory?.Clear();
+		AmmoContainer?.ResetAmmo();
 		spectate.IsSpectating = false;
 		Health = 100;
 		IsCrouching = false;
@@ -490,6 +489,13 @@ public class Player : Component
 		}
 		Body.Network.Refresh();
 		spectate.Network.Refresh();
-		Network.Refresh();
+		GameObject.Network.Refresh();
+	}
+
+	[ConCmd( "kill" )]
+	public static void Kill()
+	{
+		if ( Local is null || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers ) return;
+		Local.TakeDamage( 100 );
 	}
 }
