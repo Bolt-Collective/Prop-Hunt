@@ -147,6 +147,14 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Preparing;
 		RoundLength = PreRoundTime;
 		TimeSinceRoundStateChanged = 0;
+		foreach ( var prop in Scene.GetAllComponents<PropShiftingMechanic>() )
+		{
+			prop.ExitProp();
+		}
+		foreach ( var inv in Scene.GetAllComponents<Inventory>() )
+		{
+			inv.Clear();
+		}
 	}
 	[Broadcast]
 	public void OnRoundStarting()
@@ -155,10 +163,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
-		foreach ( var player in AllPlayers )
-		{
-			player.Components.Get<PropShiftingMechanic>().ExitProp();
-		}
 		if ( AllPlayers.Count() == 2 )
 		{
 			for ( int i = 0; i < 2; i++ )
@@ -191,7 +195,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				player.SpectateSystem.IsSpectating = false;
 			}
 		}
-		foreach ( var player in GetPlayers( Team.Hunters ) )
+		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
 			player.Inventory.SpawnStartingItems();
 			player.Inventory.Network.Refresh();

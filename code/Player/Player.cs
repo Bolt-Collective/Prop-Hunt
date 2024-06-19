@@ -70,6 +70,7 @@ public class Player : Component
 		if ( PropHuntManager.Instance.OnGoingRound == true )
 		{
 			TakeDamage( 100 );
+			GameObject.Network.Refresh();
 		}
 		Network.Refresh();
 	}
@@ -408,6 +409,11 @@ public class Player : Component
 			characterController.Velocity = Vector3.Zero;
 		}
 	}
+	[Button( "Network Refresh" )]
+	public void Refresh()
+	{
+		GameObject.Network.Refresh();
+	}
 	public bool CanUncrouch()
 	{
 		var tr = characterController.TraceDirection( Vector3.Up * 32 );
@@ -482,6 +488,7 @@ public class Player : Component
 			PropShiftingMechanic.Collider.Enabled = true;
 			PropShiftingMechanic.Collider.Network.Refresh();
 		}
+		Body.Network.Refresh();
 		spectate.Network.Refresh();
 		Network.Refresh();
 	}

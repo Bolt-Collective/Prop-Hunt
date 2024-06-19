@@ -53,12 +53,6 @@
 			<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending"
 				OnSelected="@OnPackageSelected" Take=@(50) />
 		</div>
-		<div class="minplayers">
-			<input type="range" @bind="minPlayers" min="0" max="10" />
-			Minimum Players:
-			<SliderControl style="width: 200px;" Min=@(2) Max=@(64) Value:bind=@minPlayers />
-
-		</div>
 	}
 </root>
 

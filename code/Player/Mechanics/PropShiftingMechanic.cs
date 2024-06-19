@@ -30,14 +30,13 @@ public class PropShiftingMechanic : Component
 			bodyRenderer.RenderType = renderType;
 		}
 		//Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
-		Collider.Scale = pc.GameObject.GetBounds().Size;
+		Collider.Scale = pc.BodyRenderer.Bounds.Size;
 
 		if ( Input.Pressed( "Use" ) )
 		{
 			ShiftIntoProp();
 		}
 	}
-	[Broadcast]
 	public void ExitProp()
 	{
 		if ( IsProxy || !Player.Local.AbleToMove ) return;
@@ -55,11 +54,10 @@ public class PropShiftingMechanic : Component
 		pcModel.Tint = Color.White;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		IsProp = false;
-		pcModel.Network.Refresh();
+		pc.GameObject.Network.Refresh();
 	}
 
 
-	[Broadcast]
 	private async void ShiftIntoProp()
 	{
 		if ( IsProxy || !Player.Local.AbleToMove ) return;
@@ -86,6 +84,7 @@ public class PropShiftingMechanic : Component
 		{
 			OnPropShift?.Invoke( this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory );
 		}
+		pc.GameObject.Network.Refresh();
 	}
 
 
