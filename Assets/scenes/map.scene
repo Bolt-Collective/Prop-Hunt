@@ -2006,8 +2006,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "HoldTypeManager",
                   "_name": "TryGet",
+                  "T": "HoldTypeManager",
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -2488,10 +2488,6 @@
                 "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
                 "component_type": "SkinnedModelRenderer"
-              },
-              "Main": {
-                "_type": "gameobject",
-                "go": "6d8fd097-9717-4391-96b4-31a5989ebf03"
               }
             }
           ],
@@ -2773,8 +2769,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet",
+                  "T": "Sandbox.CharacterController",
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -2802,8 +2798,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "HoldTypeManager",
                   "_name": "TryGet",
+                  "T": "HoldTypeManager",
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -3440,10 +3436,6 @@
                 "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
                 "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
                 "component_type": "SkinnedModelRenderer"
-              },
-              "Main": {
-                "_type": "gameobject",
-                "go": "3a78d028-236e-4531-b966-5d50caf00037"
               }
             }
           ],
@@ -3725,8 +3717,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet",
+                  "T": "Sandbox.CharacterController",
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -3754,8 +3746,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "HoldTypeManager",
                   "_name": "TryGet",
+                  "T": "HoldTypeManager",
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -4327,10 +4319,6 @@
                 "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                 "component_type": "SkinnedModelRenderer"
-              },
-              "Main": {
-                "_type": "gameobject",
-                "go": "01255748-faa9-4ebb-a41c-c33afc26ea7b"
               }
             }
           ],
@@ -4612,8 +4600,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "Sandbox.CharacterController",
                   "_name": "TryGet",
+                  "T": "Sandbox.CharacterController",
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -4641,8 +4629,8 @@
                 "Type": "call",
                 "Properties": {
                   "_isStatic": false,
-                  "T": "HoldTypeManager",
                   "_name": "TryGet",
+                  "T": "HoldTypeManager",
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -5214,10 +5202,6 @@
                 "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
                 "go": "f4e155a0-087a-4646-a49e-078b81e40257",
                 "component_type": "SkinnedModelRenderer"
-              },
-              "Main": {
-                "_type": "gameobject",
-                "go": "5ca2f89f-545f-4bc3-86f8-2059fac4e7fc"
               }
             }
           ],
@@ -5539,6 +5523,28 @@
       ]
     },
     {
+      "__guid": "7f030010-c30e-4348-bd6e-0899fe3487ce",
+      "Flags": 0,
+      "Name": "tv (1)",
+      "Position": "720,112,0.01865363",
+      "Rotation": "0,0,-0.7933533,0.6087615",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "e1a19877-37f4-4980-81b1-76dac69da809",
+          "BodyGroups": 18446744073709551615,
+          "Health": 20,
+          "IsStatic": false,
+          "MaterialGroup": "default",
+          "Model": "models/sbox_props/tv/tv.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
       "__guid": "3be4dd74-478f-4e1d-aa9b-48a299b7dc28",
       "Flags": 0,
       "Name": "water_drum_01_base",
@@ -5595,27 +5601,6 @@
           "IsStatic": false,
           "MaterialGroup": "burger_lit",
           "Model": "models/sbox_props/advertising_board/advertising_board.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "1618a365-1d2b-4960-8202-877452797cc8",
-      "Flags": 0,
-      "Name": "ticket_dispenser",
-      "Position": "912,304,0.9184512",
-      "Rotation": "0,0,-0.7071067,0.7071068",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "4cc4407d-4927-44fb-8abc-7147ae3e97b3",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/sbox_props/ticket_dispenser/ticket_dispenser.vmdl",
           "Tint": "1,1,1,1"
         }
       ]
@@ -5934,7 +5919,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-19T22:48:27.5736821-04:00",
+  "LastSaved": "2024-06-20T12:50:40.3658202-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
@@ -5950,7 +5935,6 @@
     "facepunch.mountainbike",
     "facepunch.oil_drum",
     "facepunch.soda_can",
-    "facepunch.ticket_dispenser",
     "facepunch.trolley",
     "facepunch.tv",
     "facepunch.v_m4a1",

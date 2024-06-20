@@ -23,7 +23,7 @@ public class PropShiftingMechanic : Component
 			bodyRenderer.RenderType = renderType;
 			if ( bodyRenderer.RenderType != renderType )
 			{
-				Network.Refresh();
+				bodyRenderer.Network.Refresh();
 			}
 		}
 		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() ) return;
