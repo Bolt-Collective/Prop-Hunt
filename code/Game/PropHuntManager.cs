@@ -6,11 +6,11 @@ namespace PropHunt;
 [Description( "The brains of Prop Hunt. Controls rounds, teams, etc." )]
 public partial class PropHuntManager : Component, Component.INetworkListener
 {
-	[Sync] public GameState RoundState { get; set; } = GameState.None;
-	[Sync] public string RoundStateText { get; set; }
+	[HostSync] public GameState RoundState { get; set; } = GameState.None;
+	[HostSync] public string RoundStateText { get; set; }
 
-	[Sync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
-	[Sync] public int RoundLength { get; set; } = 120;
+	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
+	[HostSync] public int RoundLength { get; set; } = 120;
 
 	public static int PreRoundTime { get; set; } = 5;
 
@@ -42,7 +42,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 	public static IEnumerable<Player> GetPlayers( Team team ) => AllPlayers.Where( x => x.TeamComponent.TeamName == team.ToString() );
 
-	[Property, Sync] public int MaxPlayersToStart { get; set; } = 2;
+	[Property, HostSync] public int MaxPlayersToStart { get; set; } = 2;
 
 	/// <summary>
 	/// Next map chosen by RTV
@@ -51,7 +51,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static bool IsFirstRound { get; set; } = true;
 	public static PropHuntManager Instance { get; set; }
 	public List<(string, int)> Votes { get; set; } = new();
-	[Property, Sync] public bool OnGoingRound { get; set; } = false;
+	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
 
 	protected override void OnStart()
 	{
@@ -69,9 +69,16 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		//Make sure non hunters are not blinded
 		var blind = Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault();
-		if ( (GetPlayers( Team.Props ).Contains( Player.Local ) || GetPlayers( Team.Unassigned ).Contains( Player.Local )) && blind is not null )
+		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
-			blind.UseBlind = false;
+			if ( player.TeamComponent.TeamName == Team.Hunters.ToString() && RoundState == GameState.Starting )
+			{
+				blind.UseBlind = true;
+			}
+			else
+			{
+				blind.UseBlind = false;
+			}
 		}
 		if ( !IsProxy )
 		{
