@@ -63,7 +63,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			//MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayers.txt" ).ToInt();
 		}
-		if ( Connection.All.Count > MaxPlayersToStart )
+		if ( !IsProxy )
 		{
 			MaxPlayersToStart = Connection.All.Count;
 		}

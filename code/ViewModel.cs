@@ -45,7 +45,7 @@ public sealed class ViewModel : Component
 	protected override void OnUpdate()
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		GameObject.Enabled = !IsProxy;
+		GameObject.Enabled = !GameObject.Parent.IsProxy;
 		if ( IsProxy ) return;
 		if ( Player.CameraDistance != 0 )
 		{

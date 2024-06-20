@@ -58,6 +58,7 @@ public sealed class Inventory : Component
 				SpawnStartingItems();
 			}
 		}
+		if ( TeamComponent is null || PropHuntManager.Instance is null ) return;
 		if ( TeamComponent.TeamName != Team.Hunters.ToString() || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
 		{
 			Clear();
@@ -69,6 +70,19 @@ public sealed class Inventory : Component
 			foreach ( var item in Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ) )
 			{
 				if ( item is null ) return;
+				item.Destroy();
+			}
+		}
+		if ( Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ).Count() + Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ).Count() > Size )
+		{
+			foreach ( var weapon in Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ) )
+			{
+				Log.Info( "Destroying weapon" );
+				weapon.Destroy();
+			}
+			foreach ( var item in Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ) )
+			{
+				Log.Info( "Destroying item" );
 				item.Destroy();
 			}
 		}

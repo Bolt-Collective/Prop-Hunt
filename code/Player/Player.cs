@@ -502,5 +502,6 @@ public class Player : Component
 	{
 		if ( Local is null || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers ) return;
 		Local.TakeDamage( 100 );
+		Local.Network.Refresh();
 	}
 }

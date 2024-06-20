@@ -21,6 +21,10 @@ public class PropShiftingMechanic : Component
 			var bodyRenderer = Player.Local.BodyRenderer;
 			var renderType = Player.Local.CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 			bodyRenderer.RenderType = renderType;
+			if ( bodyRenderer.RenderType != renderType )
+			{
+				Network.Refresh();
+			}
 		}
 		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() ) return;
 		if ( Input.Pressed( "View" ) )
