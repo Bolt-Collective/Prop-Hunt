@@ -16,19 +16,19 @@ public class PropShiftingMechanic : Component
 	protected override void OnUpdate()
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-
+		if ( IsProp || !spectateSystem.IsSpectating )
+		{
+			var bodyRenderer = Player.Local.BodyRenderer;
+			var renderType = Player.Local.CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+			bodyRenderer.RenderType = renderType;
+		}
 		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() ) return;
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
 		}
 		var pc = Components.Get<Player>();
-		if ( IsProp )
-		{
-			var bodyRenderer = Player.Local.BodyRenderer;
-			var renderType = Player.Local.CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
-			bodyRenderer.RenderType = renderType;
-		}
+
 		//Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
 		Collider.Scale = pc.BodyRenderer.Bounds.Size;
 
@@ -58,7 +58,7 @@ public class PropShiftingMechanic : Component
 	}
 
 
-	private async void ShiftIntoProp()
+	private void ShiftIntoProp()
 	{
 		if ( IsProxy || !Player.Local.AbleToMove ) return;
 		var pc = Components.Get<Player>();
@@ -77,7 +77,7 @@ public class PropShiftingMechanic : Component
 		if ( tr.GameObject.Tags.Has( "solid" ) )
 			return;
 
-		IsProp = await TryChangeModel( tr, pc, this ).ContinueWith( x => x.Result );
+		IsProp = TryChangeModel( tr, pc, this );
 
 		Log.Info( "changed model" );
 		if ( !IsProxy )
@@ -88,10 +88,12 @@ public class PropShiftingMechanic : Component
 	}
 
 
-	public async Task<bool> TryChangeModel( SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic )
+	public bool TryChangeModel( SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic )
 	{
+		if ( tr.GameObject is null ) return false;
 		var pcModel = player.Body.Components.Get<SkinnedModelRenderer>();
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();
+		if ( propModel is null || pcModel is null ) return false;
 		if ( tr.Body.BodyType == PhysicsBodyType.Static )
 		{
 			return propShiftingMechanic.IsProp ? true : false;
@@ -110,7 +112,7 @@ public class PropShiftingMechanic : Component
 		{
 			return propShiftingMechanic.IsProp ? true : false;
 		}
-		var finalModel = await Model.LoadAsync( propModel.Model.ResourcePath );
+		var finalModel = propModel.Model;
 		pcModel.Model = finalModel;
 		pcModel.Tint = propModel.Tint;
 		pcModel.GameObject.Transform.Scale = propModel.GameObject.Transform.Scale;

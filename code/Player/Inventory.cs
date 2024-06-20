@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
 using System.Net.NetworkInformation;
+using PropHunt;
 using Sandbox;
 
 public sealed class Inventory : Component
@@ -57,9 +58,17 @@ public sealed class Inventory : Component
 				SpawnStartingItems();
 			}
 		}
-		if ( !IsProxy && TeamComponent.TeamName != Team.Hunters.ToString() )
+		if ( TeamComponent.TeamName != Team.Hunters.ToString() || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
 		{
 			Clear();
+			foreach ( var weapon in Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ) )
+			{
+				weapon.Destroy();
+			}
+			foreach ( var item in Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ) )
+			{
+				item.Destroy();
+			}
 		}
 	}
 

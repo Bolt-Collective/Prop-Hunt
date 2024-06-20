@@ -267,6 +267,10 @@ public class Player : Component
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		if ( !IsProxy )
 		{
+			if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() && Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault() is not null )
+			{
+				Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind = true;
+			}
 			if ( Health > 0 && TeamComponent.TeamName != Team.Unassigned.ToString() )
 			{
 				spectateSystem.IsSpectating = false;
@@ -331,7 +335,7 @@ public class Player : Component
 	private void UpdateBodyVisibility()
 	{
 		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		if ( AnimationHelper is null || Body is null || PropShiftingMechanic.IsProp )
+		if ( AnimationHelper is null || Body is null || PropShiftingMechanic.IsProp || AnimationHelper.Target is null )
 			return;
 
 		var renderType = (!IsProxy || spectate.IsSpectating) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;

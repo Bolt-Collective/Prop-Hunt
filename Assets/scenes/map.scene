@@ -13,7 +13,7 @@
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "6b5bab62-f103-431a-b027-0d11c0604b42",
-          "MapName": "nolankicks.prophunt_opium",
+          "MapName": "facepunch.construct23",
           "UseMapFromLaunch": false
         }
       ],
@@ -246,8 +246,8 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "SpectateSystem",
+                  "_isStatic": false,
                   "_name": "SetIsSpecating"
                 },
                 "UserData": {
@@ -312,7 +312,7 @@
           "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6",
           "Collider": {
             "_type": "component",
-            "component_id": "b9d8fcbe-d362-4591-8657-f4735fbbd966",
+            "component_id": "4ff5b488-5a31-48b2-9ff3-b38bd7993687",
             "go": "a247ceea-cfaf-45f2-8cea-018839205ac2",
             "component_type": "BoxCollider"
           },
@@ -395,7 +395,7 @@
           "Components": [
             {
               "__type": "Sandbox.BoxCollider",
-              "__guid": "b9d8fcbe-d362-4591-8657-f4735fbbd966",
+              "__guid": "4ff5b488-5a31-48b2-9ff3-b38bd7993687",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "50,50,50",
@@ -1805,8 +1805,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Item",
+                  "_isStatic": false,
                   "_name": "GetIsProxy"
                 },
                 "UserData": {
@@ -1824,8 +1824,8 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -1836,8 +1836,8 @@
                 "Id": 28,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -1848,8 +1848,8 @@
                 "Id": 39,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2005,8 +2005,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
                   "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
@@ -2028,8 +2028,8 @@
                 "Id": 3,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "HoldTypeManager",
+                  "_isStatic": false,
                   "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
@@ -2107,8 +2107,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2190,8 +2190,8 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Item",
+                  "_isStatic": false,
                   "_name": "Trace"
                 },
                 "UserData": {
@@ -2202,8 +2202,8 @@
                 "Id": 10,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Item",
+                  "_isStatic": false,
                   "_name": "FireDelay"
                 },
                 "UserData": {
@@ -2221,8 +2221,8 @@
                 "Id": 14,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2233,8 +2233,8 @@
                 "Id": 37,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2591,8 +2591,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2603,8 +2603,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2736,8 +2736,8 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2748,8 +2748,8 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2760,8 +2760,8 @@
                 "Id": 33,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -2772,8 +2772,8 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
                   "T": "Sandbox.CharacterController",
                   "_name": "TryGet"
                 },
@@ -2801,8 +2801,8 @@
                 "Id": 61,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
                   "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
@@ -2824,8 +2824,8 @@
                 "Id": 63,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "HoldTypeManager",
+                  "_isStatic": false,
                   "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
@@ -3071,8 +3071,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3116,8 +3116,8 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3308,8 +3308,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3371,8 +3371,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3543,8 +3543,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3555,8 +3555,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3688,8 +3688,8 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3700,8 +3700,8 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3712,8 +3712,8 @@
                 "Id": 36,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -3724,8 +3724,8 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
                   "T": "Sandbox.CharacterController",
                   "_name": "TryGet"
                 },
@@ -3753,8 +3753,8 @@
                 "Id": 70,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
                   "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
@@ -3776,8 +3776,8 @@
                 "Id": 72,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "HoldTypeManager",
+                  "_isStatic": false,
                   "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
@@ -4020,8 +4020,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4065,8 +4065,8 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4195,8 +4195,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4258,8 +4258,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4350,7 +4350,7 @@
                   "__guid": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                   "BodyGroups": 17685,
                   "CreateBoneObjects": false,
-                  "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
+                  "Model": "models/dev/error.vmdl",
                   "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
@@ -4430,8 +4430,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4442,8 +4442,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4575,8 +4575,8 @@
                 "Id": 6,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4587,8 +4587,8 @@
                 "Id": 25,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4599,8 +4599,8 @@
                 "Id": 33,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4611,8 +4611,8 @@
                 "Id": 48,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
                   "T": "Sandbox.CharacterController",
                   "_name": "TryGet"
                 },
@@ -4640,8 +4640,8 @@
                 "Id": 62,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false,
                   "T": "HoldTypeManager",
                   "_name": "TryGet"
                 },
@@ -4663,8 +4663,8 @@
                 "Id": 64,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "HoldTypeManager",
+                  "_isStatic": false,
                   "_name": "SetHoldTypeRenderer"
                 },
                 "UserData": {
@@ -4907,8 +4907,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -4952,8 +4952,8 @@
                 "Id": 9,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -5082,8 +5082,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -5145,8 +5145,8 @@
                 "Id": 1,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
                   "_name": "Set"
                 },
                 "UserData": {
@@ -5313,6 +5313,601 @@
           }
         }
       ]
+    },
+    {
+      "__guid": "e8a094c0-7bba-4c48-be49-ed420bc57802",
+      "Flags": 0,
+      "Name": "wooden_crate",
+      "Position": "576,192,0.0001666932",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "38922147-c18f-4011-a48b-352449051942",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e7f6922b-635a-4a0f-b9b3-3043b447a146",
+      "Flags": 0,
+      "Name": "wooden_crate",
+      "Position": "672,240,-0.0000002078008",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "2578a11f-0eb9-4989-ba59-3397ae59b6ed",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "ad84c27a-bee2-4f32-80c3-76902e38af19",
+      "Flags": 0,
+      "Name": "wooden_crate",
+      "Position": "512,80,-0.0001728505",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "df7dff4e-63d2-4fcf-a3fa-1fdedd3ad347",
+          "BodyGroups": 18446744073709551615,
+          "Health": 50,
+          "IsStatic": false,
+          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "8814f005-3b0a-4f66-b685-c3330f2cf221",
+      "Flags": 0,
+      "Name": "cola_can",
+      "Position": "736,64.00001,0.0342742",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "36aab097-9b6c-4929-a88a-47b073d46373",
+          "BodyGroups": 18446744073709551615,
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/sbox_props/cola_can/cola_can.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "2619ea81-9f41-4bf2-a1c4-42ac777cebfc",
+      "Flags": 0,
+      "Name": "cola_can (1)",
+      "Position": "752,80,0.03427472",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "32c785ed-7811-4d42-bf7c-394ea2bebca2",
+          "BodyGroups": 18446744073709551615,
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/sbox_props/cola_can/cola_can.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "02276836-011f-4d9c-820f-724ed2bb07d3",
+      "Flags": 0,
+      "Name": "wetfloor_sign",
+      "Position": "752,16.00001,0.01574082",
+      "Rotation": "0,0,0.1305262,0.9914449",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "734bf724-ad23-433a-bd60-0958d780a77c",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/wetfloor_sign.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "37d6ca06-5f57-4ed0-a8ef-9e1799591802",
+      "Flags": 0,
+      "Name": "beer_keg_a1",
+      "Position": "704,160,0.0000466265",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "c90ff626-222f-4b62-a960-953fb46530c8",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "37992d6e-5fa2-410d-a233-7c3e7074fea4",
+      "Flags": 0,
+      "Name": "beer_cask",
+      "Position": "816,176,0.0000122466",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "0a6b9453-95cb-47bc-871c-c7cba9304167",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/beer_keg/beer_cask.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "c7af8872-4b6f-42b8-a09e-a7d347cb46a0",
+      "Flags": 0,
+      "Name": "beer_keg_a2",
+      "Position": "752,224,0.0001295514",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "0038dcce-19bf-4d6e-96d1-231fb1bc4fc9",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/beer_keg/beer_keg_a2.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "ef46f452-c30c-4db7-b0d8-8bddaec52796",
+      "Flags": 0,
+      "Name": "tv",
+      "Position": "768,80.00001,0.001372456",
+      "Rotation": "0,0,-0.6087614,0.7933534",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "1f52f838-2fe8-4ec8-ac79-3d8f30477851",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/tv/tv.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "c4683950-363e-418e-b37a-625b896a8464",
+      "Flags": 0,
+      "Name": "tv",
+      "Position": "752,160,0.01865397",
+      "Rotation": "0,0,-0.258819,0.9659259",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "ae6efdbd-9338-4813-9074-4f0f3c0f4fe4",
+          "BodyGroups": 18446744073709551615,
+          "Health": 20,
+          "IsStatic": false,
+          "Model": "models/sbox_props/tv/tv.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "3be4dd74-478f-4e1d-aa9b-48a299b7dc28",
+      "Flags": 0,
+      "Name": "water_drum_01_base",
+      "Position": "912,80,0.00000001833308",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "10b03f60-d023-4da7-93c3-e96c9abf4796",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/trim_sheets/storage/water_drum_01_base.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "04487881-9d6c-4645-99f1-455cda14356e",
+      "Flags": 0,
+      "Name": "binbag_pile_a2",
+      "Position": "864,112,0.9884105",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "a7c86119-1109-405c-b4bb-4656bc1bd667",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/binbags/binbag_pile_a2.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "fce0cfe7-d8a5-49a7-95ea-8815af2bb93b",
+      "Flags": 0,
+      "Name": "advertising_board",
+      "Position": "832,512,0.00003717046",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "0f875854-07aa-43b7-b7d5-4cce14f7fedc",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "MaterialGroup": "burger_lit",
+          "Model": "models/sbox_props/advertising_board/advertising_board.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "1618a365-1d2b-4960-8202-877452797cc8",
+      "Flags": 0,
+      "Name": "ticket_dispenser",
+      "Position": "912,304,0.9184512",
+      "Rotation": "0,0,-0.7071067,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "4cc4407d-4927-44fb-8abc-7147ae3e97b3",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/ticket_dispenser/ticket_dispenser.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "ffab0826-32f3-42c6-8016-f22cb32a540e",
+      "Flags": 0,
+      "Name": "binbag_a1",
+      "Position": "912,144,0.000007629395",
+      "Rotation": "0,0,-0.5,0.8660254",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "a9abc89f-f450-48b1-aea1-b60963d793d7",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/binbags/binbag_a1.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b64c067e-02bd-4cad-8a51-49657bf35b5f",
+      "Flags": 0,
+      "Name": "trolley",
+      "Position": "976,144,-0.0000322397",
+      "Rotation": "0,0,0.258819,0.9659258",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "6e2c101c-9238-463f-8408-6196fc1ea870",
+          "BodyGroups": 18446744073709551615,
+          "Health": 400,
+          "IsStatic": false,
+          "Model": "models/sbox_props/trolley/trolley.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "064376a5-27ad-456f-a106-998e2b42618f",
+      "Flags": 0,
+      "Name": "mattress",
+      "Position": "976,16,-0.00002156852",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "7509b539-158e-44c4-8407-77b3931b0b09",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/mattress/mattress.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "5ec105e0-51f7-4d42-a699-b5fa20d4c7c6",
+      "Flags": 0,
+      "Name": "lantern",
+      "Position": "592,80,0.00009918396",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "e3443955-4569-4282-ab32-8d1ef452ae2d",
+          "BodyGroups": 18446744073709551615,
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/props/lantern/lantern.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "4d2598e8-a322-49f7-8f8e-3a9ed3565053",
+      "Flags": 0,
+      "Name": "wheely_bin",
+      "Position": "592,416,-0.00009800697",
+      "Rotation": "0,0,0.258819,0.9659258",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "b25ef0fb-8aa4-4c02-9e5e-b3f1816ddfe2",
+          "BodyGroups": 18446744073709551615,
+          "Health": 200,
+          "IsStatic": false,
+          "MaterialGroup": "blue",
+          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "3465597b-5564-4bf4-a7e4-95a06cce7b42",
+      "Flags": 0,
+      "Name": "wheely_bin (1)",
+      "Position": "720,352,0.0000118014",
+      "Rotation": "0,0,-0.258819,0.9659258",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "c7273c4b-05a6-43e2-a80e-c2e8a17aa76e",
+          "BodyGroups": 18446744073709551615,
+          "Health": 200,
+          "IsStatic": false,
+          "MaterialGroup": "default",
+          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e05af486-99a7-45f7-8326-c2a4acd8cc9d",
+      "Flags": 0,
+      "Name": "wheely_bin (2)",
+      "Position": "800,384,-0.00004402554",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "1b11b8c0-22ca-415f-a565-84bc04706d37",
+          "BodyGroups": 18446744073709551615,
+          "Health": 200,
+          "IsStatic": false,
+          "MaterialGroup": "black",
+          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b664bbcc-3348-4524-ae9a-fa1faa9d9caf",
+      "Flags": 0,
+      "Name": "wheely_bin (3)",
+      "Position": "768,272,0.0000633433",
+      "Rotation": "0,0,-0.258819,0.9659258",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "d9d5b70e-a5fc-4f35-96fc-f2fad3c38fee",
+          "BodyGroups": 18446744073709551615,
+          "Health": 200,
+          "IsStatic": false,
+          "MaterialGroup": "brown",
+          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b85cd469-8913-46aa-87e0-ec225b0b4876",
+      "Flags": 0,
+      "Name": "metal_wheely_bin",
+      "Position": "960,384,1.005332",
+      "Rotation": "0,0,1,0.0000001947072",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "ee227a5a-d46b-444d-971e-d20a12ebdc6b",
+          "BodyGroups": 18446744073709551615,
+          "Health": 20,
+          "IsStatic": false,
+          "MaterialGroup": "default",
+          "Model": "models/sbox_props/metal_wheely_bin/metal_wheely_bin.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e907a638-f4c8-4afc-82a5-9f590dc39104",
+      "Flags": 0,
+      "Name": "cereal_open",
+      "Position": "864,80,0.00001525879",
+      "Rotation": "0,0,0.258819,0.9659258",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "6c4b7fca-a021-45cc-99f5-264ced3d370b",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/packaged_food/cereal_open.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "a02b605c-5bf5-4d5c-ab41-366f06753c2b",
+      "Flags": 0,
+      "Name": "oil_drum_a",
+      "Position": "928,240,0.04255931",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "1f9df418-9c8f-40dd-943d-83b35947eb68",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/oil_drum/oil_drum_a.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "9b228428-5194-463a-9773-e246782bf5a2",
+      "Flags": 0,
+      "Name": "bike",
+      "Position": "848,256,14.19586",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "dacc33b5-dadb-4559-8813-e6ab1bb3a16e",
+          "BodyGroups": 18446744073709551615,
+          "CreateBoneObjects": false,
+          "Model": "models/props/bike/bike.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        },
+        {
+          "__type": "Sandbox.ModelPhysics",
+          "__guid": "d3bbbc8c-80bb-482d-a746-94b2c6a33fcd",
+          "Locking": {
+            "Yaw": true,
+            "Roll": true
+          },
+          "Model": "models/props/bike/bike.vmdl",
+          "MotionEnabled": true,
+          "Renderer": {
+            "_type": "component",
+            "component_id": "dacc33b5-dadb-4559-8813-e6ab1bb3a16e",
+            "go": "9b228428-5194-463a-9773-e246782bf5a2",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "RigidbodyFlags": 0
+        }
+      ]
+    },
+    {
+      "__guid": "55465012-97c6-48bd-ad32-d63e5e198b54",
+      "Flags": 0,
+      "Name": "minecraftsword",
+      "Position": "498.4188,-223.2004,-3.999634",
+      "Rotation": "0.00001603365,0.00002878904,-0.2517831,0.9677837",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "b3047251-e9c1-457a-83c0-43f19ac005f1",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/mc_sword/minecraftsword.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -5338,17 +5933,38 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-19T15:44:26.7920788-04:00",
+  "LastSaved": "2024-06-19T20:44:37.919727-04:00",
   "ResourceVersion": 1,
   "__references": [
+    "facepunch.advertising_board",
+    "facepunch.beer_cask",
+    "facepunch.beer_keg_a1",
+    "facepunch.beer_keg_a2",
+    "facepunch.binbag_a1",
+    "facepunch.binbag_pile_a2",
+    "facepunch.cereal_open",
+    "facepunch.lantern",
+    "facepunch.mattress",
+    "facepunch.metal_wheely_bin",
+    "facepunch.mountainbike",
+    "facepunch.oil_drum",
+    "facepunch.soda_can",
+    "facepunch.ticket_dispenser",
+    "facepunch.trolley",
+    "facepunch.tv",
     "facepunch.v_m4a1",
     "facepunch.v_mp5",
     "facepunch.v_trenchknife",
-    "facepunch.v_usp",
     "facepunch.w_m4a1",
     "facepunch.w_mp5",
     "facepunch.w_trenchknife",
-    "mdlresrc.toolgunshoot"
+    "facepunch.water_drum_01_base",
+    "facepunch.wheely_bin",
+    "facepunch.wooden_crate",
+    "fpopium.tv",
+    "frankstuff.minecraftsword",
+    "mdlresrc.toolgunshoot",
+    "randkassets.wetfloor_sign"
   ],
   "__version": 1
 }
