@@ -68,18 +68,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			MaxPlayersToStart = Connection.All.Count;
 		}
 		//Make sure non hunters are not blinded
-		var blind = Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault();
-		foreach ( var player in Scene.GetAllComponents<Player>() )
-		{
-			if ( player.TeamComponent.TeamName == Team.Hunters.ToString() && RoundState == GameState.Starting )
-			{
-				blind.UseBlind = true;
-			}
-			else
-			{
-				blind.UseBlind = false;
-			}
-		}
+
 		if ( !IsProxy )
 		{
 			foreach ( var prop in Scene.GetAllComponents<Prop>() )
