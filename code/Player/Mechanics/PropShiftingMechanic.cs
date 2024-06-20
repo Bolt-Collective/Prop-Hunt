@@ -7,7 +7,7 @@ public class PropShiftingMechanic : Component
 	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
-	[Property] public BoxCollider Collider { get; set; }
+	[Property] public CapsuleCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	protected override void OnStart()
 	{
@@ -43,7 +43,6 @@ public class PropShiftingMechanic : Component
 		var pc = Components.Get<Player>();
 
 		//Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
-		Collider.Scale = pc.BodyRenderer.Bounds.Size;
 
 		if ( Input.Pressed( "Use" ) )
 		{
