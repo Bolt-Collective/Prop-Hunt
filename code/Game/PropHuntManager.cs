@@ -63,9 +63,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			//MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayers.txt" ).ToInt();
 		}
-		if ( !IsProxy )
+		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{
 			MaxPlayersToStart = Connection.All.Count;
+		}
+		else
+		{
+			MaxPlayersToStart = 2;
 		}
 		//Make sure non hunters are not blinded
 
