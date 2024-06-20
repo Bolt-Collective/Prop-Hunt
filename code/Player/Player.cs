@@ -265,12 +265,13 @@ public class Player : Component
 	protected override void OnUpdate()
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
+		if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() )
+		{
+			Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind = true;
+		}
 		if ( !IsProxy )
 		{
-			if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() && Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault() is not null )
-			{
-				Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind = true;
-			}
+
 			if ( Health > 0 && TeamComponent.TeamName != Team.Unassigned.ToString() )
 			{
 				spectateSystem.IsSpectating = false;

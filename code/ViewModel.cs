@@ -4,7 +4,6 @@ public sealed class ViewModel : Component
 {
 	public Player Player { get; set; }
 	[Property] public SkinnedModelRenderer Gun { get; set; }
-	[Property] public GameObject Main { get; set; }
 	float lastPitch;
 	float lastYaw;
 	float yawInertia;
@@ -62,7 +61,7 @@ public sealed class ViewModel : Component
 				model.Enabled = true;
 			}
 		}
-		Main.Parent = Player.Eye;
+		GameObject.Parent.Parent = Player.Eye;
 		LocalPos = LocalPos.LerpTo( LocalPos, Time.Delta * 10f );
 		if ( Player.AbleToMove )
 		{

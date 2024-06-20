@@ -63,10 +63,12 @@ public sealed class Inventory : Component
 			Clear();
 			foreach ( var weapon in Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ) )
 			{
+				if ( weapon is null ) return;
 				weapon.Destroy();
 			}
 			foreach ( var item in Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ) )
 			{
+				if ( item is null ) return;
 				item.Destroy();
 			}
 		}
@@ -95,12 +97,10 @@ public sealed class Inventory : Component
 
 	public void Clear()
 	{
-		if ( IsProxy ) return;
 		for ( int i = 0; i < Items.Count; i++ )
 		{
 			RemoveItem( i );
 		}
-
 	}
 
 	public void RemoveItem( int slot )
