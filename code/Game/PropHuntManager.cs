@@ -72,7 +72,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			MaxPlayersToStart = 2;
 		}
-		//Make sure non hunters are not blinded
 		if ( GetPlayers( Team.Props ).Count() == Connection.All.Count )
 		{
 			ForceWin( Team.Props );
@@ -206,14 +205,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
 			player.Inventory.SpawnStartingItems();
-			player.Inventory.Network.Refresh();
 			player.AbleToMove = false;
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
 				Log.Info( "Blinding hunters" );
 				blind.UseBlind = true;
-				Player.Local.AnimationHelper.Enabled = false;
-				Player.Local.AnimationHelper.Network.Refresh();
 			}
 		}
 		if ( IsFirstRound )
@@ -244,8 +240,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
 				blind.UseBlind = false;
-				Player.Local.AnimationHelper.Enabled = true;
-				Player.Local.AnimationHelper.Network.Refresh();
 			}
 		}
 		RoundState = GameState.Started;
@@ -336,11 +330,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			ForceWin( Team.Hunters );
 		}
-
 	}
 
 	private Team WinningTeam { get; set; }
 	[HostSync] public string WinningTeamName { get; set; }
+	[Broadcast]
 
 	public void ForceWin( Team team )
 	{

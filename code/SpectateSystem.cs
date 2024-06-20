@@ -15,6 +15,11 @@ public sealed class SpectateSystem : Component
 			player.BodyRenderer.RenderType = player.CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 			localPlayer.AbleToMove = false;
 			localPlayer.Body.Enabled = false;
+			foreach ( var players in Scene.GetAllComponents<Player>().Where( p => p != player ) )
+			{
+				players.BodyRenderer.RenderType = ModelRenderer.ShadowRenderType.On;
+
+			}
 		}
 		else if ( !IsSpectating && !IsProxy )
 		{

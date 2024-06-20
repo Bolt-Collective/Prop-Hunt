@@ -55,35 +55,7 @@ public sealed class Inventory : Component
 			}
 			if ( Items.All( x => x is null ) )
 			{
-				SpawnStartingItems();
-			}
-		}
-		if ( TeamComponent is null || PropHuntManager.Instance is null ) return;
-		if ( TeamComponent.TeamName != Team.Hunters.ToString() || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
-		{
-			Clear();
-			foreach ( var weapon in Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ) )
-			{
-				if ( weapon is null ) return;
-				weapon.Destroy();
-			}
-			foreach ( var item in Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ) )
-			{
-				if ( item is null ) return;
-				item.Destroy();
-			}
-		}
-		if ( Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ).Count() + Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ).Count() > Size )
-		{
-			foreach ( var weapon in Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ) )
-			{
-				Log.Info( "Destroying weapon" );
-				weapon.Destroy();
-			}
-			foreach ( var item in Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ) )
-			{
-				Log.Info( "Destroying item" );
-				item.Destroy();
+				//SpawnStartingItems();
 			}
 		}
 	}
@@ -96,6 +68,7 @@ public sealed class Inventory : Component
 			var clone = item.Clone();
 			clone.Transform.LocalPosition = new Vector3( 0, 0, 0 );
 			clone.Parent = GameObject;
+			clone.NetworkSpawn();
 			if ( clone.Components.TryGet<Weapon>( out var weapon ) )
 			{
 				weapon.OnPickup?.Invoke( Player, weapon, this );
@@ -104,13 +77,14 @@ public sealed class Inventory : Component
 			{
 				itemComponent.OnPickup?.Invoke( Player, itemComponent, this );
 			}
-			clone.NetworkSpawn();
+
 			Items[slot] = clone;
 		}
 	}
 
 	public void Clear()
 	{
+		if ( IsProxy ) return;
 		for ( int i = 0; i < Items.Count; i++ )
 		{
 			RemoveItem( i );
@@ -119,6 +93,7 @@ public sealed class Inventory : Component
 
 	public void RemoveItem( int slot )
 	{
+		if ( IsProxy ) return;
 		if ( Items[slot] is not null )
 		{
 			Items[slot].Destroy();

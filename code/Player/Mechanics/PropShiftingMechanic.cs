@@ -26,6 +26,15 @@ public class PropShiftingMechanic : Component
 				bodyRenderer.Network.Refresh();
 			}
 		}
+		else if ( IsProxy && !spectateSystem.IsSpectating )
+		{
+			var bodyRenderer = Player.Local.BodyRenderer;
+			bodyRenderer.RenderType = ModelRenderer.ShadowRenderType.On;
+			if ( bodyRenderer.RenderType != ModelRenderer.ShadowRenderType.On )
+			{
+				bodyRenderer.Network.Refresh();
+			}
+		}
 		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() ) return;
 		if ( Input.Pressed( "View" ) )
 		{

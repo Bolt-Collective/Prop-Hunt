@@ -485,7 +485,6 @@ public class Player : Component
 	{
 		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		if ( IsProxy || spectate is null ) return;
-		Inventory?.Clear();
 		AmmoContainer?.ResetAmmo();
 		spectate.IsSpectating = false;
 		Health = 100;
@@ -503,7 +502,6 @@ public class Player : Component
 		}
 		Body.Network.Refresh();
 		spectate.Network.Refresh();
-		GameObject.Network.Refresh();
 	}
 
 	[ConCmd( "kill" )]

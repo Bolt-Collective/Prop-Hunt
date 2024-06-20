@@ -1,0 +1,895 @@
+{
+  "RootObject": {
+    "__guid": "5ca2f89f-545f-4bc3-86f8-2059fac4e7fc",
+    "Flags": 0,
+    "Name": "Rifle",
+    "Position": "254.5133,-390.7629,358.3449",
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "Weapon",
+        "__guid": "840fc4cd-a062-4fa4-b6bd-900356ab00e2",
+        "Ammo": 10,
+        "Damage": 25,
+        "Decal": {
+          "_type": "gameobject",
+          "prefab": "prefabs/decal.prefab"
+        },
+        "FireLength": 1000,
+        "FireRate": 0.5,
+        "FireSound": "sounds/toolgun/toolgun-fire.sound",
+        "MaxAmmo": 10,
+        "OnComponentEnabled": {
+          "__version": 7,
+          "__guid": "a50bca1f-597d-41c8-9995-1f67095d270f",
+          "UserData": {
+            "Title": "On Component Enabled",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input",
+              "UserData": {
+                "Position": "48,-288"
+              }
+            },
+            {
+              "Id": 1,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "512,-288"
+              }
+            },
+            {
+              "Id": 2,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "752,-288"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 1,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_attack",
+              "DstId": 1,
+              "DstName": "v"
+            },
+            {
+              "Value": false,
+              "DstId": 1,
+              "DstName": "value"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "_signal",
+              "DstId": 2,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 2,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_reload",
+              "DstId": 2,
+              "DstName": "v"
+            },
+            {
+              "Value": false,
+              "DstId": 2,
+              "DstName": "value"
+            }
+          ],
+          "Defaults": {
+            "$3._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "$6._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        },
+        "OnComponentUpdate": {
+          "__version": 7,
+          "__guid": "253249dc-4957-406d-bd2e-24ddac255865",
+          "UserData": {
+            "Title": "On Component Update",
+            "ReferencedComponentTypes": [
+              "Weapon"
+            ]
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input",
+              "UserData": {
+                "Position": "-272,0"
+              }
+            },
+            {
+              "Id": 1,
+              "Type": "if",
+              "UserData": {
+                "Position": "256,0"
+              }
+            },
+            {
+              "Id": 2,
+              "Type": "scene.get",
+              "Properties": {
+                "T": "Weapon"
+              },
+              "UserData": {
+                "Position": "-144,160"
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "property",
+              "ParentId": 2,
+              "Properties": {
+                "_name": "Ammo",
+                "_type": "Weapon"
+              }
+            },
+            {
+              "Id": 4,
+              "Type": "op.equal",
+              "UserData": {
+                "Position": "176,160"
+              }
+            },
+            {
+              "Id": 6,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "512,-32"
+              }
+            },
+            {
+              "Id": 25,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "512,144"
+              }
+            },
+            {
+              "Id": 33,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "240,-176"
+              }
+            },
+            {
+              "Id": 48,
+              "Type": "call",
+              "Properties": {
+                "T": "Sandbox.CharacterController",
+                "_name": "TryGet",
+                "_type": "Sandbox.IComponentLister",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "-368,-272"
+              }
+            },
+            {
+              "Id": 50,
+              "Type": "if",
+              "UserData": {
+                "Position": "16,-256"
+              }
+            },
+            {
+              "Id": 51,
+              "Type": "property",
+              "ParentId": 48,
+              "Properties": {
+                "_name": "IsOnGround",
+                "_type": "Sandbox.CharacterController"
+              }
+            },
+            {
+              "Id": 62,
+              "Type": "call",
+              "Properties": {
+                "T": "HoldTypeManager",
+                "_name": "TryGet",
+                "_type": "Sandbox.IComponentLister",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "672,-96",
+                "Labels": {
+                  "component": "HoldType"
+                }
+              }
+            },
+            {
+              "Id": 63,
+              "Type": "if",
+              "UserData": {
+                "Position": "1024,96"
+              }
+            },
+            {
+              "Id": 64,
+              "Type": "call",
+              "Properties": {
+                "_name": "SetHoldTypeRenderer",
+                "_type": "HoldTypeManager",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "1280,176"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 4,
+              "SrcName": "_result",
+              "DstId": 1,
+              "DstName": "condition"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_target",
+              "DstId": 2,
+              "DstName": "_this"
+            },
+            {
+              "SrcId": 2,
+              "SrcName": "_result",
+              "DstId": 3,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 3,
+              "SrcName": "_result",
+              "DstId": 4,
+              "DstName": "a"
+            },
+            {
+              "Value": 0,
+              "DstId": 4,
+              "DstName": "b"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "true",
+              "DstId": 6,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 6,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_empty",
+              "DstId": 6,
+              "DstName": "v"
+            },
+            {
+              "Value": true,
+              "DstId": 6,
+              "DstName": "value"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "false",
+              "DstId": 25,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 25,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_empty",
+              "DstId": 25,
+              "DstName": "v"
+            },
+            {
+              "Value": false,
+              "DstId": 25,
+              "DstName": "value"
+            },
+            {
+              "SrcId": 50,
+              "SrcName": "true",
+              "DstId": 33,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 33,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_grounded",
+              "DstId": 33,
+              "DstName": "v"
+            },
+            {
+              "SrcId": 51,
+              "SrcName": "_result",
+              "DstId": 33,
+              "DstName": "value"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_target",
+              "DstId": 48,
+              "DstName": "_target"
+            },
+            {
+              "Value": "InParent, InAncestors, EnabledInSelfAndChildren",
+              "DstId": 48,
+              "DstName": "search"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 50,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 48,
+              "SrcName": "_result",
+              "DstId": 50,
+              "DstName": "condition"
+            },
+            {
+              "SrcId": 48,
+              "SrcName": "component",
+              "DstId": 51,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_target",
+              "DstId": 62,
+              "DstName": "_target"
+            },
+            {
+              "Value": "InParent, InAncestors, EnabledInSelfAndChildren",
+              "DstId": 62,
+              "DstName": "search"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "_signal",
+              "DstId": 63,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 62,
+              "SrcName": "_result",
+              "DstId": 63,
+              "DstName": "condition"
+            },
+            {
+              "Value": "3.77,0.473,-4.57",
+              "DstId": 64,
+              "DstName": "Offset"
+            },
+            {
+              "SrcId": 63,
+              "SrcName": "true",
+              "DstId": 64,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 62,
+              "SrcName": "component",
+              "DstId": 64,
+              "DstName": "_target"
+            },
+            {
+              "Value": "Rifle",
+              "DstId": 64,
+              "DstName": "hold"
+            },
+            {
+              "Value": "models/weapons/sbox_assault_m4a1/w_m4a1.vmdl",
+              "DstId": 64,
+              "DstName": "model"
+            }
+          ],
+          "Defaults": {
+            "$66._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "$69._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "$72._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        },
+        "OnFire": {
+          "__version": 7,
+          "__guid": "51990394-89da-46d3-8fce-a32f07432f02",
+          "UserData": {
+            "Title": "On Fire",
+            "ReferencedComponentTypes": [
+              "Weapon"
+            ]
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 1,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "640,128"
+              }
+            },
+            {
+              "Id": 5,
+              "Type": "if",
+              "UserData": {
+                "Position": "384,0"
+              }
+            },
+            {
+              "Id": 6,
+              "Type": "scene.get",
+              "Properties": {
+                "T": "Weapon"
+              },
+              "UserData": {
+                "Position": "-0,176"
+              }
+            },
+            {
+              "Id": 7,
+              "Type": "property",
+              "ParentId": 6,
+              "Properties": {
+                "_name": "Ammo",
+                "_type": "Weapon"
+              }
+            },
+            {
+              "Id": 8,
+              "Type": "op.equal",
+              "UserData": {
+                "Position": "240,176"
+              }
+            },
+            {
+              "Id": 9,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "640,0"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 5,
+              "SrcName": "false",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 1,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_attack",
+              "DstId": 1,
+              "DstName": "v"
+            },
+            {
+              "Value": true,
+              "DstId": 1,
+              "DstName": "value"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 5,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 8,
+              "SrcName": "_result",
+              "DstId": 5,
+              "DstName": "condition"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_target",
+              "DstId": 6,
+              "DstName": "_this"
+            },
+            {
+              "SrcId": 6,
+              "SrcName": "_result",
+              "DstId": 7,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 7,
+              "SrcName": "_result",
+              "DstId": 8,
+              "DstName": "a"
+            },
+            {
+              "Value": 0,
+              "DstId": 8,
+              "DstName": "b"
+            },
+            {
+              "SrcId": 5,
+              "SrcName": "true",
+              "DstId": 9,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 9,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_attack_dry",
+              "DstId": 9,
+              "DstName": "v"
+            },
+            {
+              "Value": true,
+              "DstId": 9,
+              "DstName": "value"
+            }
+          ],
+          "Defaults": {
+            "$10._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "$14._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        },
+        "OnPlayerJump": {
+          "__version": 7,
+          "__guid": "152e1076-997e-4e8f-96ec-667eb6c1b790",
+          "UserData": {
+            "Title": "On Player Jump",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 1,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "272,-0"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 1,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_jump",
+              "DstId": 1,
+              "DstName": "v"
+            },
+            {
+              "Value": true,
+              "DstId": 1,
+              "DstName": "value"
+            }
+          ],
+          "Defaults": {
+            "$2._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        },
+        "OnReload": {
+          "__version": 7,
+          "__guid": "3ce3d1ee-48db-41c4-993d-8c03bedf8de1",
+          "UserData": {
+            "Title": "On Reload",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input"
+            },
+            {
+              "Id": 1,
+              "Type": "call",
+              "Properties": {
+                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "224,0"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 1,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_reload",
+              "DstId": 1,
+              "DstName": "v"
+            },
+            {
+              "Value": true,
+              "DstId": 1,
+              "DstName": "value"
+            }
+          ],
+          "Defaults": {
+            "$2._value": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        },
+        "Recoil": 0.1,
+        "ReloadTime": 1,
+        "Spread": 0
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "5774942c-26bc-4079-8a04-14fca070f2d5",
+        "Flags": 0,
+        "Name": "Viewmodel",
+        "Position": "0,0,0",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "Components": [
+          {
+            "__type": "ViewModel",
+            "__guid": "dac874bf-9c6f-414f-b2f1-33ea1d179b8f",
+            "Gun": {
+              "_type": "component",
+              "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+              "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "f4e155a0-087a-4646-a49e-078b81e40257",
+            "Flags": 0,
+            "Name": "weapon",
+            "Position": "0,0,0",
+            "Tags": "viewmodel",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                "BodyGroups": 5203,
+                "CreateBoneObjects": false,
+                "Model": "models/weapons/sbox_assault_m4a1/v_m4a1.vmdl",
+                "RenderType": "Off",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              }
+            ]
+          },
+          {
+            "__guid": "d68d36a2-adb9-42d7-a7b2-42db45886c4f",
+            "Flags": 0,
+            "Name": "arms",
+            "Position": "0,0,0",
+            "Tags": "viewmodel",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "69e5324d-1621-42a6-aa7a-ce5850a787ac",
+                "BodyGroups": 21,
+                "BoneMergeTarget": {
+                  "_type": "component",
+                  "component_id": "62fb45fe-0599-41ee-a592-9ce5602cd44f",
+                  "go": "f4e155a0-087a-4646-a49e-078b81e40257",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "CreateBoneObjects": false,
+                "Model": "models/first_person/first_person_arms.vmdl",
+                "RenderType": "Off",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.v_m4a1",
+    "facepunch.w_m4a1",
+    "mdlresrc.toolgunshoot"
+  ],
+  "__version": 1
+}
