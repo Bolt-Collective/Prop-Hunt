@@ -24,7 +24,7 @@
       "Flags": 0,
       "Name": "Camera",
       "Position": "-267.452,-379.653,297.7903",
-      "Rotation": "-0.1448582,0.2860239,0.4279631,0.8450171",
+      "Rotation": "-0.02589748,-0.0765252,-0.3195111,0.9441323",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -246,8 +246,8 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_type": "SpectateSystem",
                   "_isStatic": false,
+                  "_type": "SpectateSystem",
                   "_name": "SetIsSpecating"
                 },
                 "UserData": {
@@ -331,7 +331,6 @@
           "ActiveIndex": 0,
           "Items": [],
           "Size": 9,
-          "SpawnItemsOnStart": true,
           "StartingItems": [
             {
               "_type": "gameobject",
@@ -1763,6 +1762,8 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+          "AllowPeopleButUsToJoin": false,
+          "FallBackScene": "scenes/fallbackscene.scene",
           "MaxPlayersToStart": 2,
           "OnGoingRound": false
         }
@@ -2370,9 +2371,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "T": "Inventory",
+                  "_type": "Sandbox.IComponentLister",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -2393,8 +2394,8 @@
                 "Id": 5,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Inventory",
                   "_isStatic": false,
+                  "_type": "Inventory",
                   "_name": "SpawnStartingItems"
                 },
                 "UserData": {
@@ -2525,9 +2526,9 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "_isStatic": false,
                   "T": "Inventory",
+                  "_type": "Sandbox.IComponentLister",
                   "_name": "TryGet"
                 },
                 "UserData": {
@@ -2548,8 +2549,8 @@
                 "Id": 7,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Inventory",
                   "_isStatic": false,
+                  "_type": "Inventory",
                   "_name": "Clear"
                 },
                 "UserData": {
@@ -2643,17 +2644,81 @@
       "Flags": 0,
       "Name": "Throwable",
       "Position": "822.8312,49.51335,86.57332",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "ThrowableWeapon",
           "__guid": "bac77bd0-3cf3-4591-84d7-8e18bbf3f40c",
+          "HasThrown": false,
+          "OnThrow": {
+            "__version": 7,
+            "__guid": "823e0222-edb6-4390-a811-1e40527bd64e",
+            "UserData": {
+              "Title": "On Throw",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              },
+              {
+                "Id": 1,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_type": "Sandbox.SkinnedModelRenderer",
+                  "_name": "Set"
+                },
+                "UserData": {
+                  "Position": "224,0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 1,
+                "DstName": "_signal"
+              },
+              {
+                "Value": {
+                  "_type": "component",
+                  "component_id": "7e8737b5-0700-4ed6-a72f-773b25c3a40f",
+                  "go": "78a608bc-c629-4038-a317-311c10f85bf4",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "DstId": 1,
+                "DstName": "_target"
+              },
+              {
+                "Value": "b_attack",
+                "DstId": 1,
+                "DstName": "v"
+              },
+              {
+                "Value": true,
+                "DstId": 1,
+                "DstName": "value"
+              }
+            ],
+            "Defaults": {
+              "$6._value": {
+                "_type": "component",
+                "component_id": "7e8737b5-0700-4ed6-a72f-773b25c3a40f",
+                "go": "78a608bc-c629-4038-a317-311c10f85bf4",
+                "component_type": "SkinnedModelRenderer"
+              }
+            }
+          },
           "ThrowableObject": {
             "_type": "gameobject",
             "go": "24e7a53d-90a0-4894-99ea-4d2c640eb07e"
-          }
+          },
+          "ThrowPower": 1000
         }
       ],
       "Children": [
@@ -2684,6 +2749,7 @@
                 {
                   "__type": "Sandbox.SkinnedModelRenderer",
                   "__guid": "7e8737b5-0700-4ed6-a72f-773b25c3a40f",
+                  "AnimationGraph": "animgraphs/grenadearms.vanmgrph",
                   "BodyGroups": 21,
                   "CreateBoneObjects": true,
                   "Model": "models/first_person/first_person_arms.vmdl",
@@ -2974,8 +3040,7 @@
                                           "__guid": "1d834661-4358-48b0-86fb-2114f1026b61",
                                           "Flags": 0,
                                           "Name": "gun",
-                                          "Position": "15.67113,16.76751,21.45307",
-                                          "Rotation": "-0.3710259,-0.5699028,-0.3357221,0.6517984",
+                                          "Position": "-0.1208521,0.06889012,-0.9636517",
                                           "Enabled": true,
                                           "NetworkMode": 2,
                                           "NetworkInterpolation": true,
@@ -3511,19 +3576,25 @@
       "Flags": 0,
       "Name": "HE",
       "Position": "996.433,49.51335,86.57332",
+      "Tags": "ignore,he",
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Grenade",
           "__guid": "488b0746-636a-4098-8e0f-51447d65e63f",
-          "ExplosionRadius": 1000,
-          "TimeToExplode": 5
+          "ExplosionEffect": {
+            "_type": "gameobject",
+            "prefab": "prefabs/explosion.prefab"
+          },
+          "ExplosionRadius": 300,
+          "TimeToExplode": 2
         },
         {
           "__type": "Sandbox.ModelRenderer",
           "__guid": "81407e3e-1231-40c4-aa5e-a5007740832f",
-          "BodyGroups": 18446744073709551615,
+          "BodyGroups": 11,
+          "Model": "models/weapons/sbox_grenade_explosive/w_he_grenade.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         },
@@ -3540,11 +3611,11 @@
           "StartAsleep": false
         },
         {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "a856e3e4-b119-4ec8-af5b-712cac05c287",
-          "Center": "0,0,0",
+          "__type": "Sandbox.SphereCollider",
+          "__guid": "539d1112-311f-46ef-bdea-2549be7b5596",
+          "Center": "0,0,1.9",
           "IsTrigger": false,
-          "Scale": "50,50,50",
+          "Radius": 2,
           "Static": false
         }
       ]
@@ -3573,7 +3644,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-20T21:59:26.1369704-04:00",
+  "LastSaved": "2024-06-21T13:36:11.8789078-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
@@ -3590,6 +3661,7 @@
     "facepunch.trolley",
     "facepunch.tv",
     "facepunch.v_he_grenade",
+    "facepunch.w_he_grenade",
     "facepunch.water_drum_01_base",
     "facepunch.wheely_bin",
     "facepunch.wooden_crate",

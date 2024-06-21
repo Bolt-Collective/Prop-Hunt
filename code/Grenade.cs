@@ -7,7 +7,12 @@ public sealed class Grenade : Component
 	[Property] public float TimeToExplode { get; set; } = 3;
 	[Sync] public TimeSince TimeSinceThrown { get; set; }
 	[Sync] public bool HasExploded { get; set; } = false;
+	[Property] public GameObject ExplosionEffect { get; set; }
 
+	protected override void OnStart()
+	{
+		TimeSinceThrown = 0;
+	}
 	protected override void OnUpdate()
 	{
 		Explode();
@@ -24,33 +29,15 @@ public sealed class Grenade : Component
 			{
 				player.TakeDamage( 50 );
 			}
-		}
-		GameObject.Destroy();
-		HasExploded = true;
-	}
-}
-
-public static class Explosion
-{
-	public static void AtPoint( Vector3 point, float radius, float damage )
-	{
-		var scene = Game.ActiveScene;
-		if ( !scene.IsValid ) return;
-		var objs = scene.FindInPhysics( new Sphere( point, radius ) );
-		var trace = scene.Trace;
-		foreach ( var obj in objs )
-		{
-			if ( obj.Root.Components.Get<Player>( FindMode.EverythingInSelfAndAncestors ) is not null )
-				continue;
-			var tr = trace.Ray( point, obj.Transform.Position ).Run();
-			if ( tr.Hit && tr.GameObject.IsValid() )
+			if ( obj.Components.TryGet<IDamageable>( out var damageable ) )
 			{
-				if ( tr.GameObject.Components.Get<Player>( FindMode.EverythingInSelfAndAncestors ) is not null )
-				{
-					var player = tr.GameObject.Components.Get<Player>( FindMode.EverythingInSelfAndAncestors );
-					player.TakeDamage( damage );
-				}
+				damageable.OnDamage( new DamageInfo( 50, GameObject, GameObject ) );
+
 			}
 		}
+		var explosion = ExplosionEffect.Clone( Transform.Position, Rotation.Identity );
+		explosion.NetworkSpawn();
+		GameObject.Destroy();
+		HasExploded = true;
 	}
 }

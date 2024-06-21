@@ -1,0 +1,29 @@
+{
+  "RootObject": {
+    "__guid": "aef52bd4-ce34-40f5-8f49-9a1ac55dd9f8",
+    "Flags": 0,
+    "Name": "explosion",
+    "Tags": "particles",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "Sandbox.LegacyParticleSystem",
+        "__guid": "1c5fbd65-a21f-4597-9621-a05dec2d955d",
+        "ControlPoints": [],
+        "Looped": false,
+        "Particles": "particles/explosion/barrel_explosion/explosion_barrel.vpcf",
+        "PlaybackSpeed": 1
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

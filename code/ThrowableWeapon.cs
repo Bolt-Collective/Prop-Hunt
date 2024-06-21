@@ -4,11 +4,21 @@ using Sandbox.Utility;
 public sealed class ThrowableWeapon : Component
 {
 	[Property] public GameObject ThrowableObject { get; set; }
+	[Property] public float ThrowPower { get; set; } = 1000f;
+	[Property] public Action OnThrow { get; set; }
+	[Property] public bool HasThrown { get; set; } = false;
+	[Sync] TimeSince TimeSinceThrown { get; set; }
 	protected override void OnUpdate()
 	{
-		if ( Input.Pressed( "attack1" ) && !IsProxy )
+		if ( Input.Pressed( "attack1" ) && !IsProxy && !HasThrown )
 		{
 			Throw();
+			OnThrow?.Invoke();
+			HasThrown = true;
+		}
+		if ( TimeSinceThrown > 5f && HasThrown )
+		{
+			GameObject.Destroy();
 		}
 	}
 
@@ -28,11 +38,10 @@ public sealed class ThrowableWeapon : Component
 			var throwable = ThrowableObject.Clone( pos, rot );
 			throwable.Tags.Add( "ignore" );
 
-			if ( ThrowableObject.Components.TryGet<Rigidbody>( out var rb ) )
-			{
-				rb.Velocity = playerVelo + Player.Local.EyeAngles.Forward * 100000 + Vector3.Up * 100;
-			}
+			var rb = throwable.Components.Get<Rigidbody>();
+			rb.Velocity = playerVelo + Player.Local.EyeAngles.Forward * ThrowPower + Vector3.Up * 100f;
 			throwable.NetworkSpawn();
+			TimeSinceThrown = 0;
 		}
 	}
 }
