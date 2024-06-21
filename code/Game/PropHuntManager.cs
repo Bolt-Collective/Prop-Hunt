@@ -72,14 +72,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			MaxPlayersToStart = 2;
 		}
-		if ( GetPlayers( Team.Props ).Count() == Connection.All.Count )
-		{
-			ForceWin( Team.Props );
-		}
-		if ( GetPlayers( Team.Hunters ).Count() == Connection.All.Count )
-		{
-			ForceWin( Team.Hunters );
-		}
 		if ( !IsProxy )
 		{
 			foreach ( var prop in Scene.GetAllComponents<Prop>() )

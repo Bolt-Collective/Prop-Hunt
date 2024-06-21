@@ -63,7 +63,7 @@ public sealed class ViewModel : Component
 		}
 		GameObject.Parent.Parent = Player.Eye;
 		LocalPos = LocalPos.LerpTo( LocalPos, Time.Delta * 10f );
-		if ( Player.AbleToMove )
+		if ( Player.AbleToMove && Gun is not null )
 		{
 			ApplyInertia();
 			GroundSpeed();
@@ -72,7 +72,7 @@ public sealed class ViewModel : Component
 
 	protected override void OnEnabled()
 	{
-		if ( IsProxy ) return;
+		if ( IsProxy || Gun is null ) return;
 		Gun.Set( "b_deploy_dry", true );
 	}
 }
