@@ -1,10 +1,82 @@
 {
-  "__guid": "00000000-0000-0000-0000-000000000000",
-  "GameObjects": null,
-  "SceneProperties": null,
-  "Title": null,
-  "Description": null,
-  "LastSaved": "0001-01-01T00:00:00\u002B00:00",
+  "__guid": "3ec7d7ef-67e1-4d9f-a5fe-4dd035b0a0ac",
+  "GameObjects": [
+    {
+      "__guid": "0b1e6ac2-ab39-42b7-9cc5-13bca334f986",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-87.11472,-20.11645,48.1521",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "12dadf07-77cc-4bf3-83e4-89537252ac79",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 100,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "516a69bf-3d05-4e31-a411-f852227c145d",
+      "Flags": 0,
+      "Name": "Text",
+      "Position": "255.1515,-18.7623,61.94824",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.TextRenderer",
+          "__guid": "8c1dac57-51b3-4b97-9f87-d996ee7aa863",
+          "Color": "0,0.26667,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "FontWeight": 800,
+          "Scale": 0.3,
+          "Text": "Thanks for your interest in Prop Hunt\nIf you are seeing this, then this means I don\u0027t want you playing right now",
+          "TextAlignment": "Center"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "fallbackscene",
+  "Description": "",
+  "LastSaved": "2024-06-21T13:40:16.3549894-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

@@ -8,17 +8,28 @@ public sealed class ThrowableWeapon : Component
 	[Property] public Action OnThrow { get; set; }
 	[Property] public bool HasThrown { get; set; } = false;
 	[Sync] TimeSince TimeSinceThrown { get; set; }
+	[Property] public SkinnedModelRenderer Arms { get; set; }
 	protected override void OnUpdate()
 	{
-		if ( Input.Pressed( "attack1" ) && !IsProxy && !HasThrown )
+		if ( Player.Local.AbleToMove )
 		{
-			Throw();
-			OnThrow?.Invoke();
-			HasThrown = true;
-		}
-		if ( TimeSinceThrown > 5f && HasThrown )
-		{
-			GameObject.Destroy();
+			if ( Input.Down( "attack1" ) && !IsProxy && !HasThrown )
+			{
+				Arms.Set( "b_pull", true );
+			}
+			if ( Input.Released( "attack1" ) && !IsProxy && !HasThrown )
+			{
+				Throw();
+				OnThrow?.Invoke();
+				Arms.Set( "b_attack", true );
+				HasThrown = true;
+			}
+			if ( TimeSinceThrown > 2 && HasThrown )
+			{
+				var inventory = Player.Local.Inventory;
+				var slot = inventory.Items.FindIndex( x => x == GameObject );
+				inventory.RemoveItem( slot );
+			}
 		}
 	}
 

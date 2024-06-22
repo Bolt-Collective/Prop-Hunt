@@ -473,6 +473,7 @@ public class Player : Component
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
 	}
+	[Broadcast]
 	public void DisableBody()
 	{
 		Body.Enabled = false;

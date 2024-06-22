@@ -123,5 +123,9 @@ public sealed class Inventory : Component
 		{
 			ActiveIndex = 3;
 		}
+		if ( Input.Pressed( "slot5" ) )
+		{
+			ActiveIndex = 4;
+		}
 	}
 }

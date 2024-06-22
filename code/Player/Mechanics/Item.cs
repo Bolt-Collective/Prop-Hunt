@@ -16,7 +16,7 @@ public sealed class Item : Component
 	[Property, Category( "Item Actions" )] public UseDelegate OnUse { get; set; }
 	[Property, Category( "Item Properties" ), Sync] public bool UsesAmmo { get; set; }
 	[Property, Category( "Item Properties" ), ShowIf( "UsesAmmo", true ), Sync] public int Ammo { get; set; }
-	[Sync] public bool AbleToUse { get; set; } = true;
+	[Property, Sync] public bool AbleToUse { get; set; } = true;
 	public int ShotsFired { get; set; } = 0;
 	protected override void OnStart()
 	{
@@ -46,22 +46,24 @@ public sealed class Item : Component
 			OnUse?.Invoke( Player, this, Inventory, AbleToUse );
 			if ( UsesAmmo )
 			{
-				if ( Ammo < 0 )
+				if ( Ammo <= 0 )
 				{
-					AbleToUse = true;
+					AbleToUse = false;
 				}
 				else
 				{
-					AbleToUse = false;
+					AbleToUse = true;
 				}
 			}
 
 		}
 	}
 	[Impure]
-	public void Trace( float TraceDistance, int damage, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject )
+	public void Trace( float TraceDistance, int damage, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject, float Delay = 0.0f, float Spread = 0.0f )
 	{
-		var tr = Scene.Trace.Ray( Player.Transform.Position + Vector3.Up * (Player.IsCrouching ? 32 : 64), Player.Transform.Position + Player.EyeAngles.Forward * TraceDistance )
+		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
+		ray.Forward += ray.Forward * Vector3.Random * Spread;
+		var tr = Scene.Trace.Ray( ray, TraceDistance )
 		.WithoutTags( Steam.SteamId.ToString() )
 		.Run();
 		if ( Player is null || !Player.AbleToMove )
@@ -96,6 +98,7 @@ public sealed class Item : Component
 			{
 				damageAble.OnDamage( trDamage );
 			}
+
 		}
 		else
 		{
