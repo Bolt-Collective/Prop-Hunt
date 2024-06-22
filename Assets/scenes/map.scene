@@ -246,9 +246,9 @@
                 "Id": 4,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "SpectateSystem",
-                  "_name": "SetIsSpecating"
+                  "_name": "SetIsSpecating",
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "256,0"
@@ -1778,7 +1778,7 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-          "AllowPeopleButUsToJoin": false,
+          "AllowPeopleButUsToJoin": true,
           "FallBackScene": "scenes/fallbackscene.scene",
           "MaxPlayersToStart": 2,
           "OnGoingRound": false
@@ -2367,10 +2367,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
-                  "T": "Inventory",
                   "_type": "Sandbox.IComponentLister",
-                  "_name": "TryGet"
+                  "T": "Inventory",
+                  "_name": "TryGet",
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2390,9 +2390,9 @@
                 "Id": 5,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Inventory",
-                  "_name": "SpawnStartingItems"
+                  "_name": "SpawnStartingItems",
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "1104,0"
@@ -2522,10 +2522,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
-                  "T": "Inventory",
                   "_type": "Sandbox.IComponentLister",
-                  "_name": "TryGet"
+                  "T": "Inventory",
+                  "_name": "TryGet",
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2545,9 +2545,9 @@
                 "Id": 7,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_type": "Inventory",
-                  "_name": "Clear"
+                  "_name": "Clear",
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "1056,0"
@@ -2697,7 +2697,7 @@
                   },
                   "CreateBoneObjects": false,
                   "Model": "models/v_he_grenade.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -2719,7 +2719,7 @@
                   "BodyGroups": 21,
                   "CreateBoneObjects": false,
                   "Model": "models/first_person/first_person_arms.vmdl",
-                  "RenderType": "On",
+                  "RenderType": "Off",
                   "Tint": "1,1,1,1",
                   "UseAnimGraph": true
                 }
@@ -2928,7 +2928,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-22T12:41:17.6195019-04:00",
+  "LastSaved": "2024-06-22T15:39:45.3353713-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",

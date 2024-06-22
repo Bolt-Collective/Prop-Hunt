@@ -34,7 +34,8 @@ public sealed class Inventory : Component
 	}
 	protected override void OnUpdate()
 	{
-		if ( !IsProxy && TeamComponent.TeamName == Team.Hunters.ToString() )
+		if ( !Network.IsOwner ) return;
+		if ( TeamComponent.TeamName == Team.Hunters.ToString() && !IsProxy )
 		{
 			ItemInputs();
 			for ( int i = 0; i < Items.Count; i++ )
@@ -54,10 +55,10 @@ public sealed class Inventory : Component
 			}
 			if ( Items.All( x => x is null ) )
 			{
-				//SpawnStartingItems();
+				SpawnStartingItems();
 			}
 		}
-		if ( !IsProxy && TeamComponent.TeamName != Team.Hunters.ToString() )
+		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
 		{
 			Clear();
 		}
@@ -65,13 +66,12 @@ public sealed class Inventory : Component
 
 	public void AddItem( GameObject item, int slot )
 	{
-		if ( IsProxy ) return;
 		if ( Items[slot] is null )
 		{
 			var clone = item.Clone();
 			clone.Transform.LocalPosition = new Vector3( 0, 0, 0 );
 			clone.Parent = GameObject;
-			clone.NetworkSpawn();
+			//clone.NetworkSpawn();
 			if ( clone.Components.TryGet<Weapon>( out var weapon ) )
 			{
 				weapon.OnPickup?.Invoke( Player, weapon, this );
@@ -88,15 +88,27 @@ public sealed class Inventory : Component
 	public void Clear()
 	{
 		if ( IsProxy ) return;
+		ActiveItem = null;
 		for ( int i = 0; i < Items.Count; i++ )
 		{
 			RemoveItem( i );
+		}
+		foreach ( var weapon in GameObject.Components.GetAll<Weapon>( FindMode.EverythingInSelfAndChildren ) )
+		{
+			weapon.GameObject.Destroy();
+		}
+		foreach ( var item in GameObject.Components.GetAll<Item>( FindMode.EverythingInSelfAndChildren ) )
+		{
+			item.GameObject.Destroy();
+		}
+		foreach ( var throwAble in GameObject.Components.GetAll<ThrowableWeapon>( FindMode.EverythingInSelfAndChildren ) )
+		{
+			throwAble.GameObject.Destroy();
 		}
 	}
 
 	public void RemoveItem( int slot )
 	{
-		if ( IsProxy ) return;
 		if ( Items[slot] is not null )
 		{
 			Items[slot].Destroy();

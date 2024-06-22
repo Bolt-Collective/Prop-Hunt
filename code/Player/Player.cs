@@ -345,7 +345,7 @@ public class Player : Component
 	private void UpdateBodyVisibility()
 	{
 		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		if ( AnimationHelper is null || Body is null || PropShiftingMechanic.IsProp || AnimationHelper.Target is null )
+		if ( AnimationHelper is null || BodyRenderer is null || PropShiftingMechanic.IsProp || AnimationHelper.Target is null )
 			return;
 
 		var renderType = (!IsProxy || spectate.IsSpectating) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
