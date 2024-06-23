@@ -154,7 +154,7 @@ public class Player : Component
 	{
 		Log.Info( "Using items" );
 		var tr = Scene.Trace.Ray( Scene.Camera.ScreenNormalToRay( 0.5f ), 500 )
-			.IgnoreGameObject( GameObject )
+			.IgnoreGameObject( Body )
 			.Run();
 		if ( tr.Hit )
 		{

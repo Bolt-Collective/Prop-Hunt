@@ -59,11 +59,11 @@ public class PropShiftingMechanic : Component
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
 		var tr = Scene.Trace
-			.IgnoreGameObject( GameObject )
+			.IgnoreGameObject( pc.Body )
 			.Sphere( 16, eyePos, eyePos + lookDir.Forward * 150 )
 			.Run();
 
-		//Gizmo.Draw.LineSphere( tr.HitPosition, 16 );
+		Gizmo.Draw.LineSphere( tr.HitPosition, 16 );
 
 		if ( !tr.Hit ) return;
 

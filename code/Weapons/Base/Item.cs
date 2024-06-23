@@ -64,7 +64,7 @@ public sealed class Item : Component
 		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
 		ray.Forward += ray.Forward * Vector3.Random * Spread;
 		var tr = Scene.Trace.Ray( ray, TraceDistance )
-			.IgnoreGameObject( Player.GameObject )
+			.IgnoreGameObject( Player.Body )
 			.Run();
 		if ( Player is null || !Player.AbleToMove )
 		{

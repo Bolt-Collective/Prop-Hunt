@@ -39,7 +39,7 @@ public sealed class ThrowableWeapon : Component
 		if ( !IsProxy )
 		{
 			var tr = Scene.Trace.Ray( new( Player.Local.Eye.Transform.Position, Player.Local.EyeAngles.Forward ), 10f )
-			.IgnoreGameObjectHierarchy( GameObject )
+			.IgnoreGameObjectHierarchy( Player.Local.Body )
 			.Run();
 
 			var pos = tr.Hit ? tr.HitPosition + tr.Normal : Player.Local.Eye.Transform.Position + Player.Local.EyeAngles.Forward * 32;
