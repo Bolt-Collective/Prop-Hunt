@@ -367,7 +367,7 @@ public class Player : Component
 
 	protected override void OnPreRender()
 	{
-
+		UpdateBodyVisibility();
 	}
 	protected override void OnFixedUpdate()
 	{
