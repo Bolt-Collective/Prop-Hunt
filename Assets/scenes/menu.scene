@@ -5,8 +5,8 @@
       "__guid": "54bfd729-0940-47c8-9a06-62984272a759",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "343.2447,-34.03378,91.27066",
-      "Rotation": "0,0,1,0.0000001947072",
+      "Position": "343.2448,-34.03383,174.1442",
+      "Rotation": "0,0,0.9659258,0.2588192",
       "Tags": "maincamera",
       "Enabled": true,
       "NetworkMode": 2,
@@ -28,6 +28,10 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
+        },
+        {
+          "__type": "CameraTilting",
+          "__guid": "53c14eb9-358f-4fff-a80d-cec0555baaec"
         }
       ]
     },
@@ -51,11 +55,177 @@
         {
           "__type": "MenuUi",
           "__guid": "0b25cb71-4e08-4e57-9d14-262ad3b68e2a",
+          "minPlayers": 2,
           "GameScene": "scenes/map.scene",
           "MyStringValue": "Hello World!",
           "Refreshing": false,
           "ShowMapList": false,
           "ShowServerList": false
+        }
+      ]
+    },
+    {
+      "__guid": "a08d84a6-04c0-48fe-8a6e-e2eb03f34b5f",
+      "Flags": 0,
+      "Name": "Plane",
+      "Scale": "17.04261,17.04261,17.04261",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "cceddb1a-2416-401d-aaea-33fba4b6444e",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/grass/floor_grass_a.vmat",
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "076ead07-44ce-4dce-84eb-02a7eb8fff9d",
+      "Flags": 0,
+      "Name": "Sun",
+      "Position": "-58.09302,36.64392,188.839",
+      "Rotation": "-0.2499999,0.4330126,0.3623724,0.7865662",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "5b185312-feba-4af0-9d51-8ad32baa9036",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "__guid": "6a3cad36-969b-43f0-8977-8fd0bc52dbd3",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Position": "741.3835,-55.8481,383.1348",
+      "Tags": "skybox",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "4191958e-cf17-4347-baa2-75b9a81f750d",
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "4fe959a8-0270-4dd1-9a40-4fe817769780",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "-826.5771,-10.13326,108.5307",
+      "Scale": "1,34.93268,4.698734",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "f55912c2-4c4d-4b73-8931-e4a6053eba41",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "005a3a22-ee74-4179-976b-e2d940d2751c",
+      "Flags": 0,
+      "Name": "Cube (1)",
+      "Position": "38.32135,839.8449,108.5307",
+      "Rotation": "0,0,0.7071067,0.7071068",
+      "Scale": "1,34.93268,4.698734",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "9b0ca4ae-67d6-424e-be20-b05084dd6cc9",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "c77a24fa-acc4-4ffe-a5e0-dd31deedd9a6",
+      "Flags": 0,
+      "Name": "table",
+      "Position": "-425.1513,402.1379,0",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "1a7b2092-405c-4a97-a273-2e1a2cf7e32f",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/table.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "091d2974-d2ac-4b4b-adc7-50664aaffd1b",
+      "Flags": 0,
+      "Name": "radio",
+      "Position": "-424.2753,400.683,42.75325",
+      "Rotation": "0,0,-0.3826834,0.9238797",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "0cad4141-76b9-4547-877d-82947c0b664f",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/3dmodelscc0/gadgetselectronics/radio/radio.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.SoundPointComponent",
+          "__guid": "a7e95a21-9527-43ec-896c-dd040ee735d1",
+          "DistanceAttenuation": false,
+          "DistanceAttenuationOverride": false,
+          "Force2d": false,
+          "MaxRepeatTime": 1,
+          "MinRepeatTime": 1,
+          "Occlusion": false,
+          "OcclusionOverride": false,
+          "OcclusionRadius": 32,
+          "Pitch": 1,
+          "PlayOnStart": true,
+          "ReflectionOverride": false,
+          "Reflections": false,
+          "Repeat": false,
+          "SoundEvent": "sounds/menu/gsab_instrumental.sound",
+          "SoundOverride": false,
+          "StopOnNew": false,
+          "TargetMixer": {
+            "Name": "unknown",
+            "Id": "00000000-0000-0000-0000-000000000000"
+          },
+          "Volume": 1
         }
       ]
     }
@@ -83,8 +253,12 @@
   },
   "Title": "menu",
   "Description": "",
-  "LastSaved": "2024-06-17T23:10:03.6401905-04:00",
+  "LastSaved": "2024-06-23T16:22:31.2910687\u002B02:00",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "facepunch.floor_grass_a",
+    "sonicmemz.roundwoodentable01",
+    "titanovsky.radio"
+  ],
   "__version": 1
 }
