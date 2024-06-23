@@ -11,7 +11,6 @@ public class Player : Component
 	[Property] public PlayerDelegate OnJumpEvent { get; set; }
 	[Sync] public bool IsGrabbing { get; set; }
 	[Property] public CharacterController characterController { get; set; }
-	[Property] public SpectateSystem SpectateSystem { get; set; }
 	public static Player Local
 	{
 		get
@@ -264,7 +263,6 @@ public class Player : Component
 	}
 	protected override void OnUpdate()
 	{
-		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind = true;
@@ -282,7 +280,6 @@ public class Player : Component
 			}
 			if ( Health > 0 && TeamComponent.TeamName != Team.Unassigned.ToString() )
 			{
-				spectateSystem.IsSpectating = false;
 				AbleToMove = true;
 			}
 			if ( AbleToMove )
@@ -343,11 +340,10 @@ public class Player : Component
 	}
 	private void UpdateBodyVisibility()
 	{
-		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		if ( AnimationHelper is null || BodyRenderer is null || PropShiftingMechanic.IsProp || AnimationHelper.Target is null )
 			return;
 
-		var renderType = (!IsProxy || spectate.IsSpectating) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+		var renderType = (!IsProxy) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
 		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
 		{
@@ -473,7 +469,6 @@ public class Player : Component
 			Health = 0;
 			DisableBody();
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
-			SpectateSystem.IsSpectating = true;
 		}
 	}
 	public void DisableBody()
@@ -491,10 +486,8 @@ public class Player : Component
 	}
 	public void ResetStats()
 	{
-		var spectate = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		if ( IsProxy || spectate is null ) return;
+		if ( IsProxy ) return;
 		AmmoContainer?.ResetAmmo();
-		spectate.IsSpectating = false;
 		Health = 100;
 		IsCrouching = false;
 		IsRunning = false;
@@ -509,7 +502,6 @@ public class Player : Component
 			PropShiftingMechanic.Collider.Network.Refresh();
 		}
 		Body.Network.Refresh();
-		spectate.Network.Refresh();
 	}
 
 	[ConCmd( "kill" )]
@@ -521,7 +513,7 @@ public class Player : Component
 	}
 
 	[ConCmd( "reset" )]
-	public static void Reset()
+	public static void ResetPlayers()
 	{
 		foreach ( var player in Game.ActiveScene.GetAllComponents<Player>() )
 		{

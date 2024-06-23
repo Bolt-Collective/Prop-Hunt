@@ -51,10 +51,14 @@ public sealed class Inventory : Component
 		if ( !IsProxy && TeamComponent.TeamName != Team.Hunters.ToString() )
 		{
 			Clear();
-		}
-		if ( !IsProxy && TeamComponent.TeamName == Team.Hunters.ToString() )
-		{
-			SpawnStartingItems();
+			foreach ( var weapon in Scene.GetAllComponents<Weapon>().Where( x => !x.IsProxy ) )
+			{
+				weapon.Destroy();
+			}
+			foreach ( var item in Scene.GetAllComponents<Item>().Where( x => !x.IsProxy ) )
+			{
+				item.Destroy();
+			}
 		}
 	}
 
