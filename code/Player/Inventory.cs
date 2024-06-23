@@ -61,6 +61,10 @@ public sealed class Inventory : Component
 	public void AddItem( GameObject item, int slot )
 	{
 		if ( IsProxy ) return;
+		if ( slot < 0 || slot >= Items.Count )
+		{
+			return;
+		}
 		if ( Items[slot] is null )
 		{
 			var clone = item.Clone();

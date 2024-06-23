@@ -265,7 +265,10 @@ public class Player : Component
 	protected override void OnUpdate()
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-
+		if ( GameObject.Components.Get<Collider>().Enabled == false && !spectateSystem.IsSpectating )
+		{
+			GameObject.Components.Get<Collider>().Enabled = true;
+		}
 		if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind = true;
@@ -372,7 +375,7 @@ public class Player : Component
 
 	protected override void OnPreRender()
 	{
-		UpdateBodyVisibility();
+
 	}
 	protected override void OnFixedUpdate()
 	{
@@ -519,5 +522,14 @@ public class Player : Component
 		if ( Local is null || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers ) return;
 		Local.TakeDamage( 100 );
 		Local.Network.Refresh();
+	}
+
+	[ConCmd( "reset" )]
+	public static void Reset()
+	{
+		foreach ( var player in Game.ActiveScene.GetAllComponents<Player>() )
+		{
+			player.TakeDamage( 10000 );
+		}
 	}
 }
