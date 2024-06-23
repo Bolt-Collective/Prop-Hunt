@@ -10,8 +10,8 @@ public sealed class Inventory : Component
 	[Property] public List<GameObject> Items { get; set; }
 	[Property] public List<GameObject> StartingItems { get; set; } = new();
 	[Property] public GameObject ActiveItem { get; set; }
-	[Property] public int ActiveIndex { get; set; }
-	[Property] public bool AbleToSwitch { get; set; } = true;
+	[Property, Sync] public int ActiveIndex { get; set; }
+	[Property, Sync] public bool AbleToSwitch { get; set; } = true;
 	public Player Player { get; set; }
 	public TeamComponent TeamComponent { get; set; }
 	protected override void OnStart()
@@ -34,8 +34,7 @@ public sealed class Inventory : Component
 	}
 	protected override void OnUpdate()
 	{
-		if ( IsProxy ) return;
-		if ( TeamComponent.TeamName == Team.Hunters.ToString() && !IsProxy )
+		if ( !IsProxy && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			ItemInputs();
 			for ( int i = 0; i < Items.Count; i++ )
@@ -55,10 +54,10 @@ public sealed class Inventory : Component
 			}
 			if ( Items.All( x => x is null ) )
 			{
-				SpawnStartingItems();
+				//SpawnStartingItems();
 			}
 		}
-		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
+		if ( !IsProxy && TeamComponent.TeamName != Team.Hunters.ToString() )
 		{
 			Clear();
 		}
@@ -72,7 +71,7 @@ public sealed class Inventory : Component
 			var clone = item.Clone();
 			clone.Transform.LocalPosition = new Vector3( 0, 0, 0 );
 			clone.Parent = GameObject;
-			//clone.NetworkSpawn();
+			clone.NetworkSpawn();
 			if ( clone.Components.TryGet<Weapon>( out var weapon ) )
 			{
 				weapon.OnPickup?.Invoke( Player, weapon, this );
@@ -89,22 +88,9 @@ public sealed class Inventory : Component
 	public void Clear()
 	{
 		if ( IsProxy ) return;
-		ActiveItem = null;
 		for ( int i = 0; i < Items.Count; i++ )
 		{
 			RemoveItem( i );
-		}
-		foreach ( var weapon in GameObject.Components.GetAll<Weapon>( FindMode.EverythingInSelfAndChildren ) )
-		{
-			weapon.GameObject.Destroy();
-		}
-		foreach ( var item in GameObject.Components.GetAll<Item>( FindMode.EverythingInSelfAndChildren ) )
-		{
-			item.GameObject.Destroy();
-		}
-		foreach ( var throwAble in GameObject.Components.GetAll<ThrowableWeapon>( FindMode.EverythingInSelfAndChildren ) )
-		{
-			throwAble.GameObject.Destroy();
 		}
 	}
 
