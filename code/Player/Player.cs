@@ -265,10 +265,6 @@ public class Player : Component
 	protected override void OnUpdate()
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		if ( GameObject.Components.Get<Collider>().Enabled == false && !spectateSystem.IsSpectating )
-		{
-			GameObject.Components.Get<Collider>().Enabled = true;
-		}
 		if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind = true;
