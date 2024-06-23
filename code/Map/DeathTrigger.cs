@@ -11,7 +11,7 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 	{
 		if ( other.GameObject.Components.TryGet<Player>( out var player, FindMode.EverythingInSelfAndParent ) )
 		{
-			player.TakeDamage( 100 );
+			player.TakeDamage( 1000 );
 		}
 	}
 
