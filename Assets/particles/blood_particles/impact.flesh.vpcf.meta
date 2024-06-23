@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Flesh Impact with Mist",
+      "Type": "particle",
+      "Org": "bolt",
+      "Ident": "impactflesh",
+      "Tags": null,
+      "Schema": 0,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "particles/blood_particles/impact.flesh.vpcf"
+      }
+    }
+  }
+}
