@@ -264,7 +264,6 @@ public class Player : Component
 	}
 	protected override void OnUpdate()
 	{
-		Log.Info( Scene.GetAllComponents<Player>().Count() );
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 
 		if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() )
@@ -371,10 +370,13 @@ public class Player : Component
 		}
 	}
 
-
+	protected override void OnPreRender()
+	{
+		UpdateBodyVisibility();
+	}
 	protected override void OnFixedUpdate()
 	{
-		//UpdateBodyVisibility();
+
 		if ( IsProxy )
 			return;
 
@@ -470,14 +472,19 @@ public class Player : Component
 		if ( Health <= 0 )
 		{
 			Health = 0;
-			//DisableBody();
+			DisableBody();
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
+			SpectateSystem.IsSpectating = true;
 		}
 	}
-	[Broadcast]
 	public void DisableBody()
 	{
+		foreach ( var cloth in Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) ) )
+		{
+			cloth.Enabled = false;
+		}
 		Body.Enabled = false;
+
 		if ( PropShiftingMechanic.Collider is not null )
 		{
 			PropShiftingMechanic.Collider.Enabled = false;

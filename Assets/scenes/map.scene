@@ -1,5 +1,5 @@
 {
-  "__guid": "6b7fe726-5e22-44e6-9f1c-e52e66f5b349",
+  "__guid": "e7d221b5-43e3-4a88-b9d6-3a5a35949a0e",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -218,123 +218,6 @@
             "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
           },
           "Health": 0,
-          "OnDeath": {
-            "__version": 7,
-            "__guid": "224886dd-f2ff-41f5-87cf-b75f8a79f10f",
-            "UserData": {
-              "Title": "On Death",
-              "ReferencedComponentTypes": [
-                "SpectateSystem"
-              ]
-            },
-            "Variables": [],
-            "Nodes": [
-              {
-                "Id": 0,
-                "Type": "input"
-              },
-              {
-                "Id": 3,
-                "Type": "scene.get",
-                "Properties": {
-                  "T": "SpectateSystem"
-                },
-                "UserData": {
-                  "Position": "0,144"
-                }
-              },
-              {
-                "Id": 4,
-                "Type": "call",
-                "Properties": {
-                  "_type": "SpectateSystem",
-                  "_isStatic": false,
-                  "_name": "SetIsSpecating"
-                },
-                "UserData": {
-                  "Position": "256,0"
-                }
-              },
-              {
-                "Id": 6,
-                "Type": "call",
-                "Properties": {
-                  "_type": "Sandbox.IComponentLister",
-                  "T": "Sandbox.SkinnedModelRenderer",
-                  "_isStatic": false,
-                  "_name": "Get"
-                },
-                "UserData": {
-                  "Position": "272,128"
-                }
-              },
-              {
-                "Id": 8,
-                "Type": "property",
-                "Properties": {
-                  "_type": "Sandbox.Component",
-                  "_kind": "Set",
-                  "_name": "Enabled"
-                },
-                "UserData": {
-                  "Position": "640,128"
-                }
-              }
-            ],
-            "Links": [
-              {
-                "SrcId": 0,
-                "SrcName": "_target",
-                "DstId": 3,
-                "DstName": "_this"
-              },
-              {
-                "SrcId": 0,
-                "SrcName": "_signal",
-                "DstId": 4,
-                "DstName": "_signal"
-              },
-              {
-                "SrcId": 3,
-                "SrcName": "_result",
-                "DstId": 4,
-                "DstName": "_target"
-              },
-              {
-                "Value": true,
-                "DstId": 4,
-                "DstName": "value"
-              },
-              {
-                "SrcId": 0,
-                "SrcName": "player",
-                "DstId": 6,
-                "DstName": "_target"
-              },
-              {
-                "Value": "EnabledInSelfAndChildren",
-                "DstId": 6,
-                "DstName": "search"
-              },
-              {
-                "SrcId": 0,
-                "SrcName": "_signal",
-                "DstId": 8,
-                "DstName": "_signal"
-              },
-              {
-                "SrcId": 6,
-                "SrcName": "_result",
-                "DstId": 8,
-                "DstName": "_target"
-              },
-              {
-                "Value": false,
-                "DstId": 8,
-                "DstName": "_value"
-              }
-            ]
-          },
           "SpectateSystem": {
             "_type": "component",
             "component_id": "9ef808e6-c3a1-4704-a473-cf095e5d7097",
@@ -2400,8 +2283,8 @@
                 "Id": 1,
                 "Type": "property",
                 "Properties": {
-                  "_type": "Sandbox.Component",
-                  "_name": "GameObject"
+                  "_name": "GameObject",
+                  "_type": "Sandbox.Component"
                 },
                 "UserData": {
                   "Position": "208,32"
@@ -2411,10 +2294,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Inventory",
-                  "_isStatic": false,
-                  "_name": "TryGet"
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2434,9 +2317,9 @@
                 "Id": 5,
                 "Type": "call",
                 "Properties": {
+                  "_name": "SpawnStartingItems",
                   "_type": "Inventory",
-                  "_isStatic": false,
-                  "_name": "SpawnStartingItems"
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "1104,0"
@@ -2555,8 +2438,8 @@
                 "Id": 1,
                 "Type": "property",
                 "Properties": {
-                  "_type": "Sandbox.Component",
-                  "_name": "GameObject"
+                  "_name": "GameObject",
+                  "_type": "Sandbox.Component"
                 },
                 "UserData": {
                   "Position": "208,32"
@@ -2566,10 +2449,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_type": "Sandbox.IComponentLister",
                   "T": "Inventory",
-                  "_isStatic": false,
-                  "_name": "TryGet"
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister",
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2589,9 +2472,9 @@
                 "Id": 7,
                 "Type": "call",
                 "Properties": {
+                  "_name": "Clear",
                   "_type": "Inventory",
-                  "_isStatic": false,
-                  "_name": "Clear"
+                  "_isStatic": false
                 },
                 "UserData": {
                   "Position": "1056,0"
@@ -2972,7 +2855,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-23T14:17:42.5291834-04:00",
+  "LastSaved": "2024-06-23T15:44:09.1704761-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",

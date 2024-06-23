@@ -59,7 +59,7 @@ public class PropShiftingMechanic : Component
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
 		var tr = Scene.Trace
-			.IgnoreGameObject( pc.Body )
+			.IgnoreGameObject( Player.Local.Body )
 			.Sphere( 16, eyePos, eyePos + lookDir.Forward * 150 )
 			.Run();
 

@@ -9,7 +9,6 @@ public sealed class Inventory : Component
 	[Property] public int Size { get; set; } = 9;
 	[Property] public List<GameObject> Items { get; set; }
 	[Property] public List<GameObject> StartingItems { get; set; } = new();
-	[Property] public GameObject ActiveItem { get; set; }
 	[Property, Sync] public int ActiveIndex { get; set; }
 	[Property, Sync] public bool AbleToSwitch { get; set; } = true;
 	public Player Player { get; set; }
@@ -39,22 +38,14 @@ public sealed class Inventory : Component
 			ItemInputs();
 			for ( int i = 0; i < Items.Count; i++ )
 			{
-				if ( i == ActiveIndex )
+				if ( i == ActiveIndex && Items[i] is not null )
 				{
-					ActiveItem = Items[i];
+					Items[i].Enabled = true;
 				}
-				else if ( Items[i] is not null )
+				else if ( Items[i] is not null && Items[i] is not null )
 				{
 					Items[i].Enabled = false;
 				}
-			}
-			if ( ActiveItem is not null )
-			{
-				ActiveItem.Enabled = true;
-			}
-			if ( Items.All( x => x is null ) )
-			{
-				//SpawnStartingItems();
 			}
 		}
 		if ( !IsProxy && TeamComponent.TeamName != Team.Hunters.ToString() )
