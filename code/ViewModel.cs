@@ -62,6 +62,7 @@ public sealed class ViewModel : Component
 				model.Enabled = true;
 			}
 		}
+		if ( Player is null || GameObject.Parent is null || Player.Eye is null ) return;
 		GameObject.Parent.Parent = Player.Eye;
 		LocalPos = LocalPos.LerpTo( LocalPos, Time.Delta * 10f );
 		if ( Player.AbleToMove && Gun is not null )

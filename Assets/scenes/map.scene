@@ -1778,7 +1778,7 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-          "AllowPeopleButUsToJoin": true,
+          "AllowPeopleButUsToJoin": false,
           "FallBackScene": "scenes/fallbackscene.scene",
           "MaxPlayersToStart": 2,
           "OnGoingRound": false
@@ -2928,7 +2928,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-22T15:39:45.3353713-04:00",
+  "LastSaved": "2024-06-22T16:23:29.4601212-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",

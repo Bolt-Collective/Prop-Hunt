@@ -10,8 +10,8 @@ public sealed class Inventory : Component
 	[Property] public List<GameObject> Items { get; set; }
 	[Property] public List<GameObject> StartingItems { get; set; } = new();
 	[Property] public GameObject ActiveItem { get; set; }
-	[Property, Sync] public int ActiveIndex { get; set; }
-	[Property, Sync] public bool AbleToSwitch { get; set; } = true;
+	[Property] public int ActiveIndex { get; set; }
+	[Property] public bool AbleToSwitch { get; set; } = true;
 	public Player Player { get; set; }
 	public TeamComponent TeamComponent { get; set; }
 	protected override void OnStart()
@@ -34,7 +34,7 @@ public sealed class Inventory : Component
 	}
 	protected override void OnUpdate()
 	{
-		if ( !Network.IsOwner ) return;
+		if ( IsProxy ) return;
 		if ( TeamComponent.TeamName == Team.Hunters.ToString() && !IsProxy )
 		{
 			ItemInputs();
@@ -66,6 +66,7 @@ public sealed class Inventory : Component
 
 	public void AddItem( GameObject item, int slot )
 	{
+		if ( IsProxy ) return;
 		if ( Items[slot] is null )
 		{
 			var clone = item.Clone();
@@ -109,6 +110,7 @@ public sealed class Inventory : Component
 
 	public void RemoveItem( int slot )
 	{
+		if ( IsProxy ) return;
 		if ( Items[slot] is not null )
 		{
 			Items[slot].Destroy();

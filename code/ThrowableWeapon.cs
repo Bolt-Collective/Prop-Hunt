@@ -11,7 +11,7 @@ public sealed class ThrowableWeapon : Component
 	[Property] public SkinnedModelRenderer Arms { get; set; }
 	protected override void OnUpdate()
 	{
-		if ( Player.Local.AbleToMove )
+		if ( Player.Local.AbleToMove && Player.Local is not null )
 		{
 			if ( Input.Down( "attack1" ) && !IsProxy && !HasThrown )
 			{

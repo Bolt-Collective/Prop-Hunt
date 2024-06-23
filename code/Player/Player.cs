@@ -264,6 +264,7 @@ public class Player : Component
 	}
 	protected override void OnUpdate()
 	{
+		Log.Info( Scene.GetAllComponents<Player>().Count() );
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 
 		if ( PropHuntManager.Instance.RoundState == GameState.Preparing && TeamComponent.TeamName == Team.Hunters.ToString() )
@@ -373,7 +374,7 @@ public class Player : Component
 
 	protected override void OnFixedUpdate()
 	{
-		UpdateBodyVisibility();
+		//UpdateBodyVisibility();
 		if ( IsProxy )
 			return;
 
@@ -469,7 +470,7 @@ public class Player : Component
 		if ( Health <= 0 )
 		{
 			Health = 0;
-			DisableBody();
+			//DisableBody();
 			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		}
 	}

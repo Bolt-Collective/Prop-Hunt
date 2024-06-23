@@ -15,7 +15,6 @@ public class PropShiftingMechanic : Component
 	}
 	protected override void OnUpdate()
 	{
-		BodyVis();
 
 		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() ) return;
 		if ( Input.Pressed( "View" ) )
@@ -29,26 +28,6 @@ public class PropShiftingMechanic : Component
 		if ( Input.Pressed( "Use" ) )
 		{
 			ShiftIntoProp();
-		}
-	}
-	public void BodyVis()
-	{
-		var localPlayer = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
-		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		if ( localPlayer.BodyRenderer is null ) return;
-		if ( IsProp || !spectateSystem.IsSpectating && !IsProxy )
-		{
-			var bodyRenderer = localPlayer.BodyRenderer;
-			var renderType = localPlayer.CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
-			bodyRenderer.RenderType = renderType;
-			if ( bodyRenderer.RenderType != renderType )
-			{
-				bodyRenderer.Network.Refresh();
-			}
-		}
-		else if ( IsProp && !spectateSystem.IsSpectating && IsProxy )
-		{
-			localPlayer.BodyRenderer.RenderType = ModelRenderer.ShadowRenderType.On;
 		}
 	}
 	public void ExitProp()

@@ -106,7 +106,7 @@ public sealed class Item : Component
 		}
 	}
 
-	[ActionGraphNode( "Broadcast Anim" ), Broadcast]
+	[ActionGraphNode( "Broadcast Anim" )]
 	public static void BroadcastAnim( Guid RendererId, string AnimName, bool True )
 	{
 		if ( Game.ActiveScene.IsProxy ) return;
