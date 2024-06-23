@@ -7,7 +7,7 @@ public class PropShiftingMechanic : Component
 	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
-	[Property] public BoxCollider Collider { get; set; }
+	[Property] public CapsuleCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	protected override void OnStart()
 	{
@@ -15,17 +15,7 @@ public class PropShiftingMechanic : Component
 	}
 	protected override void OnUpdate()
 	{
-		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
-		if ( IsProp || !spectateSystem.IsSpectating )
-		{
-			var bodyRenderer = Player.Local.BodyRenderer;
-			var renderType = Player.Local.CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
-			bodyRenderer.RenderType = renderType;
-			if ( bodyRenderer.RenderType != renderType )
-			{
-				Network.Refresh();
-			}
-		}
+
 		if ( IsProxy || TeamComponent.TeamName != Team.Props.ToString() ) return;
 		if ( Input.Pressed( "View" ) )
 		{
@@ -34,7 +24,6 @@ public class PropShiftingMechanic : Component
 		var pc = Components.Get<Player>();
 
 		//Gizmo.Draw.LineBBox( pc.GameObject.GetBounds() );
-		Collider.Scale = pc.BodyRenderer.Bounds.Size;
 
 		if ( Input.Pressed( "Use" ) )
 		{

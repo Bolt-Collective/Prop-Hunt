@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Data;
+using System.Net.Http.Headers;
 using Sandbox.Utility;
 namespace PropHunt;
 
@@ -7,6 +8,7 @@ namespace PropHunt;
 public partial class PropHuntManager : Component, Component.INetworkListener
 {
 	[HostSync] public GameState RoundState { get; set; } = GameState.None;
+	[Property] public bool AllowPeopleButUsToJoin { get; set; } = false;
 	[HostSync] public string RoundStateText { get; set; }
 
 	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
@@ -52,10 +54,20 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static PropHuntManager Instance { get; set; }
 	public List<(string, int)> Votes { get; set; } = new();
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
+	[Property] public SceneFile FallBackScene { get; set; }
 
 	protected override void OnStart()
 	{
 		Instance = this;
+	}
+	void INetworkListener.OnActive( Sandbox.Connection conn )
+	{
+		//The last one is my dad's steam id, I don't mind him joining
+		if ( conn.SteamId == 76561199001645276 || conn.SteamId == 76561198043979097 || conn.SteamId == 76561199101178253 || AllowPeopleButUsToJoin ) return;
+		if ( Steam.SteamId == conn.SteamId )
+		{
+			Game.ActiveScene.Load( FallBackScene );
+		}
 	}
 	protected override void OnUpdate()
 	{
@@ -63,22 +75,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			//MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayers.txt" ).ToInt();
 		}
-		if ( !IsProxy )
+		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{
 			MaxPlayersToStart = Connection.All.Count;
 		}
-		//Make sure non hunters are not blinded
-		var blind = Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault();
-		foreach ( var player in Scene.GetAllComponents<Player>() )
+		else
 		{
-			if ( player.TeamComponent.TeamName == Team.Hunters.ToString() && RoundState == GameState.Starting )
-			{
-				blind.UseBlind = true;
-			}
-			else
-			{
-				blind.UseBlind = false;
-			}
+			MaxPlayersToStart = 2;
 		}
 		if ( !IsProxy )
 		{
@@ -205,14 +208,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
 			player.Inventory.SpawnStartingItems();
-			player.Inventory.Network.Refresh();
 			player.AbleToMove = false;
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
 				Log.Info( "Blinding hunters" );
 				blind.UseBlind = true;
-				Player.Local.AnimationHelper.Enabled = false;
-				Player.Local.AnimationHelper.Network.Refresh();
 			}
 		}
 		if ( IsFirstRound )
@@ -243,8 +243,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 			{
 				blind.UseBlind = false;
-				Player.Local.AnimationHelper.Enabled = true;
-				Player.Local.AnimationHelper.Network.Refresh();
 			}
 		}
 		RoundState = GameState.Started;
@@ -335,11 +333,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			ForceWin( Team.Hunters );
 		}
-
 	}
 
 	private Team WinningTeam { get; set; }
 	[HostSync] public string WinningTeamName { get; set; }
+	[Broadcast]
 
 	public void ForceWin( Team team )
 	{

@@ -39,6 +39,7 @@ public sealed class ViewModel : Component
 
 	void GroundSpeed()
 	{
+		if ( Player.GameObject.Components.Get<CharacterController>() is null ) return;
 		Gun.Set( "move_groundspeed", Player.GameObject.Components.Get<CharacterController>().Velocity.Length );
 	}
 	Vector3 LocalPos = Vector3.Zero;
@@ -61,9 +62,10 @@ public sealed class ViewModel : Component
 				model.Enabled = true;
 			}
 		}
+		if ( Player is null || GameObject.Parent is null || Player.Eye is null ) return;
 		GameObject.Parent.Parent = Player.Eye;
 		LocalPos = LocalPos.LerpTo( LocalPos, Time.Delta * 10f );
-		if ( Player.AbleToMove )
+		if ( Player.AbleToMove && Gun is not null )
 		{
 			ApplyInertia();
 			GroundSpeed();
@@ -72,7 +74,7 @@ public sealed class ViewModel : Component
 
 	protected override void OnEnabled()
 	{
-		if ( IsProxy ) return;
+		if ( IsProxy || Gun is null ) return;
 		Gun.Set( "b_deploy_dry", true );
 	}
 }
