@@ -77,11 +77,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{
-			MaxPlayersToStart = Connection.All.Count;
+			//MaxPlayersToStart = Connection.All.Count;
 		}
 		else
 		{
-			MaxPlayersToStart = 2;
+			//MaxPlayersToStart = 2;
 		}
 		if ( !IsProxy )
 		{
@@ -150,7 +150,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				throw new ArgumentOutOfRangeException();
 		}
 	}
-	[Broadcast]
 	public void OnRoundPreparing()
 	{
 		OnGoingRound = true;
@@ -159,6 +158,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		foreach ( var prop in Scene.GetAllComponents<PropShiftingMechanic>() )
 		{
+			if ( prop is null ) return;
 			prop.ExitProp();
 		}
 		foreach ( var inv in Scene.GetAllComponents<Inventory>() )
@@ -166,7 +166,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			inv.Clear();
 		}
 	}
-	[Broadcast]
 	public void OnRoundStarting()
 	{
 		Log.Info( "Round starting" );
@@ -183,7 +182,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 					player.TeamComponent.ChangeTeam( Team.Hunters );
 					player.Health = 100;
 					player.AbleToMove = true;
-					player.SpectateSystem.IsSpectating = false;
 				}
 				else
 				{
@@ -191,7 +189,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 					player.TeamComponent.ChangeTeam( Team.Props );
 					player.Health = 100;
 					player.AbleToMove = true;
-					player.SpectateSystem.IsSpectating = false;
 				}
 			}
 		}
@@ -202,7 +199,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				player.TeamComponent.GetRandomTeam();
 				player.AbleToMove = true;
 				player.Health = 100;
-				player.SpectateSystem.IsSpectating = false;
 			}
 		}
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
@@ -234,7 +230,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		PopupSystem.DisplayPopup( text, title, duration );
 	}
 
-	[Broadcast]
 	public void OnRoundStart()
 	{
 		foreach ( var player in GetPlayers( Team.Hunters ) )
@@ -249,8 +244,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundLength = RoundTime; // 360 seconds
 		TimeSinceRoundStateChanged = 0;
 	}
-
-	[Broadcast]
 	public void OnRoundEnding()
 	{
 		OnGoingRound = false;
@@ -264,7 +257,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		return Random.Shared.Int( min, max );
 	}
-	[Broadcast]
 	public void OnRoundEnd()
 	{
 		RoundState = GameState.Ended;
@@ -298,13 +290,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			ResetRound();
 		}
 	}
-	[Broadcast]
 	public void DoMapVote()
 	{
 		// TODO: do map vote
 		Log.Info( "map vote" );
 	}
-	[Broadcast]
 	public void ResetRound()
 	{
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();

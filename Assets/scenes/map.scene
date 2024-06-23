@@ -1,5 +1,5 @@
 {
-  "__guid": "e7d221b5-43e3-4a88-b9d6-3a5a35949a0e",
+  "__guid": "5fd29acf-fdf6-4bfb-937c-12814118cd71",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -217,13 +217,7 @@
             "_type": "gameobject",
             "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
           },
-          "Health": 0,
-          "SpectateSystem": {
-            "_type": "component",
-            "component_id": "9ef808e6-c3a1-4704-a473-cf095e5d7097",
-            "go": "13cdc0ba-6159-43e7-b648-238afaf50f27",
-            "component_type": "SpectateSystem"
-          }
+          "Health": 0
         },
         {
           "__type": "PlayerDresser",
@@ -317,11 +311,6 @@
             "go": "30ab2711-c06f-4a4e-a3d2-d87083751795",
             "component_type": "SkinnedModelRenderer"
           }
-        },
-        {
-          "__type": "SpectateSystem",
-          "__guid": "9ef808e6-c3a1-4704-a473-cf095e5d7097",
-          "IsSpectating": false
         }
       ],
       "Children": [
@@ -1706,7 +1695,7 @@
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
           "AllowPeopleButUsToJoin": false,
           "FallBackScene": "scenes/fallbackscene.scene",
-          "MaxPlayersToStart": 2,
+          "MaxPlayersToStart": 3,
           "OnGoingRound": false
         }
       ]
@@ -2294,8 +2283,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "T": "Inventory",
                   "_name": "TryGet",
+                  "T": "Inventory",
                   "_type": "Sandbox.IComponentLister",
                   "_isStatic": false
                 },
@@ -2449,8 +2438,8 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "T": "Inventory",
                   "_name": "TryGet",
+                  "T": "Inventory",
                   "_type": "Sandbox.IComponentLister",
                   "_isStatic": false
                 },
@@ -2855,7 +2844,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-23T15:44:09.1704761-04:00",
+  "LastSaved": "2024-06-23T19:08:47.6158172-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
