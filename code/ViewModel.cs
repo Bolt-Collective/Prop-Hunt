@@ -47,7 +47,7 @@ public sealed class ViewModel : Component
 	{
 		var spectateSystem = Scene.GetAllComponents<SpectateSystem>().FirstOrDefault( x => !x.IsProxy );
 		GameObject.Enabled = !GameObject.Parent.IsProxy;
-		if ( IsProxy ) return;
+		if ( GameObject.Parent.IsProxy ) return;
 		if ( Player.CameraDistance != 0 )
 		{
 			foreach ( var model in GameObject.Components.GetAll<SkinnedModelRenderer>( FindMode.InDescendants ) )
@@ -74,7 +74,7 @@ public sealed class ViewModel : Component
 
 	protected override void OnEnabled()
 	{
-		if ( IsProxy || Gun is null ) return;
+		if ( GameObject.Parent.IsProxy || Gun is null ) return;
 		Gun.Set( "b_deploy_dry", true );
 	}
 }

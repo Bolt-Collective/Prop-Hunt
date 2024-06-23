@@ -52,6 +52,10 @@ public sealed class Inventory : Component
 		{
 			Clear();
 		}
+		if ( !IsProxy && TeamComponent.TeamName == Team.Hunters.ToString() )
+		{
+			SpawnStartingItems();
+		}
 	}
 
 	public void AddItem( GameObject item, int slot )
