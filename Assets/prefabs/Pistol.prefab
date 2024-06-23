@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "01255748-faa9-4ebb-a41c-c33afc26ea7b",
     "Flags": 0,
-    "Name": "Pistol",
-    "Position": "254.5133,-390.7629,358.3449",
+    "Name": "pistol",
     "NetworkMode": 2,
     "NetworkInterpolation": true,
     "Components": [
@@ -52,9 +51,9 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
+                "_isStatic": false,
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "832,-288"
@@ -811,7 +810,6 @@
         "__guid": "d53887e5-cd17-430a-907a-92a3b3873816",
         "Flags": 0,
         "Name": "Viewmodel",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
@@ -832,7 +830,6 @@
             "__guid": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
             "Flags": 0,
             "Name": "weapon",
-            "Position": "0,0,0",
             "Tags": "viewmodel",
             "Enabled": true,
             "NetworkMode": 2,
@@ -843,7 +840,7 @@
                 "__guid": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "BodyGroups": 17685,
                 "CreateBoneObjects": false,
-                "Model": "models/dev/error.vmdl",
+                "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
                 "RenderType": "Off",
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
@@ -854,7 +851,6 @@
             "__guid": "9bbc94bd-ff76-4e26-bc01-62e365a15513",
             "Flags": 0,
             "Name": "arms",
-            "Position": "0,0,0",
             "Tags": "viewmodel",
             "Enabled": true,
             "NetworkMode": 2,
@@ -880,13 +876,15 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
+    "facepunch.v_usp",
     "mdlresrc.toolgunshoot"
   ],
   "__version": 1
