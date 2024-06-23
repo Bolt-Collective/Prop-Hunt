@@ -65,8 +65,6 @@ public class Player : Component
 		PropShiftingMechanic = Components.Get<PropShiftingMechanic>();
 		AmmoContainer = Components.Get<AmmoContainer>();
 		if ( IsProxy ) return;
-		Tags.Add( Steam.SteamId.ToString() );
-		characterController.IgnoreLayers.Add( Steam.SteamId.ToString() );
 		if ( PropHuntManager.Instance.OnGoingRound == true )
 		{
 			TakeDamage( 100 );
@@ -155,7 +153,9 @@ public class Player : Component
 	public void UseItems()
 	{
 		Log.Info( "Using items" );
-		var tr = Scene.Trace.Ray( Scene.Camera.ScreenNormalToRay( 0.5f ), 500 ).WithoutTags( Steam.SteamId.ToString() ).Run();
+		var tr = Scene.Trace.Ray( Scene.Camera.ScreenNormalToRay( 0.5f ), 500 )
+			.IgnoreGameObject( GameObject )
+			.Run();
 		if ( tr.Hit )
 		{
 			if ( tr.GameObject.Components.TryGet<IUse>( out var use, FindMode.EverythingInSelfAndParent ) )

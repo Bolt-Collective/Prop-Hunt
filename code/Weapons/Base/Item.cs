@@ -64,8 +64,8 @@ public sealed class Item : Component
 		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
 		ray.Forward += ray.Forward * Vector3.Random * Spread;
 		var tr = Scene.Trace.Ray( ray, TraceDistance )
-		.WithoutTags( Steam.SteamId.ToString() )
-		.Run();
+			.IgnoreGameObject( Player.GameObject )
+			.Run();
 		if ( Player is null || !Player.AbleToMove )
 		{
 			hitPos = tr.EndPosition;
@@ -86,6 +86,7 @@ public sealed class Item : Component
 			{
 				if ( Player.IsFriendly( enemy ) ) return;
 				enemy.TakeDamage( damage );
+				Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition.Normal, Rotation.Random );
 			}
 			if ( tr.Body is not null )
 			{
@@ -98,7 +99,6 @@ public sealed class Item : Component
 			{
 				damageAble.OnDamage( trDamage );
 			}
-
 		}
 		else
 		{
