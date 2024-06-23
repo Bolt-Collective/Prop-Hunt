@@ -6,6 +6,7 @@
       "Flags": 0,
       "Name": "Map",
       "Position": "-64.03706,-206.7385,264.4784",
+      "Tags": "world,solid",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -247,11 +248,36 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "SpectateSystem",
-                  "_name": "SetIsSpecating",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "SetIsSpecating"
                 },
                 "UserData": {
                   "Position": "256,0"
+                }
+              },
+              {
+                "Id": 6,
+                "Type": "call",
+                "Properties": {
+                  "_type": "Sandbox.IComponentLister",
+                  "T": "Sandbox.SkinnedModelRenderer",
+                  "_isStatic": false,
+                  "_name": "Get"
+                },
+                "UserData": {
+                  "Position": "272,128"
+                }
+              },
+              {
+                "Id": 8,
+                "Type": "property",
+                "Properties": {
+                  "_type": "Sandbox.Component",
+                  "_kind": "Set",
+                  "_name": "Enabled"
+                },
+                "UserData": {
+                  "Position": "640,128"
                 }
               }
             ],
@@ -278,6 +304,34 @@
                 "Value": true,
                 "DstId": 4,
                 "DstName": "value"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "player",
+                "DstId": 6,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelfAndChildren",
+                "DstId": 6,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 8,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 6,
+                "SrcName": "_result",
+                "DstId": 8,
+                "DstName": "_target"
+              },
+              {
+                "Value": false,
+                "DstId": 8,
+                "DstName": "_value"
               }
             ]
           },
@@ -312,8 +366,8 @@
           "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6",
           "Collider": {
             "_type": "component",
-            "component_id": "f979637a-f12f-4846-a1ec-5889858c9625",
-            "go": "a247ceea-cfaf-45f2-8cea-018839205ac2",
+            "component_id": "e2956e60-a613-4154-8e7c-1b3d5902ca2a",
+            "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
             "component_type": "CapsuleCollider"
           },
           "IsProp": false
@@ -389,26 +443,6 @@
       ],
       "Children": [
         {
-          "__guid": "a247ceea-cfaf-45f2-8cea-018839205ac2",
-          "Flags": 0,
-          "Name": "Collider",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Sandbox.CapsuleCollider",
-              "__guid": "f979637a-f12f-4846-a1ec-5889858c9625",
-              "End": "0,0,50.08606",
-              "IsTrigger": false,
-              "Radius": 25,
-              "Start": "0,0,19.79791",
-              "Static": false
-            }
-          ]
-        },
-        {
           "__guid": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
           "Flags": 0,
           "Name": "Body",
@@ -453,6 +487,15 @@
               "MotionEnabled": false,
               "RigidbodyFlags": 0,
               "StartAsleep": false
+            },
+            {
+              "__type": "Sandbox.CapsuleCollider",
+              "__guid": "e2956e60-a613-4154-8e7c-1b3d5902ca2a",
+              "End": "0,0,50.08606",
+              "IsTrigger": false,
+              "Radius": 25,
+              "Start": "0,0,19.79791",
+              "Static": false
             }
           ],
           "Children": [
@@ -1851,6 +1894,7 @@
       "Flags": 0,
       "Name": "wooden_crate",
       "Position": "512,80,-0.0001728505",
+      "Tags": "propplayer",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -2369,8 +2413,8 @@
                 "Properties": {
                   "_type": "Sandbox.IComponentLister",
                   "T": "Inventory",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2391,8 +2435,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Inventory",
-                  "_name": "SpawnStartingItems",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "SpawnStartingItems"
                 },
                 "UserData": {
                   "Position": "1104,0"
@@ -2524,8 +2568,8 @@
                 "Properties": {
                   "_type": "Sandbox.IComponentLister",
                   "T": "Inventory",
-                  "_name": "TryGet",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2546,8 +2590,8 @@
                 "Type": "call",
                 "Properties": {
                   "_type": "Inventory",
-                  "_name": "Clear",
-                  "_isStatic": false
+                  "_isStatic": false,
+                  "_name": "Clear"
                 },
                 "UserData": {
                   "Position": "1056,0"
@@ -2928,7 +2972,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-22T16:23:29.4601212-04:00",
+  "LastSaved": "2024-06-23T14:17:42.5291834-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
