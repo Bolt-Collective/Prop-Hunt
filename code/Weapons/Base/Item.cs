@@ -86,7 +86,7 @@ public sealed class Item : Component
 			{
 				if ( Player.IsFriendly( enemy ) ) return;
 				enemy.TakeDamage( damage );
-				Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition.Normal, Rotation.Random );
+				Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
 			}
 			if ( tr.Body is not null )
 			{

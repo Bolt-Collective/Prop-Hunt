@@ -102,6 +102,7 @@ public sealed class Weapon : Component
 			if ( Player.IsFriendly( enemy ) ) return;
 			enemy.TakeDamage( 25 );
 			OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );
+			Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
 		}
 		if ( tr.Hit )
 		{
