@@ -22,7 +22,6 @@ public sealed class Inventory : Component
 	}
 	public void SpawnStartingItems()
 	{
-		if ( IsProxy ) return;
 		if ( StartingItems.Count != 0 && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			for ( int i = 0; i < StartingItems.Count; i++ )
@@ -59,6 +58,10 @@ public sealed class Inventory : Component
 			{
 				item.Destroy();
 			}
+		}
+		if ( !IsProxy && (GameObject.Components.GetAll<Weapon>( FindMode.EverythingInSelfAndAncestors ).Count() + GameObject.Components.GetAll<Item>( FindMode.EverythingInSelfAndAncestors ).Count() + GameObject.Components.GetAll<ThrowableWeapon>().Count()) == 0 && TeamComponent.TeamName == Team.Hunters.ToString() )
+		{
+			SpawnStartingItems();
 		}
 	}
 

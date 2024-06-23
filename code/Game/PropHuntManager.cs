@@ -103,7 +103,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		if ( !Networking.IsHost ) return;
 		GameStateManager();
-
 	}
 	[Broadcast]
 	void GameStateManager()
@@ -172,44 +171,16 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
-		if ( AllPlayers.Count() == 2 )
+
+		foreach ( var player in AllPlayers )
 		{
-			for ( int i = 0; i < 2; i++ )
-			{
-				if ( i == 0 )
-				{
-					var player = AllPlayers.ElementAt( i );
-					player.TeamComponent.ChangeTeam( Team.Hunters );
-					player.Health = 100;
-					player.AbleToMove = true;
-				}
-				else
-				{
-					var player = AllPlayers.ElementAt( i );
-					player.TeamComponent.ChangeTeam( Team.Props );
-					player.Health = 100;
-					player.AbleToMove = true;
-				}
-			}
-		}
-		else
-		{
-			foreach ( var player in AllPlayers )
-			{
-				player.TeamComponent.GetRandomTeam();
-				player.AbleToMove = true;
-				player.Health = 100;
-			}
+			player.TeamComponent.GetRandomTeam();
+			player.AbleToMove = true;
+			player.Health = 100;
 		}
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
-			player.Inventory.SpawnStartingItems();
-			player.AbleToMove = false;
-			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
-			{
-				Log.Info( "Blinding hunters" );
-				blind.UseBlind = true;
-			}
+			player.HunterStart();
 		}
 		if ( IsFirstRound )
 		{
@@ -232,16 +203,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	public void OnRoundStart()
 	{
-		foreach ( var player in GetPlayers( Team.Hunters ) )
+		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
-			player.AbleToMove = true;
-			if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
-			{
-				blind.UseBlind = false;
-			}
+			player.HunterUnblind();
 		}
 		RoundState = GameState.Started;
-		RoundLength = RoundTime; // 360 seconds
+		RoundLength = RoundTime;
 		TimeSinceRoundStateChanged = 0;
 	}
 	public void OnRoundEnding()
@@ -264,11 +231,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 		GetPlayers( Team.Props ).ToList().Clear();
 		GetPlayers( Team.Hunters ).ToList().Clear();
-		foreach ( var player in AllPlayers )
-		{
-			player.ResetStats();
-			player.Network.Refresh();
-		}
 		// TODO: implement RTV and map votes
 
 
@@ -297,14 +259,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	}
 	public void ResetRound()
 	{
-		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
-
 		foreach ( var player in AllPlayers )
 		{
-			player?.ResetStats();
-			player.Transform.World = Game.Random.FromList( spawnPoints ).Transform.World;
+			player.Respawn();
 		}
-
 		RoundState = GameState.None;
 		TimeSinceRoundStateChanged = 0;
 	}
@@ -312,7 +270,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// <summary>
 	/// Logic happening every update
 	/// </summary>
-	[Broadcast]
 	public void RoundTick()
 	{
 		if ( TimeSinceRoundStateChanged > RoundLength && GetPlayers( Team.Hunters ).Count( x => x.Health <= 0 ) <= 0 )
@@ -327,7 +284,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	private Team WinningTeam { get; set; }
 	[HostSync] public string WinningTeamName { get; set; }
-	[Broadcast]
 
 	public void ForceWin( Team team )
 	{

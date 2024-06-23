@@ -467,9 +467,20 @@ public class Player : Component
 		if ( Health <= 0 )
 		{
 			Health = 0;
-			DisableBody();
-			OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
+			Death();
 		}
+	}
+	void Death()
+	{
+		DisableBody();
+		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
+	}
+	[Broadcast]
+	public void Respawn()
+	{
+		if ( !Network.IsOwner ) return;
+		ResetStats();
+		Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
 	}
 	public void DisableBody()
 	{
@@ -486,7 +497,6 @@ public class Player : Component
 	}
 	public void ResetStats()
 	{
-		if ( IsProxy ) return;
 		AmmoContainer?.ResetAmmo();
 		Health = 100;
 		IsCrouching = false;
@@ -499,9 +509,7 @@ public class Player : Component
 		if ( PropShiftingMechanic.Collider is not null )
 		{
 			PropShiftingMechanic.Collider.Enabled = true;
-			PropShiftingMechanic.Collider.Network.Refresh();
 		}
-		Body.Network.Refresh();
 	}
 
 	[ConCmd( "kill" )]
@@ -518,6 +526,30 @@ public class Player : Component
 		foreach ( var player in Game.ActiveScene.GetAllComponents<Player>() )
 		{
 			player.TakeDamage( 10000 );
+		}
+	}
+
+	[Broadcast]
+	public void HunterStart()
+	{
+		if ( IsProxy ) return;
+		Inventory.SpawnStartingItems();
+		AbleToMove = false;
+		if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
+		{
+			Log.Info( "Blinding hunters" );
+			blind.UseBlind = true;
+		}
+	}
+
+	[Broadcast]
+	public void HunterUnblind()
+	{
+		if ( IsProxy ) return;
+		AbleToMove = true;
+		if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
+		{
+			blind.UseBlind = false;
 		}
 	}
 }
