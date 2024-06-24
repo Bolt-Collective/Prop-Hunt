@@ -15,27 +15,25 @@ PropHuntUI {
 
 	.title {
 		padding: 10px;
-		font-size: 25px;
+		font-size: 20px;
 		font-family: Lexend;
 		font-weight: 600;
 		justify-content: center;
-		background-color: #00000076;
+		// background-color: #00000076;
 		color: #fff;
 	}
 
 	.health
     {
-        background-color: #0004;
         border-radius: 3px;
         padding: 10px 20px;
         color: white;
         font-weight: bolder;
-        font-size: 30px;
+        font-size: 120px;
         font-family: poppins;
         justify-content: center;
         align-items: center;
         gap: 16px;
-        backdrop-filter: blur( 20px );
 
         .value
         {

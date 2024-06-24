@@ -9,15 +9,16 @@
 		<div class="round-timer">
 			@if (Manager.RoundState == GameState.WaitingForPlayers)
 			{
-				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format(TimeSpan.FromSeconds(
+				<div class="title" style="background-color: rgba(0, 0, 0, 0.4); font-weight: 800; font-size: 25px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">@Format(TimeSpan.FromSeconds(
 			Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			else
 			{
-				<div class="title" style="background-color: rgba(0, 0, 0, 0.4)">@Format(TimeSpan.FromSeconds(
+				<div class="title" style="background-color: rgba(0, 0, 0, 0.4); font-weight: 800; font-size: 25px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+					@Format(TimeSpan.FromSeconds(
 			Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
-			<div class="title" style="background-color: rgba(0, 0, 0, 0.65)">@Manager.RoundStateText</div>
+			<div class="title" style="text-shadow: 2px 2px 3px 1px black;">@Manager.RoundStateText</div>
 		</div>
 		@if (Player.Local is not null)
 		{
