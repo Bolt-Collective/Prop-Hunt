@@ -1695,7 +1695,7 @@
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
           "AllowPeopleButUsToJoin": false,
           "FallBackScene": "scenes/fallbackscene.scene",
-          "MaxPlayersToStart": 3,
+          "MaxPlayersToStart": 2,
           "OnGoingRound": false
         }
       ]
@@ -2824,7 +2824,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-23T19:51:33.7600074-04:00",
+  "LastSaved": "2024-06-23T23:20:37.2225396-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
