@@ -30,25 +30,25 @@ public class TeamComponent : Component
 	}
 	public void GetRandomTeam()
 	{
-		int propsCount = Scene.GetAllComponents<TeamComponent>().Where( x => x.TeamName == Team.Props.ToString() ).Count();
-		int huntersCount = Scene.GetAllComponents<TeamComponent>().Where( x => x.TeamName == Team.Hunters.ToString() ).Count();
+		int propsCount = Scene.GetAllComponents<TeamComponent>().Count( x => x.TeamName == Team.Props.ToString() );
+		int huntersCount = Scene.GetAllComponents<TeamComponent>().Count( x => x.TeamName == Team.Hunters.ToString() );
 
-		Team randomTeam;
+		Team teamToAssign;
 
-		if ( propsCount == 0 && huntersCount > 0 )
+		if ( propsCount < huntersCount )
 		{
-			randomTeam = Team.Props;
+			teamToAssign = Team.Props;
 		}
-		else if ( huntersCount == 0 && propsCount > 0 )
+		else if ( huntersCount < propsCount )
 		{
-			randomTeam = Team.Hunters;
+			teamToAssign = Team.Hunters;
 		}
 		else
 		{
-			randomTeam = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
+			teamToAssign = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
 		}
 
-		ChangeTeam( randomTeam );
+		ChangeTeam( teamToAssign );
 	}
 	int GetRandom( int min, int max )
 	{
