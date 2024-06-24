@@ -66,10 +66,8 @@ public class Player : Component
 		if ( IsProxy ) return;
 		if ( PropHuntManager.Instance.OnGoingRound == true )
 		{
-			TakeDamage( 100 );
-			GameObject.Network.Refresh();
+			TakeDamage( 1000 );
 		}
-		Network.Refresh();
 	}
 	public void FreeLook()
 	{
