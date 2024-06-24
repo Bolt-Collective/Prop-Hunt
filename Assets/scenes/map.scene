@@ -2222,26 +2222,6 @@
       ]
     },
     {
-      "__guid": "55465012-97c6-48bd-ad32-d63e5e198b54",
-      "Flags": 0,
-      "Name": "minecraftsword",
-      "Position": "498.4188,-223.2004,-3.999634",
-      "Rotation": "0.00001603365,0.00002878904,-0.2517831,0.9677837",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "b3047251-e9c1-457a-83c0-43f19ac005f1",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/mc_sword/minecraftsword.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
       "__guid": "203a3429-98d0-49d3-83b4-f82170b738f4",
       "Flags": 0,
       "Name": "Add starting items trigger",
@@ -2844,7 +2824,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-23T19:08:47.6158172-04:00",
+  "LastSaved": "2024-06-23T19:51:33.7600074-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
@@ -2865,7 +2845,6 @@
     "facepunch.wheely_bin",
     "facepunch.wooden_crate",
     "fpopium.tv",
-    "frankstuff.minecraftsword",
     "randkassets.wetfloor_sign"
   ],
   "__version": 1
