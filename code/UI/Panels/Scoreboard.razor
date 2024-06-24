@@ -8,11 +8,12 @@
 			Props
 		</div>
 		<div class="team-player-list">
-			@foreach (Connection conn in Connection.All)
+			@foreach (var player in Scene.GetAllComponents<Player>().Where(x => x.TeamComponent.TeamName ==
+					Team.Props.ToString()))
 			{
 				<div class="player">
-					<img src=@($"avatar:{conn.SteamId}") class="avatar" />
-					<label class="name">@conn.DisplayName</label>
+					<img src=@($"avatar:{player.Network.OwnerConnection.SteamId}") class="avatar" />
+					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
 				</div>
 			}
 
@@ -22,7 +23,14 @@
 			Hunters
 		</div>
 		<div class="team-player-list">
-
+			@foreach (var player in Scene.GetAllComponents<Player>().Where(x => x.TeamComponent.TeamName ==
+					Team.Hunters.ToString()))
+			{
+				<div class="player">
+					<img src=@($"avatar:{player.Network.OwnerConnection.SteamId}") class="avatar" />
+					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
+				</div>
+			}
 		</div>
 	</div>
 </root>

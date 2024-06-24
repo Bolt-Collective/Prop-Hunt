@@ -1,0 +1,99 @@
+{
+  "RootObject": {
+    "__guid": "b18c0a79-25b1-45f7-b6c1-941d6d783a6c",
+    "Flags": 0,
+    "Name": "he throwable",
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "ThrowableWeapon",
+        "__guid": "bac77bd0-3cf3-4591-84d7-8e18bbf3f40c",
+        "Arms": {
+          "_type": "component",
+          "component_id": "a7e532ec-2de7-4c55-ae0f-a9862d1433c3",
+          "go": "2b4a2404-d74f-4447-9b1f-f77c37200f93",
+          "component_type": "SkinnedModelRenderer"
+        },
+        "HasThrown": false,
+        "ThrowableObject": {
+          "_type": "gameobject",
+          "prefab": "prefabs/he.prefab"
+        },
+        "ThrowPower": 1000
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "306caa1f-5bcd-4411-a71d-c90149aa165e",
+        "Flags": 0,
+        "Name": "Viewmodel",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "Components": [
+          {
+            "__type": "ViewModel",
+            "__guid": "9ccd245f-8c3b-4995-83e2-a20db92048bf"
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "73aa03b7-1c08-47de-bfbf-eecbd72c9924",
+            "Flags": 0,
+            "Name": "he",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "9e249fc8-d5bb-406b-8ef3-95fc099dde42",
+                "BodyGroups": 18446744073709551615,
+                "BoneMergeTarget": {
+                  "_type": "component",
+                  "component_id": "a7e532ec-2de7-4c55-ae0f-a9862d1433c3",
+                  "go": "2b4a2404-d74f-4447-9b1f-f77c37200f93",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "CreateBoneObjects": false,
+                "Model": "models/v_he_grenade.vmdl",
+                "RenderType": "Off",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              }
+            ]
+          },
+          {
+            "__guid": "2b4a2404-d74f-4447-9b1f-f77c37200f93",
+            "Flags": 0,
+            "Name": "arms",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "a7e532ec-2de7-4c55-ae0f-a9862d1433c3",
+                "AnimationGraph": "animgraphs/grenadearms.vanmgrph",
+                "BodyGroups": 21,
+                "CreateBoneObjects": false,
+                "Model": "models/first_person/first_person_arms.vmdl",
+                "RenderType": "Off",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
