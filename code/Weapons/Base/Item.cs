@@ -90,15 +90,19 @@ public sealed class Item : Component
 			}
 			else if ( tr.Body is not null )
 			{
+				tr.GameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
+				tr.GameObject.Network.TakeOwnership();
 				tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
+				var trDamage = new DamageInfo( damage, GameObject, GameObject, tr.Hitbox );
+				trDamage.Position = tr.HitPosition;
+				trDamage.Shape = tr.Shape;
+				foreach ( var damageAble in tr.GameObject.Components.GetAll<IDamageable>() )
+				{
+					damageAble.OnDamage( trDamage );
+				}
+				tr.GameObject.Network.DropOwnership();
 			}
-			var trDamage = new DamageInfo( damage, GameObject, GameObject, tr.Hitbox );
-			trDamage.Position = tr.HitPosition;
-			trDamage.Shape = tr.Shape;
-			foreach ( var damageAble in tr.GameObject.Components.GetAll<IDamageable>() )
-			{
-				damageAble.OnDamage( trDamage );
-			}
+
 		}
 		else
 		{

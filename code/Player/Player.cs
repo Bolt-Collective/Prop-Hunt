@@ -72,7 +72,7 @@ public class Player : Component
 	public void FreeLook()
 	{
 		var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
-		if ( cam is null ) return;
+		if ( cam is null || !AbleToMove ) return;
 
 		if ( Input.Pressed( "attack2" ) )
 		{
@@ -338,7 +338,7 @@ public class Player : Component
 	}
 	private void UpdateBodyVisibility()
 	{
-		if ( AnimationHelper is null || BodyRenderer is null || PropShiftingMechanic.IsProp || AnimationHelper.Target is null )
+		if ( AnimationHelper is null || BodyRenderer is null || AnimationHelper.Target is null )
 			return;
 
 		var renderType = (!IsProxy) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
@@ -468,6 +468,7 @@ public class Player : Component
 			Death();
 		}
 	}
+	[Broadcast]
 	void Death()
 	{
 		DisableBody();
@@ -521,9 +522,19 @@ public class Player : Component
 	[ConCmd( "reset" )]
 	public static void ResetPlayers()
 	{
+		if ( !Game.IsEditor ) return;
 		foreach ( var player in Game.ActiveScene.GetAllComponents<Player>() )
 		{
 			player.TakeDamage( 10000 );
+		}
+	}
+	[ConCmd( "endblind" )]
+	public static void EndBlind()
+	{
+		if ( !Game.IsEditor ) return;
+		foreach ( var player in Game.ActiveScene.GetAllComponents<Player>() )
+		{
+			player.HunterUnblind();
 		}
 	}
 

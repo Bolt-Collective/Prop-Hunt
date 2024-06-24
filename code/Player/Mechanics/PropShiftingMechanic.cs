@@ -84,7 +84,7 @@ public class PropShiftingMechanic : Component
 	public bool TryChangeModel( SceneTraceResult tr, Player player, PropShiftingMechanic propShiftingMechanic )
 	{
 		if ( tr.GameObject is null ) return false;
-		var pcModel = player.Body.Components.Get<SkinnedModelRenderer>();
+		var pcModel = player.BodyRenderer;
 		var propModel = tr.GameObject.Components.Get<ModelRenderer>();
 		if ( propModel is null || pcModel is null ) return false;
 		if ( tr.Body.BodyType == PhysicsBodyType.Static )

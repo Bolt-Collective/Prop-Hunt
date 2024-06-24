@@ -15,7 +15,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -816.0, -144.0 ]
+					m_vecPosition = [ -784.0, -144.0 ]
 					m_nNodeID = 
 					{
 						m_id = 94045547
@@ -36,7 +36,7 @@
 				{
 					_class = "CSingleFrameAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -976.0, 208.0 ]
+					m_vecPosition = [ -784.0, -80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 335951544
@@ -98,7 +98,7 @@
 				{
 					_class = "CRootAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 240.0, 0.0 ]
+					m_vecPosition = [ 48.0, -144.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1247453538
@@ -126,7 +126,7 @@
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -160.0, -16.0 ]
+					m_vecPosition = [ -160.0, -144.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1577455453

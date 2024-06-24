@@ -1,0 +1,1119 @@
+{
+  "__guid": "39d5c5ac-c905-41cf-9555-95e541b46456",
+  "GameObjects": [
+    {
+      "__guid": "95e00a6a-78a7-465c-b906-182669dd9085",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "-91.56709,-243.795,161.6494",
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "0cf86dcb-4d8d-4b89-a013-f31220b5f3ef",
+          "UseMapFromLaunch": false
+        }
+      ]
+    },
+    {
+      "__guid": "51d7e76d-a51b-4378-b9f0-385752d3dd2e",
+      "Flags": 0,
+      "Name": "SceneMap",
+      "Position": "-381.9098,-270.7045,-6.140533",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Children": [
+        {
+          "__guid": "7e8bc3fa-5fe0-4f7c-a553-a52d36ba0143",
+          "Flags": 0,
+          "Name": "Sun",
+          "Position": "365.3777,238.9281,81.60165",
+          "Rotation": "0,0.3826834,0,0.9238796",
+          "Tags": "light_directional,light",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.DirectionalLight",
+              "__guid": "3f9bad66-a270-4980-92bc-b61aff874cb1",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "0.91373,0.98039,1,1",
+              "Shadows": true,
+              "SkyColor": "0.05882,0.07451,0.08235,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9ced7fd1-a248-4393-b1cf-e9e371911737",
+          "Flags": 0,
+          "Name": "Envmap Probe",
+          "Position": "381.9098,270.7045,70.14053",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.EnvmapProbe",
+              "__guid": "840c6cfe-c158-4277-b8ad-3570a30d2162",
+              "Texture": "textures/cubemaps/default2.vtex",
+              "Bounds": {
+                "Mins": "-1000,-1000,-1000",
+                "Maxs": "1000,1000,1000"
+              },
+              "DelayBetweenUpdates": 0.1,
+              "Feathering": 0.02,
+              "FrameInterval": 5,
+              "MaxDistance": 512,
+              "Projection": "Box",
+              "RenderDynamically": true,
+              "TintColor": "1,1,1,1",
+              "UpdateStrategy": "OnEnabled",
+              "ZFar": 4096,
+              "ZNear": 16
+            }
+          ]
+        },
+        {
+          "__guid": "d330ef76-59cf-41de-93c2-e1772a52f0db",
+          "Flags": 0,
+          "Name": "Spawn",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SpawnPoint",
+              "__guid": "960cb87b-a29d-40da-a3c3-d2c79c83bb5f",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "__guid": "72cb541a-54b1-43e6-af50-60742aac3f31",
+          "Flags": 0,
+          "Name": "beer_keg_a1",
+          "Position": "485.572,427.5528,6.140559",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "d5b4d782-8fe5-4e5e-b2bb-817d5678280e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "5e4f5d4c-ad40-459f-a9af-98d5b26d72e9",
+          "Flags": 0,
+          "Name": "beer_cask",
+          "Position": "528.9848,391.2574,6.140536",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "5a8e2225-c598-43d1-98de-6216e22c4824",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/props/beer_keg/beer_cask.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "a5ba2d53-73c4-413d-a6c2-ae8fa1c34ebc",
+          "Flags": 0,
+          "Name": "beer_keg_a2",
+          "Position": "490.5168,469.3875,6.140545",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "23a6513e-86ef-4dce-901c-2ba633a1bc92",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/props/beer_keg/beer_keg_a2.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "399f0afe-518b-4fb6-a6d0-396fc757297e",
+          "Flags": 0,
+          "Name": "bathtub_a",
+          "Position": "494.9166,335.7231,6.163144",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "d8fde45e-0921-428e-9cdd-0d887b970a22",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/sbox_props/bathtub_a/bathtub_a.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "22eb6087-82ba-484a-a4bb-9d5bc435d747",
+          "Flags": 0,
+          "Name": "binbag_pile_a2",
+          "Position": "513.4488,277.4691,7.128943",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a9f43c35-63e2-4e63-ad2c-35be4128301c",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/sbox_props/binbags/binbag_pile_a2.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "789fb186-43fa-4af4-bbc9-399ce9f29d77",
+          "Flags": 0,
+          "Name": "Box",
+          "Position": "349.9098,270.7045,6.140533",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.MeshComponent",
+              "__guid": "b5b89966-3604-409d-a1a2-ed130c10942a",
+              "Collision": "Mesh",
+              "Color": "1,1,1,1",
+              "HideInGame": false,
+              "IsTrigger": false,
+              "Mesh": {
+                "Topology": "H4sIAAAAAAAACk2RiQ7CMAxDezAYYzDu\u002B/r/nwQ/yZVSyZpUvzSJN6aUvlIncYo0k\u002BbSIPXSVtpIZ\u002BkoPaW7lC1q4rlK1ffV76XA7oPXuVfsPZrlLMK71ezbHFp6zuy3mHct/XTgV77P5gfX4Hdm\u002BzAbvXf26TV5/\u002BJZyOFgv5htu8LDUoMPD0sNPj3Y/WKfvifnyhvMRb43\u002B/CwfPHhYanBh4elBr9l/7LPrg//L3YnC/7bxz48LHO2bGCpwYeHpQafHmTPfcuHvNiJvnh//XD7nVACAAA=",
+                "Positions": [
+                  "-1160.917,-2160.82,0",
+                  "1607.475,-2160.82,0",
+                  "1607.475,1969.895,0",
+                  "-1160.917,1969.895,0",
+                  "-1169.89,1969.895,716.7019",
+                  "1598.502,1969.895,716.7019",
+                  "1607.475,1969.895,716.7019",
+                  "1607.475,-2160.82,716.7019",
+                  "1607.475,-2160.82,716.7019",
+                  "-1160.917,-2160.82,716.7019",
+                  "-1160.917,-2160.82,716.7019",
+                  "-1160.917,1969.895,716.7019"
+                ],
+                "TextureCoord": [
+                  "12.5584,16.88141",
+                  "9.319664,0",
+                  "12.5584,-15.3898",
+                  "16.88141,0",
+                  "-9.069664,-15.3898",
+                  "12.3084,0",
+                  "-9.069664,16.88141",
+                  "15.3898,0",
+                  "-9.389766,-5.599234",
+                  "0,0",
+                  "-9.319664,0",
+                  "0,0",
+                  "12.2383,-5.599234",
+                  "0,0",
+                  "-15.3898,-5.599234",
+                  "0,0",
+                  "-15.3898,0",
+                  "0,0",
+                  "16.88141,-5.599234",
+                  "0,0",
+                  "-12.3084,-5.599234",
+                  "0,0",
+                  "-12.3084,0",
+                  "0,0",
+                  "9.319664,-5.599234",
+                  "0,0",
+                  "-16.88141,-5.599234",
+                  "0,0",
+                  "-16.88141,0",
+                  "0,0",
+                  "15.3898,-5.599234",
+                  "0,0"
+                ],
+                "TextureUAxis": [
+                  "1,0,0",
+                  "1,-0,0.0000003435495",
+                  "0,-1,0",
+                  "-1,0,0",
+                  "0,1,0"
+                ],
+                "TextureVAxis": [
+                  "0,-1,0",
+                  "-0,0,-1",
+                  "0,0,-1",
+                  "0,0,-1",
+                  "-0,0,-1"
+                ],
+                "TextureScale": [
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25"
+                ],
+                "TextureOffset": [
+                  "128,0.001953125",
+                  "0,511.9998",
+                  "0.001953125,511.9998",
+                  "0,511.9998",
+                  "511.9976,511.9998"
+                ],
+                "MaterialIndex": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "EdgeFlags": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "Materials": [
+                  "materials/dev/reflectivity_30.vmat"
+                ]
+              },
+              "SmoothingAngle": 40,
+              "Static": true
+            }
+          ]
+        },
+        {
+          "__guid": "a5458c38-e114-443d-bf15-aee4ef9e634c",
+          "Flags": 0,
+          "Name": "2D Skybox",
+          "Position": "0,0,0",
+          "Tags": "skybox",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkyBox2D",
+              "__guid": "a8d3bc5c-0675-4a47-be54-f8b5beac576a",
+              "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "f99d32c3-1823-4b23-9cea-a24d538c725d",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-57.26889,-16.58285,108.1395",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "b5445223-d485-4f76-93f4-1012fdd69226",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 1
+        },
+        {
+          "__type": "BlindPostprocess",
+          "__guid": "6282e899-9292-453d-9f37-869a1ee59bb3",
+          "color": "0,0,0,1",
+          "UseBlind": false
+        }
+      ]
+    },
+    {
+      "__guid": "71d77f3d-648a-4f80-820c-fe3a1fbd4d69",
+      "Flags": 0,
+      "Name": "NetworkManager",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "PropHunt.Network",
+          "__guid": "cb66f093-eb32-49ea-853f-b2eb3f8f9cf7",
+          "CustomSpawnPoints": false,
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "PropHuntManager": {
+            "_type": "component",
+            "component_id": "a91d29bc-e79c-45d3-a900-93cfb04b1e32",
+            "go": "d6f23ca2-16ad-4df3-8ccd-1c3135b10e0b",
+            "component_type": "PropHuntManager"
+          },
+          "Spawns": [],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "d6f23ca2-16ad-4df3-8ccd-1c3135b10e0b",
+      "Flags": 0,
+      "Name": "GameManager",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "PropHunt.PropHuntManager",
+          "__guid": "a91d29bc-e79c-45d3-a900-93cfb04b1e32",
+          "MaxPlayersToStart": 2,
+          "OnGoingRound": false
+        }
+      ]
+    },
+    {
+      "__guid": "eec87089-1662-4e0e-8afe-f42f9d52f36d",
+      "Flags": 0,
+      "Name": "Ui",
+      "Position": "-6.25499,-267.7513,221.1104",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "fa2bfeb3-e902-4033-acd4-7e75a9d46577",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "PropHuntUI",
+          "__guid": "63a1c172-30d6-442a-b4c0-2f1dbdec443b",
+          "ShowMapVoting": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "2070d347-b3dc-452f-8b27-0ab243c8ce9c",
+          "Flags": 0,
+          "Name": "Chat",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "ChatBox",
+              "__guid": "e7edc6ad-4479-49e8-86da-f80a579a9369"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "8e76ded9-8a69-497e-932e-5851108bc699",
+      "Flags": 0,
+      "Name": "Start Round",
+      "Position": "139.7077,-258.0807,13.97799",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "73c61170-23f1-433b-8193-1a6675eda00a",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "2f9fe688-94e9-4ef8-9708-0c700931c770",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "OnTriggerEnter": {
+            "__version": 7,
+            "__guid": "228fb0d8-fa30-4fee-9ffa-57c634dfa367",
+            "UserData": {
+              "Title": "On Trigger Enter",
+              "ReferencedComponentTypes": [
+                "PropHunt.PropHuntManager"
+              ]
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              },
+              {
+                "Id": 3,
+                "Type": "property",
+                "Properties": {
+                  "_name": "GameObject",
+                  "_type": "Sandbox.Component"
+                },
+                "UserData": {
+                  "Position": "192,64"
+                }
+              },
+              {
+                "Id": 4,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "T": "Player",
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister"
+                },
+                "UserData": {
+                  "Position": "512,64",
+                  "Labels": {
+                    "component": "player"
+                  }
+                }
+              },
+              {
+                "Id": 6,
+                "Type": "if",
+                "UserData": {
+                  "Position": "848,-0"
+                }
+              },
+              {
+                "Id": 8,
+                "Type": "scene.ref",
+                "Properties": {
+                  "gameobject": {
+                    "_type": "gameobject",
+                    "go": "d6f23ca2-16ad-4df3-8ccd-1c3135b10e0b"
+                  }
+                },
+                "UserData": {
+                  "Position": "496,224"
+                }
+              },
+              {
+                "Id": 9,
+                "Type": "scene.get",
+                "Properties": {
+                  "T": "PropHunt.PropHuntManager"
+                },
+                "UserData": {
+                  "Position": "720,224"
+                }
+              },
+              {
+                "Id": 10,
+                "Type": "property",
+                "Properties": {
+                  "_name": "RoundState",
+                  "_type": "PropHunt.PropHuntManager",
+                  "_kind": "Set"
+                },
+                "UserData": {
+                  "Position": "1120,-0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "obj",
+                "DstId": 3,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 3,
+                "SrcName": "_result",
+                "DstId": 4,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelf, InParent",
+                "DstId": 4,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 6,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 4,
+                "SrcName": "_result",
+                "DstId": 6,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 8,
+                "SrcName": "_result",
+                "DstId": 9,
+                "DstName": "_this"
+              },
+              {
+                "SrcId": 6,
+                "SrcName": "true",
+                "DstId": 10,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 9,
+                "SrcName": "_result",
+                "DstId": 10,
+                "DstName": "_target"
+              },
+              {
+                "Value": "Starting",
+                "DstId": 10,
+                "DstName": "_value"
+              }
+            ],
+            "Defaults": {
+              "$8.gameobject": {
+                "_type": "gameobject",
+                "go": "d6f23ca2-16ad-4df3-8ccd-1c3135b10e0b"
+              }
+            }
+          },
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "21c11963-bf16-4872-8336-45bb6386387e",
+          "Flags": 0,
+          "Name": "Text",
+          "Position": "0,0,57.18534",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.TextRenderer",
+              "__guid": "c2451f9c-54d4-4c00-91f0-7ff4459cb572",
+              "Color": "0.45103,0.47149,0.5297,1",
+              "FontFamily": "Poppins",
+              "FontSize": 64,
+              "FontWeight": 800,
+              "Scale": 0.3,
+              "Text": "Start Game",
+              "TextAlignment": "Center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "7be07008-77f0-4cdb-b117-a28079ade6b6",
+      "Flags": 0,
+      "Name": "Team Props",
+      "Position": "-233.0035,-215.0425,13.97799",
+      "Rotation": "0,0,-1,0.0000001947072",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "7ec75e16-5986-405e-bffc-fd9cf638c325",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "c0dd83b9-9e0d-4c0f-bf69-74349e492841",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "OnTriggerEnter": {
+            "__version": 7,
+            "__guid": "232408b8-8bcf-4ebf-98c4-7486cd924b70",
+            "UserData": {
+              "Title": "On Trigger Enter",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              },
+              {
+                "Id": 3,
+                "Type": "property",
+                "Properties": {
+                  "_name": "GameObject",
+                  "_type": "Sandbox.Component"
+                },
+                "UserData": {
+                  "Position": "192,64"
+                }
+              },
+              {
+                "Id": 4,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "T": "TeamComponent",
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister"
+                },
+                "UserData": {
+                  "Position": "496,64",
+                  "Labels": {
+                    "component": "Team"
+                  }
+                }
+              },
+              {
+                "Id": 6,
+                "Type": "if",
+                "UserData": {
+                  "Position": "848,-0"
+                }
+              },
+              {
+                "Id": 13,
+                "Type": "property",
+                "Properties": {
+                  "_name": "TeamName",
+                  "_type": "TeamComponent",
+                  "_kind": "Set"
+                },
+                "UserData": {
+                  "Position": "1104,0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "obj",
+                "DstId": 3,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 3,
+                "SrcName": "_result",
+                "DstId": 4,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelf, InParent",
+                "DstId": 4,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 6,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 4,
+                "SrcName": "_result",
+                "DstId": 6,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 6,
+                "SrcName": "true",
+                "DstId": 13,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 4,
+                "SrcName": "component",
+                "DstId": 13,
+                "DstName": "_target"
+              },
+              {
+                "Value": "Props",
+                "DstId": 13,
+                "DstName": "_value"
+              }
+            ]
+          },
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "b031b4f1-ed97-4ae0-8e31-d5e787aa5119",
+          "Flags": 0,
+          "Name": "Text",
+          "Position": "0,0,57.18534",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.TextRenderer",
+              "__guid": "a81201a0-3f63-4856-848f-61e4ec720734",
+              "Color": "0.45103,0.47149,0.5297,1",
+              "FontFamily": "Poppins",
+              "FontSize": 64,
+              "FontWeight": 800,
+              "Scale": 0.3,
+              "Text": "Props",
+              "TextAlignment": "Center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "ea14f213-5e8b-4361-998e-c35d90bc403c",
+      "Flags": 0,
+      "Name": "Team Hunters",
+      "Position": "-233.0035,113.2434,13.97799",
+      "Rotation": "0,0,-1,0.0000001947072",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "6098fc68-0245-4397-81a6-bf73e18798d4",
+          "BodyGroups": 18446744073709551615,
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "651ce794-0342-4757-b452-0bdeab71b655",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "OnTriggerEnter": {
+            "__version": 7,
+            "__guid": "8bc4a701-2a38-4e40-bb29-e11f6e3b718d",
+            "UserData": {
+              "Title": "On Trigger Enter",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input",
+                "UserData": {
+                  "Position": "-560,-0"
+                }
+              },
+              {
+                "Id": 3,
+                "Type": "property",
+                "Properties": {
+                  "_name": "GameObject",
+                  "_type": "Sandbox.Component"
+                },
+                "UserData": {
+                  "Position": "192,64"
+                }
+              },
+              {
+                "Id": 4,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "T": "TeamComponent",
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister"
+                },
+                "UserData": {
+                  "Position": "496,64",
+                  "Labels": {
+                    "component": "Team"
+                  }
+                }
+              },
+              {
+                "Id": 6,
+                "Type": "if",
+                "UserData": {
+                  "Position": "848,-0"
+                }
+              },
+              {
+                "Id": 13,
+                "Type": "property",
+                "Properties": {
+                  "_name": "TeamName",
+                  "_type": "TeamComponent",
+                  "_kind": "Set"
+                },
+                "UserData": {
+                  "Position": "1104,0"
+                }
+              },
+              {
+                "Id": 23,
+                "Type": "property",
+                "Properties": {
+                  "_name": "GameObject",
+                  "_type": "Sandbox.Component"
+                },
+                "UserData": {
+                  "Position": "240,224"
+                }
+              },
+              {
+                "Id": 24,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "T": "Inventory",
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister"
+                },
+                "UserData": {
+                  "Position": "544,224",
+                  "Labels": {
+                    "component": "Inv"
+                  }
+                }
+              },
+              {
+                "Id": 26,
+                "Type": "op.andalso",
+                "UserData": {
+                  "Position": "864,192"
+                }
+              },
+              {
+                "Id": 27,
+                "Type": "call",
+                "Properties": {
+                  "_isStatic": false,
+                  "_name": "SpawnStartingItems",
+                  "_type": "Inventory"
+                },
+                "UserData": {
+                  "Position": "1472,0"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "obj",
+                "DstId": 3,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 3,
+                "SrcName": "_result",
+                "DstId": 4,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelf, InParent",
+                "DstId": 4,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 6,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 26,
+                "SrcName": "_result",
+                "DstId": 6,
+                "DstName": "condition"
+              },
+              {
+                "SrcId": 6,
+                "SrcName": "true",
+                "DstId": 13,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 4,
+                "SrcName": "component",
+                "DstId": 13,
+                "DstName": "_target"
+              },
+              {
+                "Value": "Hunters",
+                "DstId": 13,
+                "DstName": "_value"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "obj",
+                "DstId": 23,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 23,
+                "SrcName": "_result",
+                "DstId": 24,
+                "DstName": "_target"
+              },
+              {
+                "Value": "EnabledInSelf, InParent",
+                "DstId": 24,
+                "DstName": "search"
+              },
+              {
+                "SrcId": 24,
+                "SrcName": "_result",
+                "DstId": 26,
+                "DstName": "a"
+              },
+              {
+                "SrcId": 4,
+                "SrcName": "_result",
+                "DstId": 26,
+                "DstName": "b"
+              },
+              {
+                "SrcId": 13,
+                "SrcName": "_signal",
+                "DstId": 27,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 24,
+                "SrcName": "component",
+                "DstId": 27,
+                "DstName": "_target"
+              }
+            ]
+          },
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "11ec07a5-07b2-477c-9de9-ac5f00af5507",
+          "Flags": 0,
+          "Name": "Text",
+          "Position": "0,0,57.18534",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.TextRenderer",
+              "__guid": "2e513a90-16ea-4e12-b94f-880557e589ba",
+              "Color": "0.45103,0.47149,0.5297,1",
+              "FontFamily": "Poppins",
+              "FontSize": 64,
+              "FontWeight": 800,
+              "Scale": 0.3,
+              "Text": "Hunters",
+              "TextAlignment": "Center"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "debug",
+  "Description": "",
+  "LastSaved": "2024-06-24T15:55:13.8775623-04:00",
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.bathtub",
+    "facepunch.beer_cask",
+    "facepunch.beer_keg_a1",
+    "facepunch.beer_keg_a2",
+    "facepunch.binbag_pile_a2"
+  ],
+  "__version": 1
+}

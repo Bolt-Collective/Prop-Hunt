@@ -14,7 +14,7 @@
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "6b5bab62-f103-431a-b027-0d11c0604b42",
-          "MapName": "facepunch.construct23",
+          "MapName": "baks.platformer_test",
           "UseMapFromLaunch": false
         }
       ],
@@ -45,7 +45,7 @@
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
-          "ZNear": 5
+          "ZNear": 1
         },
         {
           "__type": "Sandbox.Bloom",
@@ -277,19 +277,19 @@
             },
             {
               "_type": "gameobject",
-              "go": "c664c2ca-ecd2-4e2a-9c1b-f545f7f474ab"
+              "prefab": "prefabs/shotgun.prefab"
             },
             {
               "_type": "gameobject",
-              "go": "b18c0a79-25b1-45f7-b6c1-941d6d783a6c"
+              "prefab": "prefabs/he.prefab"
             }
           ]
         },
         {
           "__type": "AmmoContainer",
           "__guid": "629c2308-87ed-4f5a-b051-ce2d36d5f19d",
-          "Ammo": 10,
-          "MaxAmmo": 10
+          "Ammo": 60,
+          "MaxAmmo": 60
         },
         {
           "__type": "Kicks.Interactor",
@@ -1693,8 +1693,6 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-          "AllowPeopleButUsToJoin": false,
-          "FallBackScene": "scenes/fallbackscene.scene",
           "MaxPlayersToStart": 2,
           "OnGoingRound": false
         }
@@ -1726,7 +1724,6 @@
       "Flags": 0,
       "Name": "wooden_crate",
       "Position": "576,192,0.0001666932",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1746,7 +1743,6 @@
       "Flags": 0,
       "Name": "wooden_crate",
       "Position": "672,240,-0.0000002078008",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1767,7 +1763,6 @@
       "Name": "wooden_crate",
       "Position": "512,80,-0.0001728505",
       "Tags": "propplayer",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1787,7 +1782,6 @@
       "Flags": 0,
       "Name": "cola_can",
       "Position": "736,64.00001,0.0342742",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1807,7 +1801,6 @@
       "Flags": 0,
       "Name": "cola_can (1)",
       "Position": "752,80,0.03427472",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1828,7 +1821,6 @@
       "Name": "wetfloor_sign",
       "Position": "752,16.00001,0.01574082",
       "Rotation": "0,0,0.1305262,0.9914449",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1848,7 +1840,6 @@
       "Flags": 0,
       "Name": "beer_keg_a1",
       "Position": "704,160,0.0000466265",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1868,7 +1859,6 @@
       "Flags": 0,
       "Name": "beer_cask",
       "Position": "816,176,0.0000122466",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1888,7 +1878,6 @@
       "Flags": 0,
       "Name": "beer_keg_a2",
       "Position": "752,224,0.0001295514",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1909,7 +1898,6 @@
       "Name": "tv",
       "Position": "768,80.00001,0.001372456",
       "Rotation": "0,0,-0.6087614,0.7933534",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1930,7 +1918,6 @@
       "Name": "tv",
       "Position": "752,160,0.01865547",
       "Rotation": "0,0,-0.258819,0.9659259",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1952,7 +1939,6 @@
       "Name": "tv (1)",
       "Position": "704,96,0.01872738",
       "Rotation": "0,0,-0.7933533,0.6087615",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1973,7 +1959,6 @@
       "Flags": 0,
       "Name": "binbag_pile_a2",
       "Position": "864,112,0.9884102",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -1993,7 +1978,6 @@
       "Flags": 0,
       "Name": "advertising_board",
       "Position": "832,512,0.00003717046",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2015,7 +1999,6 @@
       "Name": "binbag_a1",
       "Position": "912,144,0.000007629395",
       "Rotation": "0,0,-0.5,0.8660254",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2036,7 +2019,6 @@
       "Name": "trolley",
       "Position": "976,144,-0.0000322397",
       "Rotation": "0,0,0.258819,0.9659258",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2056,7 +2038,6 @@
       "Flags": 0,
       "Name": "lantern",
       "Position": "592,80,0.00009918396",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2077,7 +2058,6 @@
       "Name": "wheely_bin",
       "Position": "592,416,-0.00009800697",
       "Rotation": "0,0,0.258819,0.9659258",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2099,7 +2079,6 @@
       "Name": "wheely_bin (1)",
       "Position": "720,352,0.0000118014",
       "Rotation": "0,0,-0.258819,0.9659258",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2120,7 +2099,6 @@
       "Flags": 0,
       "Name": "wheely_bin (2)",
       "Position": "800,384,-0.00004402554",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2142,7 +2120,6 @@
       "Name": "wheely_bin (3)",
       "Position": "768,272,0.0000633433",
       "Rotation": "0,0,-0.258819,0.9659258",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2164,7 +2141,6 @@
       "Name": "metal_wheely_bin",
       "Position": "960,384,1.005332",
       "Rotation": "0,0,1,0.0000001947072",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2186,7 +2162,6 @@
       "Name": "cereal_open",
       "Position": "864,80,0.00001525879",
       "Rotation": "0,0,0.258819,0.9659258",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2206,7 +2181,6 @@
       "Flags": 0,
       "Name": "oil_drum_a",
       "Position": "928,240,0.04255931",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -2263,10 +2237,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "TryGet",
+                  "_isStatic": false,
                   "T": "Inventory",
-                  "_type": "Sandbox.IComponentLister",
-                  "_isStatic": false
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2286,9 +2260,9 @@
                 "Id": 5,
                 "Type": "call",
                 "Properties": {
+                  "_isStatic": false,
                   "_name": "SpawnStartingItems",
-                  "_type": "Inventory",
-                  "_isStatic": false
+                  "_type": "Inventory"
                 },
                 "UserData": {
                   "Position": "1104,0"
@@ -2418,10 +2392,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
-                  "_name": "TryGet",
+                  "_isStatic": false,
                   "T": "Inventory",
-                  "_type": "Sandbox.IComponentLister",
-                  "_isStatic": false
+                  "_name": "TryGet",
+                  "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -2441,9 +2415,9 @@
                 "Id": 7,
                 "Type": "call",
                 "Properties": {
+                  "_isStatic": false,
                   "_name": "Clear",
-                  "_type": "Inventory",
-                  "_isStatic": false
+                  "_type": "Inventory"
                 },
                 "UserData": {
                   "Position": "1056,0"
@@ -2538,92 +2512,8 @@
       "Position": "822.8312,49.51335,86.57332",
       "NetworkMode": 2,
       "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "ThrowableWeapon",
-          "__guid": "bac77bd0-3cf3-4591-84d7-8e18bbf3f40c",
-          "Arms": {
-            "_type": "component",
-            "component_id": "a7e532ec-2de7-4c55-ae0f-a9862d1433c3",
-            "go": "2b4a2404-d74f-4447-9b1f-f77c37200f93",
-            "component_type": "SkinnedModelRenderer"
-          },
-          "HasThrown": false,
-          "ThrowableObject": {
-            "_type": "gameobject",
-            "go": "24e7a53d-90a0-4894-99ea-4d2c640eb07e"
-          },
-          "ThrowPower": 1000
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "306caa1f-5bcd-4411-a71d-c90149aa165e",
-          "Flags": 0,
-          "Name": "Viewmodel",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "ViewModel",
-              "__guid": "9ccd245f-8c3b-4995-83e2-a20db92048bf"
-            }
-          ],
-          "Children": [
-            {
-              "__guid": "73aa03b7-1c08-47de-bfbf-eecbd72c9924",
-              "Flags": 0,
-              "Name": "he",
-              "Position": "0,0,0",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SkinnedModelRenderer",
-                  "__guid": "9e249fc8-d5bb-406b-8ef3-95fc099dde42",
-                  "BodyGroups": 18446744073709551615,
-                  "BoneMergeTarget": {
-                    "_type": "component",
-                    "component_id": "a7e532ec-2de7-4c55-ae0f-a9862d1433c3",
-                    "go": "2b4a2404-d74f-4447-9b1f-f77c37200f93",
-                    "component_type": "SkinnedModelRenderer"
-                  },
-                  "CreateBoneObjects": false,
-                  "Model": "models/v_he_grenade.vmdl",
-                  "RenderType": "Off",
-                  "Tint": "1,1,1,1",
-                  "UseAnimGraph": true
-                }
-              ]
-            },
-            {
-              "__guid": "2b4a2404-d74f-4447-9b1f-f77c37200f93",
-              "Flags": 0,
-              "Name": "arms",
-              "Position": "0,0,0",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SkinnedModelRenderer",
-                  "__guid": "a7e532ec-2de7-4c55-ae0f-a9862d1433c3",
-                  "AnimationGraph": "animgraphs/grenadearms.vanmgrph",
-                  "BodyGroups": 21,
-                  "CreateBoneObjects": false,
-                  "Model": "models/first_person/first_person_arms.vmdl",
-                  "RenderType": "Off",
-                  "Tint": "1,1,1,1",
-                  "UseAnimGraph": true
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "__Prefab": "prefabs/he.prefab",
+      "__PrefabVariables": {}
     },
     {
       "__guid": "24e7a53d-90a0-4894-99ea-4d2c640eb07e",
@@ -2633,46 +2523,8 @@
       "Tags": "ignore,he",
       "NetworkMode": 2,
       "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Grenade",
-          "__guid": "488b0746-636a-4098-8e0f-51447d65e63f",
-          "ExplosionEffect": {
-            "_type": "gameobject",
-            "prefab": "prefabs/explosion.prefab"
-          },
-          "ExplosionRadius": 300,
-          "TimeToExplode": 2
-        },
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "81407e3e-1231-40c4-aa5e-a5007740832f",
-          "BodyGroups": 11,
-          "Model": "models/weapons/sbox_grenade_explosive/w_he_grenade.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "929adf84-3c40-4e02-bb02-08f494215de0",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassOverride": 0,
-          "MotionEnabled": true,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        },
-        {
-          "__type": "Sandbox.SphereCollider",
-          "__guid": "539d1112-311f-46ef-bdea-2549be7b5596",
-          "Center": "0,0,1.9",
-          "IsTrigger": false,
-          "Radius": 2,
-          "Static": false
-        }
-      ]
+      "__Prefab": "prefabs/he world.prefab",
+      "__PrefabVariables": {}
     },
     {
       "__guid": "c664c2ca-ecd2-4e2a-9c1b-f545f7f474ab",
@@ -2681,124 +2533,8 @@
       "Position": "775.7904,298.3246,-82.37983",
       "NetworkMode": 2,
       "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Shotgun",
-          "__guid": "7152eff8-eb31-4bb4-bcab-a1a8b49f7c93",
-          "Item": {
-            "_type": "component",
-            "component_id": "0001aed5-3764-4d91-aef9-dfd9298ecf80",
-            "go": "c664c2ca-ecd2-4e2a-9c1b-f545f7f474ab",
-            "component_type": "Item"
-          },
-          "Renderer": {
-            "_type": "component",
-            "component_id": "79c96ee1-0006-4892-b3c2-35308383d256",
-            "go": "64444e99-58ae-4a72-858a-243dd795a576",
-            "component_type": "SkinnedModelRenderer"
-          }
-        },
-        {
-          "__type": "Item",
-          "__guid": "0001aed5-3764-4d91-aef9-dfd9298ecf80",
-          "AbleToUse": true,
-          "Ammo": 12,
-          "UsesAmmo": true
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "7e654e34-a53e-4da8-a76a-35585d537109",
-          "Flags": 0,
-          "Name": "Viewmodel",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "ViewModel",
-              "__guid": "d01700fd-d99e-4fe7-98ec-4fc6425a1144",
-              "Gun": {
-                "_type": "component",
-                "component_id": "79c96ee1-0006-4892-b3c2-35308383d256",
-                "go": "64444e99-58ae-4a72-858a-243dd795a576",
-                "component_type": "SkinnedModelRenderer"
-              }
-            }
-          ],
-          "Children": [
-            {
-              "__guid": "64444e99-58ae-4a72-858a-243dd795a576",
-              "Flags": 0,
-              "Name": "gun",
-              "Position": "0,0,0",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SkinnedModelRenderer",
-                  "__guid": "79c96ee1-0006-4892-b3c2-35308383d256",
-                  "BodyGroups": 75,
-                  "CreateBoneObjects": false,
-                  "Model": "models/weapons/sbox_shotgun_spaghellim4/v_spaghellim4.vmdl",
-                  "RenderType": "Off",
-                  "Tint": "1,1,1,1",
-                  "UseAnimGraph": true
-                }
-              ]
-            },
-            {
-              "__guid": "0037d827-f81e-41c0-93fa-54317cf07b4a",
-              "Flags": 0,
-              "Name": "arms",
-              "Position": "0,0,0",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.SkinnedModelRenderer",
-                  "__guid": "3e52b7e2-1b0e-41d8-8af5-f5c8983da584",
-                  "BodyGroups": 21,
-                  "BoneMergeTarget": {
-                    "_type": "component",
-                    "component_id": "79c96ee1-0006-4892-b3c2-35308383d256",
-                    "go": "64444e99-58ae-4a72-858a-243dd795a576",
-                    "component_type": "SkinnedModelRenderer"
-                  },
-                  "CreateBoneObjects": false,
-                  "Model": "models/first_person/first_person_arms.vmdl",
-                  "RenderType": "Off",
-                  "Tint": "1,1,1,1",
-                  "UseAnimGraph": true
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "__guid": "1bc992f6-f151-4840-acf2-09ef27749fcd",
-      "Flags": 0,
-      "Name": "beer_keg_a1",
-      "Position": "768,192,0.00002728671",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "7e53e2c7-9e65-45ab-8a38-4ac421f8e3ed",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
+      "__Prefab": "prefabs/shotgun.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
@@ -2824,7 +2560,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-23T23:20:37.2225396-04:00",
+  "LastSaved": "2024-06-24T15:51:11.5312802-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
@@ -2840,8 +2576,6 @@
     "facepunch.soda_can",
     "facepunch.trolley",
     "facepunch.tv",
-    "facepunch.v_spaghellim4",
-    "facepunch.w_he_grenade",
     "facepunch.wheely_bin",
     "facepunch.wooden_crate",
     "fpopium.tv",
