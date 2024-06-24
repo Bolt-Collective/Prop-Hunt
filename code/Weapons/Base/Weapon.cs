@@ -97,16 +97,18 @@ public sealed class Weapon : Component
 		BroadcastShootSound( tr.EndPosition );
 		OnFire?.Invoke( Player, tr.EndPosition, tr.Normal, tr.Hit );
 
-		if ( tr.Hit && tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
-		{
-			if ( Player.IsFriendly( enemy ) ) return;
-			enemy.TakeDamage( 25 );
-			OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );
-			Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
-		}
+
 		if ( tr.Hit )
 		{
-			if ( tr.Body is not null )
+			if ( tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
+			{
+				if ( Player.IsFriendly( enemy ) ) return;
+				enemy.TakeDamage( 25 );
+				OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );
+				var particle = Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
+				particle.GameObject.NetworkSpawn();
+			}
+			else if ( tr.Body is not null )
 			{
 				tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
 			}

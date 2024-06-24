@@ -88,7 +88,7 @@ public sealed class Item : Component
 				enemy.TakeDamage( damage );
 				Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
 			}
-			if ( tr.Body is not null )
+			else if ( tr.Body is not null )
 			{
 				tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
 			}
