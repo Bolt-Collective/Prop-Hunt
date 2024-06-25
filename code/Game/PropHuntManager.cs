@@ -85,6 +85,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		if ( !Networking.IsHost ) return;
 		GameStateManager();
+
 	}
 	[Broadcast]
 	void GameStateManager()
@@ -137,15 +138,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Preparing;
 		RoundLength = PreRoundTime;
 		TimeSinceRoundStateChanged = 0;
-		foreach ( var prop in Scene.GetAllComponents<PropShiftingMechanic>() )
-		{
-			if ( prop is null ) return;
-			prop.ExitProp();
-		}
-		foreach ( var inv in Scene.GetAllComponents<Inventory>() )
-		{
-			inv.Clear();
-		}
 
 	}
 	public void OnRoundStarting()
@@ -171,11 +163,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			PreRoundTime = 1;
 			IsFirstRound = false;
 		}
-
 		if ( !IsProxy )
 		{
 			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", 30f );
 		}
+
 	}
 	public void ForceRestart()
 	{
@@ -186,12 +178,19 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Preparing;
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = PreRoundTime;
+		ClearListBroadcast();
 	}
 
 	[Broadcast]
 	public void BroadcastPopup( string text, string title, float duration = 8f )
 	{
 		PopupSystem.DisplayPopup( text, title, duration );
+	}
+
+	[Broadcast]
+	public void ClearListBroadcast()
+	{
+		PopupSystem.ClearPopups();
 	}
 
 	public void OnRoundStart()

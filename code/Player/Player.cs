@@ -338,7 +338,7 @@ public class Player : Component
 	}
 	private void UpdateBodyVisibility()
 	{
-		if ( AnimationHelper is null || BodyRenderer is null || PropShiftingMechanic.IsProp || AnimationHelper.Target is null )
+		if ( AnimationHelper is null || BodyRenderer is null || Health < 0 || AnimationHelper.Target is null )
 			return;
 
 		var renderType = (!IsProxy) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
@@ -482,6 +482,7 @@ public class Player : Component
 		ResetStats();
 		Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
 	}
+	[Broadcast]
 	public void DisableBody()
 	{
 		foreach ( var cloth in Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) ) )
@@ -510,6 +511,7 @@ public class Player : Component
 		{
 			PropShiftingMechanic.Collider.Enabled = true;
 		}
+		PropShiftingMechanic.ExitProp();
 	}
 
 	[ConCmd( "kill" )]

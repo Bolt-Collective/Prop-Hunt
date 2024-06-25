@@ -36,6 +36,7 @@ public class TeamComponent : Component
 		int huntersCount = Scene.GetAllComponents<TeamComponent>().Count( x => x.TeamName == Team.Hunters.ToString() );
 		var randomTeam = GetRandom( 0, 2 ) == 0 ? Team.Props : Team.Hunters;
 		ChangeTeam( randomTeam );
+
 	}
 	int GetRandom( int min, int max )
 	{

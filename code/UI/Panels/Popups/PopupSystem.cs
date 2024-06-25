@@ -11,4 +11,9 @@ public partial class PopupSystem
 		popup.Duration = duration;
 		PopupList.Instance.AddChild( popup );
 	}
+
+	public static void ClearPopups()
+	{
+		PopupList.Instance.DeleteChildren( true );
+	}
 }

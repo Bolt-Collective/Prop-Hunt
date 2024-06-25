@@ -39,7 +39,10 @@ public sealed class MapChanger : Component
 		}
 
 	}
-
+	public void ReloadMap()
+	{
+		MapInstance.UnloadMap();
+	}
 
 
 	[ConCmd( "map" )]
