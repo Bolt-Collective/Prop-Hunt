@@ -35,9 +35,6 @@ public sealed class Shotgun : Component
 			for ( int i = 0; i < 2; i++ )
 			{
 				Item.Trace( 1000, 15, out _hitPos, out _hitNormal, out _hit, out _hitObject, 5, 0.2f );
-				var clone = new GameObject();
-				clone.Components.Create<ModelRenderer>();
-				clone.Transform.Position = _hitPos;
 			}
 			Renderer.Set( "b_attack", true );
 

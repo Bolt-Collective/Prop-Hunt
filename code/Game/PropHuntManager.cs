@@ -146,13 +146,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
-
-		foreach ( var player in AllPlayers )
-		{
-			player.TeamComponent.GetRandomTeam();
-			player.AbleToMove = true;
-			player.Health = 100;
-		}
+		AssignEvenTeams();
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
 			player.HunterStart();
@@ -168,6 +162,25 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", 30f );
 		}
 
+	}
+
+	public void AssignEvenTeams()
+	{
+		Random rng = new Random();
+		var randomList = AllPlayers.OrderBy( a => rng.Next() ).ToList();
+		for ( int i = 0; i < AllPlayers.Count(); i++ )
+		{
+			if ( i % 2 == 0 )
+			{
+				AllPlayers.ElementAt( i ).TeamComponent.ChangeTeam( Team.Props );
+
+			}
+			else
+			{
+				AllPlayers.ElementAt( i ).TeamComponent.ChangeTeam( Team.Hunters );
+			}
+			AllPlayers.ElementAt( i ).Respawn();
+		}
 	}
 	public void ForceRestart()
 	{
