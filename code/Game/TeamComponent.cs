@@ -28,6 +28,8 @@ public class TeamComponent : Component
 	{
 		OnTeamChanged?.Invoke( before, after );
 	}
+	private Team lastAssignedTeam = Team.Hunters; // Initialize with any team
+
 	public void GetRandomTeam()
 	{
 		int propsCount = Scene.GetAllComponents<TeamComponent>().Count( x => x.TeamName == Team.Props.ToString() );
@@ -45,9 +47,10 @@ public class TeamComponent : Component
 		}
 		else
 		{
-			teamToAssign = GetRandom( 0, 1 ) == 0 ? Team.Props : Team.Hunters;
+			teamToAssign = lastAssignedTeam == Team.Props ? Team.Hunters : Team.Props;
 		}
 
+		lastAssignedTeam = teamToAssign;
 		ChangeTeam( teamToAssign );
 	}
 	int GetRandom( int min, int max )

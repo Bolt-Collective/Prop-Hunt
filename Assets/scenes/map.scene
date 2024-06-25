@@ -1,11 +1,11 @@
 {
-  "__guid": "5fd29acf-fdf6-4bfb-937c-12814118cd71",
+  "__guid": "bd4722f4-4c00-4998-a726-8a77a6fc3337",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
       "Flags": 0,
       "Name": "Map",
-      "Position": "-64.03706,-206.7385,264.4784",
+      "Position": "-128,-206.7385,264.4784",
       "Tags": "world,solid",
       "Enabled": true,
       "NetworkMode": 2,
@@ -14,7 +14,7 @@
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "6b5bab62-f103-431a-b027-0d11c0604b42",
-          "MapName": "facepunch.construct23",
+          "MapName": "thieves.dolls",
           "UseMapFromLaunch": false
         }
       ],
@@ -760,8 +760,8 @@
                 "Type": "call",
                 "Properties": {
                   "T": "Inventory",
-                  "_isStatic": false,
                   "_name": "TryGet",
+                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -782,8 +782,8 @@
                 "Id": 5,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "SpawnStartingItems",
+                  "_isStatic": false,
                   "_type": "Inventory"
                 },
                 "UserData": {
@@ -915,8 +915,8 @@
                 "Type": "call",
                 "Properties": {
                   "T": "Inventory",
-                  "_isStatic": false,
                   "_name": "TryGet",
+                  "_isStatic": false,
                   "_type": "Sandbox.IComponentLister"
                 },
                 "UserData": {
@@ -937,8 +937,8 @@
                 "Id": 7,
                 "Type": "call",
                 "Properties": {
-                  "_isStatic": false,
                   "_name": "Clear",
+                  "_isStatic": false,
                   "_type": "Inventory"
                 },
                 "UserData": {
@@ -1071,7 +1071,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-24T17:27:04.0755639-04:00",
+  "LastSaved": "2024-06-24T21:16:25.4447634-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.advertising_board",
