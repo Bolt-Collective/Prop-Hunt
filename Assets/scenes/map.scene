@@ -15,7 +15,7 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "6b5bab62-f103-431a-b027-0d11c0604b42",
           "MapName": "nolankicks.prophunt_opium",
-          "UseMapFromLaunch": false
+          "UseMapFromLaunch": true
         }
       ],
       "Children": []
@@ -241,7 +241,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-25T19:15:22.5973832-04:00",
+  "LastSaved": "2024-06-25T19:29:49.9097136-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
