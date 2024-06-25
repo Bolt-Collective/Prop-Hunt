@@ -14,7 +14,7 @@
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "6b5bab62-f103-431a-b027-0d11c0604b42",
-          "MapName": "thieves.joecity",
+          "MapName": "nolankicks.prophunt_opium",
           "UseMapFromLaunch": false
         }
       ],
@@ -191,7 +191,7 @@
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
           "AllowPeopleButUsToJoin": false,
           "FallBackScene": "scenes/fallbackscene.scene",
-          "MaxPlayersToStart": 4,
+          "MaxPlayersToStart": 2,
           "OnGoingRound": false
         }
       ]
@@ -241,7 +241,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-25T17:24:44.7597216-04:00",
+  "LastSaved": "2024-06-25T17:40:42.9536853-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
