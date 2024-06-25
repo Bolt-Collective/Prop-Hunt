@@ -2,9 +2,9 @@
   "RootObject": {
     "__guid": "13cdc0ba-6159-43e7-b648-238afaf50f27",
     "Flags": 0,
-    "Name": "Player",
-    "Position": "43.0177,-91.26782,154.7258",
+    "Name": "player",
     "Tags": "red,green,player",
+    "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
     "Components": [
@@ -181,7 +181,6 @@
         "__guid": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
         "Flags": 0,
         "Name": "Body",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
@@ -1468,7 +1467,6 @@
         "__guid": "1840cdf7-be41-44fc-aa19-564ce25c90ba",
         "Flags": 0,
         "Name": "Voice",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
@@ -1496,12 +1494,12 @@
         "__guid": "6646c44e-a94a-40a7-a310-6e2a7104372c",
         "Flags": 0,
         "Name": "eye",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using System.Net.Http.Headers;
 using Sandbox.Utility;
 namespace PropHunt;
@@ -146,6 +146,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			inv.Clear();
 		}
+
 	}
 	public void OnRoundStarting()
 	{
@@ -175,6 +176,16 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", 30f );
 		}
+	}
+	public void ForceRestart()
+	{
+		foreach ( var player in Scene.GetAllComponents<Player>() )
+		{
+			player.Respawn();
+		}
+		RoundState = GameState.Preparing;
+		TimeSinceRoundStateChanged = 0;
+		RoundLength = PreRoundTime;
 	}
 
 	[Broadcast]
@@ -275,5 +286,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		Log.Info( WinningTeamName + " win!" );
 
 		OnRoundEnding();
+	}
+
+	[ConCmd( "restart" )]
+	public static void Restart()
+	{
+		if ( !Game.IsEditor ) return;
+		Instance.ForceRestart();
 	}
 }

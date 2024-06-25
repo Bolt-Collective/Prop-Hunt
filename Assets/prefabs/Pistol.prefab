@@ -3,6 +3,7 @@
     "__guid": "01255748-faa9-4ebb-a41c-c33afc26ea7b",
     "Flags": 0,
     "Name": "pistol",
+    "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
     "Components": [
@@ -51,8 +52,8 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
-                "_isStatic": false,
                 "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false,
                 "_name": "Set"
               },
               "UserData": {
@@ -838,7 +839,7 @@
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
                 "__guid": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "BodyGroups": 17685,
+                "BodyGroups": 17701,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
                 "RenderType": "Off",

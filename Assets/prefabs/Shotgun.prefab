@@ -2,8 +2,8 @@
   "RootObject": {
     "__guid": "c664c2ca-ecd2-4e2a-9c1b-f545f7f474ab",
     "Flags": 0,
-    "Name": "Shotgun",
-    "Position": "775.7904,298.3246,-82.37983",
+    "Name": "shotgun",
+    "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
     "Components": [
@@ -36,7 +36,6 @@
         "__guid": "7e654e34-a53e-4da8-a76a-35585d537109",
         "Flags": 0,
         "Name": "Viewmodel",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
@@ -57,7 +56,6 @@
             "__guid": "64444e99-58ae-4a72-858a-243dd795a576",
             "Flags": 0,
             "Name": "gun",
-            "Position": "0,0,0",
             "Enabled": true,
             "NetworkMode": 2,
             "NetworkInterpolation": true,
@@ -65,7 +63,7 @@
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
                 "__guid": "79c96ee1-0006-4892-b3c2-35308383d256",
-                "BodyGroups": 75,
+                "BodyGroups": 79,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_shotgun_spaghellim4/v_spaghellim4.vmdl",
                 "RenderType": "Off",
@@ -78,7 +76,6 @@
             "__guid": "0037d827-f81e-41c0-93fa-54317cf07b4a",
             "Flags": 0,
             "Name": "arms",
-            "Position": "0,0,0",
             "Enabled": true,
             "NetworkMode": 2,
             "NetworkInterpolation": true,
@@ -103,7 +100,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

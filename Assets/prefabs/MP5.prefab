@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "3a78d028-236e-4531-b966-5d50caf00037",
     "Flags": 0,
-    "Name": "MP5",
-    "Position": "254.5133,-390.7629,358.3449",
+    "Name": "mp5",
     "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
@@ -53,9 +52,9 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "880,-0"
@@ -877,7 +876,6 @@
         "__guid": "ec33ccf3-a027-4332-aa60-7555d696f8e5",
         "Flags": 0,
         "Name": "Viewmodel",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
@@ -898,7 +896,6 @@
             "__guid": "8ec0c534-5bdf-4975-869f-848582c4a75f",
             "Flags": 0,
             "Name": "weapon",
-            "Position": "0,0,0",
             "Tags": "viewmodel",
             "Enabled": true,
             "NetworkMode": 2,
@@ -907,7 +904,7 @@
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
                 "__guid": "40466aea-2c03-447a-8643-498663ddba2a",
-                "BodyGroups": 75,
+                "BodyGroups": 235,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_smg_mp5/v_mp5.vmdl",
                 "RenderType": "Off",
@@ -920,7 +917,6 @@
             "__guid": "29aa2755-676c-4bd5-93ad-b3977b82e338",
             "Flags": 0,
             "Name": "arms",
-            "Position": "0,0,0",
             "Tags": "viewmodel",
             "Enabled": true,
             "NetworkMode": 2,
@@ -946,7 +942,8 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

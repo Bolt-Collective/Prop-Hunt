@@ -14,7 +14,7 @@
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "6b5bab62-f103-431a-b027-0d11c0604b42",
-          "MapName": "thieves.dolls",
+          "MapName": "thieves.innocent_hotel",
           "UseMapFromLaunch": false
         }
       ],
@@ -218,506 +218,6 @@
       ]
     },
     {
-      "__guid": "e8a094c0-7bba-4c48-be49-ed420bc57802",
-      "Flags": 0,
-      "Name": "wooden_crate",
-      "Position": "576,192,0.0001666932",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "38922147-c18f-4011-a48b-352449051942",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "e7f6922b-635a-4a0f-b9b3-3043b447a146",
-      "Flags": 0,
-      "Name": "wooden_crate",
-      "Position": "672,240,-0.0000002078008",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "2578a11f-0eb9-4989-ba59-3397ae59b6ed",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "ad84c27a-bee2-4f32-80c3-76902e38af19",
-      "Flags": 0,
-      "Name": "wooden_crate",
-      "Position": "512,80,-0.0001728505",
-      "Tags": "propplayer",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "df7dff4e-63d2-4fcf-a3fa-1fdedd3ad347",
-          "BodyGroups": 18446744073709551615,
-          "Health": 50,
-          "IsStatic": false,
-          "Model": "models/sbox_props/wooden_crate/wooden_crate.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "8814f005-3b0a-4f66-b685-c3330f2cf221",
-      "Flags": 0,
-      "Name": "cola_can",
-      "Position": "736,64.00001,0.0342742",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "36aab097-9b6c-4929-a88a-47b073d46373",
-          "BodyGroups": 18446744073709551615,
-          "Health": 10,
-          "IsStatic": false,
-          "Model": "models/sbox_props/cola_can/cola_can.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "2619ea81-9f41-4bf2-a1c4-42ac777cebfc",
-      "Flags": 0,
-      "Name": "cola_can (1)",
-      "Position": "752,80,0.03427472",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "32c785ed-7811-4d42-bf7c-394ea2bebca2",
-          "BodyGroups": 18446744073709551615,
-          "Health": 10,
-          "IsStatic": false,
-          "Model": "models/sbox_props/cola_can/cola_can.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "02276836-011f-4d9c-820f-724ed2bb07d3",
-      "Flags": 0,
-      "Name": "wetfloor_sign",
-      "Position": "752,16.00001,0.01574082",
-      "Rotation": "0,0,0.1305262,0.9914449",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "734bf724-ad23-433a-bd60-0958d780a77c",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/wetfloor_sign.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "37d6ca06-5f57-4ed0-a8ef-9e1799591802",
-      "Flags": 0,
-      "Name": "beer_keg_a1",
-      "Position": "704,160,0.0000466265",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "c90ff626-222f-4b62-a960-953fb46530c8",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "37992d6e-5fa2-410d-a233-7c3e7074fea4",
-      "Flags": 0,
-      "Name": "beer_cask",
-      "Position": "816,176,0.0000122466",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "0a6b9453-95cb-47bc-871c-c7cba9304167",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/props/beer_keg/beer_cask.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "c7af8872-4b6f-42b8-a09e-a7d347cb46a0",
-      "Flags": 0,
-      "Name": "beer_keg_a2",
-      "Position": "752,224,0.0001295514",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "0038dcce-19bf-4d6e-96d1-231fb1bc4fc9",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/props/beer_keg/beer_keg_a2.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "ef46f452-c30c-4db7-b0d8-8bddaec52796",
-      "Flags": 0,
-      "Name": "tv",
-      "Position": "768,80.00001,0.001372456",
-      "Rotation": "0,0,-0.6087614,0.7933534",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "1f52f838-2fe8-4ec8-ac79-3d8f30477851",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/props/tv/tv.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "c4683950-363e-418e-b37a-625b896a8464",
-      "Flags": 0,
-      "Name": "tv",
-      "Position": "752,160,0.01865547",
-      "Rotation": "0,0,-0.258819,0.9659259",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "ae6efdbd-9338-4813-9074-4f0f3c0f4fe4",
-          "BodyGroups": 18446744073709551615,
-          "Health": 20,
-          "IsStatic": false,
-          "MaterialGroup": "wood_tv",
-          "Model": "models/sbox_props/tv/tv.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "7f030010-c30e-4348-bd6e-0899fe3487ce",
-      "Flags": 0,
-      "Name": "tv (1)",
-      "Position": "704,96,0.01872738",
-      "Rotation": "0,0,-0.7933533,0.6087615",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "e1a19877-37f4-4980-81b1-76dac69da809",
-          "BodyGroups": 18446744073709551615,
-          "Health": 20,
-          "IsStatic": false,
-          "MaterialGroup": "default",
-          "Model": "models/sbox_props/tv/tv.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "04487881-9d6c-4645-99f1-455cda14356e",
-      "Flags": 0,
-      "Name": "binbag_pile_a2",
-      "Position": "864,112,0.9884102",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "a7c86119-1109-405c-b4bb-4656bc1bd667",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/sbox_props/binbags/binbag_pile_a2.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "fce0cfe7-d8a5-49a7-95ea-8815af2bb93b",
-      "Flags": 0,
-      "Name": "advertising_board",
-      "Position": "832,512,0.00003717046",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "0f875854-07aa-43b7-b7d5-4cce14f7fedc",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "MaterialGroup": "burger_lit",
-          "Model": "models/sbox_props/advertising_board/advertising_board.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "ffab0826-32f3-42c6-8016-f22cb32a540e",
-      "Flags": 0,
-      "Name": "binbag_a1",
-      "Position": "912,144,0.000007629395",
-      "Rotation": "0,0,-0.5,0.8660254",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "a9abc89f-f450-48b1-aea1-b60963d793d7",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/sbox_props/binbags/binbag_a1.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "b64c067e-02bd-4cad-8a51-49657bf35b5f",
-      "Flags": 0,
-      "Name": "trolley",
-      "Position": "976,144,-0.0000322397",
-      "Rotation": "0,0,0.258819,0.9659258",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "6e2c101c-9238-463f-8408-6196fc1ea870",
-          "BodyGroups": 18446744073709551615,
-          "Health": 400,
-          "IsStatic": false,
-          "Model": "models/sbox_props/trolley/trolley.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "5ec105e0-51f7-4d42-a699-b5fa20d4c7c6",
-      "Flags": 0,
-      "Name": "lantern",
-      "Position": "592,80,0.00009918396",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "e3443955-4569-4282-ab32-8d1ef452ae2d",
-          "BodyGroups": 18446744073709551615,
-          "Health": 10,
-          "IsStatic": false,
-          "Model": "models/props/lantern/lantern.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "4d2598e8-a322-49f7-8f8e-3a9ed3565053",
-      "Flags": 0,
-      "Name": "wheely_bin",
-      "Position": "592,416,-0.00009800697",
-      "Rotation": "0,0,0.258819,0.9659258",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "b25ef0fb-8aa4-4c02-9e5e-b3f1816ddfe2",
-          "BodyGroups": 18446744073709551615,
-          "Health": 200,
-          "IsStatic": false,
-          "MaterialGroup": "blue",
-          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "3465597b-5564-4bf4-a7e4-95a06cce7b42",
-      "Flags": 0,
-      "Name": "wheely_bin (1)",
-      "Position": "720,352,0.0000118014",
-      "Rotation": "0,0,-0.258819,0.9659258",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "c7273c4b-05a6-43e2-a80e-c2e8a17aa76e",
-          "BodyGroups": 18446744073709551615,
-          "Health": 200,
-          "IsStatic": false,
-          "MaterialGroup": "default",
-          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "e05af486-99a7-45f7-8326-c2a4acd8cc9d",
-      "Flags": 0,
-      "Name": "wheely_bin (2)",
-      "Position": "800,384,-0.00004402554",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "1b11b8c0-22ca-415f-a565-84bc04706d37",
-          "BodyGroups": 18446744073709551615,
-          "Health": 200,
-          "IsStatic": false,
-          "MaterialGroup": "black",
-          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "b664bbcc-3348-4524-ae9a-fa1faa9d9caf",
-      "Flags": 0,
-      "Name": "wheely_bin (3)",
-      "Position": "768,272,0.0000633433",
-      "Rotation": "0,0,-0.258819,0.9659258",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "d9d5b70e-a5fc-4f35-96fc-f2fad3c38fee",
-          "BodyGroups": 18446744073709551615,
-          "Health": 200,
-          "IsStatic": false,
-          "MaterialGroup": "brown",
-          "Model": "models/sbox_props/wheely_bin/wheely_bin.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "b85cd469-8913-46aa-87e0-ec225b0b4876",
-      "Flags": 0,
-      "Name": "metal_wheely_bin",
-      "Position": "960,384,1.005332",
-      "Rotation": "0,0,1,0.0000001947072",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "ee227a5a-d46b-444d-971e-d20a12ebdc6b",
-          "BodyGroups": 18446744073709551615,
-          "Health": 20,
-          "IsStatic": false,
-          "MaterialGroup": "default",
-          "Model": "models/sbox_props/metal_wheely_bin/metal_wheely_bin.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "e907a638-f4c8-4afc-82a5-9f590dc39104",
-      "Flags": 0,
-      "Name": "cereal_open",
-      "Position": "864,80,0.00001525879",
-      "Rotation": "0,0,0.258819,0.9659258",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "6c4b7fca-a021-45cc-99f5-264ced3d370b",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/props/packaged_food/cereal_open.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "a02b605c-5bf5-4d5c-ab41-366f06753c2b",
-      "Flags": 0,
-      "Name": "oil_drum_a",
-      "Position": "928,240,0.04255931",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "1f9df418-9c8f-40dd-943d-83b35947eb68",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/sbox_props/oil_drum/oil_drum_a.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
       "__guid": "203a3429-98d0-49d3-83b4-f82170b738f4",
       "Flags": 0,
       "Name": "Add starting items trigger",
@@ -748,8 +248,8 @@
                 "Id": 1,
                 "Type": "property",
                 "Properties": {
-                  "_name": "GameObject",
-                  "_type": "Sandbox.Component"
+                  "_type": "Sandbox.Component",
+                  "_name": "GameObject"
                 },
                 "UserData": {
                   "Position": "208,32"
@@ -759,10 +259,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
+                  "_type": "Sandbox.IComponentLister",
                   "T": "Inventory",
-                  "_name": "TryGet",
                   "_isStatic": false,
-                  "_type": "Sandbox.IComponentLister"
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -782,9 +282,9 @@
                 "Id": 5,
                 "Type": "call",
                 "Properties": {
-                  "_name": "SpawnStartingItems",
+                  "_type": "Inventory",
                   "_isStatic": false,
-                  "_type": "Inventory"
+                  "_name": "SpawnStartingItems"
                 },
                 "UserData": {
                   "Position": "1104,0"
@@ -903,8 +403,8 @@
                 "Id": 1,
                 "Type": "property",
                 "Properties": {
-                  "_name": "GameObject",
-                  "_type": "Sandbox.Component"
+                  "_type": "Sandbox.Component",
+                  "_name": "GameObject"
                 },
                 "UserData": {
                   "Position": "208,32"
@@ -914,10 +414,10 @@
                 "Id": 2,
                 "Type": "call",
                 "Properties": {
+                  "_type": "Sandbox.IComponentLister",
                   "T": "Inventory",
-                  "_name": "TryGet",
                   "_isStatic": false,
-                  "_type": "Sandbox.IComponentLister"
+                  "_name": "TryGet"
                 },
                 "UserData": {
                   "Position": "528,32",
@@ -937,9 +437,9 @@
                 "Id": 7,
                 "Type": "call",
                 "Properties": {
-                  "_name": "Clear",
+                  "_type": "Inventory",
                   "_isStatic": false,
-                  "_type": "Inventory"
+                  "_name": "Clear"
                 },
                 "UserData": {
                   "Position": "1056,0"
@@ -1026,26 +526,6 @@
           ]
         }
       ]
-    },
-    {
-      "__guid": "1bc992f6-f151-4840-acf2-09ef27749fcd",
-      "Flags": 0,
-      "Name": "beer_keg_a1",
-      "Position": "768,192,0.00002728671",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "7e53e2c7-9e65-45ab-8a38-4ac421f8e3ed",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": false,
-          "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
     }
   ],
   "SceneProperties": {
@@ -1071,26 +551,8 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-24T21:16:25.4447634-04:00",
+  "LastSaved": "2024-06-25T16:08:41.8939021-04:00",
   "ResourceVersion": 1,
-  "__references": [
-    "facepunch.advertising_board",
-    "facepunch.beer_cask",
-    "facepunch.beer_keg_a1",
-    "facepunch.beer_keg_a2",
-    "facepunch.binbag_a1",
-    "facepunch.binbag_pile_a2",
-    "facepunch.cereal_open",
-    "facepunch.lantern",
-    "facepunch.metal_wheely_bin",
-    "facepunch.oil_drum",
-    "facepunch.soda_can",
-    "facepunch.trolley",
-    "facepunch.tv",
-    "facepunch.wheely_bin",
-    "facepunch.wooden_crate",
-    "fpopium.tv",
-    "randkassets.wetfloor_sign"
-  ],
+  "__references": [],
   "__version": 1
 }

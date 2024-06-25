@@ -472,7 +472,9 @@ public class Player : Component
 	{
 		DisableBody();
 		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
+		Inventory.Clear();
 	}
+
 	[Broadcast]
 	public void Respawn()
 	{

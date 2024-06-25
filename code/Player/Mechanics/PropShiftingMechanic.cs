@@ -49,6 +49,7 @@ public class PropShiftingMechanic : Component
 		pcModel.Model = Model.Load( ModelPath );
 		pcModel.Tint = Color.White;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
+		pcModel.GameObject.Transform.Scale = Vector3.One;
 		if ( clothes.Any() )
 		{
 			foreach ( var cloth in clothes )
@@ -77,8 +78,11 @@ public class PropShiftingMechanic : Component
 
 		if ( !tr.Hit ) return;
 		var propModel = tr.GameObject.Components.Get<Prop>( FindMode.EverythingInSelfAndDescendants )?.Model ?? tr.GameObject.Components.Get<ModelRenderer>( FindMode.EverythingInSelfAndDescendants )?.Model;
+		var propRenderer = tr.GameObject.Components.Get<ModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		if ( propModel is null ) return;
 		ModelPath = propModel.ResourcePath;
+		Player.Local.Body.Transform.Scale = propRenderer.Transform.Scale;
+		Player.Local.BodyRenderer.Tint = propRenderer.Tint;
 		Player.Local.BodyRenderer.Model = Model.Load( ModelPath );
 		IsProp = ModelPath == "models/citizen/citizen.vmdl_c" ? false : true;
 
@@ -99,4 +103,5 @@ public class PropShiftingMechanic : Component
 		}
 		Player.Local.Body.Network.Refresh();
 	}
+
 }

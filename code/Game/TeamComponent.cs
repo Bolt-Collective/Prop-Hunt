@@ -34,24 +34,8 @@ public class TeamComponent : Component
 	{
 		int propsCount = Scene.GetAllComponents<TeamComponent>().Count( x => x.TeamName == Team.Props.ToString() );
 		int huntersCount = Scene.GetAllComponents<TeamComponent>().Count( x => x.TeamName == Team.Hunters.ToString() );
-
-		Team teamToAssign;
-
-		if ( propsCount < huntersCount )
-		{
-			teamToAssign = Team.Props;
-		}
-		else if ( huntersCount < propsCount )
-		{
-			teamToAssign = Team.Hunters;
-		}
-		else
-		{
-			teamToAssign = lastAssignedTeam == Team.Props ? Team.Hunters : Team.Props;
-		}
-
-		lastAssignedTeam = teamToAssign;
-		ChangeTeam( teamToAssign );
+		var randomTeam = GetRandom( 0, 2 ) == 0 ? Team.Props : Team.Hunters;
+		ChangeTeam( randomTeam );
 	}
 	int GetRandom( int min, int max )
 	{
