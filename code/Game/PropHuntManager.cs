@@ -83,24 +83,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			//MaxPlayersToStart = 2;
 		}
-		/*if ( !IsProxy )
-				{
-					foreach ( var prop in Scene.GetAllComponents<Prop>() )
-					{
-						if ( prop.GameObject.NetworkMode != NetworkMode.Object )
-						{
-							prop.GameObject.NetworkSpawn( null );
-						}
-					}
-
-					foreach ( var gib in Scene.GetAllComponents<Gib>() )
-					{
-						if ( gib.GameObject.NetworkMode != NetworkMode.Object )
-						{
-							gib.GameObject.NetworkSpawn( null );
-						}
-					}
-				}*/
 		if ( !Networking.IsHost ) return;
 		GameStateManager();
 	}
