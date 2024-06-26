@@ -260,6 +260,8 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		// TODO: do map vote
 		Log.Info( "map vote" );
+		//TEMP
+		ResetRound();
 	}
 	public void ResetRound()
 	{
