@@ -213,9 +213,22 @@
       {
         "__type": "TauntComponent",
         "__guid": "f48ab731-bc87-4836-9450-b75d7f864472",
-        "HunterTaunts": "sounds/taunts/random_taunts_seekers.sound",
-        "PropTaunts": "sounds/taunts/random_taunts_props.sound",
-        "TauntCooldown": 0
+        "HunterTaunts": [
+          "sounds/taunts/seaker taunts/error_taunt.sound",
+          "sounds/taunts/seaker taunts/prowler.sound",
+          "sounds/taunts/seaker taunts/rehehehe.sound"
+        ],
+        "PropTaunts": [
+          "sounds/taunts/prop taunts/anime-wow-sound-effect.sound",
+          "sounds/taunts/prop taunts/bone-crack.sound",
+          "sounds/taunts/prop taunts/joerogan.sound",
+          "sounds/taunts/prop taunts/laugh.sound",
+          "sounds/taunts/prop taunts/laugh2.sound",
+          "sounds/taunts/prop taunts/perfect-fart.sound",
+          "sounds/taunts/prop taunts/pluh.sound",
+          "sounds/taunts/prop taunts/whatsup.sound"
+        ],
+        "TauntCooldown": 15
       }
     ],
     "Children": [
