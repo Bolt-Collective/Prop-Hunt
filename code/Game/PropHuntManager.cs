@@ -143,6 +143,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
 		AssignEvenTeams();
+		Scene.GetAllComponents<CustomMapLoader>().FirstOrDefault().UnloadMap();
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
 			player.HunterStart();
