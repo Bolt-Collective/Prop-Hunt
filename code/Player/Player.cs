@@ -73,7 +73,7 @@ public class Player : Component
 	public void FreeLook()
 	{
 		var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
-		if ( cam is null ) return;
+		if ( cam is null || Health <= 0 ) return;
 
 		if ( Input.Pressed( "attack2" ) )
 		{
