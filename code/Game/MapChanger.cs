@@ -5,11 +5,13 @@ public sealed class MapChanger : Component
 	[Property] public MapInstance MapInstance { get; set; }
 	protected override void OnEnabled()
 	{
+		if ( !Networking.IsHost ) return;
 		MapInstance.OnMapLoaded += HandleMap;
 	}
 
 	protected override void OnDisabled()
 	{
+		if ( !Networking.IsHost ) return;
 		MapInstance.OnMapLoaded -= HandleMap;
 	}
 	[Broadcast]
