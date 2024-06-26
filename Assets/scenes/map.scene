@@ -5,7 +5,7 @@
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
       "Flags": 0,
       "Name": "Map",
-      "Position": "0,0,0.0001090269",
+      "Position": "0,0,-0.0002540941",
       "Tags": "world,solid",
       "Enabled": true,
       "NetworkMode": 2,
@@ -191,8 +191,6 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-          "AllowPeopleButUsToJoin": true,
-          "FallBackScene": "scenes/fallbackscene.scene",
           "MaxPlayersToStart": 2,
           "OnGoingRound": false
         }
@@ -243,7 +241,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-26T18:20:27.3459366-04:00",
+  "LastSaved": "2024-06-26T18:27:28.4378706-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

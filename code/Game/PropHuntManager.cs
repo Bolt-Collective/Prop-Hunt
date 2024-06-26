@@ -8,7 +8,6 @@ namespace PropHunt;
 public partial class PropHuntManager : Component, Component.INetworkListener
 {
 	[HostSync] public GameState RoundState { get; set; } = GameState.None;
-	[Property] public bool AllowPeopleButUsToJoin { get; set; } = false;
 	[HostSync] public string RoundStateText { get; set; }
 
 	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
@@ -54,7 +53,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static PropHuntManager Instance { get; set; }
 	public List<(string, int)> Votes { get; set; } = new();
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
-	[Property] public SceneFile FallBackScene { get; set; }
 
 	protected override void OnStart()
 	{
