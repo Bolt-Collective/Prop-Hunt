@@ -23,9 +23,14 @@
 			<img class="input-glyph" src="@Grab?.ResourcePath">
 		</div>
 		<div>
-			<div>Change Camera Distance</div>
-			<img class="input-glyph" src="@Grab?.ResourcePath">
+			<div>Taunt</div>
+			<img class="input-glyph" src="@Taunt?.ResourcePath">
 		</div>
+		<div>
+			<div>Exit Prop</div>
+			<img class="input-glyph" src="@LeaveProp?.ResourcePath">
+		</div>
+
 	}
 </root>
 
@@ -34,7 +39,8 @@
 	public Texture Attack1 { get; set; }
 	public Texture Attack2 { get; set; }
 	public Texture Grab { get; set; }
-	public Texture ScrollWheel { get; set; }
+	public Texture Taunt { get; set; }
+	public Texture LeaveProp { get; set; }
 
 	public override void Tick()
 	{
@@ -42,10 +48,10 @@
 		Attack1 = Input.GetGlyph("Attack1", InputGlyphSize.Large, false);
 		Attack2 = Input.GetGlyph("Attack2", InputGlyphSize.Large, false);
 		Grab = Input.GetGlyph("Flashlight", InputGlyphSize.Large, false);
-		ScrollWheel = Input.GetGlyph("View", InputGlyphSize.Large, false);
+		Taunt = Input.GetGlyph("Taunt", InputGlyphSize.Large, false);
+		LeaveProp = Input.GetGlyph("View", InputGlyphSize.Large, false);
 		base.Tick();
 	}
 
-	protected override int BuildHash() => System.HashCode.Combine(Use.ResourcePath, Attack1.ResourcePath,
-	Attack2.ResourcePath, Grab.ResourcePath, ScrollWheel.ResourcePath, Time.Now);
+	protected override int BuildHash() => System.HashCode.Combine(Time.Now);
 }

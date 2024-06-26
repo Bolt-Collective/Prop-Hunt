@@ -83,6 +83,7 @@ public class PropShiftingMechanic : Component
 		var propModel = tr.GameObject.Components.Get<Prop>( FindMode.EverythingInSelfAndDescendants )?.Model ?? tr.GameObject.Components.Get<ModelRenderer>( FindMode.EverythingInSelfAndDescendants )?.Model;
 		var propRenderer = tr.GameObject.Components.Get<ModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		if ( propModel is null ) return;
+		if ( propModel.ResourcePath == "models/citizen/citizen.vmdl_c" ) return;
 		ModelPath = propModel.ResourcePath;
 		Player.Local.Body.Transform.Scale = propRenderer.Transform.Scale;
 		Player.Local.BodyRenderer.Tint = propRenderer.Tint;
