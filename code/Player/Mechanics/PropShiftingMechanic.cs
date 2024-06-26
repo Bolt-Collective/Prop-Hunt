@@ -7,7 +7,7 @@ public class PropShiftingMechanic : Component
 	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
-	[Property] public CapsuleCollider Collider { get; set; }
+	[Property] public ModelCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
 	protected override void OnStart()
@@ -51,6 +51,7 @@ public class PropShiftingMechanic : Component
 		ModelPath = "models/citizen/citizen.vmdl_c";
 		pcModel.Model = Model.Load( ModelPath );
 		pcModel.Tint = Color.White;
+		Collider.Model = Model.Load( ModelPath );
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		if ( clothes.Any() )
@@ -88,6 +89,7 @@ public class PropShiftingMechanic : Component
 		Player.Local.Body.Transform.Scale = propRenderer.Transform.Scale;
 		Player.Local.BodyRenderer.Tint = propRenderer.Tint;
 		Player.Local.BodyRenderer.Model = Model.Load( ModelPath );
+		Collider.Model = Model.Load( ModelPath );
 		IsProp = ModelPath == "models/citizen/citizen.vmdl_c" ? false : true;
 
 		Log.Info( "changed model" );

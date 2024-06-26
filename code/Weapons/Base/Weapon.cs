@@ -81,7 +81,7 @@ public sealed class Weapon : Component
 	}
 	public void Fire()
 	{
-		if ( Player is null || !Player.AbleToMove ) return;
+		if ( Player is null || !Player.AbleToMove || Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind ) return;
 		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
 		//ray.Forward += Vector3.Random * Spread;
 

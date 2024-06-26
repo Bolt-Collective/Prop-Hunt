@@ -275,7 +275,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 	public void RoundTick()
 	{
-		if ( TimeSinceRoundStateChanged > RoundLength && GetPlayers( Team.Hunters ).Count( x => x.Health <= 0 ) <= 0 )
+		if ( TimeSinceRoundStateChanged > RoundLength || Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ).All( x => x.Health <= 0 ) )
 		{
 			ForceWin( Team.Props );
 		}

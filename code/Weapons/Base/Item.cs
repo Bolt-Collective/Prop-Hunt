@@ -61,6 +61,14 @@ public sealed class Item : Component
 	[Impure]
 	public void Trace( float TraceDistance, int damage, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject, float Delay = 0.0f, float Spread = 0.0f )
 	{
+		if ( Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind )
+		{
+			hitPos = default;
+			traceNormal = default;
+			hit = false;
+			TraceObject = null;
+			return;
+		}
 		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
 		ray.Forward += ray.Forward * Vector3.Random * Spread;
 		var tr = Scene.Trace.Ray( ray, TraceDistance )
