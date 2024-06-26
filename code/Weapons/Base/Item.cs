@@ -91,6 +91,7 @@ public sealed class Item : Component
 			else if ( tr.Body is not null )
 			{
 				tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
+				Player.Local.TakeDamage( 5 );
 			}
 			var trDamage = new DamageInfo( damage, GameObject, GameObject, tr.Hitbox );
 			trDamage.Position = tr.HitPosition;
@@ -103,6 +104,7 @@ public sealed class Item : Component
 		else
 		{
 			TraceObject = null;
+			Player.Local.TakeDamage( 5 );
 		}
 	}
 

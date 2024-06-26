@@ -18,10 +18,21 @@ public sealed class TauntComponent : Component
 		if ( IsProxy )
 			return;
 
-		if ( Input.Pressed( "Flashlight" ) && TimeSinceTaunted > TauntCooldown )
+		if ( Input.Pressed( "taunt" ) && TimeSinceTaunted > TauntCooldown && Player.Local.TeamComponent.TeamName == Team.Props.ToString() )
 		{
-			Sound.Play( PropTaunts, GameObject.Transform.Position );
+			BroadcastTaunt( PropTaunts );
 			TimeSinceTaunted = 0;
 		}
+		else if ( Input.Pressed( "taunt" ) && TimeSinceTaunted > TauntCooldown && Player.Local.TeamComponent.TeamName == Team.Hunters.ToString() )
+		{
+			BroadcastTaunt( HunterTaunts );
+			TimeSinceTaunted = 0;
+		}
+	}
+
+	[Broadcast]
+	public void BroadcastTaunt( SoundEvent sound )
+	{
+		Sound.Play( sound, GameObject.Transform.Position );
 	}
 }
