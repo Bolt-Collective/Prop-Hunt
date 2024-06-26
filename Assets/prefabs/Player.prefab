@@ -57,7 +57,68 @@
           "_type": "gameobject",
           "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
         },
-        "Health": 0
+        "Health": 0,
+        "OnDeath": {
+          "__version": 7,
+          "__guid": "c1f57adb-64d2-4461-a611-c14e86ee9c27",
+          "UserData": {
+            "Title": "On Death",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input",
+              "UserData": {
+                "Position": "-240,32"
+              }
+            },
+            {
+              "Id": 16,
+              "Type": "property",
+              "Properties": {
+                "_type": "Sandbox.Component",
+                "_name": "GameObject"
+              },
+              "UserData": {
+                "Position": "-48,80"
+              }
+            },
+            {
+              "Id": 17,
+              "Type": "sound.play",
+              "UserData": {
+                "Position": "240,96"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "player",
+              "DstId": 16,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 17,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 16,
+              "SrcName": "_result",
+              "DstId": 17,
+              "DstName": "_this"
+            },
+            {
+              "Value": "sounds/death.player.sound",
+              "DstId": 17,
+              "DstName": "soundEvent"
+            }
+          ]
+        }
       },
       {
         "__type": "PlayerDresser",

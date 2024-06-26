@@ -1,6 +1,7 @@
-using PropHunt;
+﻿using PropHunt;
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.UI.Panels.Chat;
 using Sandbox.Utility;
 
 public class Player : Component
@@ -472,6 +473,7 @@ public class Player : Component
 	{
 		DisableBody();
 		TeamComponent.ChangeTeam( Team.Unassigned );
+		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
 		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		Inventory.Clear();
 	}

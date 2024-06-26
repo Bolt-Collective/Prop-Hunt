@@ -1,6 +1,7 @@
 @using Sandbox;
 @using Sandbox.UI;
 @using PropHunt;
+@using Sandbox.UI.Panels.Chat
 @inherits PanelComponent
 
 @if (Manager is not null)
@@ -88,10 +89,19 @@
 
 @code
 {
+	public static PropHuntUI Instance { get; set; } = new();
+
 	public PropHuntManager Manager { get; set; }
 	public Inventory Inventory { get; set; }
 	public TeamComponent TeamComponent { get; set; }
+	public ChatBox Chat { get; set; }
+
 	[Property] public bool ShowMapVoting { get; set; } = true;
+
+	protected override void OnAwake()
+	{
+		Instance = this;
+	}
 
 	protected override void OnStart()
 	{
