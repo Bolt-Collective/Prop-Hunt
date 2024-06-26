@@ -91,12 +91,13 @@ MenuUi {
         }
 
         .server {
+            
             width: 100%;
             height: 100px;
             border-radius: 20px;
             background-color: #333;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
             align-items: center;
             padding: 20px;
             cursor: pointer;
@@ -116,6 +117,7 @@ MenuUi {
             .server-players {
                 font-size: 30px;
                 color: white;
+                width: 50px;
             }
 
             .server-join {

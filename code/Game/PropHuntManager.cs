@@ -60,15 +60,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		Instance = this;
 	}
-	void INetworkListener.OnActive( Sandbox.Connection conn )
-	{
-		//The last one is my dad's steam id, I don't mind him joining
-		if ( conn.SteamId == 76561199001645276 || conn.SteamId == 76561198043979097 || conn.SteamId == 76561199101178253 || AllowPeopleButUsToJoin ) return;
-		if ( Steam.SteamId == conn.SteamId )
-		{
-			Game.ActiveScene.Load( FallBackScene );
-		}
-	}
 	protected override void OnUpdate()
 	{
 		if ( !IsProxy && AllPlayers.Count() > 2 )

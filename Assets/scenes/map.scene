@@ -191,7 +191,7 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-          "AllowPeopleButUsToJoin": false,
+          "AllowPeopleButUsToJoin": true,
           "FallBackScene": "scenes/fallbackscene.scene",
           "MaxPlayersToStart": 2,
           "OnGoingRound": false
@@ -243,7 +243,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-26T16:43:40.7229537-04:00",
+  "LastSaved": "2024-06-26T17:26:03.1296236-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
