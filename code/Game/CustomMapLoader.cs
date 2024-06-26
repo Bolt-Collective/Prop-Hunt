@@ -13,9 +13,6 @@ public class CustomMapLoader : MapInstance
 			//Create Rigidbody and st the locking and flags
 			var rb = gameObject.Components.Create<Rigidbody>();
 			var locking = new PhysicsLock();
-			locking.Z = true;
-			locking.X = true;
-			locking.Y = true;
 			locking.Pitch = true;
 			locking.Roll = true;
 			rb.Locking = locking;
@@ -28,16 +25,6 @@ public class CustomMapLoader : MapInstance
 			joint.MinAngle = -80;
 			joint.MaxAngle = 80;
 			joint.Motor = HingeJoint.MotorMode.TargetAngle;
-		}
-		else if ( objectEntry.TypeName == "light_capsule" )
-		{
-			var light = gameObject.Components.Create<PointLight>();
-			light.LightColor = objectEntry.GetValue<Color>( "color" );
-		}
-		else if ( objectEntry.TypeName == "light_spot" )
-		{
-			var light = gameObject.Components.Create<SpotLight>();
-			light.LightColor = objectEntry.GetValue<Color>( "color" );
 		}
 	}
 }
