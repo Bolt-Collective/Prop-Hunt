@@ -15,7 +15,7 @@
           "__type": "CustomMapLoader",
           "__guid": "5dca5de4-1051-4fae-bae8-7e42a597f07e",
           "__version": 1,
-          "MapName": "facepunch.square",
+          "MapName": "gnomefig.office",
           "NoOrigin": false,
           "UseMapFromLaunch": true
         }
@@ -243,7 +243,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-26T15:57:58.5397339-04:00",
+  "LastSaved": "2024-06-26T16:43:40.7229537-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

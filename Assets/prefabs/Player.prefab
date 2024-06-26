@@ -152,9 +152,22 @@
       {
         "__type": "TauntComponent",
         "__guid": "f48ab731-bc87-4836-9450-b75d7f864472",
-        "HunterTaunts": "sounds/taunts/random_taunts_seekers.sound",
-        "PropTaunts": "sounds/taunts/random_taunts_props.sound",
-        "TauntCooldown": 0
+        "HunterTaunts": [
+          "sounds/taunts/seaker taunts/error_taunt.sound",
+          "sounds/taunts/seaker taunts/prowler.sound",
+          "sounds/taunts/seaker taunts/rehehehe.sound"
+        ],
+        "PropTaunts": [
+          "sounds/taunts/prop taunts/anime-wow-sound-effect.sound",
+          "sounds/taunts/prop taunts/bone-crack.sound",
+          "sounds/taunts/prop taunts/joerogan.sound",
+          "sounds/taunts/prop taunts/laugh.sound",
+          "sounds/taunts/prop taunts/laugh2.sound",
+          "sounds/taunts/prop taunts/perfect-fart.sound",
+          "sounds/taunts/prop taunts/pluh.sound",
+          "sounds/taunts/prop taunts/whatsup.sound"
+        ],
+        "TauntCooldown": 15
       }
     ],
     "Children": [
@@ -591,7 +604,7 @@
                                         "__guid": "ddcb0105-9f73-48cb-b721-deea010259ab",
                                         "Flags": 4,
                                         "Name": "arm_elbow_helper_L",
-                                        "Position": "-0.000004768372,0.000002861023,-0.00006103516",
+                                        "Position": "0,0,0",
                                         "Rotation": "0.0000003075731,0.000000002854507,-0.7577645,0.6525282",
                                         "Enabled": true,
                                         "NetworkMode": 2,
@@ -867,7 +880,7 @@
                                             "__guid": "c3c5afe8-a97b-41c5-bc63-861cfc0da1c5",
                                             "Flags": 4,
                                             "Name": "arm_elbow_helper_R",
-                                            "Position": "-0.00000667572,0.00003147125,-0.00005340576",
+                                            "Position": "0,0,0",
                                             "Rotation": "0.0000007692941,-0.0000002412072,-0.7577677,0.6525243",
                                             "Enabled": true,
                                             "NetworkMode": 2,
@@ -979,7 +992,7 @@
                         "__guid": "2ce66e43-9470-4b1d-9325-797b70a8b019",
                         "Flags": 4,
                         "Name": "leg_knee_helper_R",
-                        "Position": "0.000001907349,0.000004768372,-0.000009536743",
+                        "Position": "0,0,0",
                         "Rotation": "0.000000905889,-0.000001318489,0.7135269,0.7006279",
                         "Enabled": true,
                         "NetworkMode": 2,
@@ -1000,7 +1013,7 @@
                     "__guid": "6cd188ba-8c13-4477-bea6-0ed57deae755",
                     "Flags": 4,
                     "Name": "leg_upper_R_twist0",
-                    "Position": "0.000007629395,0.000005960464,-0.00001716614",
+                    "Position": "0,0,0",
                     "Rotation": "-0.00000008940732,-0.000000029802,0.000003069638,1",
                     "Enabled": true,
                     "NetworkMode": 2,
@@ -1010,7 +1023,7 @@
                     "__guid": "8bf5927b-c7f6-4495-bab5-47232997cb56",
                     "Flags": 4,
                     "Name": "leg_glute_helper_R",
-                    "Position": "0.00002098083,0.000005543232,-0.00001764297",
+                    "Position": "0,0,0",
                     "Rotation": "-0.000001053308,-0.0000006515999,-0.7071051,0.7071084",
                     "Enabled": true,
                     "NetworkMode": 2,
@@ -1082,7 +1095,7 @@
                         "__guid": "f73edc0a-ebe0-491e-b13d-63231bb5757a",
                         "Flags": 4,
                         "Name": "leg_knee_helper_L",
-                        "Position": "-0.00001525879,0.000001847744,-0.000009536743",
+                        "Position": "0,0,0",
                         "Rotation": "-0.000002973302,-0.000001705918,0.7135277,0.7006271",
                         "Enabled": true,
                         "NetworkMode": 2,
@@ -1112,7 +1125,7 @@
                     "__guid": "67a115e9-0f84-476b-8b05-c100955ca5ae",
                     "Flags": 4,
                     "Name": "leg_glute_helper_L",
-                    "Position": "0.00001907349,0.000009596348,-0.000009536743",
+                    "Position": "0,0,0",
                     "Rotation": "-0.0000009340982,-0.0000007682515,-0.7071055,0.707108",
                     "Enabled": true,
                     "NetworkMode": 2,
