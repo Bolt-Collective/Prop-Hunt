@@ -5,15 +5,18 @@
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
       "Flags": 0,
       "Name": "Map",
+      "Position": "0,0,0.0001090269",
       "Tags": "world,solid",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "6b5bab62-f103-431a-b027-0d11c0604b42",
-          "MapName": "nolankicks.prophunt_opium",
+          "__type": "CustomMapLoader",
+          "__guid": "5dca5de4-1051-4fae-bae8-7e42a597f07e",
+          "__version": 1,
+          "MapName": "facepunch.square",
+          "NoOrigin": false,
           "UseMapFromLaunch": true
         }
       ],
@@ -24,7 +27,7 @@
       "Flags": 0,
       "Name": "Camera",
       "Position": "-267.452,-379.653,297.7903",
-      "Rotation": "-0.02589748,-0.0765252,-0.3195111,0.9441323",
+      "Rotation": "-0.01075258,0.05637258,0.1870547,0.9806718",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
@@ -209,9 +212,9 @@
           "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24",
           "MapInstance": {
             "_type": "component",
-            "component_id": "6b5bab62-f103-431a-b027-0d11c0604b42",
+            "component_id": "5dca5de4-1051-4fae-bae8-7e42a597f07e",
             "go": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
-            "component_type": "MapInstance"
+            "component_type": "CustomMapLoader"
           }
         }
       ]
@@ -240,7 +243,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-25T21:30:33.4849825-04:00",
+  "LastSaved": "2024-06-26T14:35:44.2163344-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
