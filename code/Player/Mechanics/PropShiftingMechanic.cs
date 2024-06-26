@@ -13,7 +13,10 @@ public class PropShiftingMechanic : Component
 	protected override void OnStart()
 	{
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
-		ModelPath = Player.Local.BodyRenderer.Model.ResourcePath;
+		if ( !IsProxy )
+		{
+			ModelPath = Player.Local.BodyRenderer?.Model.ResourcePath;
+		}
 	}
 	protected override void OnUpdate()
 	{

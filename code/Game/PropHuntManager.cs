@@ -149,6 +149,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", 30f );
 		}
+		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
+		foreach ( var player in Scene.GetAllComponents<Player>() )
+		{
+			var randomPoint = Game.Random.FromList( spawnPoints );
+			player.EyeAngles = randomPoint.Transform.Rotation.Angles();
+			player.Transform.World = randomPoint.Transform.World;
+		}
 
 	}
 	public Random GetRandom()
