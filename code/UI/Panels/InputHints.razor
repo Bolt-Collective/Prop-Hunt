@@ -1,0 +1,51 @@
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+
+
+<root>
+	@if (Player.Local is not null)
+	{
+		<div>
+			<div>Turn into Prop / Interact</div>
+			<img class="input-glyph" src="@Use?.ResourcePath">
+		</div>
+		<div>
+			<div>Attack</div>
+			<img class="input-glyph" src="@Attack1?.ResourcePath">
+		</div>
+		<div>
+			<div>Lock Rotation</div>
+			<img class="input-glyph" src="@Attack2?.ResourcePath">
+		</div>
+		<div>
+			<div>Grab</div>
+			<img class="input-glyph" src="@Grab?.ResourcePath">
+		</div>
+		<div>
+			<div>Change Camera Distance</div>
+			<img class="input-glyph" src="@Grab?.ResourcePath">
+		</div>
+	}
+</root>
+
+@code {
+	public Texture Use { get; set; }
+	public Texture Attack1 { get; set; }
+	public Texture Attack2 { get; set; }
+	public Texture Grab { get; set; }
+	public Texture ScrollWheel { get; set; }
+
+	public override void Tick()
+	{
+		Use = Input.GetGlyph("use", InputGlyphSize.Large, false);
+		Attack1 = Input.GetGlyph("Attack1", InputGlyphSize.Large, false);
+		Attack2 = Input.GetGlyph("Attack2", InputGlyphSize.Large, false);
+		Grab = Input.GetGlyph("Flashlight", InputGlyphSize.Large, false);
+		ScrollWheel = Input.GetGlyph("View", InputGlyphSize.Large, false);
+		base.Tick();
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine(Use.ResourcePath, Attack1.ResourcePath,
+	Attack2.ResourcePath, Grab.ResourcePath, ScrollWheel.ResourcePath, Time.Now);
+}

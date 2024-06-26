@@ -1,0 +1,57 @@
+hudhints {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    label {
+        color: white;
+        font-family: Poppins;
+        font-size: 24px;
+        top: 2px;
+        left: 2px;
+        font-weight: 600;
+    }
+
+    InputHint {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+    
+                inputglyph {
+                    margin: -7px 0px 5px 2px;
+                }
+
+    .pickup {
+        position: absolute;
+        height: 16px;
+        opacity: 0;
+        transition: all 0.1s ease;
+        transform: translateX(-50%);
+
+        &.show {
+            opacity: 1;
+        }
+
+        left: 50%;
+        bottom: 20%;
+    }
+    
+    .name {
+        margin-left: 4px;
+    }
+    
+    .currentspec {
+        position: absolute;	    
+        left: 50%;
+        padding: 33px;
+        bottom: 10%;
+        transform: translateX(-50%);
+        transform-origin: 0% 0%;
+        width: 300px;
+        height: 64px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 7px;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,17 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	@if (Player.Local is not null)
+	{
+		<div class="currentspec">@Player.Local.TeamComponent.TeamName</div>
+	}
+</root>
+
+@code
+{
+	protected override int BuildHash() => System.HashCode.Combine(Player.Local?.TeamComponent?.TeamName);
+}

@@ -5,7 +5,6 @@
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
       "Flags": 0,
       "Name": "Map",
-      "Position": "-128,-206.7385,264.4784",
       "Tags": "world,solid",
       "Enabled": true,
       "NetworkMode": 2,
@@ -241,7 +240,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-25T19:29:49.9097136-04:00",
+  "LastSaved": "2024-06-25T21:30:33.4849825-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

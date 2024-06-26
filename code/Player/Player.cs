@@ -179,7 +179,7 @@ public class Player : Component
 	{
 		if ( IsProxy ) return;
 		var ee = EyeAngles;
-		ee += Input.AnalogLook * 0.9f;
+		ee += Input.AnalogLook;
 		ee.roll = 0;
 		ee.pitch = ee.pitch.Clamp( -89, 89 );
 		EyeAngles = ee;
@@ -471,6 +471,7 @@ public class Player : Component
 	void Death()
 	{
 		DisableBody();
+		TeamComponent.ChangeTeam( Team.Unassigned );
 		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		Inventory.Clear();
 	}

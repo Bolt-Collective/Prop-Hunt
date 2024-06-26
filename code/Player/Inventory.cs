@@ -12,6 +12,8 @@ public sealed class Inventory : Component
 	[Property, Sync] public int ActiveIndex { get; set; }
 	[Property, Sync] public bool AbleToSwitch { get; set; } = true;
 	public Player Player { get; set; }
+	public GameObject ActiveItem => Items[ActiveIndex];
+	public int ActiveAmmo { get; set; }
 	public TeamComponent TeamComponent { get; set; }
 	protected override void OnStart()
 	{
@@ -34,6 +36,9 @@ public sealed class Inventory : Component
 	{
 		if ( !IsProxy && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
+			ActiveAmmo = ActiveItem is not null ? Player.Local.Inventory.ActiveItem.Components.TryGet<Weapon>( out var weapon ) ? weapon.Ammo :
+					Player.Local.Inventory.ActiveItem.Components.TryGet<Item>( out var item ) && item.UsesAmmo ? item.Ammo :
+					Player.Local.Inventory.ActiveItem.Components.TryGet<Shotgun>( out var shotgun ) ? shotgun.Item.Ammo : 0 : 0;
 			ItemInputs();
 			for ( int i = 0; i < Items.Count; i++ )
 			{

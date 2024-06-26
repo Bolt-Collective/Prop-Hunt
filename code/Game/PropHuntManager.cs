@@ -71,17 +71,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	}
 	protected override void OnUpdate()
 	{
-		if ( !IsProxy )
-		{
-			//MaxPlayersToStart = FileSystem.Data.ReadAllText( "MinPlayers.txt" ).ToInt();
-		}
 		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{
-			//MaxPlayersToStart = Connection.All.Count;
+			MaxPlayersToStart = Connection.All.Count;
 		}
 		else
 		{
-			//MaxPlayersToStart = 2;
+			MaxPlayersToStart = 2;
 		}
 		if ( !Networking.IsHost ) return;
 		GameStateManager();
@@ -163,23 +159,26 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 
 	}
-
+	public Random GetRandom()
+	{
+		return new Random();
+	}
 	public void AssignEvenTeams()
 	{
-		Random rng = new Random();
+		Random rng = GetRandom();
 		var randomList = AllPlayers.OrderBy( a => rng.Next() ).ToList();
-		for ( int i = 0; i < AllPlayers.Count(); i++ )
+
+		for ( int i = 0; i < randomList.Count; i++ )
 		{
 			if ( i % 2 == 0 )
 			{
-				AllPlayers.ElementAt( i ).TeamComponent.ChangeTeam( Team.Props );
-
+				randomList[i].TeamComponent.ChangeTeam( Team.Props );
 			}
 			else
 			{
-				AllPlayers.ElementAt( i ).TeamComponent.ChangeTeam( Team.Hunters );
+				randomList[i].TeamComponent.ChangeTeam( Team.Hunters );
 			}
-			AllPlayers.ElementAt( i ).Respawn();
+			randomList[i].Respawn();
 		}
 	}
 	public void ForceRestart()

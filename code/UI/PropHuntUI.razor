@@ -9,14 +9,17 @@
 		<div class="round-timer">
 			@if (Manager.RoundState == GameState.WaitingForPlayers)
 			{
-				<div class="title" style="background-color: rgba(0, 0, 0, 0.4); font-weight: 800; font-size: 25px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">@Format(TimeSpan.FromSeconds(
-			Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
+				<div class="title"
+					style="background-color: rgba(0, 0, 0, 0.4); font-weight: 800; font-size: 25px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+					@Format(TimeSpan.FromSeconds(
+									Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			else
 			{
-				<div class="title" style="background-color: rgba(0, 0, 0, 0.4); font-weight: 800; font-size: 25px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+				<div class="title"
+					style="background-color: rgba(0, 0, 0, 0.4); font-weight: 800; font-size: 25px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
 					@Format(TimeSpan.FromSeconds(
-			Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
+									Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			<div class="title" style="text-shadow: 2px 2px 3px 1px black;">@Manager.RoundStateText</div>
 		</div>
@@ -55,6 +58,24 @@
 		<PopupList />
 		<Scoreboard />
 		<Crosshair />
+		<InputHints />
+		<HudHints />
+		@if (PropHuntManager.GetPlayers(Team.Hunters).Contains(Player.Local) && Player.Local.Inventory.ActiveItem is not
+				null)
+		{
+			//SUPER SHIT, needs proper styling
+			<div
+				style="position: absolute; bottom: 10px; left: 10px; font-family: Poppins; font-size: 24px; padding: 10px 20px; color: white; font-weight: bolder;">
+				<div>@Player.Local.Inventory.ActiveAmmo</div>
+				<div>/</div>
+				<div>@Player.Local.AmmoContainer.Ammo</div>
+			</div>
+		}
+
+
+
+
+
 
 		<div class="right"></div>
 		@if (ShowMapVoting)
@@ -71,7 +92,6 @@
 	public Inventory Inventory { get; set; }
 	public TeamComponent TeamComponent { get; set; }
 	[Property] public bool ShowMapVoting { get; set; } = true;
-
 
 	protected override void OnStart()
 	{
