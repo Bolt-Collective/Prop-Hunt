@@ -23,65 +23,6 @@
       "Children": []
     },
     {
-      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
-      "Flags": 0,
-      "Name": "2D Skybox",
-      "Position": "-7070.305,3480.413,782.3976",
-      "Tags": "skybox",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.SkyBox2D",
-          "__guid": "398177cc-161d-4e8e-b127-b3e70d446a7e",
-          "SkyMaterial": "materials/skybox.vmat",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.EnvmapProbe",
-          "__guid": "21a0b5e0-c331-4a60-8767-ae7d885eca15",
-          "Texture": "textures/cubemaps/default2.vtex",
-          "Bounds": {
-            "Mins": "-512,-512,-512",
-            "Maxs": "512,512,512"
-          },
-          "DelayBetweenUpdates": 0.1,
-          "Feathering": 0.02,
-          "FrameInterval": 5,
-          "MaxDistance": 512,
-          "Projection": "Sphere",
-          "RenderDynamically": false,
-          "TintColor": "1,1,1,1",
-          "UpdateStrategy": "OnEnabled",
-          "ZFar": 4096,
-          "ZNear": 16
-        }
-      ]
-    },
-    {
-      "__guid": "5d7b6fa4-b973-43fd-a692-0811622475aa",
-      "Flags": 0,
-      "Name": "Sun",
-      "Position": "-343.6603,169.4538,529.762",
-      "Rotation": "-0.5449786,0.06613479,0.4549762,-0.701157",
-      "Tags": "light_directional,light",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.DirectionalLight",
-          "__guid": "ce44fa25-3603-447a-90f2-0091ea8b84b7",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
-          "Shadows": true,
-          "SkyColor": "0.05882,0.07451,0.08235,1"
-        }
-      ]
-    },
-    {
       "__guid": "30a9bdde-8988-4ee3-8798-5e92d9aef28a",
       "Flags": 0,
       "Name": "Camera",
@@ -124,6 +65,42 @@
         {
           "__type": "CameraTilting",
           "__guid": "53c14eb9-358f-4fff-a80d-cec0555baaec"
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "407d78a8-c782-457f-b11f-4f54ccb3d035",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Additive",
+          "Strength": 1,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "b41f145b-48d3-4d52-aacf-aaf0b7624d63",
+          "Intensity": 8,
+          "Quality": "High",
+          "Radius": 32
         }
       ]
     },
@@ -261,7 +238,7 @@
       "__guid": "d1ac430f-3a4b-485b-86ca-08541d35ae68",
       "Flags": 0,
       "Name": "rusty barrel",
-      "Position": "290.131,-104.9302,5.860458",
+      "Position": "290.131,-104.9302,4",
       "Rotation": "0.0001518001,-0.00008140464,0.9898802,0.1419051",
       "Enabled": true,
       "NetworkMode": 2,
@@ -377,36 +354,6 @@
           "Model": "model/27/untitled_101.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "__guid": "54fe6f2d-5fa9-4b9f-8171-a3803ca90f98",
-      "Flags": 0,
-      "Name": "Envmap Probe",
-      "Position": "-114.888,-4.287903,251.3164",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.EnvmapProbe",
-          "__guid": "7795abb7-7344-4003-9563-032190191be2",
-          "Texture": "textures/cubemaps/default2.vtex",
-          "Bounds": {
-            "Mins": "-1000,-1000,-1000",
-            "Maxs": "1000,1000,1000"
-          },
-          "DelayBetweenUpdates": 0.1,
-          "Feathering": 0.02,
-          "FrameInterval": 5,
-          "MaxDistance": 512,
-          "Projection": "Box",
-          "RenderDynamically": false,
-          "TintColor": "1,1,1,1",
-          "UpdateStrategy": "OnEnabled",
-          "ZFar": 4096,
-          "ZNear": 16
         }
       ]
     },
@@ -607,11 +554,10 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-27T21:18:51.7696264\u002B02:00",
+  "LastSaved": "2024-06-27T16:12:35.2049897-04:00",
   "ResourceVersion": 1,
   "__references": [
     "baik.taverntable",
-    "fish.roblox_skybox",
     "paths.cardboardbox",
     "paths.corrugatedmetal",
     "paths.industrialjunkyardstand",

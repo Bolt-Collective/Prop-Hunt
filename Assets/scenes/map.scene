@@ -1,5 +1,5 @@
 {
-  "__guid": "bd4722f4-4c00-4998-a726-8a77a6fc3337",
+  "__guid": "813bbfcf-8c9b-4d14-86f8-7844aef9838a",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -190,7 +190,7 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-          "MaxPlayersToStart": 2,
+          "MaxPlayersToStart": 1,
           "OnGoingRound": false
         }
       ]
@@ -240,7 +240,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-27T17:33:47.0079208\u002B02:00",
+  "LastSaved": "2024-06-27T16:54:41.9410808-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

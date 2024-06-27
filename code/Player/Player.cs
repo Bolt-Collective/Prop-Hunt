@@ -428,7 +428,7 @@ public class Player : Component
 				modelCollider.Enabled = false;
 
 			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
-			Scene.Camera.Transform.Position = GameObject.Transform.Position;
+			Scene.Camera.Transform.Position = GameObject.Transform.Position + Vector3.Up * 64;
 			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * 1000 * Time.Delta;
 		}
 	}
@@ -491,6 +491,8 @@ public class Player : Component
 		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		Inventory.Clear();
 		AbleToMove = false;
+		var HoldTypeMerger = Scene.GetAllComponents<HoldTypeMerger>().FirstOrDefault( x => !x.IsProxy );
+		HoldTypeMerger.ClearModel();
 	}
 
 	[Broadcast]
@@ -572,5 +574,12 @@ public class Player : Component
 		{
 			blind.UseBlind = false;
 		}
+	}
+	[ActionGraphNode( "Get Proxy Component" )]
+	public static void GetProxyComponent<T>( GameObject CurrentGameObject, out T Component, out bool Result ) where T : Component
+	{
+		Component = CurrentGameObject.Components.Get<T>();
+		Component = Game.ActiveScene.GetAllComponents<T>().FirstOrDefault( x => !CurrentGameObject.Network.IsProxy );
+		Result = Component is not null;
 	}
 }

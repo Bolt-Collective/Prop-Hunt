@@ -78,8 +78,8 @@
               "Id": 16,
               "Type": "property",
               "Properties": {
-                "_name": "GameObject",
-                "_type": "Sandbox.Component"
+                "_type": "Sandbox.Component",
+                "_name": "GameObject"
               },
               "UserData": {
                 "Position": "-48,80"
@@ -184,11 +184,6 @@
         "__guid": "4a6212e6-98d6-4a12-a2b8-b97d35af475f"
       },
       {
-        "__type": "HoldTypeManager",
-        "__guid": "808adfaa-2499-4597-8958-d69e01ff212d",
-        "__enabled": false
-      },
-      {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
         "__guid": "8d133b31-061d-4e46-80f4-d434e2fa1900",
         "BodyWeight": 1,
@@ -226,6 +221,18 @@
           "sounds/taunts/prop taunts/whatsup.sound"
         ],
         "TauntCooldown": 5
+      },
+      {
+        "__type": "HoldTypeMerger",
+        "__guid": "13e67a7e-4931-4bf2-92d6-7395f7abf9e7",
+        "AnimHelper": {
+          "_type": "component",
+          "component_id": "8d133b31-061d-4e46-80f4-d434e2fa1900",
+          "go": "13cdc0ba-6159-43e7-b648-238afaf50f27",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "HoldType": "None",
+        "Offset": "0,0,0"
       }
     ],
     "Children": [
