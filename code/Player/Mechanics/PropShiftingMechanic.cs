@@ -96,6 +96,21 @@ public class PropShiftingMechanic : Component
 		if ( !IsProxy )
 		{
 			OnPropShift?.Invoke( this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory );
+
+			// Handle the health algorithm for props
+
+			float multiplier = Math.Clamp( Player.Local.Health / Player.Local.MaxHealth, 0, 1 );
+			float health = (float)Math.Pow( propModel.PhysicsBounds.Volume, 0.5f ) * 0.5f;
+
+			health = (float)Math.Round( health / 5 ) * 5;
+			Player.Local.MaxHealth = health;
+			Player.Local.Health = health * multiplier;
+
+			// Fallback to 10 health if prop is 0 health
+			if ( Player.Local.Health <= 0 )
+			{
+				Player.Local.Health = 10f;
+			}
 		}
 		var body = Player.Local.BodyRenderer;
 		var clothes = Player.Local.Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) );
@@ -108,6 +123,7 @@ public class PropShiftingMechanic : Component
 			}
 		}
 		Player.Local.Body.Network.Refresh();
+
 	}
 
 }
