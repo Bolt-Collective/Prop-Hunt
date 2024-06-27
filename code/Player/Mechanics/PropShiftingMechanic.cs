@@ -75,7 +75,7 @@ public class PropShiftingMechanic : Component
 
 		var tr = Scene.Trace
 			.IgnoreGameObject( Player.Local.Body )
-			.Sphere( 16, eyePos, eyePos + lookDir.Forward * 150 )
+			.Sphere( 16, Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + Scene.Camera.Transform.Rotation.Forward * 150 + Player.Local.CameraDistance )
 			.Run();
 
 		//Gizmo.Draw.LineSphere( tr.HitPosition, 16 );

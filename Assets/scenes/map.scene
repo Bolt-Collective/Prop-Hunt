@@ -5,7 +5,6 @@
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
       "Flags": 0,
       "Name": "Map",
-      "Position": "0,0,-0.0002540941",
       "Tags": "world,solid",
       "Enabled": true,
       "NetworkMode": 2,
@@ -15,7 +14,7 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "feb27e7c-21c4-42d8-9b52-4892ad8b7d0d",
           "__version": 1,
-          "MapName": "facepunch.flatgrass",
+          "MapName": "gnomefig.office",
           "NoOrigin": false,
           "UseMapFromLaunch": true
         }
@@ -241,7 +240,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-26T19:05:50.9772544-04:00",
+  "LastSaved": "2024-06-26T20:14:29.7162614-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

@@ -185,7 +185,6 @@ public class Player : Component
 		ee.pitch = ee.pitch.Clamp( -89, 89 );
 		EyeAngles = ee;
 	}
-
 	public void CameraPosition()
 	{
 		var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
@@ -268,6 +267,7 @@ public class Player : Component
 		}
 		if ( !IsProxy )
 		{
+			EyeInput();
 			var blind = Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault();
 			if ( TeamComponent.TeamName == Team.Hunters.ToString() && PropHuntManager.Instance.RoundState == GameState.Starting )
 			{
@@ -281,7 +281,7 @@ public class Player : Component
 			{
 				AbleToMove = true;
 			}
-			if ( AbleToMove )
+			if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 			{
 				UpdateCrouch();
 				if ( Input.Pressed( "use" ) )
@@ -289,13 +289,14 @@ public class Player : Component
 					UseItems();
 				}
 				FreeLook();
-				EyeInput();
+
 				ChangeDistance();
 				var eyePos = Eye.Transform.Position;
 				eyePos = Body.Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
 				Eye.Transform.Position = eyePos;
 				Eye.Transform.Rotation = EyeAngles.ToRotation();
 			}
+
 			CameraPosition();
 			if ( PropShiftingMechanic.IsProp )
 			{
@@ -374,7 +375,7 @@ public class Player : Component
 		if ( IsProxy )
 			return;
 
-		if ( AbleToMove )
+		if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 		{
 			BuildWishVelocity();
 
@@ -416,8 +417,9 @@ public class Player : Component
 		}
 		else
 		{
-			WishVelocity = Vector3.Zero;
-			characterController.Velocity = Vector3.Zero;
+			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
+			Scene.Camera.Transform.Position = GameObject.Transform.Position;
+			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * 1000 * Time.Delta;
 		}
 	}
 	[Button( "Network Refresh" )]
@@ -469,13 +471,16 @@ public class Player : Component
 			Death();
 		}
 	}
+	[Button( "Death" )]
 	void Death()
 	{
+		Health = 0;
 		DisableBody();
 		TeamComponent.ChangeTeam( Team.Unassigned );
 		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
 		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		Inventory.Clear();
+		AbleToMove = false;
 	}
 
 	[Broadcast]
@@ -484,6 +489,7 @@ public class Player : Component
 		if ( !Network.IsOwner ) return;
 		ResetStats();
 		Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
+		AbleToMove = true;
 	}
 	[Broadcast]
 	public void DisableBody()

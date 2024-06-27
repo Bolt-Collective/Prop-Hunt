@@ -34,7 +34,7 @@ public sealed class Shotgun : Component
 		{
 			for ( int i = 0; i < 2; i++ )
 			{
-				Item.Trace( 1000, 15, out _hitPos, out _hitNormal, out _hit, out _hitObject, 5, 0.2f );
+				Item.Trace( 1000, 30, out _hitPos, out _hitNormal, out _hit, out _hitObject, 5, 0.2f );
 			}
 			Renderer.Set( "b_attack", true );
 
