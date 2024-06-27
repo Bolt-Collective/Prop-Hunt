@@ -70,7 +70,7 @@
         {
           "Name": "Duck",
           "KeyboardCode": "ctrl",
-          "GamepadCode": "B",
+          "GamepadCode": "RightJoystickButton",
           "GroupName": "Movement"
         },
         {
@@ -172,7 +172,7 @@
         {
           "Name": "View",
           "KeyboardCode": "C",
-          "GamepadCode": "RightJoystickButton",
+          "GamepadCode": "B",
           "GroupName": "Other"
         },
         {
@@ -190,7 +190,7 @@
         {
           "Name": "flashlight",
           "KeyboardCode": "f",
-          "GamepadCode": "DpadNorth",
+          "GamepadCode": "SwitchLeftBumper",
           "GroupName": "Other"
         },
         {
@@ -214,7 +214,7 @@
         {
           "Name": "taunt",
           "KeyboardCode": "T",
-          "GamepadCode": "None",
+          "GamepadCode": "X",
           "GroupName": "Other"
         }
       ],
