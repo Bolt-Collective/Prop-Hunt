@@ -120,7 +120,7 @@
       "Components": [
         {
           "__type": "PropHunt.Network",
-          "__guid": "4977f9f8-576a-4753-84db-930dd0dec1bb",
+          "__guid": "fc3267b1-2b6a-4e9e-97a0-215f13c9e6dc",
           "CustomSpawnPoints": false,
           "PlayerPrefab": {
             "_type": "gameobject",
@@ -240,7 +240,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-26T20:14:29.7162614-04:00",
+  "LastSaved": "2024-06-27T17:33:47.0079208\u002B02:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
