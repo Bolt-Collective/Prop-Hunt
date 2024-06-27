@@ -108,7 +108,7 @@ public sealed class Weapon : Component
 				var particle = Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
 				particle.GameObject.NetworkSpawn();
 			}
-			else if ( tr.Body is not null )
+			else if ( tr.Body is not null && !tr.GameObject.Tags.Has( "player" ) && tr.GameObject.Tags.Has( "prop" ) )
 			{
 				tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
 				Player.Local.TakeDamage( 5 );
