@@ -224,7 +224,7 @@
           "sounds/taunts/prop taunts/pluh.sound",
           "sounds/taunts/prop taunts/whatsup.sound"
         ],
-        "TauntCooldown": 15
+        "TauntCooldown": 5
       }
     ],
     "Children": [
