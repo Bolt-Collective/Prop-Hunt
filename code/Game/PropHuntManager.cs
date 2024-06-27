@@ -293,10 +293,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			ForceWin( Team.Props );
 		}
-		else if ( GetPlayers( Team.Props ).Count( x => x.Health > 0 ) <= 0 )
+		else if ( Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Props.ToString() ).Count( x => x.Health > 0 ) <= 0 )
 		{
 			ForceWin( Team.Hunters );
 		}
+
 	}
 
 	private Team WinningTeam { get; set; }
