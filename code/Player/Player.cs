@@ -381,7 +381,7 @@ public class Player : Component
 
 			var modelCollider = Body.Components.Get<ModelCollider>();
 
-			if (modelCollider is not null)
+			if ( modelCollider is not null )
 				modelCollider.Enabled = true;
 
 			var cc = characterController;
@@ -424,7 +424,7 @@ public class Player : Component
 		{
 			var modelCollider = Body.Components.Get<ModelCollider>();
 
-			if (modelCollider is not null)
+			if ( modelCollider is not null )
 				modelCollider.Enabled = false;
 
 			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
@@ -467,7 +467,7 @@ public class Player : Component
 
 		if ( !WishVelocity.IsNearZeroLength ) WishVelocity = WishVelocity.Normal;
 
-		if ( Input.Down( "Run" ) ) WishVelocity *= 320.0f;
+		if ( Input.Down( "Run" ) && !PropShiftingMechanic.IsProp ) WishVelocity *= 320.0f;
 		else WishVelocity *= 110.0f;
 	}
 

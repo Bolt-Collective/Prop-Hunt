@@ -195,6 +195,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = PreRoundTime;
 		ClearListBroadcast();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
 	}
 
 	[Broadcast]
@@ -216,15 +217,20 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.HunterUnblind();
 		}
 
-		foreach ( var prop in Scene.Directory.FindByName( "prop_physics" ) )
-		{
-			prop.Tags.Add( "prop" );
-		}
+		BroadcastPropTags();
 
 		Log.Info( "Gave all props 'prop' tag" );
 		RoundState = GameState.Started;
 		RoundLength = RoundTime;
 		TimeSinceRoundStateChanged = 0;
+	}
+	[Broadcast]
+	public void BroadcastPropTags()
+	{
+		foreach ( var prop in Scene.Directory.FindByName( "prop_physics" ) )
+		{
+			prop.Tags.Add( "prop" );
+		}
 	}
 	public void OnRoundEnding()
 	{
