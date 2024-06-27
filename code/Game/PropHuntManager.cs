@@ -132,7 +132,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
 		AssignEvenTeams();
+
 		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+
+
+
+
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
 			player.HunterStart();
@@ -154,6 +159,8 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.EyeAngles = randomPoint.Transform.Rotation.Angles();
 			player.Transform.World = randomPoint.Transform.World;
 		}
+
+
 
 	}
 	public Random GetRandom()
@@ -208,6 +215,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			player.HunterUnblind();
 		}
+
+		foreach ( var prop in Scene.Directory.FindByName( "prop_physics" ) )
+		{
+			prop.Tags.Add( "prop" );
+		}
+
+		Log.Info( "Gave all props 'prop' tag" );
 		RoundState = GameState.Started;
 		RoundLength = RoundTime;
 		TimeSinceRoundStateChanged = 0;
