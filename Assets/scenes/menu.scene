@@ -85,7 +85,7 @@
       "__guid": "30a9bdde-8988-4ee3-8798-5e92d9aef28a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "36.13928,13.9686,64.30465",
+      "Position": "34.27374,15.78405,42.00271",
       "Rotation": "0.02185528,0.0537954,-0.3757553,0.9248981",
       "Tags": "maincamera",
       "Enabled": true,
@@ -607,7 +607,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-27T20:39:02.1910429\u002B02:00",
+  "LastSaved": "2024-06-27T21:17:45.6624885\u002B02:00",
   "ResourceVersion": 1,
   "__references": [
     "baik.taverntable",
