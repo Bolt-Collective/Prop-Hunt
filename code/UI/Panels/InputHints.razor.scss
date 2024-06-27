@@ -11,7 +11,7 @@ InputHints {
         align-items: center;
 
         label {
-            font-size: 17px;
+            font-size: 24px;
             font-family: Poppins;
             color: white;
             font-weight: bold;
@@ -21,8 +21,8 @@ InputHints {
        
     }
     .input-glyph {
-        width: 100px;
-        height: 100px;
+        width: 64px;
+        height: 64px;
     }
 
     &.hide {
