@@ -379,6 +379,8 @@ public class Player : Component
 		{
 			BuildWishVelocity();
 
+			Body.Components.Get<ModelCollider>().Enabled = true;
+
 			var cc = characterController;
 
 			if ( cc.IsOnGround && Input.Down( "Jump" ) )
@@ -417,6 +419,11 @@ public class Player : Component
 		}
 		else
 		{
+			var modelCollider = Body.Components.Get<ModelCollider>();
+
+			if (modelCollider is not null)
+				modelCollider.Enabled = false;
+
 			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
 			Scene.Camera.Transform.Position = GameObject.Transform.Position;
 			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * 1000 * Time.Delta;
