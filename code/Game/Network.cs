@@ -8,9 +8,7 @@ public sealed class Network : Component, Component.INetworkListener
 	[Property] public bool CustomSpawnPoints { get; set; }
 	[Property, ShowIf( "CustomSpawnPoints", true )] public List<GameObject> Spawns { get; set; } = new();
 	[Property] public PropHuntManager PropHuntManager { get; set; }
-
-
-	protected override async Task OnLoad()
+	protected override async void OnStart()
 	{
 		if ( Scene.IsEditor )
 			return;
