@@ -379,7 +379,10 @@ public class Player : Component
 		{
 			BuildWishVelocity();
 
-			Body.Components.Get<ModelCollider>().Enabled = true;
+			var modelCollider = Body.Components.Get<ModelCollider>();
+
+			if (modelCollider is not null)
+				modelCollider.Enabled = true;
 
 			var cc = characterController;
 
