@@ -8,10 +8,17 @@ public sealed class Network : Component, Component.INetworkListener
 	[Property] public bool CustomSpawnPoints { get; set; }
 	[Property, ShowIf( "CustomSpawnPoints", true )] public List<GameObject> Spawns { get; set; } = new();
 	[Property] public PropHuntManager PropHuntManager { get; set; }
-	protected override void OnStart()
+
+
+	protected override async Task OnLoad()
 	{
-		if ( !GameNetworkSystem.IsActive && StartServer )
+		if ( Scene.IsEditor )
+			return;
+
+		if ( StartServer && !GameNetworkSystem.IsActive )
 		{
+			LoadingScreen.Title = "Creating Lobby";
+			await Task.DelayRealtimeSeconds( 0.1f );
 			GameNetworkSystem.CreateLobby();
 		}
 	}
