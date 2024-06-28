@@ -329,36 +329,6 @@
       ]
     },
     {
-      "__guid": "54fe6f2d-5fa9-4b9f-8171-a3803ca90f98",
-      "Flags": 0,
-      "Name": "Envmap Probe",
-      "Position": "-114.888,-4.287903,251.3164",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.EnvmapProbe",
-          "__guid": "7795abb7-7344-4003-9563-032190191be2",
-          "Texture": "textures/cubemaps/default2.vtex",
-          "Bounds": {
-            "Mins": "-1000,-1000,-1000",
-            "Maxs": "1000,1000,1000"
-          },
-          "DelayBetweenUpdates": 0.1,
-          "Feathering": 0.02,
-          "FrameInterval": 5,
-          "MaxDistance": 512,
-          "Projection": "Box",
-          "RenderDynamically": false,
-          "TintColor": "1,1,1,1",
-          "UpdateStrategy": "OnEnabled",
-          "ZFar": 4096,
-          "ZNear": 16
-        }
-      ]
-    },
-    {
       "__guid": "1a072c3b-e7f9-406b-93da-95bc0a0f2915",
       "Flags": 0,
       "Name": "radio",
@@ -555,7 +525,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-27T19:40:37.7380319-04:00",
+  "LastSaved": "2024-06-27T20:38:55.2006839-04:00",
   "ResourceVersion": 1,
   "__references": [
     "baik.taverntable",
