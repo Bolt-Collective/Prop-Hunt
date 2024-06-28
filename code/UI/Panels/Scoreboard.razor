@@ -4,30 +4,46 @@
 
 <root class="@(Input.Down("Score") ? "" : "hidden")">
 	<div class="teams">
-		<div class="title">
-			Props
-		</div>
 		<div class="team-player-list">
-			@foreach (var player in Scene.GetAllComponents<Player>().Where(x => x.TeamComponent.TeamName ==
-					Team.Props.ToString()))
+			<div class="title">
+				Props
+			</div>
+			@foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName ==
+			                                                                      Team.Props.ToString() ) )
 			{
 				<div class="player">
-					<img src=@($"avatar:{player.Network.OwnerConnection.SteamId}") class="avatar" />
+					<img src=@( $"avatar:{player.Network.OwnerConnection.SteamId}" ) class="avatar"/>
 					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
 				</div>
 			}
 
 		</div>
 
-		<div class="title">
-			Hunters
-		</div>
+
 		<div class="team-player-list">
-			@foreach (var player in Scene.GetAllComponents<Player>().Where(x => x.TeamComponent.TeamName ==
-					Team.Hunters.ToString()))
+			<div class="title">
+				Hunters
+			</div>
+			@foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName ==
+			                                                                      Team.Hunters.ToString() ) )
 			{
 				<div class="player">
-					<img src=@($"avatar:{player.Network.OwnerConnection.SteamId}") class="avatar" />
+					<img src=@( $"avatar:{player.Network.OwnerConnection.SteamId}" ) class="avatar"/>
+					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
+				</div>
+			}
+		</div>
+		
+
+		<div class="team-player-list">
+			<div class="title">
+				Spectators
+			</div>
+			@foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName ==
+			                                                                      Team.Unassigned.ToString() ) )
+			{
+				<div class="player">
+					<img src=@( $"avatar:{player.Network.OwnerConnection.SteamId}" ) class="avatar"/>
 					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
 				</div>
 			}
