@@ -53,8 +53,8 @@
               "Type": "call",
               "Properties": {
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_name": "Set",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "32,-176"
@@ -77,11 +77,11 @@
               "Type": "resource.ref",
               "Properties": {
                 "T": "Sandbox.Model",
-                "value": "models/weapons/sbox_smg_mp5/w_mp5.vmdl",
-                "package": "facepunch.w_mp5"
+                "package": "facepunch.w_mp5",
+                "value": "models/weapons/sbox_pistol_usp/w_usp.vmdl"
               },
               "UserData": {
-                "Position": "-80,64"
+                "Position": "-64,64"
               }
             },
             {
@@ -220,13 +220,13 @@
             }
           ],
           "Defaults": {
-            "$3._value": {
+            "$23._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
               "component_type": "SkinnedModelRenderer"
             },
-            "$6._value": {
+            "$26._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -264,8 +264,8 @@
               "Type": "resource.ref",
               "Properties": {
                 "T": "Sandbox.Model",
-                "value": "models/weapons/sbox_smg_mp5/w_mp5.vmdl",
-                "package": "facepunch.w_mp5"
+                "package": "facepunch.w_mp5",
+                "value": "models/weapons/sbox_pistol_usp/w_usp.vmdl"
               },
               "UserData": {
                 "Position": "-272,240"
@@ -1026,7 +1026,7 @@
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_usp",
-    "facepunch.w_mp5",
+    "facepunch.w_usp",
     "mdlresrc.toolgunshoot"
   ],
   "__version": 1

@@ -139,7 +139,8 @@
           "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
           "component_type": "ModelCollider"
         },
-        "IsProp": false
+        "IsProp": false,
+        "PreviousHealth": 0
       },
       {
         "__type": "TeamComponent",
@@ -224,7 +225,7 @@
       },
       {
         "__type": "HoldTypeMerger",
-        "__guid": "13e67a7e-4931-4bf2-92d6-7395f7abf9e7",
+        "__guid": "4d50ee2a-23b0-49a6-8ad8-74af1439d8c1",
         "AnimHelper": {
           "_type": "component",
           "component_id": "8d133b31-061d-4e46-80f4-d434e2fa1900",
@@ -278,10 +279,9 @@
         ]
       },
       {
-        "__guid": "bb88240a-9648-4257-be93-4ab6eb39fb97",
+        "__guid": "6646c44e-a94a-40a7-a310-6e2a7104372c",
         "Flags": 0,
-        "Name": "EyePos",
-        "Position": "0,0,64",
+        "Name": "eye",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true
@@ -314,9 +314,10 @@
         ]
       },
       {
-        "__guid": "6646c44e-a94a-40a7-a310-6e2a7104372c",
+        "__guid": "bb88240a-9648-4257-be93-4ab6eb39fb97",
         "Flags": 0,
-        "Name": "eye",
+        "Name": "EyePos",
+        "Position": "0,0,64",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true

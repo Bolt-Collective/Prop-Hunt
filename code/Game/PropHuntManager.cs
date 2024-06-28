@@ -66,7 +66,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		else
 		{
-			MaxPlayersToStart = 2;
+			MaxPlayersToStart = 1;
 		}
 		if ( !Networking.IsHost ) return;
 		GameStateManager();
@@ -133,7 +133,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		AssignEvenTeams();
 
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 
 
 
@@ -195,7 +195,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = PreRoundTime;
 		ClearListBroadcast();
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 	}
 
 	[Broadcast]

@@ -12,6 +12,7 @@ public class Player : Component
 	[Property] public PlayerDelegate OnJumpEvent { get; set; }
 	[Sync] public bool IsGrabbing { get; set; }
 	[Property] public CharacterController characterController { get; set; }
+	[Sync] public bool IsDead { get; set; } = false;
 	public static Player Local
 	{
 		get
@@ -345,7 +346,7 @@ public class Player : Component
 
 		var renderType = (!IsProxy) && CameraDistance == 0 ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
-		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
+		foreach ( var clothing in AnimationHelper?.Target?.Components?.GetAll<ModelRenderer>( FindMode.InChildren ) )
 		{
 			if ( !clothing.Tags.Has( "clothing" ) )
 				continue;
@@ -474,10 +475,13 @@ public class Player : Component
 	[Broadcast]
 	public void TakeDamage( float damage )
 	{
+		if ( IsDead ) return;
+
 		Health -= damage;
 		if ( Health <= 0 )
 		{
 			Health = 0;
+			IsDead = true;
 			Death();
 		}
 	}
@@ -501,7 +505,10 @@ public class Player : Component
 		if ( !Network.IsOwner ) return;
 		ResetStats();
 		Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
+		var HoldTypeMerger = Scene.GetAllComponents<HoldTypeMerger>().FirstOrDefault( x => !x.IsProxy );
+		HoldTypeMerger.ClearModel();
 		AbleToMove = true;
+		IsDead = false;
 	}
 	[Broadcast]
 	public void DisableBody()

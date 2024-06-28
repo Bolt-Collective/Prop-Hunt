@@ -158,6 +158,15 @@
           "__type": "PropHuntUI",
           "__guid": "6198673f-3d13-4c58-826f-76993e57daa9",
           "ShowMapVoting": false
+        },
+        {
+          "__type": "DevUi",
+          "__guid": "427b9d94-f363-4b54-a269-a0d9ff6d8736",
+          "AllowedSteamIds": [
+            76561199001645276,
+            76561198043979097
+          ],
+          "MyStringValue": "If you are seeing this then I am in the dev client testing things, since facepunch does not allow closed lobbies in the dev client, you are able to join this lobby, stick around if you want, but things could break since im working on the game"
         }
       ],
       "Children": [
@@ -240,7 +249,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-27T16:54:41.9410808-04:00",
+  "LastSaved": "2024-06-27T21:59:15.2168739-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
