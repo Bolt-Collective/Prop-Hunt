@@ -162,6 +162,7 @@
         {
           "__type": "DevUi",
           "__guid": "427b9d94-f363-4b54-a269-a0d9ff6d8736",
+          "__enabled": false,
           "AllowedSteamIds": [
             76561199001645276,
             76561198043979097
@@ -249,7 +250,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-28T14:10:22.8804671-04:00",
+  "LastSaved": "2024-06-28T16:12:48.5582237-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
