@@ -496,7 +496,6 @@ public class Player : Component
 		Inventory.Clear();
 		AbleToMove = false;
 		var HoldTypeMerger = Scene.GetAllComponents<HoldTypeMerger>().FirstOrDefault( x => !x.IsProxy );
-		HoldTypeMerger.ClearModel();
 	}
 
 	[Broadcast]
@@ -506,7 +505,6 @@ public class Player : Component
 		ResetStats();
 		Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
 		var HoldTypeMerger = Scene.GetAllComponents<HoldTypeMerger>().FirstOrDefault( x => !x.IsProxy );
-		HoldTypeMerger.ClearModel();
 		AbleToMove = true;
 		IsDead = false;
 	}

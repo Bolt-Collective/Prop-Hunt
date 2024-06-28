@@ -61,18 +61,6 @@
               }
             },
             {
-              "Id": 9,
-              "Type": "call",
-              "Properties": {
-                "_type": "HoldTypeMerger",
-                "_name": "ChangeModel",
-                "_isStatic": false
-              },
-              "UserData": {
-                "Position": "720,-176"
-              }
-            },
-            {
               "Id": 10,
               "Type": "resource.ref",
               "Properties": {
@@ -167,34 +155,6 @@
               "DstName": "value"
             },
             {
-              "SrcId": 13,
-              "SrcName": "true",
-              "DstId": 9,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 12,
-              "SrcName": "Component",
-              "DstId": 9,
-              "DstName": "_target"
-            },
-            {
-              "Value": "Pistol",
-              "DstId": 9,
-              "DstName": "holdType"
-            },
-            {
-              "SrcId": 22,
-              "SrcName": "_result",
-              "DstId": 9,
-              "DstName": "modelName"
-            },
-            {
-              "Value": "0,0,-5",
-              "DstId": 9,
-              "DstName": "offset"
-            },
-            {
               "SrcId": 0,
               "SrcName": "_target",
               "DstId": 12,
@@ -248,18 +208,6 @@
               "Type": "input"
             },
             {
-              "Id": 1,
-              "Type": "call",
-              "Properties": {
-                "_type": "HoldTypeMerger",
-                "_name": "ChangeModel",
-                "_isStatic": false
-              },
-              "UserData": {
-                "Position": "528,-0"
-              }
-            },
-            {
               "Id": 2,
               "Type": "resource.ref",
               "Properties": {
@@ -301,34 +249,6 @@
             }
           ],
           "Links": [
-            {
-              "SrcId": 5,
-              "SrcName": "true",
-              "DstId": 1,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 4,
-              "SrcName": "Component",
-              "DstId": 1,
-              "DstName": "_target"
-            },
-            {
-              "Value": "Pistol",
-              "DstId": 1,
-              "DstName": "holdType"
-            },
-            {
-              "SrcId": 14,
-              "SrcName": "_result",
-              "DstId": 1,
-              "DstName": "modelName"
-            },
-            {
-              "Value": "0,0,-5",
-              "DstId": 1,
-              "DstName": "offset"
-            },
             {
               "SrcId": 0,
               "SrcName": "_target",

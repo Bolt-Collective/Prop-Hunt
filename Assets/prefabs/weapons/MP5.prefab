@@ -53,63 +53,11 @@
               "Type": "call",
               "Properties": {
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_name": "Set",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "640,-128"
-              }
-            },
-            {
-              "Id": 10,
-              "Type": "call",
-              "Properties": {
-                "_type": "HoldTypeMerger",
-                "_name": "ChangeModel",
-                "_isStatic": false
-              },
-              "UserData": {
-                "Position": "1104,-0"
-              }
-            },
-            {
-              "Id": 12,
-              "Type": "resource.ref",
-              "Properties": {
-                "T": "Sandbox.Model",
-                "value": "models/weapons/sbox_smg_mp5/w_mp5.vmdl",
-                "package": "facepunch.w_mp5"
-              },
-              "UserData": {
-                "Position": "304,240"
-              }
-            },
-            {
-              "Id": 30,
-              "Type": "Get Proxy Component",
-              "Properties": {
-                "T": "HoldTypeMerger"
-              },
-              "UserData": {
-                "Position": "608,112"
-              }
-            },
-            {
-              "Id": 33,
-              "Type": "if",
-              "UserData": {
-                "Position": "832,0"
-              }
-            },
-            {
-              "Id": 34,
-              "Type": "property",
-              "Properties": {
-                "_type": "Sandbox.Resource",
-                "_name": "ResourcePath"
-              },
-              "UserData": {
-                "Position": "544,240"
               }
             }
           ],
@@ -165,198 +113,22 @@
               "Value": false,
               "DstId": 2,
               "DstName": "value"
-            },
-            {
-              "SrcId": 33,
-              "SrcName": "true",
-              "DstId": 10,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 30,
-              "SrcName": "Component",
-              "DstId": 10,
-              "DstName": "_target"
-            },
-            {
-              "Value": "Rifle",
-              "DstId": 10,
-              "DstName": "holdType"
-            },
-            {
-              "SrcId": 34,
-              "SrcName": "_result",
-              "DstId": 10,
-              "DstName": "modelName"
-            },
-            {
-              "Value": "0,0,-5",
-              "DstId": 10,
-              "DstName": "offset"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "_target",
-              "DstId": 30,
-              "DstName": "CurrentGameObject"
-            },
-            {
-              "SrcId": 2,
-              "SrcName": "_signal",
-              "DstId": 33,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 30,
-              "SrcName": "Result",
-              "DstId": 33,
-              "DstName": "condition"
-            },
-            {
-              "SrcId": 12,
-              "SrcName": "_result",
-              "DstId": 34,
-              "DstName": "_target"
             }
           ],
           "Defaults": {
-            "$16._value": {
+            "$35._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
               "component_type": "SkinnedModelRenderer"
             },
-            "$19._value": {
+            "$38._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
               "component_type": "SkinnedModelRenderer"
             }
           }
-        },
-        "OnComponentStart": {
-          "__version": 7,
-          "__guid": "c9dfeb27-7a7e-4a0a-91cd-27c385592cc2",
-          "UserData": {
-            "Title": "On Component Start",
-            "ReferencedComponentTypes": []
-          },
-          "Variables": [],
-          "Nodes": [
-            {
-              "Id": 0,
-              "Type": "input",
-              "UserData": {
-                "Position": "-448,0"
-              }
-            },
-            {
-              "Id": 1,
-              "Type": "call",
-              "Properties": {
-                "_type": "HoldTypeMerger",
-                "_name": "ChangeModel",
-                "_isStatic": false
-              },
-              "UserData": {
-                "Position": "576,-0"
-              }
-            },
-            {
-              "Id": 2,
-              "Type": "resource.ref",
-              "Properties": {
-                "T": "Sandbox.Model",
-                "value": "models/weapons/sbox_smg_mp5/w_mp5.vmdl",
-                "package": "facepunch.w_mp5"
-              },
-              "UserData": {
-                "Position": "-224,240"
-              }
-            },
-            {
-              "Id": 4,
-              "Type": "Get Proxy Component",
-              "Properties": {
-                "T": "HoldTypeMerger"
-              },
-              "UserData": {
-                "Position": "64,112"
-              }
-            },
-            {
-              "Id": 5,
-              "Type": "if",
-              "UserData": {
-                "Position": "288,-0"
-              }
-            },
-            {
-              "Id": 9,
-              "Type": "property",
-              "Properties": {
-                "_type": "Sandbox.Resource",
-                "_name": "ResourcePath"
-              },
-              "UserData": {
-                "Position": "80,240"
-              }
-            }
-          ],
-          "Links": [
-            {
-              "SrcId": 5,
-              "SrcName": "true",
-              "DstId": 1,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 4,
-              "SrcName": "Component",
-              "DstId": 1,
-              "DstName": "_target"
-            },
-            {
-              "Value": "Rifle",
-              "DstId": 1,
-              "DstName": "holdType"
-            },
-            {
-              "SrcId": 9,
-              "SrcName": "_result",
-              "DstId": 1,
-              "DstName": "modelName"
-            },
-            {
-              "Value": "0,0,-5",
-              "DstId": 1,
-              "DstName": "offset"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "_target",
-              "DstId": 4,
-              "DstName": "CurrentGameObject"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "_signal",
-              "DstId": 5,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 4,
-              "SrcName": "Result",
-              "DstId": 5,
-              "DstName": "condition"
-            },
-            {
-              "SrcId": 2,
-              "SrcName": "_result",
-              "DstId": 9,
-              "DstName": "_target"
-            }
-          ]
         },
         "OnComponentUpdate": {
           "__version": 7,
@@ -1094,7 +866,6 @@
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_mp5",
-    "facepunch.w_mp5",
     "mdlresrc.toolgunshoot"
   ],
   "__version": 1

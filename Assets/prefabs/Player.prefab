@@ -153,6 +153,28 @@
         "__guid": "e409a5cd-a63b-43f9-a163-e9e9108fdd39",
         "AbleToSwitch": true,
         "ActiveIndex": 0,
+        "cloneConstraints": [
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "7f036545-06a4-4d87-8b69-bab515cadf06"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/shapes/cube.prefab"
+            }
+          },
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "cdc4e469-38a6-4244-988f-4c9ba0eb3e22"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/shapes/cube.prefab"
+            }
+          }
+        ],
         "Items": [],
         "Size": 4,
         "StartingItems": [
@@ -233,7 +255,8 @@
           "component_type": "CitizenAnimationHelper"
         },
         "HoldType": "None",
-        "Offset": "0,0,0"
+        "Offset": "0,0,0",
+        "shouldRender": false
       }
     ],
     "Children": [
@@ -275,6 +298,26 @@
             "IsTrigger": false,
             "Model": "models/citizen/citizen.vmdl",
             "Static": false
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "7f036545-06a4-4d87-8b69-bab515cadf06",
+            "Flags": 0,
+            "Name": "A",
+            "Position": "-0.000004172834,-20,36",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true
+          },
+          {
+            "__guid": "cdc4e469-38a6-4244-988f-4c9ba0eb3e22",
+            "Flags": 0,
+            "Name": "B",
+            "Position": "-0.000005097892,24,36",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true
           }
         ]
       },

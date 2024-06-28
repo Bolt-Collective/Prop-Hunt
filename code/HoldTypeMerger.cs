@@ -5,7 +5,7 @@ using Sandbox.Citizen;
 
 public sealed class HoldTypeMerger : Component
 {
-	[Property] public CitizenAnimationHelper AnimHelper { get; set; }
+	public CitizenAnimationHelper AnimHelper { get; set; }
 	[Property] public Model ModelToMerge { get; set; }
 	public GameObject HoldBoneObject { get; set; }
 	[Property, Sync] public Vector3 Offset { get; set; }
@@ -16,6 +16,7 @@ public sealed class HoldTypeMerger : Component
 	{
 		if ( !IsProxy )
 		{
+			AnimHelper = Player.Local.AnimationHelper;
 			HoldBoneObject = new GameObject();
 			WeaponRenderer = HoldBoneObject.Components.Create<SkinnedModelRenderer>();
 			WeaponRenderer.Model = ModelToMerge;
@@ -24,19 +25,19 @@ public sealed class HoldTypeMerger : Component
 		}
 	}
 
-	protected override void OnUpdate()
+	protected override void OnPreRender()
 	{
 
 		if ( Player.Local.IsDead || HoldBoneObject is null ) return;
-		if ( HoldBoneObject is not null && !IsProxy )
+		if ( IsProxy ) return;
+		if ( HoldBoneObject is not null )
 		{
 			var boneTransform = new Transform();
-			AnimHelper.Target.TryGetBoneTransform( "hold_r", out boneTransform );
-			HoldBoneObject.Transform.Position = boneTransform.Position + Offset;
-			HoldBoneObject.Transform.Rotation = boneTransform.Rotation;
+			AnimHelper.Target.TryGetBoneTransformLocal( "hold_r", out boneTransform );
+			HoldBoneObject.Transform.LocalPosition = boneTransform.Position + Offset;
+			HoldBoneObject.Transform.LocalRotation = boneTransform.Rotation;
 			BroadcastHoldType();
 		}
-
 		shouldRender = ModelToMerge is not null && WeaponRenderer is not null;
 		if ( WeaponRenderer is not null )
 		{
@@ -54,25 +55,4 @@ public sealed class HoldTypeMerger : Component
 		if ( AnimHelper is null ) return;
 		AnimHelper.HoldType = HoldType;
 	}
-	[Broadcast]
-	public void ChangeModel( string modelName, Vector3 offset, string holdType )
-	{
-		if ( WeaponRenderer is null ) return;
-		ModelToMerge = Model.Load( modelName );
-		WeaponRenderer.Model = ModelToMerge;
-		HoldType = (CitizenAnimationHelper.HoldTypes)Enum.Parse( typeof( CitizenAnimationHelper.HoldTypes ), holdType );
-		Offset = offset;
-	}
-
-	[Broadcast]
-	public void ClearModel()
-	{
-		if ( WeaponRenderer is null ) return;
-		ModelToMerge = null;
-		WeaponRenderer.Model = null;
-		AnimHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
-		WeaponRenderer.Enabled = false;
-
-	}
-
 }
