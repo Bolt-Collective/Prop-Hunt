@@ -227,6 +227,7 @@
         },
         "EyesWeight": 1,
         "HeadWeight": 1,
+        "Height": 1,
         "LookAtEnabled": false,
         "Target": {
           "_type": "component",
