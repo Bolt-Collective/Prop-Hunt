@@ -59,7 +59,7 @@
           "ExposureMethod": "RGB",
           "MaximumExposure": 2,
           "MinimumExposure": 1,
-          "Mode": "Legacy",
+          "Mode": "HableFilmic",
           "Rate": 1
         },
         {
@@ -67,37 +67,8 @@
           "__guid": "53c14eb9-358f-4fff-a80d-cec0555baaec"
         },
         {
-          "__type": "Sandbox.Bloom",
-          "__guid": "407d78a8-c782-457f-b11f-4f54ccb3d035",
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "BloomCurve": [
-            {
-              "y": 0.5
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Mode": "Additive",
-          "Strength": 1,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0
-        },
-        {
           "__type": "Sandbox.AmbientOcclusion",
-          "__guid": "b41f145b-48d3-4d52-aacf-aaf0b7624d63",
+          "__guid": "efc46bec-b219-4105-9f50-d228812e8bfb",
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
@@ -238,7 +209,7 @@
       "__guid": "d1ac430f-3a4b-485b-86ca-08541d35ae68",
       "Flags": 0,
       "Name": "rusty barrel",
-      "Position": "290.131,-104.9302,4",
+      "Position": "290.131,-104.9302,5.860458",
       "Rotation": "0.0001518001,-0.00008140464,0.9898802,0.1419051",
       "Enabled": true,
       "NetworkMode": 2,
@@ -554,7 +525,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-27T16:12:35.2049897-04:00",
+  "LastSaved": "2024-06-27T20:38:55.2006839-04:00",
   "ResourceVersion": 1,
   "__references": [
     "baik.taverntable",

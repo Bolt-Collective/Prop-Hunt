@@ -10,9 +10,11 @@ public class PropShiftingMechanic : Component
 	[Property] public ModelCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
+	[Property] public int PreviousHealth { get; set; }
 	protected override void OnStart()
 	{
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault( x => !x.IsProxy );
+		PreviousHealth = 100;
 		if ( !IsProxy )
 		{
 			ModelPath = Player.Local.BodyRenderer?.Model.ResourcePath;
@@ -54,6 +56,7 @@ public class PropShiftingMechanic : Component
 		Collider.Model = Model.Load( ModelPath );
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
+		Player.Local.Health = PreviousHealth;
 		if ( clothes.Any() )
 		{
 			foreach ( var cloth in clothes )
@@ -73,9 +76,8 @@ public class PropShiftingMechanic : Component
 		var lookDir = pc.EyeAngles.ToRotation();
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
-		var tr = Scene.Trace
+		var tr = Scene.Trace.Ray( Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + lookDir.Forward * 300 + Player.Local.CameraDistance )
 			.IgnoreGameObject( Player.Local.Body )
-			.Sphere( 16, Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + Scene.Camera.Transform.Rotation.Forward * 150 + Player.Local.CameraDistance )
 			.Run();
 
 		//Gizmo.Draw.LineSphere( tr.HitPosition, 16 );
@@ -93,12 +95,26 @@ public class PropShiftingMechanic : Component
 		IsProp = ModelPath == "models/citizen/citizen.vmdl_c" ? false : true;
 
 		Log.Info( "changed model" );
+
+		var body = Player.Local.BodyRenderer;
+		var clothes = Player.Local.Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) );
+		if ( clothes.Any() && IsProp )
+		{
+			foreach ( var cloth in clothes )
+			{
+				cloth.Enabled = false;
+				cloth.Network.Refresh();
+			}
+		}
 		if ( !IsProxy )
 		{
 			OnPropShift?.Invoke( this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory );
 
 			// Handle the health algorithm for props
-
+			if ( !IsProp )
+			{
+				PreviousHealth = (int)Player.Local.Health;
+			}
 			float multiplier = Math.Clamp( Player.Local.Health / Player.Local.MaxHealth, 0, 1 );
 			float health = (float)Math.Pow( propModel.PhysicsBounds.Volume, 0.5f ) * 0.5f;
 
@@ -110,16 +126,6 @@ public class PropShiftingMechanic : Component
 			if ( Player.Local.Health <= 0 )
 			{
 				Player.Local.Health = 10f;
-			}
-		}
-		var body = Player.Local.BodyRenderer;
-		var clothes = Player.Local.Body.GetAllObjects( true ).Where( c => c.Tags.Has( "clothing" ) );
-		if ( clothes.Any() && IsProp )
-		{
-			foreach ( var cloth in clothes )
-			{
-				cloth.Enabled = false;
-				cloth.Network.Refresh();
 			}
 		}
 		Player.Local.Body.Network.Refresh();
