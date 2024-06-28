@@ -66,7 +66,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		else
 		{
-			MaxPlayersToStart = 1;
+			MaxPlayersToStart = 2;
 		}
 		if ( !Networking.IsHost ) return;
 		GameStateManager();
@@ -336,5 +336,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static void Hunters()
 	{
 		Player.Local.TeamComponent.ChangeTeam( Team.Hunters );
+	}
+
+	[ConCmd( "SkipPrep" )]
+	public static void SkipPreparing()
+	{
+		if ( !Game.IsEditor ) return;
+		Instance.OnRoundStart();
 	}
 }

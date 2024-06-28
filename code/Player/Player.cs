@@ -493,9 +493,9 @@ public class Player : Component
 		TeamComponent.ChangeTeam( Team.Unassigned );
 		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
 		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
+		AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		Inventory.Clear();
 		AbleToMove = false;
-		var HoldTypeMerger = Scene.GetAllComponents<HoldTypeMerger>().FirstOrDefault( x => !x.IsProxy );
 	}
 
 	[Broadcast]
@@ -504,7 +504,7 @@ public class Player : Component
 		if ( !Network.IsOwner ) return;
 		ResetStats();
 		Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
-		var HoldTypeMerger = Scene.GetAllComponents<HoldTypeMerger>().FirstOrDefault( x => !x.IsProxy );
+		AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		AbleToMove = true;
 		IsDead = false;
 	}
@@ -538,6 +538,7 @@ public class Player : Component
 			PropShiftingMechanic.Collider.Enabled = true;
 		}
 		PropShiftingMechanic.ExitProp();
+		AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 	}
 
 	[ConCmd( "kill" )]

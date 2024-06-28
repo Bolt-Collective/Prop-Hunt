@@ -52,8 +52,8 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
-                "_type": "Sandbox.SkinnedModelRenderer",
                 "_isStatic": false,
+                "_type": "Sandbox.SkinnedModelRenderer",
                 "_name": "Set"
               },
               "UserData": {
@@ -116,13 +116,13 @@
             }
           ],
           "Defaults": {
-            "$35._value": {
+            "$3._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
               "component_type": "SkinnedModelRenderer"
             },
-            "$38._value": {
+            "$6._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",

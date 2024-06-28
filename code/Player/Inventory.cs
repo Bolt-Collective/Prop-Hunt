@@ -178,13 +178,5 @@ public sealed class Inventory : Component
 			Parent = parent;
 			Clone = clone;
 		}
-
-		public void DestoryClone()
-		{
-			if ( Clone is not null )
-			{
-				Clone.Destroy();
-			}
-		}
 	}
 }

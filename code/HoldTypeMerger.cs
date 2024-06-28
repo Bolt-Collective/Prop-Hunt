@@ -6,39 +6,31 @@ using Sandbox.Citizen;
 public sealed class HoldTypeMerger : Component
 {
 	public CitizenAnimationHelper AnimHelper { get; set; }
-	[Property] public Model ModelToMerge { get; set; }
-	public GameObject HoldBoneObject { get; set; }
 	[Property, Sync] public Vector3 Offset { get; set; }
 	[Property] public CitizenAnimationHelper.HoldTypes HoldType { get; set; }
-	[Property] public SkinnedModelRenderer WeaponRenderer;
-	[Property, Sync] public bool shouldRender { get; set; }
+	[Property] public SkinnedModelRenderer WeaponRenderer { get; set; }
+	[Sync] public bool shouldRender { get; set; }
 	protected override void OnStart()
 	{
 		if ( !IsProxy )
 		{
 			AnimHelper = Player.Local.AnimationHelper;
-			HoldBoneObject = new GameObject();
-			WeaponRenderer = HoldBoneObject.Components.Create<SkinnedModelRenderer>();
-			WeaponRenderer.Model = ModelToMerge;
-			HoldBoneObject.NetworkSpawn();
-			WeaponRenderer.GameObject.Parent = AnimHelper.Target.GameObject;
 		}
 	}
 
 	protected override void OnPreRender()
 	{
-
-		if ( Player.Local.IsDead || HoldBoneObject is null ) return;
-		if ( IsProxy ) return;
-		if ( HoldBoneObject is not null )
+		if ( Player.Local.IsDead || GameObject is null || AnimHelper is null ) return;
+		if ( GameObject is not null )
 		{
 			var boneTransform = new Transform();
-			AnimHelper.Target.TryGetBoneTransformLocal( "hold_r", out boneTransform );
-			HoldBoneObject.Transform.LocalPosition = boneTransform.Position + Offset;
-			HoldBoneObject.Transform.LocalRotation = boneTransform.Rotation;
-			BroadcastHoldType();
+			AnimHelper.Target.TryGetBoneTransform( "hold_r", out boneTransform );
+			GameObject.Parent.Transform.Position = boneTransform.Position + Offset;
+			GameObject.Parent.Transform.Rotation = boneTransform.Rotation;
+			if ( !IsProxy )
+				BroadcastHoldType( AnimHelper.GameObject.Id );
 		}
-		shouldRender = ModelToMerge is not null && WeaponRenderer is not null;
+		shouldRender = WeaponRenderer is not null;
 		if ( WeaponRenderer is not null )
 		{
 			WeaponRenderer.Enabled = shouldRender;
@@ -50,9 +42,10 @@ public sealed class HoldTypeMerger : Component
 		}
 	}
 	[Broadcast]
-	public void BroadcastHoldType()
+	public void BroadcastHoldType( Guid Caller )
 	{
-		if ( AnimHelper is null ) return;
-		AnimHelper.HoldType = HoldType;
+		var helper = Scene.Directory.FindByGuid( Caller ).Components.Get<CitizenAnimationHelper>();
+		if ( helper is null ) return;
+		helper.HoldType = HoldType;
 	}
 }

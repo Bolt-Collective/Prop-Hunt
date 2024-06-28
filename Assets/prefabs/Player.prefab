@@ -152,26 +152,37 @@
         "__type": "Inventory",
         "__guid": "e409a5cd-a63b-43f9-a163-e9e9108fdd39",
         "AbleToSwitch": true,
+        "ActiveConstarints": [],
         "ActiveIndex": 0,
         "cloneConstraints": [
           {
             "Parent": {
               "_type": "gameobject",
-              "go": "7f036545-06a4-4d87-8b69-bab515cadf06"
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
             },
             "Clone": {
               "_type": "gameobject",
-              "prefab": "prefabs/shapes/cube.prefab"
+              "prefab": "prefabs/worldmodels/mp5wm.prefab"
             }
           },
           {
             "Parent": {
               "_type": "gameobject",
-              "go": "cdc4e469-38a6-4244-988f-4c9ba0eb3e22"
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
             },
             "Clone": {
               "_type": "gameobject",
-              "prefab": "prefabs/shapes/cube.prefab"
+              "prefab": "prefabs/worldmodels/shotgunwm.prefab"
+            }
+          },
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/worldmodels/uspwm.prefab"
             }
           }
         ],
@@ -180,19 +191,19 @@
         "StartingItems": [
           {
             "_type": "gameobject",
-            "prefab": "prefabs/pistol.prefab"
+            "prefab": "prefabs/weapons/pistol.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/knife.prefab"
+            "prefab": "prefabs/weapons/knife.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/mp5.prefab"
+            "prefab": "prefabs/weapons/mp5.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/shotgun.prefab"
+            "prefab": "prefabs/weapons/shotgun.prefab"
           }
         ]
       },
@@ -244,19 +255,6 @@
           "sounds/taunts/prop taunts/whatsup.sound"
         ],
         "TauntCooldown": 5
-      },
-      {
-        "__type": "HoldTypeMerger",
-        "__guid": "4d50ee2a-23b0-49a6-8ad8-74af1439d8c1",
-        "AnimHelper": {
-          "_type": "component",
-          "component_id": "8d133b31-061d-4e46-80f4-d434e2fa1900",
-          "go": "13cdc0ba-6159-43e7-b648-238afaf50f27",
-          "component_type": "CitizenAnimationHelper"
-        },
-        "HoldType": "None",
-        "Offset": "0,0,0",
-        "shouldRender": false
       }
     ],
     "Children": [
@@ -298,26 +296,6 @@
             "IsTrigger": false,
             "Model": "models/citizen/citizen.vmdl",
             "Static": false
-          }
-        ],
-        "Children": [
-          {
-            "__guid": "7f036545-06a4-4d87-8b69-bab515cadf06",
-            "Flags": 0,
-            "Name": "A",
-            "Position": "-0.000004172834,-20,36",
-            "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true
-          },
-          {
-            "__guid": "cdc4e469-38a6-4244-988f-4c9ba0eb3e22",
-            "Flags": 0,
-            "Name": "B",
-            "Position": "-0.000005097892,24,36",
-            "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true
           }
         ]
       },
