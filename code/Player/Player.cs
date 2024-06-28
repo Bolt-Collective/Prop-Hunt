@@ -428,7 +428,7 @@ public class Player : Component
 				modelCollider.Enabled = false;
 
 			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
-			Scene.Camera.Transform.Position = GameObject.Transform.Position;
+			Scene.Camera.Transform.Position = GameObject.Transform.Position + Vector3.Up * 64;
 			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * 1000 * Time.Delta;
 		}
 	}
