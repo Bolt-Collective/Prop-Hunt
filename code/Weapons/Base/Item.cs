@@ -145,6 +145,7 @@ public sealed class Item : Component
 	[ActionGraphNode( "Get GameObject Id" ), Pure]
 	public static Guid GetGameObjectId( GameObject gameObject )
 	{
+		if ( Game.ActiveScene is null ) return Guid.Empty;
 		return gameObject.Id;
 	}
 

@@ -78,8 +78,8 @@
               "Id": 16,
               "Type": "property",
               "Properties": {
-                "_name": "GameObject",
-                "_type": "Sandbox.Component"
+                "_type": "Sandbox.Component",
+                "_name": "GameObject"
               },
               "UserData": {
                 "Position": "-48,80"
@@ -152,25 +152,68 @@
         "__type": "Inventory",
         "__guid": "e409a5cd-a63b-43f9-a163-e9e9108fdd39",
         "AbleToSwitch": true,
+        "ActiveConstarints": [],
         "ActiveIndex": 0,
+        "cloneConstraints": [
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/worldmodels/mp5wm.prefab"
+            }
+          },
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/worldmodels/shotgunwm.prefab"
+            }
+          },
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/worldmodels/uspwm.prefab"
+            }
+          },
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/worldmodels/knifewm.prefab"
+            }
+          }
+        ],
         "Items": [],
         "Size": 4,
         "StartingItems": [
           {
             "_type": "gameobject",
-            "prefab": "prefabs/pistol.prefab"
+            "prefab": "prefabs/weapons/pistol.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/knife.prefab"
+            "prefab": "prefabs/weapons/knife.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/mp5.prefab"
+            "prefab": "prefabs/weapons/mp5.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/shotgun.prefab"
+            "prefab": "prefabs/weapons/shotgun.prefab"
           }
         ]
       },
@@ -185,11 +228,6 @@
         "__guid": "4a6212e6-98d6-4a12-a2b8-b97d35af475f"
       },
       {
-        "__type": "HoldTypeManager",
-        "__guid": "808adfaa-2499-4597-8958-d69e01ff212d",
-        "__enabled": false
-      },
-      {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
         "__guid": "8d133b31-061d-4e46-80f4-d434e2fa1900",
         "BodyWeight": 1,
@@ -199,6 +237,7 @@
         },
         "EyesWeight": 1,
         "HeadWeight": 1,
+        "Height": 1,
         "LookAtEnabled": false,
         "Target": {
           "_type": "component",
@@ -272,10 +311,9 @@
         ]
       },
       {
-        "__guid": "bb88240a-9648-4257-be93-4ab6eb39fb97",
+        "__guid": "6646c44e-a94a-40a7-a310-6e2a7104372c",
         "Flags": 0,
-        "Name": "EyePos",
-        "Position": "0,0,64",
+        "Name": "eye",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true
@@ -308,9 +346,10 @@
         ]
       },
       {
-        "__guid": "6646c44e-a94a-40a7-a310-6e2a7104372c",
+        "__guid": "bb88240a-9648-4257-be93-4ab6eb39fb97",
         "Flags": 0,
-        "Name": "eye",
+        "Name": "EyePos",
+        "Position": "0,0,64",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true

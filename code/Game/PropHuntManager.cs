@@ -133,7 +133,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		AssignEvenTeams();
 
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 
 
 
@@ -195,7 +195,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = PreRoundTime;
 		ClearListBroadcast();
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 	}
 
 	[Broadcast]
@@ -326,9 +326,22 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		Instance.ForceRestart();
 	}
 
+	[ConCmd( "props" )]
+	public static void Props()
+	{
+		Player.Local.TeamComponent.ChangeTeam( Team.Props );
+	}
+
 	[ConCmd( "hunters" )]
 	public static void Hunters()
 	{
 		Player.Local.TeamComponent.ChangeTeam( Team.Hunters );
+	}
+
+	[ConCmd( "SkipPrep" )]
+	public static void SkipPreparing()
+	{
+		if ( !Game.IsEditor ) return;
+		Instance.OnRoundStart();
 	}
 }

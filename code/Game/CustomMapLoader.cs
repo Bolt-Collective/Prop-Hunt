@@ -26,5 +26,6 @@ public class CustomMapLoader : MapInstance
 			joint.MaxAngle = 80;
 			joint.Motor = HingeJoint.MotorMode.TargetAngle;
 		}
+
 	}
 }
