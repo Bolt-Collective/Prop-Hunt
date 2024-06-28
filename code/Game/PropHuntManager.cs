@@ -325,4 +325,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		if ( !Game.IsEditor ) return;
 		Instance.ForceRestart();
 	}
+
+	[ConCmd( "hunters" )]
+	public static void Hunters()
+	{
+		Player.Local.TeamComponent.ChangeTeam( Team.Hunters );
+	}
 }
