@@ -16,7 +16,7 @@ public sealed class Interactor : Component
 	}
 	protected override void OnUpdate()
 	{
-		if ( IsProxy || PlayerController is null || PlayerController.FreeLooking ) return;
+		if ( IsProxy || PlayerController is null || PlayerController.FreeLooking || PlayerController.TeamComponent.TeamName == Team.Unassigned.ToString() ) return;
 		Transform aimTransform = Scene.Camera.Transform.World;
 		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
 		var tr = Scene.Trace.Ray( ray, 500 ).WithoutTags( "player" ).Run();

@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "6d8fd097-9717-4391-96b4-31a5989ebf03",
     "Flags": 0,
-    "Name": "Knife",
-    "Position": "254.5133,-390.7629,358.3449",
+    "Name": "knife",
     "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
@@ -11,6 +10,7 @@
       {
         "__type": "Item",
         "__guid": "64d9ed46-13a0-41be-80ae-88feb359eef0",
+        "AbleToUse": true,
         "Ammo": 0,
         "OnComponentEnabled": {
           "__version": 7,
@@ -75,8 +75,8 @@
               "Id": 28,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
+                "_name": "Set",
                 "_isStatic": false
               },
               "UserData": {
@@ -87,8 +87,8 @@
               "Id": 39,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
+                "_name": "Set",
                 "_isStatic": false
               },
               "UserData": {
@@ -227,108 +227,6 @@
             }
           }
         },
-        "OnComponentUpdate": {
-          "__version": 7,
-          "__guid": "d9acd56e-47ee-4073-8e1f-8d65a15d9d3a",
-          "UserData": {
-            "Title": "On Component Update",
-            "ReferencedComponentTypes": []
-          },
-          "Variables": [],
-          "Nodes": [
-            {
-              "Id": 0,
-              "Type": "input"
-            },
-            {
-              "Id": 1,
-              "Type": "call",
-              "Properties": {
-                "T": "HoldTypeManager",
-                "_name": "TryGet",
-                "_type": "Sandbox.IComponentLister",
-                "_isStatic": false
-              },
-              "UserData": {
-                "Position": "-32,144",
-                "Labels": {
-                  "component": "HoldType"
-                }
-              }
-            },
-            {
-              "Id": 2,
-              "Type": "if",
-              "UserData": {
-                "Position": "320,336"
-              }
-            },
-            {
-              "Id": 3,
-              "Type": "call",
-              "Properties": {
-                "_name": "SetHoldTypeRenderer",
-                "_type": "HoldTypeManager",
-                "_isStatic": false
-              },
-              "UserData": {
-                "Position": "576,416"
-              }
-            }
-          ],
-          "Links": [
-            {
-              "SrcId": 0,
-              "SrcName": "_target",
-              "DstId": 1,
-              "DstName": "_target"
-            },
-            {
-              "Value": "InParent, InAncestors, EnabledInSelfAndChildren",
-              "DstId": 1,
-              "DstName": "search"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "_signal",
-              "DstId": 2,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 1,
-              "SrcName": "_result",
-              "DstId": 2,
-              "DstName": "condition"
-            },
-            {
-              "Value": "0,0,0",
-              "DstId": 3,
-              "DstName": "Offset"
-            },
-            {
-              "SrcId": 2,
-              "SrcName": "true",
-              "DstId": 3,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 1,
-              "SrcName": "component",
-              "DstId": 3,
-              "DstName": "_target"
-            },
-            {
-              "Value": "Swing",
-              "DstId": 3,
-              "DstName": "hold"
-            },
-            {
-              "Value": "models/weapons/sbox_melee_trenchknife/w_trenchknife.vmdl",
-              "DstId": 3,
-              "DstName": "model"
-            }
-          ]
-        },
         "OnPlayerJump": {
           "__version": 7,
           "__guid": "7ffe5c03-546e-430f-b4fe-4a9432be65dd",
@@ -441,8 +339,8 @@
               "Id": 10,
               "Type": "call",
               "Properties": {
-                "_name": "FireDelay",
                 "_type": "Item",
+                "_name": "FireDelay",
                 "_isStatic": false
               },
               "UserData": {
@@ -714,7 +612,6 @@
         "__guid": "b8cae699-275a-4d63-b81e-c35972eaed2d",
         "Flags": 0,
         "Name": "Viewmodel",
-        "Position": "0,0,0",
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
@@ -735,7 +632,6 @@
             "__guid": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
             "Flags": 0,
             "Name": "weapon",
-            "Position": "0,0,0",
             "Tags": "viewmodel",
             "Enabled": true,
             "NetworkMode": 2,
@@ -757,7 +653,6 @@
             "__guid": "bd8c5db3-462a-454c-80ee-b864dc2bff19",
             "Flags": 0,
             "Name": "arms",
-            "Position": "0,0,0",
             "Tags": "viewmodel",
             "Enabled": true,
             "NetworkMode": 2,
@@ -783,15 +678,15 @@
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.v_trenchknife",
-    "facepunch.w_trenchknife"
+    "facepunch.v_trenchknife"
   ],
   "__version": 1
 }
