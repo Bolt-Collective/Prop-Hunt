@@ -48,6 +48,7 @@ public sealed class HoldTypeMerger : Component
 	[Broadcast]
 	public void ChangeModel( string modelName, Vector3 offset, string holdType )
 	{
+		if ( IsProxy ) return;
 		ModelToMerge = Model.Load( modelName );
 		WeaponRenderer.Model = ModelToMerge;
 		HoldType = (CitizenAnimationHelper.HoldTypes)Enum.Parse( typeof( CitizenAnimationHelper.HoldTypes ), holdType );
