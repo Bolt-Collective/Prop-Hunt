@@ -59,11 +59,12 @@ public sealed class Item : Component
 		}
 	}
 	[Impure]
-	public void Trace( float TraceDistance, int damage, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject, float Delay = 0.0f, float Spread = 0.0f )
+	public void Trace( float TraceDistance, int damage, out Vector3 startPos, out Vector3 hitPos, out Vector3 traceNormal, out bool hit, out GameObject TraceObject, float Delay = 0.0f, float Spread = 0.0f )
 	{
 		if ( Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind )
 		{
 			hitPos = default;
+			startPos = default;
 			traceNormal = default;
 			hit = false;
 			TraceObject = null;
@@ -80,11 +81,13 @@ public sealed class Item : Component
 			traceNormal = tr.Normal;
 			hit = tr.Hit;
 			TraceObject = tr.GameObject;
+			startPos = tr.StartPosition;
 			return;
 		}
 		Ammo--;
 		ShotsFired++;
 		hitPos = tr.EndPosition;
+		startPos = tr.StartPosition;
 		traceNormal = tr.Normal;
 		hit = tr.Hit;
 		if ( tr.Hit )

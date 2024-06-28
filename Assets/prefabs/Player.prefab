@@ -3,7 +3,7 @@
     "__guid": "13cdc0ba-6159-43e7-b648-238afaf50f27",
     "Flags": 0,
     "Name": "player",
-    "Tags": "player,green,red",
+    "Tags": "player,green,red,noblockaudio",
     "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
@@ -139,7 +139,8 @@
           "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
           "component_type": "ModelCollider"
         },
-        "IsProp": false
+        "IsProp": false,
+        "PreviousHealth": 0
       },
       {
         "__type": "TeamComponent",

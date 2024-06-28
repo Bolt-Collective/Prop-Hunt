@@ -18,7 +18,7 @@
         },
         "FireLength": 1000,
         "FireRate": 0.5,
-        "FireSound": "sounds/toolgun/toolgun-fire.sound",
+        "FireSound": "sounds/weapons/pistol/pistol_shoot.sound",
         "MaxAmmo": 10,
         "OnComponentEnabled": {
           "__version": 7,
@@ -52,9 +52,9 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
+                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false,
-                "_name": "Set"
+                "_isStatic": false
               },
               "UserData": {
                 "Position": "832,-288"
@@ -885,8 +885,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.v_usp",
-    "mdlresrc.toolgunshoot"
+    "facepunch.v_usp"
   ],
   "__version": 1
 }

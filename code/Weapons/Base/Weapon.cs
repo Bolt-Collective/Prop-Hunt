@@ -94,7 +94,7 @@ public sealed class Weapon : Component
 		ShotsFired++;
 		Ammo--;
 
-		BroadcastShootSound( tr.EndPosition );
+		BroadcastShootSound( tr.StartPosition );
 		OnFire?.Invoke( Player, tr.EndPosition, tr.Normal, tr.Hit );
 
 

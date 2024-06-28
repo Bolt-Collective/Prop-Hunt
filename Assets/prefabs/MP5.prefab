@@ -18,7 +18,7 @@
         },
         "FireLength": 1000,
         "FireRate": 0.1,
-        "FireSound": "sounds/toolgun/toolgun-fire.sound",
+        "FireSound": "sounds/weapons/mp5/smg_shoot.sound",
         "MaxAmmo": 10,
         "OnComponentEnabled": {
           "__version": 7,
@@ -52,9 +52,9 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
+                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false,
-                "_name": "Set"
+                "_isStatic": false
               },
               "UserData": {
                 "Position": "880,-0"
@@ -951,8 +951,7 @@
   "ResourceVersion": 1,
   "__references": [
     "facepunch.v_mp5",
-    "facepunch.w_mp5",
-    "mdlresrc.toolgunshoot"
+    "facepunch.w_mp5"
   ],
   "__version": 1
 }

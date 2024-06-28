@@ -10,6 +10,7 @@
       {
         "__type": "Shotgun",
         "__guid": "7152eff8-eb31-4bb4-bcab-a1a8b49f7c93",
+        "FireSound": "sounds/weapons/shotgun/pump_shotty_fire.sound",
         "Item": {
           "_type": "component",
           "component_id": "0001aed5-3764-4d91-aef9-dfd9298ecf80",
