@@ -53,8 +53,8 @@
               "Type": "call",
               "Properties": {
                 "_name": "Set",
-                "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false
+                "_isStatic": false,
+                "_type": "Sandbox.SkinnedModelRenderer"
               },
               "UserData": {
                 "Position": "832,-288"
@@ -245,41 +245,6 @@
                 "_type": "Sandbox.CharacterController",
                 "_name": "IsOnGround"
               }
-            },
-            {
-              "Id": 70,
-              "Type": "call",
-              "Properties": {
-                "_type": "Sandbox.IComponentLister",
-                "T": "HoldTypeManager",
-                "_isStatic": false,
-                "_name": "TryGet"
-              },
-              "UserData": {
-                "Position": "592,-192",
-                "Labels": {
-                  "component": "HoldType"
-                }
-              }
-            },
-            {
-              "Id": 71,
-              "Type": "if",
-              "UserData": {
-                "Position": "944,16"
-              }
-            },
-            {
-              "Id": 72,
-              "Type": "call",
-              "Properties": {
-                "_type": "HoldTypeManager",
-                "_isStatic": false,
-                "_name": "SetHoldTypeRenderer"
-              },
-              "UserData": {
-                "Position": "1168,272"
-              }
             }
           ],
           "Links": [
@@ -425,56 +390,6 @@
               "SrcName": "component",
               "DstId": 50,
               "DstName": "_target"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "_target",
-              "DstId": 70,
-              "DstName": "_target"
-            },
-            {
-              "Value": "InParent, InAncestors, EnabledInSelfAndChildren",
-              "DstId": 70,
-              "DstName": "search"
-            },
-            {
-              "SrcId": 1,
-              "SrcName": "_signal",
-              "DstId": 71,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 70,
-              "SrcName": "_result",
-              "DstId": 71,
-              "DstName": "condition"
-            },
-            {
-              "Value": "2.942,0.486,-2.049",
-              "DstId": 72,
-              "DstName": "Offset"
-            },
-            {
-              "SrcId": 71,
-              "SrcName": "true",
-              "DstId": 72,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 70,
-              "SrcName": "component",
-              "DstId": 72,
-              "DstName": "_target"
-            },
-            {
-              "Value": "Pistol",
-              "DstId": 72,
-              "DstName": "hold"
-            },
-            {
-              "Value": "models/dev/error.vmdl",
-              "DstId": 72,
-              "DstName": "model"
             }
           ],
           "Defaults": {

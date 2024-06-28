@@ -1,0 +1,60 @@
+{
+  "RootObject": {
+    "__guid": "3591d80d-0316-4cfc-8e52-8c5a8983a621",
+    "Flags": 0,
+    "Name": "knifewm",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "InventoryEnableSyncer",
+        "__guid": "f95b6835-33ab-4a99-bfa1-abe6e66a8ef5",
+        "Slot": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "e4f93dee-ec5c-4e42-aff9-7f794898335a",
+        "Flags": 0,
+        "Name": "renderer",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "4c049498-b8bc-4c56-a7dd-320f5a95458f",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/weapons/sbox_melee_trenchknife/w_trenchknife.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "HoldTypeMerger",
+            "__guid": "7ccbe08b-1108-462f-832f-a8acf1c89310",
+            "HoldType": "None",
+            "Offset": "0,0,-5",
+            "WeaponRenderer": {
+              "_type": "component",
+              "component_id": "4c049498-b8bc-4c56-a7dd-320f5a95458f",
+              "go": "e4f93dee-ec5c-4e42-aff9-7f794898335a",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.w_trenchknife"
+  ],
+  "__version": 1
+}

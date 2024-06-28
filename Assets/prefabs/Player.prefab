@@ -184,6 +184,16 @@
               "_type": "gameobject",
               "prefab": "prefabs/worldmodels/uspwm.prefab"
             }
+          },
+          {
+            "Parent": {
+              "_type": "gameobject",
+              "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
+            },
+            "Clone": {
+              "_type": "gameobject",
+              "prefab": "prefabs/worldmodels/knifewm.prefab"
+            }
           }
         ],
         "Items": [],
