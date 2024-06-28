@@ -25,6 +25,7 @@
           {
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "c783e163-6665-41b2-9d08-0327456d7b82",
+            "__enabled": false,
             "BodyGroups": 3,
             "CreateBoneObjects": false,
             "Model": "models/weapons/sbox_shotgun_spaghellim4/w_spaghellim4.vmdl",
@@ -35,14 +36,8 @@
           {
             "__type": "HoldTypeMerger",
             "__guid": "4a17b8b5-8621-47e8-86ec-40497e6959ec",
-            "HoldType": "Shotgun",
-            "Offset": "0,0,-5",
-            "WeaponRenderer": {
-              "_type": "component",
-              "component_id": "c783e163-6665-41b2-9d08-0327456d7b82",
-              "go": "ac4a1434-ea44-4b91-8ab2-fa6c49c0dd68",
-              "component_type": "SkinnedModelRenderer"
-            }
+            "HoldType": "None",
+            "Offset": "0,0,0"
           }
         ]
       }
