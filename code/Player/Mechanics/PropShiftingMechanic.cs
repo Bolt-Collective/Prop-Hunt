@@ -111,6 +111,7 @@ public class PropShiftingMechanic : Component
 			OnPropShift?.Invoke( this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory );
 
 			// Handle the health algorithm for props
+			/*
 			if ( !IsProp )
 			{
 				PreviousHealth = (int)Player.Local.Health;
@@ -126,7 +127,7 @@ public class PropShiftingMechanic : Component
 			if ( Player.Local.Health <= 0 )
 			{
 				Player.Local.Health = 10f;
-			}
+			}*/
 		}
 		Player.Local.Body.Network.Refresh();
 
