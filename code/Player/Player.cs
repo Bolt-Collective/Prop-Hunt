@@ -467,7 +467,7 @@ public class Player : Component
 
 		if ( !WishVelocity.IsNearZeroLength ) WishVelocity = WishVelocity.Normal;
 
-		if ( Input.Down( "Run" ) ) WishVelocity *= PropShiftingMechanic.IsProp ? 220 : 320.0f;
+		if ( Input.Down( "Run" ) ) WishVelocity *= PropShiftingMechanic.IsProp ? 250 : 320.0f;
 		else WishVelocity *= 110.0f;
 	}
 
