@@ -8,7 +8,7 @@ public class PropShiftingMechanic : Component
 	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
-	[Property] public ModelCollider Collider { get; set; }
+	[Property] public BoxCollider Collider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
 	[Property] public int PreviousHealth { get; set; }
@@ -27,16 +27,63 @@ public class PropShiftingMechanic : Component
 	{
 		if ( IsProxy ) return;
 
-
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
 		}
-		if ( ModelPath is null ) return;
+		if ( ModelPath is null || TeamComponent.TeamName != Team.Props.ToString() ) return;
 
 		if ( Input.Pressed( "Use" ) )
 		{
 			ShiftIntoProp();
+		}
+		if ( IsProp )
+		{
+			AdjustPlayerCollider( GameObject.Id );
+		}
+		else
+		{
+			Collider.Scale = Player.Local.BodyRenderer?.Bounds.Size ?? Vector3.One;
+		}
+
+	}
+	[Broadcast]
+	public void AdjustPlayerCollider( Guid caller )
+	{
+		var player = Scene.Directory.FindByGuid( caller )?.Components.Get<Player>();
+		if ( player == null ) return;
+
+		var prop = player.GameObject?.Components.Get<PropShiftingMechanic>();
+		if ( prop == null || prop.Collider == null ) return;
+
+		var collider = prop.Collider;
+		if ( prop.IsProp )
+		{
+			Vector3 initialAdjustmentScale = Vector3.Max( collider.Scale * 0.8f, new Vector3( 0.5f, 0.5f, 0.5f ) );
+			collider.Scale = initialAdjustmentScale;
+
+			// Perform a sweep to check for clipping after initial adjustment
+			bool isClipping;
+			do
+			{
+				var sweepResult = Scene.Trace.Sweep( collider.KeyframeBody, player.Body.Transform.World, new global::Transform( player.Body.Transform.Position + Vector3.Up * 0.1f, player.Transform.Rotation ) )
+					.IgnoreGameObject( player.Body )
+					.Size( collider.Scale ) // Use the current collider scale for the sweep
+					.Run();
+
+				isClipping = sweepResult.Hit;
+				if ( isClipping )
+				{
+					// Further reduce the collider scale if clipping is detected
+					collider.Scale *= 0.3f;
+				}
+
+			} while ( isClipping && collider.Scale.LengthSquared > 0.1f );
+
+			if ( !isClipping )
+			{
+				collider.Scale = player.BodyRenderer?.Bounds.Size ?? Vector3.One;
+			}
 		}
 	}
 
@@ -56,7 +103,7 @@ public class PropShiftingMechanic : Component
 		ModelPath = "models/citizen/citizen.vmdl_c";
 		pcModel.Model = Model.Load( ModelPath );
 		pcModel.Tint = Color.White;
-		Collider.Model = Model.Load( ModelPath );
+		Collider.Scale = pcModel.Bounds.Size;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		Player.Local.Health = PreviousHealth;
@@ -83,8 +130,6 @@ public class PropShiftingMechanic : Component
 			.IgnoreGameObject( Player.Local.Body )
 			.Run();
 
-		//Gizmo.Draw.LineSphere( tr.HitPosition, 16 );
-
 		if ( !tr.Hit ) return;
 		var propModel = tr.GameObject.Components.Get<Prop>( FindMode.EverythingInSelfAndDescendants )?.Model ?? tr.GameObject.Components.Get<ModelRenderer>( FindMode.EverythingInSelfAndDescendants )?.Model;
 		var propRenderer = tr.GameObject.Components.Get<ModelRenderer>( FindMode.EverythingInSelfAndDescendants );
@@ -94,7 +139,8 @@ public class PropShiftingMechanic : Component
 		Player.Local.Body.Transform.Scale = propRenderer.Transform.Scale;
 		Player.Local.BodyRenderer.Tint = propRenderer.Tint;
 		Player.Local.BodyRenderer.Model = Model.Load( ModelPath );
-		Collider.Model = Model.Load( ModelPath );
+
+
 		IsProp = ModelPath == "models/citizen/citizen.vmdl_c" ? false : true;
 
 		Log.Info( "changed model" );
@@ -112,28 +158,8 @@ public class PropShiftingMechanic : Component
 		if ( !IsProxy )
 		{
 			OnPropShift?.Invoke( this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory );
-
-			// Handle the health algorithm for props
-			/*
-			if ( !IsProp )
-			{
-				PreviousHealth = (int)Player.Local.Health;
-			}
-			float multiplier = Math.Clamp( Player.Local.Health / Player.Local.MaxHealth, 0, 1 );
-			float health = (float)Math.Pow( propModel.PhysicsBounds.Volume, 0.5f ) * 0.5f;
-
-			health = (float)Math.Round( health / 5 ) * 5;
-			Player.Local.MaxHealth = health;
-			Player.Local.Health = health * multiplier;
-
-			// Fallback to 10 health if prop is 0 health
-			if ( Player.Local.Health <= 0 )
-			{
-				Player.Local.Health = 10f;
-			}*/
 		}
 		Player.Local.Body.Network.Refresh();
-
 	}
 
 }
