@@ -20,13 +20,16 @@ public sealed class CustomMapAction : ControlWidget
 
 		if ( serializedObject is null ) return;
 
-		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.MapAction ), out var mapAction );
+		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.OnMapLoaded ), out var onMapLoaded );
+		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.OnMapUnloaded ), out var onMapUnloaded );
+		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.OnSceneStart ), out var onSceneStart );
 		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.MapIndent ), out var mapIndent );
 
 		Layout.Add( new StringControlWidget( mapIndent ) { } );
 
-		Layout.AddSpacingCell( 25 );
+		Layout.Add( new ActionControlWidget( onMapLoaded ) { } );
+		Layout.Add( new ActionControlWidget( onMapUnloaded ) { } );
+		Layout.Add( new ActionControlWidget( onSceneStart ) { } );
 
-		Layout.Add( new ActionControlWidget( mapAction ) { } );
 	}
 }

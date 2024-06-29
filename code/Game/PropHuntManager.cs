@@ -78,7 +78,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			ResetForceTauntValues();
 		}
-
 		GameStateManager();
 	}
 	void INetworkListener.OnBecameHost( Sandbox.Connection previousHost )

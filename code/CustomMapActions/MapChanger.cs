@@ -6,7 +6,10 @@ public sealed partial class MapChanger : Component
 	[Property] public List<CustomMapActions> customMapActions { get; set; } = new();
 	protected override void OnStart()
 	{
-		//If we are the host, we want to unload the map so the actions get triggerd
+		if ( !IsProxy )
+		{
+			OnSceneStart();
+		}
 		MapInstance.UnloadMap();
 		MapInstance.OnMapLoaded += HandleMap;
 		MapInstance.OnMapUnloaded += HandleMap;
@@ -22,18 +25,31 @@ public sealed partial class MapChanger : Component
 	{
 		MapInstance.MapName = ident;
 	}
+	public void OnMapLoaded()
+	{
+		foreach ( var action in customMapActions )
+		{
+			action.OnMapLoaded?.Invoke( MapInstance, this, action.MapIndent );
+		}
+		HandleMap();
+	}
+	public void OnMapUnloaded()
+	{
+		foreach ( var action in customMapActions )
+		{
+			action.OnMapUnloaded?.Invoke( MapInstance, this, action.MapIndent );
+		}
+		HandleMap();
+	}
+	public void OnSceneStart()
+	{
+		foreach ( var action in customMapActions )
+		{
+			action.OnSceneStart?.Invoke( MapInstance, this, action.MapIndent );
+		}
+	}
 	public void HandleMap()
 	{
-		if ( !IsProxy )
-		{
-			foreach ( var action in customMapActions )
-			{
-				if ( action.MapIndent == MapInstance.MapName )
-				{
-					action.MapAction?.Invoke( MapInstance, MapInstance.MapName );
-				}
-			}
-		}
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
 
 		foreach ( var player in Scene.GetAllComponents<Player>().ToArray() )
@@ -82,19 +98,25 @@ public sealed partial class MapChanger : Component
 	//Used to give map creators, who ask us to add custom actions to their maps
 	public class CustomMapActions
 	{
-		public delegate void MapActionDel( MapInstance instance, string indent );
-		[Property] public MapActionDel MapAction { get; set; }
+		public delegate void MapActionDel( MapInstance instance, MapChanger mapChanger, string indent );
+		[Property] public MapActionDel OnMapUnloaded { get; set; }
+		[Property] public MapActionDel OnMapLoaded { get; set; }
+		[Property] public MapActionDel OnSceneStart { get; set; }
 		[Property] public string MapIndent { get; set; }
 
 		public CustomMapActions()
 		{
-			MapAction = null;
+			OnMapUnloaded = null;
+			OnMapLoaded = null;
+			OnSceneStart = null;
 			MapIndent = "";
 		}
 
-		public CustomMapActions( MapActionDel action, string indent )
+		public CustomMapActions( MapActionDel onMapUnloaded, MapActionDel onMapLoaded, MapActionDel onSceneStart, string indent )
 		{
-			MapAction = action;
+			OnMapUnloaded = onMapUnloaded;
+			OnMapLoaded = onMapLoaded;
+			OnSceneStart = onSceneStart;
 			MapIndent = indent;
 		}
 
