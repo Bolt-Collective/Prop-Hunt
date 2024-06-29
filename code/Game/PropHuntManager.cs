@@ -220,7 +220,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = PreRoundTime;
 		ClearListBroadcast();
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
 	}
 
 	[Broadcast]
