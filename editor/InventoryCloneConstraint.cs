@@ -20,7 +20,6 @@ public sealed class InventoryCloneConstraintWidget : ControlWidget
 		serializedObject.TryGetProperty( nameof( Inventory.CloneConstraint.Parent ), out var parent );
 
 		Layout.Add( new GameObjectControlWidget( clone ) { } );
-		Layout.AddSpacingCell( 25 );
 		Layout.Add( new GameObjectControlWidget( parent ) { } );
 	}
 }
