@@ -79,7 +79,7 @@ public sealed class MapChanger : Component
 	//Custom mapper methods
 
 	//Adds vertex snapping to all opium assets
-	public static void GnomeFigTagsAdd()
+	public static void GnomefigVertexSnap()
 	{
 		foreach ( var modelRenderer in Game.ActiveScene.GetAllComponents<ModelRenderer>() )
 		{
