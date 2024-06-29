@@ -8,8 +8,8 @@ public sealed class TauntComponent : Component
 
 	[Property] public List<SoundEvent> HunterTaunts { get; set; } = new();
 
-	[Property]
-	public int TauntCooldown { get; set; }
+	[Property, Sync] public int TauntCooldown { get; set; } = 5;
+
 
 	protected override void OnUpdate()
 	{
@@ -33,6 +33,7 @@ public sealed class TauntComponent : Component
 	{
 		Sound.Play( sound, GameObject.Transform.Position );
 	}
+
 	public void PlayRandomTaunt()
 	{
 		BroadcastTaunt( Game.Random.FromList( PropTaunts ).ResourceName );

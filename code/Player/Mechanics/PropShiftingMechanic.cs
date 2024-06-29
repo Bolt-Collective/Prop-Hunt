@@ -23,44 +23,15 @@ public class PropShiftingMechanic : Component
 			ModelPath = Player.Local.BodyRenderer?.Model.ResourcePath;
 		}
 	}
-	[Property, Sync] TimeSince timeSinceLastMove { get; set; }
-	[Property, Sync] TimeSince timeSinceLastForceTaunt { get; set; }
-	[Property, Sync] Vector3 LastPosition { get; set; }
-	[Property, Sync] float distanceMoved { get; set; }
 	protected override void OnUpdate()
 	{
 		if ( IsProxy ) return;
-		if ( PropHuntManager.Instance.RoundState != GameState.Started )
-		{
-			ResetForceTauntValues();
-		}
-		if ( TeamComponent.TeamName != Team.Props.ToString() ) return;
-		distanceMoved = Vector3.DistanceBetween( LastPosition, Player.Local.Transform.Position );
-		//Set time last moved based on the wish velocity of the player
-		if ( Player.Local.WishVelocity.Length != 0 )
-		{
-			timeSinceLastMove = 0;
-		}
-		if ( distanceMoved > 5 )
-		{
-			LastPosition = Player.Local.Transform.Position;
-		}
-		Log.Info( distanceMoved + " " + timeSinceLastMove );
-		//If the player has not moved for 30 seconds or moved a bit, play a random taunt
-		// Introduce a cooldown for taunts to prevent spamming
-		if ( timeSinceLastMove > 60 && distanceMoved < 5 && CanPlayTaunt() )
-		{
-			Log.Info( "Playing taunt" + timeSinceLastForceTaunt + " " + timeSinceLastMove );
-			TauntComponent?.PlayRandomTaunt();
-			//Have to make it a method since if I change one, the rest are not going to be changed
-			ResetForceTauntValues();
-		}
+
 
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
 		}
-		var pc = Components.Get<Player>();
 		if ( ModelPath is null ) return;
 
 		if ( Input.Pressed( "Use" ) )
@@ -68,19 +39,7 @@ public class PropShiftingMechanic : Component
 			ShiftIntoProp();
 		}
 	}
-	private void ResetForceTauntValues()
-	{
-		LastPosition = Player.Local.Transform.Position;
-		timeSinceLastMove = 0;
-		timeSinceLastForceTaunt = 0;
-	}
 
-
-	// Method to check if a taunt can be played based on a cooldown
-	private bool CanPlayTaunt()
-	{
-		return timeSinceLastForceTaunt > TauntComponent.TauntCooldown;
-	}
 	public void ExitProp()
 	{
 		if ( !Player.Local.AbleToMove || IsProxy ) return;
