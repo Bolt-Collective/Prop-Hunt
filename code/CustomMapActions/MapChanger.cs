@@ -6,11 +6,11 @@ public sealed partial class MapChanger : Component
 	[Property] public List<CustomMapActions> customMapActions { get; set; } = new();
 	protected override void OnStart()
 	{
-		if ( !IsProxy )
+		if ( Networking.IsHost )
 		{
 			OnSceneStart();
+			MapInstance.UnloadMap();
 		}
-		MapInstance.UnloadMap();
 		MapInstance.OnMapLoaded += HandleMap;
 		MapInstance.OnMapUnloaded += HandleMap;
 	}
