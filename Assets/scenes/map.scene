@@ -218,7 +218,46 @@
         {
           "__type": "PropHunt.MapChanger",
           "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24",
-          "customMapActions": [],
+          "customMapActions": [
+            {
+              "MapAction": {
+                "__version": 7,
+                "__guid": "7fa66841-08c8-4e09-ae8f-53dc695e9d9f",
+                "UserData": {
+                  "Title": "Map Action",
+                  "ReferencedComponentTypes": []
+                },
+                "Variables": [],
+                "Nodes": [
+                  {
+                    "Id": 0,
+                    "Type": "input"
+                  },
+                  {
+                    "Id": 31,
+                    "Type": "call",
+                    "Properties": {
+                      "_type": "PropHunt.MapChanger",
+                      "_name": "GnomeFigTagsAdd",
+                      "_isStatic": true
+                    },
+                    "UserData": {
+                      "Position": "192,-0"
+                    }
+                  }
+                ],
+                "Links": [
+                  {
+                    "SrcId": 0,
+                    "SrcName": "_signal",
+                    "DstId": 31,
+                    "DstName": "_signal"
+                  }
+                ]
+              },
+              "MapIndent": "gnomefig.office"
+            }
+          ],
           "MapInstance": {
             "_type": "component",
             "component_id": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
@@ -252,7 +291,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-28T23:35:28.080382-04:00",
+  "LastSaved": "2024-06-28T23:50:39.1500323-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
