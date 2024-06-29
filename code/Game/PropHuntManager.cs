@@ -183,9 +183,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.EyeAngles = randomPoint.Transform.Rotation.Angles();
 			player.Transform.World = randomPoint.Transform.World;
 		}
-
-
-
 	}
 	public Random GetRandom()
 	{
@@ -295,6 +292,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			RoundNumber++;
 			ResetRound();
+		}
+		var spawns = Scene.GetAllComponents<SpawnPoint>().ToList();
+		foreach ( var player in Scene.GetAllComponents<Player>() )
+		{
+			var randomSpawn = Game.Random.FromList( spawns );
+			player.Transform.Position = randomSpawn.Transform.Position;
+			player.EyeAngles = randomSpawn.Transform.Rotation.Angles();
 		}
 	}
 	public void DoMapVote()
