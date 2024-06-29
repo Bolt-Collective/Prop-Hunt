@@ -123,27 +123,6 @@
       ]
     },
     {
-      "__guid": "5ace96e0-be1b-43be-989f-c24d7fc1a8f7",
-      "Flags": 0,
-      "Name": "trench hole cover",
-      "Position": "417.4026,-501.466,98.57431",
-      "Rotation": "-0.4777144,0.4777144,0.5213337,0.5213337",
-      "Scale": "0.7369232,0.6244771,1",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "73421d90-7731-41e8-b676-5ab2f729d98f",
-          "BodyGroups": 18446744073709551615,
-          "Model": "junkyard models and mats/trench hole cover/trench hole cover.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
       "__guid": "38d1598c-4211-4646-92e5-0a4af22fa285",
       "Flags": 0,
       "Name": "rubble",
@@ -525,7 +504,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-27T20:38:55.2006839-04:00",
+  "LastSaved": "2024-06-29T11:41:37.1247159\u002B02:00",
   "ResourceVersion": 1,
   "__references": [
     "baik.taverntable",
@@ -535,7 +514,6 @@
     "paths.rubble",
     "paths.rustybarrel",
     "paths.storagepallete",
-    "paths.trenchholecover",
     "tesssssssssst.untitled_1874874874",
     "titanovsky.radio"
   ],
