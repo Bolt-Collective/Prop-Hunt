@@ -182,14 +182,14 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			{
 				randomList[i].TeamComponent.ChangeTeam( Team.Hunters );
 			}
-			randomList[i].Respawn();
+			randomList[i].Respawn( randomList[i].GameObject.Id );
 		}
 	}
 	public void ForceRestart()
 	{
 		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
-			player.Respawn();
+			player.Respawn( player.GameObject.Id );
 		}
 		RoundState = GameState.Preparing;
 		TimeSinceRoundStateChanged = 0;
@@ -284,7 +284,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		foreach ( var player in AllPlayers )
 		{
-			player.Respawn();
+			player.Respawn( player.GameObject.Id );
 		}
 		RoundState = GameState.None;
 		TimeSinceRoundStateChanged = 0;

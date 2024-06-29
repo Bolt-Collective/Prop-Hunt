@@ -372,7 +372,6 @@ public class Player : Component
 	}
 	protected override void OnFixedUpdate()
 	{
-
 		if ( IsProxy )
 			return;
 
@@ -499,14 +498,20 @@ public class Player : Component
 	}
 
 	[Broadcast]
-	public void Respawn()
+	public void Respawn( Guid caller )
 	{
-		if ( !Network.IsOwner ) return;
-		ResetStats();
-		Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
-		AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
-		AbleToMove = true;
-		IsDead = false;
+		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		player.ResetStats();
+		player.GameObject.Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
+		ClearHoldType( caller );
+		player.AbleToMove = true;
+		player.IsDead = false;
+	}
+	[Broadcast]
+	public void ClearHoldType( Guid Caller )
+	{
+		var helper = Scene.Directory.FindByGuid( Caller ).Components.Get<CitizenAnimationHelper>();
+		helper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 	}
 	[Broadcast]
 	public void DisableBody()
