@@ -479,6 +479,15 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "38f38807-d3b1-4017-8a48-5b216179142e",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "184.8744,-19.45761,62.8858",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true
     }
   ],
   "SceneProperties": {
@@ -504,7 +513,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-29T16:07:50.840409-04:00",
+  "LastSaved": "2024-06-29T17:04:10.9219707-04:00",
   "ResourceVersion": 1,
   "__references": [
     "baik.taverntable",

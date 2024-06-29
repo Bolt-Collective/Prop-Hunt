@@ -3,23 +3,11 @@
     "__guid": "13cdc0ba-6159-43e7-b648-238afaf50f27",
     "Flags": 0,
     "Name": "player",
-    "Tags": "player,green,red,noblockaudio",
+    "Tags": "noblockaudio,red,green,player",
     "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
     "Components": [
-      {
-        "__type": "Sandbox.CharacterController",
-        "__guid": "32049e5a-260f-493a-a691-ba19336bab52",
-        "Acceleration": 10,
-        "Bounciness": 0.3,
-        "GroundAngle": 45,
-        "Height": 71.05,
-        "IgnoreLayers": "carrying,ignore",
-        "Radius": 11.65,
-        "StepHeight": 18,
-        "UseCollisionRules": false
-      },
       {
         "__type": "Player",
         "__guid": "2e0e0531-044e-4d4c-a0e6-230f3cc36389",
@@ -49,9 +37,9 @@
         "CameraDistance": 0,
         "characterController": {
           "_type": "component",
-          "component_id": "32049e5a-260f-493a-a691-ba19336bab52",
+          "component_id": "96834b30-3c27-4c9e-9ba6-b56ffaa7ee04",
           "go": "13cdc0ba-6159-43e7-b648-238afaf50f27",
-          "component_type": "CharacterController"
+          "component_type": "Hc1CharacterController"
         },
         "Eye": {
           "_type": "gameobject",
@@ -266,6 +254,18 @@
           "sounds/taunts/prop taunts/whatsup.sound"
         ],
         "TauntCooldown": 5
+      },
+      {
+        "__type": "Facepunch.Hc1CharacterController",
+        "__guid": "96834b30-3c27-4c9e-9ba6-b56ffaa7ee04",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "ignore",
+        "Radius": 16,
+        "StepHeight": 18,
+        "UseCollisionRules": false
       }
     ],
     "Children": [

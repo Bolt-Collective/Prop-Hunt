@@ -1,4 +1,5 @@
-﻿using PropHunt;
+﻿using Facepunch;
+using PropHunt;
 using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Network;
@@ -12,7 +13,7 @@ public class Player : Component
 	[Property] public PlayerDelegate OnDeath { get; set; }
 	[Property] public PlayerDelegate OnJumpEvent { get; set; }
 	[Sync] public bool IsGrabbing { get; set; }
-	[Property] public CharacterController characterController { get; set; }
+	[Property] public Hc1CharacterController characterController { get; set; }
 	[Sync] public bool IsDead { get; set; } = false;
 	public static Player Local
 	{
@@ -246,7 +247,7 @@ public class Player : Component
 			camera.Transform.Rotation = lookDirection;
 		}
 	}
-	public void Animations( CharacterController cc )
+	public void Animations( Hc1CharacterController cc )
 	{
 		if ( AnimationHelper is not null && AbleToMove && !PropShiftingMechanic.IsProp )
 		{
@@ -322,7 +323,7 @@ public class Player : Component
 			Eye.Transform.Rotation = EyeAngles.ToRotation();
 		}
 
-		var cc = GameObject.Components.Get<CharacterController>();
+		var cc = GameObject.Components.Get<Hc1CharacterController>();
 		if ( cc is null ) return;
 		Animations( cc );
 		if ( !FreeLooking )
