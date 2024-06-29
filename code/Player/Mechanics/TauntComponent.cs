@@ -33,4 +33,9 @@ public sealed class TauntComponent : Component
 	{
 		Sound.Play( sound, GameObject.Transform.Position );
 	}
+	public void PlayRandomTaunt()
+	{
+		BroadcastTaunt( Game.Random.FromList( PropTaunts ).ResourceName );
+		TimeSinceTaunted = 0;
+	}
 }
