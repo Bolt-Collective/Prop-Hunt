@@ -54,6 +54,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public List<(string, int)> Votes { get; set; } = new();
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
 
+	[Property, Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
+
+	[Property, Sync] public int ForceTauntCooldown { get; set; } = 60;
+
 	protected override void OnStart()
 	{
 		Instance = this;
@@ -69,6 +73,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			MaxPlayersToStart = 2;
 		}
 		if ( !Networking.IsHost ) return;
+
+		if ( RoundState != GameState.Started )
+		{
+			ResetForceTauntValues();
+		}
+
 		GameStateManager();
 
 	}
@@ -125,6 +135,18 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 
 	}
+
+	private void ResetForceTauntValues()
+	{
+		TimeSinceLastForceTaunt = 0;
+	}
+
+	// Method to check if a taunt can be played based on a cooldown
+	private bool CanPlayTaunt()
+	{
+		return TimeSinceLastForceTaunt >= ForceTauntCooldown;
+	}
+
 	public void OnRoundStarting()
 	{
 		Log.Info( "Round starting" );
@@ -295,6 +317,25 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 	public void RoundTick()
 	{
+
+
+		// Introduce a cooldown for taunts to prevent spamming
+		if ( CanPlayTaunt() )
+		{
+			foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Props.ToString()) )
+			{
+				var tauntComponents = player.Components.Get<TauntComponent>();
+
+				if ( tauntComponents != null )
+				{
+					tauntComponents.PlayRandomTaunt();
+				}
+			}
+
+			//Have to make it a method since if I change one, the rest are not going to be changed
+			ResetForceTauntValues();
+		}
+
 		if ( TimeSinceRoundStateChanged > RoundLength || Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ).All( x => x.Health <= 0 ) )
 		{
 			ForceWin( Team.Props );
