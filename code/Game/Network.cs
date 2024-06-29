@@ -27,7 +27,15 @@ public sealed class Network : Component, Component.INetworkListener
 		if ( !CustomSpawnPoints )
 		{
 			var spawn = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() );
-			SpawnPoint = spawn.Transform.World;
+			if ( spawn is null )
+			{
+				SpawnPoint = new Transform( Vector3.Zero, Rotation.Identity );
+			}
+			else
+			{
+				SpawnPoint = spawn.Transform.World;
+			}
+
 		}
 		else
 		{

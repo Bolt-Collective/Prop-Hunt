@@ -7,7 +7,7 @@ namespace PropHunt;
 [Description( "The brains of Prop Hunt. Controls rounds, teams, etc." )]
 public partial class PropHuntManager : Component, Component.INetworkListener
 {
-	[HostSync] public GameState RoundState { get; set; } = GameState.None;
+	[HostSync, Property] public GameState RoundState { get; set; } = GameState.None;
 	[HostSync] public string RoundStateText { get; set; }
 
 	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;

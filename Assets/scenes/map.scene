@@ -167,7 +167,7 @@
             76561199001645276,
             76561198043979097
           ],
-          "MyStringValue": "If you are seeing this then I am in the dev client testing things, since facepunch does not allow closed lobbies in the dev client, you are able to join this lobby, stick around if you want, but things could break since im working on the game"
+          "MyStringValue": "Hello, you are in a test world, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
         }
       ],
       "Children": [
@@ -201,7 +201,8 @@
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
           "MaxPlayersToStart": 1,
-          "OnGoingRound": false
+          "OnGoingRound": false,
+          "RoundState": "None"
         }
       ]
     },
@@ -209,7 +210,7 @@
       "__guid": "5fcf5844-f8e2-472d-8be3-ab01a93ded4c",
       "Flags": 0,
       "Name": "Map Changer",
-      "Position": "187.3595,121.2986,52.85176",
+      "Position": "187.3595,-168.6434,52.85176",
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkInterpolation": true,
@@ -250,7 +251,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-28T16:12:48.5582237-04:00",
+  "LastSaved": "2024-06-28T21:48:26.7949109-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

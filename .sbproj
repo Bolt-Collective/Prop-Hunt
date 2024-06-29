@@ -214,7 +214,7 @@
         {
           "Name": "taunt",
           "KeyboardCode": "T",
-          "GamepadCode": "X",
+          "GamepadCode": "DpadNorth",
           "GroupName": "Other"
         }
       ],
