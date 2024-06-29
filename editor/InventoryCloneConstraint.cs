@@ -2,7 +2,7 @@ using System.Net.Http.Headers;
 using Editor;
 using Sandbox;
 [CustomEditor( typeof( Inventory.CloneConstraint ) )]
-public class InventoryCloneConstraintWidget : ControlWidget
+public sealed class InventoryCloneConstraintWidget : ControlWidget
 {
 	public InventoryCloneConstraintWidget( SerializedProperty property ) : base( property )
 	{

@@ -12,7 +12,7 @@
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
-          "__guid": "feb27e7c-21c4-42d8-9b52-4892ad8b7d0d",
+          "__guid": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
           "__version": 1,
           "MapName": "gnomefig.office",
           "NoOrigin": false,
@@ -167,7 +167,7 @@
             76561199001645276,
             76561198043979097
           ],
-          "MyStringValue": "Hello, you are in a test world, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
+          "MyStringValue": "Hello, I am playing in the dev client, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
         }
       ],
       "Children": [
@@ -218,9 +218,10 @@
         {
           "__type": "PropHunt.MapChanger",
           "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24",
+          "customMapActions": [],
           "MapInstance": {
             "_type": "component",
-            "component_id": "feb27e7c-21c4-42d8-9b52-4892ad8b7d0d",
+            "component_id": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
             "go": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
             "component_type": "MapInstance"
           }
@@ -251,7 +252,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-28T22:20:57.1421786-04:00",
+  "LastSaved": "2024-06-28T23:35:28.080382-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
