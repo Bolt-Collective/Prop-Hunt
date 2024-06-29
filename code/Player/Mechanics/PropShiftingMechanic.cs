@@ -37,14 +37,7 @@ public class PropShiftingMechanic : Component
 		{
 			ShiftIntoProp();
 		}
-		if ( IsProp )
-		{
-			AdjustPlayerCollider( GameObject.Id );
-		}
-		else
-		{
-			Collider.Scale = Player.Local.BodyRenderer?.Bounds.Size ?? Vector3.One;
-		}
+		AdjustPlayerCollider( GameObject.Id );
 
 	}
 	[Broadcast]
@@ -57,6 +50,7 @@ public class PropShiftingMechanic : Component
 		if ( prop == null || prop.Collider == null ) return;
 
 		var collider = prop.Collider;
+		Collider.Center = player.BodyRenderer.Bounds.Center;
 		if ( prop.IsProp )
 		{
 			Vector3 initialAdjustmentScale = Vector3.Max( collider.Scale * 0.8f, new Vector3( 0.5f, 0.5f, 0.5f ) );
@@ -68,7 +62,7 @@ public class PropShiftingMechanic : Component
 			{
 				var sweepResult = Scene.Trace.Sweep( collider.KeyframeBody, player.Body.Transform.World, new global::Transform( player.Body.Transform.Position + Vector3.Up * 0.1f, player.Transform.Rotation ) )
 					.IgnoreGameObject( player.Body )
-					.Size( collider.Scale ) // Use the current collider scale for the sweep
+					.Size( collider.Scale / 0.9f ) // Use the current collider scale for the sweep
 					.Run();
 
 				isClipping = sweepResult.Hit;
@@ -84,6 +78,10 @@ public class PropShiftingMechanic : Component
 			{
 				collider.Scale = player.BodyRenderer?.Bounds.Size ?? Vector3.One;
 			}
+		}
+		else
+		{
+			collider.Scale = player.BodyRenderer?.Bounds.Size ?? Vector3.One;
 		}
 	}
 

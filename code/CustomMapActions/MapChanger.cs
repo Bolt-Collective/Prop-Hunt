@@ -29,7 +29,10 @@ public sealed partial class MapChanger : Component
 	{
 		foreach ( var action in customMapActions )
 		{
-			action.OnMapLoaded?.Invoke( MapInstance, this, action.MapIndent );
+			if ( action.MapIndent == MapInstance.MapName )
+			{
+				action.OnMapLoaded?.Invoke( MapInstance, this, action.MapIndent );
+			}
 		}
 		HandleMap();
 	}
@@ -37,7 +40,10 @@ public sealed partial class MapChanger : Component
 	{
 		foreach ( var action in customMapActions )
 		{
-			action.OnMapUnloaded?.Invoke( MapInstance, this, action.MapIndent );
+			if ( action.MapIndent == MapInstance.MapName )
+			{
+				action.OnMapUnloaded?.Invoke( MapInstance, this, action.MapIndent );
+			}
 		}
 		HandleMap();
 	}
@@ -45,7 +51,10 @@ public sealed partial class MapChanger : Component
 	{
 		foreach ( var action in customMapActions )
 		{
-			action.OnSceneStart?.Invoke( MapInstance, this, action.MapIndent );
+			if ( action.MapIndent == MapInstance.MapName )
+			{
+				action.OnSceneStart?.Invoke( MapInstance, this, action.MapIndent );
+			}
 		}
 	}
 	public void HandleMap()
@@ -111,7 +120,6 @@ public sealed partial class MapChanger : Component
 			OnSceneStart = null;
 			MapIndent = "";
 		}
-
 		public CustomMapActions( MapActionDel onMapUnloaded, MapActionDel onMapLoaded, MapActionDel onSceneStart, string indent )
 		{
 			OnMapUnloaded = onMapUnloaded;

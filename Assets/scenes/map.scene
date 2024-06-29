@@ -204,7 +204,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 2587.5059
+            "Relative": 2776.7393
           }
         }
       ]
@@ -223,21 +223,49 @@
           "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24",
           "customMapActions": [
             {
-              "MapAction": {
+              "OnSceneStart": {
                 "__version": 7,
-                "__guid": "7fa66841-08c8-4e09-ae8f-53dc695e9d9f",
+                "__guid": "ebefba16-8750-437b-89e6-4d1ab7f1c79b",
                 "UserData": {
-                  "Title": "Map Action",
+                  "Title": "On Scene Start",
                   "ReferencedComponentTypes": []
                 },
                 "Variables": [],
                 "Nodes": [
                   {
-                    "Id": 0,
-                    "Type": "input"
+                    "Id": 1,
+                    "Type": "input",
+                    "UserData": {
+                      "Position": "-16,32"
+                    }
+                  },
+                  {
+                    "Id": 2,
+                    "Type": "call",
+                    "Properties": {
+                      "_isStatic": false,
+                      "_type": "PropHunt.MapChanger",
+                      "_name": "GnomefigVertexSnap"
+                    },
+                    "UserData": {
+                      "Position": "240,32"
+                    }
                   }
                 ],
-                "Links": []
+                "Links": [
+                  {
+                    "SrcId": 1,
+                    "SrcName": "_signal",
+                    "DstId": 2,
+                    "DstName": "_signal"
+                  },
+                  {
+                    "SrcId": 1,
+                    "SrcName": "mapChanger",
+                    "DstId": 2,
+                    "DstName": "_target"
+                  }
+                ]
               },
               "MapIndent": "gnomefig.office"
             }
@@ -275,7 +303,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-29T15:11:18.6544159-04:00",
+  "LastSaved": "2024-06-29T16:19:56.5617346-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
