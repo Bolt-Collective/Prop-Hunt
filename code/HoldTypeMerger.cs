@@ -20,7 +20,7 @@ public sealed class HoldTypeMerger : Component
 
 	protected override void OnPreRender()
 	{
-		if ( Player.Local.IsDead || GameObject is null || AnimHelper is null ) return;
+		if ( Player.Local.IsDead || GameObject is null || AnimHelper is null || Player.Local is null ) return;
 		if ( GameObject is not null )
 		{
 			var boneTransform = new Transform();

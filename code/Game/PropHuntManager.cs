@@ -80,7 +80,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 
 		GameStateManager();
-
+	}
+	void INetworkListener.OnBecameHost( Sandbox.Connection previousHost )
+	{
+		Log.Info( "I am the host now" );
 	}
 	[Broadcast]
 	void GameStateManager()
@@ -322,7 +325,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		// Introduce a cooldown for taunts to prevent spamming
 		if ( CanPlayTaunt() )
 		{
-			foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Props.ToString()) )
+			foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Props.ToString() ) )
 			{
 				var tauntComponents = player.Components.Get<TauntComponent>();
 

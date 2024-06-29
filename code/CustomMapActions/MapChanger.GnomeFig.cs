@@ -24,11 +24,16 @@ public partial class MapChanger
 		public void RenderEffect( SceneCamera camera )
 		{
 			if ( !camera.EnablePostProcessing ) return;
-			camera.Attributes.SetCombo( "D_VERTEX_SNAP", 1 );
+			//camera.Attributes.SetCombo( "D_VERTEX_SNAP", 1 );
 			Graphics.GrabFrameTexture( "ColorBuffer", attributes );
 			Graphics.GrabDepthTexture( "DepthBuffer", attributes );
-			//Graphics.Blit( Material.FromShader( Cloud.Shader( "facepunch.goback_postprocess" ) ), attributes );
+			Graphics.Blit( Material.FromShader( Cloud.Shader( "facepunch.goback_postprocess" ) ), attributes );
 
 		}
+	}
+	[Pure]
+	public static bool GetIsProxy( GameObject gameObject )
+	{
+		return gameObject.Network.IsProxy;
 	}
 }

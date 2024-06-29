@@ -1,5 +1,5 @@
 {
-  "__guid": "c50b6c50-afd4-4036-945d-5d3cfabe38ad",
+  "__guid": "bcdfb5a5-307e-4707-a092-a857c2a34d69",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -200,9 +200,13 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+          "ForceTauntCooldown": 60,
           "MaxPlayersToStart": 1,
           "OnGoingRound": false,
-          "RoundState": "None"
+          "RoundState": "None",
+          "TimeSinceLastForceTaunt": {
+            "Relative": 1786.1704
+          }
         }
       ]
     },
@@ -242,19 +246,19 @@
                       "T": "PropHunt.MapChanger"
                     },
                     "UserData": {
-                      "Position": "-16,160"
+                      "Position": "0,192"
                     }
                   },
                   {
                     "Id": 36,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
                       "_isStatic": false,
+                      "_type": "PropHunt.MapChanger",
                       "_name": "GnomefigVertexSnap"
                     },
                     "UserData": {
-                      "Position": "256,-0"
+                      "Position": "256,0"
                     }
                   }
                 ],
@@ -315,7 +319,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-29T12:26:50.2353206-04:00",
+  "LastSaved": "2024-06-29T14:57:57.3318164-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

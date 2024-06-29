@@ -504,7 +504,6 @@ public class Player : Component
 	{
 		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
 		player.ResetStats( caller );
-		player.GameObject.Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
 		player.AbleToMove = true;
 		player.IsDead = false;
 	}
@@ -515,7 +514,10 @@ public class Player : Component
 		{
 			cloth.Enabled = false;
 		}
-		Body.Enabled = false;
+		if ( Body is not null )
+		{
+			Body.Enabled = false;
+		}
 
 		if ( PropShiftingMechanic.Collider is not null )
 		{

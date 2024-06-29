@@ -24,14 +24,16 @@ public sealed partial class MapChanger : Component
 	}
 	public void HandleMap()
 	{
-		foreach ( var action in customMapActions )
+		if ( !IsProxy )
 		{
-			if ( action.MapIndent == MapInstance.MapName )
+			foreach ( var action in customMapActions )
 			{
-				action.MapAction?.Invoke( MapInstance, MapInstance.MapName );
+				if ( action.MapIndent == MapInstance.MapName )
+				{
+					action.MapAction?.Invoke( MapInstance, MapInstance.MapName );
+				}
 			}
 		}
-
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
 
 		foreach ( var player in Scene.GetAllComponents<Player>().ToArray() )
