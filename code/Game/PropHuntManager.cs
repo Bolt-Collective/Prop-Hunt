@@ -57,6 +57,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	protected override void OnStart()
 	{
 		Instance = this;
+		foreach ( var modelRenderer in Scene.GetAllComponents<ModelRenderer>().Where( x => x.Tags.Has( "D_VERTEX_SNAP" ) ) )
+		{
+			modelRenderer.SceneObject.Attributes.SetCombo( "D_VERTEX_SNAP", true );
+		}
 	}
 	protected override void OnUpdate()
 	{
