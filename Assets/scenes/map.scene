@@ -205,7 +205,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 359.82214
+            "Relative": 128.42085
           }
         }
       ]
@@ -298,7 +298,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-29T16:47:55.1780771-04:00",
+  "LastSaved": "2024-06-29T16:58:38.942857-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
