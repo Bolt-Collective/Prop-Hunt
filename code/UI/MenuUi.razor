@@ -39,10 +39,10 @@
 			}
 			@foreach (var lobby in Lobbies)
 			{
-				<div class="server">
+				<div class="server" style="flex-wrap: nowrap;">
 					<img src="@Package.Fetch( lobby.Map, false ).Result.Thumb" style="width: 64px; height: 64px; border-radius: 100px; margin-right: 10px;" />
 					<div class="server-name" style="font-size: 20px;">@Package.Fetch( lobby.Map, false ).Result.Title</div>
-					<div class="server-name">@lobby.Name</div>
+					<div class="server-name" style="font-size: 24px">@lobby.Name</div>
 					<div class="server-players">@lobby.Members</div>
 					<div class="server-join" onclick="@( () => ConnectToLobby( lobby ) )">Join</div>
 				</div>
