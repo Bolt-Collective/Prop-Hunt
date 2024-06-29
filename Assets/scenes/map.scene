@@ -205,7 +205,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 1786.1704
+            "Relative": 1915.324
           }
         }
       ]
@@ -229,59 +229,16 @@
                 "__guid": "7fa66841-08c8-4e09-ae8f-53dc695e9d9f",
                 "UserData": {
                   "Title": "Map Action",
-                  "ReferencedComponentTypes": [
-                    "PropHunt.MapChanger"
-                  ]
+                  "ReferencedComponentTypes": []
                 },
                 "Variables": [],
                 "Nodes": [
                   {
                     "Id": 0,
                     "Type": "input"
-                  },
-                  {
-                    "Id": 35,
-                    "Type": "scene.get",
-                    "Properties": {
-                      "T": "PropHunt.MapChanger"
-                    },
-                    "UserData": {
-                      "Position": "0,192"
-                    }
-                  },
-                  {
-                    "Id": 36,
-                    "Type": "call",
-                    "Properties": {
-                      "_isStatic": false,
-                      "_type": "PropHunt.MapChanger",
-                      "_name": "GnomefigVertexSnap"
-                    },
-                    "UserData": {
-                      "Position": "256,0"
-                    }
                   }
                 ],
-                "Links": [
-                  {
-                    "SrcId": 0,
-                    "SrcName": "_target",
-                    "DstId": 35,
-                    "DstName": "_this"
-                  },
-                  {
-                    "SrcId": 0,
-                    "SrcName": "_signal",
-                    "DstId": 36,
-                    "DstName": "_signal"
-                  },
-                  {
-                    "SrcId": 35,
-                    "SrcName": "_result",
-                    "DstId": 36,
-                    "DstName": "_target"
-                  }
-                ]
+                "Links": []
               },
               "MapIndent": "gnomefig.office"
             }
@@ -319,7 +276,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-29T14:57:57.3318164-04:00",
+  "LastSaved": "2024-06-29T15:00:06.4728798-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
