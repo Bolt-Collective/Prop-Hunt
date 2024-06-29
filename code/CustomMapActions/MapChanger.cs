@@ -1,6 +1,6 @@
 using Sandbox;
 namespace PropHunt;
-public sealed class MapChanger : Component
+public sealed partial class MapChanger : Component
 {
 	[Property] public MapInstance MapInstance { get; set; }
 	[Property] public List<CustomMapActions> customMapActions { get; set; } = new();
@@ -76,16 +76,6 @@ public sealed class MapChanger : Component
 	}
 
 
-	//Custom mapper methods
-
-	//Adds vertex snapping to all opium assets
-	public static void GnomefigVertexSnap()
-	{
-		foreach ( var modelRenderer in Game.ActiveScene.GetAllComponents<ModelRenderer>() )
-		{
-			modelRenderer.SceneObject.Attributes.SetCombo( "D_VERTEX_SNAP", true );
-		}
-	}
 
 	//Used to give map creators, who ask us to add custom actions to their maps
 	public class CustomMapActions

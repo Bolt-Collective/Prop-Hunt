@@ -1,5 +1,5 @@
 {
-  "__guid": "55c50b35-1ce1-49df-ab21-e30d48d15402",
+  "__guid": "c50b6c50-afd4-4036-945d-5d3cfabe38ad",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -225,7 +225,9 @@
                 "__guid": "7fa66841-08c8-4e09-ae8f-53dc695e9d9f",
                 "UserData": {
                   "Title": "Map Action",
-                  "ReferencedComponentTypes": []
+                  "ReferencedComponentTypes": [
+                    "PropHunt.MapChanger"
+                  ]
                 },
                 "Variables": [],
                 "Nodes": [
@@ -234,24 +236,46 @@
                     "Type": "input"
                   },
                   {
-                    "Id": 31,
+                    "Id": 35,
+                    "Type": "scene.get",
+                    "Properties": {
+                      "T": "PropHunt.MapChanger"
+                    },
+                    "UserData": {
+                      "Position": "-16,160"
+                    }
+                  },
+                  {
+                    "Id": 36,
                     "Type": "call",
                     "Properties": {
                       "_type": "PropHunt.MapChanger",
-                      "_name": "GnomeFigTagsAdd",
-                      "_isStatic": true
+                      "_isStatic": false,
+                      "_name": "GnomefigVertexSnap"
                     },
                     "UserData": {
-                      "Position": "192,-0"
+                      "Position": "256,-0"
                     }
                   }
                 ],
                 "Links": [
                   {
                     "SrcId": 0,
+                    "SrcName": "_target",
+                    "DstId": 35,
+                    "DstName": "_this"
+                  },
+                  {
+                    "SrcId": 0,
                     "SrcName": "_signal",
-                    "DstId": 31,
+                    "DstId": 36,
                     "DstName": "_signal"
+                  },
+                  {
+                    "SrcId": 35,
+                    "SrcName": "_result",
+                    "DstId": 36,
+                    "DstName": "_target"
                   }
                 ]
               },
@@ -291,7 +315,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-28T23:50:39.1500323-04:00",
+  "LastSaved": "2024-06-29T12:26:50.2353206-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
