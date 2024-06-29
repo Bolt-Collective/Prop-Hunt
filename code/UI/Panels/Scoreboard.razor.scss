@@ -4,10 +4,11 @@
     align-items: center;
     height: 70vh;
     width: 50vw;
-    background-color: #000000b9;
+    background-color: #0000004e;
+    backdrop-filter: blur(10px);
     pointer-events: all;
     transition: all 0.1s ease-in-out;
-    border-radius: 24px;
+    border-radius: 30px;
 
     .teams {
         display: flex;
@@ -19,6 +20,8 @@
 
         .title {
             border-radius: 24px;
+            font-size: 40px;
+            text-align: center;
             flex-direction: column;
         }
 
