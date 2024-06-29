@@ -1,6 +1,7 @@
 ﻿using PropHunt;
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.Network;
 using Sandbox.UI.Panels.Chat;
 using Sandbox.Utility;
 
@@ -481,37 +482,31 @@ public class Player : Component
 		{
 			Health = 0;
 			IsDead = true;
-			Death();
+			Death( GameObject.Id );
 		}
 	}
-	[Button( "Death" )]
-	void Death()
+	[Broadcast]
+	void Death( Guid caller )
 	{
-		Health = 0;
-		DisableBody();
-		TeamComponent.ChangeTeam( Team.Unassigned );
+		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		player.Health = 0;
+		player.DisableBody();
+		player.TeamComponent.ChangeTeam( Team.Unassigned );
 		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
-		OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
-		AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
-		Inventory.Clear();
-		AbleToMove = false;
+		player.OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
+		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		player.Inventory.Clear();
+		player.AbleToMove = false;
 	}
 
 	[Broadcast]
 	public void Respawn( Guid caller )
 	{
 		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
-		player.ResetStats();
+		player.ResetStats( caller );
 		player.GameObject.Transform.World = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() ).Transform.World;
-		ClearHoldType( caller );
 		player.AbleToMove = true;
 		player.IsDead = false;
-	}
-	[Broadcast]
-	public void ClearHoldType( Guid Caller )
-	{
-		var helper = Scene.Directory.FindByGuid( Caller ).Components.Get<CitizenAnimationHelper>();
-		helper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 	}
 	[Broadcast]
 	public void DisableBody()
@@ -527,23 +522,25 @@ public class Player : Component
 			PropShiftingMechanic.Collider.Enabled = false;
 		}
 	}
-	public void ResetStats()
+	[Broadcast]
+	public void ResetStats( Guid caller )
 	{
-		AmmoContainer?.ResetAmmo();
-		Health = 100;
-		IsCrouching = false;
-		IsRunning = false;
-		FreeLooking = false;
-		CameraDistance = 0;
-		IsGrabbing = false;
-		Body.Enabled = true;
-		AbleToMove = true;
-		if ( PropShiftingMechanic.Collider is not null )
+		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		player.AmmoContainer?.ResetAmmo();
+		player.Health = 100;
+		player.IsCrouching = false;
+		player.IsRunning = false;
+		player.FreeLooking = false;
+		player.CameraDistance = 0;
+		player.IsGrabbing = false;
+		player.Body.Enabled = true;
+		player.AbleToMove = true;
+		if ( player.PropShiftingMechanic.Collider is not null )
 		{
-			PropShiftingMechanic.Collider.Enabled = true;
+			player.PropShiftingMechanic.Collider.Enabled = true;
 		}
-		PropShiftingMechanic.ExitProp();
-		AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		player.PropShiftingMechanic.ExitProp();
+		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 	}
 
 	[ConCmd( "kill" )]

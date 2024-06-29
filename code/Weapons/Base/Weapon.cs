@@ -102,7 +102,7 @@ public sealed class Weapon : Component
 		{
 			if ( tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 			{
-				if ( Player.IsFriendly( enemy ) ) return;
+				if ( Player.TeamComponent.TeamName == enemy.TeamComponent.TeamName ) return;
 				enemy.TakeDamage( 25 );
 				OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );
 				var particle = Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );

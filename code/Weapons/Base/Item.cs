@@ -95,7 +95,7 @@ public sealed class Item : Component
 			TraceObject = tr.GameObject;
 			if ( tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 			{
-				if ( Player.IsFriendly( enemy ) ) return;
+				if ( Player.TeamComponent.TeamName == enemy.TeamComponent.TeamName ) return;
 				enemy.TakeDamage( damage );
 				Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
 			}
