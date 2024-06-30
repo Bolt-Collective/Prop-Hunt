@@ -73,8 +73,8 @@ public sealed class Item : Component
 		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
 		ray.Forward += ray.Forward * Vector3.Random * Spread;
 		var tr = Scene.Trace.Ray( ray, TraceDistance )
-			.IgnoreGameObject( Player.PropShiftingMechanic.MapCollider.GameObject )
 			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
+			.IgnoreGameObject( Player.PropShiftingMechanic.MapCollider.GameObject )
 			.Run();
 		if ( Player is null || !Player.AbleToMove )
 		{
@@ -94,7 +94,7 @@ public sealed class Item : Component
 		if ( tr.Hit )
 		{
 			TraceObject = tr.GameObject;
-			if ( tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
+			if ( tr.GameObject.Root.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 			{
 				if ( Player.TeamComponent.TeamName == enemy.TeamComponent.TeamName ) return;
 				enemy.TakeDamage( damage );

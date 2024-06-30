@@ -88,10 +88,10 @@ public sealed class Weapon : Component
 		Player.EyeAngles += new Angles( -Recoil, GetRandomFloat(), 0 );
 
 		var tr = Scene.Trace.Ray( ray, FireLength )
-			.IgnoreGameObject( Player.PropShiftingMechanic.MapCollider.GameObject )
 			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
+			.IgnoreGameObject( Player.PropShiftingMechanic.MapCollider.GameObject )
 			.Run();
-
+		Log.Info( tr.GameObject.Root.Name );
 		ShotsFired++;
 		Ammo--;
 
@@ -101,7 +101,7 @@ public sealed class Weapon : Component
 
 		if ( tr.Hit )
 		{
-			if ( tr.GameObject.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
+			if ( tr.GameObject.Root.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 			{
 				if ( Player.TeamComponent.TeamName == enemy.TeamComponent.TeamName ) return;
 				enemy.TakeDamage( 25 );

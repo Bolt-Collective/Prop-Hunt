@@ -81,8 +81,8 @@ public class PropShiftingMechanic : Component
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
 		var tr = Scene.Trace.Ray( Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + lookDir.Forward * 300 + Player.Local.CameraDistance )
-			.IgnoreGameObject( Player.Local.PropShiftingMechanic.MapCollider.GameObject )
 			.IgnoreGameObject( Player.Local.PropShiftingMechanic.PropsCollider.GameObject )
+			.IgnoreGameObject( Player.Local.PropShiftingMechanic.MapCollider.GameObject )
 			.Run();
 
 		//Gizmo.Draw.LineSphere( tr.HitPosition, 16 );
