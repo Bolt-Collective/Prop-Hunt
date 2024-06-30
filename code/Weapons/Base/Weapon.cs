@@ -88,7 +88,8 @@ public sealed class Weapon : Component
 		Player.EyeAngles += new Angles( -Recoil, GetRandomFloat(), 0 );
 
 		var tr = Scene.Trace.Ray( ray, FireLength )
-			.IgnoreGameObject( Player.Body )
+			.IgnoreGameObject( Player.PropShiftingMechanic.MapCollider.GameObject )
+			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
 			.Run();
 
 		ShotsFired++;
