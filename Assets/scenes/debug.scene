@@ -398,7 +398,6 @@
       "__guid": "71d77f3d-648a-4f80-820c-fe3a1fbd4d69",
       "Flags": 0,
       "Name": "NetworkManager",
-      "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
@@ -432,8 +431,13 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "a91d29bc-e79c-45d3-a900-93cfb04b1e32",
+          "ForceTauntCooldown": 60,
           "MaxPlayersToStart": 2,
-          "OnGoingRound": false
+          "OnGoingRound": false,
+          "RoundState": "None",
+          "TimeSinceLastForceTaunt": {
+            "Relative": 2196.9055
+          }
         }
       ]
     },
@@ -1083,6 +1087,368 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "0796cd80-9b69-4a4b-bf85-60de74530be7",
+      "Flags": 0,
+      "Name": "player",
+      "Position": "-1.166128,3.409248,3.999998",
+      "Tags": "player,noblockaudio",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Player",
+          "__guid": "8ceafe61-d1d0-40f2-97a9-ffd4d3f7d453",
+          "AbleToMove": true,
+          "AmmoContainer": {
+            "_type": "component",
+            "component_id": "a7e98497-4c7c-41f3-affa-a93809db3d8d",
+            "go": "0796cd80-9b69-4a4b-bf85-60de74530be7",
+            "component_type": "AmmoContainer"
+          },
+          "AnimationHelper": {
+            "_type": "component",
+            "component_id": "ebb81702-6689-4369-9579-b1091ff68892",
+            "go": "0796cd80-9b69-4a4b-bf85-60de74530be7",
+            "component_type": "CitizenAnimationHelper"
+          },
+          "Body": {
+            "_type": "gameobject",
+            "go": "1182764d-a3aa-483b-8257-3ad19e524d4c"
+          },
+          "BodyRenderer": {
+            "_type": "component",
+            "component_id": "9302ff53-7a5d-48f2-8c00-6bd83f78c59f",
+            "go": "1182764d-a3aa-483b-8257-3ad19e524d4c",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "CameraDistance": 0,
+          "characterController": {
+            "_type": "component",
+            "component_id": "9745769d-700e-450e-acec-67e7d13c3bc0",
+            "go": "0796cd80-9b69-4a4b-bf85-60de74530be7",
+            "component_type": "Hc1CharacterController"
+          },
+          "Eye": {
+            "_type": "gameobject",
+            "go": "45667023-1062-408b-9faf-f6d6b732b18d"
+          },
+          "Health": 0,
+          "OnDeath": {
+            "__version": 7,
+            "__guid": "e5691050-3aeb-49c8-9443-9b98ea3e5075",
+            "UserData": {
+              "Title": "On Death",
+              "ReferencedComponentTypes": []
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input",
+                "UserData": {
+                  "Position": "-240,32"
+                }
+              },
+              {
+                "Id": 16,
+                "Type": "property",
+                "Properties": {
+                  "_type": "Sandbox.Component",
+                  "_name": "GameObject"
+                },
+                "UserData": {
+                  "Position": "-48,80"
+                }
+              },
+              {
+                "Id": 17,
+                "Type": "sound.play",
+                "UserData": {
+                  "Position": "240,96"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "player",
+                "DstId": 16,
+                "DstName": "_target"
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 17,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 16,
+                "SrcName": "_result",
+                "DstId": 17,
+                "DstName": "_this"
+              },
+              {
+                "Value": "sounds/death.player.sound",
+                "DstId": 17,
+                "DstName": "soundEvent"
+              }
+            ]
+          }
+        },
+        {
+          "__type": "PlayerDresser",
+          "__guid": "208d1e59-a556-4fb7-908a-98c287e81135",
+          "BodyRenderer": {
+            "_type": "component",
+            "component_id": "9302ff53-7a5d-48f2-8c00-6bd83f78c59f",
+            "go": "1182764d-a3aa-483b-8257-3ad19e524d4c",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "PropShiftingMechanic",
+          "__guid": "744d0294-b08b-4769-859a-4f1bf7a85f9d",
+          "Collider": {
+            "_type": "component",
+            "component_id": "f4b50308-a7ba-4ac3-812d-3e4c165f1a6f",
+            "go": "1182764d-a3aa-483b-8257-3ad19e524d4c",
+            "component_type": "ModelCollider"
+          },
+          "IsProp": false,
+          "PreviousHealth": 0
+        },
+        {
+          "__type": "TeamComponent",
+          "__guid": "7c15a222-2f9c-4b4f-bfb3-73c78e198eb0",
+          "Team": "Unassigned",
+          "TeamName": "Unassigned"
+        },
+        {
+          "__type": "Inventory",
+          "__guid": "8b3c03fe-dfbd-444a-95c1-7dc8ac19deb6",
+          "AbleToSwitch": true,
+          "ActiveConstarints": [],
+          "ActiveIndex": 0,
+          "cloneConstraints": [
+            {
+              "Parent": {
+                "_type": "gameobject",
+                "go": "1182764d-a3aa-483b-8257-3ad19e524d4c"
+              },
+              "Clone": {
+                "_type": "gameobject",
+                "prefab": "prefabs/worldmodels/mp5wm.prefab"
+              }
+            },
+            {
+              "Parent": {
+                "_type": "gameobject",
+                "go": "1182764d-a3aa-483b-8257-3ad19e524d4c"
+              },
+              "Clone": {
+                "_type": "gameobject",
+                "prefab": "prefabs/worldmodels/shotgunwm.prefab"
+              }
+            },
+            {
+              "Parent": {
+                "_type": "gameobject",
+                "go": "1182764d-a3aa-483b-8257-3ad19e524d4c"
+              },
+              "Clone": {
+                "_type": "gameobject",
+                "prefab": "prefabs/worldmodels/uspwm.prefab"
+              }
+            },
+            {
+              "Parent": {
+                "_type": "gameobject",
+                "go": "1182764d-a3aa-483b-8257-3ad19e524d4c"
+              },
+              "Clone": {
+                "_type": "gameobject",
+                "prefab": "prefabs/worldmodels/knifewm.prefab"
+              }
+            }
+          ],
+          "Items": [],
+          "Size": 4,
+          "StartingItems": [
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/pistol.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/knife.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/mp5.prefab"
+            },
+            {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/shotgun.prefab"
+            }
+          ]
+        },
+        {
+          "__type": "AmmoContainer",
+          "__guid": "a7e98497-4c7c-41f3-affa-a93809db3d8d",
+          "Ammo": 60,
+          "MaxAmmo": 60
+        },
+        {
+          "__type": "Kicks.Interactor",
+          "__guid": "e5cf727d-9590-4e30-8e84-d49c8426b0b3"
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "ebb81702-6689-4369-9579-b1091ff68892",
+          "BodyWeight": 1,
+          "EyeSource": {
+            "_type": "gameobject",
+            "go": "804998f8-5e0d-466b-8065-c7fd1a2bbdd7"
+          },
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "Height": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "9302ff53-7a5d-48f2-8c00-6bd83f78c59f",
+            "go": "1182764d-a3aa-483b-8257-3ad19e524d4c",
+            "component_type": "SkinnedModelRenderer"
+          }
+        },
+        {
+          "__type": "TauntComponent",
+          "__guid": "0dd42685-f083-43cd-8b34-178e3053d479",
+          "HunterTaunts": [
+            "sounds/taunts/seaker taunts/error_taunt.sound",
+            "sounds/taunts/seaker taunts/prowler.sound",
+            "sounds/taunts/seaker taunts/rehehehe.sound",
+            "sounds/taunts/seaker taunts/grown-dark-evil-pack-tekken-meme.sound"
+          ],
+          "PropTaunts": [
+            "sounds/taunts/prop taunts/anime-wow-sound-effect.sound",
+            "sounds/taunts/prop taunts/bone-crack.sound",
+            "sounds/taunts/prop taunts/joerogan.sound",
+            "sounds/taunts/prop taunts/laugh.sound",
+            "sounds/taunts/prop taunts/laugh2.sound",
+            "sounds/taunts/prop taunts/perfect-fart.sound",
+            "sounds/taunts/prop taunts/pluh.sound",
+            "sounds/taunts/prop taunts/whatsup.sound"
+          ],
+          "TauntCooldown": 5
+        },
+        {
+          "__type": "Facepunch.Hc1CharacterController",
+          "__guid": "9745769d-700e-450e-acec-67e7d13c3bc0",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "ignore",
+          "Radius": 16,
+          "StepHeight": 18,
+          "UseCollisionRules": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "1182764d-a3aa-483b-8257-3ad19e524d4c",
+          "Flags": 0,
+          "Name": "Body",
+          "Position": "0,0,0",
+          "Tags": "collider",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "9302ff53-7a5d-48f2-8c00-6bd83f78c59f",
+              "BodyGroups": 18446744073709551615,
+              "CreateBoneObjects": false,
+              "Model": "models/citizen/citizen.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            },
+            {
+              "__type": "Sandbox.ModelHitboxes",
+              "__guid": "2c1cce43-f225-4e11-8fc3-0d4b8a0373bf",
+              "Renderer": {
+                "_type": "component",
+                "component_id": "9302ff53-7a5d-48f2-8c00-6bd83f78c59f",
+                "go": "1182764d-a3aa-483b-8257-3ad19e524d4c",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "Target": {
+                "_type": "gameobject",
+                "go": "1182764d-a3aa-483b-8257-3ad19e524d4c"
+              }
+            },
+            {
+              "__type": "Sandbox.ModelCollider",
+              "__guid": "f4b50308-a7ba-4ac3-812d-3e4c165f1a6f",
+              "IsTrigger": false,
+              "Model": "models/citizen/citizen.vmdl",
+              "Static": false
+            }
+          ]
+        },
+        {
+          "__guid": "804998f8-5e0d-466b-8065-c7fd1a2bbdd7",
+          "Flags": 0,
+          "Name": "eye",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true
+        },
+        {
+          "__guid": "5f41b000-239d-41fc-b809-612e20d2062e",
+          "Flags": 0,
+          "Name": "Voice",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Voice",
+              "__guid": "1f98a5b9-4b59-4506-9387-502618101be7",
+              "Loopback": false,
+              "Mode": "PushToTalk",
+              "MorphScale": 2,
+              "MorphSmoothTime": 0.1,
+              "PushToTalkInput": "voice",
+              "Renderer": {
+                "_type": "component",
+                "component_id": "9302ff53-7a5d-48f2-8c00-6bd83f78c59f",
+                "go": "1182764d-a3aa-483b-8257-3ad19e524d4c",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "Volume": 1,
+              "WorldspacePlayback": true
+            }
+          ]
+        },
+        {
+          "__guid": "45667023-1062-408b-9faf-f6d6b732b18d",
+          "Flags": 0,
+          "Name": "EyePos",
+          "Position": "0,0,64",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -1108,7 +1474,7 @@
   },
   "Title": "debug",
   "Description": "",
-  "LastSaved": "2024-06-28T13:29:51.797663-04:00",
+  "LastSaved": "2024-06-29T21:34:16.2288191-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.bathtub",

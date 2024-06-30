@@ -162,7 +162,6 @@
         {
           "__type": "DevUi",
           "__guid": "427b9d94-f363-4b54-a269-a0d9ff6d8736",
-          "__enabled": false,
           "AllowedSteamIds": [
             76561199001645276,
             76561198043979097
@@ -205,7 +204,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 128.42085
+            "Relative": 2149.984
           }
         }
       ]
@@ -245,8 +244,8 @@
                     "Type": "call",
                     "Properties": {
                       "_type": "PropHunt.MapChanger",
-                      "_isStatic": false,
-                      "_name": "GnomefigVertexSnap"
+                      "_name": "GnomefigVertexSnap",
+                      "_isStatic": false
                     },
                     "UserData": {
                       "Position": "240,32"
@@ -298,7 +297,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-29T16:58:38.942857-04:00",
+  "LastSaved": "2024-06-29T21:33:29.3115763-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

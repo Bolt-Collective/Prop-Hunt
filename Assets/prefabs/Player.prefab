@@ -3,7 +3,7 @@
     "__guid": "13cdc0ba-6159-43e7-b648-238afaf50f27",
     "Flags": 0,
     "Name": "player",
-    "Tags": "noblockaudio,red,green,player",
+    "Tags": "noblockaudio,player",
     "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
@@ -123,7 +123,7 @@
         "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6",
         "Collider": {
           "_type": "component",
-          "component_id": "b5c2fbc9-5612-41e7-bfdb-6470f62f4f20",
+          "component_id": "ffb96378-6418-4dd4-8f4d-83e26e02a21c",
           "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
           "component_type": "ModelCollider"
         },
@@ -303,7 +303,7 @@
           },
           {
             "__type": "Sandbox.ModelCollider",
-            "__guid": "b5c2fbc9-5612-41e7-bfdb-6470f62f4f20",
+            "__guid": "ffb96378-6418-4dd4-8f4d-83e26e02a21c",
             "IsTrigger": false,
             "Model": "models/citizen/citizen.vmdl",
             "Static": false
