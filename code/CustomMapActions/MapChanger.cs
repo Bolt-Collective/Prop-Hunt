@@ -11,14 +11,14 @@ public sealed partial class MapChanger : Component
 			OnSceneStart();
 			MapInstance.UnloadMap();
 		}
-		MapInstance.OnMapLoaded += HandleMap;
-		MapInstance.OnMapUnloaded += HandleMap;
+		MapInstance.OnMapLoaded += OnMapLoaded;
+		MapInstance.OnMapUnloaded += OnMapUnloaded;
 	}
 
 	protected override void OnDisabled()
 	{
-		MapInstance.OnMapLoaded -= HandleMap;
-		MapInstance.OnMapUnloaded -= HandleMap;
+		MapInstance.OnMapLoaded -= OnMapLoaded;
+		MapInstance.OnMapUnloaded -= OnMapUnloaded;
 	}
 	[Broadcast]
 	public void LoadMap( string ident )

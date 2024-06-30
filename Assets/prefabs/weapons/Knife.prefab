@@ -76,8 +76,8 @@
               "Type": "call",
               "Properties": {
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_name": "Set",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "1632,-0"
@@ -88,8 +88,8 @@
               "Type": "call",
               "Properties": {
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_name": "Set",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "1872,-0"
@@ -292,7 +292,7 @@
         },
         "OnUse": {
           "__version": 7,
-          "__guid": "61a54edb-a2b0-46fc-a0bc-33c37d6fdbe1",
+          "__guid": "71aa7e02-07f4-4d5f-b6c1-33d87a841780",
           "UserData": {
             "Title": "On Use",
             "ReferencedComponentTypes": []
@@ -303,59 +303,56 @@
               "Id": 0,
               "Type": "input",
               "UserData": {
-                "Labels": {
-                  "item": "item"
-                },
-                "Position": "-288,-0"
+                "Position": "-64,-0"
               }
             },
             {
               "Id": 1,
               "Type": "if",
               "UserData": {
-                "Position": "240,-0"
+                "Position": "400,80"
               }
             },
             {
               "Id": 2,
               "Type": "input.down",
               "UserData": {
-                "Position": "0,176"
+                "Position": "160,256"
+              }
+            },
+            {
+              "Id": 3,
+              "Type": "call",
+              "Properties": {
+                "_type": "Item",
+                "_isStatic": false,
+                "_name": "Trace"
+              },
+              "UserData": {
+                "Position": "656,80"
               }
             },
             {
               "Id": 4,
               "Type": "call",
               "Properties": {
-                "_name": "Trace",
                 "_type": "Item",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "FireDelay"
               },
               "UserData": {
-                "Position": "496,0"
+                "Position": "1184,80"
               }
             },
             {
-              "Id": 10,
-              "Type": "call",
-              "Properties": {
-                "_type": "Item",
-                "_name": "FireDelay",
-                "_isStatic": false
-              },
-              "UserData": {
-                "Position": "1024,0"
-              }
-            },
-            {
-              "Id": 12,
+              "Id": 5,
               "Type": "op.andalso",
               "UserData": {
-                "Position": "272,128"
+                "Position": "432,208"
               }
             },
             {
-              "Id": 14,
+              "Id": 6,
               "Type": "call",
               "Properties": {
                 "_name": "Set",
@@ -363,60 +360,37 @@
                 "_isStatic": false
               },
               "UserData": {
-                "Position": "800,0"
+                "Position": "960,80"
               }
             },
             {
-              "Id": 37,
+              "Id": 7,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
-                "Position": "112,-128"
+                "Position": "288,-32"
               }
             },
             {
-              "Id": 51,
+              "Id": 50,
               "Type": "property",
               "ParentId": 0,
               "Properties": {
-                "_name": "characterController",
-                "_type": "Player"
+                "_type": "Player",
+                "_name": "characterController"
               }
             },
             {
               "Id": 52,
               "Type": "property",
-              "ParentId": 51,
+              "ParentId": 50,
               "Properties": {
-                "_name": "IsOnGround",
-                "_type": "Sandbox.CharacterController"
-              }
-            },
-            {
-              "Id": 66,
-              "Type": "Broadcast Anim",
-              "UserData": {
-                "Position": "1328,0"
-              }
-            },
-            {
-              "Id": 78,
-              "Type": "Get GameObject Id",
-              "UserData": {
-                "Position": "944,240"
-              }
-            },
-            {
-              "Id": 80,
-              "Type": "property",
-              "ParentId": 0,
-              "Properties": {
-                "_name": "GameObject",
-                "_type": "Sandbox.Component"
+                "_type": "Facepunch.Hc1CharacterController",
+                "_name": "IsOnGround"
               }
             }
           ],
@@ -428,7 +402,7 @@
               "DstName": "_signal"
             },
             {
-              "SrcId": 12,
+              "SrcId": 5,
               "SrcName": "_result",
               "DstId": 1,
               "DstName": "condition"
@@ -440,59 +414,59 @@
             },
             {
               "Value": 200,
-              "DstId": 4,
+              "DstId": 3,
               "DstName": "TraceDistance"
             },
             {
               "SrcId": 1,
               "SrcName": "true",
-              "DstId": 4,
+              "DstId": 3,
               "DstName": "_signal"
             },
             {
               "SrcId": 0,
               "SrcName": "item",
-              "DstId": 4,
+              "DstId": 3,
               "DstName": "_target"
             },
             {
               "Value": 20,
-              "DstId": 4,
+              "DstId": 3,
               "DstName": "damage"
             },
             {
-              "SrcId": 14,
+              "SrcId": 6,
               "SrcName": "_signal",
-              "DstId": 10,
+              "DstId": 4,
               "DstName": "_signal"
             },
             {
               "SrcId": 0,
               "SrcName": "item",
-              "DstId": 10,
+              "DstId": 4,
               "DstName": "_target"
             },
             {
               "Value": 2,
-              "DstId": 10,
+              "DstId": 4,
               "DstName": "delay"
             },
             {
               "SrcId": 2,
               "SrcName": "_result",
-              "DstId": 12,
+              "DstId": 5,
               "DstName": "a"
             },
             {
               "SrcId": 0,
               "SrcName": "AbleToUse",
-              "DstId": 12,
+              "DstId": 5,
               "DstName": "b"
             },
             {
-              "SrcId": 4,
+              "SrcId": 3,
               "SrcName": "_signal",
-              "DstId": 14,
+              "DstId": 6,
               "DstName": "_signal"
             },
             {
@@ -502,23 +476,23 @@
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
                 "component_type": "SkinnedModelRenderer"
               },
-              "DstId": 14,
+              "DstId": 6,
               "DstName": "_target"
             },
             {
               "Value": "b_attack",
-              "DstId": 14,
+              "DstId": 6,
               "DstName": "v"
             },
             {
               "Value": true,
-              "DstId": 14,
+              "DstId": 6,
               "DstName": "value"
             },
             {
               "SrcId": 0,
               "SrcName": "_signal",
-              "DstId": 37,
+              "DstId": 7,
               "DstName": "_signal"
             },
             {
@@ -528,75 +502,41 @@
                 "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
                 "component_type": "SkinnedModelRenderer"
               },
-              "DstId": 37,
+              "DstId": 7,
               "DstName": "_target"
             },
             {
               "Value": "b_grounded",
-              "DstId": 37,
+              "DstId": 7,
               "DstName": "v"
             },
             {
               "SrcId": 52,
               "SrcName": "_result",
-              "DstId": 37,
+              "DstId": 7,
               "DstName": "value"
             },
             {
               "SrcId": 0,
               "SrcName": "Self",
-              "DstId": 51,
+              "DstId": 50,
               "DstName": "_target"
             },
             {
-              "SrcId": 51,
+              "SrcId": 50,
               "SrcName": "_result",
               "DstId": 52,
-              "DstName": "_target"
-            },
-            {
-              "Value": "b_attack",
-              "DstId": 66,
-              "DstName": "AnimName"
-            },
-            {
-              "SrcId": 78,
-              "SrcName": "_result",
-              "DstId": 66,
-              "DstName": "RendererId"
-            },
-            {
-              "Value": true,
-              "DstId": 66,
-              "DstName": "True"
-            },
-            {
-              "SrcId": 10,
-              "SrcName": "_signal",
-              "DstId": 66,
-              "DstName": "_signal"
-            },
-            {
-              "SrcId": 80,
-              "SrcName": "_result",
-              "DstId": 78,
-              "DstName": "gameObject"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "Self",
-              "DstId": 80,
               "DstName": "_target"
             }
           ],
           "Defaults": {
-            "$85._value": {
+            "$14._value": {
               "_type": "component",
               "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
               "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
               "component_type": "SkinnedModelRenderer"
             },
-            "$88._value": {
+            "$17._value": {
               "_type": "component",
               "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
               "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",

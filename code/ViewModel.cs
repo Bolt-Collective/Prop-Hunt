@@ -1,3 +1,4 @@
+using Facepunch;
 using Sandbox;
 
 public sealed class ViewModel : Component
@@ -39,8 +40,8 @@ public sealed class ViewModel : Component
 
 	void GroundSpeed()
 	{
-		if ( Player.GameObject.Components.Get<CharacterController>() is null ) return;
-		Gun.Set( "move_groundspeed", Player.GameObject.Components.Get<CharacterController>().Velocity.Length );
+		if ( Player.GameObject.Components.Get<Hc1CharacterController>() is null ) return;
+		Gun.Set( "move_groundspeed", Player.GameObject.Components.Get<Hc1CharacterController>().Velocity.Length );
 	}
 	Vector3 LocalPos = Vector3.Zero;
 	protected override void OnUpdate()

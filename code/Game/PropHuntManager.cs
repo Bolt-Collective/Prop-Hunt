@@ -148,7 +148,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		return TimeSinceLastForceTaunt >= ForceTauntCooldown;
 	}
-
 	public void OnRoundStarting()
 	{
 		Log.Info( "Round starting" );
@@ -158,7 +157,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		AssignEvenTeams();
 
 		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
-
+		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
+		foreach ( var player in Scene.GetAllComponents<Player>() )
+		{
+			var randomPoint = Game.Random.FromList( spawnPoints );
+			player.EyeAngles = randomPoint.Transform.Rotation.Angles();
+			player.Transform.World = randomPoint.Transform.World;
+		}
 
 
 
@@ -176,14 +181,9 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", 30f );
 		}
-		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
-		foreach ( var player in Scene.GetAllComponents<Player>() )
-		{
-			var randomPoint = Game.Random.FromList( spawnPoints );
-			player.EyeAngles = randomPoint.Transform.Rotation.Angles();
-			player.Transform.World = randomPoint.Transform.World;
-		}
+
 	}
+
 	public Random GetRandom()
 	{
 		return new Random();
