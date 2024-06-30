@@ -8,7 +8,8 @@ public class PropShiftingMechanic : Component
 	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
-	[Property] public ModelCollider Collider { get; set; }
+	[Property] public ModelCollider PropsCollider { get; set; }
+	[Property] public SphereCollider MapCollider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
 	[Property] public int PreviousHealth { get; set; }
@@ -55,8 +56,8 @@ public class PropShiftingMechanic : Component
 		}
 		ModelPath = "models/citizen/citizen.vmdl_c";
 		pcModel.Model = Model.Load( ModelPath );
+		PropsCollider.Model = Model.Load( ModelPath );
 		pcModel.Tint = Color.White;
-		Collider.Model = Model.Load( ModelPath );
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		Player.Local.Health = PreviousHealth;
@@ -80,7 +81,8 @@ public class PropShiftingMechanic : Component
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
 		var tr = Scene.Trace.Ray( Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + lookDir.Forward * 300 + Player.Local.CameraDistance )
-			.IgnoreGameObject( Player.Local.Body )
+			.IgnoreGameObject( Player.Local.PropShiftingMechanic.MapCollider.GameObject )
+			.IgnoreGameObject( Player.Local.PropShiftingMechanic.PropsCollider.GameObject )
 			.Run();
 
 		//Gizmo.Draw.LineSphere( tr.HitPosition, 16 );
@@ -94,9 +96,8 @@ public class PropShiftingMechanic : Component
 		Player.Local.Body.Transform.Scale = propRenderer.Transform.Scale;
 		Player.Local.BodyRenderer.Tint = propRenderer.Tint;
 		Player.Local.BodyRenderer.Model = Model.Load( ModelPath );
-		Collider.Model = Model.Load( ModelPath );
 		IsProp = ModelPath == "models/citizen/citizen.vmdl_c" ? false : true;
-
+		PropsCollider.Model = Model.Load( ModelPath );
 		Log.Info( "changed model" );
 
 		var body = Player.Local.BodyRenderer;

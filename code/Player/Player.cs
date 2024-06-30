@@ -301,16 +301,8 @@ public class Player : Component
 			}
 
 			CameraPosition();
-			if ( PropShiftingMechanic.IsProp )
-			{
-				characterController.Height = Body.GetBounds().Size.z;
-				characterController.Radius = Body.GetBounds().Size.x / 2;
-			}
-			else
-			{
-				characterController.Height = 64;
-				characterController.Radius = 16;
-			}
+			characterController.Height = 64;
+			characterController.Radius = 16;
 			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Transform.World;
 			IsRunning = Input.Down( "Run" );
 		}
@@ -520,9 +512,13 @@ public class Player : Component
 			Body.Enabled = false;
 		}
 
-		if ( PropShiftingMechanic.Collider is not null )
+		if ( PropShiftingMechanic.MapCollider is not null )
 		{
-			PropShiftingMechanic.Collider.Enabled = false;
+			PropShiftingMechanic.MapCollider.Enabled = false;
+		}
+		if ( PropShiftingMechanic.PropsCollider is not null )
+		{
+			PropShiftingMechanic.MapCollider.Enabled = false;
 		}
 	}
 	[Broadcast]
@@ -538,9 +534,13 @@ public class Player : Component
 		player.IsGrabbing = false;
 		player.Body.Enabled = true;
 		player.AbleToMove = true;
-		if ( player.PropShiftingMechanic.Collider is not null )
+		if ( player.PropShiftingMechanic.MapCollider is not null )
 		{
-			player.PropShiftingMechanic.Collider.Enabled = true;
+			player.PropShiftingMechanic.MapCollider.Enabled = true;
+		}
+		if ( player.PropShiftingMechanic.PropsCollider is not null )
+		{
+			player.PropShiftingMechanic.MapCollider.Enabled = true;
 		}
 		player.PropShiftingMechanic.ExitProp();
 		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
