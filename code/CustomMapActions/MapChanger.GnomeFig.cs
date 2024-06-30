@@ -2,7 +2,7 @@ namespace PropHunt;
 public partial class MapChanger
 {
 	[Category( "Gnomefig" )]
-	public void GnomefigVertexSnap()
+	public void CreateGnomeFigPostprocess()
 	{
 		Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.Create<GnomefigPostprocess>();
 	}

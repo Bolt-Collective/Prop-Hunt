@@ -148,6 +148,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		return TimeSinceLastForceTaunt >= ForceTauntCooldown;
 	}
+	[Broadcast]
+	public void ReloadMapRPC()
+	{
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+	}
 	public void OnRoundStarting()
 	{
 		Log.Info( "Round starting" );
@@ -156,7 +161,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		AssignEvenTeams();
 
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
+		ReloadMapRPC();
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
 		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
@@ -238,21 +243,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.HunterUnblind();
 		}
 
-		BroadcastPropTags();
 
-		Log.Info( "Gave all props 'prop' tag" );
 		RoundState = GameState.Started;
 		RoundLength = RoundTime;
 		TimeSinceRoundStateChanged = 0;
 	}
-	[Broadcast]
-	public void BroadcastPropTags()
-	{
-		foreach ( var prop in Scene.Directory.FindByName( "prop_physics" ) )
-		{
-			prop.Tags.Add( "prop" );
-		}
-	}
+
 	public void OnRoundEnding()
 	{
 		OnGoingRound = false;

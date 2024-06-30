@@ -61,12 +61,9 @@ public sealed partial class MapChanger : Component
 	{
 		Scene.GetAllComponents<MapCollider>().FirstOrDefault().Tags.Add( "map" );
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
-
+		BroadcastPropTags();
 		foreach ( var player in Scene.GetAllComponents<Player>().ToArray() )
 		{
-			if ( player.IsProxy )
-				continue;
-
 			var randomSpawnPoint = Random.Shared.FromArray( spawnPoints );
 			if ( randomSpawnPoint is null ) continue;
 
@@ -80,7 +77,14 @@ public sealed partial class MapChanger : Component
 		}
 
 	}
-
+	[Broadcast]
+	public void BroadcastPropTags()
+	{
+		foreach ( var prop in Scene.Directory.FindByName( "prop_physics" ) )
+		{
+			prop.Tags.Add( "prop" );
+		}
+	}
 
 	[ConCmd( "map" )]
 	public static void LoadMapCmd( string ident )

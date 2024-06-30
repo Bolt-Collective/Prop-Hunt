@@ -205,7 +205,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 239.61841
+            "Relative": 750.15204
           }
         }
       ]
@@ -241,15 +241,15 @@
                     }
                   },
                   {
-                    "Id": 2,
+                    "Id": 3,
                     "Type": "call",
                     "Properties": {
                       "_isStatic": false,
                       "_type": "PropHunt.MapChanger",
-                      "_name": "GnomefigVertexSnap"
+                      "_name": "CreateGnomeFigPostprocess"
                     },
                     "UserData": {
-                      "Position": "240,32"
+                      "Position": "256,32"
                     }
                   }
                 ],
@@ -257,13 +257,13 @@
                   {
                     "SrcId": 1,
                     "SrcName": "_signal",
-                    "DstId": 2,
+                    "DstId": 3,
                     "DstName": "_signal"
                   },
                   {
                     "SrcId": 1,
                     "SrcName": "mapChanger",
-                    "DstId": 2,
+                    "DstId": 3,
                     "DstName": "_target"
                   }
                 ]
@@ -304,7 +304,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-30T18:45:42.7098151-04:00",
+  "LastSaved": "2024-06-30T18:54:13.2571565-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
