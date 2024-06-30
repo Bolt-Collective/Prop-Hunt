@@ -441,7 +441,7 @@ public class Player : Component
 	}
 	public bool CanUncrouch()
 	{
-		var tr = characterController.TraceDirection( Vector3.Up * 32 );
+		var tr = characterController.TraceDirection( Vector3.Up * 16 );
 		return !tr.Hit;
 	}
 
