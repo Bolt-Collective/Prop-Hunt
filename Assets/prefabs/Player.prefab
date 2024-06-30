@@ -123,9 +123,9 @@
         "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6",
         "Collider": {
           "_type": "component",
-          "component_id": "ffb96378-6418-4dd4-8f4d-83e26e02a21c",
+          "component_id": "df602f6e-01ec-4545-b34d-3d60e621ef53",
           "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
-          "component_type": "ModelCollider"
+          "component_type": "BoxCollider"
         },
         "IsProp": false,
         "PreviousHealth": 0
@@ -302,10 +302,11 @@
             }
           },
           {
-            "__type": "Sandbox.ModelCollider",
-            "__guid": "ffb96378-6418-4dd4-8f4d-83e26e02a21c",
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "df602f6e-01ec-4545-b34d-3d60e621ef53",
+            "Center": "0,0,0",
             "IsTrigger": false,
-            "Model": "models/citizen/citizen.vmdl",
+            "Scale": "50,50,50",
             "Static": false
           }
         ]
