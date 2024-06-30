@@ -121,14 +121,20 @@
       {
         "__type": "PropShiftingMechanic",
         "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6",
-        "Collider": {
-          "_type": "component",
-          "component_id": "df602f6e-01ec-4545-b34d-3d60e621ef53",
-          "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589",
-          "component_type": "BoxCollider"
-        },
         "IsProp": false,
-        "PreviousHealth": 0
+        "MapCollider": {
+          "_type": "component",
+          "component_id": "2e024bdd-0ec2-43e1-9580-b0f936b1a235",
+          "go": "fc0a70a4-657e-4287-82d9-1e07bb03a2d2",
+          "component_type": "SphereCollider"
+        },
+        "PreviousHealth": 0,
+        "PropsCollider": {
+          "_type": "component",
+          "component_id": "129f4e70-dcb2-41bd-a3f4-8d7362ae67d9",
+          "go": "0005428f-b05e-42c0-aea6-9714313edbc4",
+          "component_type": "ModelCollider"
+        }
       },
       {
         "__type": "TeamComponent",
@@ -308,6 +314,46 @@
             "IsTrigger": false,
             "Scale": "50,50,50",
             "Static": false
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "0005428f-b05e-42c0-aea6-9714313edbc4",
+            "Flags": 0,
+            "Name": "PropCollider",
+            "Tags": "propcollider",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelCollider",
+                "__guid": "129f4e70-dcb2-41bd-a3f4-8d7362ae67d9",
+                "IsTrigger": false,
+                "Model": "models/citizen/citizen.vmdl",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "fc0a70a4-657e-4287-82d9-1e07bb03a2d2",
+            "Flags": 0,
+            "Name": "Map Collider",
+            "Position": "0,0,24",
+            "Tags": "mapcollider",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SphereCollider",
+                "__guid": "2e024bdd-0ec2-43e1-9580-b0f936b1a235",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Radius": 25,
+                "Static": false
+              }
+            ]
           }
         ]
       },

@@ -59,6 +59,7 @@ public sealed partial class MapChanger : Component
 	}
 	public void HandleMap()
 	{
+		Scene.GetAllComponents<MapCollider>().FirstOrDefault().Tags.Add( "map" );
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
 
 		foreach ( var player in Scene.GetAllComponents<Player>().ToArray() )

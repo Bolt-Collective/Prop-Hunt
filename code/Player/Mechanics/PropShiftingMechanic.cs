@@ -8,7 +8,8 @@ public class PropShiftingMechanic : Component
 	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
-	[Property] public BoxCollider Collider { get; set; }
+	[Property] public ModelCollider PropsCollider { get; set; }
+	[Property] public SphereCollider MapCollider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
 	[Property] public int PreviousHealth { get; set; }
@@ -38,33 +39,8 @@ public class PropShiftingMechanic : Component
 		{
 			ShiftIntoProp();
 		}
-		AdjustPlayerCollider( GameObject.Id );
 	}
-	public void AdjustPlayerCollider( Guid caller )
-	{
-		var player = Scene.Directory.FindByGuid( caller );
-		var controller = player.Components.Get<Player>();
-		var prop = player.Components.Get<PropShiftingMechanic>();
-		var collider = prop.Collider;
-		if ( player is null || prop is null || collider is null || controller is null ) return;
 
-		var center = controller.BodyRenderer.Bounds.Center;
-		var trace = Scene.Trace.Sweep( collider.KeyframeBody, new global::Transform( controller.BodyRenderer.Bounds.Mins ), new Transform( controller.BodyRenderer.Bounds.Maxs ) ).IgnoreGameObject( collider.GameObject ).Run();
-		Vector3 minScale = new Vector3( controller.BodyRenderer.Bounds.Size.x / 2, controller.BodyRenderer.Bounds.Size.y / 2, controller.BodyRenderer.Bounds.Size.z ); // Define minimum scale here
-
-		Vector3 traceScale = trace.Hit ? trace.EndPosition - trace.StartPosition : controller.BodyRenderer.Bounds.Size;
-		Vector3 newScale = new Vector3(
-			trace.Hit && traceScale.x < controller.BodyRenderer.Bounds.Size.x ? Math.Max( traceScale.x, minScale.x ) : controller.BodyRenderer.Bounds.Size.x,
-			trace.Hit && traceScale.y < controller.BodyRenderer.Bounds.Size.y ? Math.Max( traceScale.y, minScale.y ) : controller.BodyRenderer.Bounds.Size.y,
-			trace.Hit && traceScale.z < controller.BodyRenderer.Bounds.Size.z ? Math.Max( traceScale.z, minScale.z ) : controller.BodyRenderer.Bounds.Size.z
-		);
-
-		collider.Scale = newScale;
-		controller.characterController.Height = collider.Scale.z;
-		controller.characterController.Radius = Math.Min( collider.Scale.x, collider.Scale.y ) / 2;
-
-		Gizmo.Draw.LineBBox( BBox.FromPositionAndSize( center, collider.Scale ) );
-	}
 	public void ExitProp()
 	{
 		if ( !Player.Local.AbleToMove || IsProxy ) return;
@@ -80,6 +56,7 @@ public class PropShiftingMechanic : Component
 		}
 		ModelPath = "models/citizen/citizen.vmdl_c";
 		pcModel.Model = Model.Load( ModelPath );
+		PropsCollider.Model = Model.Load( ModelPath );
 		pcModel.Tint = Color.White;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
@@ -104,7 +81,8 @@ public class PropShiftingMechanic : Component
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
 		var tr = Scene.Trace.Ray( Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + lookDir.Forward * 300 + Player.Local.CameraDistance )
-			.IgnoreGameObject( Player.Local.Body )
+			.IgnoreGameObject( Player.Local.PropShiftingMechanic.MapCollider.GameObject )
+			.IgnoreGameObject( Player.Local.PropShiftingMechanic.PropsCollider.GameObject )
 			.Run();
 
 		//Gizmo.Draw.LineSphere( tr.HitPosition, 16 );
@@ -119,7 +97,7 @@ public class PropShiftingMechanic : Component
 		Player.Local.BodyRenderer.Tint = propRenderer.Tint;
 		Player.Local.BodyRenderer.Model = Model.Load( ModelPath );
 		IsProp = ModelPath == "models/citizen/citizen.vmdl_c" ? false : true;
-
+		PropsCollider.Model = Model.Load( ModelPath );
 		Log.Info( "changed model" );
 
 		var body = Player.Local.BodyRenderer;
