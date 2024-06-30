@@ -26,7 +26,7 @@ public partial class MapChanger
 			//camera.Attributes.SetCombo( "D_VERTEX_SNAP", 1 );
 			Graphics.GrabFrameTexture( "ColorBuffer", attributes );
 			Graphics.GrabDepthTexture( "DepthBuffer", attributes );
-			//Graphics.Blit( Material.FromShader( Cloud.Shader( "facepunch.goback_postprocess" ) ), attributes );
+			Graphics.Blit( Material.FromShader( Cloud.Shader( "facepunch.goback_postprocess" ) ), attributes );
 
 		}
 	}

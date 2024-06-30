@@ -86,7 +86,7 @@
           "ExposureMethod": "RGB",
           "MaximumExposure": 2,
           "MinimumExposure": 1,
-          "Mode": "HableFilmic",
+          "Mode": "Legacy",
           "Rate": 1
         },
         {
@@ -204,7 +204,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 2149.984
+            "Relative": 716.5296
           }
         }
       ]
@@ -244,8 +244,8 @@
                     "Type": "call",
                     "Properties": {
                       "_type": "PropHunt.MapChanger",
-                      "_name": "GnomefigVertexSnap",
-                      "_isStatic": false
+                      "_isStatic": false,
+                      "_name": "GnomefigVertexSnap"
                     },
                     "UserData": {
                       "Position": "240,32"
@@ -253,6 +253,12 @@
                   }
                 ],
                 "Links": [
+                  {
+                    "SrcId": 1,
+                    "SrcName": "_signal",
+                    "DstId": 2,
+                    "DstName": "_signal"
+                  },
                   {
                     "SrcId": 1,
                     "SrcName": "mapChanger",
@@ -297,7 +303,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-29T21:33:29.3115763-04:00",
+  "LastSaved": "2024-06-30T11:22:56.7206586-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
