@@ -1,5 +1,5 @@
 {
-  "__guid": "bcdfb5a5-307e-4707-a092-a857c2a34d69",
+  "__guid": "bf4b6a2e-29ed-445e-a402-2fae3504055e",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -168,6 +168,10 @@
             76561198043979097
           ],
           "MyStringValue": "Hello, I am playing in the dev client, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
+        },
+        {
+          "__type": "Sandbox.UI.PauseMenuUi",
+          "__guid": "db5b4d0f-a619-42e3-bb91-0928a07d3f86"
         }
       ],
       "Children": [
@@ -205,7 +209,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 290.02737
+            "Relative": 19257.338
           }
         }
       ]
@@ -304,7 +308,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-06-30T21:06:38.3918016-04:00",
+  "LastSaved": "2024-07-01T17:35:55.6562491\u002B02:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
