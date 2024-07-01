@@ -1,5 +1,5 @@
 {
-  "__guid": "bcdfb5a5-307e-4707-a092-a857c2a34d69",
+  "__guid": "bf4b6a2e-29ed-445e-a402-2fae3504055e",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -185,6 +185,21 @@
               "__guid": "ec522b07-e1bc-4d62-b0b8-f5c088183cc9"
             }
           ]
+        },
+        {
+          "__guid": "4138e17e-25a3-415f-9c94-f3021302dc4a",
+          "Flags": 0,
+          "Name": "PauseMenu",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Sandbox.UI.PauseMenuUi",
+              "__guid": "8e7700a5-2521-4c24-877b-bef8fe35f4ba"
+            }
+          ]
         }
       ]
     },
@@ -205,7 +220,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 5651.9766
+            "Relative": 376.80472
           }
         }
       ]
@@ -244,8 +259,8 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_name": "CreateGnomeFigPostprocess",
                       "_type": "PropHunt.MapChanger",
+                      "_name": "CreateGnomeFigPostprocess",
                       "_isStatic": false
                     },
                     "UserData": {
@@ -304,7 +319,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-07-01T12:32:39.6610722-04:00",
+  "LastSaved": "2024-07-01T19:06:44.9202579\u002B02:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

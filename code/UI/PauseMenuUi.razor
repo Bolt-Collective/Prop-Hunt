@@ -1,4 +1,5 @@
-﻿@using Sandbox.UI;
+﻿@using Sandbox.ModelEditor
+@using Sandbox.UI;
 @inherits PanelComponent
 @namespace Sandbox.UI
 
@@ -9,7 +10,8 @@
 		<div class="tab disabled">Settings</div>
 		<div class="tab disabled">Party</div>
 		<div style="flex-grow: 1"></div>
-		<div class="tab" @onclick="@( () => Scene.LoadFromFile("scenes/new_menu.scene"))">Leave</div>
+		<div class="tab" @onclick="@( () => Scene.LoadFromFile("scenes/new_menu.scene"))">Leave Lobby</div>
+		<div class="tab" @onclick="@( () => Game.Close())">Quit Game</div>
 	</div>
 </root>
 
