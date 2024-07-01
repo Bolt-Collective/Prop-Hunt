@@ -322,7 +322,6 @@ public class Player : Component
 		{
 			Body.Transform.Rotation = Rotation.Slerp( Body.Transform.Rotation, new Angles( 0, EyeAngles.yaw, 0 ).ToRotation(), Time.Delta * 10.0f );
 		}
-
 	}
 	[Broadcast]
 	public void UpdatePlayerControllerRadius( Guid caller )
