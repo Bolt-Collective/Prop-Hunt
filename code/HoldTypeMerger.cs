@@ -18,7 +18,7 @@ public sealed class HoldTypeMerger : Component
 		}
 	}
 
-	protected override void OnPreRender()
+	protected override void OnUpdate()
 	{
 		if ( Player.Local.IsDead || GameObject is null || AnimHelper is null || Player.Local is null || Player.Local.TeamComponent.TeamName == Team.Unassigned.ToString() || Player.Local.Body is null || Player.Local.BodyRenderer is null ) return;
 		if ( GameObject is not null )

@@ -68,7 +68,7 @@ public class Player : Component
 		PropShiftingMechanic = Components.Get<PropShiftingMechanic>();
 		AmmoContainer = Components.Get<AmmoContainer>();
 		if ( IsProxy ) return;
-		if ( PropHuntManager.Instance.OnGoingRound == true )
+		if ( PropHuntManager.Instance?.OnGoingRound == true && PropHuntManager.Instance is not null )
 		{
 			TakeDamage( 1000 );
 		}
