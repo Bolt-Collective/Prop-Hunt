@@ -476,7 +476,8 @@ public class Player : Component
 		{
 			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
 			Scene.Camera.Transform.Position = GameObject.Transform.Position + Vector3.Up * 64;
-			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * 1000 * Time.Delta;
+			var runSpeed = Input.Down( "run" ) ? 2000 : 1000;
+			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * runSpeed * Time.Delta;
 		}
 	}
 	[Button( "Network Refresh" )]
