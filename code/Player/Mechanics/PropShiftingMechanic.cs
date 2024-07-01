@@ -9,7 +9,6 @@ public class PropShiftingMechanic : Component
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
 	[Property] public ModelCollider PropsCollider { get; set; }
-	[Property] public CapsuleCollider MapCollider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
 	[Property] public int PreviousHealth { get; set; }
@@ -79,7 +78,6 @@ public class PropShiftingMechanic : Component
 
 		var tr = Scene.Trace.Ray( Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + lookDir.Forward * 300 + Player.Local.CameraDistance )
 			.IgnoreGameObject( Player.Local.PropShiftingMechanic.PropsCollider.GameObject )
-			.IgnoreGameObject( Player.Local.PropShiftingMechanic.MapCollider.GameObject )
 			.WithoutTags( "preventprops" )
 			.Run();
 

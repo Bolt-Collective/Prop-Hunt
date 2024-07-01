@@ -216,6 +216,12 @@
           "KeyboardCode": "T",
           "GamepadCode": "DpadNorth",
           "GroupName": "Other"
+        },
+        {
+          "Name": "light",
+          "KeyboardCode": "Y",
+          "GamepadCode": "None",
+          "GroupName": "Other"
         }
       ],
       "__guid": "9317527a-9bfe-4b5a-b208-c20acb914998"

@@ -1,0 +1,33 @@
+{
+  "RootObject": {
+    "__guid": "e091cb02-18a0-4f2e-ab66-e5d016aabd10",
+    "Flags": 0,
+    "Name": "flashlight",
+    "Tags": "light_spot,light",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SpotLight",
+        "__guid": "fddfefa1-8e08-4d24-bb1d-d64834ab9339",
+        "Attenuation": 1,
+        "ConeInner": 15,
+        "ConeOuter": 15.86,
+        "FogMode": "Enabled",
+        "FogStrength": 1,
+        "LightColor": "0.91373,0.98039,1,1",
+        "Radius": 500,
+        "Shadows": true
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

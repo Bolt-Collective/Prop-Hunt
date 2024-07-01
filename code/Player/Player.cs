@@ -301,8 +301,8 @@ public class Player : Component
 			}
 
 			CameraPosition();
-			characterController.Height = 64;
-			characterController.Radius = 16;
+
+			UpdatePlayerControllerRadius( GameObject.Id );
 			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Transform.World;
 			IsRunning = Input.Down( "Run" );
 		}
@@ -323,7 +323,27 @@ public class Player : Component
 			Body.Transform.Rotation = Rotation.Slerp( Body.Transform.Rotation, new Angles( 0, EyeAngles.yaw, 0 ).ToRotation(), Time.Delta * 10.0f );
 		}
 
-
+	}
+	[Broadcast]
+	public void UpdatePlayerControllerRadius( Guid caller )
+	{
+		var ccGb = Scene.Directory.FindByGuid( caller );
+		if ( ccGb is null ) return;
+		var cc = ccGb.Components.Get<Hc1CharacterController>();
+		var player = ccGb.Components.Get<Player>();
+		if ( characterController is null || player is null ) return;
+		var radius = cc.Radius;
+		radius = Math.Min( player.BodyRenderer.Bounds.Size.x, player.BodyRenderer.Bounds.Size.y ) / 2;
+		radius = Math.Clamp( radius, 2, 16 );
+		cc.Radius = radius;
+		if ( player.TeamComponent.TeamName == Team.Props.ToString() )
+		{
+			cc.Height = player.BodyRenderer.Bounds.Size.z;
+		}
+		else
+		{
+			cc.Height = player.IsCrouching ? 32 : 64;
+		}
 	}
 	public void ChangeDistance()
 	{
@@ -535,15 +555,6 @@ public class Player : Component
 		{
 			Body.Enabled = false;
 		}
-
-		if ( PropShiftingMechanic.MapCollider is not null )
-		{
-			PropShiftingMechanic.MapCollider.Enabled = false;
-		}
-		if ( PropShiftingMechanic.PropsCollider is not null )
-		{
-			PropShiftingMechanic.MapCollider.Enabled = false;
-		}
 	}
 	[Broadcast]
 	public void ResetStats( Guid caller )
@@ -561,14 +572,6 @@ public class Player : Component
 		player.IsGrabbing = false;
 		player.Body.Enabled = true;
 		player.AbleToMove = true;
-		if ( player.PropShiftingMechanic.MapCollider is not null )
-		{
-			player.PropShiftingMechanic.MapCollider.Enabled = true;
-		}
-		if ( player.PropShiftingMechanic.PropsCollider is not null )
-		{
-			player.PropShiftingMechanic.MapCollider.Enabled = true;
-		}
 		player.PropShiftingMechanic.ExitProp();
 		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 	}

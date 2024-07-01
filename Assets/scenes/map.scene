@@ -1,5 +1,5 @@
 {
-  "__guid": "bf4b6a2e-29ed-445e-a402-2fae3504055e",
+  "__guid": "bcdfb5a5-307e-4707-a092-a857c2a34d69",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -168,10 +168,6 @@
             76561198043979097
           ],
           "MyStringValue": "Hello, I am playing in the dev client, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
-        },
-        {
-          "__type": "Sandbox.UI.PauseMenuUi",
-          "__guid": "db5b4d0f-a619-42e3-bb91-0928a07d3f86"
         }
       ],
       "Children": [
@@ -209,7 +205,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 19257.338
+            "Relative": 5651.9766
           }
         }
       ]
@@ -248,9 +244,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_isStatic": false,
+                      "_name": "CreateGnomeFigPostprocess",
                       "_type": "PropHunt.MapChanger",
-                      "_name": "CreateGnomeFigPostprocess"
+                      "_isStatic": false
                     },
                     "UserData": {
                       "Position": "256,32"
@@ -308,7 +304,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-07-01T17:35:55.6562491\u002B02:00",
+  "LastSaved": "2024-07-01T12:32:39.6610722-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
