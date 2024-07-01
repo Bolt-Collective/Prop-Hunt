@@ -5,7 +5,7 @@
       "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
       "Flags": 0,
       "Name": "radio",
-      "Position": "91.88814,-95.39626,1163.128",
+      "Position": "91.88828,-95.39587,3128",
       "Rotation": "0,0,-0.9659261,-0.2588188",
       "Scale": "1.380823,1.380823,1.380823",
       "Enabled": true,
@@ -123,14 +123,6 @@
           "ZNear": 10
         },
         {
-          "__type": "Sandbox.ColorAdjustments",
-          "__guid": "d550d64d-df71-4269-91b1-d16f491dd44b",
-          "Brightness": 1.46,
-          "Contrast": 1,
-          "HueRotate": 0,
-          "Saturation": 1.72
-        },
-        {
           "__type": "CameraTilting",
           "__guid": "53c14eb9-358f-4fff-a80d-cec0555baaec"
         },
@@ -143,8 +135,26 @@
           "ExposureMethod": "RGB",
           "MaximumExposure": 2,
           "MinimumExposure": 1,
-          "Mode": "HableFilmic",
+          "Mode": "Legacy",
           "Rate": 1
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "d7f060a7-5f82-4213-ab18-e3706202dd1c",
+          "Intensity": 8,
+          "Quality": "High",
+          "Radius": 32
+        },
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "fb5c367a-3b98-4a04-965c-73a01df39196",
+          "Blur": 0.5,
+          "EndDistance": 4096,
+          "FalloffExponent": 1,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 0,
+          "StartDistance": 10
         }
       ]
     },
@@ -192,7 +202,7 @@
   },
   "Title": "new_menu",
   "Description": "",
-  "LastSaved": "2024-06-30T15:28:17.3717322\u002B02:00",
+  "LastSaved": "2024-07-01T11:05:45.2913207-04:00",
   "ResourceVersion": 1,
   "__references": [
     "titanovsky.radio"
