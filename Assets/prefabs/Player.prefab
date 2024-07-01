@@ -122,12 +122,6 @@
         "__type": "PropShiftingMechanic",
         "__guid": "d35591ff-f4f6-4d8c-9410-d399704380d6",
         "IsProp": false,
-        "MapCollider": {
-          "_type": "component",
-          "component_id": "2e024bdd-0ec2-43e1-9580-b0f936b1a235",
-          "go": "fc0a70a4-657e-4287-82d9-1e07bb03a2d2",
-          "component_type": "SphereCollider"
-        },
         "PreviousHealth": 0,
         "PropsCollider": {
           "_type": "component",
@@ -346,11 +340,12 @@
             "NetworkInterpolation": true,
             "Components": [
               {
-                "__type": "Sandbox.SphereCollider",
-                "__guid": "2e024bdd-0ec2-43e1-9580-b0f936b1a235",
-                "Center": "0,0,0",
+                "__type": "Sandbox.CapsuleCollider",
+                "__guid": "6bfbe988-1411-4bfe-8fed-8d1500895005",
+                "End": "0,0,51.05501",
                 "IsTrigger": false,
-                "Radius": 12.399969,
+                "Radius": 13.899955,
+                "Start": "0,0,4.655019",
                 "Static": false
               }
             ]

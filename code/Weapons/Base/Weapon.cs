@@ -90,6 +90,7 @@ public sealed class Weapon : Component
 		var tr = Scene.Trace.Ray( ray, FireLength )
 			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
 			.IgnoreGameObject( Player.PropShiftingMechanic.MapCollider.GameObject )
+			.WithoutTags( "mapcollider" )
 			.Run();
 		Log.Info( tr.GameObject.Root.Name );
 		ShotsFired++;

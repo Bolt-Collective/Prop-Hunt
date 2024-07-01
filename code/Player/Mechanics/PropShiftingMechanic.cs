@@ -9,7 +9,7 @@ public class PropShiftingMechanic : Component
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
 	[Property] public PropShiftingDelegate OnPropShift { get; set; }
 	[Property] public ModelCollider PropsCollider { get; set; }
-	[Property] public SphereCollider MapCollider { get; set; }
+	[Property] public CapsuleCollider MapCollider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
 	[Property] public int PreviousHealth { get; set; }
@@ -26,9 +26,6 @@ public class PropShiftingMechanic : Component
 	}
 	protected override void OnUpdate()
 	{
-		if ( IsProxy ) return;
-
-
 		if ( Input.Pressed( "View" ) )
 		{
 			ExitProp();
@@ -75,7 +72,7 @@ public class PropShiftingMechanic : Component
 	}
 	private void ShiftIntoProp()
 	{
-		if ( !Player.Local.AbleToMove || IsProxy ) return;
+		if ( !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() ) return;
 		var pc = Components.Get<Player>();
 		var lookDir = pc.EyeAngles.ToRotation();
 		var eyePos = Transform.Position + Vector3.Up * 64;

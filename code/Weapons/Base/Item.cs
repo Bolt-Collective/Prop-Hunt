@@ -75,6 +75,7 @@ public sealed class Item : Component
 		var tr = Scene.Trace.Ray( ray, TraceDistance )
 			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
 			.IgnoreGameObject( Player.PropShiftingMechanic.MapCollider.GameObject )
+			.WithoutTags( "mapcollider" )
 			.Run();
 		if ( Player is null || !Player.AbleToMove )
 		{
