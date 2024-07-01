@@ -364,22 +364,44 @@ public class Player : Component
 	{
 		UpdateBodyVisibility();
 	}
+	[Broadcast]
+	public void UpdateColliders( Guid caller )
+	{
+		var playerGb = Scene.Directory.FindByGuid( caller );
+		if ( playerGb is null ) return;
+		var player = playerGb.Components.Get<Player>();
+		if ( player is null ) return;
+		var colliders = player.Body.Components.GetAll<Collider>( FindMode.EverythingInDescendants ).ToList();
+		if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
+		{
+			foreach ( Collider collider in colliders )
+			{
+				collider.Enabled = true;
+			}
+		}
+		else
+		{
+			foreach ( Collider collider in colliders )
+			{
+				collider.Enabled = false;
+			}
+
+		}
+
+
+	}
 	protected override void OnFixedUpdate()
 	{
 		if ( IsProxy )
 			return;
 
-		var colliders = Body.Components.GetAll<Collider>(FindMode.EverythingInDescendants).ToList();
+		UpdateColliders( GameObject.Id );
 
 		if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 		{
 			BuildWishVelocity();
 
 
-			foreach ( Collider collider in colliders )
-			{
-				collider.Enabled = true;
-			}
 
 			var cc = characterController;
 
@@ -419,12 +441,6 @@ public class Player : Component
 		}
 		else
 		{
-
-			foreach ( Collider collider in colliders )
-			{
-				collider.Enabled = false;
-			}
-
 			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
 			Scene.Camera.Transform.Position = GameObject.Transform.Position + Vector3.Up * 64;
 			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * 1000 * Time.Delta;
@@ -475,7 +491,8 @@ public class Player : Component
 		if ( IsDead ) return;
 
 		Health -= damage;
-		if ( Health <= 0 )
+
+		if ( Health <= 0 && !IsDead )
 		{
 			Health = 0;
 			IsDead = true;
@@ -489,17 +506,20 @@ public class Player : Component
 		player.Health = 0;
 		player.DisableBody();
 		player.TeamComponent.ChangeTeam( Team.Unassigned );
-		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
 		player.OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
 		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		player.Inventory.Clear();
 		player.AbleToMove = false;
+		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
 	}
 
 	[Broadcast]
 	public void Respawn( Guid caller )
 	{
-		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		var playerGb = Scene.Directory.FindByGuid( caller );
+		if ( playerGb is null ) return;
+		var player = playerGb.Components.Get<Player>();
+		if ( player is null ) return;
 		player.ResetStats( caller );
 		player.AbleToMove = true;
 		player.IsDead = false;
@@ -528,7 +548,10 @@ public class Player : Component
 	[Broadcast]
 	public void ResetStats( Guid caller )
 	{
-		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		var playerGb = Scene.Directory.FindByGuid( caller );
+		if ( playerGb is null ) return;
+		var player = playerGb.Components.Get<Player>();
+		if ( player is null ) return;
 		player.AmmoContainer?.ResetAmmo();
 		player.Health = 100;
 		player.IsCrouching = false;
