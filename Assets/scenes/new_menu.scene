@@ -5,7 +5,7 @@
       "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
       "Flags": 0,
       "Name": "radio",
-      "Position": "91.88828,-95.39587,3128",
+      "Position": "102,-104,3128",
       "Rotation": "0,0,-0.9659261,-0.2588188",
       "Scale": "1.380823,1.380823,1.380823",
       "Enabled": true,
@@ -202,7 +202,7 @@
   },
   "Title": "new_menu",
   "Description": "",
-  "LastSaved": "2024-07-01T14:35:22.7210875-04:00",
+  "LastSaved": "2024-07-01T17:24:11.8599529-04:00",
   "ResourceVersion": 1,
   "__references": [
     "titanovsky.radio"
