@@ -369,14 +369,17 @@ public class Player : Component
 		if ( IsProxy )
 			return;
 
+		var colliders = Body.Components.GetAll<Collider>(FindMode.EverythingInDescendants).ToList();
+
 		if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 		{
 			BuildWishVelocity();
 
-			var modelCollider = Body.Components.Get<ModelCollider>();
 
-			if ( modelCollider is not null )
-				modelCollider.Enabled = true;
+			foreach ( Collider collider in colliders )
+			{
+				collider.Enabled = true;
+			}
 
 			var cc = characterController;
 
@@ -416,10 +419,11 @@ public class Player : Component
 		}
 		else
 		{
-			var modelCollider = Body.Components.Get<ModelCollider>();
 
-			if ( modelCollider is not null )
-				modelCollider.Enabled = false;
+			foreach ( Collider collider in colliders )
+			{
+				collider.Enabled = false;
+			}
 
 			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
 			Scene.Camera.Transform.Position = GameObject.Transform.Position + Vector3.Up * 64;
