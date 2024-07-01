@@ -100,13 +100,13 @@
         {
           "Name": "Slot1",
           "KeyboardCode": "1",
-          "GamepadCode": "DpadWest",
+          "GamepadCode": "None",
           "GroupName": "Inventory"
         },
         {
           "Name": "Slot2",
           "KeyboardCode": "2",
-          "GamepadCode": "DpadEast",
+          "GamepadCode": "None",
           "GroupName": "Inventory"
         },
         {
@@ -221,6 +221,16 @@
           "Name": "light",
           "KeyboardCode": "Y",
           "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "nextweapon",
+          "GamepadCode": "DpadEast",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "prevweapon",
+          "GamepadCode": "DpadWest",
           "GroupName": "Other"
         }
       ],

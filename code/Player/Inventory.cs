@@ -160,6 +160,17 @@ public sealed class Inventory : Component
 		{
 			ActiveIndex = 4;
 		}*/
+		if ( Input.UsingController )
+		{
+			if ( Input.Pressed( "nextweapon" ) && ActiveIndex < Items.Count - 1 )
+			{
+				ActiveIndex++;
+			}
+			if ( Input.Pressed( "prevweapon" ) && ActiveIndex > 0 )
+			{
+				ActiveIndex--;
+			}
+		}
 	}
 
 	public class CloneConstraint

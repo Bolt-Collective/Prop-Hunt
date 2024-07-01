@@ -30,7 +30,17 @@
 			<div>Exit Prop</div>
 			<img class="input-glyph" src="@LeaveProp?.ResourcePath">
 		</div>
-
+		@if (Input.UsingController)
+		{
+			<div>
+				<div>Next Weapon</div>
+				<img class="input-glyph" src="@DPadEast?.ResourcePath">
+			</div>
+			<div>
+				<div>Previous Weapon</div>
+				<img class="input-glyph" src="@DPadWest?.ResourcePath">
+			</div>
+		}
 	}
 </root>
 
@@ -41,6 +51,8 @@
 	public Texture Grab { get; set; }
 	public Texture Taunt { get; set; }
 	public Texture LeaveProp { get; set; }
+	public Texture DPadEast { get; set; }
+	public Texture DPadWest { get; set; }
 
 	public override void Tick()
 	{
@@ -50,6 +62,11 @@
 		Grab = Input.GetGlyph("Flashlight", InputGlyphSize.Large, false);
 		Taunt = Input.GetGlyph("Taunt", InputGlyphSize.Large, false);
 		LeaveProp = Input.GetGlyph("View", InputGlyphSize.Large, false);
+		if (Input.UsingController)
+		{
+			DPadEast = Input.GetGlyph("nextweapon", InputGlyphSize.Large, false);
+			DPadWest = Input.GetGlyph("prevweapon", InputGlyphSize.Large, false);
+		}
 		base.Tick();
 	}
 

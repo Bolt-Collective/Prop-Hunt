@@ -76,7 +76,7 @@ public class PropShiftingMechanic : Component
 		var lookDir = pc.EyeAngles.ToRotation();
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
-		var tr = Scene.Trace.Ray( Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + lookDir.Forward * 300 + Player.Local.CameraDistance )
+		var tr = Scene.Trace.Ray( Scene.Camera.Transform.Position, Scene.Camera.Transform.Position + lookDir.Forward * (300 + Player.Local.CameraDistance) )
 			.IgnoreGameObject( Player.Local.PropShiftingMechanic.PropsCollider.GameObject )
 			.WithoutTags( "preventprops" )
 			.Run();
