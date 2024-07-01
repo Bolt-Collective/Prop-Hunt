@@ -342,7 +342,7 @@
                 "__guid": "6bfbe988-1411-4bfe-8fed-8d1500895005",
                 "End": "0,0,51.05501",
                 "IsTrigger": false,
-                "Radius": 13.899955,
+                "Radius": 25,
                 "Start": "0,0,4.655019",
                 "Static": false
               }
