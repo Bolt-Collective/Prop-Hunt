@@ -73,18 +73,36 @@ public class Player : Component
 			TakeDamage( 1000 );
 		}
 	}
+	[Sync] public bool ShouldFreeLook { get; set; } = false;
 	public void FreeLook()
 	{
 		var cam = Scene.GetAllComponents<CameraComponent>().FirstOrDefault();
 		if ( cam is null || Health <= 0 ) return;
+		if ( Player.Local.CameraDistance == 0 )
+		{
+			ShouldFreeLook = false;
+			FreeLooking = false;
+			return;
+		}
 
 		if ( Input.Pressed( "attack2" ) )
 		{
-			oldRotation = cam.Transform.Rotation;
-			oldEyeAngles = EyeAngles;
+			if ( !ShouldFreeLook )
+			{
+				oldRotation = cam.Transform.Rotation;
+				oldEyeAngles = EyeAngles;
+				FreeLooking = true;
+			}
+			else
+			{
+				cam.Transform.Rotation = Rotation.Slerp( cam.Transform.Rotation, oldRotation, Time.Delta * 10.0f );
+				EyeAngles = oldEyeAngles;
+				FreeLooking = false;
+			}
+			ShouldFreeLook = !ShouldFreeLook;
 		}
 
-		if ( Input.Down( "attack2" ) )
+		if ( ShouldFreeLook )
 		{
 			FreeLooking = true;
 			var camera = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
@@ -140,13 +158,9 @@ public class Player : Component
 			{
 				camera.Transform.Rotation = lookDirection;
 			}
-
 		}
-
-		if ( Input.Released( "attack2" ) )
+		else
 		{
-			cam.Transform.Rotation = Rotation.Slerp( cam.Transform.Rotation, oldRotation, Time.Delta * 10.0f );
-			EyeAngles = oldEyeAngles;
 			FreeLooking = false;
 		}
 	}

@@ -112,7 +112,7 @@
         {
           "Name": "Slot3",
           "KeyboardCode": "3",
-          "GamepadCode": "DpadSouth",
+          "GamepadCode": "None",
           "GroupName": "Inventory"
         },
         {
