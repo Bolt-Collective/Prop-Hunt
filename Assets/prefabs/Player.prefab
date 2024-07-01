@@ -306,14 +306,6 @@
               "_type": "gameobject",
               "go": "99a59baa-0cc7-4ca0-8c88-bb91717f1589"
             }
-          },
-          {
-            "__type": "Sandbox.BoxCollider",
-            "__guid": "df602f6e-01ec-4545-b34d-3d60e621ef53",
-            "Center": "0,0,0",
-            "IsTrigger": false,
-            "Scale": "50,50,50",
-            "Static": false
           }
         ],
         "Children": [
