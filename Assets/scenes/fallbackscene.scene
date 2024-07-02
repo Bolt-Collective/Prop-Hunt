@@ -51,6 +51,80 @@
           "TextAlignment": "Center"
         }
       ]
+    },
+    {
+      "__guid": "a526a558-588f-4008-a54c-97de17095e9f",
+      "Flags": 0,
+      "Name": "Map",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "2b2d22af-714c-4844-af87-cb1357a7afb0",
+          "__version": 1,
+          "MapName": "gnomefig.office",
+          "NoOrigin": false,
+          "OnComponentStart": {
+            "__version": 7,
+            "__guid": "31367314-0743-442b-87a5-fc27826353ad",
+            "UserData": {
+              "Title": "On Component Start",
+              "ReferencedComponentTypes": [
+                "Sandbox.MapInstance"
+              ]
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              },
+              {
+                "Id": 1,
+                "Type": "log.info",
+                "UserData": {
+                  "Position": "240,-0"
+                }
+              },
+              {
+                "Id": 2,
+                "Type": "scene.get",
+                "Properties": {
+                  "T": "Sandbox.MapInstance"
+                },
+                "UserData": {
+                  "Position": "-16,96"
+                }
+              }
+            ],
+            "Links": [
+              {
+                "SrcId": 0,
+                "SrcName": "_signal",
+                "DstId": 1,
+                "DstName": "_signal"
+              },
+              {
+                "SrcId": 2,
+                "SrcName": "_result",
+                "DstId": 1,
+                "DstName": "args",
+                "DstIndex": 0
+              },
+              {
+                "SrcId": 0,
+                "SrcName": "_target",
+                "DstId": 2,
+                "DstName": "_this"
+              }
+            ]
+          },
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {
@@ -76,7 +150,7 @@
   },
   "Title": "fallbackscene",
   "Description": "",
-  "LastSaved": "2024-06-21T13:40:16.3549894-04:00",
+  "LastSaved": "2024-07-01T18:21:02.4379473-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

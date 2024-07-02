@@ -65,7 +65,7 @@
 		<InputHints />
 		<HudHints />
 
-		@if (Player.Local.TeamComponent.TeamName == Team.Hunters.ToString() && Player.Local.Inventory.ActiveItem is not
+		@if (Player.Local?.TeamComponent.TeamName == Team.Hunters.ToString() && Player.Local?.Inventory.ActiveItem is not
 				null)
 		{
 			//SUPER SHIT, needs proper styling

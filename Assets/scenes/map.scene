@@ -220,7 +220,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 1132.7593
+            "Relative": 1636.2607
           }
         }
       ]
@@ -259,8 +259,8 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
                       "_name": "CreateGnomeFigPostprocess",
+                      "_type": "PropHunt.MapChanger",
                       "_isStatic": false
                     },
                     "UserData": {
@@ -319,7 +319,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-07-01T15:07:29.4380988-04:00",
+  "LastSaved": "2024-07-01T18:19:22.9535922-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

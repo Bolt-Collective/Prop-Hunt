@@ -13,7 +13,7 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "78c7a5de-820a-45d5-8742-ccd928f9d501",
           "__version": 1,
-          "MapName": "facepunch.flatgrass",
+          "MapName": "gnomefig.office",
           "NoOrigin": false,
           "UseMapFromLaunch": false
         }
@@ -373,7 +373,7 @@
   },
   "Title": "collisiontest",
   "Description": "",
-  "LastSaved": "2024-06-30T12:05:47.9099838-04:00",
+  "LastSaved": "2024-07-01T18:11:28.1103643-04:00",
   "ResourceVersion": 1,
   "__references": [
     "facepunch.ticket_machine"
