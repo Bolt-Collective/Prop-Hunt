@@ -241,7 +241,8 @@
           "sounds/taunts/seaker taunts/error_taunt.sound",
           "sounds/taunts/seaker taunts/prowler.sound",
           "sounds/taunts/seaker taunts/rehehehe.sound",
-          "sounds/taunts/seaker taunts/grown-dark-evil-pack-tekken-meme.sound"
+          "sounds/taunts/seaker taunts/grown-dark-evil-pack-tekken-meme.sound",
+          "sounds/taunts/seaker taunts/hank schrader says sussy baka.sound"
         ],
         "PropTaunts": [
           "sounds/taunts/prop taunts/anime-wow-sound-effect.sound",
@@ -251,7 +252,9 @@
           "sounds/taunts/prop taunts/laugh2.sound",
           "sounds/taunts/prop taunts/perfect-fart.sound",
           "sounds/taunts/prop taunts/pluh.sound",
-          "sounds/taunts/prop taunts/whatsup.sound"
+          "sounds/taunts/prop taunts/whatsup.sound",
+          "sounds/taunts/prop taunts/im-gonna-break-my-monitor-i-swear.sound",
+          "sounds/taunts/prop taunts/freddyfazbear.sound"
         ],
         "TauntCooldown": 5
       },
