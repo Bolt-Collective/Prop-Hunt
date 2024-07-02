@@ -429,7 +429,10 @@ public class Player : Component
 			return;
 
 		UpdateColliders( GameObject.Id );
-
+		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
+		{
+			ClearHoldType( GameObject.Id );
+		}
 		if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 		{
 			BuildWishVelocity();
@@ -541,11 +544,18 @@ public class Player : Component
 		player.DisableBody();
 		player.TeamComponent.ChangeTeam( Team.Unassigned );
 		player.OnDeath?.Invoke( this, GameObject.Components.Get<Inventory>() );
-		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		ClearHoldType( caller );
 		player.Inventory.Clear();
 		player.AbleToMove = false;
 		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
 	}
+	[Broadcast]
+	public void ClearHoldType( Guid caller )
+	{
+		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+	}
+
 
 	[Broadcast]
 	public void Respawn( Guid caller )

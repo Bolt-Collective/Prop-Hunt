@@ -82,13 +82,6 @@
                 "Type": "input"
               },
               {
-                "Id": 1,
-                "Type": "log.info",
-                "UserData": {
-                  "Position": "240,-0"
-                }
-              },
-              {
                 "Id": 2,
                 "Type": "scene.get",
                 "Properties": {
@@ -97,27 +90,38 @@
                 "UserData": {
                   "Position": "-16,96"
                 }
+              },
+              {
+                "Id": 3,
+                "Type": "call",
+                "Properties": {
+                  "_type": "Sandbox.MapInstance",
+                  "_name": "UnloadMap",
+                  "_isStatic": false
+                },
+                "UserData": {
+                  "Position": "256,32"
+                }
               }
             ],
             "Links": [
               {
                 "SrcId": 0,
+                "SrcName": "_target",
+                "DstId": 2,
+                "DstName": "_this"
+              },
+              {
+                "SrcId": 0,
                 "SrcName": "_signal",
-                "DstId": 1,
+                "DstId": 3,
                 "DstName": "_signal"
               },
               {
                 "SrcId": 2,
                 "SrcName": "_result",
-                "DstId": 1,
-                "DstName": "args",
-                "DstIndex": 0
-              },
-              {
-                "SrcId": 0,
-                "SrcName": "_target",
-                "DstId": 2,
-                "DstName": "_this"
+                "DstId": 3,
+                "DstName": "_target"
               }
             ]
           },
@@ -150,7 +154,7 @@
   },
   "Title": "fallbackscene",
   "Description": "",
-  "LastSaved": "2024-07-01T18:21:02.4379473-04:00",
+  "LastSaved": "2024-07-01T22:49:27.7971652-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
