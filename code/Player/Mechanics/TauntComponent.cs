@@ -1,3 +1,4 @@
+using PropHunt;
 using Sandbox;
 
 public sealed class TauntComponent : Component
@@ -10,6 +11,13 @@ public sealed class TauntComponent : Component
 
 	[Property, Sync] public int TauntCooldown { get; set; } = 5;
 
+	protected override void OnStart()
+	{
+		if ( !IsProxy )
+		{
+			TauntCooldown = PropHuntManager.Instance.LobbySettings.TauntCoolDownTime;
+		}
+	}
 
 	protected override void OnUpdate()
 	{

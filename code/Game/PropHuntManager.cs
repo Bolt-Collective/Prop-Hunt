@@ -1,5 +1,7 @@
 using System.Data;
+using System.IO;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using Sandbox.Utility;
 namespace PropHunt;
 
@@ -15,7 +17,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	public static int PreRoundTime { get; set; } = 5;
 
-	public static int RoundTime { get; set; } = 6 * 60;
 
 	/// <summary>
 	/// How many rounds to play before map voting
@@ -56,11 +57,23 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	[Property, Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
 
-	[Property, Sync] public int ForceTauntCooldown { get; set; } = 60;
 
+	[Property] public LobbySettings LobbySettings { get; set; } = new();
 	protected override void OnStart()
 	{
 		Instance = this;
+		if ( Networking.IsHost )
+		{
+			var json = FileSystem.Data.ReadJson<string>( "lobbysettings.json" );
+			if ( json is not null )
+			{
+				LobbySettings = JsonSerializer.Deserialize<LobbySettings>( json );
+			}
+			else
+			{
+				LobbySettings = new LobbySettings();
+			}
+		}
 	}
 	protected override void OnUpdate()
 	{
@@ -70,7 +83,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		else
 		{
-			MaxPlayersToStart = 2;
+			MaxPlayersToStart = LobbySettings.PlayersNeededToStart;
 		}
 		if ( !Networking.IsHost ) return;
 
@@ -146,7 +159,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	// Method to check if a taunt can be played based on a cooldown
 	private bool CanPlayTaunt()
 	{
-		return TimeSinceLastForceTaunt >= ForceTauntCooldown;
+		return TimeSinceLastForceTaunt >= LobbySettings.ForcedTauntTime;
 	}
 	[Broadcast]
 	public void ReloadMapRPC()
@@ -245,7 +258,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 
 		RoundState = GameState.Started;
-		RoundLength = RoundTime;
+		RoundLength = LobbySettings.RoundTime;
 		TimeSinceRoundStateChanged = 0;
 	}
 
@@ -338,7 +351,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			ResetForceTauntValues();
 		}
 
-		if ( TimeSinceRoundStateChanged > RoundLength || Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ).All( x => x.Health <= 0 ) )
+		if ( TimeSinceRoundStateChanged > LobbySettings.RoundTime || Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ).All( x => x.Health <= 0 ) )
 		{
 			ForceWin( Team.Props );
 		}
