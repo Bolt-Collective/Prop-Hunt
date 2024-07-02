@@ -58,7 +58,7 @@
         {
           "Name": "Run",
           "KeyboardCode": "shift",
-          "GamepadCode": "LeftJoystickButton",
+          "GamepadCode": "SwitchLeftBumper",
           "GroupName": "Movement"
         },
         {
@@ -158,21 +158,9 @@
           "GroupName": "Inventory"
         },
         {
-          "Name": "SlotPrev",
-          "KeyboardCode": "mouse4",
-          "GamepadCode": "SwitchLeftBumper",
-          "GroupName": "Inventory"
-        },
-        {
-          "Name": "SlotNext",
-          "KeyboardCode": "mouse5",
-          "GamepadCode": "SwitchRightBumper",
-          "GroupName": "Inventory"
-        },
-        {
           "Name": "View",
-          "KeyboardCode": "C",
-          "GamepadCode": "B",
+          "KeyboardCode": "Z",
+          "GamepadCode": "DpadSouth",
           "GroupName": "Other"
         },
         {
@@ -231,6 +219,12 @@
         {
           "Name": "prevweapon",
           "GamepadCode": "DpadWest",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "RealFlashlight",
+          "KeyboardCode": "H",
+          "GamepadCode": "LeftJoystickButton",
           "GroupName": "Other"
         }
       ],
