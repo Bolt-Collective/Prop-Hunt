@@ -40,7 +40,7 @@ public class Player : Component
 
 	[Sync]
 	public bool IsRunning { get; set; }
-
+	[Property] public SceneFile Menu { get; set; }
 
 	[RequireComponent] public TeamComponent TeamComponent { get; private set; }
 	public PropShiftingMechanic PropShiftingMechanic { get; set; }
@@ -74,6 +74,12 @@ public class Player : Component
 		{
 			TakeDamage( 1000, false );
 		}
+	}
+	[Button( "Kick" )]
+	public void Kick()
+	{
+		if ( IsProxy ) return;
+		Game.ActiveScene.Load( Menu );
 	}
 	[Sync] public bool ShouldFreeLook { get; set; } = false;
 	public void FreeLook()

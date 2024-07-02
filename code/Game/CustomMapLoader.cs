@@ -5,7 +5,7 @@ public class CustomMapLoader : MapInstance
 {
 	protected override void OnCreateObject( GameObject gameObject, MapLoader.ObjectEntry objectEntry )
 	{
-		if ( objectEntry.TypeName == "ent_door" )
+		/*if ( objectEntry.TypeName == "ent_door" )
 		{
 			//Create ModelRenderer
 			var renderer = gameObject.Components.Create<ModelRenderer>();
@@ -25,7 +25,7 @@ public class CustomMapLoader : MapInstance
 			joint.MinAngle = -80;
 			joint.MaxAngle = 80;
 			joint.Motor = HingeJoint.MotorMode.TargetAngle;
-		}
+		}*/
 
 	}
 }

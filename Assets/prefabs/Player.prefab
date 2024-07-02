@@ -46,6 +46,7 @@
           "go": "bb88240a-9648-4257-be93-4ab6eb39fb97"
         },
         "Health": 0,
+        "Menu": "scenes/new_menu.scene",
         "OnDeath": {
           "__version": 7,
           "__guid": "c1f57adb-64d2-4461-a611-c14e86ee9c27",
