@@ -61,6 +61,8 @@ public class Player : Component
 	private Rotation oldRotation;
 	private Angles oldEyeAngles;
 
+	public bool IsSpectator { get; set; } = false;
+
 	protected override void OnStart()
 	{
 		Inventory = Components.Get<Inventory>();
@@ -297,6 +299,7 @@ public class Player : Component
 			if ( Health > 0 && TeamComponent.TeamName != Team.Unassigned.ToString() )
 			{
 				AbleToMove = true;
+				IsSpectator = false;
 			}
 			if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 			{
@@ -327,6 +330,8 @@ public class Player : Component
 			eyePos = Body.Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
 			Eye.Transform.Position = eyePos;
 			Eye.Transform.Rotation = EyeAngles.ToRotation();
+
+			IsSpectator = true;
 		}
 
 		var cc = GameObject.Components.Get<Hc1CharacterController>();
@@ -539,7 +544,10 @@ public class Player : Component
 	[Broadcast]
 	void Death( Guid caller )
 	{
+		if ( IsSpectator ) return;
+
 		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+
 		player.Health = 0;
 		player.DisableBody();
 		player.TeamComponent.ChangeTeam( Team.Unassigned );
