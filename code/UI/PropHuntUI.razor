@@ -36,22 +36,22 @@
 				+ <strong>@(Player.Local.Health)</strong>
 			</div>
 		}
-		@if (Inventory is not null && Player.Local.TeamComponent.TeamName == Team.Hunters.ToString())
+		@if (Player.Local?.Inventory is not null && Player.Local?.TeamComponent.TeamName == Team.Hunters.ToString())
 		{
 			<div class="inventory">
-				<div class="item @(Inventory.ActiveIndex == 0 ? "active" : "")">
+				<div class="item @(Player.Local?.Inventory.ActiveIndex == 0 ? "active" : "")">
 					<img class="number" src=@CreateInputGlyph( "slot1" ).ResourcePath>
 					<div class="weapon">Pistol</div>
 				</div>
-				<div class="item @(Inventory.ActiveIndex == 1 ? "active" : "")">
+				<div class="item @(Player.Local?.Inventory.ActiveIndex == 1 ? "active" : "")">
 					<img class="number" src=@CreateInputGlyph( "slot2" ).ResourcePath>
 					<div class="weapon">Knife</div>
 				</div>
-				<div class="item @(Inventory.ActiveIndex == 2 ? "active" : "")">
+				<div class="item @(Player.Local?.Inventory.ActiveIndex == 2 ? "active" : "")">
 					<img class="number" src=@CreateInputGlyph( "slot3" ).ResourcePath>
 					<div class="weapon">MP5</div>
 				</div>
-				<div class="item @( Inventory.ActiveIndex == 3 ? "active" : "" )">
+				<div class="item @( Player.Local?.Inventory.ActiveIndex == 3 ? "active" : "" )">
 					<img class="number" src=@CreateInputGlyph( "slot4" ).ResourcePath>
 					<div class="weapon">Shotgun</div>
 				</div>
