@@ -192,7 +192,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 901.4124
+            "Relative": 22.541023
           }
         }
       ]
@@ -208,11 +208,17 @@
       "Components": [
         {
           "__type": "PropHunt.Network",
-          "__guid": "fc3267b1-2b6a-4e9e-97a0-215f13c9e6dc",
+          "__guid": "51390f44-0af0-4b24-be22-e0296c99d3dd",
           "CustomSpawnPoints": false,
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
+          },
+          "PropHuntManager": {
+            "_type": "component",
+            "component_id": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+            "go": "1ffeefdf-8655-452b-afaa-46f09e044a93",
+            "component_type": "PropHuntManager"
           },
           "Spawns": [],
           "StartServer": true
@@ -254,8 +260,8 @@
                     "Type": "call",
                     "Properties": {
                       "_type": "PropHunt.MapChanger",
-                      "_isStatic": false,
-                      "_name": "CreateGnomeFigPostprocess"
+                      "_name": "CreateGnomeFigPostprocess",
+                      "_isStatic": false
                     },
                     "UserData": {
                       "Position": "256,32"
