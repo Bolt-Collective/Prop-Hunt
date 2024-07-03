@@ -202,7 +202,7 @@
         {
           "Name": "taunt",
           "KeyboardCode": "T",
-          "GamepadCode": "DpadNorth",
+          "GamepadCode": "DpadEast",
           "GroupName": "Other"
         },
         {
@@ -213,12 +213,12 @@
         },
         {
           "Name": "nextweapon",
-          "GamepadCode": "DpadEast",
+          "GamepadCode": "DpadNorth",
           "GroupName": "Other"
         },
         {
           "Name": "prevweapon",
-          "GamepadCode": "DpadWest",
+          "GamepadCode": "DpadSouth",
           "GroupName": "Other"
         }
       ],
