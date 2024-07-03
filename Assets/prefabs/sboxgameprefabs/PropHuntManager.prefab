@@ -1,0 +1,54 @@
+{
+  "RootObject": {
+    "__guid": "1ffeefdf-8655-452b-afaa-46f09e044a93",
+    "Flags": 0,
+    "Name": "GameManager",
+    "Position": "-413.6376,843.2293,265.7083",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "PropHunt.PropHuntManager",
+        "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+        "ForceTauntCooldown": 60,
+        "MaxPlayersToStart": 1,
+        "OnGoingRound": false,
+        "RoundState": "None",
+        "TimeSinceLastForceTaunt": {
+          "Relative": 363.87885
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
+        "Flags": 0,
+        "Name": "NetworkManager",
+        "Position": "376.3707,-847.6731,-169.4752",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "Components": [
+          {
+            "__type": "PropHunt.Network",
+            "__guid": "fc3267b1-2b6a-4e9e-97a0-215f13c9e6dc",
+            "CustomSpawnPoints": false,
+            "PlayerPrefab": {
+              "_type": "gameobject",
+              "prefab": "prefabs/player.prefab"
+            },
+            "Spawns": [],
+            "StartServer": true
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

@@ -5,6 +5,7 @@
   "Ident": "prop_hunt",
   "Tags": null,
   "Schema": 1,
+  "IncludeSourceFiles": false,
   "Resources": null,
   "PackageReferences": [],
   "EditorReferences": null,

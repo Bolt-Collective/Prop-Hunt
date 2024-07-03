@@ -110,34 +110,6 @@
       ]
     },
     {
-      "__guid": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
-      "Flags": 0,
-      "Name": "NetworkManager",
-      "Position": "-37.26695,-4.443764,96.23308",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "PropHunt.Network",
-          "__guid": "fc3267b1-2b6a-4e9e-97a0-215f13c9e6dc",
-          "CustomSpawnPoints": false,
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/player.prefab"
-          },
-          "PropHuntManager": {
-            "_type": "component",
-            "component_id": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-            "go": "1ffeefdf-8655-452b-afaa-46f09e044a93",
-            "component_type": "PropHuntManager"
-          },
-          "Spawns": [],
-          "StartServer": true
-        }
-      ]
-    },
-    {
       "__guid": "db397682-adf3-44df-95c8-b96eb421601b",
       "Flags": 0,
       "Name": "Ui",
@@ -220,8 +192,30 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 45.6223
+            "Relative": 901.4124
           }
+        }
+      ]
+    },
+    {
+      "__guid": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
+      "Flags": 0,
+      "Name": "NetworkManager",
+      "Position": "-37.26694,-4.443787,96.23308",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "PropHunt.Network",
+          "__guid": "fc3267b1-2b6a-4e9e-97a0-215f13c9e6dc",
+          "CustomSpawnPoints": false,
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "Spawns": [],
+          "StartServer": true
         }
       ]
     },
@@ -259,8 +253,8 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_isStatic": false,
                       "_type": "PropHunt.MapChanger",
+                      "_isStatic": false,
                       "_name": "CreateGnomeFigPostprocess"
                     },
                     "UserData": {
@@ -313,7 +307,6 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-07-02T23:17:50.6273331-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

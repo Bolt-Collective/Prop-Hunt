@@ -5,6 +5,7 @@
   "Ident": "compedit",
   "Tags": null,
   "Schema": 2,
+  "IncludeSourceFiles": false,
   "Resources": null,
   "PackageReferences": [],
   "EditorReferences": null,

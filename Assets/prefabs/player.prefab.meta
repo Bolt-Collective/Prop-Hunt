@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "player",
+      "Type": "asset",
+      "Org": "local",
+      "Ident": "player",
+      "Tags": null,
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "prefabs/player.prefab"
+      }
+    }
+  }
+}
