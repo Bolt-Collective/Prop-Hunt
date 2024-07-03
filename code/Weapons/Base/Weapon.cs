@@ -91,7 +91,6 @@ public sealed class Weapon : Component
 			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
 			.WithoutTags( "mapcollider" )
 			.Run();
-		Log.Info( tr.GameObject.Root.Name );
 		ShotsFired++;
 		Ammo--;
 
