@@ -57,6 +57,39 @@
 			<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending"
 				OnSelected="@OnPackageSelected" Take=@(50) />
 		</div>
+
+		<div class="lobbysettings" style="">
+			<div class="slider">
+				<SliderControl Value:bind="@lobbySettings.ForcedTauntTime" Min=@(1) Max=@(lobbySettings.RoundTime)
+					Step=@(1) />
+				<div class="slider-label">Forced Taunt Cooldown</div>
+			</div>
+			<div class="slider">
+				<SliderControl Value:bind="@lobbySettings.TauntCoolDownTime" Min=@(0) Max=@(lobbySettings.RoundTime)
+					Step=@(1) />
+				<div class="slider-label">Taunt Cooldown</div>
+			</div>
+			<div class="slider">
+				<SliderControl Value:bind="@lobbySettings.PlayersNeededToStart" Min=@(2) Max=@(64) Step=@(1) />
+				<div class="slider-label">Players needed to start</div>
+			</div>
+			<div class="slider">
+				<SliderControl Value:bind="@lobbySettings.RoundTime" Min=@(1) Max=@(240) Step=@(20) />
+				<div class="slider-label">Round Time</div>
+			</div>
+			<div class="slider">
+				<SwitchControl Value:bind="@lobbySettings.Bleed" />
+				<div class="slider-label">Players bleed on item grab</div>
+			</div>
+			<div class="slider">
+				<SliderControl Value:bind="@lobbySettings.BleedAmount" Min=@(0) Max=@(100) Step=@(1) />
+				<div class="slider-label">Bleed amount</div>
+			</div>
+			<div class="slider button" style="align-items: center; justify-content: center;" onclick=@(() =>
+			LobbySettings.SetLobbySettings(lobbySettings))>
+				Save
+			</div>
+		</div>
 	}
 </root>
 
@@ -69,6 +102,7 @@
 	[Property] public bool Refreshing { get; set; } = false;
 	[Property] public bool ShowMapList { get; set; } = false;
 	[Property] public SceneFile GameScene { get; set; }
+	[Property] public LobbySettings lobbySettings { get; set; } = new();
 
 	protected override void OnStart()
 	{

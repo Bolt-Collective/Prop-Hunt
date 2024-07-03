@@ -54,10 +54,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static PropHuntManager Instance { get; set; }
 	public List<(string, int)> Votes { get; set; } = new();
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
-
-	[Property, Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
-
-
+	[Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
 	[Property] public LobbySettings LobbySettings { get; set; } = new();
 	protected override void OnStart()
 	{

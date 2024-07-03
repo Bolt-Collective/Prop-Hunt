@@ -293,12 +293,12 @@ public class Player : Component
 		if ( !IsProxy )
 		{
 			EyeInput();
-			var blind = Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault();
-			if ( TeamComponent.TeamName == Team.Hunters.ToString() && PropHuntManager.Instance.RoundState == GameState.Starting )
+			var blind = Scene.GetAllComponents<BlindPostprocess>()?.FirstOrDefault();
+			if ( TeamComponent.TeamName == Team.Hunters.ToString() && PropHuntManager.Instance.RoundState == GameState.Starting && blind is not null )
 			{
 				blind.UseBlind = true;
 			}
-			else
+			else if ( blind is not null )
 			{
 				blind.UseBlind = false;
 			}
