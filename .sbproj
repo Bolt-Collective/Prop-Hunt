@@ -179,7 +179,7 @@
         {
           "Name": "flashlight",
           "KeyboardCode": "f",
-          "GamepadCode": "SwitchLeftBumper",
+          "GamepadCode": "SwitchRightBumper",
           "GroupName": "Other"
         },
         {
