@@ -220,7 +220,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 14270.212
+            "Relative": 45.6223
           }
         }
       ]
@@ -260,8 +260,8 @@
                     "Type": "call",
                     "Properties": {
                       "_isStatic": false,
-                      "_name": "CreateGnomeFigPostprocess",
-                      "_type": "PropHunt.MapChanger"
+                      "_type": "PropHunt.MapChanger",
+                      "_name": "CreateGnomeFigPostprocess"
                     },
                     "UserData": {
                       "Position": "256,32"
@@ -269,12 +269,6 @@
                   }
                 ],
                 "Links": [
-                  {
-                    "SrcId": 1,
-                    "SrcName": "_signal",
-                    "DstId": 3,
-                    "DstName": "_signal"
-                  },
                   {
                     "SrcId": 1,
                     "SrcName": "mapChanger",
@@ -319,7 +313,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-07-02T21:13:08.1398775-04:00",
+  "LastSaved": "2024-07-02T23:17:50.6273331-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
