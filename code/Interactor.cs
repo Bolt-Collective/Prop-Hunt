@@ -1,3 +1,4 @@
+using PropHunt;
 using Sandbox;
 using Sandbox.Network;
 namespace Kicks;
@@ -29,6 +30,10 @@ public sealed class Interactor : Component
 				PhysicsGameObject = tr.GameObject;
 				PhysicsGameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 				PhysicsGameObject.Network.TakeOwnership();
+				if ( PropHuntManager.Instance.LobbySettings.Bleed )
+				{
+					Player.Local.TakeDamage( PropHuntManager.Instance.LobbySettings.BleedAmount );
+				}
 			}
 			else
 			{

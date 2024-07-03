@@ -370,6 +370,8 @@
   "MenuPath": null,
   "MenuIcon": null,
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "garry.cubemapdynamic"
+  ],
   "__version": 1
 }
