@@ -1,5 +1,5 @@
 {
-  "__guid": "bf4b6a2e-29ed-445e-a402-2fae3504055e",
+  "__guid": "69731751-5ca7-43cf-afed-7587bb7f36ec",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -220,7 +220,7 @@
           "OnGoingRound": false,
           "RoundState": "None",
           "TimeSinceLastForceTaunt": {
-            "Relative": 494.00723
+            "Relative": 14270.212
           }
         }
       ]
@@ -259,9 +259,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
+                      "_isStatic": false,
                       "_name": "CreateGnomeFigPostprocess",
-                      "_type": "PropHunt.MapChanger",
-                      "_isStatic": false
+                      "_type": "PropHunt.MapChanger"
                     },
                     "UserData": {
                       "Position": "256,32"
@@ -319,7 +319,7 @@
   },
   "Title": "map",
   "Description": "",
-  "LastSaved": "2024-07-01T22:44:55.8524187-04:00",
+  "LastSaved": "2024-07-02T21:13:08.1398775-04:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

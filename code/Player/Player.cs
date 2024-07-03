@@ -428,11 +428,24 @@ public class Player : Component
 
 
 	}
+	public void CheckForKillBounds()
+	{
+		var bounds = Scene.GetAllComponents<MapInstance>().FirstOrDefault().Bounds;
+		if ( Transform.Position.z < bounds.Mins.z - 1000 )
+		{
+			TakeDamage( 100 );
+		}
+		if ( Transform.Position.z > bounds.Maxs.z + 1000 )
+		{
+			TakeDamage( 100 );
+		}
+	}
+
 	protected override void OnFixedUpdate()
 	{
 		if ( IsProxy )
 			return;
-
+		CheckForKillBounds();
 		UpdateColliders( GameObject.Id );
 		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
 		{

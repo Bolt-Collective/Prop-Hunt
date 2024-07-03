@@ -159,8 +159,8 @@
         },
         {
           "Name": "View",
-          "KeyboardCode": "Z",
-          "GamepadCode": "DpadSouth",
+          "KeyboardCode": "C",
+          "GamepadCode": "B",
           "GroupName": "Other"
         },
         {
@@ -219,12 +219,6 @@
         {
           "Name": "prevweapon",
           "GamepadCode": "DpadWest",
-          "GroupName": "Other"
-        },
-        {
-          "Name": "RealFlashlight",
-          "KeyboardCode": "H",
-          "GamepadCode": "LeftJoystickButton",
           "GroupName": "Other"
         }
       ],
