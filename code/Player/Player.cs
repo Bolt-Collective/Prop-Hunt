@@ -303,14 +303,15 @@ public class Player : Component
 			}
 			if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 			{
+				//Input related methods
 				UpdateCrouch();
+				ToggleFirstPerson();
+				FreeLook();
+				ChangeDistance();
 				if ( Input.Pressed( "use" ) )
 				{
 					UseItems();
 				}
-				FreeLook();
-
-				ChangeDistance();
 				var eyePos = Eye.Transform.Position;
 				eyePos = Body.Transform.Position + Vector3.Up * (IsCrouching ? 32 : 64);
 				Eye.Transform.Position = eyePos;
@@ -340,6 +341,13 @@ public class Player : Component
 		if ( !FreeLooking )
 		{
 			Body.Transform.Rotation = Rotation.Slerp( Body.Transform.Rotation, new Angles( 0, EyeAngles.yaw, 0 ).ToRotation(), Time.Delta * 10.0f );
+		}
+	}
+	public void ToggleFirstPerson()
+	{
+		if ( Input.Pressed( "toggle3rdperson" ) )
+		{
+			CameraDistance = CameraDistance == 0 ? 150 : 0;
 		}
 	}
 	[Broadcast]

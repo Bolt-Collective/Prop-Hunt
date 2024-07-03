@@ -129,6 +129,10 @@ public class PropShiftingMechanic : Component
 			{
 				Player.Local.Health = 10f;
 			}*/
+			if ( IsProp )
+			{
+				Player.Local.CameraDistance = Player.Local.CameraDistance != 0 ? Player.Local.CameraDistance : 150;
+			}
 		}
 		Player.Local.Body.Network.Refresh();
 

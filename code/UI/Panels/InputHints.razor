@@ -31,12 +31,17 @@
 			<div>Exit Prop</div>
 			<img class="input-glyph" src="@LeaveProp?.ResourcePath">
 		</div>
+		<div>
+			<div>Toggle Third Person</div>
+			<img class="input-glyph" src="@Toggle3rdPerson?.ResourcePath">
+		</div>
 		@if (Input.UsingController)
 		{
 			<div>
 				<div>Run</div>
 				<img class="input-glyph" src="@ControllerSprint?.ResourcePath">
 			</div>
+
 			<div>
 				<div>Next Weapon</div>
 				<img class="input-glyph" src="@DPadEast?.ResourcePath">
@@ -59,6 +64,7 @@
 	public Texture DPadEast { get; set; }
 	public Texture DPadWest { get; set; }
 	public Texture ControllerSprint { get; set; }
+	public Texture Toggle3rdPerson { get; set; }
 
 	public override void Tick()
 	{
@@ -68,11 +74,13 @@
 		Grab = Input.GetGlyph("Flashlight", InputGlyphSize.Large, false);
 		Taunt = Input.GetGlyph("Taunt", InputGlyphSize.Large, false);
 		LeaveProp = Input.GetGlyph("View", InputGlyphSize.Large, false);
+		Toggle3rdPerson = Input.GetGlyph("toggle3rdperson", InputGlyphSize.Large, false);
 		if (Input.UsingController)
 		{
 			DPadEast = Input.GetGlyph("nextweapon", InputGlyphSize.Large, false);
 			DPadWest = Input.GetGlyph("prevweapon", InputGlyphSize.Large, false);
 			ControllerSprint = Input.GetGlyph("run", InputGlyphSize.Large, false);
+
 		}
 		base.Tick();
 	}

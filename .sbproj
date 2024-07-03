@@ -220,6 +220,12 @@
           "Name": "prevweapon",
           "GamepadCode": "DpadSouth",
           "GroupName": "Other"
+        },
+        {
+          "Name": "toggle3rdperson",
+          "KeyboardCode": "B",
+          "GamepadCode": "DpadWest",
+          "GroupName": "Other"
         }
       ],
       "__guid": "9317527a-9bfe-4b5a-b208-c20acb914998"
