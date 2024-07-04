@@ -2,17 +2,17 @@
   "__guid": "c285b887-2f27-49cb-ab2b-dd40b72f157a",
   "GameObjects": [
     {
-      "__guid": "b14f1784-a87f-403d-81c1-b1b9f72fa052",
+      "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
       "Flags": 0,
       "Name": "Map",
-      "Tags": "world,solid",
+      "Tags": "world",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
-          "__guid": "fbd6e420-4cb9-4592-a820-5b44af6e3133",
+          "__guid": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
           "__version": 1,
           "MapName": "gnomefig.office",
           "NoOrigin": false,
@@ -22,7 +22,7 @@
       "Children": []
     },
     {
-      "__guid": "c321f5ff-ee65-49c2-a261-2c6e20f6eef2",
+      "__guid": "be43cb37-c16b-4c1c-8c3b-25027a294a5a",
       "Flags": 0,
       "Name": "Camera",
       "Position": "-267.452,-379.653,297.7903",
@@ -33,7 +33,7 @@
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
-          "__guid": "b197e40e-3c64-48c5-bc9f-14dac3d5d32b",
+          "__guid": "9bcd10ab-049f-429f-ba67-4dff5ca29772",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
           "FieldOfView": 95.27,
@@ -50,7 +50,7 @@
         },
         {
           "__type": "Sandbox.Bloom",
-          "__guid": "d3a8c66e-0613-4b98-ba41-b9429e131852",
+          "__guid": "fc404c3d-1454-4330-9b6c-e5f2cef4cfbe",
           "BloomColor": {
             "color": [
               {
@@ -79,7 +79,7 @@
         },
         {
           "__type": "Sandbox.Tonemapping",
-          "__guid": "6d03e401-9d3a-4a1b-9e70-1350c4d5c657",
+          "__guid": "8c7f80db-0ad0-4325-a43d-a78118a7b4f5",
           "__version": 1,
           "ExposureBias": 2,
           "ExposureCompensation": 0,
@@ -91,452 +91,36 @@
         },
         {
           "__type": "Sandbox.Sharpen",
-          "__guid": "b68ba283-661a-41cc-9103-f50129afa71e",
+          "__guid": "3987301e-cb86-4939-b0ca-c0fcf4f1cb0e",
           "Scale": 0.2
         },
         {
           "__type": "Sandbox.AmbientOcclusion",
-          "__guid": "097b868b-a5f5-4e47-b214-1759ace50249",
+          "__guid": "8896749b-d477-4160-8df7-50aabccdb34b",
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
         },
         {
           "__type": "BlindPostprocess",
-          "__guid": "a9e659c6-5ed1-4350-9736-ae7c554f61c5",
+          "__guid": "6ac50cd5-28de-47ec-a1c0-4b0ac8e6455b",
           "color": "0,0,0,1",
           "UseBlind": false
         }
       ]
     },
     {
-      "__guid": "9b2dd6f0-0c03-42e6-b0d8-33aaec9c75c1",
-      "Flags": 0,
-      "Name": "NetworkManager",
-      "Position": "-37.26691,-4.443787,96.23311",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "PropHunt.Network",
-          "__guid": "75263b36-bed4-4e63-8b00-8e2d5d5866ad",
-          "CustomSpawnPoints": false,
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "go": "1105dfce-9320-459e-b902-5e275433cec4"
-          },
-          "PropHuntManager": {
-            "_type": "component",
-            "component_id": "4d184718-d905-47e4-98ab-bb9c12d4dd79",
-            "go": "601905af-c293-4c7d-a838-59c68e6885c9",
-            "component_type": "PropHuntManager"
-          },
-          "Spawns": [],
-          "StartServer": true
-        }
-      ]
-    },
-    {
-      "__guid": "601905af-c293-4c7d-a838-59c68e6885c9",
-      "Flags": 0,
-      "Name": "GameManager",
-      "Position": "-413.6376,843.2293,265.7083",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "PropHunt.PropHuntManager",
-          "__guid": "4d184718-d905-47e4-98ab-bb9c12d4dd79",
-          "ForceTauntCooldown": 60,
-          "MaxPlayersToStart": 1,
-          "OnGoingRound": false,
-          "RoundState": "None",
-          "TimeSinceLastForceTaunt": {
-            "Relative": 94.16332
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "1105dfce-9320-459e-b902-5e275433cec4",
-      "Flags": 0,
-      "Name": "player",
-      "Tags": "noblockaudio,player",
-      "NetworkMode": 1,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "Player",
-          "__guid": "1a8d240a-6b45-4713-897a-b85e60fdf834",
-          "AbleToMove": true,
-          "AmmoContainer": {
-            "_type": "component",
-            "component_id": "108c5b35-c59c-496c-958f-33137711c8d0",
-            "go": "1105dfce-9320-459e-b902-5e275433cec4",
-            "component_type": "AmmoContainer"
-          },
-          "AnimationHelper": {
-            "_type": "component",
-            "component_id": "d501de47-03c3-4160-9d2b-1a48ac2c7902",
-            "go": "1105dfce-9320-459e-b902-5e275433cec4",
-            "component_type": "CitizenAnimationHelper"
-          },
-          "Body": {
-            "_type": "gameobject",
-            "go": "1645895c-3f29-4bc5-a791-24a6b29884de"
-          },
-          "BodyRenderer": {
-            "_type": "component",
-            "component_id": "425bc2ab-42ab-4f29-8131-1ff84ca92230",
-            "go": "1645895c-3f29-4bc5-a791-24a6b29884de",
-            "component_type": "SkinnedModelRenderer"
-          },
-          "CameraDistance": 0,
-          "characterController": {
-            "_type": "component",
-            "component_id": "8ed003d7-70ad-439a-9ee5-07429a82e903",
-            "go": "1105dfce-9320-459e-b902-5e275433cec4",
-            "component_type": "Hc1CharacterController"
-          },
-          "Eye": {
-            "_type": "gameobject",
-            "go": "c1a8eafb-47c7-49c8-a3a4-fc089adff75f"
-          },
-          "Health": 100,
-          "OnDeath": {
-            "__version": 7,
-            "__guid": "4ae21b9d-2d8c-4cf9-b8dc-dde796699f34",
-            "UserData": {
-              "Title": "On Death",
-              "ReferencedComponentTypes": []
-            },
-            "Variables": [],
-            "Nodes": [
-              {
-                "Id": 0,
-                "Type": "input",
-                "UserData": {
-                  "Position": "-240,32"
-                }
-              },
-              {
-                "Id": 16,
-                "Type": "property",
-                "Properties": {
-                  "_name": "GameObject",
-                  "_type": "Sandbox.Component"
-                },
-                "UserData": {
-                  "Position": "-48,80"
-                }
-              },
-              {
-                "Id": 17,
-                "Type": "sound.play",
-                "UserData": {
-                  "Position": "240,96"
-                }
-              }
-            ],
-            "Links": [
-              {
-                "SrcId": 0,
-                "SrcName": "player",
-                "DstId": 16,
-                "DstName": "_target"
-              },
-              {
-                "SrcId": 0,
-                "SrcName": "_signal",
-                "DstId": 17,
-                "DstName": "_signal"
-              },
-              {
-                "SrcId": 16,
-                "SrcName": "_result",
-                "DstId": 17,
-                "DstName": "_this"
-              },
-              {
-                "Value": "sounds/death.player.sound",
-                "DstId": 17,
-                "DstName": "soundEvent"
-              }
-            ]
-          }
-        },
-        {
-          "__type": "PlayerDresser",
-          "__guid": "17e363ef-a3b4-4d37-8566-bce543347ae6",
-          "BodyRenderer": {
-            "_type": "component",
-            "component_id": "425bc2ab-42ab-4f29-8131-1ff84ca92230",
-            "go": "1645895c-3f29-4bc5-a791-24a6b29884de",
-            "component_type": "SkinnedModelRenderer"
-          }
-        },
-        {
-          "__type": "PropShiftingMechanic",
-          "__guid": "295d950c-50a7-4ef7-a4a8-000e2f07fb65",
-          "IsProp": false,
-          "PreviousHealth": 100,
-          "PropsCollider": {
-            "_type": "component",
-            "component_id": "cd1c2d85-1c1b-43ef-9dee-04515ba52dad",
-            "go": "4ceff6c4-6849-4a73-a9df-267eaa645e11",
-            "component_type": "ModelCollider"
-          }
-        },
-        {
-          "__type": "TeamComponent",
-          "__guid": "d1fb3e50-5116-4f75-b775-f3cf18a6541c",
-          "Team": "Unassigned",
-          "TeamName": "Unassigned"
-        },
-        {
-          "__type": "Inventory",
-          "__guid": "6dd5fa30-9df4-4070-bb4c-ef7d64ae3045",
-          "AbleToSwitch": true,
-          "ActiveConstarints": [],
-          "ActiveIndex": 0,
-          "cloneConstraints": [
-            {
-              "Parent": {
-                "_type": "gameobject",
-                "go": "1645895c-3f29-4bc5-a791-24a6b29884de"
-              },
-              "Clone": {
-                "_type": "gameobject",
-                "prefab": "prefabs/worldmodels/mp5wm.prefab"
-              }
-            },
-            {
-              "Parent": {
-                "_type": "gameobject",
-                "go": "1645895c-3f29-4bc5-a791-24a6b29884de"
-              },
-              "Clone": {
-                "_type": "gameobject",
-                "prefab": "prefabs/worldmodels/shotgunwm.prefab"
-              }
-            },
-            {
-              "Parent": {
-                "_type": "gameobject",
-                "go": "1645895c-3f29-4bc5-a791-24a6b29884de"
-              },
-              "Clone": {
-                "_type": "gameobject",
-                "prefab": "prefabs/worldmodels/uspwm.prefab"
-              }
-            },
-            {
-              "Parent": {
-                "_type": "gameobject",
-                "go": "1645895c-3f29-4bc5-a791-24a6b29884de"
-              },
-              "Clone": {
-                "_type": "gameobject",
-                "prefab": "prefabs/worldmodels/knifewm.prefab"
-              }
-            }
-          ],
-          "Items": [],
-          "Size": 4,
-          "StartingItems": [
-            {
-              "_type": "gameobject",
-              "prefab": "prefabs/weapons/pistol.prefab"
-            },
-            {
-              "_type": "gameobject",
-              "prefab": "prefabs/weapons/knife.prefab"
-            },
-            {
-              "_type": "gameobject",
-              "prefab": "prefabs/weapons/mp5.prefab"
-            },
-            {
-              "_type": "gameobject",
-              "prefab": "prefabs/weapons/shotgun.prefab"
-            }
-          ]
-        },
-        {
-          "__type": "AmmoContainer",
-          "__guid": "108c5b35-c59c-496c-958f-33137711c8d0",
-          "Ammo": 60,
-          "MaxAmmo": 60
-        },
-        {
-          "__type": "Kicks.Interactor",
-          "__guid": "24838ebe-d6b1-4a11-b25f-096c82ad043a"
-        },
-        {
-          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
-          "__guid": "d501de47-03c3-4160-9d2b-1a48ac2c7902",
-          "BodyWeight": 1,
-          "EyeSource": {
-            "_type": "gameobject",
-            "go": "c1a8eafb-47c7-49c8-a3a4-fc089adff75f"
-          },
-          "EyesWeight": 1,
-          "HeadWeight": 1,
-          "Height": 1,
-          "LookAtEnabled": false,
-          "Target": {
-            "_type": "component",
-            "component_id": "425bc2ab-42ab-4f29-8131-1ff84ca92230",
-            "go": "1645895c-3f29-4bc5-a791-24a6b29884de",
-            "component_type": "SkinnedModelRenderer"
-          }
-        },
-        {
-          "__type": "TauntComponent",
-          "__guid": "1c661ce5-f78f-44eb-a29f-a59d16a46009",
-          "HunterTaunts": [
-            "sounds/taunts/seaker taunts/error_taunt.sound",
-            "sounds/taunts/seaker taunts/prowler.sound",
-            "sounds/taunts/seaker taunts/rehehehe.sound",
-            "sounds/taunts/seaker taunts/grown-dark-evil-pack-tekken-meme.sound",
-            "sounds/taunts/seaker taunts/hank schrader says sussy baka.sound"
-          ],
-          "PropTaunts": [
-            "sounds/taunts/prop taunts/anime-wow-sound-effect.sound",
-            "sounds/taunts/prop taunts/bone-crack.sound",
-            "sounds/taunts/prop taunts/joerogan.sound",
-            "sounds/taunts/prop taunts/laugh.sound",
-            "sounds/taunts/prop taunts/laugh2.sound",
-            "sounds/taunts/prop taunts/perfect-fart.sound",
-            "sounds/taunts/prop taunts/pluh.sound",
-            "sounds/taunts/prop taunts/whatsup.sound",
-            "sounds/taunts/prop taunts/im-gonna-break-my-monitor-i-swear.sound",
-            "sounds/taunts/prop taunts/freddyfazbear.sound"
-          ],
-          "TauntCooldown": 5
-        },
-        {
-          "__type": "Facepunch.Hc1CharacterController",
-          "__guid": "8ed003d7-70ad-439a-9ee5-07429a82e903",
-          "Acceleration": 10,
-          "Bounciness": 0.3,
-          "GroundAngle": 45,
-          "Height": 64,
-          "IgnoreLayers": "ignore",
-          "Radius": 16,
-          "StepHeight": 18,
-          "UseCollisionRules": false
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "1645895c-3f29-4bc5-a791-24a6b29884de",
-          "Flags": 0,
-          "Name": "Body",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Sandbox.SkinnedModelRenderer",
-              "__guid": "425bc2ab-42ab-4f29-8131-1ff84ca92230",
-              "BodyGroups": 18446744073709551615,
-              "CreateBoneObjects": false,
-              "MaterialGroup": "default",
-              "Model": "models/citizen/citizen.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1",
-              "UseAnimGraph": true
-            },
-            {
-              "__type": "Sandbox.ModelHitboxes",
-              "__guid": "832cf5f9-ecf3-4262-9546-92c0b0f5706c",
-              "Renderer": {
-                "_type": "component",
-                "component_id": "425bc2ab-42ab-4f29-8131-1ff84ca92230",
-                "go": "1645895c-3f29-4bc5-a791-24a6b29884de",
-                "component_type": "SkinnedModelRenderer"
-              },
-              "Target": {
-                "_type": "gameobject",
-                "go": "1645895c-3f29-4bc5-a791-24a6b29884de"
-              }
-            }
-          ],
-          "Children": [
-            {
-              "__guid": "4ceff6c4-6849-4a73-a9df-267eaa645e11",
-              "Flags": 0,
-              "Name": "PropCollider",
-              "Tags": "propcollider",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.ModelCollider",
-                  "__guid": "cd1c2d85-1c1b-43ef-9dee-04515ba52dad",
-                  "__enabled": false,
-                  "IsTrigger": false,
-                  "Model": "models/citizen/citizen.vmdl",
-                  "Static": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "__guid": "80b193aa-8b08-4517-8e06-9e571f088f86",
-          "Flags": 0,
-          "Name": "Voice",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Voice",
-              "__guid": "54345e5f-b853-4049-8d37-fdacf5cb74fc",
-              "Loopback": false,
-              "Mode": "PushToTalk",
-              "MorphScale": 2,
-              "MorphSmoothTime": 0.1,
-              "PushToTalkInput": "voice",
-              "Renderer": {
-                "_type": "component",
-                "component_id": "425bc2ab-42ab-4f29-8131-1ff84ca92230",
-                "go": "1645895c-3f29-4bc5-a791-24a6b29884de",
-                "component_type": "SkinnedModelRenderer"
-              },
-              "Volume": 1,
-              "WorldspacePlayback": true
-            }
-          ]
-        },
-        {
-          "__guid": "c1a8eafb-47c7-49c8-a3a4-fc089adff75f",
-          "Flags": 0,
-          "Name": "EyePos",
-          "Position": "0,0,64",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true
-        }
-      ]
-    },
-    {
-      "__guid": "5499e2b7-7e61-48df-8909-267382efceab",
+      "__guid": "db397682-adf3-44df-95c8-b96eb421601b",
       "Flags": 0,
       "Name": "Ui",
-      "Position": "-170,982,2",
+      "Position": "-6.25499,-267.7513,221.1104",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
-          "__guid": "9b5dde2e-7264-406e-9531-56078b8d07e7",
+          "__guid": "65966290-ac00-429a-8523-a38925f378ac",
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
@@ -544,12 +128,12 @@
         },
         {
           "__type": "PropHuntUI",
-          "__guid": "4600d42e-646e-4490-9ed5-bc889bdbb542",
+          "__guid": "6198673f-3d13-4c58-826f-76993e57daa9",
           "ShowMapVoting": false
         },
         {
           "__type": "DevUi",
-          "__guid": "510b6927-a16c-45c4-ba7d-cea9d764af6b",
+          "__guid": "427b9d94-f363-4b54-a269-a0d9ff6d8736",
           "__enabled": false,
           "AllowedSteamIds": [
             76561199001645276,
@@ -560,7 +144,7 @@
       ],
       "Children": [
         {
-          "__guid": "b22b2e48-f49f-4273-af91-26be85c6a026",
+          "__guid": "808d5494-4d51-4174-96a4-df46d857404b",
           "Flags": 0,
           "Name": "Chat",
           "Position": "0,0,0",
@@ -570,12 +154,12 @@
           "Components": [
             {
               "__type": "ChatBox",
-              "__guid": "07d30ad3-0426-43c3-af4c-7d6e3cdb284f"
+              "__guid": "ec522b07-e1bc-4d62-b0b8-f5c088183cc9"
             }
           ]
         },
         {
-          "__guid": "23027d29-203b-421e-b43b-1c6323c9cfda",
+          "__guid": "4138e17e-25a3-415f-9c94-f3021302dc4a",
           "Flags": 0,
           "Name": "PauseMenu",
           "Position": "0,0,0",
@@ -585,14 +169,64 @@
           "Components": [
             {
               "__type": "Sandbox.UI.PauseMenuUi",
-              "__guid": "8c149666-ca5e-4165-b48d-3318502ea67b"
+              "__guid": "8e7700a5-2521-4c24-877b-bef8fe35f4ba"
             }
           ]
         }
       ]
     },
     {
-      "__guid": "a99960ca-e6f6-4442-af3d-db6883f9c651",
+      "__guid": "1ffeefdf-8655-452b-afaa-46f09e044a93",
+      "Flags": 0,
+      "Name": "GameManager",
+      "Position": "-413.6376,843.2293,265.7083",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "PropHunt.PropHuntManager",
+          "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+          "ForceTauntCooldown": 60,
+          "MaxPlayersToStart": 1,
+          "OnGoingRound": false,
+          "RoundState": "None",
+          "TimeSinceLastForceTaunt": {
+            "Relative": 144.0036
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
+      "Flags": 0,
+      "Name": "NetworkManager",
+      "Position": "-37.26694,-4.443787,96.23308",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "PropHunt.Network",
+          "__guid": "51390f44-0af0-4b24-be22-e0296c99d3dd",
+          "CustomSpawnPoints": false,
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "PropHuntManager": {
+            "_type": "component",
+            "component_id": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+            "go": "1ffeefdf-8655-452b-afaa-46f09e044a93",
+            "component_type": "PropHuntManager"
+          },
+          "Spawns": [],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "5fcf5844-f8e2-472d-8be3-ab01a93ded4c",
       "Flags": 0,
       "Name": "Map Changer",
       "Position": "187.3595,-168.6434,52.85176",
@@ -602,12 +236,12 @@
       "Components": [
         {
           "__type": "PropHunt.MapChanger",
-          "__guid": "d2461638-27d6-4f6a-8e09-e8a00b929aaf",
+          "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24",
           "customMapActions": [
             {
               "OnSceneStart": {
                 "__version": 7,
-                "__guid": "3ab971a6-d44e-4e43-846a-1c16024e8728",
+                "__guid": "ebefba16-8750-437b-89e6-4d1ab7f1c79b",
                 "UserData": {
                   "Title": "On Scene Start",
                   "ReferencedComponentTypes": []
@@ -648,8 +282,8 @@
           ],
           "MapInstance": {
             "_type": "component",
-            "component_id": "fbd6e420-4cb9-4592-a820-5b44af6e3133",
-            "go": "b14f1784-a87f-403d-81c1-b1b9f72fa052",
+            "component_id": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
+            "go": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
             "component_type": "MapInstance"
           }
         }
@@ -677,7 +311,7 @@
       "IncludedBodies": ""
     }
   },
-  "Title": "newmap",
+  "Title": "map",
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
