@@ -72,7 +72,7 @@ public class Player : Component
 		if ( IsProxy ) return;
 		if ( PropHuntManager.Instance?.OnGoingRound == true && PropHuntManager.Instance is not null )
 		{
-			TakeDamage( 1000 );
+			TakeDamage( 1000, false );
 		}
 	}
 	[Sync] public bool ShouldFreeLook { get; set; } = false;
@@ -549,7 +549,7 @@ public class Player : Component
 	}
 
 	[Broadcast]
-	public void TakeDamage( float damage )
+	public void TakeDamage( float damage, bool deathMessage = true )
 	{
 		if ( IsDead ) return;
 
@@ -559,11 +559,11 @@ public class Player : Component
 		{
 			Health = 0;
 			IsDead = true;
-			Death( GameObject.Id );
+			Death( GameObject.Id, deathMessage );
 		}
 	}
 	[Broadcast]
-	void Death( Guid caller )
+	void Death( Guid caller, bool deathMessage )
 	{
 		if ( IsSpectator ) return;
 
@@ -576,7 +576,10 @@ public class Player : Component
 		ClearHoldType( caller );
 		player.Inventory.Clear();
 		player.AbleToMove = false;
-		ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
+		if ( deathMessage )
+		{
+			ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
+		}
 	}
 	[Broadcast]
 	public void ClearHoldType( Guid caller )
