@@ -12,7 +12,6 @@ MenuUi {
     font-family: Poppins;
     color: #f0f0f0;
     pointer-events: all;
-
     transition: all 1s ease-in-out;
 
     &:intro {
@@ -39,14 +38,10 @@ MenuUi {
         font-size: 35px;
         padding: 15px 20px;
         background-color: rgb(255, 255, 255, 0.10);
-
         border: 0.5px solid rgb(65, 65, 65, 0.40);
         border-radius: 10px;
-
         box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.7);
-
         backdrop-filter: blur(5px);
-
         color: white;
         font-weight: normal;
         cursor: pointer;
@@ -69,8 +64,6 @@ MenuUi {
         height: 80%;
         background-color: rgba(0,0,0,0.8);
         justify-content: center;
-
-        
     }
 
     .serverlist {
@@ -93,7 +86,6 @@ MenuUi {
         }
 
         .server {
-            
             width: 100%;
             height: 100px;
             border-radius: 20px;
@@ -145,51 +137,70 @@ MenuUi {
         justify-content: center;
     }
 
-    .lobbysettings
-    {
-        top: 12px;
-        left: 12px;
+    .lobbysettings {
         background-color: #333;
-        align-items: flex-start;
-        justify-content: center;
+        display: flex;
+        justify-content: space-evenly;
         flex-direction: column;
-        padding: 50px;
+        width: 30vw;
 
-        width: 25vw;
+        .chosen-map {
+            flex-direction: column;
+            justify-content: center;
+            max-height: 250px;
+            padding: 20px;
 
-        .slider
-        {
+
+            border: 10px solid #444;
+            border-radius: 10px;
+
+            .thumb {
+                background-position: center;
+                background-size: cover;
+                position: relative;
+            }
+
+            .info {
+            }
+        }
+
+        .slider {
             width: 100%;
             height: 50px;
             background-color: #333;
             border-radius: 10px;
             align-items: center;
+
+            font-size: 22px;
             padding: 10px;
             margin: 10px 0;
 
-            .slider-value
-            {
+            .slider-label {
+                flex-grow: 1;
+            }
+
+            .slider-value {
                 font-size: 20px;
                 color: white;
             }
 
-            &.button
-            {
-                &:hover
-                {
+            &.button {
+                &:hover {
                     background-color: #444;
                     sound-in: ui.button.over;
                 }
-                &:active
-                {
+
+                &:active {
                     sound-out: ui.button.press;
                     background-color: #555;
                 }
             }
+
             .textentry {
                 background-color: dimgrey;
                 margin: 10px;
                 border-radius: 5px;
+                font-size: 26px;
             }
         }
     }
