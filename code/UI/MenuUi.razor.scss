@@ -63,12 +63,14 @@ MenuUi {
 
     .maplist {
         position: absolute;
+        display: flex;
         right: 12px;
-        width: 60%;
+        width: 65%;
         height: 80%;
         background-color: rgba(0,0,0,0.8);
         justify-content: center;
 
+        
     }
 
     .serverlist {
@@ -145,17 +147,15 @@ MenuUi {
 
     .lobbysettings
     {
-        position: absolute;
         top: 12px;
         left: 12px;
-        width: 500px;
-        height: 500px;
-        background-color: grey;
+        background-color: #333;
         align-items: flex-start;
         justify-content: center;
         flex-direction: column;
-        border-radius: 12px;
         padding: 50px;
+
+        width: 25vw;
 
         .slider
         {
@@ -183,8 +183,13 @@ MenuUi {
                 &:active
                 {
                     sound-out: ui.button.press;
-                    background-color: #333;
+                    background-color: #555;
                 }
+            }
+            .textentry {
+                background-color: dimgrey;
+                margin: 10px;
+                border-radius: 5px;
             }
         }
     }
