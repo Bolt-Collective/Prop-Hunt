@@ -41,8 +41,9 @@
 			@foreach (var lobby in Lobbies)
 			{
 				<div class="server" style="flex-wrap: nowrap;">
-					<img src="@Package.Fetch( lobby.Map, false ).Result.Thumb" style="width: 64px; height: 64px; border-radius: 100px; margin-right: 10px;" />
-					<div class="server-name" style="font-size: 20px;">@Package.Fetch( lobby.Map, false ).Result.Title</div>
+					<img src="@Package.Fetch( lobby.Map, false ).Result.Thumb"
+						style="width: 64px; height: 64px; border-radius: 100px; margin-right: 10px;" />
+					<div class="server-name" style="font-size: 20px;">@Package.Fetch(lobby.Map, false).Result.Title</div>
 					<div class="server-name" style="font-size: 24px">@lobby.Name</div>
 					<div class="server-players">@lobby.Members</div>
 					<div class="server-join" onclick="@( () => ConnectToLobby( lobby ) )">Join</div>
@@ -81,7 +82,7 @@
 	void OnPackageSelected(Package package)
 	{
 		LaunchArguments.Map = package.FullIdent;
-		Game.ActiveScene.Load(GameScene);
+		Game.ActiveScene.LoadFromFile("scenes/newmap.scene");
 	}
 	void LeaveGame()
 	{
@@ -95,9 +96,9 @@
 	}
 	protected override void OnUpdate()
 	{
-		FileSystem.Data.WriteAllText( "MinPlayers", minPlayers.ToString() );
+		FileSystem.Data.WriteAllText("MinPlayers", minPlayers.ToString());
 
-		if ( Input.EscapePressed )
+		if (Input.EscapePressed)
 		{
 			Input.EscapePressed = false;
 		}
