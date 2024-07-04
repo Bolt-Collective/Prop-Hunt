@@ -55,48 +55,49 @@
 	{
 		<div class="maplist">
 			<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending"
-				OnSelected="@OnPackageSelected" Take=@(50) />
+			             OnSelected="@OnPackageSelected" Take=@(50) />
+			
+			<div class="lobbysettings" style="">
+				<div class="slider">
+					<TextEntry Value:bind=@(lobbySettings.ForcedTauntTime) Numeric=@true />
+					<div class="slider-label">Forced Taunt Cooldown</div>
+				</div>
+				<div class="slider">
+					<TextEntry Value:bind="@lobbySettings.TauntCoolDownTime" Numeric=@true/>
+					<div class="slider-label">Taunt Cooldown</div>
+				</div>
+				<div class="slider">
+					<TextEntry Value:bind="@lobbySettings.PlayersNeededToStart" Numeric=@true MaxValue=@(64f) />
+					<div class="slider-label">Players needed to start</div>
+				</div>
+				<div class="slider">
+					<TextEntry Value:bind="@lobbySettings.RoundTime" Numeric=@true/>
+					<div class="slider-label">Round Time</div>
+				</div>
+
+				<div class="slider">
+					<TextEntry Value:bind="@lobbySettings.BleedAmount" Numeric=@true/>
+					<div class="slider-label">Bleed amount</div>
+				</div>
+				<div class="slider">
+					<SwitchControl Value:bind="@lobbySettings.Bleed" />
+					<div class="slider-label">Players bleed on item grab</div>
+				</div>
+
+				<div class="slider button" style="align-items: center; justify-content: center;" onclick=@(() =>
+					                                                                                         LobbySettings.SetLobbySettings(lobbySettings))>
+					Save
+				</div>
+			</div>
 		</div>
 
-		<div class="lobbysettings" style="">
-			<div class="slider">
-				<SliderControl Value:bind="@lobbySettings.ForcedTauntTime" Min=@(1) Max=@(lobbySettings.RoundTime)
-					Step=@(1) />
-				<div class="slider-label">Forced Taunt Cooldown</div>
-			</div>
-			<div class="slider">
-				<SliderControl Value:bind="@lobbySettings.TauntCoolDownTime" Min=@(0) Max=@(lobbySettings.RoundTime)
-					Step=@(1) />
-				<div class="slider-label">Taunt Cooldown</div>
-			</div>
-			<div class="slider">
-				<SliderControl Value:bind="@lobbySettings.PlayersNeededToStart" Min=@(2) Max=@(64) Step=@(1) />
-				<div class="slider-label">Players needed to start</div>
-			</div>
-			<div class="slider">
-				<SliderControl Value:bind="@lobbySettings.RoundTime" Min=@(1) Max=@(240) Step=@(20) />
-				<div class="slider-label">Round Time</div>
-			</div>
-			<div class="slider">
-				<SwitchControl Value:bind="@lobbySettings.Bleed" />
-				<div class="slider-label">Players bleed on item grab</div>
-			</div>
-			<div class="slider">
-				<SliderControl Value:bind="@lobbySettings.BleedAmount" Min=@(0) Max=@(100) Step=@(1) />
-				<div class="slider-label">Bleed amount</div>
-			</div>
-			<div class="slider button" style="align-items: center; justify-content: center;" onclick=@(() =>
-			LobbySettings.SetLobbySettings(lobbySettings))>
-				Save
-			</div>
-		</div>
+
 	}
 </root>
 
 @code
 {
 	[Property] int minPlayers = 2;
-	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
 	[Property] public bool ShowServerList { get; set; }
 	public List<LobbyInformation> Lobbies { get; set; } = new();
 	[Property] public bool Refreshing { get; set; } = false;
