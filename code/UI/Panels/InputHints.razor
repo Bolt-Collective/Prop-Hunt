@@ -6,10 +6,13 @@
 <root>
 	@if (Player.Local is not null)
 	{
-		<div>
-			<div>Turn into Prop / Interact</div>
-			<img class="input-glyph" src="@Use?.ResourcePath">
-		</div>
+		@if (Player.Local.TeamComponent.TeamName == "Props")
+		{
+			<div>
+				<div>Turn into Prop</div>
+				<img class="input-glyph" src="@Use?.ResourcePath">
+			</div>
+		}
 		<div>
 			<div>Attack</div>
 			<img class="input-glyph" src="@Attack1?.ResourcePath">
@@ -27,10 +30,13 @@
 			<div>Taunt</div>
 			<img class="input-glyph" src="@Taunt?.ResourcePath">
 		</div>
-		<div>
-			<div>Exit Prop</div>
-			<img class="input-glyph" src="@LeaveProp?.ResourcePath">
-		</div>
+		@if (Player.Local.TeamComponent.TeamName == "Props")
+		{
+			<div>
+				<div>Exit Prop</div>
+				<img class="input-glyph" src="@LeaveProp?.ResourcePath">
+			</div>
+		}
 		<div>
 			<div>Toggle Third Person</div>
 			<img class="input-glyph" src="@Toggle3rdPerson?.ResourcePath">
@@ -42,6 +48,10 @@
 				<img class="input-glyph" src="@ControllerSprint?.ResourcePath">
 			</div>
 
+
+		}
+		@if (Input.UsingController && Player.Local.TeamComponent.TeamName == "Hunters")
+		{
 			<div>
 				<div>Next Weapon</div>
 				<img class="input-glyph" src="@DPadEast?.ResourcePath">
