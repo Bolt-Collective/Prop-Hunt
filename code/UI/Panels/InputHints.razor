@@ -6,7 +6,8 @@
 <root>
 	@if (Player.Local is not null)
 	{
-		@if (Player.Local.TeamComponent.TeamName == "Props")
+		@if (Player.Local.TeamComponent.TeamName == Team.Props.ToString() || Player.Local.TeamComponent.TeamName ==
+				Team.Unassigned.ToString())
 		{
 			<div>
 				<div>Turn into Prop</div>
@@ -30,7 +31,8 @@
 			<div>Taunt</div>
 			<img class="input-glyph" src="@Taunt?.ResourcePath">
 		</div>
-		@if (Player.Local.TeamComponent.TeamName == "Props")
+		@if (Player.Local.TeamComponent.TeamName == Team.Props.ToString() ||
+				Player.Local.TeamComponent.TeamName == Team.Unassigned.ToString())
 		{
 			<div>
 				<div>Exit Prop</div>
@@ -50,7 +52,8 @@
 
 
 		}
-		@if (Input.UsingController && Player.Local.TeamComponent.TeamName == "Hunters")
+		@if (Input.UsingController && (Player.Local.TeamComponent.TeamName == Team.Hunters.ToString() ||
+				Player.Local.TeamComponent.TeamName == Team.Unassigned.ToString()))
 		{
 			<div>
 				<div>Next Weapon</div>
