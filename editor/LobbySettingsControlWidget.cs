@@ -20,7 +20,7 @@ public class LobbySettingsControlWidget : ControlWidget
 		serializedObject.TryGetProperty( nameof( LobbySettings.TauntCoolDownTime ), out var tauntCoolDownTime );
 		serializedObject.TryGetProperty( nameof( LobbySettings.ForcedTauntTime ), out var forcedTauntTime );
 		serializedObject.TryGetProperty( nameof( LobbySettings.PlayersNeededToStart ), out var playersNeededToStart );
-		serializedObject.TryGetProperty( nameof( LobbySettings.Bleed ), out var bleed );
+		serializedObject.TryGetProperty( nameof( LobbySettings.HunterPropGrabMode ), out var bleed );
 		serializedObject.TryGetProperty( nameof( LobbySettings.BleedAmount ), out var bleedAmount );
 
 		var roundTimeSheet = new ControlSheet();

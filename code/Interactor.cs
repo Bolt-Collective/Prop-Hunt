@@ -30,7 +30,7 @@ public sealed class Interactor : Component
 				PhysicsGameObject = tr.GameObject;
 				PhysicsGameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
 				PhysicsGameObject.Network.TakeOwnership();
-				if ( PropHuntManager.Instance.LobbySettings.Bleed )
+				if ( PropHuntManager.Instance.LobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed )
 				{
 					Player.Local.TakeDamage( PropHuntManager.Instance.LobbySettings.BleedAmount );
 				}
