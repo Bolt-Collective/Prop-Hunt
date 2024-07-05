@@ -87,11 +87,15 @@
 					<div class="slider-label">Round Time</div>
 					<TextEntry Value:bind="@lobbySettings.RoundTime" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f )/>
 				</div>
+				
+				@if ( lobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed )
+				{
+					<div class="slider">
+						<div class="slider-label">Bleed amount</div>
+						<TextEntry Value:bind="@lobbySettings.BleedAmount" Numeric=@true/>
+					</div>
+				}
 
-				<div class="slider">
-					<div class="slider-label">Bleed amount</div>
-					<TextEntry Value:bind="@lobbySettings.BleedAmount" Numeric=@true/>
-				</div>
 				<div class="slider">
 					<div class="slider-label">Hunters can grab props</div>
 					<DropDown style="font-size: 10px;" Value:bind="@lobbySettings.HunterPropGrabMode"/>
