@@ -1,5 +1,5 @@
 {
-  "__guid": "a1008d92-0eab-482b-b837-1abb9947edfb",
+  "__guid": "9a98c900-887e-4b39-bd67-e3e87659cc34",
   "GameObjects": [
     {
       "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
@@ -88,7 +88,14 @@
           "__guid": "4f81d37d-14e5-4319-a433-2ec32d1f1451",
           "minPlayers": 2,
           "GameScene": "scenes/map.scene",
-          "MyStringValue": "Hello World!",
+          "lobbySettings": {
+            "ForcedTauntTime": 60,
+            "TauntCoolDownTime": 10,
+            "RoundTime": 120,
+            "PlayersNeededToStart": 2,
+            "HunterPropGrabMode": "Off",
+            "BleedAmount": 10
+          },
           "Refreshing": false,
           "ShowMapList": false,
           "ShowServerList": false
@@ -202,9 +209,9 @@
   },
   "Title": "new_menu",
   "Description": "",
-  "LastSaved": "2024-07-01T18:21:33.4576675-04:00",
   "ResourceVersion": 1,
   "__references": [
+    "bolt.prophuntmanager",
     "titanovsky.radio"
   ],
   "__version": 1

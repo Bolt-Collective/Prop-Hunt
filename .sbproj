@@ -22,7 +22,7 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/new_menu.scene",
+    "StartupScene": "scenes/menu.scene",
     "ControlModes": {},
     "InputSettings": {
       "Actions": [
