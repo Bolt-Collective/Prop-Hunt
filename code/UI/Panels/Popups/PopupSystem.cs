@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 
 public partial class PopupSystem
 {
+	[ConCmd("popup")]
 	public static void DisplayPopup( string text, string title = "", float duration = 8f )
 	{
 		var popup = new Popup();

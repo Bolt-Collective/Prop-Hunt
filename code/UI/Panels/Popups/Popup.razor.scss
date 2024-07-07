@@ -1,32 +1,25 @@
 ﻿Popup {
-    top: 32px;
-    left: 32px;
-    background-color: rgba(26, 26, 26, 0.72);
-    backdrop-filter: blur(32px);
-    font-family: Poppins;
+    font-family: Arial;
     flex-direction: column;
-    border-left-width: 6px;
-    border-left: yellow;
-    transition: all 0.2s;
+    transition: all 2.5s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
 
     &:intro {
-        left: -1000px;
+        opacity: 0;
+        transform: scale(0.3);
     }
 
-    &:outro {
-        left: -1000px;
-    }
-
-    .title {
+    .popup-title {
+        justify-content: center;
         padding: 8px;
-        font-size: 18px;
-        background-color: rgba(32, 32, 32, 0.7);
+        font-size: 30px;
         color: white;
     }
 
-    .text {
+    .popup-text {
         padding: 8px;
-        font-size: 14px;
+        font-size: 50px;
         color: white;
     }
 }
