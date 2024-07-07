@@ -4,39 +4,33 @@ public sealed class FlashlightComponent : Component
 {
 	[Property] public SpotLight Flashlight { get; set; }
 
-	[Sync] public bool Enabled { get; set; } = false;
-
-	protected override void OnAwake()
-	{
-		if ( IsProxy ) return;
-
-	}
-
-	protected override void OnFixedUpdate()
-	{
-		base.OnFixedUpdate();
-
-	}
-
 
 	[Broadcast]
-	private void BroadcastFlashlight()
+	private void BroadcastFlashlight(Guid caller)
 	{
-		Flashlight.Transform.Rotation = Player.Local.Eye.Transform.Rotation;
-		Flashlight.Transform.Position = Player.Local.Eye.Transform.Position + Player.Local.Eye.Transform.Rotation.Forward * 40;
+		var player = Scene.Directory.FindByGuid(caller).Components.Get<Player>();
+		if (player == null) return;
+		Flashlight.Transform.Rotation = player.Eye.Transform.Rotation;
+		Flashlight.Transform.Position = player.Eye.Transform.Position + player.Eye.Transform.Rotation.Forward * 40;
 	}
-
-
-	protected override void OnUpdate()
+	[Broadcast]
+	private void EnableFlashlight(Guid caller)
 	{
-		if ( IsProxy ) return;
+		var flashLight = Scene.Directory.FindByGuid(caller).Components.Get<FlashlightComponent>();
+		if (flashLight == null) return;
+		flashLight.Flashlight.Enabled = !flashLight.Flashlight.Enabled;
+	}
+	protected override void OnFixedUpdate()
+	{
+		if (Player.Local.TeamComponent.TeamName == Team.Unassigned.ToString()) return;
 
-		BroadcastFlashlight();
+		if (IsProxy) return;
 
-
-		if ( Input.Pressed( "Menu" ) ) {
-			Enabled = !Enabled;
-			Flashlight.Enabled = Enabled;
+		BroadcastFlashlight(GameObject.Root.Id);
+		if (Input.Pressed("menu"))
+		{
+			EnableFlashlight(GameObject.Id);
 		}
+
 	}
 }
