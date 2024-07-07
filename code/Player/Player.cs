@@ -582,6 +582,7 @@ public class Player : Component
 		ClearHoldType( caller );
 		player.Inventory.Clear();
 		player.AbleToMove = false;
+		player.GameObject.Components.Get<FlashlightComponent>().Flashlight.Enabled = false;
 		if ( deathMessage )
 		{
 			ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
