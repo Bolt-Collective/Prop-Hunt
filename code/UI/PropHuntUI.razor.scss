@@ -8,8 +8,7 @@ PropHuntUI {
 	.round-timer {
 		position: absolute;
 		display: flex;
-		flex-direction: column;
-		width: 15%;
+		justify-content: center;
 		top: 0;
 	}
 
