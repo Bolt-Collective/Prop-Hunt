@@ -14,7 +14,7 @@ public partial class Popup : Panel
 		base.Tick();
 		if ( TimeSincePanelCreated > Duration )
 		{
-			Delete();
+			Delete(false);
 		}
 	}
 
