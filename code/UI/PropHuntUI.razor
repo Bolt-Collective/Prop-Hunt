@@ -11,18 +11,18 @@
 			@if (Manager.RoundState == GameState.WaitingForPlayers)
 			{
 				<div class="title"
-					style="background-color: rgba(0, 0, 0, 0.2); font-weight: 800; font-size: 25px;">
+					style="background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px;">
 					@Format(TimeSpan.FromSeconds(
 									Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			else
 			{
 				<div class="title"
-					style="background-color: rgba(0, 0, 0, 0.2); font-weight: 800; font-size: 25px;">
+					 style="background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px;">
 					@Format(TimeSpan.FromSeconds(
 									Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
-			<div class="title" style="background-color: rgba(0, 0, 0, 0.5); font-size: 24px;">@Manager.RoundStateText</div>
+			<div class="title" style="background-color: rgba(0, 0, 0, 0.7); font-size: 24px; border-bottom-right-radius: 20px;">@Manager.RoundStateText</div>
 		</div>
 		@if (Player.Local is not null)
 		{
