@@ -15,6 +15,6 @@ public partial class PopupSystem
 
 	public static void ClearPopups()
 	{
-		PopupList.Instance.DeleteChildren( true );
+		PopupList.Instance.DeleteChildren();
 	}
 }
