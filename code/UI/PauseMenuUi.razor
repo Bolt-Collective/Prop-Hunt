@@ -1,5 +1,6 @@
 ﻿@using Sandbox.ModelEditor
 @using Sandbox.UI;
+@using PropHunt;
 @inherits PanelComponent
 @namespace Sandbox.UI
 
@@ -13,15 +14,26 @@
 		<div class="tab" @onclick="@( () => Scene.LoadFromFile("scenes/menu.scene"))">Leave Lobby</div>
 		<div class="tab" @onclick="@( () => Game.Close())">Quit Game</div>
 	</div>
+	@if (Networking.IsHost && PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers ||
+			PropHuntManager.Instance.RoundState == GameState.Ending)
+	{
+		<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending" OnSelected="@OnPackageSelected"
+			Take=@(50) style="position: absolute; right: 2px; width: 800px; height: 100%;" />
+	}
+
 </root>
 
 @code
 {
 	public bool IsHidden = true;
 
+	public void OnPackageSelected(Package package)
+	{
+		Scene.GetAllComponents<MapChanger>().FirstOrDefault()?.LoadMap(package.FullIdent);
+	}
 	protected override void OnUpdate()
 	{
-		if ( Input.EscapePressed )
+		if (Input.EscapePressed)
 		{
 			Input.EscapePressed = false;
 
