@@ -18,13 +18,16 @@ public sealed class FlashlightComponent : Component
 	{
 		var flashLight = Scene.Directory.FindByGuid(caller).Components.Get<FlashlightComponent>();
 		if (flashLight == null) return;
+
 		flashLight.Flashlight.Enabled = !flashLight.Flashlight.Enabled;
 	}
 	protected override void OnFixedUpdate()
 	{
 		if (Player.Local.TeamComponent.TeamName == Team.Unassigned.ToString()) return;
 
-		if (IsProxy) return;
+		if ( Player.Local.TeamComponent.TeamName == Team.Props.ToString() ) return;
+
+		if ( IsProxy ) return;
 
 		BroadcastFlashlight(GameObject.Root.Id);
 		if (Input.Pressed("menu"))
