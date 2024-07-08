@@ -1,5 +1,5 @@
 {
-  "__guid": "a53aec24-b50d-40a7-9a94-9b22577bd662",
+  "__guid": "31504ef9-e1d5-4cb9-9cf5-a987cd6893d1",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -14,7 +14,7 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
           "__version": 1,
-          "MapName": "thieves.cs_assault",
+          "MapName": "gnomefig.office",
           "NoOrigin": false,
           "UseMapFromLaunch": true
         }
@@ -172,6 +172,22 @@
               "__guid": "8e7700a5-2521-4c24-877b-bef8fe35f4ba"
             }
           ]
+        },
+        {
+          "__guid": "121a454b-03ff-453b-ac82-8f6a0ccb5f44",
+          "Flags": 0,
+          "Name": "Voting Ui",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "VotingUi",
+              "__guid": "fc9f13af-2259-41a7-8ab2-0b97ae13e2a1",
+              "AbleToVote": true
+            }
+          ]
         }
       ]
     },
@@ -197,7 +213,9 @@
           },
           "MaxPlayersToStart": 1,
           "OnGoingRound": false,
-          "RoundState": "None"
+          "RoundLength": 120,
+          "RoundState": "None",
+          "Votes": {}
         }
       ]
     },
@@ -263,9 +281,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
+                      "_isStatic": false,
                       "_name": "CreateGnomeFigPostprocess",
-                      "_isStatic": false
+                      "_type": "PropHunt.MapChanger"
                     },
                     "UserData": {
                       "Position": "256,32"

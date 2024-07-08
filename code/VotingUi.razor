@@ -3,7 +3,7 @@
 @using PropHunt;
 @inherits PanelComponent
 
-<root style="opacity: @(PropHuntManager.Instance?.RoundState == GameState.Voting ? 1 : 0)">
+<root style="opacity: @(PropHuntManager.Instance?.RoundState == GameState.Voting ? 1 : 0);">
 	<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending" OnSelected="@OnPackageSelected"
 		Take=@(50) />
 </root>
@@ -11,7 +11,7 @@
 @code
 {
 
-	public bool AbleToVote { get; set; }
+	[Property] public bool AbleToVote { get; set; } = true;
 	public void OnPackageSelected(Package package)
 	{
 		if (!AbleToVote) return;
