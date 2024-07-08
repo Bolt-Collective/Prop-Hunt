@@ -1,0 +1,26 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using PropHunt;
+@inherits PanelComponent
+
+<root style="opacity: @(PropHuntManager.Instance?.RoundState == GameState.Voting ? 1 : 0)">
+	<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending" OnSelected="@OnPackageSelected"
+		Take=@(50) />
+</root>
+
+@code
+{
+
+	public bool AbleToVote { get; set; }
+	public void OnPackageSelected(Package package)
+	{
+		if (!AbleToVote) return;
+		PropHuntManager.Instance?.AddVote(package.FullIdent);
+		AbleToVote = false;
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(PropHuntManager.Instance?.RoundState);
+}

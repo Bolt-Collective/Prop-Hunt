@@ -13,7 +13,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[HostSync] public string RoundStateText { get; set; }
 
 	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
-	[HostSync] public int RoundLength { get; set; } = 120;
+	[HostSync, Property] public int RoundLength { get; set; } = 120;
 
 	public static int PreRoundTime { get; set; } = 5;
 
@@ -21,7 +21,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// <summary>
 	/// How many rounds to play before map voting
 	/// </summary>
-	public static int RoundCount { get; set; } = 6;
+	public static int RoundCount { get; set; } = 1;
 
 
 	/// <summary>
@@ -52,7 +52,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public string NextMap { get; set; } = null;
 	public static bool IsFirstRound { get; set; } = true;
 	public static PropHuntManager Instance { get; set; }
-	public List<(string, int)> Votes { get; set; } = new();
+	[Property, Sync] public Dictionary<string, int> Votes { get; set; } = new();
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
 	[Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
 	[Property] public LobbySettings LobbySettings { get; set; } = new();
@@ -72,6 +72,19 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			}
 		}
 	}
+
+	public void AddVote( string map )
+	{
+		if ( Votes.ContainsKey( map ) )
+		{
+			Votes[map]++;
+		}
+		else
+		{
+			Votes.Add( map, 1 );
+		}
+	}
+
 	protected override void OnUpdate()
 	{
 		if ( !IsProxy && AllPlayers.Count() > 2 )
