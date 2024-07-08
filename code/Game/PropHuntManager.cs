@@ -21,7 +21,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// <summary>
 	/// How many rounds to play before map voting
 	/// </summary>
-	public static int RoundCount { get; set; } = 1;
 
 
 	/// <summary>
@@ -52,7 +51,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public string NextMap { get; set; } = null;
 	public static bool IsFirstRound { get; set; } = true;
 	public static PropHuntManager Instance { get; set; }
-	public NetDictionary<string, int> Votes { get; set; } = new();
+	[Property] public Dictionary<string, int> Votes { get; set; } = new();
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
 	[Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
 	[Property] public LobbySettings LobbySettings { get; set; } = new();
@@ -72,7 +71,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			}
 		}
 	}
-
+	[Broadcast]
 	public void AddVote( string map )
 	{
 		Log.Info( "Vote added for " + map );
@@ -145,7 +144,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				break;
 			case GameState.Ended:
 				RoundStateText = "Ended";
-
+				Restart();
 				break;
 			case GameState.Voting:
 				RoundStateText = "Voting";
@@ -284,42 +283,31 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundLength = 15;
 	}
 
-	[Sync] public int RoundNumber { get; set; } = 0;
+	[Sync, Property] public int RoundNumber { get; set; } = 0;
 	public int GetRandom( int min, int max )
 	{
 		return Random.Shared.Int( min, max );
 	}
 	public void OnRoundEnd()
 	{
-		RoundState = GameState.Ended;
 		TimeSinceRoundStateChanged = 0;
 
 		GetPlayers( Team.Props ).ToList().Clear();
 		GetPlayers( Team.Hunters ).ToList().Clear();
 		// TODO: implement RTV and map votes
 
-
-		if ( NextMap != null )
+		if ( RoundNumber >= LobbySettings.RoundCount && LobbySettings.AllowMapVoting )
 		{
-			var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();
-			mapChanger?.LoadMap( NextMap );
-
-			return;
-		}
-
-		/*if ( RoundNumber >= RoundCount )
-		{
-			RoundLength = 30;
+			RoundLength = 25;
 			RoundState = GameState.Voting;
-			DoMapVote();
+			RoundNumber = 0;
 		}
 		else
 		{
 			RoundNumber++;
 			ResetRound();
-		}*/
-		RoundLength = 30;
-		RoundState = GameState.Voting;
+		}
+
 
 		var spawns = Scene.GetAllComponents<SpawnPoint>().ToList();
 		foreach ( var player in Scene.GetAllComponents<Player>() )
@@ -350,7 +338,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			votingUi.AbleToVote = true;
 		}
 		Votes.Clear();
-		RoundState = GameState.Starting;
+		Restart();
 	}
 	public void ResetRound()
 	{

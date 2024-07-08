@@ -208,12 +208,12 @@
             "TauntCoolDownTime": 10,
             "RoundTime": 120,
             "PlayersNeededToStart": 2,
-            "HunterPropGrabMode": "Off",
             "BleedAmount": 10
           },
           "MaxPlayersToStart": 1,
           "OnGoingRound": false,
           "RoundLength": 120,
+          "RoundNumber": 0,
           "RoundState": "None",
           "Votes": {}
         }
@@ -281,9 +281,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_isStatic": false,
+                      "_type": "PropHunt.MapChanger",
                       "_name": "CreateGnomeFigPostprocess",
-                      "_type": "PropHunt.MapChanger"
+                      "_isStatic": false
                     },
                     "UserData": {
                       "Position": "256,32"
