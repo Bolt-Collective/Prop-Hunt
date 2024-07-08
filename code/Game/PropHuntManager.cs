@@ -23,6 +23,21 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 
 
+	[Group("Game Sounds"), Property]
+	public SoundEvent NotificationSound { get; set; }
+
+	[Group( "Game Sounds" ), Property]
+	public SoundEvent PropsWinSound { get; set; }
+
+	[Group( "Game Sounds" ), Property]
+	public SoundEvent HuntersWinSound { get; set; }
+
+	[Group( "Game Sounds" ), Property]
+	public SoundEvent OnePropLeftSound { get; set; }
+
+	[Group( "Game Sounds" ), Property]
+	public SoundEvent TimeRunningOutSound { get; set; }
+
 	/// <summary>
 	/// All players, both assigned to a team and spectating.
 	/// </summary>

@@ -191,11 +191,11 @@
         {
           "__type": "PropHunt.PropHuntManager",
           "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+          "HuntersWinSound": "sounds/ui/hunters_win.sound",
           "LobbySettings": {
             "ForcedTauntTime": 60,
             "TauntCoolDownTime": 10,
-            "PreRoundTime": 30,
-            "RoundTime": 120,
+            "RoundTime": 360,
             "PlayersNeededToStart": 2,
             "HunterPropGrabMode": "Off",
             "BleedAmount": 10,
@@ -203,12 +203,17 @@
             "AllowMapVoting": true
           },
           "MaxPlayersToStart": 1,
+          "NotificationSound": "sounds/ui/cymbal.sound",
+          "OnePropLeftSound": "sounds/ui/one_prop_left.sound",
           "OnGoingRound": false,
           "PauseRoundState": false,
           "RoundLength": 120,
           "RoundNumber": 0,
           "RoundState": "None",
           "Votes": {}
+          "PropsWinSound": "sounds/ui/hiders_win.sound",
+          "RoundState": "None",
+          "TimeRunningOutSound": "sounds/ui/30_seconds.sound"
         }
       ]
     },
@@ -271,9 +276,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
                       "_name": "CreateGnomeFigPostprocess",
-                      "_isStatic": false
+                      "_isStatic": false,
+                      "_type": "PropHunt.MapChanger"
                     },
                     "UserData": {
                       "Position": "256,32"
