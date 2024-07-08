@@ -1,5 +1,5 @@
 {
-  "__guid": "c285b887-2f27-49cb-ab2b-dd40b72f157a",
+  "__guid": "a53aec24-b50d-40a7-9a94-9b22577bd662",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -14,7 +14,7 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
           "__version": 1,
-          "MapName": "paths.ph_furniturestore",
+          "MapName": "thieves.cs_assault",
           "NoOrigin": false,
           "UseMapFromLaunch": true
         }

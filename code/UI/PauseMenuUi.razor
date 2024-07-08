@@ -14,8 +14,8 @@
 		<div class="tab" @onclick="@( () => Scene.LoadFromFile("scenes/menu.scene"))">Leave Lobby</div>
 		<div class="tab" @onclick="@( () => Game.Close())">Quit Game</div>
 	</div>
-	@if (Networking.IsHost && PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers ||
-			PropHuntManager.Instance.RoundState == GameState.Ending)
+	@if (Networking.IsHost && (PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers ||
+			PropHuntManager.Instance.RoundState == GameState.Ending))
 	{
 		<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending" OnSelected="@OnPackageSelected"
 			Take=@(50) style="position: absolute; right: 2px; width: 800px; height: 100%;" />
@@ -42,4 +42,8 @@
 		}
 	}
 
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(Time.Now);
 }
