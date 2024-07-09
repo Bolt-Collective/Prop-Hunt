@@ -7,6 +7,8 @@
     "Enabled": true,
     "NetworkMode": 2,
     "NetworkInterpolation": true,
+    "NetworkOrphaned": 0,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Player",
@@ -290,6 +292,8 @@
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
@@ -325,6 +329,8 @@
             "Enabled": true,
             "NetworkMode": 2,
             "NetworkInterpolation": true,
+            "NetworkOrphaned": 0,
+            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.ModelCollider",
@@ -344,6 +350,8 @@
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.Voice",
@@ -371,7 +379,9 @@
         "Position": "0,0,64",
         "Enabled": true,
         "NetworkMode": 2,
-        "NetworkInterpolation": true
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1
       },
       {
         "__guid": "4d826a13-ae76-46c4-866e-9ad4fc42bf24",
@@ -382,6 +392,8 @@
         "Enabled": true,
         "NetworkMode": 2,
         "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.SpotLight",

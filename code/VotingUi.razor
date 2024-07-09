@@ -6,6 +6,18 @@
 <root style="opacity: @(PropHuntManager.Instance?.RoundState == GameState.Voting ? 1 : 0);">
 	<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending" OnSelected="@OnPackageSelected"
 		Take=@(50) />
+	<div class="votedmaps">
+		@foreach (var map in PropHuntManager.Instance?.Votes)
+		{
+			<div class="map">
+				<img class="img" src=@Package.Fetch(map.Key, true).Result.Thumb>
+				<div class="content">
+					<div class="name">@Package.Fetch(map.Key, true).Result.Title</div>
+					<div class="votes">Votes: @map.Value</div>
+				</div>
+			</div>
+		}
+	</div>
 </root>
 
 @code

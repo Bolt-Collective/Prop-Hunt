@@ -208,7 +208,10 @@
             "TauntCoolDownTime": 10,
             "RoundTime": 120,
             "PlayersNeededToStart": 2,
-            "BleedAmount": 10
+            "HunterPropGrabMode": "Off",
+            "BleedAmount": 10,
+            "RoundCount": 6,
+            "AllowMapVoting": true
           },
           "MaxPlayersToStart": 1,
           "OnGoingRound": false,

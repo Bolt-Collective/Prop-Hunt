@@ -17,7 +17,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	public static int PreRoundTime { get; set; } = 5;
 
-
 	/// <summary>
 	/// How many rounds to play before map voting
 	/// </summary>
@@ -55,6 +54,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
 	[Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
 	[Property] public LobbySettings LobbySettings { get; set; } = new();
+	[Property, Sync] public bool PauseRoundState { get; set; } = false;
 	protected override void OnStart()
 	{
 		Instance = this;
@@ -68,6 +68,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			else
 			{
 				LobbySettings = new LobbySettings();
+			}
+			if ( LobbySettings.RoundCount < 0 )
+			{
+				LobbySettings.RoundCount = 0;
 			}
 		}
 	}
@@ -110,6 +114,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	void GameStateManager()
 	{
+		if ( PauseRoundState ) return;
 		switch ( RoundState )
 		{
 			case GameState.None:
@@ -243,11 +248,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			player.Respawn( player.GameObject.Id );
 		}
-		RoundState = GameState.Preparing;
+		RoundState = GameState.WaitingForPlayers;
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = PreRoundTime;
 		ClearListBroadcast();
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 	}
 
 	[Broadcast]
@@ -317,7 +322,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.EyeAngles = randomSpawn.Transform.Rotation.Angles();
 		}
 	}
-	public void DoMapVote()
+	public async void DoMapVote()
 	{
 		Log.Info( "Map vote" );
 
@@ -337,8 +342,19 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			votingUi.AbleToVote = true;
 		}
+		ClearVotes();
+		while ( !Scene.GetAllComponents<MapInstance>().FirstOrDefault().IsLoaded )
+		{
+			PauseRoundState = true;
+			await Task.Frame();
+		}
+		PauseRoundState = false;
+		ResetRound();
+	}
+	[Broadcast]
+	public void ClearVotes()
+	{
 		Votes.Clear();
-		Restart();
 	}
 	public void ResetRound()
 	{
