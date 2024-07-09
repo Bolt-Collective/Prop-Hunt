@@ -190,6 +190,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
+		foreach ( var player in Scene.GetAllComponents<Player>() )
+		{
+			player.Respawn( player.GameObject.Id );
+		}
 		AssignEvenTeams();
 
 		ReloadMapRPC();
@@ -338,10 +342,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			Log.Info( "No votes" );
 		}
 
-		foreach ( var votingUi in Scene.GetAllComponents<VotingUi>() )
-		{
-			votingUi.AbleToVote = true;
-		}
 		ClearVotes();
 		while ( !Scene.GetAllComponents<MapInstance>().FirstOrDefault().IsLoaded )
 		{
@@ -355,6 +355,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public void ClearVotes()
 	{
 		Votes.Clear();
+		foreach ( var votingUi in Scene.GetAllComponents<VotingUi>() )
+		{
+			votingUi.AbleToVote = true;
+		}
 	}
 	public void ResetRound()
 	{
