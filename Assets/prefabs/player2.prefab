@@ -192,19 +192,19 @@
         "StartingItems": [
           {
             "_type": "gameobject",
-            "prefab": "prefabs/weapons/pistol.prefab"
+            "prefab": "prefabs/weapons/pistol2.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/weapons/knife.prefab"
+            "prefab": "prefabs/weapons/knife2.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/weapons/mp5.prefab"
+            "prefab": "prefabs/weapons/mp52.prefab"
           },
           {
             "_type": "gameobject",
-            "prefab": "prefabs/weapons/shotgun.prefab"
+            "prefab": "prefabs/weapons/shotgun2.prefab"
           }
         ]
       },

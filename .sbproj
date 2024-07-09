@@ -5,7 +5,7 @@
   "Ident": "prop_hunt",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": null,
+  "Resources": "\n*.ttf",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {

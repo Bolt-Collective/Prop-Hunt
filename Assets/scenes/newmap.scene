@@ -9,6 +9,8 @@
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
@@ -30,6 +32,8 @@
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
@@ -117,6 +121,8 @@
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -151,6 +157,8 @@
           "Enabled": true,
           "NetworkMode": 1,
           "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "OwnerTransfer": 1,
           "Components": [
             {
               "__type": "ChatBox",
@@ -166,6 +174,8 @@
           "Enabled": true,
           "NetworkMode": 1,
           "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "OwnerTransfer": 1,
           "Components": [
             {
               "__type": "Sandbox.UI.PauseMenuUi",
@@ -181,6 +191,8 @@
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "OwnerTransfer": 1,
           "Components": [
             {
               "__type": "VotingUi",
@@ -199,6 +211,8 @@
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "PropHunt.PropHuntManager",
@@ -215,6 +229,7 @@
           },
           "MaxPlayersToStart": 1,
           "OnGoingRound": false,
+          "PauseRoundState": false,
           "RoundLength": 120,
           "RoundNumber": 0,
           "RoundState": "None",
@@ -230,6 +245,8 @@
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "PropHunt.Network",
@@ -258,6 +275,8 @@
       "Enabled": true,
       "NetworkMode": 1,
       "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "PropHunt.MapChanger",
