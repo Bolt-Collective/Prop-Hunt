@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using Sandbox;
 namespace PropHunt;
 public sealed partial class MapChanger : Component
@@ -11,6 +12,7 @@ public sealed partial class MapChanger : Component
 		{
 			OnSceneStart();
 			MapInstance.UnloadMap();
+			MapInstance.UseMapFromLaunch = false;
 		}
 		MapInstance.OnMapLoaded += OnMapLoaded;
 		MapInstance.OnMapUnloaded += OnMapUnloaded;
@@ -25,7 +27,6 @@ public sealed partial class MapChanger : Component
 	public void LoadMap( string ident )
 	{
 		MapInstance.MapName = ident;
-		MapInstance.UnloadMap();
 	}
 	public void OnMapLoaded()
 	{

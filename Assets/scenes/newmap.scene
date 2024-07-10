@@ -7,10 +7,6 @@
       "Name": "Map",
       "Tags": "world",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "NetworkOrphaned": 0,
-      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
@@ -30,10 +26,6 @@
       "Position": "-267.452,-379.653,297.7903",
       "Rotation": "-0.01075258,0.05637258,0.1870547,0.9806718",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "NetworkOrphaned": 0,
-      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
@@ -119,10 +111,6 @@
       "Name": "Ui",
       "Position": "-6.25499,-267.7513,221.1104",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "NetworkOrphaned": 0,
-      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -156,9 +144,6 @@
           "Position": "0,0,0",
           "Enabled": true,
           "NetworkMode": 1,
-          "NetworkInterpolation": true,
-          "NetworkOrphaned": 0,
-          "OwnerTransfer": 1,
           "Components": [
             {
               "__type": "ChatBox",
@@ -173,9 +158,6 @@
           "Position": "0,0,0",
           "Enabled": true,
           "NetworkMode": 1,
-          "NetworkInterpolation": true,
-          "NetworkOrphaned": 0,
-          "OwnerTransfer": 1,
           "Components": [
             {
               "__type": "Sandbox.UI.PauseMenuUi",
@@ -189,10 +171,6 @@
           "Name": "Voting Ui",
           "Position": "0,0,0",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "NetworkOrphaned": 0,
-          "OwnerTransfer": 1,
           "Components": [
             {
               "__type": "VotingUi",
@@ -210,9 +188,6 @@
       "Position": "-413.6376,843.2293,265.7083",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
-      "NetworkOrphaned": 0,
-      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "PropHunt.PropHuntManager",
@@ -243,10 +218,6 @@
       "Name": "NetworkManager",
       "Position": "-37.26694,-4.443787,96.23308",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "NetworkOrphaned": 0,
-      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "PropHunt.Network",
@@ -274,9 +245,6 @@
       "Position": "187.3595,-168.6434,52.85176",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
-      "NetworkOrphaned": 0,
-      "OwnerTransfer": 1,
       "Components": [
         {
           "__type": "PropHunt.MapChanger",
@@ -303,8 +271,8 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
                       "_name": "CreateGnomeFigPostprocess",
+                      "_type": "PropHunt.MapChanger",
                       "_isStatic": false
                     },
                     "UserData": {
