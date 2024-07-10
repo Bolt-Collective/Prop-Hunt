@@ -25,6 +25,7 @@ public sealed partial class MapChanger : Component
 	public void LoadMap( string ident )
 	{
 		MapInstance.MapName = ident;
+		MapInstance.UnloadMap();
 	}
 	public void OnMapLoaded()
 	{

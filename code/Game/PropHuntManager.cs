@@ -130,6 +130,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				break;
 			case GameState.Preparing:
 				RoundStateText = "Intermission";
+
 				if ( TimeSinceRoundStateChanged > RoundLength )
 					OnRoundStarting();
 				break;
@@ -190,10 +191,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundState = GameState.Starting;
 		RoundLength = 30;
 		TimeSinceRoundStateChanged = 0;
-		foreach ( var player in Scene.GetAllComponents<Player>() )
-		{
-			player.Respawn( player.GameObject.Id );
-		}
 		AssignEvenTeams();
 
 		ReloadMapRPC();
@@ -205,7 +202,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.Transform.World = randomPoint.Transform.World;
 		}
 
-
+		if ( Scene.GetAllComponents<Player>().All( x => x.TeamComponent.TeamName == Team.Unassigned.ToString() ) )
+		{
+			ForceRestart();
+			return;
+		}
 
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
@@ -319,6 +320,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 
 		var spawns = Scene.GetAllComponents<SpawnPoint>().ToList();
+		if ( spawns.Count == 0 ) return;
 		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
 			var randomSpawn = Game.Random.FromList( spawns );
