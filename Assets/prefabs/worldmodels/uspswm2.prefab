@@ -1,0 +1,57 @@
+{
+  "RootObject": {
+    "__guid": "26683f34-6ac1-42a1-a469-a0b00b577852",
+    "Flags": 0,
+    "Name": "uspswm2",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "InventoryEnableSyncer",
+        "__guid": "d97edac8-7d4c-4458-8bbc-2731f49a993b",
+        "Slot": 0
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "7650d05f-ecd1-4a1a-9cd4-08895235017a",
+        "Flags": 0,
+        "Name": "renderer",
+        "Position": "4.330319,-0.2880043,-3.273591",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "eb32bc19-a658-4397-904d-e683e668883f",
+            "BodyGroups": 9493,
+            "CreateBoneObjects": false,
+            "Model": "models/weapons/sbox_pistol_usp/w_usp.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          },
+          {
+            "__type": "HoldTypeMerger",
+            "__guid": "a51508e4-5ec7-4b02-9560-ca3ab946d527",
+            "HoldType": "Pistol",
+            "Offset": "0,0,0",
+            "WeaponRenderer": {
+              "_type": "component",
+              "component_id": "eb32bc19-a658-4397-904d-e683e668883f",
+              "go": "7650d05f-ecd1-4a1a-9cd4-08895235017a",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.w_usp"
+  ],
+  "__version": 1
+}
