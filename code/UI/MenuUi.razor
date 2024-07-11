@@ -89,10 +89,7 @@
 					<div class="slider-label">Round Time</div>
 					<TextEntry Value:bind="@lobbySettings.RoundTime" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
 				</div>
-				<div class="slider">
-					<div class="slider-label">Rounds until map vote</div>
-					<TextEntry Value:bind="@lobbySettings.RoundCount" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
-				</div>
+
 
 				@if (lobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed)
 				{
@@ -111,6 +108,14 @@
 					<div class="slider-label">Allow map voting</div>
 					<SwitchControl Value:bind="@lobbySettings.AllowMapVoting" />
 				</div>
+				@if (lobbySettings.AllowMapVoting)
+				{
+					<div class="slider">
+						<div class="slider-label">Rounds until map vote</div>
+						<TextEntry Value:bind="@lobbySettings.RoundCount" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
+					</div>
+				}
+
 
 				<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () =>
 				StartLobby() )>
