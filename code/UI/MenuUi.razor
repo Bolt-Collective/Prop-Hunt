@@ -55,53 +55,65 @@
 	{
 		<div class="maplist">
 			<PackageList style="color: white" ShowFilters="@true" Query="type:map sort:trending"
-			             OnSelected="@OnPackageSelected" Take=@(50) />
-			
+				OnSelected="@OnPackageSelected" Take=@(50) />
+
 			<div class="lobbysettings" style="">
 				<div class="chosen-map">
-					@if ( String.IsNullOrWhiteSpace( LaunchArguments.Map ) )
+					@if (String.IsNullOrWhiteSpace(LaunchArguments.Map))
 					{
 						<div style="justify-content: center">Select A Map</div>
 					}
 					else
 					{
 						<img class="thumb" src=@Package.Fetch( LaunchArguments.Map, true ).Result.Thumb />
-						<h1 style="justify-content: center; font-size: 24px;">@Package.Fetch(LaunchArguments.Map, true).Result.Title</h1>
+						<h1 style="justify-content: center; font-size: 24px;">@Package.Fetch(LaunchArguments.Map,
+					true).Result.Title</h1>
 					}
 
 				</div>
 
 				<div class="slider">
 					<div class="slider-label">Forced Taunt Cooldown</div>
-					<TextEntry Value:bind=@( lobbySettings.ForcedTauntTime ) Numeric=@true/>
+					<TextEntry Value:bind=@( lobbySettings.ForcedTauntTime ) Numeric=@true />
 				</div>
 				<div class="slider">
 					<div class="slider-label">Taunt Cooldown</div>
-					<TextEntry Value:bind="@lobbySettings.TauntCoolDownTime" Numeric=@true/>
+					<TextEntry Value:bind="@lobbySettings.TauntCoolDownTime" Numeric=@true />
 				</div>
 				<div class="slider">
 					<div class="slider-label">Players needed to start</div>
-					<TextEntry Value:bind="@lobbySettings.PlayersNeededToStart" Numeric=@true MinValue=@( 1f ) MaxValue=@( 64f )/>
+					<TextEntry Value:bind="@lobbySettings.PlayersNeededToStart" Numeric=@true MinValue=@( 1f ) MaxValue=@(
+					64f ) />
 				</div>
 				<div class="slider">
 					<div class="slider-label">Round Time</div>
-					<TextEntry Value:bind="@lobbySettings.RoundTime" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f )/>
+					<TextEntry Value:bind="@lobbySettings.RoundTime" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
 				</div>
-				
-				@if ( lobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed )
+				<div class="slider">
+					<div class="slider-label">Rounds until map vote</div>
+					<TextEntry Value:bind="@lobbySettings.RoundCount" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
+				</div>
+
+				@if (lobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed)
 				{
 					<div class="slider">
 						<div class="slider-label">Bleed amount</div>
-						<TextEntry Value:bind="@lobbySettings.BleedAmount" Numeric=@true/>
+						<TextEntry Value:bind="@lobbySettings.BleedAmount" Numeric=@true />
 					</div>
 				}
 
 				<div class="slider">
 					<div class="slider-label">Hunters can grab props</div>
-					<DropDown style="font-size: 10px;" Value:bind="@lobbySettings.HunterPropGrabMode"/>
+					<DropDown style="font-size: 10px;" Value:bind="@lobbySettings.HunterPropGrabMode" />
 				</div>
 
-				<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () => StartLobby() )>
+				<div class="slider">
+					<div class="slider-label">Allow map voting</div>
+					<SwitchControl Value:bind="@lobbySettings.AllowMapVoting" />
+				</div>
+
+				<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () =>
+				StartLobby() )>
 					Start
 				</div>
 			</div>
@@ -138,9 +150,9 @@
 
 	void StartLobby()
 	{
-		LobbySettings.SetLobbySettings( lobbySettings );
+		LobbySettings.SetLobbySettings(lobbySettings);
 
-		Game.ActiveScene.LoadFromFile( "scenes/newmap.scene" );
+		Game.ActiveScene.LoadFromFile("scenes/newmap.scene");
 	}
 
 	void LeaveGame()

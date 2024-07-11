@@ -1,5 +1,6 @@
 ﻿@using Sandbox.ModelEditor
 @using Sandbox.UI;
+@using PropHunt;
 @inherits PanelComponent
 @namespace Sandbox.UI
 
@@ -13,15 +14,17 @@
 		<div class="tab" @onclick="@( () => Scene.LoadFromFile("scenes/menu.scene"))">Leave Lobby</div>
 		<div class="tab" @onclick="@( () => Game.Close())">Quit Game</div>
 	</div>
+
 </root>
 
 @code
 {
 	public bool IsHidden = true;
 
+
 	protected override void OnUpdate()
 	{
-		if ( Input.EscapePressed )
+		if (Input.EscapePressed)
 		{
 			Input.EscapePressed = false;
 
@@ -30,4 +33,8 @@
 		}
 	}
 
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(Time.Now);
 }

@@ -16,6 +16,8 @@ public class LobbySettings
 	public int PlayersNeededToStart { get; set; } = 64;
 	public HuntersPropGrabbing HunterPropGrabMode { get; set; } = HuntersPropGrabbing.Off;
 	public int BleedAmount { get; set; } = 10;
+	public int RoundCount { get; set; } = 6;
+	public bool AllowMapVoting { get; set; }
 
 
 	public LobbySettings()
@@ -26,8 +28,10 @@ public class LobbySettings
 		PlayersNeededToStart = 2;
 		HunterPropGrabMode = HuntersPropGrabbing.Off;
 		BleedAmount = 10;
+		RoundCount = 6;
+		AllowMapVoting = true;
 	}
-	public LobbySettings( int forcedTauntTime, int tauntCoolDownTime, int roundTime, int playersNeededToStart, bool bleed, int bleedAmount )
+	public LobbySettings( int forcedTauntTime, int tauntCoolDownTime, int roundTime, int playersNeededToStart, bool bleed, int bleedAmount, int roundCount, bool allowMapVoting )
 	{
 		ForcedTauntTime = forcedTauntTime;
 		TauntCoolDownTime = tauntCoolDownTime;
@@ -35,6 +39,8 @@ public class LobbySettings
 		PlayersNeededToStart = playersNeededToStart;
 		HunterPropGrabMode = HuntersPropGrabbing.Off;
 		BleedAmount = bleedAmount;
+		RoundCount = roundCount;
+		AllowMapVoting = allowMapVoting;
 	}
 	public static void SetLobbySettings( LobbySettings lobbySettings )
 	{

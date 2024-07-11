@@ -1,0 +1,84 @@
+VotingUi
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+	pointer-events: all;
+
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.votedmaps {
+		position: absolute;
+		left: 12px;
+		height: 100%;
+		width: 850px;
+		backdrop-filter: blur(64px);
+		overflow: scroll;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 16px;
+		gap: 20px;
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	  
+		.map {
+		  width: 500px;
+		  height: 400px;
+		  background-color: #ffffff;
+		  border-radius: 8px;
+		  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		  display: flex;
+		  flex-direction: column;
+		  overflow: hidden;
+			
+			.content {
+				align-items: center;
+				justify-content: space-evenly;
+				>.name {
+					font-size: 24px;
+					font-family: Poppins;
+					color: #333;
+					align-items: center;
+					padding: 8px;
+					background-color: rgba(0, 0, 0, 0.05);
+				  }
+				  >.votes
+				  {
+					  font-size: 24px;
+					  font-family: Poppins;
+					  color: #333;
+					  align-items: center;
+					  padding: 8px;
+					  background-color: rgba(0, 0, 0, 0.05);
+				  }
+			}
+		  .img {
+			flex-grow: 1;
+			background-size: cover;
+			background-position: center;
+		  }
+		}
+	  }
+
+	PackageList
+	{
+		position: absolute;
+		right: 12px;
+		width: 850px;
+		height: 100%;
+		backdrop-filter: blur(64px);
+	}
+
+	
+}

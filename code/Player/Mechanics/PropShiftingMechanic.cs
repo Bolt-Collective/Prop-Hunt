@@ -12,6 +12,7 @@ public class PropShiftingMechanic : Component
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
 	[Property] public int PreviousHealth { get; set; }
+	[Sync] public ulong BodyGroups { get; set; }
 	public TauntComponent TauntComponent { get; set; }
 	protected override void OnStart()
 	{
@@ -21,6 +22,7 @@ public class PropShiftingMechanic : Component
 		if ( !IsProxy )
 		{
 			ModelPath = Player.Local.BodyRenderer?.Model.ResourcePath;
+			BodyGroups = Player.Local.BodyRenderer.BodyGroups;
 		}
 	}
 	protected override void OnUpdate()
@@ -57,6 +59,7 @@ public class PropShiftingMechanic : Component
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		Player.Local.Health = PreviousHealth;
+		pcModel.BodyGroups = BodyGroups;
 		if ( clothes.Any() )
 		{
 			foreach ( var cloth in clothes )

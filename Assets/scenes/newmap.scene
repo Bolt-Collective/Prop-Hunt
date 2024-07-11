@@ -1,5 +1,5 @@
 {
-  "__guid": "c285b887-2f27-49cb-ab2b-dd40b72f157a",
+  "__guid": "31504ef9-e1d5-4cb9-9cf5-a987cd6893d1",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -7,14 +7,12 @@
       "Name": "Map",
       "Tags": "world",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
           "__version": 1,
-          "MapName": "paths.ph_furniturestore",
+          "MapName": "gnomefig.office",
           "NoOrigin": false,
           "UseMapFromLaunch": true
         }
@@ -28,8 +26,6 @@
       "Position": "-267.452,-379.653,297.7903",
       "Rotation": "-0.01075258,0.05637258,0.1870547,0.9806718",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
@@ -115,8 +111,6 @@
       "Name": "Ui",
       "Position": "-6.25499,-267.7513,221.1104",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -150,7 +144,6 @@
           "Position": "0,0,0",
           "Enabled": true,
           "NetworkMode": 1,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "ChatBox",
@@ -165,11 +158,24 @@
           "Position": "0,0,0",
           "Enabled": true,
           "NetworkMode": 1,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Sandbox.UI.PauseMenuUi",
               "__guid": "8e7700a5-2521-4c24-877b-bef8fe35f4ba"
+            }
+          ]
+        },
+        {
+          "__guid": "121a454b-03ff-453b-ac82-8f6a0ccb5f44",
+          "Flags": 0,
+          "Name": "Voting Ui",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "VotingUi",
+              "__guid": "fc9f13af-2259-41a7-8ab2-0b97ae13e2a1",
+              "AbleToVote": true
             }
           ]
         }
@@ -182,7 +188,6 @@
       "Position": "-413.6376,843.2293,265.7083",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "PropHunt.PropHuntManager",
@@ -193,11 +198,17 @@
             "RoundTime": 120,
             "PlayersNeededToStart": 2,
             "HunterPropGrabMode": "Off",
-            "BleedAmount": 10
+            "BleedAmount": 10,
+            "RoundCount": 6,
+            "AllowMapVoting": true
           },
           "MaxPlayersToStart": 1,
           "OnGoingRound": false,
-          "RoundState": "None"
+          "PauseRoundState": false,
+          "RoundLength": 120,
+          "RoundNumber": 0,
+          "RoundState": "None",
+          "Votes": {}
         }
       ]
     },
@@ -207,8 +218,6 @@
       "Name": "NetworkManager",
       "Position": "-37.26694,-4.443787,96.23308",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "PropHunt.Network",
@@ -236,7 +245,6 @@
       "Position": "187.3595,-168.6434,52.85176",
       "Enabled": true,
       "NetworkMode": 1,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "PropHunt.MapChanger",
@@ -263,8 +271,8 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
                       "_name": "CreateGnomeFigPostprocess",
+                      "_type": "PropHunt.MapChanger",
                       "_isStatic": false
                     },
                     "UserData": {

@@ -13,15 +13,13 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[HostSync] public string RoundStateText { get; set; }
 
 	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
-	[HostSync] public int RoundLength { get; set; } = 120;
+	[HostSync, Property] public int RoundLength { get; set; } = 120;
 
 	public static int PreRoundTime { get; set; } = 5;
-
 
 	/// <summary>
 	/// How many rounds to play before map voting
 	/// </summary>
-	public static int RoundCount { get; set; } = 6;
 
 
 	/// <summary>
@@ -52,10 +50,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public string NextMap { get; set; } = null;
 	public static bool IsFirstRound { get; set; } = true;
 	public static PropHuntManager Instance { get; set; }
-	public List<(string, int)> Votes { get; set; } = new();
+	[Property] public Dictionary<string, int> Votes { get; set; } = new();
 	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
 	[Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
 	[Property] public LobbySettings LobbySettings { get; set; } = new();
+	[Property, Sync] public bool PauseRoundState { get; set; } = false;
 	protected override void OnStart()
 	{
 		Instance = this;
@@ -70,8 +69,26 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			{
 				LobbySettings = new LobbySettings();
 			}
+			if ( LobbySettings.RoundCount < 0 )
+			{
+				LobbySettings.RoundCount = 0;
+			}
 		}
 	}
+	[Broadcast]
+	public void AddVote( string map )
+	{
+		Log.Info( "Vote added for " + map );
+		if ( Votes.ContainsKey( map ) )
+		{
+			Votes[map]++;
+		}
+		else
+		{
+			Votes.Add( map, 1 );
+		}
+	}
+
 	protected override void OnUpdate()
 	{
 		if ( !IsProxy && AllPlayers.Count() > 2 )
@@ -97,6 +114,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	void GameStateManager()
 	{
+		if ( PauseRoundState ) return;
 		switch ( RoundState )
 		{
 			case GameState.None:
@@ -112,6 +130,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				break;
 			case GameState.Preparing:
 				RoundStateText = "Intermission";
+
 				if ( TimeSinceRoundStateChanged > RoundLength )
 					OnRoundStarting();
 				break;
@@ -131,9 +150,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				break;
 			case GameState.Ended:
 				RoundStateText = "Ended";
-
+				Restart();
 				break;
 			case GameState.Voting:
+				RoundStateText = "Voting";
+				if ( TimeSinceRoundStateChanged > RoundLength )
+					DoMapVote();
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
@@ -180,7 +202,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.Transform.World = randomPoint.Transform.World;
 		}
 
-
+		if ( Scene.GetAllComponents<Player>().All( x => x.TeamComponent.TeamName == Team.Unassigned.ToString() ) )
+		{
+			ForceRestart();
+			return;
+		}
 
 		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
 		{
@@ -227,11 +253,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			player.Respawn( player.GameObject.Id );
 		}
-		RoundState = GameState.Preparing;
+		RoundState = GameState.WaitingForPlayers;
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = PreRoundTime;
 		ClearListBroadcast();
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 	}
 
 	[Broadcast]
@@ -267,39 +293,34 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundLength = 15;
 	}
 
-	[Sync] public int RoundNumber { get; set; } = 0;
+	[Sync, Property] public int RoundNumber { get; set; } = 0;
 	public int GetRandom( int min, int max )
 	{
 		return Random.Shared.Int( min, max );
 	}
 	public void OnRoundEnd()
 	{
-		RoundState = GameState.Ended;
 		TimeSinceRoundStateChanged = 0;
 
 		GetPlayers( Team.Props ).ToList().Clear();
 		GetPlayers( Team.Hunters ).ToList().Clear();
 		// TODO: implement RTV and map votes
 
-
-		if ( NextMap != null )
+		if ( RoundNumber >= LobbySettings.RoundCount && LobbySettings.AllowMapVoting )
 		{
-			var mapChanger = Game.ActiveScene.GetAllComponents<MapChanger>().FirstOrDefault();
-			mapChanger?.LoadMap( NextMap );
-
-			return;
-		}
-
-		if ( RoundNumber >= RoundCount )
-		{
-			DoMapVote();
+			RoundLength = 25;
+			RoundState = GameState.Voting;
+			RoundNumber = 0;
 		}
 		else
 		{
 			RoundNumber++;
 			ResetRound();
 		}
+
+
 		var spawns = Scene.GetAllComponents<SpawnPoint>().ToList();
+		if ( spawns.Count == 0 ) return;
 		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
 			var randomSpawn = Game.Random.FromList( spawns );
@@ -307,12 +328,39 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			player.EyeAngles = randomSpawn.Transform.Rotation.Angles();
 		}
 	}
-	public void DoMapVote()
+	public async void DoMapVote()
 	{
-		// TODO: do map vote
-		Log.Info( "map vote" );
-		//TEMP
+		Log.Info( "Map vote" );
+
+		if ( Votes is not null && Votes.Count > 0 )
+		{
+			var map = Votes.OrderByDescending( x => x.Value ).First().Key;
+			NextMap = map;
+			Log.Info( "Next map: " + map );
+			Scene.GetAllComponents<MapChanger>()?.FirstOrDefault()?.LoadMap( map );
+		}
+		else
+		{
+			Log.Info( "No votes" );
+		}
+
+		ClearVotes();
+		while ( !Scene.GetAllComponents<MapInstance>().FirstOrDefault().IsLoaded )
+		{
+			PauseRoundState = true;
+			await Task.Frame();
+		}
+		PauseRoundState = false;
 		ResetRound();
+	}
+	[Broadcast]
+	public void ClearVotes()
+	{
+		Votes.Clear();
+		foreach ( var votingUi in Scene.GetAllComponents<VotingUi>() )
+		{
+			votingUi.AbleToVote = true;
+		}
 	}
 	public void ResetRound()
 	{
@@ -348,6 +396,12 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			ResetForceTauntValues();
 		}
 
+		ForceWins();
+
+	}
+
+	void ForceWins()
+	{
 		if ( TimeSinceRoundStateChanged > LobbySettings.RoundTime || Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ).All( x => x.Health <= 0 ) )
 		{
 			ForceWin( Team.Props );
@@ -356,7 +410,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		{
 			ForceWin( Team.Hunters );
 		}
-
 	}
 
 	private Team WinningTeam { get; set; }

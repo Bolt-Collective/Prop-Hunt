@@ -3,10 +3,9 @@
   "Type": "game",
   "Org": "bolt",
   "Ident": "prop_hunt",
-  "Tags": null,
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": null,
+  "Resources": "\n*.ttf",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {

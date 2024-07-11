@@ -1,15 +1,18 @@
+using System.Reflection.Metadata;
 using Sandbox;
 namespace PropHunt;
 public sealed partial class MapChanger : Component
 {
 	[Property] public MapInstance MapInstance { get; set; }
 	[Property] public List<CustomMapActions> customMapActions { get; set; } = new();
+	[Sync] public bool IsMapLoaded { get; set; } = false;
 	protected override void OnStart()
 	{
 		if ( Networking.IsHost )
 		{
 			OnSceneStart();
 			MapInstance.UnloadMap();
+			MapInstance.UseMapFromLaunch = false;
 		}
 		MapInstance.OnMapLoaded += OnMapLoaded;
 		MapInstance.OnMapUnloaded += OnMapUnloaded;
@@ -27,6 +30,7 @@ public sealed partial class MapChanger : Component
 	}
 	public void OnMapLoaded()
 	{
+		IsMapLoaded = true;
 		foreach ( var action in customMapActions )
 		{
 			if ( action.MapIndent == MapInstance.MapName )
@@ -38,6 +42,7 @@ public sealed partial class MapChanger : Component
 	}
 	public void OnMapUnloaded()
 	{
+		IsMapLoaded = false;
 		foreach ( var action in customMapActions )
 		{
 			if ( action.MapIndent == MapInstance.MapName )
