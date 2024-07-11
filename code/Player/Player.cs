@@ -444,7 +444,7 @@ public class Player : Component
 	}
 	public void CheckForKillBounds()
 	{
-		if ( !Scene.GetAllComponents<MapChanger>().FirstOrDefault().IsMapLoaded || !PropHuntManager.Instance.OnGoingRound || TeamComponent.TeamName == Team.Unassigned.ToString() ) return;
+		if ( !Scene.GetAllComponents<MapChanger>().FirstOrDefault().IsMapLoaded || !PropHuntManager.Instance.OnGoingRound || TeamComponent.TeamName == Team.Unassigned.ToString() || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers || PropHuntManager.Instance.RoundState == GameState.Starting || PropHuntManager.Instance.RoundState == GameState.Preparing ) return;
 		var bounds = Scene.GetAllComponents<MapInstance>().FirstOrDefault().Bounds;
 		if ( Transform.Position.z < bounds.Mins.z - 1000 )
 		{
@@ -461,7 +461,7 @@ public class Player : Component
 		if ( IsProxy )
 			return;
 		//This breaks somethings, going to need to refactor this @Nolankicks
-		//CheckForKillBounds();
+		CheckForKillBounds();
 		UpdateColliders( GameObject.Id );
 		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
 		{
