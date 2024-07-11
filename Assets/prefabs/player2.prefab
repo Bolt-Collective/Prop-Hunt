@@ -153,7 +153,7 @@
             },
             "Clone": {
               "_type": "gameobject",
-              "prefab": "prefabs/worldmodels/mp5wm.prefab"
+              "prefab": "prefabs/worldmodels/mp5wm2.prefab"
             }
           },
           {
@@ -163,7 +163,7 @@
             },
             "Clone": {
               "_type": "gameobject",
-              "prefab": "prefabs/worldmodels/shotgunwm.prefab"
+              "prefab": "prefabs/worldmodels/shotgunwm2.prefab"
             }
           },
           {
@@ -173,7 +173,7 @@
             },
             "Clone": {
               "_type": "gameobject",
-              "prefab": "prefabs/worldmodels/uspwm.prefab"
+              "prefab": "prefabs/worldmodels/uspswm2.prefab"
             }
           },
           {
@@ -183,7 +183,7 @@
             },
             "Clone": {
               "_type": "gameobject",
-              "prefab": "prefabs/worldmodels/knifewm.prefab"
+              "prefab": "prefabs/worldmodels/knifewm2.prefab"
             }
           }
         ],
