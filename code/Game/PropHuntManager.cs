@@ -114,7 +114,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	void GameStateManager()
 	{
-		if ( PauseRoundState ) return;
+		if ( PauseRoundState )
+		{
+			TimeSinceRoundStateChanged = RoundLength;
+			return;
+		}
 		switch ( RoundState )
 		{
 			case GameState.None:
@@ -352,6 +356,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		PauseRoundState = false;
 		ResetRound();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
 	}
 	[Broadcast]
 	public void ClearVotes()
