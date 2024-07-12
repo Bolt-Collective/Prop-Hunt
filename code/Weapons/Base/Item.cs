@@ -70,8 +70,10 @@ public sealed class Item : Component
 			TraceObject = null;
 			return;
 		}
-		var ray = Scene.Camera.ScreenNormalToRay( 0.5f );
+
+		var ray = new Ray( Transform.Position, Player.FreeLooking ? Player.Local.oldEyeAngles.Forward : Player.Local.EyeAngles.Forward );
 		ray.Forward += ray.Forward * Vector3.Random * Spread;
+
 		var tr = Scene.Trace.Ray( ray, TraceDistance )
 			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
 			.WithoutTags( "mapcollider" )

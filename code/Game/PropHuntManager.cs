@@ -114,7 +114,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	void GameStateManager()
 	{
-		if ( PauseRoundState )
+		if ( PauseRoundState || !Scene.GetAllComponents<MapInstance>().FirstOrDefault().IsLoaded )
 		{
 			TimeSinceRoundStateChanged = RoundLength;
 			return;
@@ -202,8 +202,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
 			var randomPoint = Game.Random.FromList( spawnPoints );
-			player.EyeAngles = randomPoint.Transform.Rotation.Angles();
-			player.Transform.World = randomPoint.Transform.World;
+			if ( randomPoint is not null )
+			{
+				player.EyeAngles = randomPoint.Transform.Rotation.Angles();
+				player.Transform.World = randomPoint.Transform.World;
+			}
 		}
 
 		if ( Scene.GetAllComponents<Player>().All( x => x.TeamComponent.TeamName == Team.Unassigned.ToString() ) )
