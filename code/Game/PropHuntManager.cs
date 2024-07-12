@@ -51,7 +51,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public static bool IsFirstRound { get; set; } = true;
 	public static PropHuntManager Instance { get; set; }
 	[Property] public Dictionary<string, int> Votes { get; set; } = new();
-	[Property, HostSync] public bool OnGoingRound { get; set; } = false;
+	[Property, Sync] public bool OnGoingRound { get; set; } = false;
 	[Sync] public TimeSince TimeSinceLastForceTaunt { get; set; }
 	[Property] public LobbySettings LobbySettings { get; set; } = new();
 	[Property, Sync] public bool PauseRoundState { get; set; } = false;

@@ -187,6 +187,49 @@ public class Player : Component
 			}
 		}
 	}
+	[Sync] public int SpectateIndex { get; set; } = 0;
+	[Sync, Property] public bool SnappingToPlayer { get; set; } = false;
+	public void SnapToPlayer()
+	{
+		if ( TeamComponent.TeamName != Team.Unassigned.ToString() || !PropHuntManager.Instance.OnGoingRound || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
+		{
+			SnappingToPlayer = false;
+			return;
+		}
+		var listOfPlayers = Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName != Team.Unassigned.ToString() && x.Health > 0 ).ToList();
+		if ( listOfPlayers.Count == 0 ) return;
+		if ( Input.Down( "forward" ) || Input.Down( "backward" ) || Input.Down( "right" ) || Input.Down( "left" ) )
+		{
+			SnappingToPlayer = false;
+		}
+		if ( Input.Pressed( "attack1" ) )
+		{
+			SpectateIndex++;
+			if ( SpectateIndex >= listOfPlayers.Count )
+			{
+				SpectateIndex = 0;
+			}
+			SnappingToPlayer = true;
+		}
+		if ( Input.Pressed( "attack2" ) )
+		{
+			SpectateIndex--;
+			if ( SpectateIndex < 0 )
+			{
+				SpectateIndex = listOfPlayers.Count - 1;
+			}
+			SnappingToPlayer = true;
+		}
+		var player = listOfPlayers[SpectateIndex];
+		if ( SnappingToPlayer )
+		{
+			var target = player.Body.Transform.Position + player.Body.Transform.Rotation.Up * 64 + player.Body.Transform.Rotation.Backward * 100;
+			Transform.Position = new Vector3( target.x, target.y, Vector3.Lerp( Transform.Position, target, 10000 ).z );
+			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
+		}
+
+
+	}
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
@@ -293,6 +336,7 @@ public class Player : Component
 		if ( !IsProxy )
 		{
 			EyeInput();
+			SnapToPlayer();
 			var blind = Scene.GetAllComponents<BlindPostprocess>()?.FirstOrDefault();
 			if ( TeamComponent.TeamName == Team.Hunters.ToString() && PropHuntManager.Instance.RoundState == GameState.Starting && blind is not null )
 			{
@@ -510,7 +554,11 @@ public class Player : Component
 		}
 		else
 		{
-			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
+			if ( !SnappingToPlayer )
+			{
+				Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
+			}
+
 			Scene.Camera.Transform.Position = GameObject.Transform.Position + Vector3.Up * 64;
 			var runSpeed = Input.Down( "run" ) ? 2000 : 500;
 			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * runSpeed * Time.Delta;
