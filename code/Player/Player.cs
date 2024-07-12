@@ -28,6 +28,7 @@ public class Player : Component
 	}
 	private static Player _local;
 	public Vector3 WishVelocity { get; private set; }
+	[Property, Sync] public string CurrentMapVote { get; set; }
 	[Property] public GameObject Body { get; set; }
 	[Property] public GameObject Eye { get; set; }
 	[Property, Sync] public bool AbleToMove { get; set; } = true;
@@ -60,6 +61,7 @@ public class Player : Component
 	}
 	[Sync] public Rotation oldRotation { get; set; }
 	[Sync] public Angles oldEyeAngles { get; set; }
+	[Sync] public bool AbleToVote { get; set; } = true;
 
 	public bool IsSpectator { get; set; } = false;
 

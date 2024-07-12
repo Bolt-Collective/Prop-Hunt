@@ -26,17 +26,13 @@
 
 @code
 {
-
-	[Property] public bool AbleToVote { get; set; } = true;
 	public void OnPackageSelected(Package package)
 	{
-		if (!AbleToVote) return;
-		PropHuntManager.Instance?.AddVote(package.FullIdent);
-		AbleToVote = false;
+		PropHuntManager.Instance?.AddVote(Player.Local, package.FullIdent);
 	}
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine(PropHuntManager.Instance?.RoundState);
+	protected override int BuildHash() => System.HashCode.Combine(Time.Now);
 }
