@@ -225,9 +225,9 @@ public class Player : Component
 		var player = listOfPlayers[SpectateIndex];
 		if ( SnappingToPlayer )
 		{
-			var target = player.Body.Transform.Position + player.Body.Transform.Rotation.Up * 64 + player.Body.Transform.Rotation.Backward * 100;
-			Transform.Position = new Vector3( target.x, target.y, Vector3.Lerp( Transform.Position, target, 10000 ).z );
-			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
+			var target = player.Body.Transform.Position + player.Body.Transform.Rotation.Up * 32 + player.Body.Transform.Rotation.Backward * 100;
+			Transform.Position = target;
+			Scene.Camera.Transform.Rotation = Rotation.LookAt( player.Eye.Transform.Position - Scene.Camera.Transform.Position );
 		}
 
 
