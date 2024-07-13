@@ -2,6 +2,7 @@ using System.Data;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using System.Transactions;
 using Sandbox.Utility;
 namespace PropHunt;
 
@@ -76,17 +77,44 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 	}
 	[Broadcast]
-	public void AddVote( string map )
+	public void AddVote( Player player, string map )
 	{
 		Log.Info( "Vote added for " + map );
-		if ( Votes.ContainsKey( map ) )
+		if ( player.AbleToVote )
 		{
-			Votes[map]++;
+			if ( Votes.ContainsKey( map ) )
+			{
+				Votes[map]++;
+			}
+			else
+			{
+				Votes.Add( map, 1 );
+			}
+			player.CurrentMapVote = map;
+			player.AbleToVote = false;
 		}
-		else
+		else if ( !player.AbleToVote && player.CurrentMapVote != map )
 		{
-			Votes.Add( map, 1 );
+			if ( Votes.ContainsKey( player.CurrentMapVote ) )
+			{
+				Votes[player.CurrentMapVote]--;
+				if ( Votes[player.CurrentMapVote] == 0 )
+				{
+					Votes.Remove( player.CurrentMapVote );
+				}
+			}
+
+			if ( Votes.ContainsKey( map ) )
+			{
+				Votes[map]++;
+			}
+			else
+			{
+				Votes.Add( map, 1 );
+			}
+			player.CurrentMapVote = map;
 		}
+
 	}
 
 	protected override void OnUpdate()
@@ -365,9 +393,9 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public void ClearVotes()
 	{
 		Votes.Clear();
-		foreach ( var votingUi in Scene.GetAllComponents<VotingUi>() )
+		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
-			votingUi.AbleToVote = true;
+			player.AbleToVote = true;
 		}
 	}
 	public void ResetRound()
