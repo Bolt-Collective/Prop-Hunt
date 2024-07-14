@@ -8,9 +8,9 @@
 	@if (Player.Local is not null)
 	{
 		<div class="currentspec">@((Player.Local.TeamComponent.TeamName == Team.Unassigned.ToString() &&
-		Player.Local.SnappingToPlayer) ?
-		@Player.Local.CurrentlySpectatedPlayer.Network.OwnerConnection.DisplayName :
-		@Player.Local.TeamComponent.TeamName)</div>
+		Player.Local.SnappingToPlayer && Player.Local.CurrentlySpectatedPlayer is not null) ?
+		Player.Local.CurrentlySpectatedPlayer?.Network.OwnerConnection.DisplayName :
+		Player.Local.TeamComponent.TeamName)</div>
 	}
 </root>
 

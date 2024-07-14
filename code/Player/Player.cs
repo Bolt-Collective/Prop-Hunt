@@ -192,18 +192,20 @@ public class Player : Component
 	}
 	[Sync] public int SpectateIndex { get; set; } = 0;
 	[Sync, Property] public bool SnappingToPlayer { get; set; } = false;
-	[Property] public GameObject CurrentlySpectatedPlayer { get; set; }
+	[Property] public Player CurrentlySpectatedPlayer { get; set; }
 	public void SnapToPlayer()
 	{
 		if ( TeamComponent.TeamName != Team.Unassigned.ToString() || !PropHuntManager.Instance.OnGoingRound || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
 		{
 			SnappingToPlayer = false;
+			CurrentlySpectatedPlayer = null;
 			return;
 		}
 		var listOfPlayers = Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName != Team.Unassigned.ToString() && !x.IsDead ).ToList();
 		if ( listOfPlayers.Count == 0 || listOfPlayers is null )
 		{
 			SnappingToPlayer = false;
+			CurrentlySpectatedPlayer = null;
 			return;
 		}
 		if ( Input.Down( "forward" ) || Input.Down( "backward" ) || Input.Down( "right" ) || Input.Down( "left" ) )
@@ -228,21 +230,34 @@ public class Player : Component
 			}
 			SnappingToPlayer = true;
 		}
-		var player = listOfPlayers[SpectateIndex];
-		if ( player is null )
+		if ( SpectateIndex >= 0 && SpectateIndex < listOfPlayers.Count )
 		{
-			SnappingToPlayer = false;
+			var player = listOfPlayers[SpectateIndex];
+			CurrentlySpectatedPlayer = player;
+		}
+		else
+		{
+			CurrentlySpectatedPlayer = null;
 			return;
 		}
-		CurrentlySpectatedPlayer = player.GameObject;
-		if ( SnappingToPlayer )
+		if ( CurrentlySpectatedPlayer is null )
 		{
-			var target = player.Body.Transform.Position + player.Body.Transform.Rotation.Up * 32 + player.Body.Transform.Rotation.Backward * 100;
+			SnappingToPlayer = false;
+			CurrentlySpectatedPlayer = null;
+			return;
+		}
+		if ( SnappingToPlayer && CurrentlySpectatedPlayer is not null )
+		{
+			var target = CurrentlySpectatedPlayer.Body.Transform.Position + CurrentlySpectatedPlayer.Body.Transform.Rotation.Up * 32 + CurrentlySpectatedPlayer.Body.Transform.Rotation.Backward * 100;
 			Transform.Position = target;
-			var lookAtRot = Rotation.LookAt( player.Eye.Transform.Position - Scene.Camera.Transform.Position );
+			var lookAtRot = Rotation.LookAt( CurrentlySpectatedPlayer.Eye.Transform.Position - Scene.Camera.Transform.Position );
 			var lerpYaw = Rotation.Lerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 50 );
 			var lerpPitch = Rotation.Lerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 10 );
 			Scene.Camera.Transform.Rotation = new Angles( lerpPitch.Pitch(), lerpYaw.Yaw(), 0 ).ToRotation();
+		}
+		else if ( CurrentlySpectatedPlayer is null )
+		{
+			SnappingToPlayer = false;
 		}
 
 
