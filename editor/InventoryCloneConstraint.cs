@@ -7,7 +7,6 @@ public sealed class InventoryCloneConstraintWidget : ControlWidget
 	public InventoryCloneConstraintWidget( SerializedProperty property ) : base( property )
 	{
 		Layout = Layout.Column();
-		PaintBackground = false;
 		Layout.Spacing = 2;
 		if ( property.IsNull )
 		{

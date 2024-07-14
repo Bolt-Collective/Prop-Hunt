@@ -20,7 +20,6 @@ public class LobbySettingsControlWidget : ControlWidget
 		controlSheet.AddObject( serializedObject );
 		Layout.Add( controlSheet );
 
-
 		var button = new Button( "Save" );
 		button.Clicked += () =>
 		{
