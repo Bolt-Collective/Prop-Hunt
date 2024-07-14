@@ -1,4 +1,5 @@
-﻿using Facepunch;
+﻿using System.Security.Cryptography;
+using Facepunch;
 using PropHunt;
 using Sandbox;
 using Sandbox.Citizen;
@@ -191,7 +192,7 @@ public class Player : Component
 	}
 	[Sync] public int SpectateIndex { get; set; } = 0;
 	[Sync, Property] public bool SnappingToPlayer { get; set; } = false;
-	[Property, Sync] public GameObject CurrentlySpectatedPlayer { get; set; }
+	[Property] public GameObject CurrentlySpectatedPlayer { get; set; }
 	public void SnapToPlayer()
 	{
 		if ( TeamComponent.TeamName != Team.Unassigned.ToString() || !PropHuntManager.Instance.OnGoingRound || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
@@ -199,7 +200,7 @@ public class Player : Component
 			SnappingToPlayer = false;
 			return;
 		}
-		var listOfPlayers = Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName != Team.Unassigned.ToString() && x.Health > 0 ).ToList();
+		var listOfPlayers = Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName != Team.Unassigned.ToString() && !x.IsDead ).ToList();
 		if ( listOfPlayers.Count == 0 ) return;
 		if ( Input.Down( "forward" ) || Input.Down( "backward" ) || Input.Down( "right" ) || Input.Down( "left" ) )
 		{
@@ -223,6 +224,7 @@ public class Player : Component
 			}
 			SnappingToPlayer = true;
 		}
+		if ( listOfPlayers.Count == 0 ) return;
 		var player = listOfPlayers[SpectateIndex];
 		CurrentlySpectatedPlayer = player.GameObject;
 		if ( SnappingToPlayer )
@@ -230,7 +232,7 @@ public class Player : Component
 			var target = player.Body.Transform.Position + player.Body.Transform.Rotation.Up * 32 + player.Body.Transform.Rotation.Backward * 100;
 			Transform.Position = target;
 			var lookAtRot = Rotation.LookAt( player.Eye.Transform.Position - Scene.Camera.Transform.Position );
-			Scene.Camera.Transform.Rotation = Rotation.Slerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 25 );
+			Scene.Camera.Transform.Rotation = lookAtRot;
 		}
 
 

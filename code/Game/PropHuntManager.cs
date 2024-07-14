@@ -456,8 +456,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		WinningTeam = team;
 		WinningTeamName = team.GetName();
 
-		Log.Info( WinningTeamName + " win!" );
-
 		OnRoundEnding();
 	}
 
