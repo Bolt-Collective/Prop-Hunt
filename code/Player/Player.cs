@@ -232,7 +232,9 @@ public class Player : Component
 			var target = player.Body.Transform.Position + player.Body.Transform.Rotation.Up * 32 + player.Body.Transform.Rotation.Backward * 100;
 			Transform.Position = target;
 			var lookAtRot = Rotation.LookAt( player.Eye.Transform.Position - Scene.Camera.Transform.Position );
-			Scene.Camera.Transform.Rotation = Rotation.Slerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 25 ); ;
+			var lerpYaw = Rotation.Lerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 50 );
+			var lerpPitch = Rotation.Lerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 10 );
+			Scene.Camera.Transform.Rotation = new Angles( lerpPitch.Pitch(), lerpYaw.Yaw(), 0 ).ToRotation();
 		}
 
 
@@ -511,6 +513,7 @@ public class Player : Component
 	{
 		if ( IsProxy )
 			return;
+
 		CheckForKillBounds();
 		UpdateColliders( GameObject.Id );
 		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
