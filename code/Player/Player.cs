@@ -191,6 +191,7 @@ public class Player : Component
 	}
 	[Sync] public int SpectateIndex { get; set; } = 0;
 	[Sync, Property] public bool SnappingToPlayer { get; set; } = false;
+	[Property, Sync] public GameObject CurrentlySpectatedPlayer { get; set; }
 	public void SnapToPlayer()
 	{
 		if ( TeamComponent.TeamName != Team.Unassigned.ToString() || !PropHuntManager.Instance.OnGoingRound || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
@@ -223,6 +224,7 @@ public class Player : Component
 			SnappingToPlayer = true;
 		}
 		var player = listOfPlayers[SpectateIndex];
+		CurrentlySpectatedPlayer = player.GameObject;
 		if ( SnappingToPlayer )
 		{
 			var target = player.Body.Transform.Position + player.Body.Transform.Rotation.Up * 32 + player.Body.Transform.Rotation.Backward * 100;

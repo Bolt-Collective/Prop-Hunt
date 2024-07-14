@@ -7,11 +7,15 @@
 <root>
 	@if (Player.Local is not null)
 	{
-		<div class="currentspec">@Player.Local.TeamComponent.TeamName</div>
+		<div class="currentspec">@((Player.Local.TeamComponent.TeamName == Team.Unassigned.ToString() &&
+		Player.Local.SnappingToPlayer) ?
+		@Player.Local.CurrentlySpectatedPlayer.Network.OwnerConnection.DisplayName :
+		@Player.Local.TeamComponent.TeamName)</div>
 	}
 </root>
 
 @code
 {
-	protected override int BuildHash() => System.HashCode.Combine(Player.Local?.TeamComponent?.TeamName);
+	protected override int BuildHash() => System.HashCode.Combine(Player.Local?.TeamComponent?.TeamName,
+	Player.Local?.SnappingToPlayer, Player.Local?.CurrentlySpectatedPlayer);
 }
