@@ -8,7 +8,7 @@ public sealed class CustomMapAction : ControlWidget
 	public CustomMapAction( SerializedProperty property ) : base( property )
 	{
 		Layout = Layout.Column();
-
+		PaintBackground = false;
 		Layout.Spacing = 2;
 
 		if ( property.IsNull )
@@ -20,16 +20,10 @@ public sealed class CustomMapAction : ControlWidget
 
 		if ( serializedObject is null ) return;
 
-		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.OnMapLoaded ), out var onMapLoaded );
-		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.OnMapUnloaded ), out var onMapUnloaded );
-		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.OnSceneStart ), out var onSceneStart );
-		serializedObject.TryGetProperty( nameof( MapChanger.CustomMapActions.MapIndent ), out var mapIndent );
 
-		Layout.Add( new StringControlWidget( mapIndent ) { } );
-
-		Layout.Add( new ActionControlWidget( onMapLoaded ) { } );
-		Layout.Add( new ActionControlWidget( onMapUnloaded ) { } );
-		Layout.Add( new ActionControlWidget( onSceneStart ) { } );
+		var controlSheet = new ControlSheet();
+		controlSheet.AddObject( serializedObject );
+		Layout.Add( controlSheet );
 
 	}
 }

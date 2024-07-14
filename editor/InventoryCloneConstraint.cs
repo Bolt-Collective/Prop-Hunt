@@ -7,6 +7,7 @@ public sealed class InventoryCloneConstraintWidget : ControlWidget
 	public InventoryCloneConstraintWidget( SerializedProperty property ) : base( property )
 	{
 		Layout = Layout.Column();
+		PaintBackground = false;
 		Layout.Spacing = 2;
 		if ( property.IsNull )
 		{
@@ -16,10 +17,8 @@ public sealed class InventoryCloneConstraintWidget : ControlWidget
 		var serializedObject = property.GetValue<Inventory.CloneConstraint>()?.GetSerialized();
 		if ( serializedObject is null ) return;
 
-		serializedObject.TryGetProperty( nameof( Inventory.CloneConstraint.Clone ), out var clone );
-		serializedObject.TryGetProperty( nameof( Inventory.CloneConstraint.Parent ), out var parent );
-
-		Layout.Add( new GameObjectControlWidget( clone ) { } );
-		Layout.Add( new GameObjectControlWidget( parent ) { } );
+		var controlSheet = new ControlSheet();
+		controlSheet.AddObject( serializedObject );
+		Layout.Add( controlSheet );
 	}
 }

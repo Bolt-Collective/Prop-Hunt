@@ -174,8 +174,7 @@
           "Components": [
             {
               "__type": "VotingUi",
-              "__guid": "fc9f13af-2259-41a7-8ab2-0b97ae13e2a1",
-              "AbleToVote": true
+              "__guid": "fc9f13af-2259-41a7-8ab2-0b97ae13e2a1"
             }
           ]
         }
@@ -271,9 +270,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_name": "CreateGnomeFigPostprocess",
+                      "_isStatic": false,
                       "_type": "PropHunt.MapChanger",
-                      "_isStatic": false
+                      "_name": "CreateGnomeFigPostprocess"
                     },
                     "UserData": {
                       "Position": "256,32"
