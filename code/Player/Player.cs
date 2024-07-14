@@ -201,7 +201,11 @@ public class Player : Component
 			return;
 		}
 		var listOfPlayers = Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName != Team.Unassigned.ToString() && !x.IsDead ).ToList();
-		if ( listOfPlayers.Count == 0 ) return;
+		if ( listOfPlayers.Count == 0 || listOfPlayers is null )
+		{
+			SnappingToPlayer = false;
+			return;
+		}
 		if ( Input.Down( "forward" ) || Input.Down( "backward" ) || Input.Down( "right" ) || Input.Down( "left" ) )
 		{
 			SnappingToPlayer = false;
@@ -224,8 +228,12 @@ public class Player : Component
 			}
 			SnappingToPlayer = true;
 		}
-		if ( listOfPlayers.Count == 0 ) return;
 		var player = listOfPlayers[SpectateIndex];
+		if ( player is null )
+		{
+			SnappingToPlayer = false;
+			return;
+		}
 		CurrentlySpectatedPlayer = player.GameObject;
 		if ( SnappingToPlayer )
 		{
