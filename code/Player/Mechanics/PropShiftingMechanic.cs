@@ -58,7 +58,7 @@ public class PropShiftingMechanic : Component
 		pcModel.Tint = Color.White;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
 		pcModel.GameObject.Transform.Scale = Vector3.One;
-		Player.Local.Health = PreviousHealth;
+		//Player.Local.Health = PreviousHealth;
 		pcModel.BodyGroups = BodyGroups;
 		if ( clothes.Any() )
 		{
