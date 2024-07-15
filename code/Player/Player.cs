@@ -1,4 +1,5 @@
-﻿using Facepunch;
+﻿using System.Security.Cryptography;
+using Facepunch;
 using PropHunt;
 using Sandbox;
 using Sandbox.Citizen;
@@ -189,6 +190,78 @@ public class Player : Component
 			}
 		}
 	}
+	[Sync] public int SpectateIndex { get; set; } = 0;
+	[Sync, Property] public bool SnappingToPlayer { get; set; } = false;
+	[Property] public Player CurrentlySpectatedPlayer { get; set; }
+	public void SnapToPlayer()
+	{
+		if ( TeamComponent.TeamName != Team.Unassigned.ToString() || !PropHuntManager.Instance.OnGoingRound || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers )
+		{
+			SnappingToPlayer = false;
+			CurrentlySpectatedPlayer = null;
+			return;
+		}
+		var listOfPlayers = Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName != Team.Unassigned.ToString() && !x.IsDead ).ToList();
+		if ( listOfPlayers.Count == 0 || listOfPlayers is null )
+		{
+			SnappingToPlayer = false;
+			CurrentlySpectatedPlayer = null;
+			return;
+		}
+		if ( Input.Down( "forward" ) || Input.Down( "backward" ) || Input.Down( "right" ) || Input.Down( "left" ) )
+		{
+			SnappingToPlayer = false;
+		}
+		if ( Input.Pressed( "attack1" ) )
+		{
+			SpectateIndex++;
+			if ( SpectateIndex >= listOfPlayers.Count )
+			{
+				SpectateIndex = 0;
+			}
+			SnappingToPlayer = true;
+		}
+		if ( Input.Pressed( "attack2" ) )
+		{
+			SpectateIndex--;
+			if ( SpectateIndex < 0 )
+			{
+				SpectateIndex = listOfPlayers.Count - 1;
+			}
+			SnappingToPlayer = true;
+		}
+		if ( SpectateIndex >= 0 && SpectateIndex < listOfPlayers.Count )
+		{
+			var player = listOfPlayers[SpectateIndex];
+			CurrentlySpectatedPlayer = player;
+		}
+		else
+		{
+			CurrentlySpectatedPlayer = null;
+			return;
+		}
+		if ( CurrentlySpectatedPlayer is null )
+		{
+			SnappingToPlayer = false;
+			CurrentlySpectatedPlayer = null;
+			return;
+		}
+		if ( SnappingToPlayer && CurrentlySpectatedPlayer is not null )
+		{
+			var target = CurrentlySpectatedPlayer.Body.Transform.Position + CurrentlySpectatedPlayer.Body.Transform.Rotation.Up * 32 + CurrentlySpectatedPlayer.Body.Transform.Rotation.Backward * 100;
+			Transform.Position = target;
+			var lookAtRot = Rotation.LookAt( CurrentlySpectatedPlayer.Eye.Transform.Position - Scene.Camera.Transform.Position );
+			var lerpYaw = Rotation.Lerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 50 );
+			var lerpPitch = Rotation.Lerp( Scene.Camera.Transform.Rotation, lookAtRot, Time.Delta * 10 );
+			Scene.Camera.Transform.Rotation = new Angles( lerpPitch.Pitch(), lerpYaw.Yaw(), 0 ).ToRotation();
+		}
+		else if ( CurrentlySpectatedPlayer is null )
+		{
+			SnappingToPlayer = false;
+		}
+
+
+	}
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
@@ -295,6 +368,7 @@ public class Player : Component
 		if ( !IsProxy )
 		{
 			EyeInput();
+			SnapToPlayer();
 			var blind = Scene.GetAllComponents<BlindPostprocess>()?.FirstOrDefault();
 			if ( TeamComponent.TeamName == Team.Hunters.ToString() && PropHuntManager.Instance.RoundState == GameState.Starting && blind is not null )
 			{
@@ -462,6 +536,7 @@ public class Player : Component
 	{
 		if ( IsProxy )
 			return;
+
 		CheckForKillBounds();
 		UpdateColliders( GameObject.Id );
 		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
@@ -512,7 +587,11 @@ public class Player : Component
 		}
 		else
 		{
-			Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
+			if ( !SnappingToPlayer )
+			{
+				Scene.Camera.Transform.Rotation = EyeAngles.ToRotation();
+			}
+
 			Scene.Camera.Transform.Position = GameObject.Transform.Position + Vector3.Up * 64;
 			var runSpeed = Input.Down( "run" ) ? 2000 : 500;
 			GameObject.Transform.Position += new Angles( EyeAngles.pitch, EyeAngles.yaw, 0 ).ToRotation() * Input.AnalogMove * runSpeed * Time.Delta;
