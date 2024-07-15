@@ -41,7 +41,8 @@ public sealed class ViewModel : Component
 	void GroundSpeed()
 	{
 		if ( Player.GameObject.Components.Get<Hc1CharacterController>() is null ) return;
-		Gun.Set( "move_groundspeed", Player.GameObject.Components.Get<Hc1CharacterController>().Velocity.Length );
+		var velo = Player.GameObject.Components.Get<Hc1CharacterController>().Velocity.ClampLength( 1 ).Length;
+		Gun.Set( "move_bob", velo );
 	}
 	Vector3 LocalPos = Vector3.Zero;
 	protected override void OnUpdate()
