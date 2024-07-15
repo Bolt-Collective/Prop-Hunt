@@ -12,14 +12,14 @@ public sealed class InventoryEnableSyncer : Component
 	{
 		if ( !IsProxy )
 		{
-			UpdateEnabled( Player.Local.GameObject.Id );
+			UpdateEnabled( Player.Local.GameObject );
 		}
 	}
 
 	[Broadcast]
-	public void UpdateEnabled( Guid caller )
+	public void UpdateEnabled( GameObject caller )
 	{
-		var inv = Scene.Directory.FindByGuid( caller ).Components.Get<Inventory>();
+		var inv = caller.Components.Get<Inventory>();
 		foreach ( var child in GameObject.Children )
 		{
 			if ( inv.ActiveIndex == Slot )
