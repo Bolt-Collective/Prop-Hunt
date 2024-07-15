@@ -402,7 +402,7 @@ public class Player : Component
 
 			CameraPosition();
 
-			UpdatePlayerControllerRadius( GameObject.Id );
+			UpdatePlayerControllerRadius( GameObject );
 			CameraPosWorld = Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Transform.World;
 			IsRunning = Input.Down( "Run" );
 		}
@@ -433,12 +433,10 @@ public class Player : Component
 		}
 	}
 	[Broadcast]
-	public void UpdatePlayerControllerRadius( Guid caller )
+	public void UpdatePlayerControllerRadius( GameObject caller )
 	{
-		var ccGb = Scene.Directory.FindByGuid( caller );
-		if ( ccGb is null ) return;
-		var cc = ccGb.Components.Get<Hc1CharacterController>();
-		var player = ccGb.Components.Get<Player>();
+		var cc = caller.Components.Get<Hc1CharacterController>();
+		var player = caller.Components.Get<Player>();
 		if ( characterController is null || player is null ) return;
 		var radius = cc.Radius;
 		radius = Math.Min( player.BodyRenderer.Bounds.Size.x, player.BodyRenderer.Bounds.Size.y ) / 2;
@@ -493,9 +491,9 @@ public class Player : Component
 		UpdateBodyVisibility();
 	}
 	[Broadcast]
-	public void UpdateColliders( Guid caller )
+	public void UpdateColliders( GameObject caller )
 	{
-		var playerGb = Scene.Directory.FindByGuid( caller );
+		var playerGb = caller;
 		if ( playerGb is null ) return;
 		var player = playerGb.Components.Get<Player>();
 		if ( player is null ) return;
@@ -538,10 +536,10 @@ public class Player : Component
 			return;
 
 		CheckForKillBounds();
-		UpdateColliders( GameObject.Id );
+		UpdateColliders( GameObject );
 		if ( TeamComponent.TeamName != Team.Hunters.ToString() )
 		{
-			ClearHoldType( GameObject.Id );
+			ClearHoldType( GameObject );
 		}
 		if ( AbleToMove && TeamComponent.TeamName != Team.Unassigned.ToString() )
 		{
@@ -647,15 +645,15 @@ public class Player : Component
 		{
 			Health = 0;
 			IsDead = true;
-			Death( GameObject.Id, deathMessage );
+			Death( GameObject, deathMessage );
 		}
 	}
 	[Broadcast]
-	void Death( Guid caller, bool deathMessage )
+	void Death( GameObject caller, bool deathMessage )
 	{
 		if ( IsSpectator ) return;
 
-		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		var player = caller.Components.Get<Player>();
 
 		player.Health = 0;
 		player.DisableBody();
@@ -671,17 +669,17 @@ public class Player : Component
 		}
 	}
 	[Broadcast]
-	public void ClearHoldType( Guid caller )
+	public void ClearHoldType( GameObject caller )
 	{
-		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		var player = caller.Components.Get<Player>();
 		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 	}
 
 
 	[Broadcast]
-	public void Respawn( Guid caller )
+	public void Respawn( GameObject caller )
 	{
-		var playerGb = Scene.Directory.FindByGuid( caller );
+		var playerGb = caller;
 		if ( playerGb is null ) return;
 		var player = playerGb.Components.Get<Player>();
 		if ( player is null ) return;
@@ -702,9 +700,9 @@ public class Player : Component
 		}
 	}
 	[Broadcast]
-	public void ResetStats( Guid caller )
+	public void ResetStats( GameObject caller )
 	{
-		var playerGb = Scene.Directory.FindByGuid( caller );
+		var playerGb = caller;
 		if ( playerGb is null ) return;
 		var player = playerGb.Components.Get<Player>();
 		if ( player is null ) return;

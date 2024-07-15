@@ -6,17 +6,17 @@ public sealed class FlashlightComponent : Component
 
 
 	[Broadcast]
-	private void BroadcastFlashlight( Guid caller )
+	private void BroadcastFlashlight( GameObject caller )
 	{
-		var player = Scene.Directory.FindByGuid( caller ).Components.Get<Player>();
+		var player = caller.Components.Get<Player>();
 		if ( player == null ) return;
 		Flashlight.Transform.Rotation = player.Eye.Transform.Rotation;
 		Flashlight.Transform.Position = player.Eye.Transform.Position + player.Eye.Transform.Rotation.Forward * 40;
 	}
 	[Broadcast]
-	private void EnableFlashlight( Guid caller )
+	private void EnableFlashlight( GameObject caller )
 	{
-		var flashLight = Scene.Directory.FindByGuid( caller ).Components.Get<FlashlightComponent>();
+		var flashLight = caller.Components.Get<FlashlightComponent>();
 		if ( flashLight == null ) return;
 
 		flashLight.Flashlight.Enabled = !flashLight.Flashlight.Enabled;
@@ -30,10 +30,10 @@ public sealed class FlashlightComponent : Component
 
 		if ( IsProxy ) return;
 
-		BroadcastFlashlight( GameObject.Root.Id );
+		BroadcastFlashlight( GameObject.Root );
 		if ( Input.Pressed( "menu" ) )
 		{
-			EnableFlashlight( GameObject.Id );
+			EnableFlashlight( GameObject );
 		}
 
 	}
