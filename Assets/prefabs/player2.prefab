@@ -5,10 +5,6 @@
     "Name": "player2",
     "Tags": "noblockaudio,player",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
-    "NetworkOrphaned": 0,
-    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Player",
@@ -109,7 +105,8 @@
               "DstName": "soundEvent"
             }
           ]
-        }
+        },
+        "SnappingToPlayer": false
       },
       {
         "__type": "PlayerDresser",
@@ -191,20 +188,29 @@
         "Size": 4,
         "StartingItems": [
           {
-            "_type": "gameobject",
-            "prefab": "prefabs/weapons/pistol2.prefab"
+            "Weapon": {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/pistol2.prefab"
+            }
           },
           {
-            "_type": "gameobject",
-            "prefab": "prefabs/weapons/knife2.prefab"
+            "Weapon": {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/knife2.prefab"
+            },
+            "Offset": "6.7,0,0"
           },
           {
-            "_type": "gameobject",
-            "prefab": "prefabs/weapons/mp52.prefab"
+            "Weapon": {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/mp52.prefab"
+            }
           },
           {
-            "_type": "gameobject",
-            "prefab": "prefabs/weapons/shotgun2.prefab"
+            "Weapon": {
+              "_type": "gameobject",
+              "prefab": "prefabs/weapons/shotgun2.prefab"
+            }
           }
         ]
       },
@@ -290,10 +296,6 @@
         "Flags": 0,
         "Name": "Body",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
@@ -327,10 +329,6 @@
             "Name": "PropCollider",
             "Tags": "propcollider",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.ModelCollider",
@@ -348,10 +346,6 @@
         "Flags": 0,
         "Name": "Voice",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.Voice",
@@ -377,11 +371,7 @@
         "Flags": 0,
         "Name": "EyePos",
         "Position": "0,0,64",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1
+        "Enabled": true
       },
       {
         "__guid": "4d826a13-ae76-46c4-866e-9ad4fc42bf24",
@@ -390,10 +380,6 @@
         "Position": "15.56648,0,63.5416",
         "Tags": "light_spot,light",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "Sandbox.SpotLight",

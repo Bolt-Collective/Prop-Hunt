@@ -118,39 +118,10 @@ public sealed class Item : Component
 		else
 		{
 			TraceObject = null;
-			Player.Local.TakeDamage( 5 );
 		}
 	}
 
-	[ActionGraphNode( "Broadcast Anim" )]
-	public static void BroadcastAnim( Guid RendererId, string AnimName, bool True )
-	{
-		if ( Game.ActiveScene.IsProxy ) return;
-		var renderer = Game.ActiveScene.Directory.FindByGuid( RendererId );
-		if ( renderer is not null && renderer.Components.TryGet<SkinnedModelRenderer>( out var rendererComponent ) )
-		{
-			rendererComponent.Set( AnimName, True );
-		}
-		Log.Info( "Broadcast Holdtype" );
-	}
 
-	[ActionGraphNode( "Broadcast Holdtype" ), Broadcast]
-	public static void BroadcastHoldtype( Guid RendererId, CitizenAnimationHelper.HoldTypes holdType )
-	{
-		if ( Game.ActiveScene.IsProxy ) return;
-		var renderer = Game.ActiveScene.Directory.FindByGuid( RendererId );
-		if ( renderer is not null && renderer.Components.TryGet<CitizenAnimationHelper>( out var rendererComponent ) )
-		{
-			rendererComponent.HoldType = holdType;
-		}
-	}
-
-	[ActionGraphNode( "Get GameObject Id" ), Pure]
-	public static Guid GetGameObjectId( GameObject gameObject )
-	{
-		if ( Game.ActiveScene is null ) return Guid.Empty;
-		return gameObject.Id;
-	}
 
 
 	public async Task Reload( float reloadTime, int MaxAmmo )

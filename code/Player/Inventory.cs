@@ -8,7 +8,7 @@ public sealed class Inventory : Component
 {
 	[Property] public int Size { get; set; } = 9;
 	[Property] public List<GameObject> Items { get; set; }
-	[Property] public List<GameObject> StartingItems { get; set; } = new();
+	[Property] public List<WeaponCloneClass> StartingItems { get; set; } = new();
 	[Property, Sync] public int ActiveIndex { get; set; }
 	[Property, Sync] public bool AbleToSwitch { get; set; } = true;
 	public Player Player { get; set; }
@@ -30,7 +30,7 @@ public sealed class Inventory : Component
 		{
 			for ( int i = 0; i < StartingItems.Count; i++ )
 			{
-				AddItem( StartingItems[i], i );
+				AddItem( StartingItems[i].Weapon, i, StartingItems[i].Offset );
 			}
 		}
 		if ( TeamComponent.TeamName == Team.Hunters.ToString() && cloneConstraints.Count != 0 )
@@ -86,7 +86,7 @@ public sealed class Inventory : Component
 		ActiveConstarints.Add( clone );
 		clone.NetworkSpawn();
 	}
-	public void AddItem( GameObject item, int slot )
+	public void AddItem( GameObject item, int slot, Vector3 offset )
 	{
 		if ( IsProxy ) return;
 		if ( slot < 0 || slot >= Items.Count )
@@ -96,7 +96,7 @@ public sealed class Inventory : Component
 		if ( Items[slot] is null )
 		{
 			var clone = item.Clone();
-			clone.Transform.LocalPosition = new Vector3( 0, 0, 0 );
+			clone.Transform.LocalPosition = offset;
 			clone.Parent = GameObject;
 			clone.NetworkSpawn();
 			if ( clone.Components.TryGet<Weapon>( out var weapon ) )
@@ -190,4 +190,22 @@ public sealed class Inventory : Component
 			Clone = clone;
 		}
 	}
+	//Used for a control widget to allow the setting of a weapon and an offset
+	public class WeaponCloneClass
+	{
+		public GameObject Weapon { get; set; }
+		public Vector3 Offset { get; set; }
+
+		public WeaponCloneClass()
+		{
+			Weapon = null;
+			Offset = Vector3.Zero;
+		}
+		public WeaponCloneClass( GameObject weapon, Vector3 offset )
+		{
+			Weapon = weapon;
+			Offset = offset;
+		}
+	}
 }
+

@@ -4,16 +4,122 @@
     "Flags": 0,
     "Name": "knife2",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
-    "NetworkOrphaned": 0,
-    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Item",
         "__guid": "64d9ed46-13a0-41be-80ae-88feb359eef0",
         "AbleToUse": true,
         "Ammo": 0,
+        "OnComponentDisabled": {
+          "__version": 7,
+          "__guid": "c83db74a-e769-4d5f-8252-645ca92fdad8",
+          "UserData": {
+            "Title": "On Component Disabled",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input",
+              "UserData": {
+                "Position": "-288,-0"
+              }
+            },
+            {
+              "Id": 1,
+              "Type": "call",
+              "Properties": {
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false,
+                "_name": "Set"
+              },
+              "UserData": {
+                "Position": "16,0"
+              }
+            },
+            {
+              "Id": 2,
+              "Type": "call",
+              "Properties": {
+                "_type": "Sandbox.SkinnedModelRenderer",
+                "_isStatic": false,
+                "_name": "Set"
+              },
+              "UserData": {
+                "Position": "288,0"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
+                "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 1,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_attack",
+              "DstId": 1,
+              "DstName": "v"
+            },
+            {
+              "Value": false,
+              "DstId": 1,
+              "DstName": "value"
+            },
+            {
+              "SrcId": 1,
+              "SrcName": "_signal",
+              "DstId": 2,
+              "DstName": "_signal"
+            },
+            {
+              "Value": {
+                "_type": "component",
+                "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
+                "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
+                "component_type": "SkinnedModelRenderer"
+              },
+              "DstId": 2,
+              "DstName": "_target"
+            },
+            {
+              "Value": "b_reload",
+              "DstId": 2,
+              "DstName": "v"
+            },
+            {
+              "Value": false,
+              "DstId": 2,
+              "DstName": "value"
+            }
+          ],
+          "Defaults": {
+            "$3._value": {
+              "_type": "component",
+              "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
+              "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "$6._value": {
+              "_type": "component",
+              "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
+              "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
+              "component_type": "SkinnedModelRenderer"
+            }
+          }
+        },
         "OnComponentEnabled": {
           "__version": 7,
           "__guid": "90dae8ce-1881-414a-ae82-073d92ea6e47",
@@ -46,9 +152,9 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
-                "_name": "GetIsProxy",
                 "_type": "Item",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "GetIsProxy"
               },
               "UserData": {
                 "Position": "848,-0"
@@ -65,36 +171,36 @@
               "Id": 4,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
-                "Position": "1376,-0"
+                "Position": "1840,-0"
               }
             },
             {
               "Id": 28,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
                 "_isStatic": false,
-                "_type": "Sandbox.SkinnedModelRenderer"
+                "_name": "Set"
               },
               "UserData": {
-                "Position": "1632,-0"
+                "Position": "1312,-0"
               }
             },
             {
               "Id": 39,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
+                "_type": "Sandbox.SkinnedModelRenderer",
                 "_isStatic": false,
-                "_type": "Sandbox.SkinnedModelRenderer"
+                "_name": "Set"
               },
               "UserData": {
-                "Position": "1872,-0"
+                "Position": "1584,0"
               }
             }
           ],
@@ -130,8 +236,8 @@
               "DstName": "condition"
             },
             {
-              "SrcId": 3,
-              "SrcName": "false",
+              "SrcId": 39,
+              "SrcName": "_signal",
               "DstId": 4,
               "DstName": "_signal"
             },
@@ -156,8 +262,8 @@
               "DstName": "value"
             },
             {
-              "SrcId": 4,
-              "SrcName": "_signal",
+              "SrcId": 3,
+              "SrcName": "true",
               "DstId": 28,
               "DstName": "_signal"
             },
@@ -246,9 +352,9 @@
               "Id": 1,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "240,-0"
@@ -338,9 +444,9 @@
               "Id": 4,
               "Type": "call",
               "Properties": {
-                "_name": "FireDelay",
+                "_type": "Item",
                 "_isStatic": false,
-                "_type": "Item"
+                "_name": "FireDelay"
               },
               "UserData": {
                 "Position": "1184,80"
@@ -357,9 +463,9 @@
               "Id": 6,
               "Type": "call",
               "Properties": {
-                "_name": "Set",
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false
+                "_isStatic": false,
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "960,80"
@@ -374,7 +480,7 @@
                 "_name": "Set"
               },
               "UserData": {
-                "Position": "288,-32"
+                "Position": "384,-64"
               }
             },
             {
@@ -555,10 +661,6 @@
         "Flags": 0,
         "Name": "Viewmodel",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "ViewModel",
@@ -578,15 +680,11 @@
             "Name": "weapon",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
                 "__guid": "4ac0888b-06a3-4844-821e-3815e47cea25",
-                "BodyGroups": 18446744073709551615,
+                "BodyGroups": 18446744073709551614,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_melee_trenchknife/v_trenchknife.vmdl",
                 "RenderType": "Off",
@@ -601,10 +699,6 @@
             "Name": "arms",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -623,6 +717,30 @@
                 "UseAnimGraph": true
               }
             ]
+          },
+          {
+            "__guid": "a7c1c270-f4e0-4abc-8c06-af9a449173f1",
+            "Flags": 0,
+            "Name": "beyonet",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.SkinnedModelRenderer",
+                "__guid": "d81faae7-9e87-4ba3-b0b2-21610d731322",
+                "BodyGroups": 18446744073709551615,
+                "BoneMergeTarget": {
+                  "_type": "component",
+                  "component_id": "4ac0888b-06a3-4844-821e-3815e47cea25",
+                  "go": "a3c57f44-d359-4cd7-9a8a-6b44be2213d1",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "CreateBoneObjects": false,
+                "Model": "models/weapons/sbox_melee_m9bayonet/v_m9bayonet.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1",
+                "UseAnimGraph": true
+              }
+            ]
           }
         ]
       }
@@ -634,6 +752,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
+    "facepunch.v_m9bayonet",
     "facepunch.v_trenchknife"
   ],
   "__version": 1

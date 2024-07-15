@@ -1,5 +1,5 @@
 {
-  "__guid": "31504ef9-e1d5-4cb9-9cf5-a987cd6893d1",
+  "__guid": "3f4d9acd-884f-4e61-b39b-6465f5af729a",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -194,6 +194,7 @@
           "LobbySettings": {
             "ForcedTauntTime": 60,
             "TauntCoolDownTime": 10,
+            "PreRoundTime": 30,
             "RoundTime": 120,
             "PlayersNeededToStart": 2,
             "HunterPropGrabMode": "Off",
@@ -270,9 +271,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_isStatic": false,
                       "_type": "PropHunt.MapChanger",
-                      "_name": "CreateGnomeFigPostprocess"
+                      "_name": "CreateGnomeFigPostprocess",
+                      "_isStatic": false
                     },
                     "UserData": {
                       "Position": "256,32"

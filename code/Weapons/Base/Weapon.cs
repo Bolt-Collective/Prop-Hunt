@@ -127,10 +127,6 @@ public sealed class Weapon : Component
 			}
 
 		}
-		else
-		{
-			Player.Local.TakeDamage( 5 );
-		}
 	}
 
 	public async void Reload()
