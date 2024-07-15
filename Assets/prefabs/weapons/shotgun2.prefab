@@ -2,12 +2,8 @@
   "RootObject": {
     "__guid": "c664c2ca-ecd2-4e2a-9c1b-f545f7f474ab",
     "Flags": 0,
-    "Name": "shotgun",
+    "Name": "shotgun2",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
-    "NetworkOrphaned": 0,
-    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Shotgun",
@@ -40,10 +36,6 @@
         "Flags": 0,
         "Name": "Viewmodel",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "ViewModel",
@@ -62,10 +54,6 @@
             "Flags": 0,
             "Name": "gun",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -84,10 +72,6 @@
             "Flags": 0,
             "Name": "arms",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",

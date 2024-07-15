@@ -2,12 +2,8 @@
   "RootObject": {
     "__guid": "3a78d028-236e-4531-b966-5d50caf00037",
     "Flags": 0,
-    "Name": "mp5",
+    "Name": "mp52",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
-    "NetworkOrphaned": 0,
-    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Weapon",
@@ -54,9 +50,9 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
+                "_type": "Sandbox.SkinnedModelRenderer",
                 "_isStatic": false,
-                "_name": "Set",
-                "_type": "Sandbox.SkinnedModelRenderer"
+                "_name": "Set"
               },
               "UserData": {
                 "Position": "880,-0"
@@ -489,34 +485,6 @@
               "UserData": {
                 "Position": "640,0"
               }
-            },
-            {
-              "Id": 17,
-              "Type": "property",
-              "ParentId": 0,
-              "Properties": {
-                "_name": "GameObject",
-                "_type": "Sandbox.Component"
-              },
-              "UserData": {
-                "Labels": {
-                  "_result": "gb"
-                }
-              }
-            },
-            {
-              "Id": 18,
-              "Type": "Get GameObject Id",
-              "UserData": {
-                "Position": "-80,80"
-              }
-            },
-            {
-              "Id": 19,
-              "Type": "Broadcast Anim",
-              "UserData": {
-                "Position": "144,0"
-              }
             }
           ],
           "Links": [
@@ -547,7 +515,7 @@
               "DstName": "value"
             },
             {
-              "SrcId": 19,
+              "SrcId": 0,
               "SrcName": "_signal",
               "DstId": 5,
               "DstName": "_signal"
@@ -612,34 +580,6 @@
               "SrcName": "Self",
               "DstId": 17,
               "DstName": "_target"
-            },
-            {
-              "SrcId": 17,
-              "SrcName": "_result",
-              "DstId": 18,
-              "DstName": "gameObject"
-            },
-            {
-              "Value": "b_attack",
-              "DstId": 19,
-              "DstName": "AnimName"
-            },
-            {
-              "SrcId": 18,
-              "SrcName": "_result",
-              "DstId": 19,
-              "DstName": "RendererId"
-            },
-            {
-              "Value": true,
-              "DstId": 19,
-              "DstName": "True"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "_signal",
-              "DstId": 19,
-              "DstName": "_signal"
             }
           ],
           "Defaults": {
@@ -794,10 +734,6 @@
         "Flags": 0,
         "Name": "Viewmodel",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "ViewModel",
@@ -817,10 +753,6 @@
             "Name": "weapon",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -840,10 +772,6 @@
             "Name": "arms",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
