@@ -65,8 +65,8 @@
               "Id": 16,
               "Type": "property",
               "Properties": {
-                "_type": "Sandbox.Component",
-                "_name": "GameObject"
+                "_name": "GameObject",
+                "_type": "Sandbox.Component"
               },
               "UserData": {
                 "Position": "-48,80"
