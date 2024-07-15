@@ -12,7 +12,7 @@ public sealed class HoldTypeMerger : Component
 	[Sync] public bool shouldRender { get; set; }
 	protected override void OnStart()
 	{
-		if (!IsProxy)
+		if ( !IsProxy )
 		{
 			AnimHelper = Player.Local.AnimationHelper;
 		}
@@ -20,22 +20,22 @@ public sealed class HoldTypeMerger : Component
 
 	protected override void OnPreRender()
 	{
-		if (Player.Local is null || Player.Local.IsDead || Player.Local.TeamComponent?.TeamName == Team.Unassigned.ToString() || Player.Local.Body is null || Player.Local.BodyRenderer is null)
+		if ( Player.Local is null || Player.Local.IsDead || Player.Local.TeamComponent?.TeamName == Team.Unassigned.ToString() || Player.Local.Body is null || Player.Local.BodyRenderer is null )
 			return;
 
-		if (GameObject != null && AnimHelper != null)
+		if ( GameObject != null && AnimHelper != null )
 		{
-			if (AnimHelper.Target.TryGetBoneTransform("hold_r", out var boneTransform))
+			if ( AnimHelper.Target.TryGetBoneTransform( "hold_r", out var boneTransform ) )
 			{
 				GameObject.Parent.Transform.Position = boneTransform.Position + Offset;
 				GameObject.Parent.Transform.Rotation = boneTransform.Rotation;
-				if (!IsProxy)
-					BroadcastHoldType(AnimHelper.GameObject.Id);
+				if ( !IsProxy )
+					BroadcastHoldType( AnimHelper.GameObject );
 			}
 		}
 
 		shouldRender = WeaponRenderer != null;
-		if (shouldRender)
+		if ( shouldRender )
 		{
 			WeaponRenderer.Enabled = true;
 			var proxyRenderType = IsProxy || Player.Local.CameraDistance != 0 ? ModelRenderer.ShadowRenderType.On : ModelRenderer.ShadowRenderType.ShadowsOnly;
@@ -43,10 +43,10 @@ public sealed class HoldTypeMerger : Component
 		}
 	}
 	[Broadcast]
-	public void BroadcastHoldType(Guid Caller)
+	public void BroadcastHoldType( GameObject Caller )
 	{
-		var helper = Scene.Directory.FindByGuid(Caller).Components.Get<CitizenAnimationHelper>();
-		if (helper is null) return;
+		var helper = Caller.Components.Get<CitizenAnimationHelper>();
+		if ( helper is null ) return;
 		helper.HoldType = HoldType;
 	}
 }
