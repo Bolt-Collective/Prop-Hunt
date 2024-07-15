@@ -736,7 +736,7 @@
                 },
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_melee_m9bayonet/v_m9bayonet.vmdl",
-                "RenderType": "On",
+                "RenderType": "Off",
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               }
