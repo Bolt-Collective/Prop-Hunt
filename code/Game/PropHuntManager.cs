@@ -221,7 +221,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		Log.Info( "Round starting" );
 		RoundState = GameState.Starting;
-		RoundLength = 30;
+		RoundLength = LobbySettings.PreRoundTime;
 		TimeSinceRoundStateChanged = 0;
 		AssignEvenTeams();
 

@@ -89,6 +89,11 @@
 					<div class="slider-label">Round Time</div>
 					<TextEntry Value:bind="@lobbySettings.RoundTime" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
 				</div>
+				<div class="slider">
+					<div class="slider-label">Preround Time</div>
+					<TextEntry Value:bind="@lobbySettings.PreRoundTime" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f
+					) />
+				</div>
 
 
 				@if (lobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed)
