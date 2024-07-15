@@ -1,8 +1,9 @@
 ﻿Popup {
-    font-family: Arial;
+    font-family: Poppins;
     flex-direction: column;
-    transition: all 2s ease-in-out;
+    transition: all 2.5s ease-in-out;
     opacity: 1;
+    font-weight: 800;
     transform: scale(1);
 
     &:intro {

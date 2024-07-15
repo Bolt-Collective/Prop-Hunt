@@ -270,7 +270,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		if ( !IsProxy )
 		{
-			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", 5f );
+			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", NotificationSound.ResourceName, 5f );
 		}
 
 	}
@@ -311,9 +311,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	}
 
 	[Broadcast]
-	public void BroadcastPopup( string text, string title, float duration = 8f )
+	public void BroadcastPopup( string text, string title, string sound, float duration = 8f )
 	{
 		PopupSystem.DisplayPopup( text, title, duration );
+		Log.Info( "WHY IS IT DOING IT 3 TIMES" );
 	}
 
 	[Broadcast]
@@ -339,6 +340,8 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		OnGoingRound = false;
 		RoundState = GameState.Ending;
+
+
 		TimeSinceRoundStateChanged = 0;
 		RoundLength = 15;
 	}
@@ -453,13 +456,16 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	void ForceWins()
 	{
+
 		if ( TimeSinceRoundStateChanged > LobbySettings.RoundTime || Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ).All( x => x.Health <= 0 ) )
 		{
 			ForceWin( Team.Props );
+			BroadcastPopup( "In the end...", $"Props win!", PropsWinSound.ResourceName );
 		}
 		else if ( Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Props.ToString() ).Count( x => x.Health > 0 ) <= 0 )
 		{
 			ForceWin( Team.Hunters );
+			BroadcastPopup( "Better luck next time, props...", $"Hunters win!", HuntersWinSound.ResourceName );
 		}
 	}
 
