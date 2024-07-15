@@ -94,6 +94,14 @@
 					<TextEntry Value:bind="@lobbySettings.PreRoundTime" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f
 					) />
 				</div>
+				<div class="slider">
+					<div class="slider-label">Prop Health</div>
+					<TextEntry Value:bind="@lobbySettings.PropHealth" Numeric=@true MinValue=@( 1 ) MaxValue=@( 1000 ) />
+				</div>
+				<div class="slider">
+					<div class="slider-label">Hunter Health</div>
+					<TextEntry Value:bind="@lobbySettings.HunterHealth" Numeric=@true MinValue=@( 1 ) MaxValue=@( 1000 ) />
+				</div>
 
 
 				@if (lobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed)

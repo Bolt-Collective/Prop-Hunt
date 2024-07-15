@@ -707,7 +707,6 @@ public class Player : Component
 		var player = playerGb.Components.Get<Player>();
 		if ( player is null ) return;
 		player.AmmoContainer?.ResetAmmo();
-		player.Health = 100;
 		player.IsCrouching = false;
 		player.IsRunning = false;
 		player.FreeLooking = false;
@@ -717,6 +716,18 @@ public class Player : Component
 		player.AbleToMove = true;
 		player.PropShiftingMechanic.ExitProp();
 		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		if ( player.TeamComponent.TeamName == Team.Hunters.ToString() )
+		{
+			player.Health = PropHuntManager.Instance.LobbySettings.HunterHealth;
+		}
+		else if ( player.TeamComponent.TeamName == Team.Props.ToString() )
+		{
+			player.Health = PropHuntManager.Instance.LobbySettings.PropHealth;
+		}
+		else
+		{
+			player.Health = 100;
+		}
 	}
 
 	[ConCmd( "kill" )]
