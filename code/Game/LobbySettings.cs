@@ -27,7 +27,7 @@ public class LobbySettings
 	{
 		ForcedTauntTime = 60;
 		TauntCoolDownTime = 10;
-		RoundTime = 120;
+		RoundTime = 360;
 		PlayersNeededToStart = 2;
 		HunterPropGrabMode = HuntersPropGrabbing.Off;
 		BleedAmount = 10;
