@@ -1,5 +1,5 @@
 {
-  "__guid": "3f4d9acd-884f-4e61-b39b-6465f5af729a",
+  "__guid": "620f7fae-e013-4fbc-9130-83b1d6d0c83c",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -190,11 +190,12 @@
       "Components": [
         {
           "__type": "PropHunt.PropHuntManager",
-          "__guid": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
+          "__guid": "2b3d80f1-3455-437c-a622-8fc77b26e3ff",
           "HuntersWinSound": "sounds/ui/hunters_win.sound",
           "LobbySettings": {
             "ForcedTauntTime": 60,
             "TauntCoolDownTime": 10,
+            "PreRoundTime": 30,
             "RoundTime": 360,
             "PlayersNeededToStart": 2,
             "HunterPropGrabMode": "Off",
@@ -202,18 +203,17 @@
             "RoundCount": 6,
             "AllowMapVoting": true
           },
-          "MaxPlayersToStart": 1,
+          "MaxPlayersToStart": 2,
           "NotificationSound": "sounds/ui/cymbal.sound",
           "OnePropLeftSound": "sounds/ui/one_prop_left.sound",
           "OnGoingRound": false,
           "PauseRoundState": false,
-          "RoundLength": 120,
+          "PropsWinSound": "sounds/ui/hiders_win.sound",
+          "RoundLength": 360,
           "RoundNumber": 0,
           "RoundState": "None",
+          "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
           "Votes": {}
-          "PropsWinSound": "sounds/ui/hiders_win.sound",
-          "RoundState": "None",
-          "TimeRunningOutSound": "sounds/ui/30_seconds.sound"
         }
       ]
     },
@@ -231,12 +231,6 @@
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player2.prefab"
-          },
-          "PropHuntManager": {
-            "_type": "component",
-            "component_id": "4af8aeb3-a509-49d9-b2e6-875bd80bb152",
-            "go": "1ffeefdf-8655-452b-afaa-46f09e044a93",
-            "component_type": "PropHuntManager"
           },
           "Spawns": [],
           "StartServer": true
@@ -276,9 +270,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
+                      "_type": "PropHunt.MapChanger",
                       "_name": "CreateGnomeFigPostprocess",
-                      "_isStatic": false,
-                      "_type": "PropHunt.MapChanger"
+                      "_isStatic": false
                     },
                     "UserData": {
                       "Position": "256,32"
