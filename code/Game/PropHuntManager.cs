@@ -14,7 +14,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[HostSync] public string RoundStateText { get; set; }
 
 	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
-	[HostSync, Property] public int RoundLength { get; set; } = 120;
+	[HostSync, Property] public int RoundLength { get; set; } = 6 * 60;
 
 	public static int PreRoundTime { get; set; } = 5;
 
