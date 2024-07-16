@@ -11,14 +11,14 @@
 			@if (Manager.RoundState == GameState.WaitingForPlayers)
 			{
 				<div class="title"
-					 style="background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
+					 style="max-width: 90px; background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
 					@Format(TimeSpan.FromSeconds(
 									Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			else
 			{
 				<div class="title"
-					 style="background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
+					 style="max-width: 90px; background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
 					@Format(TimeSpan.FromSeconds(
 									Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}

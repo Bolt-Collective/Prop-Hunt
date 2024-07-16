@@ -14,6 +14,7 @@ PropHuntUI {
 	}
 
 	.title {
+		white-space: nowrap;
 		padding: 20px;
 		font-size: 20px;
 		font-family: Lexend;
@@ -29,7 +30,7 @@ PropHuntUI {
         padding: 10px 20px;
         color: white;
         font-weight: bolder;
-        font-size: 145px;
+        font-size: 125px;
         font-family: poppins;
         justify-content: center;
         align-items: center;
