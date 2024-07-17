@@ -665,7 +665,7 @@ public class Player : Component
 		player.GameObject.Components.Get<FlashlightComponent>().Flashlight.Enabled = false;
 		if ( deathMessage )
 		{
-			ChatBox.Instance.AddMessage( "", $"{Network.OwnerConnection.DisplayName} fucking died 💀" );
+			KillFeed.BroadcastKillFeedEvent(player.Network.OwnerConnection.DisplayName, Color.Black);
 		}
 	}
 	[Broadcast]
