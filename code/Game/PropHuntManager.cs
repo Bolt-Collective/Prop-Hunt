@@ -270,7 +270,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		if ( !IsProxy )
 		{
-			BroadcastPopup( "Hide or die", "The seekers will be unblinded in 30s", NotificationSound.ResourceName, 5f );
+			BroadcastPopup( "Hide or die", "The hunters will be unblinded in 30s", NotificationSound.ResourceName, 5f );
 		}
 
 	}
