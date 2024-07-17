@@ -65,8 +65,8 @@
               "Id": 16,
               "Type": "property",
               "Properties": {
-                "_name": "GameObject",
-                "_type": "Sandbox.Component"
+                "_type": "Sandbox.Component",
+                "_name": "GameObject"
               },
               "UserData": {
                 "Position": "-48,80"
@@ -191,26 +191,30 @@
             "Weapon": {
               "_type": "gameobject",
               "prefab": "prefabs/weapons/pistol2.prefab"
-            }
+            },
+            "Scale": "1,1,1"
           },
           {
             "Weapon": {
               "_type": "gameobject",
               "prefab": "prefabs/weapons/knife2.prefab"
             },
-            "Offset": "6.7,0,0"
+            "Offset": "6.7,0,0",
+            "Scale": "1,1,1"
           },
           {
             "Weapon": {
               "_type": "gameobject",
               "prefab": "prefabs/weapons/mp52.prefab"
-            }
+            },
+            "Scale": "1,1,1"
           },
           {
             "Weapon": {
               "_type": "gameobject",
               "prefab": "prefabs/weapons/shotgun2.prefab"
-            }
+            },
+            "Scale": "1,1,1"
           }
         ]
       },

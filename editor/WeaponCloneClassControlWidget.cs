@@ -19,9 +19,17 @@ public class WeaponClassControlWidget : ControlWidget
 		var controlSheet = new ControlSheet();
 
 		var column = controlSheet.AddColumn();
+		column.Add( new Label( "Weapon" ) );
+		column.AddSpacingCell( 5 );
 		column.Add( new GameObjectControlWidget( serializedObject.GetProperty( "Weapon" ) ) );
 		column.AddSpacingCell( 5 );
+		column.Add( new Label( "Offset" ) );
+		column.AddSpacingCell( 5 );
 		column.Add( new VectorControlWidget( serializedObject.GetProperty( "Offset" ) ) );
+		column.AddSpacingCell( 5 );
+		column.Add( new Label( "Scale" ) );
+		column.AddSpacingCell( 5 );
+		column.Add( new VectorControlWidget( serializedObject.GetProperty( "Scale" ) ) );
 
 		Layout.Add( controlSheet );
 	}

@@ -30,7 +30,7 @@ public sealed class Inventory : Component
 		{
 			for ( int i = 0; i < StartingItems.Count; i++ )
 			{
-				AddItem( StartingItems[i].Weapon, i, StartingItems[i].Offset );
+				AddItem( StartingItems[i].Weapon, i, StartingItems[i].Offset, StartingItems[i].Scale );
 			}
 		}
 		if ( TeamComponent.TeamName == Team.Hunters.ToString() && cloneConstraints.Count != 0 )
@@ -86,7 +86,7 @@ public sealed class Inventory : Component
 		ActiveConstarints.Add( clone );
 		clone.NetworkSpawn();
 	}
-	public void AddItem( GameObject item, int slot, Vector3 offset )
+	public void AddItem( GameObject item, int slot, Vector3 offset, Vector3 Scale )
 	{
 		if ( IsProxy ) return;
 		if ( slot < 0 || slot >= Items.Count )
@@ -97,6 +97,7 @@ public sealed class Inventory : Component
 		{
 			var clone = item.Clone();
 			clone.Transform.LocalPosition = offset;
+			clone.Transform.Scale = Scale;
 			clone.Parent = GameObject;
 			clone.NetworkSpawn();
 			if ( clone.Components.TryGet<Weapon>( out var weapon ) )
@@ -195,16 +196,19 @@ public sealed class Inventory : Component
 	{
 		public GameObject Weapon { get; set; }
 		public Vector3 Offset { get; set; }
+		public Vector3 Scale { get; set; }
 
 		public WeaponCloneClass()
 		{
 			Weapon = null;
 			Offset = Vector3.Zero;
+			Scale = Vector3.One;
 		}
-		public WeaponCloneClass( GameObject weapon, Vector3 offset )
+		public WeaponCloneClass( GameObject weapon, Vector3 offset, Vector3 scale )
 		{
 			Weapon = weapon;
 			Offset = offset;
+			Scale = scale;
 		}
 	}
 }
