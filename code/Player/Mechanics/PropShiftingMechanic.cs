@@ -115,15 +115,15 @@ public class PropShiftingMechanic : Component
 			OnPropShift?.Invoke( this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory );
 
 			// Handle the health algorithm for props
-			/*
+			
 			if ( !IsProp )
 			{
 				PreviousHealth = (int)Player.Local.Health;
 			}
 			float multiplier = Math.Clamp( Player.Local.Health / Player.Local.MaxHealth, 0, 1 );
-			float health = (float)Math.Pow( propModel.PhysicsBounds.Volume, 0.5f ) * 0.5f;
+			float health = (float)Math.Pow( propModel.Bounds.Volume, 0.5f ) * 0.5f;
 
-			health = (float)Math.Round( health / 5 ) * 5;
+			health = (float)Math.Round( health / 6 ) * 5;
 			Player.Local.MaxHealth = health;
 			Player.Local.Health = health * multiplier;
 
@@ -131,7 +131,8 @@ public class PropShiftingMechanic : Component
 			if ( Player.Local.Health <= 0 )
 			{
 				Player.Local.Health = 10f;
-			}*/
+			}
+
 			if ( IsProp )
 			{
 				Player.Local.CameraDistance = Player.Local.CameraDistance != 0 ? Player.Local.CameraDistance : 150;

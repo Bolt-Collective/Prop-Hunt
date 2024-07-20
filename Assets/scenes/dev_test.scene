@@ -1,0 +1,333 @@
+{
+  "__guid": "9809b495-8f1e-432c-8143-39514e19af16",
+  "GameObjects": [
+    {
+      "__guid": "cff6a43e-a7ba-44cc-b1d3-e325b8421621",
+      "Flags": 0,
+      "Name": "Map",
+      "Tags": "world",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "6a6b4de1-992e-46e3-9ab1-eeed2fd51345",
+          "__version": 1,
+          "MapName": "voximity.flat_plane",
+          "NoOrigin": false,
+          "UseMapFromLaunch": true
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "e9c0802c-464f-4afc-b3e2-3881609adab1",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-267.452,-379.653,297.7903",
+      "Rotation": "-0.01075258,0.05637258,0.1870547,0.9806718",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "5ab33984-8582-48b6-867d-3da8cab169e2",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 95.27,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 5
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "456e8718-5565-4606-80b3-5f65184ad346",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Additive",
+          "Strength": 0.5,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0.5
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "79040031-58c2-4b4c-89cc-ad39a1a680f7",
+          "__version": 1,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Mode": "Legacy",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.Sharpen",
+          "__guid": "e407f2bb-09ef-4c6e-bc88-b4be3394d00f",
+          "Scale": 0.2
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "757a5d18-af25-4603-bec4-618062cd02f4",
+          "__enabled": false,
+          "Intensity": 8,
+          "Quality": "High",
+          "Radius": 32
+        },
+        {
+          "__type": "BlindPostprocess",
+          "__guid": "3e749aae-6d11-493e-8730-ad060fd00e67",
+          "color": "0,0,0,1",
+          "UseBlind": false
+        }
+      ]
+    },
+    {
+      "__guid": "2dddb018-0a58-477e-9904-c3c3ee98a218",
+      "Flags": 0,
+      "Name": "Ui",
+      "Position": "-6.25499,-267.7513,221.1104",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "5c0d4e14-41c4-4577-8f05-fab1e5f03627",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "PropHuntUI",
+          "__guid": "1c421dcd-659a-4f54-8aa6-4f1c82de07d7",
+          "ShowMapVoting": false
+        },
+        {
+          "__type": "DevUi",
+          "__guid": "b6f65b6c-7897-4323-8015-183d19d4b5fc",
+          "__enabled": false,
+          "AllowedSteamIds": [
+            76561199001645276,
+            76561198043979097
+          ],
+          "MyStringValue": "Hello, I am playing in the dev client, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "772ab9a4-f4c7-4563-bfec-e6d83c0b2687",
+          "Flags": 0,
+          "Name": "Chat",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "ChatBox",
+              "__guid": "596f48bc-5099-4f5a-bf38-02012498295a"
+            }
+          ]
+        },
+        {
+          "__guid": "04171618-8382-40ab-87c4-4586355629ab",
+          "Flags": 0,
+          "Name": "PauseMenu",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.UI.PauseMenuUi",
+              "__guid": "879893da-fe5e-4a19-8707-33ea61c80298"
+            }
+          ]
+        },
+        {
+          "__guid": "9ad42cb3-a10e-49be-ba34-9a6f2bb552a3",
+          "Flags": 0,
+          "Name": "Voting Ui",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "VotingUi",
+              "__guid": "6a36ccd7-a08a-4980-8014-8279c8740070"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "d5f42aa8-7e87-4adc-bc70-5812acc743fe",
+      "Flags": 0,
+      "Name": "GameManager",
+      "Position": "-413.6376,843.2293,265.7083",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "PropHunt.PropHuntManager",
+          "__guid": "66ed7791-b6f3-4518-baa6-43c4c2f60702",
+          "HuntersWinSound": "sounds/ui/hunters_win.sound",
+          "LobbySettings": {
+            "ForcedTauntTime": 60,
+            "TauntCoolDownTime": 10,
+            "PreRoundTime": 30,
+            "RoundTime": 360,
+            "PlayersNeededToStart": 2,
+            "HunterPropGrabMode": "Off",
+            "BleedAmount": 10,
+            "RoundCount": 6,
+            "AllowMapVoting": true,
+            "HunterHealth": 100,
+            "PropHealth": 100
+          },
+          "MaxPlayersToStart": 2,
+          "NotificationSound": "sounds/ui/cymbal.sound",
+          "OnePropLeftSound": "sounds/ui/one_prop_left.sound",
+          "OnGoingRound": false,
+          "PauseRoundState": false,
+          "PropsWinSound": "sounds/ui/hiders_win.sound",
+          "RoundLength": 360,
+          "RoundNumber": 0,
+          "RoundState": "None",
+          "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
+          "Votes": {}
+        }
+      ]
+    },
+    {
+      "__guid": "6f30d21a-7f40-4432-b2dc-8b07ee10d343",
+      "Flags": 0,
+      "Name": "NetworkManager",
+      "Position": "-37.26694,-4.443787,96.23308",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "PropHunt.Network",
+          "__guid": "62b787ed-dcf6-4f8b-b98b-b6d9b2539573",
+          "CustomSpawnPoints": false,
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player2.prefab"
+          },
+          "Spawns": [],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "3075776f-6572-4b5c-9c58-073a0ee7b202",
+      "Flags": 0,
+      "Name": "Map Changer",
+      "Position": "187.3595,-168.6434,52.85176",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "PropHunt.MapChanger",
+          "__guid": "ffb0fc79-84dc-42aa-8af6-ade858e57fc0",
+          "customMapActions": [
+            {
+              "OnSceneStart": {
+                "__version": 7,
+                "__guid": "43a5e6e8-33b7-4398-97d9-f978533ef456",
+                "UserData": {
+                  "Title": "On Scene Start",
+                  "ReferencedComponentTypes": []
+                },
+                "Variables": [],
+                "Nodes": [
+                  {
+                    "Id": 1,
+                    "Type": "input",
+                    "UserData": {
+                      "Position": "-16,32"
+                    }
+                  },
+                  {
+                    "Id": 3,
+                    "Type": "call",
+                    "Properties": {
+                      "_type": "PropHunt.MapChanger",
+                      "_isStatic": false,
+                      "_name": "CreateGnomeFigPostprocess"
+                    },
+                    "UserData": {
+                      "Position": "256,32"
+                    }
+                  }
+                ],
+                "Links": [
+                  {
+                    "SrcId": 1,
+                    "SrcName": "mapChanger",
+                    "DstId": 3,
+                    "DstName": "_target"
+                  }
+                ]
+              },
+              "MapIndent": "gnomefig.office"
+            }
+          ],
+          "MapInstance": {
+            "_type": "component",
+            "component_id": "6a6b4de1-992e-46e3-9ab1-eeed2fd51345",
+            "go": "cff6a43e-a7ba-44cc-b1d3-e325b8421621",
+            "component_type": "MapInstance"
+          }
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "dev_test",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
