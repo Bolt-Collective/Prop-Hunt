@@ -314,7 +314,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public void BroadcastPopup( string text, string title, string sound, float duration = 8f )
 	{
 		PopupSystem.DisplayPopup( text, title, duration );
-		Log.Info( "WHY IS IT DOING IT 3 TIMES" );
 	}
 
 	[Broadcast]

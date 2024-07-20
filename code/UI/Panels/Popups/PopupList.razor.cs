@@ -8,5 +8,16 @@ public partial class PopupList : Panel
 	{
 		Instance = this;
 	}
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		// Very hacky solution to stop multiple popups from happening.. yuck
+		if ( Children.Count() > 1 )
+		{
+			GetChild(1).Delete(true);
+		}
+	}
 }
 

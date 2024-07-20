@@ -93,6 +93,7 @@
         {
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "8896749b-d477-4160-8df7-50aabccdb34b",
+          "__enabled": false,
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
@@ -201,7 +202,9 @@
             "HunterPropGrabMode": "Off",
             "BleedAmount": 10,
             "RoundCount": 6,
-            "AllowMapVoting": true
+            "AllowMapVoting": true,
+            "HunterHealth": 100,
+            "PropHealth": 100
           },
           "MaxPlayersToStart": 2,
           "NotificationSound": "sounds/ui/cymbal.sound",
