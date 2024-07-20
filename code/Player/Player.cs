@@ -655,6 +655,9 @@ public class Player : Component
 
 		var player = caller.Components.Get<Player>();
 
+		if ( player.Health <= 0 )
+			return;
+
 		player.Health = 0;
 		player.DisableBody();
 		player.TeamComponent.ChangeTeam( Team.Unassigned );
