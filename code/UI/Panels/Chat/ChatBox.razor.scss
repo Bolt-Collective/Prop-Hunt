@@ -1,5 +1,4 @@
-Chatbox
-{
+Chatbox {
 	position: absolute;
 	bottom: 200px;
 	left: 32px;
@@ -8,36 +7,35 @@ Chatbox
 	height: 400px;
 	max-height: 400px;
 	flex-direction: column;
-	font-family: Prompt;
+	font-family: Lexend;
 
-	.chat_canvas
-	{
+
+	.chat_canvas {
 		flex-grow: 1;
 		padding: 8px;
+		font-weight: 700;
 		justify-content: flex-end;
 		flex-direction: column;
 		gap: 8px;
 		overflow-y: scroll;
 	}
 
-	.input_canvas
-	{
+	.input_canvas {
 		flex-direction: row;
 
-		textentry
-		{
+		textentry {
 			background-color: black;
 			color: white;
 			background-color: rgba( black, 0 );
-			font-size: 14px;
+			font-size: 19px;
+			font-weight: 700;
 			// flex-shrink: 0;
 			// flex-grow: 1;
 			width: 450px;
 			padding: 4px;
 		}
 
-		.btn-settings
-		{
+		.btn-settings {
 			opacity: 0;
 			top: -2px;
 			left: 8px;
@@ -47,75 +45,60 @@ Chatbox
 			font-size: 24px;
 			transition: transform 0.5s ease-out;
 
-			&:hover
-			{
+			&:hover {
 				background-color: rgba(0, 0, 0, 0);
 				text-shadow: 0 0 8px rgba(white, 0.8);
 				sound-in: ui.button.over;
 			}
 
-			&:active
-			{
+			&:active {
 				transition: transform 0s ease-out;
 				transform: scale( 0.9 );
 			}
 		}
 	}
 
-	&.open
-	{
+	&.open {
 		background-color: rgba( black, 0.5);
 		pointer-events: all;
 
-		textentry
-		{
+		textentry {
 			background-color: rgba( black, 0.5 );
 			backdrop-filter: blur( 10px );
 		}
 
-		.chat_canvas
-		{
-			
-			ChatEntry
-			{
+		.chat_canvas {
 
-				&.fade
-				{
+			ChatEntry {
+
+				&.fade {
 					opacity: 1;
 				}
 			}
 		}
 
-		.input_canvas
-		{
-			.btn-settings
-			{
+		.input_canvas {
+			.btn-settings {
 				opacity: 1;
 				flex-grow: 1;
 			}
 		}
 
-		ChatSettingsPanel
-		{
+		ChatSettingsPanel {
 			opacity: 1;
 		}
-
 	}
 
-	&.hide-avatars
-	{
-		ChatEntry
-		{
-			.avatar
-			{
+	&.hide-avatars {
+		ChatEntry {
+			.avatar {
 				display: none;
 			}
 		}
 	}
 }
 
-ChatEntry
-{
+ChatEntry {
 	color: white;
 	gap: 4px;
 	align-items: center;
@@ -123,51 +106,42 @@ ChatEntry
 	opacity: 1;
 	transition: opacity 0.2s ease-out;
 
-	&:intro
-	{
+	&:intro {
 		opacity: 0;
 	}
 
-	&:outro
-	{
+	&:outro {
 		opacity: 0;
 	}
 
-	.avatar
-	{
+	.avatar {
 		width: 24px;
 		height: 24px;
 	}
 
-	.name
-	{
+	.name {
 		font-weight: 600;
+		font-size: 17px;
 	}
 
-	.message
-	{
+	.message {
 		flex-shrink: 0;
+		font-size: 17px;
 	}
 
-	&.is-lobby
-	{
-		.name
-		{
+	&.is-lobby {
+		.name {
 			color: #ff80f5;
 		}
 	}
 
-    &.notification
-    {
-        .message
-        {
-            color: #F5FA3C;
-        }
-    
-    }
+	&.notification {
+		.message {
+			color: #F5FA3C;
+		}
+	}
 
-	&.fade
-	{
+	&.fade {
 		opacity: 0;
 	}
 }
