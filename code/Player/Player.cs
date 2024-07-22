@@ -11,8 +11,8 @@ public class Player : Component
 {
 	public Inventory Inventory { get; set; }
 	public delegate void PlayerDelegate( Player player, Inventory inventory );
-	[Property] public PlayerDelegate OnDeath { get; set; }
-	[Property] public PlayerDelegate OnJumpEvent { get; set; }
+	[Property, KeyProperty] public PlayerDelegate OnDeath { get; set; }
+	[Property, KeyProperty] public PlayerDelegate OnJumpEvent { get; set; }
 	[Sync] public bool IsGrabbing { get; set; }
 	[Property] public Hc1CharacterController characterController { get; set; }
 	[Sync] public bool IsDead { get; set; } = false;
@@ -37,11 +37,9 @@ public class Player : Component
 	[Property, Sync] public float CameraDistance { get; set; }
 	[Sync] public bool IsCrouching { get; set; }
 
-	[Sync]
-	public Angles EyeAngles { get; set; }
+	[Sync] public Angles EyeAngles { get; set; }
 
-	[Sync]
-	public bool IsRunning { get; set; }
+	[Sync] public bool IsRunning { get; set; }
 	[Property] public SceneFile Menu { get; set; }
 
 	[RequireComponent] public TeamComponent TeamComponent { get; private set; }
@@ -665,7 +663,7 @@ public class Player : Component
 		player.GameObject.Components.Get<FlashlightComponent>().Flashlight.Enabled = false;
 		if ( deathMessage )
 		{
-			KillFeed.BroadcastKillFeedEvent(player.Network.OwnerConnection.DisplayName, Color.Black);
+			KillFeed.BroadcastKillFeedEvent( player.Network.OwnerConnection.DisplayName, Color.Black );
 		}
 	}
 	[Broadcast]

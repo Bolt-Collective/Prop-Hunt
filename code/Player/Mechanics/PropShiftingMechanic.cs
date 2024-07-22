@@ -7,7 +7,7 @@ public class PropShiftingMechanic : Component
 {
 	public TeamComponent TeamComponent { get; set; }
 	public delegate void PropShiftingDelegate( PropShiftingMechanic propShiftingMechanic, Model PropModel, Player player, Inventory inventory );
-	[Property] public PropShiftingDelegate OnPropShift { get; set; }
+	[Property, KeyProperty] public PropShiftingDelegate OnPropShift { get; set; }
 	[Property] public ModelCollider PropsCollider { get; set; }
 	[Property, Sync] public bool IsProp { get; set; } = false;
 	[Sync] public string ModelPath { get; set; }
@@ -115,7 +115,7 @@ public class PropShiftingMechanic : Component
 			OnPropShift?.Invoke( this, pc.Body.Components.Get<SkinnedModelRenderer>().Model, pc, pc.Inventory );
 
 			// Handle the health algorithm for props
-			
+
 			if ( !IsProp )
 			{
 				PreviousHealth = (int)Player.Local.Health;

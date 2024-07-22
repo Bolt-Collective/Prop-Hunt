@@ -11,9 +11,9 @@ public sealed class Item : Component
 	public AmmoContainer AmmoContainer { get; set; }
 	public delegate void PickupDelegate( Player Self, Item item, Inventory inventory );
 	public delegate void UseDelegate( Player Self, Item item, Inventory inventory, bool AbleToUse );
-	[Property, Category( "Item Actions" )] public Player.PlayerDelegate OnPlayerJump { get; set; }
-	[Property, Category( "Item Actions" )] public PickupDelegate OnPickup { get; set; }
-	[Property, Category( "Item Actions" )] public UseDelegate OnUse { get; set; }
+	[Property, KeyProperty, Category( "Item Actions" )] public Player.PlayerDelegate OnPlayerJump { get; set; }
+	[Property, KeyProperty, Category( "Item Actions" )] public PickupDelegate OnPickup { get; set; }
+	[Property, KeyProperty, Category( "Item Actions" )] public UseDelegate OnUse { get; set; }
 	[Property, Category( "Item Properties" ), Sync] public bool UsesAmmo { get; set; }
 	[Property, Category( "Item Properties" ), ShowIf( "UsesAmmo", true ), Sync] public int Ammo { get; set; }
 	[Property, Sync] public bool AbleToUse { get; set; } = true;

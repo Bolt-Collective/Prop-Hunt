@@ -20,11 +20,11 @@ public sealed class Weapon : Component
 	public delegate void FireDelegate( Player Self, Vector3 endPos, Vector3 traceNormal, bool hit );
 	public delegate void ReloadDelegate( Player Self );
 	public delegate void PickupDelegate( Player Self, Weapon weapon, Inventory inventory );
-	[Property, Category( "Weapon Actions" )] public HitDelegate OnHit { get; set; }
-	[Property, Category( "Weapon Actions" )] public FireDelegate OnFire { get; set; }
-	[Property, Category( "Weapon Actions" )] public ReloadDelegate OnReload { get; set; }
-	[Property, Category( "Weapon Actions" )] public PickupDelegate OnPickup { get; set; }
-	[Property, Category( "Weapon Actions" )] public Player.PlayerDelegate OnPlayerJump { get; set; }
+	[Property, KeyProperty, Category( "Weapon Actions" )] public HitDelegate OnHit { get; set; }
+	[Property, KeyProperty, Category( "Weapon Actions" )] public FireDelegate OnFire { get; set; }
+	[Property, KeyProperty, Category( "Weapon Actions" )] public ReloadDelegate OnReload { get; set; }
+	[Property, KeyProperty, Category( "Weapon Actions" )] public PickupDelegate OnPickup { get; set; }
+	[Property, KeyProperty, Category( "Weapon Actions" )] public Player.PlayerDelegate OnPlayerJump { get; set; }
 	[Sync] TimeSince TimeSinceFire { get; set; }
 	[Sync] TimeSince TimeSinceReload { get; set; }
 	[Sync] public int ShotsFired { get; set; } = 0;
