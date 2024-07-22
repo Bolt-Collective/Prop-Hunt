@@ -7,7 +7,7 @@ public sealed class Network : Component, Component.INetworkListener
 	[Property] public GameObject PlayerPrefab { get; set; }
 	[Property] public bool CustomSpawnPoints { get; set; }
 	[Property, ShowIf( "CustomSpawnPoints", true )] public List<GameObject> Spawns { get; set; } = new();
-	[Property] public PropHuntManager PropHuntManager { get; set; }
+
 	protected override async void OnStart()
 	{
 		if ( Scene.IsEditor )
@@ -24,6 +24,7 @@ public sealed class Network : Component, Component.INetworkListener
 	void INetworkListener.OnActive( Sandbox.Connection conn )
 	{
 		Transform SpawnPoint;
+
 		if ( !CustomSpawnPoints )
 		{
 			var spawn = Game.Random.FromList( Scene.GetAllComponents<SpawnPoint>().ToList() );
@@ -48,6 +49,7 @@ public sealed class Network : Component, Component.INetworkListener
 				SpawnPoint = Game.Random.FromList( Spawns ).Transform.World;
 			}
 		}
+
 		var playerClone = PlayerPrefab.Clone( SpawnPoint );
 		playerClone.NetworkSpawn( conn );
 		conn.CanRefreshObjects = true;
