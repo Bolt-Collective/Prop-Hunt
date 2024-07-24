@@ -1,0 +1,14 @@
+{
+  "Title": "Scene Loading Utility",
+  "Type": "library",
+  "Org": "bolt",
+  "Ident": "sceneloadingutility",
+  "Schema": 1,
+  "IncludeSourceFiles": false,
+  "Resources": null,
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "Metadata": {
+    "CsProjName": ""
+  }
+}
