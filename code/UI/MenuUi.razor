@@ -2,6 +2,7 @@
 @using Sandbox.UI;
 @using Sandbox.Network;
 @using System.Threading.Tasks;
+@using SceneLoading;
 @inherits PanelComponent
 
 <root style="flex-direction: column;">
@@ -130,8 +131,8 @@
 				}
 			</div>
 
-			<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () =>
-			 StartLobby() )>
+			<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () => StartLobby()
+			)>
 				Start
 			</div>
 		</div>
@@ -153,6 +154,7 @@
 	protected override void OnStart()
 	{
 		_ = FetchLobbies();
+		LobbySettings.SetLobbySettings(lobbySettings);
 	}
 	void CreateNewGame()
 	{
@@ -207,6 +209,18 @@
 			StateHasChanged();
 			await GameTask.DelayRealtimeSeconds(5);
 		}
+	}
+
+	[Property] public SceneLoadingResource LoadingConfig { get; set; }
+	[Property] public SceneFile LoadingScene { get; set; }
+
+	[Button("Load Scene")]
+	public void LoadScene()
+	{
+		if (!Game.IsPlaying) return;
+		lobbySettings.SceneLoading = true;
+		LobbySettings.SetLobbySettings(lobbySettings);
+		SceneLoadingUtility.LoadScene(LoadingScene, LoadingConfig);
 	}
 
 

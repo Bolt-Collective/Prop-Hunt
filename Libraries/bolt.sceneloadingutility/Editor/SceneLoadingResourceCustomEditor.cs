@@ -1,5 +1,6 @@
 using Editor;
 using Sandbox;
+using SceneLoading;
 
 //[CustomEditor(typeof(SceneLoadingClass))]
 public sealed class SceneLoadingResourceCustomEditor : ControlWidget

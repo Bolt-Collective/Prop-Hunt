@@ -19,7 +19,7 @@ public class Player : Component
 	[Property, KeyProperty, Category( "Player Actions" )] public PlayerDelegate OnJumpEvent { get; set; }
 	//Syncs
 	[Sync] public string CurrentMapVote { get; set; }
-	[Sync] public bool AbleToMove { get; set; } = true;
+	[Property, Sync] public bool AbleToMove { get; set; } = true;
 	[Sync] public Angles EyeAngles { get; set; }
 	[Sync] public bool IsDead { get; set; } = false;
 	[Sync] public bool IsCrouching { get; set; }
@@ -544,6 +544,7 @@ public class Player : Component
 
 	public void CheckForKillBounds()
 	{
+		if ( Scene.GetAllComponents<MapChanger>().FirstOrDefault() is null ) return;
 		if ( !Scene.GetAllComponents<MapChanger>().FirstOrDefault().IsMapLoaded || !PropHuntManager.Instance.OnGoingRound || TeamComponent.TeamName == Team.Unassigned.ToString() || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers || PropHuntManager.Instance.RoundState == GameState.Starting || PropHuntManager.Instance.RoundState == GameState.Preparing ) return;
 		var bounds = Scene.GetAllComponents<MapInstance>().FirstOrDefault().Bounds;
 

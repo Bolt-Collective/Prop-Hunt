@@ -21,6 +21,7 @@ public class LobbySettings
 	public bool AllowMapVoting { get; set; }
 	public int HunterHealth { get; set; } = 100;
 	public int PropHealth { get; set; } = 100;
+	public bool SceneLoading { get; set; } = false;
 
 
 	public LobbySettings()
@@ -36,8 +37,9 @@ public class LobbySettings
 		PreRoundTime = 30;
 		HunterHealth = 100;
 		PropHealth = 100;
+		SceneLoading = false;
 	}
-	public LobbySettings( int forcedTauntTime, int tauntCoolDownTime, int roundTime, int playersNeededToStart, int bleedAmount, int roundCount, bool allowMapVoting, int preRoundTime, HuntersPropGrabbing huntersPropGrabMode, int hunterHealth, int propHealth )
+	public LobbySettings( int forcedTauntTime, int tauntCoolDownTime, int roundTime, int playersNeededToStart, int bleedAmount, int roundCount, bool allowMapVoting, int preRoundTime, HuntersPropGrabbing huntersPropGrabMode, int hunterHealth, int propHealth, bool sceneLoading )
 	{
 		ForcedTauntTime = forcedTauntTime;
 		TauntCoolDownTime = tauntCoolDownTime;
@@ -50,6 +52,7 @@ public class LobbySettings
 		AllowMapVoting = allowMapVoting;
 		HunterHealth = hunterHealth;
 		PropHealth = propHealth;
+		SceneLoading = sceneLoading;
 	}
 	public static void SetLobbySettings( LobbySettings lobbySettings )
 	{

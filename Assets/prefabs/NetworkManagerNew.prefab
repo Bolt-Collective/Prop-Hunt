@@ -1,0 +1,28 @@
+{
+  "RootObject": {
+    "__guid": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
+    "Flags": 0,
+    "Name": "NetworkManager",
+    "Position": "-37.26694,-4.443787,96.23308",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "PropHunt.Network",
+        "__guid": "51390f44-0af0-4b24-be22-e0296c99d3dd",
+        "CustomSpawnPoints": false,
+        "PlayerPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/player2.prefab"
+        },
+        "Spawns": [],
+        "StartServer": true
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

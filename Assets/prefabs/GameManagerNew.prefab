@@ -1,0 +1,47 @@
+{
+  "RootObject": {
+    "__guid": "1ffeefdf-8655-452b-afaa-46f09e044a93",
+    "Flags": 0,
+    "Name": "GameManager",
+    "Position": "-413.6376,843.2293,265.7083",
+    "Enabled": true,
+    "NetworkMode": 1,
+    "Components": [
+      {
+        "__type": "PropHunt.PropHuntManager",
+        "__guid": "2b3d80f1-3455-437c-a622-8fc77b26e3ff",
+        "HuntersWinSound": "sounds/ui/hunters_win.sound",
+        "LobbySettings": {
+          "ForcedTauntTime": 60,
+          "TauntCoolDownTime": 10,
+          "PreRoundTime": 30,
+          "RoundTime": 360,
+          "PlayersNeededToStart": 2,
+          "HunterPropGrabMode": "Off",
+          "BleedAmount": 10,
+          "RoundCount": 6,
+          "AllowMapVoting": true,
+          "HunterHealth": 100,
+          "PropHealth": 100
+        },
+        "MaxPlayersToStart": 2,
+        "NotificationSound": "sounds/ui/cymbal.sound",
+        "OnePropLeftSound": "sounds/ui/one_prop_left.sound",
+        "OnGoingRound": false,
+        "PauseRoundState": false,
+        "PropsWinSound": "sounds/ui/hiders_win.sound",
+        "RoundLength": 360,
+        "RoundNumber": 0,
+        "RoundState": "None",
+        "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
+        "Votes": {}
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

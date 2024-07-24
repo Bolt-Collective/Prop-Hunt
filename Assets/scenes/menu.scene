@@ -9,8 +9,6 @@
       "Rotation": "0,0,-0.9659261,-0.2588188",
       "Scale": "1.380823,1.380823,1.380823",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -72,8 +70,6 @@
       "Name": "Screen",
       "Position": "74.06796,-165.9383,93.36504",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -88,13 +84,20 @@
           "__guid": "4f81d37d-14e5-4319-a433-2ec32d1f1451",
           "minPlayers": 2,
           "GameScene": "scenes/map.scene",
+          "LoadingConfig": "resources/sceneloadingconfig.loading",
+          "LoadingScene": "scenes/newmap.scene",
           "lobbySettings": {
             "ForcedTauntTime": 60,
             "TauntCoolDownTime": 10,
+            "PreRoundTime": 30,
             "RoundTime": 120,
             "PlayersNeededToStart": 2,
             "HunterPropGrabMode": "Off",
-            "BleedAmount": 10
+            "BleedAmount": 10,
+            "RoundCount": 6,
+            "AllowMapVoting": true,
+            "HunterHealth": 100,
+            "PropHealth": 100
           },
           "Refreshing": false,
           "ShowMapList": false,
@@ -109,8 +112,6 @@
       "Position": "32.01817,-43.26974,94.97043",
       "Rotation": "-0.01669242,-0.04029906,-0.3823192,0.9230002",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
@@ -148,6 +149,7 @@
         {
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "d7f060a7-5f82-4213-ab18-e3706202dd1c",
+          "FalloffDistance": 1,
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
@@ -171,13 +173,12 @@
       "Name": "Map",
       "Position": "-58.2237,7.148285,52.27657",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
           "__guid": "93757432-bbaf-4210-8cc0-d6b68ed83bb1",
           "__version": 1,
+          "EnableCollision": true,
           "MapName": "paths.parkcorner",
           "NoOrigin": false,
           "UseMapFromLaunch": false

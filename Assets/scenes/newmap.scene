@@ -1,5 +1,5 @@
 {
-  "__guid": "620f7fae-e013-4fbc-9130-83b1d6d0c83c",
+  "__guid": "7c04c5af-f7fb-423d-a70d-2c10b503b239",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -12,6 +12,7 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
           "__version": 1,
+          "EnableCollision": true,
           "MapName": "facepunch.flatgrass",
           "NoOrigin": false,
           "UseMapFromLaunch": true
@@ -94,6 +95,7 @@
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "8896749b-d477-4160-8df7-50aabccdb34b",
           "__enabled": false,
+          "FalloffDistance": 1,
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
@@ -115,7 +117,7 @@
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
-          "__guid": "65966290-ac00-429a-8523-a38925f378ac",
+          "__guid": "8378a358-fd8c-4cdc-8fa1-fabeb2037de7",
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
@@ -123,12 +125,12 @@
         },
         {
           "__type": "PropHuntUI",
-          "__guid": "6198673f-3d13-4c58-826f-76993e57daa9",
+          "__guid": "b81a01d7-3933-47a2-b5a8-883ec549a9c3",
           "ShowMapVoting": false
         },
         {
           "__type": "DevUi",
-          "__guid": "427b9d94-f363-4b54-a269-a0d9ff6d8736",
+          "__guid": "0304a451-10ae-4026-9c09-19cf3b26437f",
           "__enabled": false,
           "AllowedSteamIds": [
             76561199001645276,
@@ -139,7 +141,7 @@
       ],
       "Children": [
         {
-          "__guid": "808d5494-4d51-4174-96a4-df46d857404b",
+          "__guid": "0dbf365a-20c9-4b91-9241-713d39a142fe",
           "Flags": 0,
           "Name": "Chat",
           "Position": "0,0,0",
@@ -148,12 +150,12 @@
           "Components": [
             {
               "__type": "ChatBox",
-              "__guid": "ec522b07-e1bc-4d62-b0b8-f5c088183cc9"
+              "__guid": "d793cef1-a64b-445e-a538-b6de0994e3d7"
             }
           ]
         },
         {
-          "__guid": "4138e17e-25a3-415f-9c94-f3021302dc4a",
+          "__guid": "74f9311f-d89b-427f-80b2-873c1b290386",
           "Flags": 0,
           "Name": "PauseMenu",
           "Position": "0,0,0",
@@ -162,12 +164,12 @@
           "Components": [
             {
               "__type": "Sandbox.UI.PauseMenuUi",
-              "__guid": "8e7700a5-2521-4c24-877b-bef8fe35f4ba"
+              "__guid": "15972a9b-8782-4d0f-8fc7-2b74b53792df"
             }
           ]
         },
         {
-          "__guid": "121a454b-03ff-453b-ac82-8f6a0ccb5f44",
+          "__guid": "e2194b1c-2683-4c6b-974e-62fc7e64f695",
           "Flags": 0,
           "Name": "Voting Ui",
           "Position": "0,0,0",
@@ -175,7 +177,7 @@
           "Components": [
             {
               "__type": "VotingUi",
-              "__guid": "fc9f13af-2259-41a7-8ab2-0b97ae13e2a1"
+              "__guid": "d3ed08f5-6cd0-4689-ab8e-3f353411867d"
             }
           ]
         }
@@ -191,7 +193,7 @@
       "Components": [
         {
           "__type": "PropHunt.PropHuntManager",
-          "__guid": "2b3d80f1-3455-437c-a622-8fc77b26e3ff",
+          "__guid": "4699b1ab-38ef-49a8-9473-8d3fcc260a39",
           "HuntersWinSound": "sounds/ui/hunters_win.sound",
           "LobbySettings": {
             "ForcedTauntTime": 60,
@@ -229,7 +231,7 @@
       "Components": [
         {
           "__type": "PropHunt.Network",
-          "__guid": "51390f44-0af0-4b24-be22-e0296c99d3dd",
+          "__guid": "43d74b19-e6a4-41b1-ab04-5f2b9cbf9dee",
           "CustomSpawnPoints": false,
           "PlayerPrefab": {
             "_type": "gameobject",
@@ -273,9 +275,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
                       "_name": "CreateGnomeFigPostprocess",
-                      "_isStatic": false
+                      "_isStatic": false,
+                      "_type": "PropHunt.MapChanger"
                     },
                     "UserData": {
                       "Position": "256,32"

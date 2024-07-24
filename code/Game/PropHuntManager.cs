@@ -23,7 +23,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 
 
-	[Group("Game Sounds"), Property]
+	[Group( "Game Sounds" ), Property]
 	public SoundEvent NotificationSound { get; set; }
 
 	[Group( "Game Sounds" ), Property]
@@ -88,6 +88,10 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 			if ( LobbySettings.RoundCount < 0 )
 			{
 				LobbySettings.RoundCount = 0;
+			}
+			if ( LobbySettings.SceneLoading )
+			{
+				GameObject.NetworkSpawn( null );
 			}
 		}
 	}
@@ -201,6 +205,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				break;
 			case GameState.Voting:
 				RoundStateText = "Voting";
+				if ( LobbySettings.SceneLoading )
+				{
+					Restart();
+					return;
+				}
 				if ( TimeSinceRoundStateChanged > RoundLength )
 					DoMapVote();
 				break;
@@ -383,7 +392,11 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	public async void DoMapVote()
 	{
 		Log.Info( "Map vote" );
-
+		if ( LobbySettings.SceneLoading )
+		{
+			Restart();
+			return;
+		}
 		if ( Votes is not null && Votes.Count > 0 )
 		{
 			var map = Votes.OrderByDescending( x => x.Value ).First().Key;

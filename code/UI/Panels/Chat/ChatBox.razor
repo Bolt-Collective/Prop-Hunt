@@ -1,5 +1,6 @@
 ﻿@using System.Collections.Generic
 @using Sandbox
+@using PropHunt
 @using Sandbox.UI
 
 @attribute [StyleSheet]
@@ -40,6 +41,13 @@
 		Instance = this;
 	}
 
+	protected override void OnStart()
+	{
+		if (Networking.IsHost && PropHuntManager.Instance.LobbySettings.SceneLoading)
+		{
+			GameObject.NetworkSpawn(null);
+		}
+	}
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();

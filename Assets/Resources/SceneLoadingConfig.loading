@@ -1,0 +1,31 @@
+{
+  "SceneLoadingClasses": [
+    {
+      "Prefab": {
+        "_type": "gameobject",
+        "prefab": "prefabs/gamemanagernew.prefab"
+      },
+      "Flags": "DestroyAll",
+      "ComponentTypes": [
+        "PropHunt.PropHuntManager",
+        "PropHunt.MapChanger"
+      ],
+      "NetworkSpawn": true
+    },
+    {
+      "Prefab": {
+        "_type": "gameobject",
+        "prefab": "prefabs/networkmanagernew.prefab"
+      },
+      "Flags": "DestroyAll",
+      "ComponentTypes": [
+        "PropHunt.Network"
+      ]
+    },
+    {
+      "ComponentTypes": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

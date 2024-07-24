@@ -1,0 +1,83 @@
+{
+  "RootObject": {
+    "__guid": "db397682-adf3-44df-95c8-b96eb421601b",
+    "Flags": 0,
+    "Name": "Ui",
+    "Position": "-6.25499,-267.7513,221.1104",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ScreenPanel",
+        "__guid": "65966290-ac00-429a-8523-a38925f378ac",
+        "AutoScreenScale": true,
+        "Opacity": 1,
+        "Scale": 1,
+        "ZIndex": 100
+      },
+      {
+        "__type": "PropHuntUI",
+        "__guid": "6198673f-3d13-4c58-826f-76993e57daa9",
+        "ShowMapVoting": false
+      },
+      {
+        "__type": "DevUi",
+        "__guid": "427b9d94-f363-4b54-a269-a0d9ff6d8736",
+        "__enabled": false,
+        "AllowedSteamIds": [
+          76561199001645276,
+          76561198043979097
+        ],
+        "MyStringValue": "Hello, I am playing in the dev client, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "808d5494-4d51-4174-96a4-df46d857404b",
+        "Flags": 0,
+        "Name": "Chat",
+        "Position": "0,0,0",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "ChatBox",
+            "__guid": "ec522b07-e1bc-4d62-b0b8-f5c088183cc9"
+          }
+        ]
+      },
+      {
+        "__guid": "4138e17e-25a3-415f-9c94-f3021302dc4a",
+        "Flags": 0,
+        "Name": "PauseMenu",
+        "Position": "0,0,0",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.UI.PauseMenuUi",
+            "__guid": "8e7700a5-2521-4c24-877b-bef8fe35f4ba"
+          }
+        ]
+      },
+      {
+        "__guid": "121a454b-03ff-453b-ac82-8f6a0ccb5f44",
+        "Flags": 0,
+        "Name": "Voting Ui",
+        "Position": "0,0,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "VotingUi",
+            "__guid": "fc9f13af-2259-41a7-8ab2-0b97ae13e2a1"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
