@@ -11,18 +11,20 @@
 			@if (Manager.RoundState == GameState.WaitingForPlayers)
 			{
 				<div class="title"
-					 style="max-width: 90px; background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
+					style="max-width: 90px; background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
 					@Format(TimeSpan.FromSeconds(
 									Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
 			else
 			{
 				<div class="title"
-					 style="max-width: 90px; background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
+					style="max-width: 90px; background-color: rgba(0, 0, 0, 0.5); font-weight: 800; font-size: 25px; border-bottom-left-radius: 20px; border-top-left-radius: 20px;">
 					@Format(TimeSpan.FromSeconds(
 									Manager.RoundLength - Manager.TimeSinceRoundStateChanged.Relative.CeilToInt()))</div>
 			}
-			<div class="title" style="background-color: rgba(0, 0, 0, 0.7); font-size: 24px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;">@Manager.RoundStateText</div>
+			<div class="title"
+				style="background-color: rgba(0, 0, 0, 0.7); font-size: 24px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;">
+				@Manager.RoundStateText</div>
 		</div>
 		@if (Player.Local is not null)
 		{
@@ -58,8 +60,8 @@
 
 			</div>
 		}
-		
-		<KillFeed/>
+
+		<KillFeed />
 		<PopupList />
 		<Scoreboard />
 		<Crosshair />
@@ -96,7 +98,7 @@
 {
 	public static PropHuntUI Instance { get; set; } = new();
 
-	public PropHuntManager Manager { get; set; }
+	[Property] public PropHuntManager Manager { get; set; }
 	public Inventory Inventory { get; set; }
 	public TeamComponent TeamComponent { get; set; }
 	public ChatBox Chat { get; set; }
@@ -110,7 +112,7 @@
 
 	protected override void OnStart()
 	{
-		Manager = Scene.GetAllComponents<PropHuntManager>().FirstOrDefault();
+		Manager = PropHuntManager.Instance;
 		Inventory = Scene.GetAllComponents<Inventory>().FirstOrDefault(x => !x.IsProxy);
 		TeamComponent = Scene.GetAllComponents<TeamComponent>().FirstOrDefault();
 	}

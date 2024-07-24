@@ -85,7 +85,7 @@
           "minPlayers": 2,
           "GameScene": "scenes/map.scene",
           "LoadingConfig": "resources/sceneloadingconfig.loading",
-          "LoadingScene": "scenes/newmap.scene",
+          "LoadingScene": "scenes/tests/volume_fog.scene",
           "lobbySettings": {
             "ForcedTauntTime": 60,
             "TauntCoolDownTime": 10,
@@ -213,6 +213,7 @@
   "ResourceVersion": 1,
   "__references": [
     "bolt.prophuntmanager",
+    "nolankicks.volume_fog",
     "titanovsky.radio"
   ],
   "__version": 1

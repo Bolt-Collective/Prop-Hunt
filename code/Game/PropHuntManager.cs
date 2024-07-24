@@ -161,7 +161,8 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	void GameStateManager()
 	{
-		if ( PauseRoundState || !Scene.GetAllComponents<MapInstance>().FirstOrDefault().IsLoaded )
+		bool MapInstanceBool = Scene.GetAllComponents<MapInstance>().FirstOrDefault() is not null ? Scene.GetAllComponents<MapInstance>().FirstOrDefault().IsLoaded : false;
+		if ( PauseRoundState || MapInstanceBool )
 		{
 			TimeSinceRoundStateChanged = RoundLength;
 			return;
@@ -239,7 +240,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[Broadcast]
 	public void ReloadMapRPC()
 	{
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 	}
 	public void OnRoundStarting()
 	{
@@ -417,7 +418,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		}
 		PauseRoundState = false;
 		ResetRound();
-		Scene.GetAllComponents<MapInstance>().FirstOrDefault().UnloadMap();
+		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 	}
 	[Broadcast]
 	public void ClearVotes()

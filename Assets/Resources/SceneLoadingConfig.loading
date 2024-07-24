@@ -9,8 +9,7 @@
       "ComponentTypes": [
         "PropHunt.PropHuntManager",
         "PropHunt.MapChanger"
-      ],
-      "NetworkSpawn": true
+      ]
     },
     {
       "Prefab": {
@@ -19,10 +18,15 @@
       },
       "Flags": "DestroyAll",
       "ComponentTypes": [
-        "PropHunt.Network"
+        "PropHunt.Network",
+        "Sandbox.NetworkHelper"
       ]
     },
     {
+      "Prefab": {
+        "_type": "gameobject",
+        "prefab": "prefabs/uiprefab.prefab"
+      },
       "ComponentTypes": []
     }
   ],

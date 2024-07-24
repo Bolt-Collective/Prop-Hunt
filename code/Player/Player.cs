@@ -91,6 +91,11 @@ public class Player : Component
 		{
 			TakeDamage( 1000, false );
 		}
+		if ( !Scene.Camera.Components.TryGet<BlindPostprocess>( out var post ) )
+		{
+			Scene.Camera.Components.Create<BlindPostprocess>();
+		}
+
 	}
 
 	public void FreeLook()

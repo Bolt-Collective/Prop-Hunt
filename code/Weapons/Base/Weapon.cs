@@ -4,7 +4,6 @@ using Sandbox.Utility;
 
 public sealed class Weapon : Component
 {
-	public Player Player { get; set; }
 	public AmmoContainer AmmoContainer { get; set; }
 	[Property, Category( "Weapon Properties" )] public float FireLength { get; set; } = 1000;
 	[Property, Category( "Weapon Properties" )] public GameObject Decal { get; set; }
@@ -30,13 +29,12 @@ public sealed class Weapon : Component
 	[Sync] public int ShotsFired { get; set; } = 0;
 	protected override void OnStart()
 	{
-		Player = Scene.GetAllComponents<Player>().FirstOrDefault( x => !x.IsProxy );
 		AmmoContainer = Scene.GetAllComponents<AmmoContainer>().FirstOrDefault( x => !x.IsProxy );
 		if ( IsProxy ) return;
 		TimeSinceReload = ReloadTime;
 		TimeSinceFire = FireRate;
-		OnPickup?.Invoke( Player, this, Player.Inventory );
-		Player.OnJumpEvent += OnJump;
+		OnPickup?.Invoke( Player.Local, this, Player.Local.Inventory );
+		Player.Local.OnJumpEvent += OnJump;
 	}
 	public bool GetIsProxy()
 	{
@@ -44,13 +42,13 @@ public sealed class Weapon : Component
 	}
 	protected override void OnEnabled()
 	{
-		if ( Player is null ) return;
-		Player.OnJumpEvent += OnJump;
+		if ( Player.Local is null ) return;
+		Player.Local.OnJumpEvent += OnJump;
 	}
 	protected override void OnDisabled()
 	{
-		if ( Player is null ) return;
-		Player.OnJumpEvent -= OnJump;
+		if ( Player.Local is null ) return;
+		Player.Local.OnJumpEvent -= OnJump;
 	}
 	public void OnJump( Player Player, Inventory Inventory )
 	{
@@ -81,30 +79,30 @@ public sealed class Weapon : Component
 	}
 	public void Fire()
 	{
-		if ( Player is null || !Player.AbleToMove || Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind ) return;
-		var ray = new Ray( Transform.Position, Player.FreeLooking ? Player.Local.oldEyeAngles.Forward : Player.Local.EyeAngles.Forward );
+		if ( Player.Local is null || !Player.Local.AbleToMove || Scene.GetAllComponents<BlindPostprocess>().FirstOrDefault().UseBlind ) return;
+		var ray = new Ray( Transform.Position, Player.Local.FreeLooking ? Player.Local.oldEyeAngles.Forward : Player.Local.EyeAngles.Forward );
 		ray.Forward += Vector3.Random * Spread;
 
-		Player.EyeAngles += new Angles( -Recoil, GetRandomFloat(), 0 );
+		Player.Local.EyeAngles += new Angles( -Recoil, GetRandomFloat(), 0 );
 
 		var tr = Scene.Trace.Ray( ray, FireLength )
-			.IgnoreGameObject( Player.PropShiftingMechanic.PropsCollider.GameObject )
+			.IgnoreGameObject( Player.Local.PropShiftingMechanic.PropsCollider.GameObject )
 			.WithoutTags( "mapcollider" )
 			.Run();
 		ShotsFired++;
 		Ammo--;
 
 		BroadcastShootSound( tr.StartPosition );
-		OnFire?.Invoke( Player, tr.EndPosition, tr.Normal, tr.Hit );
+		OnFire?.Invoke( Player.Local, tr.EndPosition, tr.Normal, tr.Hit );
 
 
 		if ( tr.Hit )
 		{
 			if ( tr.GameObject.Root.Components.TryGet<Player>( out var enemy, FindMode.EverythingInSelfAndParent ) )
 			{
-				if ( Player.TeamComponent.TeamName == enemy.TeamComponent.TeamName ) return;
+				if ( Player.Local.TeamComponent.TeamName == enemy.TeamComponent.TeamName ) return;
 				enemy.TakeDamage( 25 );
-				OnHit?.Invoke( Player, enemy, tr.EndPosition, tr.Normal );
+				OnHit?.Invoke( Player.Local, enemy, tr.EndPosition, tr.Normal );
 				var particle = Particles.Create( "particles/blood_particles/impact.flesh.vpcf", tr.HitPosition, Rotation.Random );
 				particle.GameObject.NetworkSpawn();
 			}
@@ -134,7 +132,7 @@ public sealed class Weapon : Component
 		if ( Ammo == MaxAmmo || AmmoContainer.Ammo == 0 ) return;
 		if ( MaxAmmo <= AmmoContainer.Ammo && AmmoContainer.Ammo != 0 )
 		{
-			OnReload?.Invoke( Player );
+			OnReload?.Invoke( Player.Local );
 			TimeSinceReload = 0;
 			await Task.DelaySeconds( ReloadTime );
 			Ammo = MaxAmmo;
@@ -143,7 +141,7 @@ public sealed class Weapon : Component
 		}
 		else if ( MaxAmmo >= AmmoContainer.Ammo && AmmoContainer.Ammo != 0 )
 		{
-			OnReload?.Invoke( Player );
+			OnReload?.Invoke( Player.Local );
 			await Task.DelaySeconds( ReloadTime );
 			TimeSinceReload = 0;
 			Ammo = AmmoContainer.Ammo;
