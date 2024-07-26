@@ -43,6 +43,7 @@ public class PropShiftingMechanic : Component
 	{
 		if ( !Player.Local.AbleToMove || IsProxy ) return;
 		var pc = Components.Get<Player>();
+		if ( !pc.IsValid ) return;
 		var pcModel = pc.Body.Components.Get<SkinnedModelRenderer>();
 		var clothes = pc.Body.GetAllObjects( false ).Where( c => c.Tags.Has( "clothing" ) );
 		if ( clothes.Any() )
@@ -77,6 +78,7 @@ public class PropShiftingMechanic : Component
 		if ( !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() ) return;
 		var pc = Components.Get<Player>();
 		if ( pc is null ) return;
+		if ( !pc.IsValid ) return;
 		var lookDir = pc.EyeAngles.ToRotation();
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
