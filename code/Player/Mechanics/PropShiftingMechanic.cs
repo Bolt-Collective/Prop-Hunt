@@ -41,7 +41,7 @@ public class PropShiftingMechanic : Component
 
 	public void ExitProp()
 	{
-		if ( !Player.Local.AbleToMove || IsProxy || GameObject is null ) return;
+		if ( !Player.Local.AbleToMove || IsProxy || GameObject is null || this is null ) return;
 		var pc = Components?.Get<Player>();
 		if ( pc is null ) return;
 		if ( !pc.IsValid ) return;
@@ -76,7 +76,7 @@ public class PropShiftingMechanic : Component
 	}
 	private void ShiftIntoProp()
 	{
-		if ( !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() || GameObject is null ) return;
+		if ( !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() || GameObject is null || this is null ) return;
 		var pc = Components?.Get<Player>();
 		if ( pc is null ) return;
 		if ( !pc.IsValid ) return;
