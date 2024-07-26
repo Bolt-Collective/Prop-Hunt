@@ -36,70 +36,7 @@
         "Votes": {}
       }
     ],
-    "Children": [
-      {
-        "__guid": "06a47651-012c-42d2-a2c9-1268bc42298e",
-        "Flags": 0,
-        "Name": "Screen",
-        "Position": "-566.2433,77.68886,344.8729",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.ScreenPanel",
-            "__guid": "1c9f2ddc-516c-41fe-b5d9-0d9103765c87",
-            "AutoScreenScale": true,
-            "Opacity": 1,
-            "Scale": 1,
-            "ZIndex": 100
-          },
-          {
-            "__type": "PropHuntUI",
-            "__guid": "bade4369-573a-4cca-9365-3d3611b8012d",
-            "ShowMapVoting": false
-          }
-        ],
-        "Children": [
-          {
-            "__guid": "c3b21e62-6c8e-4f47-bc26-4e9933da12a6",
-            "Flags": 0,
-            "Name": "Chat",
-            "Enabled": true,
-            "NetworkMode": 1,
-            "Components": [
-              {
-                "__type": "ChatBox",
-                "__guid": "fe90c69f-3611-49cf-aa66-af518eceab76"
-              }
-            ]
-          },
-          {
-            "__guid": "4ec2da98-85e5-4e14-a9e8-222e3a00dc10",
-            "Flags": 0,
-            "Name": "PauseMenu",
-            "Enabled": true,
-            "NetworkMode": 1,
-            "Components": [
-              {
-                "__type": "Sandbox.UI.PauseMenuUi",
-                "__guid": "38fce152-0c6b-4de0-9c4e-84701040d4e2"
-              }
-            ]
-          },
-          {
-            "__guid": "35719140-6baf-44c0-a1cf-0184f04c6e3e",
-            "Flags": 0,
-            "Name": "Voting Ui",
-            "Enabled": true,
-            "Components": [
-              {
-                "__type": "VotingUi",
-                "__guid": "6d5ecec4-b3f4-40bc-85f5-dd1a03a226e9"
-              }
-            ]
-          }
-        ]
-      }
-    ],
+    "Children": [],
     "__variables": []
   },
   "ShowInMenu": false,

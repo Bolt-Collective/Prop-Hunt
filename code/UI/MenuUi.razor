@@ -3,6 +3,7 @@
 @using Sandbox.Network;
 @using System.Threading.Tasks;
 @using SceneLoading;
+@using PropHunt;
 @inherits PanelComponent
 
 <root style="flex-direction: column;">
@@ -211,16 +212,39 @@
 		}
 	}
 
-	[Property] public SceneLoadingResource LoadingConfig { get; set; }
 	[Property] public SceneFile LoadingScene { get; set; }
+	[Property] public GameObject ManagerPrefab { get; set; }
+	[Property] public GameObject NetworkSystemPrefab { get; set; }
+	[Property] public GameObject UiPrefab { get; set; }
 
 	[Button("Load Scene")]
 	public void LoadScene()
 	{
 		if (!Game.IsPlaying) return;
 		lobbySettings.SceneLoading = true;
-		LobbySettings.SetLobbySettings(lobbySettings);
-		SceneLoadingUtility.LoadScene(LoadingScene, LoadingConfig);
+
+		var customScene = new CustomScene(LoadingScene);
+
+		customScene.CreateObject(ManagerPrefab);
+		customScene.CreateObject(NetworkSystemPrefab);
+		customScene.CreateObject(UiPrefab);
+
+		if (customScene.GetAllObjectsByType(typeof(PropHuntManager)).Count() >= 1)
+		{
+			customScene.RemoveObject(customScene.GetAllObjectsByType(typeof(PropHuntManager)).First());
+		}
+
+		if (customScene.GetAllObjectsByType(typeof(Network)).Count() >= 1)
+		{
+			customScene.RemoveObject(customScene.GetAllObjectsByType(typeof(Network)).First());
+		}
+
+		if (customScene.GetAllObjectsByType(typeof(PropHuntUI)).Count() >= 1)
+		{
+			customScene.RemoveObject(customScene.GetAllObjectsByType(typeof(PropHuntUI)).First());
+		}
+
+		customScene.LoadScene();
 	}
 
 

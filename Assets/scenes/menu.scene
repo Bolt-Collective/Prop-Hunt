@@ -84,8 +84,7 @@
           "__guid": "4f81d37d-14e5-4319-a433-2ec32d1f1451",
           "minPlayers": 2,
           "GameScene": "scenes/map.scene",
-          "LoadingConfig": "resources/sceneloadingconfig.loading",
-          "LoadingScene": "scenes/tests/volume_fog.scene",
+          "LoadingScene": "scenes/newmap.scene",
           "lobbySettings": {
             "ForcedTauntTime": 60,
             "TauntCoolDownTime": 10,
@@ -99,9 +98,21 @@
             "HunterHealth": 100,
             "PropHealth": 100
           },
+          "ManagerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/gamemanagernew.prefab"
+          },
+          "NetworkSystemPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/networkmanagernew.prefab"
+          },
           "Refreshing": false,
           "ShowMapList": false,
-          "ShowServerList": false
+          "ShowServerList": false,
+          "UiPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/uiprefab.prefab"
+          }
         }
       ]
     },
@@ -213,7 +224,6 @@
   "ResourceVersion": 1,
   "__references": [
     "bolt.prophuntmanager",
-    "nolankicks.volume_fog",
     "titanovsky.radio"
   ],
   "__version": 1
