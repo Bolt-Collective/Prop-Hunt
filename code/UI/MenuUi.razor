@@ -15,6 +15,7 @@
 
 		<div class="button" onclick="@OpenServerList">Find a Game</div>
 		<div class="button" onclick=@(() => Game.Overlay.ShowBinds())>Settings</div>
+		<div class="button" onclick=@Copy>@DiscordCopyText</div>
 		<div class="button" onclick=@(() => Game.Close())>Quit</div>
 	</div>
 
@@ -41,9 +42,9 @@
 			@foreach (var lobby in Lobbies)
 			{
 				<div class="server" style="flex-wrap: nowrap;">
-					<img src="@Package.Fetch( lobby.Map, true ).Result.Thumb"
+					<img src="@Package.Fetch( lobby.Map, true ).Result?.Thumb"
 						style="width: 64px; height: 64px; border-radius: 100px; margin-right: 10px;" />
-					<div class="server-name" style="font-size: 20px;">@Package.Fetch(lobby.Map, true).Result.Title</div>
+					<div class="server-name" style="font-size: 20px;">@Package.Fetch(lobby.Map, true).Result?.Title</div>
 					<div class="server-name" style="font-size: 24px">@lobby.Name</div>
 					<div class="server-players">@lobby.Members</div>
 					<div class="server-join" onclick="@( () => ConnectToLobby( lobby ) )">Join</div>
@@ -130,8 +131,8 @@
 				}
 			</div>
 
-			<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () =>
-			 StartLobby() )>
+			<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () => StartLobby()
+			)>
 				Start
 			</div>
 		</div>
@@ -149,6 +150,13 @@
 	[Property] public bool ShowMapList { get; set; } = false;
 	[Property] public SceneFile GameScene { get; set; }
 	[Property] public LobbySettings lobbySettings { get; set; } = new();
+	public string DiscordCopyText { get; set; } = "Discord";
+
+	public void Copy()
+	{
+		Clipboard.SetText("https://discord.com/invite/zuZfyRhTa8");
+		DiscordCopyText = "Copied!";
+	}
 
 	protected override void OnStart()
 	{
