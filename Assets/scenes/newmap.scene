@@ -12,7 +12,8 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "f0e60466-3c8d-40ff-b584-85488a2d7e60",
           "__version": 1,
-          "MapName": "facepunch.flatgrass",
+          "EnableCollision": true,
+          "MapName": "gnomefig.office",
           "NoOrigin": false,
           "UseMapFromLaunch": true
         }
@@ -94,6 +95,7 @@
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "8896749b-d477-4160-8df7-50aabccdb34b",
           "__enabled": false,
+          "FalloffDistance": 1,
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
@@ -231,6 +233,7 @@
           "__type": "PropHunt.Network",
           "__guid": "51390f44-0af0-4b24-be22-e0296c99d3dd",
           "CustomSpawnPoints": false,
+          "DevMode": true,
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player2.prefab"
@@ -273,9 +276,9 @@
                     "Id": 3,
                     "Type": "call",
                     "Properties": {
-                      "_type": "PropHunt.MapChanger",
+                      "_isStatic": false,
                       "_name": "CreateGnomeFigPostprocess",
-                      "_isStatic": false
+                      "_type": "PropHunt.MapChanger"
                     },
                     "UserData": {
                       "Position": "256,32"
