@@ -232,8 +232,13 @@
         {
           "__type": "PropHunt.Network",
           "__guid": "51390f44-0af0-4b24-be22-e0296c99d3dd",
+          "PlayerWhitelist": [
+            76561198043979097,
+            76561199001645276,
+            76561199407136830
+          ],
           "CustomSpawnPoints": false,
-          "DevMode": true,
+          "DevMode": false,
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player2.prefab"
