@@ -754,7 +754,7 @@ public class Player : Component
 		var player = playerGb.Components.Get<Player>();
 		if ( player is null ) return;
 
-		player.AmmoContainer?.ResetAmmo();
+		player?.AmmoContainer?.ResetAmmo();
 
 		player.IsCrouching = false;
 		player.IsRunning = false;
@@ -763,7 +763,7 @@ public class Player : Component
 		player.IsGrabbing = false;
 		player.Body.Enabled = true;
 		player.AbleToMove = true;
-		player.PropShiftingMechanic.ExitProp();
+		player?.PropShiftingMechanic?.ExitProp();
 
 		player.AnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 

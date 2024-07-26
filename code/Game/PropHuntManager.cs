@@ -136,7 +136,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	}
 
-	protected override void OnUpdate()
+	protected override void OnFixedUpdate()
 	{
 		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{

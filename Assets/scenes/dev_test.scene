@@ -302,6 +302,204 @@
           }
         }
       ]
+    },
+    {
+      "__guid": "5f08b714-e43a-4401-80cf-7fc5f4f9f2a2",
+      "Flags": 0,
+      "Name": "washingmachine",
+      "Position": "305.1384,-55.20697,24.04966",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "547fd31c-9778-4898-be69-24a327706391",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/electronics/washing_machine/washingmachine.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "5a8e4135-6fae-4d8a-b0d2-38dfa4baa5d8",
+      "Flags": 0,
+      "Name": "beer_keg_a1",
+      "Position": "233.3754,73.31073,0.00002589165",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "441549d0-2c09-4b10-af86-6ef96b135862",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "6ccea201-f4f8-425d-8dab-1fc034b665f4",
+      "Flags": 0,
+      "Name": "beer_bottle",
+      "Position": "234.3484,2.737701,0.03397867",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "525fda7f-4cb2-4d7b-b665-3069177d52c2",
+          "BodyGroups": 18446744073709551615,
+          "Health": 1,
+          "IsStatic": false,
+          "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "65f90a1c-47c3-4190-b83c-3287369aaaf7",
+      "Flags": 0,
+      "Name": "item_drink_beer_lod0_merge_",
+      "Position": "206.3894,-53.53625,0.0000008330449",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "3d6bab4d-3725-4472-b26a-680335466d52",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "props/models/food/item_drink_beer_lod0_merge_.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "3cd956d1-9dca-4bdb-8485-3c4be49d3497",
+      "Flags": 0,
+      "Name": "beer_cask",
+      "Position": "142.639,70.19672,0.00001096318",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "efa17915-9b9d-489b-99fa-aaf4eeae84c7",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/beer_keg/beer_cask.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "4b7220ca-2e4f-4672-ae18-14bbaface676",
+      "Flags": 0,
+      "Name": "beer_keg_a2",
+      "Position": "152.561,-12.42368,0.00002000708",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "7914c461-d94c-4ed1-831e-768fcad659bd",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/beer_keg/beer_keg_a2.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "9f4ba144-2e9e-4e7d-9283-ee4dc56ad6fd",
+      "Flags": 0,
+      "Name": "froggychair",
+      "Position": "329.1611,-142.3493,0.000001394328",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "d09bf1c1-92b0-403b-9d3f-bc1bb7356000",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/froggychair/froggychair.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "6795deef-0a48-4e70-a852-305a4e4632ae",
+      "Flags": 0,
+      "Name": "wheel_a",
+      "Position": "282.2074,-99.60956,14.13453",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "4cf87b11-d8b5-4e8c-8845-11f7a46abfc7",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "entities/modular_vehicle/wheel_a.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "4e361609-c768-41d1-b549-3e449d7e2378",
+      "Flags": 0,
+      "Name": "minimal_chair",
+      "Position": "216.4073,-113.8031,0.03824244",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "69a9124f-cdca-4fdf-a762-25ac77d3b905",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/items/minimal_set/minimal_chair.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "2b85fcfc-682b-4617-b7f7-c674e4eb7093",
+      "Flags": 0,
+      "Name": "blackbin",
+      "Position": "210.6614,-205.5232,42.9018",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "adb9c6cf-70d0-4450-bc3a-2b342580e0d1",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/rust_props/black_bin/blackbin.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.ModelCollider",
+          "__guid": "c99d75e1-b3cb-4d7f-b0a3-50dde35d51bd",
+          "IsTrigger": false,
+          "Model": "models/rust_props/black_bin/blackbin.vmdl",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "46e2c184-ae57-4937-b195-5d73f0e2b14e",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -328,6 +526,17 @@
   "Title": "dev_test",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "dan.froggychair",
+    "facepunch.beer_bottle",
+    "facepunch.beer_cask",
+    "facepunch.beer_keg_a1",
+    "facepunch.beer_keg_a2",
+    "facepunch.blackbin",
+    "frogpond.washingmachine",
+    "luke.minimal_chair",
+    "mapperskai.item_drink_beer_lod0_merge_",
+    "rust.wheel_a"
+  ],
   "__version": 1
 }

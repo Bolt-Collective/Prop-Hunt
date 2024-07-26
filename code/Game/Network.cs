@@ -1,5 +1,6 @@
 using Sandbox;
 using Sandbox.Network;
+using Sandbox.Utility;
 namespace PropHunt;
 public sealed class Network : Component, Component.INetworkListener
 {
@@ -8,16 +9,31 @@ public sealed class Network : Component, Component.INetworkListener
 	[Property] public bool CustomSpawnPoints { get; set; }
 	[Property, ShowIf( "CustomSpawnPoints", true )] public List<GameObject> Spawns { get; set; } = new();
 
+	[Property, Group( "Miscellaneous" )]
+	public bool DevMode { get; set; }
+
+	[Property, Group( "Miscellaneous" )]
+	private List<ulong> PlayerWhitelist = new()
+	{
+		76561198043979097, // trende
+		76561199001645276, // kicks
+		76561199407136830 // Paths
+	};
+
 	protected override async void OnStart()
 	{
-		if ( Scene.IsEditor )
-			return;
-
 		if ( StartServer && !GameNetworkSystem.IsActive )
 		{
 			LoadingScreen.Title = "Creating Lobby";
 			await Task.DelayRealtimeSeconds( 0.1f );
 			GameNetworkSystem.CreateLobby();
+		}
+
+		if (DevMode && !PlayerWhitelist.Contains(Steam.SteamId))
+		{
+			LoadingScreen.Title = "Access Denied: Developer Lobby";
+			Log.Error( "You've tried to join a developer lobby on Prop Hunt, please join other lobbies" );
+			Game.Disconnect();
 		}
 	}
 
