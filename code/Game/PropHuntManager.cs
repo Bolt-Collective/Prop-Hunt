@@ -10,11 +10,11 @@ namespace PropHunt;
 [Description( "The brains of Prop Hunt. Controls rounds, teams, etc." )]
 public partial class PropHuntManager : Component, Component.INetworkListener
 {
-	[HostSync, Property] public GameState RoundState { get; set; } = GameState.None;
-	[HostSync] public string RoundStateText { get; set; }
+	[Sync, Property] public GameState RoundState { get; set; } = GameState.None;
+	[Sync] public string RoundStateText { get; set; }
 
-	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
-	[HostSync, Property] public int RoundLength { get; set; } = 6 * 60;
+	[Sync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
+	[Sync, Property] public int RoundLength { get; set; } = 6 * 60;
 
 	public static int PreRoundTime { get; set; } = 5;
 
@@ -58,7 +58,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 	public static IEnumerable<Player> GetPlayers( Team team ) => AllPlayers.Where( x => x.TeamComponent.TeamName == team.ToString() );
 
-	[Property, HostSync] public int MaxPlayersToStart { get; set; } = 2;
+	[Property, Sync] public int MaxPlayersToStart { get; set; } = 2;
 
 	/// <summary>
 	/// Next map chosen by RTV
@@ -469,7 +469,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	}
 
 	private Team WinningTeam { get; set; }
-	[HostSync] public string WinningTeamName { get; set; }
+	[Sync] public string WinningTeamName { get; set; }
 
 	public void ForceWin( Team team )
 	{
