@@ -23,7 +23,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	/// </summary>
 
 
-	[Group("Game Sounds"), Property]
+	[Group( "Game Sounds" ), Property]
 	public SoundEvent NotificationSound { get; set; }
 
 	[Group( "Game Sounds" ), Property]
@@ -132,7 +132,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	}
 
-	protected override void OnUpdate()
+	protected override void OnFixedUpdate()
 	{
 		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{
