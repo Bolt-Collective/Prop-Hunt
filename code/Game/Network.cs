@@ -29,7 +29,7 @@ public sealed class Network : Component, Component.INetworkListener
 			GameNetworkSystem.CreateLobby();
 		}
 
-		if (DevMode && !PlayerWhitelist.Contains(Steam.SteamId))
+		if ( DevMode && !PlayerWhitelist.Contains( Steam.SteamId ) )
 		{
 			LoadingScreen.Title = "Access Denied: Developer Lobby";
 			Log.Error( "You've tried to join a developer lobby on Prop Hunt, please join other lobbies" );
@@ -37,10 +37,10 @@ public sealed class Network : Component, Component.INetworkListener
 		}
 	}
 
-	void INetworkListener.OnBecameHost(Sandbox.Connection previousHost)
+	void INetworkListener.OnBecameHost( Sandbox.Connection previousHost )
 	{
 		Log.Error( "The host left!" );
-		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
+		//Game.ActiveScene.LoadFromFile("scenes/menu.scene");
 	}
 
 	void INetworkListener.OnActive( Sandbox.Connection conn )
