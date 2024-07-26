@@ -37,6 +37,12 @@ public sealed class Network : Component, Component.INetworkListener
 		}
 	}
 
+	void INetworkListener.OnBecameHost(Sandbox.Connection previousHost)
+	{
+		Log.Error( "The host left!" );
+		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
+	}
+
 	void INetworkListener.OnActive( Sandbox.Connection conn )
 	{
 		Transform SpawnPoint;
