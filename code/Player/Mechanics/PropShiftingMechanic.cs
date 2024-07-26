@@ -41,8 +41,9 @@ public class PropShiftingMechanic : Component
 
 	public void ExitProp()
 	{
-		if ( !Player.Local.AbleToMove || IsProxy ) return;
+		if ( !Player.Local.AbleToMove || IsProxy || GameObject is null ) return;
 		var pc = Components?.Get<Player>();
+		if ( pc is null ) return;
 		if ( !pc.IsValid ) return;
 		var pcModel = pc.Body.Components.Get<SkinnedModelRenderer>();
 		var clothes = pc.Body.GetAllObjects( false ).Where( c => c.Tags.Has( "clothing" ) );
@@ -75,7 +76,7 @@ public class PropShiftingMechanic : Component
 	}
 	private void ShiftIntoProp()
 	{
-		if ( !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() ) return;
+		if ( !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() || GameObject is null ) return;
 		var pc = Components?.Get<Player>();
 		if ( pc is null ) return;
 		if ( !pc.IsValid ) return;
@@ -109,6 +110,7 @@ public class PropShiftingMechanic : Component
 		{
 			foreach ( var cloth in clothes )
 			{
+				if ( cloth is null ) continue;
 				cloth.Enabled = false;
 				cloth.Network.Refresh();
 			}
@@ -121,27 +123,27 @@ public class PropShiftingMechanic : Component
 
 			if ( !IsProp )
 			{
-				PreviousHealth = (int)Player.Local.Health;
+				PreviousHealth = (int)pc.Health;
 			}
-			float multiplier = Math.Clamp( Player.Local.Health / Player.Local.MaxHealth, 0, 1 );
+			float multiplier = Math.Clamp( pc.Health / pc.MaxHealth, 0, 1 );
 			float health = (float)Math.Pow( propModel.Bounds.Volume, 0.5f ) * 0.5f;
 
 			health = (float)Math.Round( health / 6 ) * 5;
-			Player.Local.MaxHealth = health;
-			Player.Local.Health = health * multiplier;
+			pc.MaxHealth = health;
+			pc.Health = health * multiplier;
 
 			// Fallback to 10 health if prop is 0 health
-			if ( Player.Local.Health <= 0 )
+			if ( pc.Health <= 0 )
 			{
-				Player.Local.Health = 10f;
+				pc.Health = 10f;
 			}
 
 			if ( IsProp )
 			{
-				Player.Local.CameraDistance = Player.Local.CameraDistance != 0 ? Player.Local.CameraDistance : 150;
+				pc.CameraDistance = pc.CameraDistance != 0 ? pc.CameraDistance : 150;
 			}
 		}
-		Player.Local.Body.Network.Refresh();
+		pc.Body.Network.Refresh();
 
 	}
 
