@@ -13,7 +13,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	[HostSync, Property] public GameState RoundState { get; set; } = GameState.None;
 	[HostSync] public string RoundStateText { get; set; }
 
-	[HostSync] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
+	[HostSync, Property] public TimeSince TimeSinceRoundStateChanged { get; set; } = 0;
 	[HostSync, Property] public int RoundLength { get; set; } = 6 * 60;
 
 	public static int PreRoundTime { get; set; } = 5;
@@ -132,7 +132,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	}
 
-	protected override void OnFixedUpdate()
+	protected override void OnUpdate()
 	{
 		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{
