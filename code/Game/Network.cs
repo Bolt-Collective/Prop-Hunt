@@ -8,6 +8,7 @@ public sealed class Network : Component, Component.INetworkListener
 	[Property] public GameObject PlayerPrefab { get; set; }
 	[Property] public bool CustomSpawnPoints { get; set; }
 	[Property, ShowIf( "CustomSpawnPoints", true )] public List<GameObject> Spawns { get; set; } = new();
+	[Property] public SceneFile MenuScene { get; set; }
 
 	[Property, Group( "Miscellaneous" )]
 	public bool DevMode { get; set; }
@@ -29,7 +30,7 @@ public sealed class Network : Component, Component.INetworkListener
 			GameNetworkSystem.CreateLobby();
 		}
 
-		if (DevMode && !PlayerWhitelist.Contains(Steam.SteamId))
+		if ( DevMode && !PlayerWhitelist.Contains( Steam.SteamId ) )
 		{
 			LoadingScreen.Title = "Access Denied: Developer Lobby";
 			Log.Error( "You've tried to join a developer lobby on Prop Hunt, please join other lobbies" );
@@ -37,10 +38,15 @@ public sealed class Network : Component, Component.INetworkListener
 		}
 	}
 
-	void INetworkListener.OnBecameHost(Sandbox.Connection previousHost)
+	void INetworkListener.OnBecameHost( Sandbox.Connection previousHost )
+	{
+		ForceLeave();
+	}
+	[Broadcast]
+	public void ForceLeave()
 	{
 		Log.Error( "The host left!" );
-		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
+		Game.ActiveScene.Load( MenuScene );
 	}
 
 	void INetworkListener.OnActive( Sandbox.Connection conn )

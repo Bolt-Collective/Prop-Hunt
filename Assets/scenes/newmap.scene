@@ -239,6 +239,7 @@
           ],
           "CustomSpawnPoints": false,
           "DevMode": false,
+          "MenuScene": "scenes/menu.scene",
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player2.prefab"
@@ -282,8 +283,8 @@
                     "Type": "call",
                     "Properties": {
                       "_isStatic": false,
-                      "_name": "CreateGnomeFigPostprocess",
-                      "_type": "PropHunt.MapChanger"
+                      "_type": "PropHunt.MapChanger",
+                      "_name": "CreateGnomeFigPostprocess"
                     },
                     "UserData": {
                       "Position": "256,32"

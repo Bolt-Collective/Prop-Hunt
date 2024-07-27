@@ -41,10 +41,9 @@ public class PropShiftingMechanic : Component
 
 	public void ExitProp()
 	{
-		if ( Player.Local is null || !Player.Local.AbleToMove || IsProxy || GameObject is null || this is null || Components?.Get<Player>() is null ) return;
+		if ( Player.Local is null || !Player.Local.AbleToMove || IsProxy || GameObject is null || Components?.Get<Player>() is null || this is null ) return;
 		var pc = Components?.Get<Player>();
-		if ( pc is null ) return;
-		if ( !pc.IsValid ) return;
+		if ( !pc.IsValid() ) return;
 		var pcModel = pc.Body.Components.Get<SkinnedModelRenderer>();
 		var clothes = pc.Body.GetAllObjects( false ).Where( c => c.Tags.Has( "clothing" ) );
 		if ( clothes.Any() )
@@ -76,10 +75,9 @@ public class PropShiftingMechanic : Component
 	}
 	private void ShiftIntoProp()
 	{
-		if ( Player.Local is null || !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() || GameObject is null || this is null || Components?.Get<Player>() is null ) return;
+		if ( Player.Local is null || !Player.Local.AbleToMove || IsProxy || Player.Local.TeamComponent.TeamName != Team.Props.ToString() || GameObject is null || Components?.Get<Player>() is null || this is null ) return;
 		var pc = Components?.Get<Player>();
-		if ( pc is null ) return;
-		if ( !pc.IsValid ) return;
+		if ( !pc.IsValid() ) return;
 		var lookDir = pc.EyeAngles.ToRotation();
 		var eyePos = Transform.Position + Vector3.Up * 64;
 
