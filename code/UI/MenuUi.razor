@@ -55,7 +55,7 @@
 	@if (ShowMapList)
 	{
 		<div class="maplist">
-			<PackageList style="color: white" ShowFilters="@true" Query="type:map +prophunt sort:trending"
+			<PackageList style="color: white; background-color: rgba(0,0,0,0.8);" ShowFilters="@true" Query="type:map +prophunt sort:trending"
 				OnSelected="@OnPackageSelected" Take=@(50) />
 
 			<div class="lobbysettings" style="">
@@ -129,14 +129,16 @@
 						<TextEntry Value:bind="@lobbySettings.RoundCount" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
 					</div>
 				}
+
+
+
 			</div>
 
-			<div class="slider button" style="align-items: center; justify-content: center;" onclick=@( () => StartLobby()
-			)>
-				Start
+			<div style="align-items: center; justify-content: center; border-radius: 20px; border: solid 2px rgb(0, 255, 41); width: 200px; background-color: rgba(73, 255, 44, 1); color: white; text-stroke: 4px black; font-size: 80px; opacity: 0.6;" onclick=@( () => StartLobby()
+			 )>
+				<i>play_arrow</i>
 			</div>
 		</div>
-
 
 	}
 </root>

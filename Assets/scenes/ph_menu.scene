@@ -57,8 +57,10 @@
           "Gravity": true,
           "LinearDamping": 0.1,
           "Locking": {},
+          "MassCenterOverride": "0,0,0",
           "MassOverride": 3,
           "MotionEnabled": true,
+          "OverrideMassCenter": false,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
@@ -157,7 +159,8 @@
           "HeightExponent": 2,
           "HeightStart": 2000,
           "HeightWidth": 0,
-          "StartDistance": 10
+          "StartDistance": 10,
+          "Tint": "1,1,1,1"
         },
         {
           "__type": "MenuCameraBehaviour",
@@ -214,8 +217,7 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager",
-    "titanovsky.radio"
+    "bolt.prophuntmanager"
   ],
   "__version": 1
 }

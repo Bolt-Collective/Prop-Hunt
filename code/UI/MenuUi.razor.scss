@@ -67,7 +67,6 @@ MenuUi {
         right: 12px;
         width: 75%;
         height: 80%;
-        background-color: rgba(0,0,0,0.8);
         justify-content: center;
     }
 
@@ -75,6 +74,7 @@ MenuUi {
         position: absolute;
         height: 100%;
         width: 700px;
+
         right: 12px;
         border-radius: 20px;
         justify-content: flex-start;
@@ -148,6 +148,7 @@ MenuUi {
         display: flex;
         flex-direction: column;
         overflow-y: scroll;
+        max-width: 700px;
 
         .chosen-map {
             flex-direction: column;
