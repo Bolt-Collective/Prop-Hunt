@@ -9,7 +9,6 @@
       {
         "__type": "Player",
         "__guid": "14358a95-3d4c-4d99-a8f0-106268b0bc36",
-        "AbleToMove": true,
         "AmmoContainer": {
           "_type": "component",
           "component_id": "b7a9d2f4-e00a-4793-bf3c-6add53bb394c",
@@ -44,6 +43,7 @@
           "go": "586f3794-38b2-4756-aef6-32083f530376"
         },
         "Health": 0,
+        "MaxHealth": 100,
         "Menu": "scenes/menu.scene",
         "OnDeath": {
           "__version": 7,
@@ -105,8 +105,7 @@
               "DstName": "soundEvent"
             }
           ]
-        },
-        "SnappingToPlayer": false
+        }
       },
       {
         "__type": "PlayerDresser",
@@ -391,7 +390,7 @@
             "__enabled": false,
             "Attenuation": 1,
             "ConeInner": 15,
-            "ConeOuter": 22.66,
+            "ConeOuter": 31.61,
             "FogMode": "Enabled",
             "FogStrength": 1,
             "LightColor": "0.91373,0.98039,1,1",
