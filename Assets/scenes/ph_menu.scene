@@ -21,6 +21,7 @@
         {
           "__type": "Sandbox.SoundPointComponent",
           "__guid": "241f47ee-2ba5-415f-8bb3-484a2d2f1615",
+          "__enabled": false,
           "DistanceAttenuation": false,
           "DistanceAttenuationOverride": false,
           "Force2d": false,
@@ -169,6 +170,35 @@
             "_type": "gameobject",
             "go": "f9386c16-db16-498d-bfdd-8d037c94567d"
           }
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "633351d1-7721-48b1-9d23-c25ae8efca84",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Additive",
+          "Strength": 1.82,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0
         }
       ]
     },
