@@ -7,7 +7,7 @@ public sealed class MenuCameraBehaviour : Component
 	[Property]
 	GameObject LookAt { get; set; }
 
-	protected async override void OnUpdate()
+	protected override void OnUpdate()
 	{
 		float noise = Noise.Perlin( Time.Now * 20 ) * 0.7f;
 		float noise2 = Noise.Perlin( Time.Now * 20 + 5000f ) * 0.7f;

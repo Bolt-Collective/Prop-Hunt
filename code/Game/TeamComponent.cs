@@ -28,7 +28,6 @@ public class TeamComponent : Component
 	{
 		OnTeamChanged?.Invoke( before, after );
 	}
-	private Team lastAssignedTeam = Team.Hunters; // Initialize with any team
 
 	public void GetRandomTeam()
 	{
