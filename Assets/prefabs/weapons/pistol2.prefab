@@ -2,26 +2,22 @@
   "RootObject": {
     "__guid": "01255748-faa9-4ebb-a41c-c33afc26ea7b",
     "Flags": 0,
-    "Name": "pistol",
+    "Name": "pistol2",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
-    "NetworkOrphaned": 0,
-    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Weapon",
         "__guid": "d3d51498-c552-4d30-a28b-e3b2569bcb57",
-        "Ammo": 10,
+        "Ammo": 15,
         "Damage": 25,
         "Decal": {
           "_type": "gameobject",
           "prefab": "prefabs/decal.prefab"
         },
         "FireLength": 1000,
-        "FireRate": 0.5,
+        "FireRate": 0.3,
         "FireSound": "sounds/weapons/pistol/pistol_shoot.sound",
-        "MaxAmmo": 10,
+        "MaxAmmo": 15,
         "OnComponentEnabled": {
           "__version": 7,
           "__guid": "95dcf786-0fbf-454c-93bf-8be09afae244",
@@ -54,9 +50,9 @@
               "Id": 2,
               "Type": "call",
               "Properties": {
-                "_isStatic": false,
+                "_type": "Sandbox.SkinnedModelRenderer",
                 "_name": "Set",
-                "_type": "Sandbox.SkinnedModelRenderer"
+                "_isStatic": false
               },
               "UserData": {
                 "Position": "832,-288"
@@ -729,10 +725,6 @@
         "Flags": 0,
         "Name": "Viewmodel",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "NetworkOrphaned": 0,
-        "OwnerTransfer": 1,
         "Components": [
           {
             "__type": "ViewModel",
@@ -752,10 +744,6 @@
             "Name": "weapon",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -775,10 +763,6 @@
             "Name": "arms",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
-            "NetworkOrphaned": 0,
-            "OwnerTransfer": 1,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -808,8 +792,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager",
-    "facepunch.v_usp"
+    "bolt.prophuntmanager"
   ],
   "__version": 1
 }
