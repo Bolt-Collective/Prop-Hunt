@@ -1,9 +1,10 @@
 @using Sandbox;
 @using Sandbox.UI;
+@inherits Panel
 @attribute [StyleSheet]
 
 
-<root>
+<root class="@(Visible ? "" : "hidden")">
 	@if (Player.Local is not null)
 	{
 		@if (Player.Local.TeamComponent.TeamName == Team.Props.ToString() || Player.Local.TeamComponent.TeamName ==
@@ -26,6 +27,10 @@
 		<div>
 			<div>Grab</div>
 			<img class="input-glyph" src="@Grab?.ResourcePath">
+		</div>
+		<div>
+			<div>Flashlight</div>
+			<img class="input-glyph" src="@Menu?.ResourcePath"/>
 		</div>
 		<div>
 			<div>Taunt</div>
@@ -64,11 +69,18 @@
 				<img class="input-glyph" src="@DPadWest?.ResourcePath">
 			</div>
 		}
+		<div>
+			<div style="color: gray; text-shadow: 0 0 0 0;">Press Y to hide this!</div>
+		</div>
 	}
 </root>
 
 @code {
+
+	public bool Visible { get; set; } = true;
+
 	public Texture Use { get; set; }
+	public Texture Menu { get; set; }
 	public Texture Attack1 { get; set; }
 	public Texture Attack2 { get; set; }
 	public Texture Grab { get; set; }
@@ -82,6 +94,7 @@
 	public override void Tick()
 	{
 		Use = Input.GetGlyph("use", InputGlyphSize.Large, false);
+		Menu = Input.GetGlyph("Menu", InputGlyphSize.Large, false);
 		Attack1 = Input.GetGlyph("Attack1", InputGlyphSize.Large, false);
 		Attack2 = Input.GetGlyph("Attack2", InputGlyphSize.Large, false);
 		Grab = Input.GetGlyph("Flashlight", InputGlyphSize.Large, false);
@@ -96,6 +109,11 @@
 
 		}
 		base.Tick();
+
+		if (Input.Pressed("light"))
+		{
+			Visible = !Visible;
+		}
 	}
 
 	protected override int BuildHash() => System.HashCode.Combine(Time.Now);

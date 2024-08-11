@@ -8,23 +8,19 @@ InputHints {
 
     div {
         align-items: center;
-
-        label {
-            font-size: 24px;
-            font-family: Poppins;
-            color: white;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px black;
-        }
-
-       
+        font-size: 24px;
+        font-family: Poppins;
+        color: white;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px black;
     }
+
     .input-glyph {
         width: 64px;
         height: 64px;
     }
 
-    &.hide {
+    &.hidden {
         opacity: 0;
     }
 }
