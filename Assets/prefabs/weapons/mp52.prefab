@@ -8,7 +8,7 @@
       {
         "__type": "Weapon",
         "__guid": "05a85857-534b-44ac-8509-3ea9c836d4ef",
-        "Ammo": 10,
+        "Ammo": 24,
         "Damage": 25,
         "Decal": {
           "_type": "gameobject",
@@ -17,7 +17,7 @@
         "FireLength": 1000,
         "FireRate": 0.1,
         "FireSound": "sounds/weapons/mp5/smg_shoot.sound",
-        "MaxAmmo": 10,
+        "MaxAmmo": 24,
         "OnComponentEnabled": {
           "__version": 7,
           "__guid": "5af09c5b-2e15-4829-bef2-9c6d8c54a61d",
@@ -51,8 +51,8 @@
               "Type": "call",
               "Properties": {
                 "_type": "Sandbox.SkinnedModelRenderer",
-                "_isStatic": false,
-                "_name": "Set"
+                "_name": "Set",
+                "_isStatic": false
               },
               "UserData": {
                 "Position": "880,-0"
@@ -574,22 +574,16 @@
               "Value": true,
               "DstId": 9,
               "DstName": "value"
-            },
-            {
-              "SrcId": 0,
-              "SrcName": "Self",
-              "DstId": 17,
-              "DstName": "_target"
             }
           ],
           "Defaults": {
-            "$20._value": {
+            "$10._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
               "component_type": "SkinnedModelRenderer"
             },
-            "$24._value": {
+            "$14._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -801,8 +795,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager",
-    "facepunch.v_mp5"
+    "bolt.prophuntmanager"
   ],
   "__version": 1
 }
