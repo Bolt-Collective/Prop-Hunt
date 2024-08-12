@@ -21,7 +21,6 @@
         {
           "__type": "Sandbox.SoundPointComponent",
           "__guid": "241f47ee-2ba5-415f-8bb3-484a2d2f1615",
-          "__enabled": false,
           "DistanceAttenuation": false,
           "DistanceAttenuationOverride": false,
           "Force2d": false,
@@ -36,13 +35,13 @@
           "Reflections": false,
           "Repeat": false,
           "SoundEvent": "sounds/menu/gsab_instrumental.sound",
-          "SoundOverride": false,
+          "SoundOverride": true,
           "StopOnNew": false,
           "TargetMixer": {
-            "Name": "master",
-            "Id": "80060ebe-9477-4120-bba2-ac5f042da674"
+            "Name": "music",
+            "Id": "4a0d91f9-a45e-4362-8c70-ce0ea2047a3b"
           },
-          "Volume": 1
+          "Volume": 0.53
         },
         {
           "__type": "Sandbox.ModelCollider",
@@ -220,6 +219,24 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "de5451d4-21a3-4e66-b8cc-3f493feb3096",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "85.06019,-91.64715,124.6577",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SoundscapeTrigger",
+          "__guid": "1f89f9a2-6e65-4984-be01-6e7791b226f9",
+          "BoxSize": "50,50,50",
+          "Radius": 500,
+          "Soundscape": "sounds/birdsoundscape.sndscape",
+          "StayActiveOnExit": true,
+          "Type": "Sphere"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -247,7 +264,8 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager"
+    "bolt.prophuntmanager",
+    "semxy.birdsoundscape"
   ],
   "__version": 1
 }

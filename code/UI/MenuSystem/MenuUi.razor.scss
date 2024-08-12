@@ -19,9 +19,10 @@ MenuUi {
 
     .game-title {
         font-weight: 700;
-        font-size: 100px;
+        font-size: 128px;
         color: #f0f0f0;
         text-shadow: 1px 1px 10px black;
+        font-weight: 500;
         margin-bottom: 20px;
     }
 
@@ -30,17 +31,21 @@ MenuUi {
         flex-direction: column;
         gap: 8px;
         left: 64px;
-        bottom: 200px;
+        bottom: 180px;
         color: #f0f0f0;
     }
 
     .button {
         font-size: 40px;
-        padding: 20px;
-        background-color: #58FF55;
+        padding: 15px;
+        background-color: rgb(0, 255, 0 / 0.7);
+        color: black;
         justify-content: center;
         align-items: center;
-        max-width: 200px;
         border-radius: 20px;
+        font-weight: 800;
+        border: 8px rgb(49, 49, 49, 0.5);
+        backdrop-filter: blur(22);
+        max-width: 275px;
     }
 }
