@@ -37,12 +37,12 @@ MenuUi {
 
     .button {
         font-size: 30px;
-        padding: 15px;
-        background-color: rgb(0, 255, 0 / 0.7);
-        color: black;
+        padding: 20px;
+        background-color: rgba(88, 255, 85 / 0.65);
+        color: rgba(28, 32, 36,);
         justify-content: center;
         align-items: center;
-        border-radius: 20px;
+        border-radius: 8px;
         font-weight: 800;
         backdrop-filter: blur(22);
         max-width: 275px;
@@ -52,6 +52,6 @@ MenuUi {
     .button:hover {
         box-shadow: 0px 0px 0px 12px rgba(0, 0, 4, 0.548);
         border-radius: 100px;
-        transition: all 100ms ease;
+        transition: all 150ms ease;
     }
 }
