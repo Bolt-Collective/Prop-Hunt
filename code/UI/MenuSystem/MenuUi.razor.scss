@@ -21,7 +21,7 @@ MenuUi {
         font-weight: 700;
         font-size: 128px;
         color: #f0f0f0;
-        text-shadow: 1px 1px 10px black;
+        text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.493);
         font-weight: 500;
         margin-bottom: 20px;
     }
@@ -31,7 +31,7 @@ MenuUi {
         flex-direction: column;
         gap: 8px;
         left: 64px;
-        bottom: 180px;
+        bottom: 160px;
         color: #f0f0f0;
     }
 
@@ -44,7 +44,7 @@ MenuUi {
         align-items: center;
         border-radius: 20px;
         font-weight: 800;
-        border: 8px rgb(49, 49, 49, 0.5);
+        border: 8px rgba(83, 83, 83, 0.849);
         backdrop-filter: blur(22);
         max-width: 275px;
     }
