@@ -6,12 +6,12 @@
 
 <root style="flex-direction: column;">
 	<div class="top-section">
-		<div style="position: absolute; right: 0; flex-direction: column;">
-			<div class="social-icon">
-				<svg Src="ui/svg/discord.svg" class="matte"></svg>
+		<div style="position: absolute; right: 0; flex-direction: column; padding: 15px;">
+			<div class="social-icon red">
+				<svg Src="ui/svg/turnoff.svg"></svg>
 			</div>
-			<div class="social-icon">
-				<svg Src="ui/svg/discord.svg" class="matte"></svg>
+			<div class="social-icon matte">
+				<svg Src="ui/svg/discord.svg"></svg>
 			</div>
 		</div>
 	</div>
@@ -21,9 +21,15 @@
 			Prop Hunt
 		</div>
 
-		<div class="button" onclick="@OpenServerList">
-			Play
+		<div class="buttons">
+			<div class="button" onclick="@OpenServerList">
+				Play
+			</div>
+			<div class="social-icon matte">
+				<svg Src="ui/svg/discord.svg"></svg>
+			</div>
 		</div>
+
 		@* <div class="button" onclick=@(() => Game.Overlay.ShowBinds())>Settings</div>
 		<div class="button" onclick=@Copy>@DiscordCopyText</div>
 		<div class="button" onclick=@(() => Game.Close())>Quit</div> *@
