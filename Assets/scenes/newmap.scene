@@ -127,16 +127,6 @@
           "__type": "PropHuntUI",
           "__guid": "6198673f-3d13-4c58-826f-76993e57daa9",
           "ShowMapVoting": false
-        },
-        {
-          "__type": "DevUi",
-          "__guid": "427b9d94-f363-4b54-a269-a0d9ff6d8736",
-          "__enabled": false,
-          "AllowedSteamIds": [
-            76561199001645276,
-            76561198043979097
-          ],
-          "MyStringValue": "Hello, I am playing in the dev client, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
         }
       ],
       "Children": [
@@ -218,6 +208,9 @@
           "RoundNumber": 0,
           "RoundState": "None",
           "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
+          "TimeSinceRoundStateChanged": {
+            "Relative": 1347.0774
+          },
           "Votes": {}
         }
       ]
