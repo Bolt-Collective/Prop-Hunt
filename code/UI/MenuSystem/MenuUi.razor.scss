@@ -23,17 +23,27 @@ MenuUi {
     }
 
     .social-icon {
-        padding: 10px;
-
-        svg {
-            height: 64px;
-            width: 64px;
-        }
-
-        .matte {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
+        padding: 15px;
+        margin: 10px;
+        border-radius: 20px;
     }
+
+    .matte {
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 3px solid #8D8D8D;
+    }
+
+    .red {
+        background-color: rgba(255, 0, 0, 0.32);
+        border: 3px solid #FF5353;
+    }
+
+    svg {
+        height: 43px;
+        width: 43px;
+    }
+
+
 
     .game-title {
         font-weight: 700;
@@ -51,19 +61,23 @@ MenuUi {
         left: 64px;
         bottom: 160px;
         color: #f0f0f0;
+
+        .buttons {
+            flex-direction: row;
+        }
     }
 
     .button {
-        font-size: 30px;
-        padding: 20px;
+        font-size: 40px;
+        padding: 5px;
         background-color: rgba(88, 255, 85 / 0.65);
-        color: rgba(28, 32, 36,);
+        color: rgba(28, 32, 36);
         justify-content: center;
         align-items: center;
         border-radius: 8px;
         font-weight: 800;
         backdrop-filter: blur(22);
-        max-width: 275px;
+        width: 275px;
         box-shadow: 0px 0px 0px 8px rgba(0, 0, 4, 0.548);
     }
 
