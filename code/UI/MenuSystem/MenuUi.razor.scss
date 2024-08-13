@@ -25,22 +25,55 @@ MenuUi {
     .social-icon {
         padding: 15px;
         margin: 10px;
-        border-radius: 20px;
+        border-radius: 8px;
+    }
+
+    .settings-icon {
+        padding: 18pxpx;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(12);
+        box-shadow: 0px 0px 0px 8px rgba(0, 0, 4, 0.548);
+        border-radius: 8px;
+
+        svg {
+            height: 49px;
+            width: 49px;
+        }
+    }
+
+    .settings-icon:hover {
+        box-shadow: 0px 0px 0px 12px rgba(0, 0, 4, 0.548);
+        border-radius: 100px;
+        transition: all 150ms ease;
     }
 
     .matte {
         background-color: rgba(0, 0, 0, 0.5);
-        border: 3px solid #8D8D8D;
+        border: 3px rgba(141, 141, 141,);
+        backdrop-filter: blur(12);
     }
+
+    .matte:hover {
+        border-radius: 100px;
+        transition: all 150ms ease;
+    }
+
+
 
     .red {
         background-color: rgba(255, 0, 0, 0.32);
         border: 3px solid #FF5353;
+        backdrop-filter: blur(12);
     }
 
     svg {
         height: 43px;
         width: 43px;
+    }
+
+    .red:hover {
+        border-radius: 100px;
+        transition: all 150ms ease;
     }
 
 
@@ -79,6 +112,7 @@ MenuUi {
         backdrop-filter: blur(22);
         width: 275px;
         box-shadow: 0px 0px 0px 8px rgba(0, 0, 4, 0.548);
+        margin-right: 30px;
     }
 
     .button:hover {
