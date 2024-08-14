@@ -21,7 +21,7 @@ public sealed class Network : Component, Component.INetworkListener
 		76561199407136830 // Paths
 	};
 
-	protected override async void OnStart()
+	protected override async Task OnLoad()
 	{
 		if ( StartServer && !GameNetworkSystem.IsActive )
 		{

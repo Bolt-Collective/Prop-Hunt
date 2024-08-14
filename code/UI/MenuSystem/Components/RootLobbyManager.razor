@@ -1,0 +1,19 @@
+﻿@using Sandbox.UI;
+@inherits NavHostPanel
+@attribute [StyleSheet]
+
+<root>
+	<div class="navbar">
+		<a>Explore</a>
+		<a>Create</a>
+	</div>
+	<div class="navigator-canvas" slot="navigator-canvas" />
+</root>
+
+@code {
+	public RootLobbyManager()
+	{
+		DefaultUrl = "/";
+		AddDestination("/", typeof(ExplorePage));
+	}
+}

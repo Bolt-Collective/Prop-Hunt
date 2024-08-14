@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="buttons">
-			<div class="button" onclick="@OpenServerList">
+			<div class="button" onclick="@OpenLobbyManager">
 				Play
 			</div>
 			<div class="settings-icon">
@@ -37,135 +37,18 @@
 
 
 
-	@if (ShowServerList)
+	@if (ShowLobbyManager)
 	{
-		<div class="serverlist">
-			<div class="header">
-				Lobbies
-			</div>
-			@if (Refreshing)
-			{
-				<div class="server">
-					<div class="server-name">Refreshing...</div>
-				</div>
-			}
-			else if (Lobbies.Count == 0)
-			{
-				<div class="server">
-					<div class="server-name">No servers found, create one</div>
-				</div>
-			}
-			@foreach (var lobby in Lobbies)
-			{
-				<div class="server" style="flex-wrap: nowrap;">
-					<img src="@Package.Fetch( lobby.Map, true ).Result?.Thumb"
-						style="width: 64px; height: 64px; border-radius: 100px; margin-right: 10px;" />
-					<div class="server-name" style="font-size: 20px;">@Package.Fetch(lobby.Map, true).Result?.Title</div>
-					<div class="server-name" style="font-size: 24px">@lobby.Name</div>
-					<div class="server-players">@lobby.Members</div>
-					<div class="server-join" onclick="@( () => ConnectToLobby( lobby ) )">Join</div>
-				</div>
-			}
-		</div>
-	}
-	@if (ShowMapList)
-	{
-		<div class="maplist">
-			<PackageList style="color: white; background-color: rgba(0,0,0,0.8);" ShowFilters="@true" Query="type:map +prophunt sort:trending"
-				OnSelected="@OnPackageSelected" Take=@(50) />
-
-			<div class="lobbysettings" style="">
-				<div class="chosen-map">
-					@if (String.IsNullOrWhiteSpace(LaunchArguments.Map))
-					{
-						<div style="justify-content: center">Select A Map</div>
-					}
-					else
-					{
-						<img class="thumb" src=@Package.Fetch( LaunchArguments.Map, true ).Result.Thumb />
-						<h1 style="justify-content: center; font-size: 24px;">@Package.Fetch(LaunchArguments.Map,
-					true).Result.Title</h1>
-					}
-
-				</div>
-
-				<div class="slider">
-					<div class="slider-label">Forced Taunt Cooldown</div>
-					<TextEntry Value:bind=@( lobbySettings.ForcedTauntTime ) Numeric=@true />
-				</div>
-				<div class="slider">
-					<div class="slider-label">Taunt Cooldown</div>
-					<TextEntry Value:bind="@lobbySettings.TauntCoolDownTime" Numeric=@true />
-				</div>
-				<div class="slider">
-					<div class="slider-label">Players needed to start</div>
-					<TextEntry Value:bind="@lobbySettings.PlayersNeededToStart" Numeric=@true MinValue=@( 1f ) MaxValue=@(
-					64f ) />
-				</div>
-				<div class="slider">
-					<div class="slider-label">Round Time</div>
-					<TextEntry Value:bind="@lobbySettings.RoundTime" Numeric=@true MinValue=@( 240f ) MaxValue=@( 360f ) />
-				</div>
-				<div class="slider">
-					<div class="slider-label">Preround Time</div>
-					<TextEntry Value:bind="@lobbySettings.PreRoundTime" Numeric=@true MinValue=@( 240f ) MaxValue=@( 360f
-					) />
-				</div>
-				<div class="slider">
-					<div class="slider-label">Prop Health</div>
-					<TextEntry Value:bind="@lobbySettings.PropHealth" Numeric=@true MinValue=@( 1 ) MaxValue=@( 1000 ) />
-				</div>
-				<div class="slider">
-					<div class="slider-label">Hunter Health</div>
-					<TextEntry Value:bind="@lobbySettings.HunterHealth" Numeric=@true MinValue=@( 1 ) MaxValue=@( 1000 ) />
-				</div>
-
-
-				@if (lobbySettings.HunterPropGrabMode == HuntersPropGrabbing.Bleed)
-				{
-					<div class="slider">
-						<div class="slider-label">Bleed amount</div>
-						<TextEntry Value:bind="@lobbySettings.BleedAmount" Numeric=@true />
-					</div>
-				}
-
-				<div class="slider">
-					<div class="slider-label">Hunters can grab props</div>
-					<DropDown style="font-size: 10px;" Value:bind="@lobbySettings.HunterPropGrabMode" />
-				</div>
-
-				<div class="slider">
-					<div class="slider-label">Allow map voting</div>
-					<SwitchControl Value:bind="@lobbySettings.AllowMapVoting" />
-				</div>
-				@if (lobbySettings.AllowMapVoting)
-				{
-					<div class="slider">
-						<div class="slider-label">Rounds until map vote</div>
-						<TextEntry Value:bind="@lobbySettings.RoundCount" Numeric=@true MinValue=@( 120f ) MaxValue=@( 360f ) />
-					</div>
-				}
-
-
-
-			</div>
-
-			<div style="align-items: center; justify-content: center; border-radius: 20px; border: solid 2px rgb(0, 255, 41); width: 200px; background-color: rgba(73, 255, 44, 1); color: white; text-stroke: 4px black; font-size: 80px; opacity: 0.6;" onclick=@( () => StartLobby()
-			 )>
-				<i>play_arrow</i>
-			</div>
-		</div>
-
+		<RootLobbyManager></RootLobbyManager>
 	}
 </root>
 
 @code
 {
 	[Property] int minPlayers = 2;
-	[Property] public bool ShowServerList { get; set; }
+	[Property] public bool ShowLobbyManager { get; set; }
 	public List<LobbyInformation> Lobbies { get; set; } = new();
 	[Property] public bool Refreshing { get; set; } = false;
-	[Property] public bool ShowMapList { get; set; } = false;
 	[Property] public SceneFile GameScene { get; set; }
 	[Property] public LobbySettings lobbySettings { get; set; } = new();
 	public string DiscordCopyText { get; set; } = "Discord";
@@ -180,11 +63,7 @@
 	{
 		_ = FetchLobbies();
 	}
-	void CreateNewGame()
-	{
-		ShowMapList = !ShowMapList;
-		ShowServerList = false;
-	}
+
 	void OnPackageSelected(Package package)
 	{
 		LaunchArguments.Map = package.FullIdent;
@@ -203,10 +82,9 @@
 		Game.Close();
 	}
 
-	void OpenServerList()
+	void OpenLobbyManager()
 	{
-		ShowServerList = !ShowServerList;
-		ShowMapList = false;
+		ShowLobbyManager = !ShowLobbyManager;
 	}
 	protected override void OnUpdate()
 	{
