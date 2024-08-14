@@ -1,0 +1,25 @@
+﻿RootLobbyManager {
+    position: absolute;
+    top: 15%;
+    left: 17%;
+    right: 0;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15);
+    width: 70%;
+    height: 70%;
+
+    .navbar {
+        a {
+            padding: 15px;
+            width: 8%;
+            border: 1px solid gray;
+
+            justify-content: center;
+        }
+
+        a:active {
+            background-color: darkgray;
+        }
+    }
+}
