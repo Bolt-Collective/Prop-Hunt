@@ -4,22 +4,41 @@
     left: 17%;
     right: 0;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15);
+    background-color: rgba(47, 47, 47, 0.78);
+    backdrop-filter: blur(39);
     width: 70%;
     height: 70%;
-
+    border-radius: 8px;
+    border: 1px rgba(141, 141, 141, 0.67);
     .navbar {
         a {
             padding: 15px;
-            width: 8%;
-            border: 1px solid gray;
-
+            width: 10%;
+            border-left: 1px rgba(141, 141, 141, 0.67);
+            border-right: 1px rgba(141, 141, 141, 0.67);
             justify-content: center;
         }
 
         a:active {
             background-color: darkgray;
         }
+    }
+
+    .fullnav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px rgba(141, 141, 141, 0.67);
+    }
+
+    .exit {
+        background-color: rgba(255, 96, 96,);
+        width: 18px;
+        height: 18px;
+        border-radius: 100px;
+    }
+
+    .spacer {
+        flex-grow: 1;
     }
 }
