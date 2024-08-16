@@ -209,7 +209,7 @@
           "RoundState": "None",
           "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
           "TimeSinceRoundStateChanged": {
-            "Relative": 1347.0774
+            "Relative": 347.04175
           },
           "Votes": {}
         }
@@ -232,7 +232,7 @@
           ],
           "CustomSpawnPoints": false,
           "DevMode": false,
-          "MenuScene": "scenes/menu.scene",
+          "MenuScene": "scenes/ph_menu.scene",
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player2.prefab"
