@@ -31,7 +31,7 @@ public class CustomMapLoader : MapInstance
 			door.PivotPosition = gameObject.Transform.World.PointToWorld( origin );
 			door.Collider = mdlCollider;
 
-			gameObject.SetParent( GameObject );
+			gameObject.SetParent( null );
 			gameObject.NetworkSpawn( null );
 		}
 
