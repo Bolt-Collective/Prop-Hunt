@@ -10,7 +10,7 @@ public partial class PopupSystem
 		popup.Text = text;
 		popup.Title = title;
 		popup.Duration = duration;
-		PopupList.Instance.AddChild( popup );
+		PopupList.Instance?.AddChild( popup );
 	}
 
 	public static void ClearPopups()

@@ -5,7 +5,7 @@ public class CustomMapLoader : MapInstance
 {
 	protected override void OnCreateObject( GameObject gameObject, MapLoader.ObjectEntry objectEntry )
 	{
-		if ( objectEntry.TypeName == "ent_door" )
+		if ( objectEntry.TypeName == "ent_door" && Game.IsPlaying )
 		{
 			Model resource = objectEntry.GetResource<Model>( "model" );
 
@@ -31,7 +31,7 @@ public class CustomMapLoader : MapInstance
 			door.PivotPosition = gameObject.Transform.World.PointToWorld( origin );
 			door.Collider = mdlCollider;
 
-			gameObject.SetParent( null );
+			gameObject.SetParent( Scene );
 			gameObject.NetworkSpawn( null );
 		}
 

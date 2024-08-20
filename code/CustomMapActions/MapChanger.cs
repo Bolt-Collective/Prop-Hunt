@@ -31,13 +31,18 @@ public sealed partial class MapChanger : Component
 	public void OnMapLoaded()
 	{
 		IsMapLoaded = true;
-		foreach ( var action in customMapActions )
+
+		if ( customMapActions != null )
 		{
-			if ( action.MapIndent == MapInstance.MapName )
+			foreach ( var action in customMapActions )
 			{
-				action.OnMapLoaded?.Invoke( MapInstance, this, action.MapIndent );
+				if ( action.MapIndent == MapInstance.MapName )
+				{
+					action.OnMapLoaded?.Invoke( MapInstance, this, action.MapIndent );
+				}
 			}
 		}
+
 		HandleMap();
 	}
 	public void OnMapUnloaded()

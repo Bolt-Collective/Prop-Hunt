@@ -35,7 +35,7 @@
 		public string VictimIcon => Victim.Replace( "icon:", "" );
 	}
 
-	
+
 	[Broadcast] 
 	public static void BroadcastKillFeedEvent(string victim, Color victimColor)
 	{
@@ -43,9 +43,12 @@
 		Instance.StateHasChanged();
 	}
 
-	
+
 	public override void Tick()
 	{
+		if (!Entries.Any())
+			return;
+
 		// Limit entries so we don't get too busy
 		Entries = Entries.TakeLast( 5 ).ToList();
 
