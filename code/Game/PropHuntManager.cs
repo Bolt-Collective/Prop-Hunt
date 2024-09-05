@@ -132,7 +132,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 	{
 		if ( !IsProxy && AllPlayers.Count() > 2 )
 		{
-			MaxPlayersToStart = Connection.All.Count;
+			MaxPlayersToStart = AllPlayers.Count();
 		}
 		else
 		{
