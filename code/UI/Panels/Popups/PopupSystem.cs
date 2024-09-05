@@ -1,9 +1,6 @@
-﻿
-using System.Net.Http.Headers;
-
-public partial class PopupSystem
+﻿public partial class PopupSystem
 {
-	[ConCmd("popup")]
+	[ConCmd( "popup" )]
 	public static void DisplayPopup( string text, string title = "", float duration = 8f )
 	{
 		var popup = new Popup();
@@ -15,6 +12,6 @@ public partial class PopupSystem
 
 	public static void ClearPopups()
 	{
-		PopupList.Instance.DeleteChildren();
+		PopupList.Instance?.DeleteChildren();
 	}
 }

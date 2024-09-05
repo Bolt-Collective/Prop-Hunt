@@ -1,10 +1,11 @@
-using System.Drawing;
-using Sandbox;
-
 public class CustomMapLoader : MapInstance
 {
+
 	protected override void OnCreateObject( GameObject gameObject, MapLoader.ObjectEntry objectEntry )
 	{
+		if ( !Networking.IsHost )
+			return;
+
 		if ( objectEntry.TypeName == "ent_door" && Game.IsPlaying )
 		{
 			Model resource = objectEntry.GetResource<Model>( "model" );

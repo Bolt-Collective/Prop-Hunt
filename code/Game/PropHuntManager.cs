@@ -1,9 +1,5 @@
 using System.Data;
-using System.IO;
-using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Transactions;
-using Sandbox.Utility;
 namespace PropHunt;
 
 [Title( "Game Manager" )]
@@ -310,6 +306,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
 	}
 
+
 	[Broadcast]
 	public void BroadcastPopup( string text, string title, string sound, float duration = 8f )
 	{
@@ -324,7 +321,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 
 	public void OnRoundStart()
 	{
-		foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Hunters.ToString() ) )
+		foreach ( var player in GetPlayers( Team.Hunters ) )
 		{
 			player.HunterUnblind();
 		}
@@ -435,7 +432,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		// Introduce a cooldown for taunts to prevent spamming
 		if ( CanPlayTaunt() )
 		{
-			foreach ( var player in Scene.GetAllComponents<Player>().Where( x => x.TeamComponent.TeamName == Team.Props.ToString() ) )
+			foreach ( var player in GetPlayers( Team.Props ) )
 			{
 				var tauntComponents = player.Components.Get<TauntComponent>();
 
@@ -445,7 +442,6 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 				}
 			}
 
-			//Have to make it a method since if I change one, the rest are not going to be changed
 			ResetForceTauntValues();
 		}
 

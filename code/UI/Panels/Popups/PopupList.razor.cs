@@ -4,7 +4,7 @@ public partial class PopupList : Panel
 {
 	public static PopupList Instance { get; set; }
 
-	public PopupList() 
+	public PopupList()
 	{
 		Instance = this;
 	}
@@ -16,7 +16,7 @@ public partial class PopupList : Panel
 		// Very hacky solution to stop multiple popups from happening.. yuck
 		if ( Children.Count() > 1 )
 		{
-			GetChild(1, true).Delete(true);
+			GetChild( 1, true )?.Delete( true );
 		}
 	}
 }
