@@ -236,7 +236,7 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		TimeSinceRoundStateChanged = 0;
 		AssignEvenTeams();
 
-		ReloadMapRPC();
+		//ReloadMapRPC();
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToList();
 		foreach ( var player in Scene.GetAllComponents<Player>() )
 		{
@@ -304,6 +304,28 @@ public partial class PropHuntManager : Component, Component.INetworkListener
 		RoundLength = PreRoundTime;
 		ClearListBroadcast();
 		Scene.GetAllComponents<MapInstance>().FirstOrDefault()?.UnloadMap();
+	}
+
+	public DecalRenderer CreateDecal( Material material, Vector3 pos, Vector3 normal, float rotation, float size, float depth, float destroyTime = 3f )
+	{
+		var gameObject = Game.ActiveScene.CreateObject();
+		gameObject.NetworkSpawn();
+		gameObject.Name = $"Impact decal";
+		gameObject.Transform.Position = pos;
+		gameObject.Transform.Rotation = Rotation.LookAt( -normal );
+
+		// Random rotation
+		gameObject.Transform.Rotation *= Rotation.FromAxis( Vector3.Forward, rotation );
+
+		var decalRenderer = gameObject.Components.Create<DecalRenderer>();
+		decalRenderer.Material = material;
+		decalRenderer.Size = new( size, size, depth );
+
+
+		// Creates a destruction component to destroy the gameobject after a while
+		gameObject.DestroyAsync( destroyTime );
+
+		return decalRenderer;
 	}
 
 

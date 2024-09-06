@@ -1,8 +1,4 @@
-using System;
-using System.Threading.Tasks;
-using Sandbox;
-using Sandbox.Citizen;
-using Sandbox.Utility;
+using PropHunt;
 
 public sealed class Item : Component
 {
@@ -107,6 +103,19 @@ public sealed class Item : Component
 				tr.Body.ApplyImpulseAt( tr.HitPosition, tr.Direction * 200.0f * tr.Body.Mass.Clamp( 0, 200 ) );
 				Player.Local.TakeDamage( 5 );
 			}
+
+			Sound.Play( tr.Surface.Sounds.Bullet, tr.HitPosition );
+			var farticle = Particles.Create( tr.Surface.ImpactEffects.Bullet.FirstOrDefault(), tr.HitPosition, Rotation.Identity );
+			farticle.GameObject.NetworkSpawn();
+
+			var decalPath = Game.Random.FromList( tr.Surface.ImpactEffects.BulletDecal, "decals/bullethole.decal" );
+			if ( ResourceLibrary.TryGet<DecalDefinition>( decalPath, out var decalResource ) )
+			{
+				var decal = Game.Random.FromList( decalResource.Decals );
+
+				PropHuntManager.Instance.CreateDecal( decal.Material, tr.HitPosition, tr.Normal, decal.Rotation.GetValue(), decal.Width.GetValue() / 1.5f, decal.Depth.GetValue(), 30f );
+			}
+
 			var trDamage = new DamageInfo( damage, GameObject, GameObject, tr.Hitbox );
 			trDamage.Position = tr.HitPosition;
 			trDamage.Shape = tr.Shape;

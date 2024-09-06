@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
-using Sandbox;
-using Sandbox.Utility;
+using PropHunt;
 
 public sealed class Weapon : Component
 {
@@ -114,13 +112,21 @@ public sealed class Weapon : Component
 				Player.Local.TakeDamage( 5 );
 			}
 
+			Sound.Play( tr.Surface.Sounds.Bullet, tr.HitPosition );
+			var farticle = Particles.Create( tr.Surface.ImpactEffects.Bullet.FirstOrDefault(), tr.HitPosition, Rotation.Identity );
+			farticle.GameObject.NetworkSpawn();
+
+			var decalPath = Game.Random.FromList( tr.Surface.ImpactEffects.BulletDecal, "decals/bullethole.decal" );
+			if ( ResourceLibrary.TryGet<DecalDefinition>( decalPath, out var decalResource ) )
+			{
+				var decal = Game.Random.FromList( decalResource.Decals );
+
+				PropHuntManager.Instance.CreateDecal( decal.Material, tr.HitPosition, tr.Normal, decal.Rotation.GetValue(), decal.Width.GetValue() / 1.5f, decal.Depth.GetValue(), 30f );
+			}
 			var damage = new DamageInfo( Damage, GameObject, GameObject, tr.Hitbox );
 			damage.Position = tr.HitPosition;
 			damage.Shape = tr.Shape;
-			/*var decalClone = Decal.Clone();
-			decalClone.Transform.Position = tr.HitPosition + tr.Normal * 5;
-			decalClone.Transform.Rotation = Rotation.LookAt( -tr.Normal );
-			decalClone.NetworkSpawn();*/
+
 			foreach ( var damageAble in tr.GameObject.Components.GetAll<IDamageable>() )
 			{
 				damageAble.OnDamage( damage );
