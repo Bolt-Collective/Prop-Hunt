@@ -4,10 +4,18 @@ public class CustomMapLoader : MapInstance
 	protected override void OnCreateObject( GameObject gameObject, MapLoader.ObjectEntry objectEntry )
 	{
 		if ( !Networking.IsHost )
+		{
+			if ( objectEntry.TypeName == "ent_door" )
+				gameObject.Destroy();
 			return;
+		}
+
 
 		if ( objectEntry.TypeName == "ent_door" && Game.IsPlaying )
 		{
+			if ( !Networking.IsHost )
+				return;
+
 			Model resource = objectEntry.GetResource<Model>( "model" );
 
 			var skMdl = gameObject.Components.Create<SkinnedModelRenderer>();
