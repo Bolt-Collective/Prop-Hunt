@@ -1,5 +1,3 @@
-using System.Reflection.Metadata;
-using Sandbox;
 namespace PropHunt;
 public sealed partial class MapChanger : Component
 {
@@ -11,8 +9,9 @@ public sealed partial class MapChanger : Component
 		if ( Networking.IsHost )
 		{
 			OnSceneStart();
-			MapInstance.UnloadMap();
 			MapInstance.UseMapFromLaunch = false;
+
+			return;
 		}
 		MapInstance.OnMapLoaded += OnMapLoaded;
 		MapInstance.OnMapUnloaded += OnMapUnloaded;
@@ -20,6 +19,9 @@ public sealed partial class MapChanger : Component
 
 	protected override void OnDisabled()
 	{
+		if ( !Networking.IsHost )
+			return;
+
 		MapInstance.OnMapLoaded -= OnMapLoaded;
 		MapInstance.OnMapUnloaded -= OnMapUnloaded;
 	}
@@ -69,6 +71,9 @@ public sealed partial class MapChanger : Component
 	}
 	public void HandleMap()
 	{
+		if ( !Networking.IsHost )
+			return;
+
 		Scene.GetAllComponents<MapCollider>().FirstOrDefault().Tags.Add( "map" );
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
 		BroadcastPropTags();

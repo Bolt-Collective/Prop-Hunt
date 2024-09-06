@@ -1,11 +1,6 @@
-﻿using System.Security.Cryptography;
-using Facepunch;
+﻿using Facepunch;
 using PropHunt;
-using Sandbox;
 using Sandbox.Citizen;
-using Sandbox.Network;
-using Sandbox.UI.Panels.Chat;
-using Sandbox.Utility;
 
 public class Player : Component
 {
@@ -763,11 +758,11 @@ public class Player : Component
 
 		if ( player.TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
-			player.Health = PropHuntManager.Instance.LobbySettings.HunterHealth;
+			player.Health = (float)(PropHuntManager.Instance?.LobbySettings?.HunterHealth);
 		}
 		else if ( player.TeamComponent.TeamName == Team.Props.ToString() )
 		{
-			player.Health = PropHuntManager.Instance.LobbySettings.PropHealth;
+			player.Health = (float)(PropHuntManager.Instance?.LobbySettings?.PropHealth);
 		}
 		else
 		{
