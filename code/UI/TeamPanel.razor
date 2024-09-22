@@ -10,8 +10,8 @@
 			@foreach (var player in PropHuntManager.GetPlayers(Team.Props))
 			{
 				<div class="prop">
-					<img class="avatar" src="@GetAvatar(player.Network.OwnerConnection.SteamId)" />
-					<div class="name">@player.Network.OwnerConnection.DisplayName</div>
+					<img class="avatar" src="@GetAvatar(player.Network.Owner.SteamId)" />
+					<div class="name">@player.Network.Owner.DisplayName</div>
 				</div>
 			}
 		</div>
@@ -22,8 +22,8 @@
 			@foreach (var player in PropHuntManager.GetPlayers(Team.Hunters))
 			{
 				<div class="hunter">
-					<img class="avatar" src="@GetAvatar(player.Network.OwnerConnection.SteamId)" />
-					<div class="name">@player.Network.OwnerConnection.DisplayName</div>
+					<img class="avatar" src="@GetAvatar(player.Network.Owner.SteamId)" />
+					<div class="name">@player.Network.Owner.DisplayName</div>
 				</div>
 			}
 		</div>

@@ -12,8 +12,8 @@
 			                                                                      Team.Props.ToString() ) )
 			{
 				<div class="player">
-					<img src=@( $"avatar:{player.Network.OwnerConnection.SteamId}" ) class="avatar"/>
-					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
+					<img src=@( $"avatar:{player.Network.Owner.SteamId}" ) class="avatar" />
+					<label class="name">@player.Network.Owner.DisplayName</label>
 				</div>
 			}
 
@@ -28,8 +28,8 @@
 			                                                                      Team.Hunters.ToString() ) )
 			{
 				<div class="player">
-					<img src=@( $"avatar:{player.Network.OwnerConnection.SteamId}" ) class="avatar"/>
-					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
+					<img src=@( $"avatar:{player.Network.Owner.SteamId}" ) class="avatar" />
+					<label class="name">@player.Network.Owner.DisplayName</label>
 				</div>
 			}
 		</div>
@@ -43,8 +43,8 @@
 			                                                                      Team.Unassigned.ToString() ) )
 			{
 				<div class="player">
-					<img src=@( $"avatar:{player.Network.OwnerConnection.SteamId}" ) class="avatar"/>
-					<label class="name">@player.Network.OwnerConnection.DisplayName</label>
+					<img src=@( $"avatar:{player.Network.Owner.SteamId}" ) class="avatar" />
+					<label class="name">@player.Network.Owner.DisplayName</label>
 				</div>
 			}
 		</div>

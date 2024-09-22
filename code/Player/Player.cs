@@ -540,7 +540,12 @@ public class Player : Component
 	public void CheckForKillBounds()
 	{
 		if ( !Scene.GetAllComponents<MapChanger>().FirstOrDefault().IsMapLoaded || !PropHuntManager.Instance.OnGoingRound || TeamComponent.TeamName == Team.Unassigned.ToString() || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers || PropHuntManager.Instance.RoundState == GameState.Starting || PropHuntManager.Instance.RoundState == GameState.Preparing ) return;
-		var bounds = Scene.GetAllComponents<MapInstance>().FirstOrDefault().Bounds;
+		var mapInstance = Scene.GetAllComponents<MapInstance>().FirstOrDefault();
+
+		var bounds = mapInstance.Bounds;
+
+		if ( !mapInstance.IsValid )
+			return;
 
 		if ( Transform.Position.z < bounds.Mins.z - 1000 )
 		{
@@ -693,7 +698,7 @@ public class Player : Component
 
 		if ( deathMessage )
 		{
-			KillFeed.BroadcastKillFeedEvent( player.Network.OwnerConnection.DisplayName, Color.Black );
+			KillFeed.BroadcastKillFeedEvent( player.Network.Owner.DisplayName, Color.Black );
 		}
 	}
 
