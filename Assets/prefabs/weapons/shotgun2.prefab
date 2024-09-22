@@ -61,6 +61,13 @@
                 "BodyGroups": 79,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_shotgun_spaghellim4/v_spaghellim4.vmdl",
+                "Morphs": {},
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": true,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
@@ -85,6 +92,13 @@
                 },
                 "CreateBoneObjects": false,
                 "Model": "models/first_person/first_person_arms.vmdl",
+                "Morphs": {},
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": true,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
@@ -99,10 +113,10 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager",
-    "facepunch.v_spaghellim4"
+    "bolt.prophuntmanager"
   ],
   "__version": 1
 }

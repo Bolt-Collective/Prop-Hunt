@@ -3,8 +3,6 @@
     "__guid": "b18c0a79-25b1-45f7-b6c1-941d6d783a6c",
     "Flags": 0,
     "Name": "he throwable",
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
     "Components": [
       {
         "__type": "ThrowableWeapon",
@@ -29,8 +27,6 @@
         "Flags": 0,
         "Name": "Viewmodel",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "ViewModel",
@@ -43,8 +39,6 @@
             "Flags": 0,
             "Name": "he",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -57,7 +51,14 @@
                   "component_type": "SkinnedModelRenderer"
                 },
                 "CreateBoneObjects": false,
-                "Model": "models/v_he_grenade.vmdl",
+                "Model": "models/dev/error.vmdl",
+                "Morphs": {},
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
@@ -69,8 +70,6 @@
             "Flags": 0,
             "Name": "arms",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -79,6 +78,13 @@
                 "BodyGroups": 21,
                 "CreateBoneObjects": false,
                 "Model": "models/first_person/first_person_arms.vmdl",
+                "Morphs": {},
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
@@ -93,7 +99,10 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "bolt.prophuntmanager"
+  ],
   "__version": 1
 }

@@ -2,11 +2,8 @@
   "RootObject": {
     "__guid": "24e7a53d-90a0-4894-99ea-4d2c640eb07e",
     "Flags": 0,
-    "Name": "HE",
-    "Position": "996.433,49.51335,86.57332",
+    "Name": "he",
     "Tags": "ignore,he",
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
     "Components": [
       {
         "__type": "Grenade",
@@ -23,6 +20,12 @@
         "__guid": "81407e3e-1231-40c4-aa5e-a5007740832f",
         "BodyGroups": 11,
         "Model": "models/weapons/sbox_grenade_explosive/w_he_grenade.vmdl",
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
@@ -33,8 +36,10 @@
         "Gravity": true,
         "LinearDamping": 0,
         "Locking": {},
+        "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
         "MotionEnabled": true,
+        "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
         "StartAsleep": false
       },
@@ -46,11 +51,14 @@
         "Radius": 2,
         "Static": false
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
     "facepunch.w_he_grenade"

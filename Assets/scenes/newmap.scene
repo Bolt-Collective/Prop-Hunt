@@ -1,5 +1,5 @@
 {
-  "__guid": "620f7fae-e013-4fbc-9130-83b1d6d0c83c",
+  "__guid": "e9b62b92-b700-45b7-8e0d-5cc56f9bac7a",
   "GameObjects": [
     {
       "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
@@ -15,6 +15,8 @@
           "EnableCollision": true,
           "MapName": "twinsd.prop_hunt_home",
           "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": true
         }
       ],
@@ -34,8 +36,9 @@
           "customMapActions": [
             {
               "OnSceneStart": {
-                "__version": 7,
+                "__version": 8,
                 "__guid": "ebefba16-8750-437b-89e6-4d1ab7f1c79b",
+                "__changeId": 0,
                 "UserData": {
                   "Title": "On Scene Start",
                   "ReferencedComponentTypes": []
@@ -141,6 +144,7 @@
           "__type": "Sandbox.Tonemapping",
           "__guid": "8c7f80db-0ad0-4325-a43d-a78118a7b4f5",
           "__version": 1,
+          "AutoExposureEnabled": true,
           "ExposureBias": 2,
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
@@ -184,6 +188,7 @@
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
           "ZIndex": 100
         },
         {
@@ -272,7 +277,7 @@
           "RoundState": "None",
           "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
           "TimeSinceRoundStateChanged": {
-            "Relative": 679.8991
+            "Relative": 766.23785
           },
           "Votes": {}
         }
