@@ -161,7 +161,6 @@
         {
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "8896749b-d477-4160-8df7-50aabccdb34b",
-          "__enabled": false,
           "FalloffDistance": 1,
           "Intensity": 8,
           "Quality": "High",
@@ -277,7 +276,7 @@
           "RoundState": "None",
           "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
           "TimeSinceRoundStateChanged": {
-            "Relative": 766.23785
+            "Relative": 141.65352
           },
           "Votes": {}
         }
