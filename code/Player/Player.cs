@@ -540,7 +540,7 @@ public class Player : Component
 	public void CheckForKillBounds()
 	{
 		if ( !Scene.GetAllComponents<MapChanger>().FirstOrDefault().IsMapLoaded || !PropHuntManager.Instance.OnGoingRound || TeamComponent.TeamName == Team.Unassigned.ToString() || PropHuntManager.Instance.RoundState == GameState.WaitingForPlayers || PropHuntManager.Instance.RoundState == GameState.Starting || PropHuntManager.Instance.RoundState == GameState.Preparing ) return;
-		var mapInstance = Scene.GetAllComponents<MapInstance>().FirstOrDefault();
+		var mapInstance = Scene.GetAll<MapInstance>()?.FirstOrDefault();
 
 		var bounds = mapInstance.Bounds;
 
