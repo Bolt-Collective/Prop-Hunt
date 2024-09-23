@@ -798,7 +798,7 @@ public class Player : Component
 	{
 		if ( IsProxy ) return;
 
-		Inventory.SpawnStartingItems();
+		Inventory?.SpawnStartingItems();
 		AbleToMove = false;
 		if ( Scene.GetAllComponents<CameraComponent>().FirstOrDefault( x => x.IsMainCamera ).Components.TryGet<BlindPostprocess>( out var blind ) )
 		{

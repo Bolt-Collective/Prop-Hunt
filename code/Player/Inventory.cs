@@ -1,9 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Net.Http.Headers;
-using System.Net.NetworkInformation;
-using PropHunt;
-using Sandbox;
-
 public sealed class Inventory : Component
 {
 	[Property] public int Size { get; set; } = 9;
@@ -26,7 +20,7 @@ public sealed class Inventory : Component
 	}
 	public void SpawnStartingItems()
 	{
-		if ( StartingItems.Count != 0 && TeamComponent.TeamName == Team.Hunters.ToString() )
+		if ( StartingItems?.Count != 0 && TeamComponent.TeamName == Team.Hunters.ToString() )
 		{
 			for ( int i = 0; i < StartingItems.Count; i++ )
 			{

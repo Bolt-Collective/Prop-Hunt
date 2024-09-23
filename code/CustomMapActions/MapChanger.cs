@@ -6,6 +6,9 @@ public sealed partial class MapChanger : Component
 	[Sync] public bool IsMapLoaded { get; set; } = false;
 	protected override void OnStart()
 	{
+		if ( !MapInstance.IsValid )
+			return;
+
 		if ( Networking.IsHost )
 		{
 			OnSceneStart();
@@ -20,6 +23,9 @@ public sealed partial class MapChanger : Component
 	protected override void OnDisabled()
 	{
 		if ( !Networking.IsHost )
+			return;
+
+		if ( !MapInstance.IsValid )
 			return;
 
 		MapInstance.OnMapLoaded -= OnMapLoaded;
