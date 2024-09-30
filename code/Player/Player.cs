@@ -26,6 +26,10 @@ public class Player : Component
 	[Sync]
 	public bool IsCrouching { get; set; } = false;
 
+	[Property, Category( "Stats" )] public float MaxHealth { get; set; } = 100;
+	[Property, Sync, Category( "Stats" )] public float Health { get; set; }
+	[Property, Sync, Category( "Stats" )] public float CameraDistance { get; set; }
+
 	public static Player Local
 	{
 		get
@@ -38,6 +42,8 @@ public class Player : Component
 		}
 	}
 	private static Player _local;
+
+	public Client Client { get; set; }
 
 	[Sync]
 	public Angles EyeAngles { get; set; }
