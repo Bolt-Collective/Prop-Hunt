@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 
 public sealed class GameManager : Component, Component.INetworkListener
@@ -9,6 +8,9 @@ public sealed class GameManager : Component, Component.INetworkListener
 
 	[Property]
 	public GameObject PlayerPrefab { get; set; }
+
+	[Property]
+	public GameObject PlayerClientPrefab { get; set; }
 
 	protected override void OnUpdate()
 	{
@@ -35,6 +37,11 @@ public sealed class GameManager : Component, Component.INetworkListener
 
 		// Spawn this object and make the client the owner
 		var playerGo = PlayerPrefab.Clone( new CloneConfig { Name = $"Player - {channel.DisplayName}", StartEnabled = true, Transform = startLocation } );
+		var playerClient = PlayerClientPrefab.Clone( new CloneConfig { Name = $"Client - {channel.DisplayName}", StartEnabled = true, Transform = startLocation } );
+
+		var player = playerGo.GetComponent<Player>();
+		player.Client = playerClient.GetComponent<Client>();
+		playerClient.NetworkSpawn( channel );
 		playerGo.NetworkSpawn( channel );
 	}
 
