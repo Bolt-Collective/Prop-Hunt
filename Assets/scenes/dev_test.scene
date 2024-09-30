@@ -12,8 +12,11 @@
           "__type": "Sandbox.MapInstance",
           "__guid": "6a6b4de1-992e-46e3-9ab1-eeed2fd51345",
           "__version": 1,
+          "EnableCollision": true,
           "MapName": "voximity.flat_plane",
           "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": true
         }
       ],
@@ -77,6 +80,7 @@
           "__type": "Sandbox.Tonemapping",
           "__guid": "79040031-58c2-4b4c-89cc-ad39a1a680f7",
           "__version": 1,
+          "AutoExposureEnabled": true,
           "ExposureBias": 2,
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
@@ -93,16 +97,10 @@
         {
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "757a5d18-af25-4603-bec4-618062cd02f4",
-          "__enabled": false,
+          "FalloffDistance": 1,
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
-        },
-        {
-          "__type": "BlindPostprocess",
-          "__guid": "3e749aae-6d11-493e-8730-ad060fd00e67",
-          "color": "0,0,0,1",
-          "UseBlind": false
         }
       ]
     },
@@ -119,22 +117,8 @@
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
           "ZIndex": 100
-        },
-        {
-          "__type": "PropHuntUI",
-          "__guid": "1c421dcd-659a-4f54-8aa6-4f1c82de07d7",
-          "ShowMapVoting": false
-        },
-        {
-          "__type": "DevUi",
-          "__guid": "b6f65b6c-7897-4323-8015-183d19d4b5fc",
-          "__enabled": false,
-          "AllowedSteamIds": [
-            76561199001645276,
-            76561198043979097
-          ],
-          "MyStringValue": "Hello, I am playing in the dev client, I\u0027m currently testing new things for the game! But what comes with that is there could be issues. So if you wish to play the game. Leave and join another lobby. Thanks for playing"
         }
       ],
       "Children": [
@@ -142,7 +126,6 @@
           "__guid": "772ab9a4-f4c7-4563-bfec-e6d83c0b2687",
           "Flags": 0,
           "Name": "Chat",
-          "Position": "0,0,0",
           "Enabled": true,
           "NetworkMode": 1,
           "Components": [
@@ -156,7 +139,6 @@
           "__guid": "04171618-8382-40ab-87c4-4586355629ab",
           "Flags": 0,
           "Name": "PauseMenu",
-          "Position": "0,0,0",
           "Enabled": true,
           "NetworkMode": 1,
           "Components": [
@@ -170,7 +152,6 @@
           "__guid": "9ad42cb3-a10e-49be-ba34-9a6f2bb552a3",
           "Flags": 0,
           "Name": "Voting Ui",
-          "Position": "0,0,0",
           "Enabled": true,
           "Components": [
             {
@@ -190,116 +171,13 @@
       "NetworkMode": 1,
       "Components": [
         {
-          "__type": "PropHunt.PropHuntManager",
-          "__guid": "66ed7791-b6f3-4518-baa6-43c4c2f60702",
-          "HuntersWinSound": "sounds/ui/hunters_win.sound",
-          "LobbySettings": {
-            "ForcedTauntTime": 60,
-            "TauntCoolDownTime": 10,
-            "PreRoundTime": 30,
-            "RoundTime": 360,
-            "PlayersNeededToStart": 2,
-            "HunterPropGrabMode": "Off",
-            "BleedAmount": 10,
-            "RoundCount": 6,
-            "AllowMapVoting": true,
-            "HunterHealth": 100,
-            "PropHealth": 100
-          },
-          "MaxPlayersToStart": 2,
-          "NotificationSound": "sounds/ui/cymbal.sound",
-          "OnePropLeftSound": "sounds/ui/one_prop_left.sound",
-          "OnGoingRound": false,
-          "PauseRoundState": false,
-          "PropsWinSound": "sounds/ui/hiders_win.sound",
-          "RoundLength": 360,
-          "RoundNumber": 0,
-          "RoundState": "None",
-          "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
-          "Votes": {}
-        }
-      ]
-    },
-    {
-      "__guid": "6f30d21a-7f40-4432-b2dc-8b07ee10d343",
-      "Flags": 0,
-      "Name": "NetworkManager",
-      "Position": "-37.26694,-4.443787,96.23308",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "PropHunt.Network",
-          "__guid": "62b787ed-dcf6-4f8b-b98b-b6d9b2539573",
-          "CustomSpawnPoints": false,
+          "__type": "GameManager",
+          "__guid": "44fd523b-eadf-4c4e-a128-e81507bd370d",
           "PlayerPrefab": {
             "_type": "gameobject",
-            "prefab": "prefabs/player2.prefab"
+            "prefab": "prefabs/ph_player.prefab"
           },
-          "Spawns": [],
           "StartServer": true
-        }
-      ]
-    },
-    {
-      "__guid": "3075776f-6572-4b5c-9c58-073a0ee7b202",
-      "Flags": 0,
-      "Name": "Map Changer",
-      "Position": "187.3595,-168.6434,52.85176",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "PropHunt.MapChanger",
-          "__guid": "ffb0fc79-84dc-42aa-8af6-ade858e57fc0",
-          "customMapActions": [
-            {
-              "OnSceneStart": {
-                "__version": 7,
-                "__guid": "43a5e6e8-33b7-4398-97d9-f978533ef456",
-                "UserData": {
-                  "Title": "On Scene Start",
-                  "ReferencedComponentTypes": []
-                },
-                "Variables": [],
-                "Nodes": [
-                  {
-                    "Id": 1,
-                    "Type": "input",
-                    "UserData": {
-                      "Position": "-16,32"
-                    }
-                  },
-                  {
-                    "Id": 3,
-                    "Type": "call",
-                    "Properties": {
-                      "_type": "PropHunt.MapChanger",
-                      "_isStatic": false,
-                      "_name": "CreateGnomeFigPostprocess"
-                    },
-                    "UserData": {
-                      "Position": "256,32"
-                    }
-                  }
-                ],
-                "Links": [
-                  {
-                    "SrcId": 1,
-                    "SrcName": "mapChanger",
-                    "DstId": 3,
-                    "DstName": "_target"
-                  }
-                ]
-              },
-              "MapIndent": "gnomefig.office"
-            }
-          ],
-          "MapInstance": {
-            "_type": "component",
-            "component_id": "6a6b4de1-992e-46e3-9ab1-eeed2fd51345",
-            "go": "cff6a43e-a7ba-44cc-b1d3-e325b8421621",
-            "component_type": "MapInstance"
-          }
         }
       ]
     },
@@ -317,6 +195,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "models/electronics/washing_machine/washingmachine.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -335,6 +214,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "models/props/beer_keg/beer_keg_a1.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -353,6 +233,7 @@
           "Health": 1,
           "IsStatic": false,
           "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -371,6 +252,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "props/models/food/item_drink_beer_lod0_merge_.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -389,6 +271,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "models/props/beer_keg/beer_cask.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -407,6 +290,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "models/props/beer_keg/beer_keg_a2.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -425,6 +309,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "models/froggychair/froggychair.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -443,6 +328,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "entities/modular_vehicle/wheel_a.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -461,6 +347,7 @@
           "Health": 0,
           "IsStatic": false,
           "Model": "models/items/minimal_set/minimal_chair.vmdl",
+          "StartAsleep": false,
           "Tint": "1,1,1,1"
         }
       ]
@@ -477,6 +364,12 @@
           "__guid": "adb9c6cf-70d0-4450-bc3a-2b342580e0d1",
           "BodyGroups": 18446744073709551615,
           "Model": "models/rust_props/black_bin/blackbin.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,1,1,1"
         },
@@ -494,8 +387,10 @@
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassCenterOverride": "0,0,0",
           "MassOverride": 0,
           "MotionEnabled": true,
+          "OverrideMassCenter": false,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
@@ -538,5 +433,6 @@
     "mapperskai.item_drink_beer_lod0_merge_",
     "rust.wheel_a"
   ],
+  "IsValid": true,
   "__version": 1
 }

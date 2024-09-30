@@ -1,5 +1,3 @@
-using Sandbox;
-
 public sealed class DeathTrigger : Component, Component.ITriggerListener
 {
 	protected override void OnUpdate()
@@ -11,7 +9,7 @@ public sealed class DeathTrigger : Component, Component.ITriggerListener
 	{
 		if ( other.GameObject.Components.TryGet<Player>( out var player, FindMode.EverythingInSelfAndParent ) )
 		{
-			player.TakeDamage( 1000 );
+			//player.TakeDamage( 1000 );
 		}
 	}
 
