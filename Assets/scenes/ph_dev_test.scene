@@ -168,11 +168,14 @@
       "Name": "GameManager",
       "Position": "-413.6376,843.2293,265.7083",
       "Enabled": true,
-      "NetworkMode": 1,
       "Components": [
         {
           "__type": "GameManager",
           "__guid": "44fd523b-eadf-4c4e-a128-e81507bd370d",
+          "PlayerClientPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/ph_player_client.prefab"
+          },
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/ph_player.prefab"
@@ -187,6 +190,9 @@
       "Name": "washingmachine",
       "Position": "305.1384,-55.20697,24.04966",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -206,6 +212,9 @@
       "Name": "beer_keg_a1",
       "Position": "233.3754,73.31073,0.00002589165",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -225,6 +234,9 @@
       "Name": "beer_bottle",
       "Position": "234.3484,2.737701,0.03397867",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -244,6 +256,9 @@
       "Name": "item_drink_beer_lod0_merge_",
       "Position": "206.3894,-53.53625,0.0000008330449",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -263,6 +278,9 @@
       "Name": "beer_cask",
       "Position": "142.639,70.19672,0.00001096318",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -282,6 +300,9 @@
       "Name": "beer_keg_a2",
       "Position": "152.561,-12.42368,0.00002000708",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -301,6 +322,9 @@
       "Name": "froggychair",
       "Position": "329.1611,-142.3493,0.000001394328",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -320,6 +344,9 @@
       "Name": "wheel_a",
       "Position": "282.2074,-99.60956,14.13453",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -339,6 +366,9 @@
       "Name": "minimal_chair",
       "Position": "216.4073,-113.8031,0.03824244",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.Prop",
@@ -358,6 +388,9 @@
       "Name": "blackbin",
       "Position": "210.6614,-205.5232,42.9018",
       "Enabled": true,
+      "NetworkMode": 1,
+      "NetworkOrphaned": 3,
+      "OwnerTransfer": 0,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -422,16 +455,16 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "dan.froggychair",
-    "facepunch.beer_bottle",
-    "facepunch.beer_cask",
-    "facepunch.beer_keg_a1",
-    "facepunch.beer_keg_a2",
-    "facepunch.blackbin",
-    "frogpond.washingmachine",
-    "luke.minimal_chair",
-    "mapperskai.item_drink_beer_lod0_merge_",
-    "rust.wheel_a"
+    "dan.froggychair#1600",
+    "facepunch.beer_bottle#33584",
+    "facepunch.beer_cask#28811",
+    "facepunch.beer_keg_a1#28826",
+    "facepunch.beer_keg_a2#28829",
+    "facepunch.blackbin#10968",
+    "frogpond.washingmachine#12962",
+    "luke.minimal_chair#22927",
+    "mapperskai.item_drink_beer_lod0_merge_#28025",
+    "rust.wheel_a#26721"
   ],
   "IsValid": true,
   "__version": 1

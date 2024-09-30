@@ -217,7 +217,7 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager"
+    "bolt.prophuntmanager#59733"
   ],
   "__version": 1
 }

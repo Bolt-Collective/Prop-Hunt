@@ -13,9 +13,32 @@
           "_type": "gameobject",
           "go": "087b8f5c-ff0a-4790-9b77-d2f062c0aaaf"
         },
+        "CameraDistance": 0,
         "DuckSpeed": 50,
+        "Health": 0,
         "JumpStrength": 350,
+        "MaxHealth": 100,
         "WalkSpeed": 225
+      },
+      {
+        "__type": "PlayerFootsteps",
+        "__guid": "ae83b3b5-4049-4580-b209-ac4cec3db580",
+        "Source": {
+          "_type": "component",
+          "component_id": "b0e4a3d8-1ca1-4a11-8d6a-d6e32775f70d",
+          "go": "087b8f5c-ff0a-4790-9b77-d2f062c0aaaf",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "PlayerDresser",
+        "__guid": "c0e0d1ac-7c6e-4e65-82b6-90832d016bfa",
+        "BodyRenderer": {
+          "_type": "component",
+          "component_id": "b0e4a3d8-1ca1-4a11-8d6a-d6e32775f70d",
+          "go": "087b8f5c-ff0a-4790-9b77-d2f062c0aaaf",
+          "component_type": "SkinnedModelRenderer"
+        }
       },
       {
         "__type": "Inventory",
