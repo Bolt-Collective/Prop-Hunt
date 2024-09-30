@@ -765,8 +765,8 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager",
-    "facepunch.v_m9bayonet"
+    "bolt.prophuntmanager#59733",
+    "facepunch.v_m9bayonet#59684"
   ],
   "__version": 1
 }

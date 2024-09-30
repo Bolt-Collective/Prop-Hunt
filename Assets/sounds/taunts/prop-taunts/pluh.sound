@@ -13,7 +13,7 @@
   "OcclusionRadius": 64,
   "DistanceAttenuation": false,
   "__references": [
-    "bolt.prophuntmanager"
+    "bolt.prophuntmanager#59733"
   ],
   "__version": 0
 }
