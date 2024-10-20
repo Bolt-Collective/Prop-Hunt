@@ -28,7 +28,6 @@ public class Player : Component
 
 	[Property, Category( "Stats" )] public float MaxHealth { get; set; } = 100;
 	[Property, Sync, Category( "Stats" )] public float Health { get; set; }
-	[Property, Sync, Category( "Stats" )] public float CameraDistance { get; set; }
 
 	public static Player Local
 	{
@@ -47,6 +46,34 @@ public class Player : Component
 
 	[Sync]
 	public Angles EyeAngles { get; set; }
+
+	[Property] public float CameraDistance { get; set; } = 0f;
+	public bool IsFirstPerson => CameraDistance == 0f;
+
+	/// <summary>
+	/// Constructs a ray using the camera's GameObject
+	/// </summary>
+	public Ray AimRay
+	{
+		get
+		{
+			if ( Camera.IsValid() )
+			{
+				return new( Camera.WorldPosition + Camera.WorldRotation.Forward, Camera.WorldRotation.Forward );
+			}
+
+			return new( WorldPosition + Vector3.Up * 64f, EyeAngles.ToRotation().Forward );
+		}
+	}
+
+	[Broadcast]
+	public void Respawn()
+	{
+		if ( IsProxy )
+			return;
+
+		Health = MaxHealth;
+	}
 
 	protected override void OnStart()
 	{
@@ -97,19 +124,46 @@ public class Player : Component
 		e.pitch = e.pitch.Clamp( -90, 90 );
 		e.roll = 0.0f;
 		EyeAngles = e;
+
+		if ( !Input.Down( "Menu" ) )
+		{
+			CameraDistance = Math.Clamp( CameraDistance - Input.MouseWheel.y * 32f, 0f, 256f );
+		}
 	}
 
 	private void UpdateCamera()
 	{
-		Camera.Transform.Rotation = EyeAngles.ToRotation();
-		Camera.Transform.LocalPosition = Transform.Position + new Vector3( 0, 0, 64 );
+		/*		Camera.WorldRotation = EyeAngles.ToRotation();
+				Camera.LocalPosition = WorldPosition + new Vector3( 0, 0, 64 );*/
+
+		var targetCameraPos = Transform.Position + new Vector3( 0, 0, 64 );
+
+		if ( CameraDistance > 0 )
+		{
+			var tr = Scene.Trace.Ray( targetCameraPos, targetCameraPos + (EyeAngles.Forward * -CameraDistance) )
+				.WithoutTags( "player", "trigger" )
+				.Run();
+
+			if ( tr.Hit )
+			{
+				targetCameraPos = tr.HitPosition.LerpTo( targetCameraPos, RealTime.Delta * 5 );
+			}
+			else
+			{
+				targetCameraPos = tr.EndPosition;
+			}
+		}
+
+		Camera.LocalPosition = targetCameraPos;
+		Camera.WorldRotation = EyeAngles.ToRotation();
+		Camera.FieldOfView = Preferences.FieldOfView;
 	}
 	private void UpdateBodyVisibility()
 	{
 		if ( !AnimationHelper.IsValid() )
 			return;
 
-		var renderType = (!IsProxy) ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+		var renderType = (!IsProxy && IsFirstPerson) ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
 
 		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
@@ -136,7 +190,7 @@ public class Player : Component
 
 		UpdateAnimation();
 
-		Body.Transform.Rotation = Rotation.Slerp( Body.Transform.Rotation, Rotation.FromYaw( EyeAngles.yaw ), Time.Delta * 5f );
+		Body.WorldRotation = Rotation.Slerp( Body.WorldRotation, Rotation.FromYaw( EyeAngles.yaw ), Time.Delta * 5f );
 	}
 
 

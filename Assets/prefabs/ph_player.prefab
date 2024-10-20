@@ -94,6 +94,10 @@
         "TraceWidth": 16,
         "UnstuckEnabled": true,
         "UseSceneGravity": true
+      },
+      {
+        "__type": "PropShifting",
+        "__guid": "fa8cf9e5-a601-4bdd-b7ea-dd14181e434b"
       }
     ],
     "Children": [

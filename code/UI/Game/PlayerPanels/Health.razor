@@ -1,0 +1,15 @@
+﻿@using Sandbox.UI;
+@inherits Panel
+
+<root>
+	<h1>+ @Player.Local?.Health</h1>
+</root>
+
+
+@code
+{
+	protected override int BuildHash()
+	{
+		return Player.Local.Health.GetHashCode();
+	}
+}

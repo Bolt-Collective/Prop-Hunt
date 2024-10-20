@@ -39,8 +39,12 @@ public sealed class GameManager : Component, Component.INetworkListener
 		var playerGo = PlayerPrefab.Clone( new CloneConfig { Name = $"Player - {channel.DisplayName}", StartEnabled = true, Transform = startLocation } );
 		var playerClient = PlayerClientPrefab.Clone( new CloneConfig { Name = $"Client - {channel.DisplayName}", StartEnabled = true, Transform = startLocation } );
 
+		channel.CanRefreshObjects = true;
+		channel.CanSpawnObjects = true;
+
 		var player = playerGo.GetComponent<Player>();
 		player.Client = playerClient.GetComponent<Client>();
+		player.Respawn();
 		playerClient.NetworkSpawn( channel );
 		playerGo.NetworkSpawn( channel );
 	}

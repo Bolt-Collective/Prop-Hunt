@@ -2,92 +2,51 @@
   "__guid": "e9b62b92-b700-45b7-8e0d-5cc56f9bac7a",
   "GameObjects": [
     {
-      "__guid": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
+      "__guid": "5547b84c-69bb-4b08-8ea8-4d062795507a",
       "Flags": 0,
-      "Name": "Map",
-      "Tags": "world",
+      "Name": "GameManager",
+      "Position": "-413.6376,843.2293,265.7083",
       "Enabled": true,
       "Components": [
         {
-          "__type": "CustomMapLoader",
-          "__guid": "59aab38b-2349-4748-9a13-a225e9cd11dc",
-          "__version": 1,
-          "EnableCollision": true,
-          "MapName": "twinsd.prop_hunt_home",
-          "NoOrigin": false,
-          "OnMapLoaded": null,
-          "OnMapUnloaded": null,
-          "UseMapFromLaunch": true
-        }
-      ],
-      "Children": []
-    },
-    {
-      "__guid": "5fcf5844-f8e2-472d-8be3-ab01a93ded4c",
-      "Flags": 0,
-      "Name": "Map Changer",
-      "Position": "187.3595,-168.6434,52.85176",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "PropHunt.MapChanger",
-          "__guid": "e02f8041-01d4-40fa-8f2d-e95b86355d24",
-          "customMapActions": [
-            {
-              "OnSceneStart": {
-                "__version": 8,
-                "__guid": "ebefba16-8750-437b-89e6-4d1ab7f1c79b",
-                "__changeId": 0,
-                "UserData": {
-                  "Title": "On Scene Start",
-                  "ReferencedComponentTypes": []
-                },
-                "Variables": [],
-                "Nodes": [
-                  {
-                    "Id": 1,
-                    "Type": "input",
-                    "UserData": {
-                      "Position": "-16,32"
-                    }
-                  },
-                  {
-                    "Id": 3,
-                    "Type": "call",
-                    "Properties": {
-                      "_isStatic": false,
-                      "_type": "PropHunt.MapChanger",
-                      "_name": "CreateGnomeFigPostprocess"
-                    },
-                    "UserData": {
-                      "Position": "256,32"
-                    }
-                  }
-                ],
-                "Links": [
-                  {
-                    "SrcId": 1,
-                    "SrcName": "mapChanger",
-                    "DstId": 3,
-                    "DstName": "_target"
-                  }
-                ]
-              },
-              "MapIndent": "gnomefig.office"
-            }
-          ],
-          "MapInstance": {
-            "_type": "component",
-            "component_id": "59aab38b-2349-4748-9a13-a225e9cd11dc",
-            "go": "3b4b82e1-34c1-4f4b-986f-b7e279fe7c95",
-            "component_type": "CustomMapLoader"
-          }
+          "__type": "GameManager",
+          "__guid": "e3c5d210-89d7-4378-920d-fb6bb5ca0fb4",
+          "PlayerClientPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/ph_player_client.prefab"
+          },
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/ph_player.prefab"
+          },
+          "StartServer": true
         }
       ]
     },
     {
-      "__guid": "be43cb37-c16b-4c1c-8c3b-25027a294a5a",
+      "__guid": "0ca4f65f-de3b-43ea-b9b9-2233f45cafa8",
+      "Flags": 0,
+      "Name": "Ui",
+      "Position": "-6.25499,-267.7513,221.1104",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "af42e9fe-ff38-4ed6-bc7a-49443d5600fa",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "ZIndex": 100
+        },
+        {
+          "__type": "Sandbox.GameUI",
+          "__guid": "3b4ba6c3-6103-41ee-ba64-aa5f55db6eab"
+        }
+      ]
+    },
+    {
+      "__guid": "88953de1-4459-43fa-a1df-827dce15f500",
       "Flags": 0,
       "Name": "Camera",
       "Position": "-267.452,-379.653,297.7903",
@@ -96,7 +55,7 @@
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
-          "__guid": "9bcd10ab-049f-429f-ba67-4dff5ca29772",
+          "__guid": "3d3aaa2a-1aba-471d-8b04-c063a3b724ff",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
           "FieldOfView": 95.27,
@@ -113,7 +72,7 @@
         },
         {
           "__type": "Sandbox.Bloom",
-          "__guid": "fc404c3d-1454-4330-9b6c-e5f2cef4cfbe",
+          "__guid": "6d2aaf60-da58-46cf-ac44-b71617a55870",
           "BloomColor": {
             "color": [
               {
@@ -142,172 +101,64 @@
         },
         {
           "__type": "Sandbox.Tonemapping",
-          "__guid": "8c7f80db-0ad0-4325-a43d-a78118a7b4f5",
+          "__guid": "1decf029-7856-4229-ae4a-398a43b4a105",
           "__version": 1,
           "AutoExposureEnabled": true,
           "ExposureBias": 2,
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
-          "MaximumExposure": 2,
-          "MinimumExposure": 1,
+          "MaximumExposure": 5,
+          "MinimumExposure": 1.23,
           "Mode": "Legacy",
           "Rate": 1
         },
         {
           "__type": "Sandbox.Sharpen",
-          "__guid": "3987301e-cb86-4939-b0ca-c0fcf4f1cb0e",
+          "__guid": "8ea88247-1a23-4b87-96cf-dbee46c59cec",
           "Scale": 0.2
         },
         {
           "__type": "Sandbox.AmbientOcclusion",
-          "__guid": "8896749b-d477-4160-8df7-50aabccdb34b",
+          "__guid": "ac5acb30-06f8-453a-9759-b13ef29e5dcf",
           "FalloffDistance": 1,
           "Intensity": 8,
           "Quality": "High",
           "Radius": 32
         },
         {
-          "__type": "BlindPostprocess",
-          "__guid": "6ac50cd5-28de-47ec-a1c0-4b0ac8e6455b",
-          "color": "0,0,0,1",
-          "UseBlind": false
+          "__type": "Sandbox.Highlight",
+          "__guid": "6c30b5c8-af79-43cb-8615-ecf0ec206508"
+        },
+        {
+          "__type": "Sandbox.ColorAdjustments",
+          "__guid": "5b8e45f4-be3c-4f8b-9031-56fcce7c6997",
+          "Brightness": 1,
+          "Contrast": 1,
+          "HueRotate": 0,
+          "Saturation": 1.05
         }
       ]
     },
     {
-      "__guid": "db397682-adf3-44df-95c8-b96eb421601b",
+      "__guid": "36e17043-13f4-4ea0-aef2-6a47c9f5c4c8",
       "Flags": 0,
-      "Name": "Ui",
-      "Position": "-6.25499,-267.7513,221.1104",
+      "Name": "Map",
+      "Tags": "world",
       "Enabled": true,
       "Components": [
         {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "65966290-ac00-429a-8523-a38925f378ac",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ScaleStrategy": "ConsistentHeight",
-          "ZIndex": 100
-        },
-        {
-          "__type": "PropHuntUI",
-          "__guid": "6198673f-3d13-4c58-826f-76993e57daa9",
-          "ShowMapVoting": false
+          "__type": "CustomMapInstance",
+          "__guid": "418016c4-154d-43d0-9344-e18069137e40",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "thieves.ph_assault",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
         }
       ],
-      "Children": [
-        {
-          "__guid": "808d5494-4d51-4174-96a4-df46d857404b",
-          "Flags": 0,
-          "Name": "Chat",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "NetworkMode": 1,
-          "Components": [
-            {
-              "__type": "ChatBox",
-              "__guid": "ec522b07-e1bc-4d62-b0b8-f5c088183cc9"
-            }
-          ]
-        },
-        {
-          "__guid": "4138e17e-25a3-415f-9c94-f3021302dc4a",
-          "Flags": 0,
-          "Name": "PauseMenu",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "NetworkMode": 1,
-          "Components": [
-            {
-              "__type": "Sandbox.UI.PauseMenuUi",
-              "__guid": "8e7700a5-2521-4c24-877b-bef8fe35f4ba"
-            }
-          ]
-        },
-        {
-          "__guid": "121a454b-03ff-453b-ac82-8f6a0ccb5f44",
-          "Flags": 0,
-          "Name": "Voting Ui",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "VotingUi",
-              "__guid": "fc9f13af-2259-41a7-8ab2-0b97ae13e2a1"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "__guid": "1ffeefdf-8655-452b-afaa-46f09e044a93",
-      "Flags": 0,
-      "Name": "GameManager",
-      "Position": "-413.6376,843.2293,265.7083",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "Components": [
-        {
-          "__type": "PropHunt.PropHuntManager",
-          "__guid": "2b3d80f1-3455-437c-a622-8fc77b26e3ff",
-          "HuntersWinSound": "sounds/ui/hunters_win.sound",
-          "LobbySettings": {
-            "ForcedTauntTime": 60,
-            "TauntCoolDownTime": 10,
-            "PreRoundTime": 30,
-            "RoundTime": 360,
-            "PlayersNeededToStart": 2,
-            "HunterPropGrabMode": "Off",
-            "BleedAmount": 10,
-            "RoundCount": 6,
-            "AllowMapVoting": true,
-            "HunterHealth": 100,
-            "PropHealth": 100
-          },
-          "MaxPlayersToStart": 2,
-          "NotificationSound": "sounds/ui/cymbal.sound",
-          "OnePropLeftSound": "sounds/ui/one_prop_left.sound",
-          "OnGoingRound": false,
-          "PauseRoundState": false,
-          "PropsWinSound": "sounds/ui/hiders_win.sound",
-          "RoundLength": 360,
-          "RoundNumber": 0,
-          "RoundState": "None",
-          "TimeRunningOutSound": "sounds/ui/30_seconds.sound",
-          "TimeSinceRoundStateChanged": {
-            "Relative": 141.65352
-          },
-          "Votes": {}
-        }
-      ]
-    },
-    {
-      "__guid": "e4de1e5d-20bc-4e4a-af6d-73f5b4d35dd7",
-      "Flags": 0,
-      "Name": "NetworkManager",
-      "Position": "-37.26694,-4.443787,96.23308",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "PropHunt.Network",
-          "__guid": "51390f44-0af0-4b24-be22-e0296c99d3dd",
-          "PlayerWhitelist": [
-            76561198043979097,
-            76561199001645276,
-            76561199407136830
-          ],
-          "CustomSpawnPoints": false,
-          "DevMode": false,
-          "MenuScene": "scenes/ph_menu.scene",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/player2.prefab"
-          },
-          "Spawns": [],
-          "StartServer": true
-        }
-      ]
+      "Children": []
     }
   ],
   "SceneProperties": {
@@ -315,6 +166,7 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
@@ -335,5 +187,6 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [],
+  "IsValid": true,
   "__version": 1
 }
