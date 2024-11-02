@@ -2,140 +2,17 @@
   "__guid": "e9b62b92-b700-45b7-8e0d-5cc56f9bac7a",
   "GameObjects": [
     {
-      "__guid": "5547b84c-69bb-4b08-8ea8-4d062795507a",
+      "__guid": "03368b70-7866-4c45-bc64-ba5df0b8ee2b",
       "Flags": 0,
-      "Name": "GameManager",
-      "Position": "-413.6376,843.2293,265.7083",
+      "Name": "Scene Information",
       "Enabled": true,
       "Components": [
         {
-          "__type": "GameManager",
-          "__guid": "e3c5d210-89d7-4378-920d-fb6bb5ca0fb4",
-          "PlayerClientPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/ph_player_client.prefab"
-          },
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/ph_player.prefab"
-          },
-          "StartServer": true
-        }
-      ]
-    },
-    {
-      "__guid": "0ca4f65f-de3b-43ea-b9b9-2233f45cafa8",
-      "Flags": 0,
-      "Name": "Ui",
-      "Position": "-6.25499,-267.7513,221.1104",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "af42e9fe-ff38-4ed6-bc7a-49443d5600fa",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ScaleStrategy": "ConsistentHeight",
-          "ZIndex": 100
-        },
-        {
-          "__type": "Sandbox.GameUI",
-          "__guid": "3b4ba6c3-6103-41ee-ba64-aa5f55db6eab"
-        }
-      ]
-    },
-    {
-      "__guid": "88953de1-4459-43fa-a1df-827dce15f500",
-      "Flags": 0,
-      "Name": "Camera",
-      "Position": "-267.452,-379.653,297.7903",
-      "Rotation": "-0.01075258,0.05637258,0.1870547,0.9806718",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "3d3aaa2a-1aba-471d-8b04-c063a3b724ff",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 95.27,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 5
-        },
-        {
-          "__type": "Sandbox.Bloom",
-          "__guid": "6d2aaf60-da58-46cf-ac44-b71617a55870",
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "BloomCurve": [
-            {
-              "y": 0.5
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Mode": "Additive",
-          "Strength": 0.5,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0.5
-        },
-        {
-          "__type": "Sandbox.Tonemapping",
-          "__guid": "1decf029-7856-4229-ae4a-398a43b4a105",
-          "__version": 1,
-          "AutoExposureEnabled": true,
-          "ExposureBias": 2,
-          "ExposureCompensation": 0,
-          "ExposureMethod": "RGB",
-          "MaximumExposure": 5,
-          "MinimumExposure": 1.23,
-          "Mode": "Legacy",
-          "Rate": 1
-        },
-        {
-          "__type": "Sandbox.Sharpen",
-          "__guid": "8ea88247-1a23-4b87-96cf-dbee46c59cec",
-          "Scale": 0.2
-        },
-        {
-          "__type": "Sandbox.AmbientOcclusion",
-          "__guid": "ac5acb30-06f8-453a-9759-b13ef29e5dcf",
-          "FalloffDistance": 1,
-          "Intensity": 8,
-          "Quality": "High",
-          "Radius": 32
-        },
-        {
-          "__type": "Sandbox.Highlight",
-          "__guid": "6c30b5c8-af79-43cb-8615-ecf0ec206508"
-        },
-        {
-          "__type": "Sandbox.ColorAdjustments",
-          "__guid": "5b8e45f4-be3c-4f8b-9031-56fcce7c6997",
-          "Brightness": 1,
-          "Contrast": 1,
-          "HueRotate": 0,
-          "Saturation": 1.05
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "3110de41-af56-4756-aacb-325c265d9f93",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "map"
         }
       ]
     },
@@ -170,6 +47,9 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "map"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -183,10 +63,9 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "map",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [],
-  "IsValid": true,
-  "__version": 1
+  "__version": 2
 }
