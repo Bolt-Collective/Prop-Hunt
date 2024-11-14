@@ -24,6 +24,7 @@
     "CsProjName": "",
     "StartupScene": "scenes/ph_menu.scene",
     "ControlModes": {},
-    "LaunchMode": "Normal"
+    "LaunchMode": "Normal",
+    "MapStartupScene": "scenes/ph_map.scene"
   }
 }

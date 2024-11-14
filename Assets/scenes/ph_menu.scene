@@ -2,6 +2,21 @@
   "__guid": "9a98c900-887e-4b39-bd67-e3e87659cc34",
   "GameObjects": [
     {
+      "__guid": "95f62c8a-98f1-4573-a97b-d7f259c3d35c",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "9d7c705a-07d8-415e-a28c-a6a49c78e4c5",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "Menu"
+        }
+      ]
+    },
+    {
       "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
       "Flags": 0,
       "Name": "radio",
@@ -14,15 +29,33 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "54d30adb-f478-4479-a842-808ff46684de",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "Model": "models/3dmodelscc0/gadgetselectronics/radio/radio.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
           "RenderType": "On",
           "Tint": "1,1,1,1"
         },
         {
           "__type": "Sandbox.SoundPointComponent",
           "__guid": "241f47ee-2ba5-415f-8bb3-484a2d2f1615",
+          "Distance": 512,
           "DistanceAttenuation": false,
           "DistanceAttenuationOverride": false,
+          "Falloff": [
+            {
+              "y": 1,
+              "in": 3.1415927,
+              "out": -3.1415927
+            },
+            {
+              "x": 1
+            }
+          ],
           "Force2d": false,
           "MaxRepeatTime": 1,
           "MinRepeatTime": 1,
@@ -48,7 +81,8 @@
           "__guid": "312a8b1d-4548-4860-9377-4f5e99d729f4",
           "IsTrigger": false,
           "Model": "models/3dmodelscc0/gadgetselectronics/radio/radio.vmdl",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.Rigidbody",
@@ -79,29 +113,13 @@
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
           "ZIndex": 100
         },
         {
-          "__type": "MenuUi",
-          "__guid": "4f81d37d-14e5-4319-a433-2ec32d1f1451",
-          "minPlayers": 2,
-          "GameScene": "scenes/map.scene",
-          "lobbySettings": {
-            "ForcedTauntTime": 60,
-            "TauntCoolDownTime": 10,
-            "PreRoundTime": 30,
-            "RoundTime": 360,
-            "PlayersNeededToStart": 2,
-            "HunterPropGrabMode": "Off",
-            "BleedAmount": 10,
-            "RoundCount": 6,
-            "AllowMapVoting": true,
-            "HunterHealth": 100,
-            "PropHealth": 100
-          },
-          "Refreshing": false,
-          "ShowMapList": false,
-          "ShowServerList": false
+          "__type": "Sandbox.MenuUI",
+          "__guid": "34987ae8-faf6-46d0-9fdf-991c66608a11",
+          "MyStringValue": "Hello World!"
         }
       ]
     },
@@ -134,6 +152,7 @@
           "__type": "Sandbox.Tonemapping",
           "__guid": "f683814a-c8fc-4121-95f7-2a4da932fbd3",
           "__version": 1,
+          "AutoExposureEnabled": true,
           "ExposureBias": 2,
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
@@ -186,6 +205,8 @@
           "EnableCollision": true,
           "MapName": "paths.parkcorner",
           "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
       ],
@@ -197,9 +218,13 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "Menu"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -213,11 +238,11 @@
       "IncludedBodies": ""
     }
   },
-  "Title": "new_menu",
-  "Description": "",
-  "ResourceVersion": 1,
+  "ResourceVersion": 2,
+  "Title": "Menu",
+  "Description": null,
   "__references": [
     "bolt.prophuntmanager#59733"
   ],
-  "__version": 1
+  "__version": 2
 }

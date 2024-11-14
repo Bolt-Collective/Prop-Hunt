@@ -18,6 +18,9 @@ public sealed class GameManager : GameObjectSystem<GameManager>, Component.INetw
 		// scene that we'd now be able to detect, and skip doing the stuff below.
 		//
 
+		if (Game.ActiveScene.GetComponentInChildren<SceneInformation>().Title == "Menu")
+			return;
+			
 		//
 		// Spawn the engine scene.
 		// This scene is sent to clients when they join.
