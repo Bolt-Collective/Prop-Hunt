@@ -1,5 +1,5 @@
 using Sandbox.Citizen;
-public class Player : Component
+public class Player : Component, Component.IDamageable
 {
 	[RequireComponent]
 	public ShrimpleCharacterController Controller { get; set; }
@@ -9,7 +9,7 @@ public class Player : Component
 
 	[Property]
 	public GameObject Body { get; set; }
-	public CameraComponent Camera => Scene.GetAll<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
+	public CameraComponent Camera => Scene.GetAll<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
 
 	[Property]
 	[Range( 50f, 200f, 10f )]
@@ -194,4 +194,25 @@ public class Player : Component
 	}
 
 
+	public void OnDamage( in DamageInfo damage )
+	{
+		if ( IsProxy ) return;
+		if ( Health <= 0 ) return;
+
+		Health -= damage.Damage;
+
+		if ( Health <= 0 )
+		{
+			Health = 0;
+			Death();
+		}
+	}
+	
+	void Death()
+	{
+		//CreateRagdoll();
+		//CreateRagdollAndGhost();
+
+		GameObject.Destroy();
+	}
 }
