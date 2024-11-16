@@ -20,8 +20,8 @@
       "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
       "Flags": 0,
       "Name": "radio",
-      "Position": "102,-104,3128",
-      "Rotation": "0,0,-0.9659261,-0.2588188",
+      "Position": "267.273,76.29189,89.14771",
+      "Rotation": "0,0,-0.258819,0.9659259",
       "Scale": "1.380823,1.380823,1.380823",
       "Enabled": true,
       "Components": [
@@ -117,9 +117,9 @@
           "ZIndex": 100
         },
         {
-          "__type": "Sandbox.MenuUI",
-          "__guid": "34987ae8-faf6-46d0-9fdf-991c66608a11",
-          "MyStringValue": "Hello World!"
+          "__type": "PropHunt.Menu.MenuComponent",
+          "__guid": "e001da2a-91fd-4abb-8fcc-474cb0daa2bb",
+          "GameScene": "scenes/ph_map.scene"
         }
       ]
     },
@@ -127,8 +127,8 @@
       "__guid": "d774d09a-1d4d-4c12-997f-0b2f9a797bfc",
       "Flags": 0,
       "Name": "Main Camera",
-      "Position": "32.01817,-43.26974,94.97043",
-      "Rotation": "-0.01669242,-0.04029906,-0.3823192,0.9230002",
+      "Position": "390.6201,35.88078,117.2364",
+      "Rotation": "-0.03851135,0.02048235,0.9554269,0.2919869",
       "Enabled": true,
       "Components": [
         {
@@ -136,7 +136,7 @@
           "__guid": "68db80de-2a75-433d-89cb-1f613033d541",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
-          "FieldOfView": 74.74,
+          "FieldOfView": 89.38,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 1204,
@@ -172,22 +172,19 @@
         {
           "__type": "Sandbox.CubemapFog",
           "__guid": "fb5c367a-3b98-4a04-965c-73a01df39196",
-          "Blur": 0.5,
-          "EndDistance": 4096,
-          "FalloffExponent": 1,
+          "Blur": 0,
+          "EndDistance": 4112.8994,
+          "FalloffExponent": 1.1000005,
           "HeightExponent": 2,
           "HeightStart": 2000,
           "HeightWidth": 0,
-          "StartDistance": 10,
-          "Tint": "1,1,1,1"
+          "StartDistance": -1.9000149,
+          "Tint": "0.64186,0.64186,0.64186,1"
         },
         {
-          "__type": "MenuCameraBehaviour",
-          "__guid": "713591d7-1ccc-48c2-b133-803c19ba7f63",
-          "LookAt": {
-            "_type": "gameobject",
-            "go": "f9386c16-db16-498d-bfdd-8d037c94567d"
-          }
+          "__type": "MenuCamera",
+          "__guid": "b24feaa0-91ec-420f-bca1-4dc348c267e3",
+          "TargetPosition": "390.6201,35.88078,117.2364"
         }
       ]
     },
@@ -203,9 +200,8 @@
           "__guid": "93757432-bbaf-4210-8cc0-d6b68ed83bb1",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "paths.parkcorner",
+          "MapName": "moman.apartment",
           "NoOrigin": false,
-          "OnMapLoaded": null,
           "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
@@ -244,5 +240,6 @@
   "__references": [
     "bolt.prophuntmanager#59733"
   ],
+  "HasUnsavedChanges": false,
   "__version": 2
 }

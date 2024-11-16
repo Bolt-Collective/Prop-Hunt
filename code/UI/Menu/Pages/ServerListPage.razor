@@ -1,0 +1,120 @@
+@using System.Threading.Tasks
+@using Sandbox
+@using Sandbox.Network
+@using Sandbox.UI
+
+@implements INavigatorPage
+
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="server-list">
+		<div class="navbar">
+			<div class="left">
+				<span class="button" onclick="@( () => this.Navigate("/") )">
+					<i style="padding-top: 2px">arrow_back</i>
+					Back
+				</span>
+			</div>
+			<div class="right">
+				<span class="button" onclick="@( () => CreateLobby() )">
+					<i style="padding-top: 2px">add</i>
+					<label>Create</label>
+				</span>
+				<span class="button" onclick="@( () => RefreshLobbyList() )">
+					<i style="padding-top: 2px">sync</i>
+					<label>Refresh</label>
+				</span>
+			</div>
+		</div>
+		<div class="content">
+			@foreach ( var lobby in List )
+			{
+				<div class="button" onclick=@( () => JoinLobby( lobby ) )>
+					<div class="title">
+						@lobby.Name
+					</div>
+
+					<div class="meta">
+						<div class="map">
+							@lobby.Map
+						</div>
+
+						<div class="count">
+							@lobby.Members / @lobby.MaxMembers
+						</div>
+					</div>
+				</div>
+			}
+			<div class="entry">
+				<div class="title">
+					asdasdadads
+				</div>
+
+				<div class="meta">
+					<div class="map">
+						office
+					</div>
+
+					<div class="count">
+						1 / 16
+					</div>
+				</div>
+			</div>
+			<div class="entry">
+				<div class="title">
+					asdasdadads
+				</div>
+
+				<div class="meta">
+					<div class="map">
+						office
+					</div>
+
+					<div class="count">
+						1 / 16
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</root>
+
+@code
+{
+	private bool IsRefreshing { get; set; }
+	private List<LobbyInformation> List { get; set; } = new();
+	
+	private async Task RefreshLobbyList()
+	{
+		while ( true )
+		{
+			IsRefreshing = true;
+			StateHasChanged();
+
+			List = await Networking.QueryLobbies();
+
+			IsRefreshing = false;
+			StateHasChanged();
+
+			await Task.DelayRealtimeSeconds( 5f );
+		}
+	}
+
+	private void CreateLobby()
+	{
+		//this.Navigate( "/servers/create" );
+		FindRootPanel().AddChild<CreateGameModal>();
+	}
+
+	private void JoinLobby( LobbyInformation lobby )
+	{
+		Sandbox.Networking.Connect( lobby.LobbyId );
+	}
+	
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

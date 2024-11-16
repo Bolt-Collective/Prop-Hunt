@@ -1,0 +1,27 @@
+@using PropHunt.Menu
+@using Sandbox
+@using Sandbox.UI
+@using Sandbox.Menu
+
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="game-title">
+		Prop Hunt
+	</div>
+	
+	<div class="controls">
+		<a class="button" style="width: 17%" href="/lobby">Quick Play</a>
+		<a class="button" style="width: 17%" href="/servers">Servers</a>
+		<a class="button" style="width: 17%">Settings</a>
+	</div>
+</root>
+
+@code
+{
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

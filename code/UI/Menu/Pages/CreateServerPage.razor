@@ -1,0 +1,40 @@
+@using PropHunt.Menu
+@using Sandbox
+@using Sandbox.Network
+@using Sandbox.UI
+
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="navbar">
+		<div class="left">
+				<span class="button" onclick="@( () => this.Navigate("/") )">
+					<i style="padding-top: 2px">arrow_back</i>
+					Back
+				</span>
+		</div>
+		<div class="right">
+			
+		</div>
+	</div>
+	<div class="map-select">
+		<PackageList ShowFilters="@true" Query="type:map +prophunt" OnSelected="@OnPackageSelected"></PackageList>
+	</div>
+</root>
+
+@code
+{
+	
+	private void OnPackageSelected(Package package)
+	{
+		LaunchArguments.Map = package.FullIdent;
+
+		Game.ActiveScene.Load( MenuComponent.Instance.GameScene );
+	}
+	
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}
