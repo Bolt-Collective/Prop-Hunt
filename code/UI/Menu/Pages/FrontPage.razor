@@ -12,7 +12,7 @@
 	</div>
 	
 	<div class="controls">
-		<a class="button" style="width: 17%" href="/lobby">Quick Play</a>
+		<a class="button" style="width: 17%" onclick=@( () => Networking.JoinBestLobby( Game.Ident ) )>Quick Play</a>
 		<a class="button" style="width: 17%" href="/servers">Servers</a>
 		<a class="button" style="width: 17%">Settings</a>
 	</div>

@@ -12,8 +12,6 @@
   "Transmission": false,
   "OcclusionRadius": 64,
   "DistanceAttenuation": false,
-  "__references": [
-    "bolt.prophuntmanager#59733"
-  ],
+  "__references": [],
   "__version": 0
 }

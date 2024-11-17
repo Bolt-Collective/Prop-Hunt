@@ -1,17 +1,17 @@
 {
   "publish": {
-    "Allowed": true,
     "Enabled": true,
     "ProjectConfig": {
       "Title": "Flesh Impact Big",
-      "Type": "particle",
+      "Type": "vpcf",
       "Org": "bolt",
       "Ident": "impactflesh-big",
-      "Tags": null,
       "Schema": 0,
+      "IncludeSourceFiles": false,
       "Resources": null,
       "PackageReferences": null,
       "EditorReferences": null,
+      "IsWhitelistDisabled": false,
       "Metadata": {
         "SingleAssetSource": "particles/blood_particles/impact.flesh-big.vpcf"
       }

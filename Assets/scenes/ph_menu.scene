@@ -237,9 +237,7 @@
   "ResourceVersion": 2,
   "Title": "Menu",
   "Description": null,
-  "__references": [
-    "bolt.prophuntmanager#59733"
-  ],
+  "__references": [],
   "HasUnsavedChanges": false,
   "__version": 2
 }

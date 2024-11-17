@@ -12,7 +12,7 @@
 	<div class="server-list">
 		<div class="navbar">
 			<div class="left">
-				<span class="button" onclick="@( () => this.Navigate("/") )">
+				<span class="button" onclick="@( () => this.Navigate( "/" ) )">
 					<i style="padding-top: 2px">arrow_back</i>
 					Back
 				</span>
@@ -31,7 +31,7 @@
 		<div class="content">
 			@foreach ( var lobby in List )
 			{
-				<div class="button" onclick=@( () => JoinLobby( lobby ) )>
+				<div class="entry" onclick=@( () => JoinLobby( lobby ) )>
 					<div class="title">
 						@lobby.Name
 					</div>
@@ -49,27 +49,12 @@
 			}
 			<div class="entry">
 				<div class="title">
-					asdasdadads
+					trende's server
 				</div>
 
 				<div class="meta">
 					<div class="map">
-						office
-					</div>
-
-					<div class="count">
-						1 / 16
-					</div>
-				</div>
-			</div>
-			<div class="entry">
-				<div class="title">
-					asdasdadads
-				</div>
-
-				<div class="meta">
-					<div class="map">
-						office
+						gnomefig.office
 					</div>
 
 					<div class="count">
@@ -86,6 +71,13 @@
 	private bool IsRefreshing { get; set; }
 	private List<LobbyInformation> List { get; set; } = new();
 	
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		base.OnAfterTreeRender( firstTime );
+
+		_ = RefreshLobbyList();
+	}
+
 	private async Task RefreshLobbyList()
 	{
 		while ( true )

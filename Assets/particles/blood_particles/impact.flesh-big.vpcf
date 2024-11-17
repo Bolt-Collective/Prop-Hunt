@@ -1523,7 +1523,7 @@
 				}
 			}
 			m_bFogParticles = true
-			m_hTexture = resource:"materials/blood/spray1/spray1.vtex"
+			m_hTexture = resource:"materials/blood/spray1/blood_spray_4.vtex"
 			m_bPerVertexLighting = true
 			m_bTintByGlobalLight = true
 			m_nColorBlendType = "PARTICLE_COLOR_BLEND_MIN"

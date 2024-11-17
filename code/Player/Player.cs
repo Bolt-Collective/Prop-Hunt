@@ -133,10 +133,13 @@ public class Player : Component, Component.IDamageable
 
 	private void UpdateCamera()
 	{
+		if (!IsValid)
+			return;
+		
 		/*		Camera.WorldRotation = EyeAngles.ToRotation();
 				Camera.LocalPosition = WorldPosition + new Vector3( 0, 0, 64 );*/
 
-		var targetCameraPos = Transform.Position + new Vector3( 0, 0, 64 );
+		var targetCameraPos = WorldPosition + new Vector3( 0, 0, 64 );
 
 		if ( CameraDistance > 0 )
 		{

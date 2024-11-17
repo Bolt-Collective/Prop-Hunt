@@ -1,0 +1,35 @@
+packmode flat
+sequence 0
+clamp-extendlastframe
+frame blood_spray_0.exr(0,0,255,255) blood_spray_0.exr(0,0,255,255) 1.0000
+frame blood_spray_0.exr(256,0,511,255) blood_spray_0.exr(256,0,511,255) 1.0000
+frame blood_spray_0.exr(512,0,767,255) blood_spray_0.exr(512,0,767,255) 1.0000
+frame blood_spray_0.exr(768,0,1023,255) blood_spray_0.exr(768,0,1023,255) 1.0000
+frame blood_spray_0.exr(1024,0,1279,255) blood_spray_0.exr(1024,0,1279,255) 1.0000
+frame blood_spray_0.exr(1280,0,1535,255) blood_spray_0.exr(1280,0,1535,255) 1.0000
+frame blood_spray_0.exr(1536,0,1791,255) blood_spray_0.exr(1536,0,1791,255) 1.0000
+frame blood_spray_0.exr(1792,0,2047,255) blood_spray_0.exr(1792,0,2047,255) 1.0000
+frame blood_spray_0.exr(0,256,255,511) blood_spray_0.exr(0,256,255,511) 1.0000
+frame blood_spray_0.exr(256,256,511,511) blood_spray_0.exr(256,256,511,511) 1.0000
+frame blood_spray_0.exr(512,256,767,511) blood_spray_0.exr(512,256,767,511) 1.0000
+frame blood_spray_0.exr(768,256,1023,511) blood_spray_0.exr(768,256,1023,511) 1.0000
+frame blood_spray_0.exr(1024,256,1279,511) blood_spray_0.exr(1024,256,1279,511) 1.0000
+frame blood_spray_0.exr(1280,256,1535,511) blood_spray_0.exr(1280,256,1535,511) 1.0000
+frame blood_spray_0.exr(1536,256,1791,511) blood_spray_0.exr(1536,256,1791,511) 1.0000
+frame blood_spray_0.exr(1792,256,2047,511) blood_spray_0.exr(1792,256,2047,511) 1.0000
+frame blood_spray_0.exr(0,512,255,767) blood_spray_0.exr(0,512,255,767) 1.0000
+frame blood_spray_0.exr(256,512,511,767) blood_spray_0.exr(256,512,511,767) 1.0000
+frame blood_spray_0.exr(512,512,767,767) blood_spray_0.exr(512,512,767,767) 1.0000
+frame blood_spray_0.exr(768,512,1023,767) blood_spray_0.exr(768,512,1023,767) 1.0000
+frame blood_spray_0.exr(1024,512,1279,767) blood_spray_0.exr(1024,512,1279,767) 1.0000
+frame blood_spray_0.exr(1280,512,1535,767) blood_spray_0.exr(1280,512,1535,767) 1.0000
+frame blood_spray_0.exr(1536,512,1791,767) blood_spray_0.exr(1536,512,1791,767) 1.0000
+frame blood_spray_0.exr(1792,512,2047,767) blood_spray_0.exr(1792,512,2047,767) 1.0000
+frame blood_spray_0.exr(0,768,255,1023) blood_spray_0.exr(0,768,255,1023) 1.0000
+frame blood_spray_0.exr(256,768,511,1023) blood_spray_0.exr(256,768,511,1023) 1.0000
+frame blood_spray_0.exr(512,768,767,1023) blood_spray_0.exr(512,768,767,1023) 1.0000
+frame blood_spray_0.exr(768,768,1023,1023) blood_spray_0.exr(768,768,1023,1023) 1.0000
+frame blood_spray_0.exr(1024,768,1279,1023) blood_spray_0.exr(1024,768,1279,1023) 1.0000
+frame blood_spray_0.exr(1280,768,1535,1023) blood_spray_0.exr(1280,768,1535,1023) 1.0000
+frame blood_spray_0.exr(1536,768,1791,1023) blood_spray_0.exr(1536,768,1791,1023) 1.0000
+frame blood_spray_0.exr(1792,768,2047,1023) blood_spray_0.exr(1792,768,2047,1023) 1.0000
