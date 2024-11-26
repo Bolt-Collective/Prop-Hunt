@@ -406,8 +406,6 @@
   "MenuPath": null,
   "MenuIcon": null,
   "ResourceVersion": 1,
-  "__references": [
-    "bolt.prophuntmanager"
-  ],
+  "__references": [],
   "__version": 1
 }

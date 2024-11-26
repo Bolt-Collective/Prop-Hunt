@@ -360,7 +360,7 @@
             },
             {
               "Id": 70,
-              "Value": "InParent, InAncestors, InChildren, EnabledInSelfAndDescendants",
+              "Value": "Enabled, InSelf, InParent, InAncestors, InChildren, InDescendants",
               "DstId": 48,
               "DstName": "search"
             },
@@ -738,9 +738,17 @@
                 "__type": "Sandbox.SkinnedModelRenderer",
                 "__guid": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
                 "BodyGroups": 17701,
+                "CreateAttachments": false,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
                 "Morphs": {},
+                "Parameters": {
+                  "bools": {},
+                  "ints": {},
+                  "floats": {},
+                  "vectors": {},
+                  "rotations": {}
+                },
                 "RenderOptions": {
                   "GameLayer": true,
                   "OverlayLayer": true,
@@ -748,6 +756,9 @@
                   "AfterUILayer": false
                 },
                 "RenderType": "Off",
+                "Sequence": {
+                  "Name": null
+                },
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               }
@@ -770,9 +781,17 @@
                   "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                   "component_type": "SkinnedModelRenderer"
                 },
+                "CreateAttachments": false,
                 "CreateBoneObjects": false,
                 "Model": "models/first_person/first_person_arms.vmdl",
                 "Morphs": {},
+                "Parameters": {
+                  "bools": {},
+                  "ints": {},
+                  "floats": {},
+                  "vectors": {},
+                  "rotations": {}
+                },
                 "RenderOptions": {
                   "GameLayer": true,
                   "OverlayLayer": true,
@@ -780,6 +799,9 @@
                   "AfterUILayer": false
                 },
                 "RenderType": "Off",
+                "Sequence": {
+                  "Name": null
+                },
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               }
@@ -788,7 +810,30 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
@@ -796,7 +841,8 @@
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "bolt.prophuntmanager"
+    "facepunch.v_usp#77978"
   ],
+  "IsValid": true,
   "__version": 1
 }

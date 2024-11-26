@@ -4,8 +4,6 @@
     "Flags": 0,
     "Name": "pistol",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
     "Components": [
       {
         "__type": "Weapon",
@@ -21,8 +19,9 @@
         "FireSound": "sounds/weapons/pistol/pistol_shoot.sound",
         "MaxAmmo": 10,
         "OnComponentEnabled": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "95dcf786-0fbf-454c-93bf-8be09afae244",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Component Enabled",
             "ReferencedComponentTypes": []
@@ -69,21 +68,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 9,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 10,
               "Value": "b_attack",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 11,
               "Value": false,
               "DstId": 1,
               "DstName": "value"
@@ -95,34 +92,32 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 12,
+              "Value": null,
               "DstId": 2,
               "DstName": "_target"
             },
             {
+              "Id": 13,
               "Value": "b_reload",
               "DstId": 2,
               "DstName": "v"
             },
             {
+              "Id": 14,
               "Value": false,
               "DstId": 2,
               "DstName": "value"
             }
           ],
           "Defaults": {
-            "$3._value": {
+            "$12._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
               "component_type": "SkinnedModelRenderer"
             },
-            "$6._value": {
+            "$9._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -131,8 +126,9 @@
           }
         },
         "OnComponentUpdate": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "5dc9bdb7-f127-495d-95f1-3cc7d16bdb0f",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Component Update",
             "ReferencedComponentTypes": [
@@ -279,6 +275,7 @@
               "DstName": "a"
             },
             {
+              "Id": 61,
               "Value": 0,
               "DstId": 4,
               "DstName": "b"
@@ -290,21 +287,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 62,
+              "Value": null,
               "DstId": 6,
               "DstName": "_target"
             },
             {
+              "Id": 63,
               "Value": "b_empty",
               "DstId": 6,
               "DstName": "v"
             },
             {
+              "Id": 64,
               "Value": true,
               "DstId": 6,
               "DstName": "value"
@@ -316,21 +311,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 65,
+              "Value": null,
               "DstId": 25,
               "DstName": "_target"
             },
             {
+              "Id": 66,
               "Value": "b_empty",
               "DstId": 25,
               "DstName": "v"
             },
             {
+              "Id": 67,
               "Value": false,
               "DstId": 25,
               "DstName": "value"
@@ -342,16 +335,13 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 68,
+              "Value": null,
               "DstId": 36,
               "DstName": "_target"
             },
             {
+              "Id": 69,
               "Value": "b_grounded",
               "DstId": 36,
               "DstName": "v"
@@ -369,7 +359,8 @@
               "DstName": "_target"
             },
             {
-              "Value": "InParent, InAncestors, InChildren, EnabledInSelfAndDescendants",
+              "Id": 70,
+              "Value": "Enabled, InSelf, InParent, InAncestors, InChildren, InDescendants",
               "DstId": 48,
               "DstName": "search"
             },
@@ -393,19 +384,19 @@
             }
           ],
           "Defaults": {
-            "$74._value": {
+            "$68._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
               "component_type": "SkinnedModelRenderer"
             },
-            "$77._value": {
+            "$65._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
               "component_type": "SkinnedModelRenderer"
             },
-            "$80._value": {
+            "$62._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -414,8 +405,9 @@
           }
         },
         "OnFire": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "0e51a261-fbc8-45d0-828c-620e3c7cd8d8",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Fire",
             "ReferencedComponentTypes": [
@@ -494,21 +486,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 17,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 18,
               "Value": "b_attack",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 19,
               "Value": true,
               "DstId": 1,
               "DstName": "value"
@@ -544,6 +534,7 @@
               "DstName": "a"
             },
             {
+              "Id": 20,
               "Value": 0,
               "DstId": 8,
               "DstName": "b"
@@ -555,34 +546,32 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 21,
+              "Value": null,
               "DstId": 9,
               "DstName": "_target"
             },
             {
+              "Id": 22,
               "Value": "b_attack_dry",
               "DstId": 9,
               "DstName": "v"
             },
             {
+              "Id": 23,
               "Value": true,
               "DstId": 9,
               "DstName": "value"
             }
           ],
           "Defaults": {
-            "$10._value": {
+            "$21._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
               "component_type": "SkinnedModelRenderer"
             },
-            "$14._value": {
+            "$17._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -591,8 +580,9 @@
           }
         },
         "OnPlayerJump": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "1af85756-6bc0-4285-95eb-f7a609505488",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Player Jump",
             "ReferencedComponentTypes": []
@@ -624,28 +614,26 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 5,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 6,
               "Value": "b_jump",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 7,
               "Value": true,
               "DstId": 1,
               "DstName": "value"
             }
           ],
           "Defaults": {
-            "$2._value": {
+            "$5._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -654,8 +642,9 @@
           }
         },
         "OnReload": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "1463a936-d057-4d89-9b4f-5e080102c3eb",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Reload",
             "ReferencedComponentTypes": []
@@ -687,28 +676,26 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 5,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 6,
               "Value": "b_reload",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 7,
               "Value": true,
               "DstId": 1,
               "DstName": "value"
             }
           ],
           "Defaults": {
-            "$2._value": {
+            "$5._value": {
               "_type": "component",
               "component_id": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
               "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
@@ -727,8 +714,6 @@
         "Flags": 0,
         "Name": "Viewmodel",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "ViewModel",
@@ -748,16 +733,32 @@
             "Name": "weapon",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
                 "__guid": "642aa1d5-a0a5-46d1-88e6-487cbedd2672",
-                "BodyGroups": 17701,
+                "BodyGroups": 147,
+                "CreateAttachments": false,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
+                "Morphs": {},
+                "Parameters": {
+                  "bools": {},
+                  "ints": {},
+                  "floats": {},
+                  "vectors": {},
+                  "rotations": {}
+                },
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
+                "Sequence": {
+                  "Name": null
+                },
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               }
@@ -769,8 +770,6 @@
             "Name": "arms",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -782,9 +781,27 @@
                   "go": "a264dbd1-8c70-4e15-ad32-7f8498dc65a6",
                   "component_type": "SkinnedModelRenderer"
                 },
+                "CreateAttachments": false,
                 "CreateBoneObjects": false,
                 "Model": "models/first_person/first_person_arms.vmdl",
+                "Morphs": {},
+                "Parameters": {
+                  "bools": {},
+                  "ints": {},
+                  "floats": {},
+                  "vectors": {},
+                  "rotations": {}
+                },
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
+                "Sequence": {
+                  "Name": null
+                },
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               }
@@ -793,14 +810,39 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.v_usp"
+    "facepunch.v_usp#77978"
   ],
+  "IsValid": true,
   "__version": 1
 }

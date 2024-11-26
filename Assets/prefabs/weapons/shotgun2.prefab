@@ -115,8 +115,6 @@
   "MenuIcon": null,
   "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
-  "__references": [
-    "bolt.prophuntmanager"
-  ],
+  "__references": [],
   "__version": 1
 }

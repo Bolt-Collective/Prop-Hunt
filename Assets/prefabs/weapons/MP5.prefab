@@ -4,8 +4,6 @@
     "Flags": 0,
     "Name": "mp5",
     "Enabled": true,
-    "NetworkMode": 2,
-    "NetworkInterpolation": true,
     "Components": [
       {
         "__type": "Weapon",
@@ -21,8 +19,9 @@
         "FireSound": "sounds/weapons/mp5/smg_shoot.sound",
         "MaxAmmo": 10,
         "OnComponentEnabled": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "5af09c5b-2e15-4829-bef2-9c6d8c54a61d",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Component Enabled",
             "ReferencedComponentTypes": []
@@ -69,21 +68,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 9,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 10,
               "Value": "b_attack",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 11,
               "Value": false,
               "DstId": 1,
               "DstName": "value"
@@ -95,34 +92,32 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 12,
+              "Value": null,
               "DstId": 2,
               "DstName": "_target"
             },
             {
+              "Id": 13,
               "Value": "b_reload",
               "DstId": 2,
               "DstName": "v"
             },
             {
+              "Id": 14,
               "Value": false,
               "DstId": 2,
               "DstName": "value"
             }
           ],
           "Defaults": {
-            "$3._value": {
+            "$12._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
               "component_type": "SkinnedModelRenderer"
             },
-            "$6._value": {
+            "$9._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -131,8 +126,9 @@
           }
         },
         "OnComponentUpdate": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "a53d0a2a-24da-4106-8144-c913fdce6c3a",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Component Update",
             "ReferencedComponentTypes": [
@@ -279,6 +275,7 @@
               "DstName": "a"
             },
             {
+              "Id": 61,
               "Value": 0,
               "DstId": 4,
               "DstName": "b"
@@ -290,21 +287,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 62,
+              "Value": null,
               "DstId": 6,
               "DstName": "_target"
             },
             {
+              "Id": 63,
               "Value": "b_empty",
               "DstId": 6,
               "DstName": "v"
             },
             {
+              "Id": 64,
               "Value": true,
               "DstId": 6,
               "DstName": "value"
@@ -316,21 +311,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 65,
+              "Value": null,
               "DstId": 25,
               "DstName": "_target"
             },
             {
+              "Id": 66,
               "Value": "b_empty",
               "DstId": 25,
               "DstName": "v"
             },
             {
+              "Id": 67,
               "Value": false,
               "DstId": 25,
               "DstName": "value"
@@ -342,16 +335,13 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 68,
+              "Value": null,
               "DstId": 33,
               "DstName": "_target"
             },
             {
+              "Id": 69,
               "Value": "b_grounded",
               "DstId": 33,
               "DstName": "v"
@@ -369,7 +359,8 @@
               "DstName": "_target"
             },
             {
-              "Value": "InParent, InAncestors, InChildren, EnabledInSelfAndDescendants",
+              "Id": 70,
+              "Value": "Enabled, InSelf, InParent, InAncestors, InChildren, InDescendants",
               "DstId": 48,
               "DstName": "search"
             },
@@ -393,19 +384,19 @@
             }
           ],
           "Defaults": {
-            "$65._value": {
-              "_type": "component",
-              "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-              "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-              "component_type": "SkinnedModelRenderer"
-            },
             "$68._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
               "component_type": "SkinnedModelRenderer"
             },
-            "$71._value": {
+            "$65._value": {
+              "_type": "component",
+              "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
+              "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "$62._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -414,8 +405,9 @@
           }
         },
         "OnFire": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "e2e0fd9b-290d-4ffc-b62f-182be1644bd8",
+          "__changeId": 1,
           "UserData": {
             "Title": "On Fire",
             "ReferencedComponentTypes": [
@@ -428,7 +420,7 @@
               "Id": 0,
               "Type": "input",
               "UserData": {
-                "Position": "-352,-0"
+                "Position": "-348,-0"
               }
             },
             {
@@ -440,7 +432,7 @@
                 "_isStatic": false
               },
               "UserData": {
-                "Position": "640,128"
+                "Position": "636,132"
               }
             },
             {
@@ -457,7 +449,7 @@
                 "T": "Weapon"
               },
               "UserData": {
-                "Position": "-0,176"
+                "Position": "-0,180"
               }
             },
             {
@@ -473,7 +465,7 @@
               "Id": 8,
               "Type": "op.equal",
               "UserData": {
-                "Position": "240,176"
+                "Position": "240,180"
               }
             },
             {
@@ -485,7 +477,7 @@
                 "_isStatic": false
               },
               "UserData": {
-                "Position": "640,0"
+                "Position": "636,0"
               }
             },
             {
@@ -506,7 +498,7 @@
               "Id": 18,
               "Type": "Get GameObject Id",
               "UserData": {
-                "Position": "-80,80"
+                "Position": "-84,84"
               }
             },
             {
@@ -525,21 +517,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 29,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 30,
               "Value": "b_attack",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 31,
               "Value": true,
               "DstId": 1,
               "DstName": "value"
@@ -575,6 +565,7 @@
               "DstName": "a"
             },
             {
+              "Id": 32,
               "Value": 0,
               "DstId": 8,
               "DstName": "b"
@@ -586,21 +577,19 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 33,
+              "Value": null,
               "DstId": 9,
               "DstName": "_target"
             },
             {
+              "Id": 34,
               "Value": "b_attack_dry",
               "DstId": 9,
               "DstName": "v"
             },
             {
+              "Id": 35,
               "Value": true,
               "DstId": 9,
               "DstName": "value"
@@ -618,6 +607,7 @@
               "DstName": "gameObject"
             },
             {
+              "Id": 36,
               "Value": "b_attack",
               "DstId": 19,
               "DstName": "AnimName"
@@ -629,6 +619,7 @@
               "DstName": "RendererId"
             },
             {
+              "Id": 37,
               "Value": true,
               "DstId": 19,
               "DstName": "True"
@@ -641,13 +632,13 @@
             }
           ],
           "Defaults": {
-            "$20._value": {
+            "$33._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
               "component_type": "SkinnedModelRenderer"
             },
-            "$24._value": {
+            "$29._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -656,8 +647,9 @@
           }
         },
         "OnPlayerJump": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "e9a1717e-edb5-43e4-b5a5-8cef0b129279",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Player Jump",
             "ReferencedComponentTypes": []
@@ -689,28 +681,26 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 5,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 6,
               "Value": "b_jump",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 7,
               "Value": true,
               "DstId": 1,
               "DstName": "value"
             }
           ],
           "Defaults": {
-            "$2._value": {
+            "$5._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -719,8 +709,9 @@
           }
         },
         "OnReload": {
-          "__version": 7,
+          "__version": 8,
           "__guid": "d417ee97-9b48-401a-8e7a-a1b8b7dd3b90",
+          "__changeId": 0,
           "UserData": {
             "Title": "On Reload",
             "ReferencedComponentTypes": []
@@ -752,28 +743,26 @@
               "DstName": "_signal"
             },
             {
-              "Value": {
-                "_type": "component",
-                "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
-                "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
-                "component_type": "SkinnedModelRenderer"
-              },
+              "Id": 5,
+              "Value": null,
               "DstId": 1,
               "DstName": "_target"
             },
             {
+              "Id": 6,
               "Value": "b_reload",
               "DstId": 1,
               "DstName": "v"
             },
             {
+              "Id": 7,
               "Value": true,
               "DstId": 1,
               "DstName": "value"
             }
           ],
           "Defaults": {
-            "$2._value": {
+            "$5._value": {
               "_type": "component",
               "component_id": "40466aea-2c03-447a-8643-498663ddba2a",
               "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
@@ -792,8 +781,6 @@
         "Flags": 0,
         "Name": "Viewmodel",
         "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
         "Components": [
           {
             "__type": "ViewModel",
@@ -813,16 +800,32 @@
             "Name": "weapon",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
                 "__guid": "40466aea-2c03-447a-8643-498663ddba2a",
-                "BodyGroups": 235,
+                "BodyGroups": 411,
+                "CreateAttachments": false,
                 "CreateBoneObjects": false,
                 "Model": "models/weapons/sbox_smg_mp5/v_mp5.vmdl",
+                "Morphs": {},
+                "Parameters": {
+                  "bools": {},
+                  "ints": {},
+                  "floats": {},
+                  "vectors": {},
+                  "rotations": {}
+                },
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
+                "Sequence": {
+                  "Name": null
+                },
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               }
@@ -834,8 +837,6 @@
             "Name": "arms",
             "Tags": "viewmodel",
             "Enabled": true,
-            "NetworkMode": 2,
-            "NetworkInterpolation": true,
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
@@ -847,9 +848,27 @@
                   "go": "8ec0c534-5bdf-4975-869f-848582c4a75f",
                   "component_type": "SkinnedModelRenderer"
                 },
+                "CreateAttachments": false,
                 "CreateBoneObjects": false,
                 "Model": "models/first_person/first_person_arms.vmdl",
+                "Morphs": {},
+                "Parameters": {
+                  "bools": {},
+                  "ints": {},
+                  "floats": {},
+                  "vectors": {},
+                  "rotations": {}
+                },
+                "RenderOptions": {
+                  "GameLayer": true,
+                  "OverlayLayer": false,
+                  "BloomLayer": false,
+                  "AfterUILayer": false
+                },
                 "RenderType": "Off",
+                "Sequence": {
+                  "Name": null
+                },
                 "Tint": "1,1,1,1",
                 "UseAnimGraph": true
               }
@@ -858,14 +877,39 @@
         ]
       }
     ],
-    "__variables": []
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "DontBreakAsTemplate": false,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.v_mp5"
+    "bolt.prophuntmanager#59733"
   ],
+  "IsValid": true,
   "__version": 1
 }
