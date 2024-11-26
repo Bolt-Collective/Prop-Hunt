@@ -1,0 +1,15 @@
+﻿Scoreboard {
+  position: absolute;
+
+  font-family: Roboto;
+
+  padding: 15px;
+  min-width: 70%;
+  min-height: 80%;
+  border-radius: 15px;
+  border-bottom: 5px solid rgb(51, 141, 209);
+  background-color: rgba(56, 56, 56, 0.8);
+  backdrop-filter: blur(10px);
+
+  flex-direction: column;
+}

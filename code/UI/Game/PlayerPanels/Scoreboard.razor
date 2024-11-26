@@ -1,0 +1,20 @@
+﻿@using Sandbox.UI;
+@inherits Panel
+
+<root>
+
+	<div class="right">
+		<h1 class="grow header">dasdasd</h1>
+			i am a leftie
+	</div>
+
+</root>
+
+
+@code
+{
+	protected override int BuildHash()
+	{
+		return Player.Local.Health.GetHashCode();
+	}
+}

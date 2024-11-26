@@ -20,9 +20,8 @@
       "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
       "Flags": 0,
       "Name": "radio",
-      "Position": "267.273,76.29189,89.14771",
+      "Position": "267.273,76.29189,89.85199",
       "Rotation": "0,0,-0.258819,0.9659259",
-      "Scale": "1.380823,1.380823,1.380823",
       "Enabled": true,
       "Components": [
         {
@@ -30,7 +29,7 @@
           "__guid": "54d30adb-f478-4479-a842-808ff46684de",
           "BodyGroups": 18446744073709551615,
           "CreateAttachments": false,
-          "Model": "models/3dmodelscc0/gadgetselectronics/radio/radio.vmdl",
+          "Model": "models/electronics/radio2/radio2.vmdl",
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -75,28 +74,6 @@
             "Id": "80060ebe-9477-4120-bba2-ac5f042da674"
           },
           "Volume": 1
-        },
-        {
-          "__type": "Sandbox.ModelCollider",
-          "__guid": "312a8b1d-4548-4860-9377-4f5e99d729f4",
-          "IsTrigger": false,
-          "Model": "models/3dmodelscc0/gadgetselectronics/radio/radio.vmdl",
-          "Static": false,
-          "SurfaceVelocity": "0,0,0"
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "4b57dec9-f0ec-4b5a-b812-db78215317ab",
-          "AngularDamping": 0,
-          "Gravity": true,
-          "LinearDamping": 0.1,
-          "Locking": {},
-          "MassCenterOverride": "0,0,0",
-          "MassOverride": 3,
-          "MotionEnabled": true,
-          "OverrideMassCenter": false,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
         }
       ]
     },
@@ -202,6 +179,7 @@
           "EnableCollision": true,
           "MapName": "moman.apartment",
           "NoOrigin": false,
+          "OnMapLoaded": null,
           "OnMapUnloaded": null,
           "UseMapFromLaunch": false
         }
@@ -237,7 +215,9 @@
   "ResourceVersion": 2,
   "Title": "Menu",
   "Description": null,
-  "__references": [],
+  "__references": [
+    "frogpond.radio2#12959"
+  ],
   "HasUnsavedChanges": false,
   "__version": 2
 }
