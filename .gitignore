@@ -5,7 +5,6 @@
 # Auto-generated code editor files
 .vs/*
 .vscode/*
-.sbox/*
 *.csproj
 obj
 bin
@@ -14,6 +13,7 @@ code/obj/*
 code/Properties/*
 
 # Auto-generated asset related files
+.sbox/*
 *.generated.*
 *.*_c
 !*.shader_c
@@ -23,3 +23,6 @@ code/Properties/*
 *.sln
 
 *idea
+
+# Exported / standalone games
+Exports/
