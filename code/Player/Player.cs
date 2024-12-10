@@ -1,30 +1,21 @@
 using Sandbox.Citizen;
+
 public class Player : Component, Component.IDamageable
 {
-	[RequireComponent]
-	public ShrimpleCharacterController Controller { get; set; }
+	[RequireComponent] public ShrimpleCharacterController Controller { get; set; }
 
-	[RequireComponent]
-	public CitizenAnimationHelper AnimationHelper { get; set; }
+	[RequireComponent] public CitizenAnimationHelper AnimationHelper { get; set; }
 
-	[Property]
-	public GameObject Body { get; set; }
+	[Property] public GameObject Body { get; set; }
 	public CameraComponent Camera => Scene.GetAll<CameraComponent>().FirstOrDefault( x => x.IsMainCamera );
 
-	[Property]
-	[Range( 50f, 200f, 10f )]
-	public float WalkSpeed { get; set; } = 300f;
+	[Property] [Range( 50f, 200f, 10f )] public float WalkSpeed { get; set; } = 300f;
 
-	[Property]
-	[Range( 25f, 100f, 5f )]
-	public float DuckSpeed { get; set; } = 50f;
+	[Property] [Range( 25f, 100f, 5f )] public float DuckSpeed { get; set; } = 50f;
 
-	[Property]
-	[Range( 200f, 500f, 20f )]
-	public float JumpStrength { get; set; } = 350f;
+	[Property] [Range( 200f, 500f, 20f )] public float JumpStrength { get; set; } = 350f;
 
-	[Sync]
-	public bool IsCrouching { get; set; } = false;
+	[Sync] public bool IsCrouching { get; set; } = false;
 
 	[Property, Category( "Stats" )] public float MaxHealth { get; set; } = 100;
 	[Property, Sync, Category( "Stats" )] public float Health { get; set; }
@@ -37,15 +28,16 @@ public class Player : Component, Component.IDamageable
 			{
 				_local = Game.ActiveScene.GetAllComponents<Player>().FirstOrDefault( x => x.Network.IsOwner );
 			}
+
 			return _local;
 		}
 	}
+
 	private static Player _local;
 
 	public Client Client { get; set; }
 
-	[Sync]
-	public Angles EyeAngles { get; set; }
+	[Sync] public Angles EyeAngles { get; set; }
 
 	[Property] public float CameraDistance { get; set; } = 0f;
 	public bool IsFirstPerson => CameraDistance == 0f;
@@ -59,10 +51,10 @@ public class Player : Component, Component.IDamageable
 		{
 			if ( Camera.IsValid() )
 			{
-				return new( Camera.WorldPosition + Camera.WorldRotation.Forward, Camera.WorldRotation.Forward );
+				return new(Camera.WorldPosition + Camera.WorldRotation.Forward, Camera.WorldRotation.Forward);
 			}
 
-			return new( WorldPosition + Vector3.Up * 64f, EyeAngles.ToRotation().Forward );
+			return new(WorldPosition + Vector3.Up * 64f, EyeAngles.ToRotation().Forward);
 		}
 	}
 
@@ -133,9 +125,9 @@ public class Player : Component, Component.IDamageable
 
 	private void UpdateCamera()
 	{
-		if (!IsValid)
+		if ( !IsValid )
 			return;
-		
+
 		/*		Camera.WorldRotation = EyeAngles.ToRotation();
 				Camera.LocalPosition = WorldPosition + new Vector3( 0, 0, 64 );*/
 
@@ -149,7 +141,7 @@ public class Player : Component, Component.IDamageable
 
 			if ( tr.Hit )
 			{
-				targetCameraPos = tr.HitPosition.LerpTo( targetCameraPos, RealTime.Delta * 5 );
+				targetCameraPos = tr.HitPosition - 5;
 			}
 			else
 			{
@@ -161,12 +153,15 @@ public class Player : Component, Component.IDamageable
 		Camera.WorldRotation = EyeAngles.ToRotation();
 		Camera.FieldOfView = Preferences.FieldOfView;
 	}
+
 	private void UpdateBodyVisibility()
 	{
 		if ( !AnimationHelper.IsValid() )
 			return;
 
-		var renderType = (!IsProxy && IsFirstPerson) ? ModelRenderer.ShadowRenderType.ShadowsOnly : ModelRenderer.ShadowRenderType.On;
+		var renderType = (!IsProxy && IsFirstPerson)
+			? ModelRenderer.ShadowRenderType.ShadowsOnly
+			: ModelRenderer.ShadowRenderType.On;
 		AnimationHelper.Target.RenderType = renderType;
 
 		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
@@ -210,7 +205,7 @@ public class Player : Component, Component.IDamageable
 			Death();
 		}
 	}
-	
+
 	void Death()
 	{
 		//CreateRagdoll();

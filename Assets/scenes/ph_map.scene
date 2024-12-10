@@ -82,14 +82,16 @@
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
-          "ZNear": 5
+          "ZNear": 1
         },
         {
           "__type": "Sandbox.Bloom",
           "__guid": "a0f17aae-f981-4e6d-bfc4-03a0f6336045",
           "BloomColor": {
+            "blend": "Linear",
             "color": [
               {
+                "t": 0,
                 "c": "1,1,1,1"
               },
               {
@@ -101,11 +103,18 @@
           },
           "BloomCurve": [
             {
-              "y": 0.5
+              "x": 0,
+              "y": 0.5,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
             },
             {
               "x": 1,
-              "y": 1
+              "y": 1,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
             }
           ],
           "Mode": "Additive",
@@ -183,6 +192,5 @@
   "Title": "map",
   "Description": null,
   "__references": [],
-  "HasUnsavedChanges": false,
   "__version": 2
 }

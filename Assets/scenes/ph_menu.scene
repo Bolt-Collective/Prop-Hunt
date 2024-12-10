@@ -10,6 +10,7 @@
         {
           "__type": "Sandbox.SceneInformation",
           "__guid": "9d7c705a-07d8-415e-a28c-a6a49c78e4c5",
+          "Changes": "",
           "Description": "",
           "SceneTags": "",
           "Title": "Menu"
@@ -20,7 +21,7 @@
       "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
       "Flags": 0,
       "Name": "radio",
-      "Position": "267.273,76.29189,89.85199",
+      "Position": "269.9513,74.74554,89.30762",
       "Rotation": "0,0,-0.258819,0.9659259",
       "Enabled": true,
       "Components": [
@@ -29,7 +30,7 @@
           "__guid": "54d30adb-f478-4479-a842-808ff46684de",
           "BodyGroups": 18446744073709551615,
           "CreateAttachments": false,
-          "Model": "models/electronics/radio2/radio2.vmdl",
+          "Model": "models/electronics/radio/radio.vmdl",
           "RenderOptions": {
             "GameLayer": true,
             "OverlayLayer": false,
@@ -42,17 +43,24 @@
         {
           "__type": "Sandbox.SoundPointComponent",
           "__guid": "241f47ee-2ba5-415f-8bb3-484a2d2f1615",
+          "__enabled": false,
           "Distance": 512,
           "DistanceAttenuation": false,
           "DistanceAttenuationOverride": false,
           "Falloff": [
             {
+              "x": 0,
               "y": 1,
               "in": 3.1415927,
-              "out": -3.1415927
+              "out": -3.1415927,
+              "mode": "Mirrored"
             },
             {
-              "x": 1
+              "x": 1,
+              "y": 0,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
             }
           ],
           "Force2d": false,
@@ -141,10 +149,13 @@
         {
           "__type": "Sandbox.AmbientOcclusion",
           "__guid": "d7f060a7-5f82-4213-ab18-e3706202dd1c",
-          "FalloffDistance": 1,
-          "Intensity": 8,
+          "__version": 1,
+          "DenoiseMode": "Temporal",
+          "FalloffRange": 0.75,
+          "Intensity": 0.15,
           "Quality": "High",
-          "Radius": 32
+          "Radius": 128,
+          "ThinCompensation": 0
         },
         {
           "__type": "Sandbox.CubemapFog",
@@ -216,8 +227,7 @@
   "Title": "Menu",
   "Description": null,
   "__references": [
-    "frogpond.radio2#12959"
+    "frogpond.radio#12958"
   ],
-  "HasUnsavedChanges": false,
   "__version": 2
 }

@@ -2,6 +2,9 @@ using System.Threading.Tasks;
 
 public sealed class GameManager : GameObjectSystem<GameManager>, Component.INetworkListener, ISceneStartup
 {
+	//public static GameManager Instance { get; private set; } = new GameManager(  );
+
+
 	public GameManager( Scene scene ) : base( scene )
 	{
 	}
@@ -13,7 +16,6 @@ public sealed class GameManager : GameObjectSystem<GameManager>, Component.INetw
 
 	void ISceneStartup.OnHostInitialize()
 	{
-
 	}
 
 	void Component.INetworkListener.OnActive( Sandbox.Connection channel )
@@ -23,8 +25,16 @@ public sealed class GameManager : GameObjectSystem<GameManager>, Component.INetw
 		var startLocation = FindSpawnLocation().WithScale( 1 );
 
 		// Spawn this object and make the client the owner
-		var playerGo = GameObject.Clone( "/prefabs/ph_player.prefab", new CloneConfig { Name = $"Player - {channel.DisplayName}", StartEnabled = true, Transform = startLocation } );
-		var playerClient = GameObject.Clone( "/prefabs/ph_player_client.prefab", new CloneConfig { Name = $"Client - {channel.DisplayName}", StartEnabled = true, Transform = startLocation } );
+		var playerGo = GameObject.Clone( "/prefabs/ph_player.prefab",
+			new CloneConfig
+			{
+				Name = $"Player - {channel.DisplayName}", StartEnabled = true, Transform = startLocation
+			} );
+		var playerClient = GameObject.Clone( "/prefabs/ph_player_client.prefab",
+			new CloneConfig
+			{
+				Name = $"Client - {channel.DisplayName}", StartEnabled = true, Transform = startLocation
+			} );
 
 		channel.CanRefreshObjects = true;
 		channel.CanSpawnObjects = true;

@@ -4,12 +4,84 @@
   font-family: Roboto;
 
   padding: 15px;
-  min-width: 70%;
+  width: 50%;
   min-height: 80%;
-  border-radius: 15px;
-  border-bottom: 5px solid rgb(51, 141, 209);
-  background-color: rgba(56, 56, 56, 0.8);
+  border-radius: 10px;
+  border-bottom: 2px solid rgb(163, 182, 195);
+  background-color: rgba(69, 69, 69, 0.65);
   backdrop-filter: blur(10px);
 
+  pointer-events: all;
   flex-direction: column;
+
+  color: white;
+
+  .header {
+    font-weight: 900;
+  }
+
+  .paragraph {
+    font-size: 16px;
+    color: #cfcfcf;
+  }
+
+
+  .icon-small {
+    margin-right: 8px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .scoreboard-bottom {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+
+    .player-list {
+      overflow: scroll;
+      flex-grow: 1;
+      width: 100%;
+      background-color: rgb(55, 55, 55);
+      display: flex;
+      flex-direction: column;
+
+      .team-header {
+        background-color: #292929;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 6px;
+        border-bottom: 2px solid rgb(119, 119, 119);
+      }
+
+      .entry {
+
+        .avatar {
+          min-width: 30px;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          margin-right: 5px;
+        }
+
+        padding: 5px;
+        align-items: center;
+        font-size: 24px;
+        display: flex;
+        background-color: #292929;
+        height: 50px;
+
+        label {
+          text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.76);
+        }
+      }
+
+      .entry:nth-child(odd) {
+        background-color: #303030;
+      }
+
+    }
+  }
+
 }

@@ -2,7 +2,7 @@
   "Title": "Prop Hunt",
   "Type": "game",
   "Org": "bolt",
-  "Ident": "prop_hunt",
+  "Ident": "prop_hunt_dev",
   "Schema": 1,
   "IncludeSourceFiles": false,
   "Resources": "\n*.ttf",
