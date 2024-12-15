@@ -1,0 +1,37 @@
+CreateServerPage
+{
+	position: absolute;
+
+	font-weight: 600;
+	flex-direction: column;
+	
+	.card-package
+	{
+		.package-card-body
+		{
+			.body-content
+			{
+				.body-meta
+				{
+					color: #cccccc;
+					text-stroke: 1px black;
+				}
+				.orgrow
+				{
+					color: #dcdcdc;
+					text-stroke: 1px black;
+				}
+			}
+		}
+	}
+
+	> .map-select
+	{
+		background-color: rgba(0, 0, 0, 0.3);
+		font-family: Poppins;
+		
+		flex-grow: 1;
+		padding: 16px;
+		width: 80%;
+	}
+}

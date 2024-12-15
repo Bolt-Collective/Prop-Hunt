@@ -1,0 +1,159 @@
+@using System.Threading.Tasks
+@using Facepunch
+@using Sandbox
+@using Sandbox.Network
+@using Sandbox.UI
+
+
+@implements INavigatorPage
+
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<div class="server-list">
+		<div class="navbar">
+			<div class="left">
+				<span class="button" onclick="@( () => this.Navigate( "/" ) )">
+					<i style="padding-top: 2px">arrow_back</i>
+					Back
+				</span>
+			</div>
+			<div class="right">
+				<span class="button" onclick="@( () => CreateLobby() )">
+					<i style="padding-top: 2px">add</i>
+					<label>Create</label>
+				</span>
+				<span class="button" onclick="@( () => Refresh() )">
+					<i style="padding-top: 2px">sync</i>
+					<label>Refresh</label>
+				</span>
+			</div>
+		</div>
+		<div class="content">
+			@if ( ShowFakeLobbies )
+			{
+				@for ( int i = 0; i < 32; i++ )
+				{
+					var fakeLobby = new Lobby() { FakeId = (ulong)i };
+					<div class="entry" onclick=@( () => OnSelected( fakeLobby ) )>
+						<img src="@( $"avatar:{76561198043979097}" )"/>
+						
+						<div class="title">
+
+							@fakeLobby.Name
+						</div>
+
+						<div class="meta">
+							<div class="map">
+								@fakeLobby.Map
+							</div>
+
+							<div class="count">
+								@fakeLobby.Members / @fakeLobby.MaxMembers
+							</div>
+						</div>
+					</div>
+				}
+			}
+
+			@foreach ( var lobby in FetchedLobbies )
+			{
+				<div class="entry" onclick=@( () => OnSelected( new Lobby( lobby ) ) )>
+					<div class="title">
+						<img src="@( $"avatar:{lobby.OwnerId}" )"/>
+
+						@lobby.Name
+					</div>
+
+					<div class="meta">
+						<div class="map">
+							@lobby.Map
+						</div>
+
+						<div class="count">
+							@lobby.Members / @lobby.MaxMembers
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</root>
+
+@code
+{
+
+	[ConVar( "fp_ui_show_fake_lobbies" )] public static bool ShowFakeLobbies { get; set; }
+
+	private void CreateLobby()
+	{
+		//this.Navigate( "/servers/create" );
+		FindRootPanel().AddChild<CreateGameModal>();
+	}
+
+	public Lobby? CurrentLobby { get; set; }
+
+	private List<LobbyInformation> FetchedLobbies { get; set; } = new();
+
+	private bool IsSearching = true;
+
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		if ( firstTime )
+		{
+			FetchLobbies();
+		}
+	}
+
+	private void OnSelected( Lobby lobby )
+	{
+		if ( CurrentLobby.Equals( lobby ) )
+		{
+			CurrentLobby = null;
+			return;
+		}
+
+		CurrentLobby = lobby;
+	}
+
+	private bool IsEditorLobby( LobbyInformation lobby )
+	{
+		if ( Game.IsEditor ) return false;
+		return lobby.IsEditorLobby();
+	}
+
+	protected async void FetchLobbies()
+	{
+		IsSearching = true;
+		FetchedLobbies = new();
+		StateHasChanged();
+
+		var lobbies = await Networking.QueryLobbies( Game.Ident );
+
+		IsSearching = false;
+		FetchedLobbies = lobbies.Where( x => !IsEditorLobby( x ) ).ToList();
+		StateHasChanged();
+	}
+
+	private async void Join()
+	{
+		if ( !CurrentLobby.HasValue ) return;
+
+		var lobby = CurrentLobby.Value;
+		if ( lobby.IsFull ) return;
+
+		if ( await Networking.TryConnectSteamId( lobby.LobbyId ) )
+		{
+			Log.Info( "joined lobby!" );
+		}
+	}
+
+
+	public void Refresh()
+	{
+		CurrentLobby = null;
+		StateHasChanged();
+		FetchLobbies();
+	}
+}

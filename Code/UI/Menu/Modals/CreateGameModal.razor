@@ -1,0 +1,85 @@
+﻿@using PropHunt.Menu
+@using Sandbox.UI
+@using Sandbox.Modals
+@using Sandbox.Network
+@using Sandbox.Utility
+
+@inherits Panel
+
+<root class="create-game-modal">
+    <div class="inner-modal">
+        <div class="header">
+            <div class="title">Create Game</div>
+        </div>
+
+        <div class="body">
+            <div class="form-group">
+                <Label class="form-label">Server Name</Label>
+                <TextEntry class="form-control" Value:bind="@CurrentConfig.Name" />
+            </div>
+
+            <div class="form-group">
+                <Label class="form-label">Max Players</Label>
+                <SliderControl class="form-control" ShowRange="@true" Min=@(1) Max=@(32) Value:bind="@CurrentConfig.MaxPlayers" />
+            </div>
+
+            <div class="form-group">
+                <Label class="form-label">Map</Label>
+                <MapSelectButton class="form-control" MapIdent=@LaunchArguments.Map OnClicked="@OnMapClicked" />
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="button is-cancel" @onclick=@( () => Delete() )>
+                <i>cancel</i>
+                <column>
+                    Cancel
+                </column>
+            </button>
+
+            <button class="button" @onclick=@CreateGame>
+                <i>done</i>
+                <column>
+                    Create Game
+                </column>
+            </button>
+        </div>
+    </div>
+</root>
+
+@code
+{
+    LobbyConfig CurrentConfig;
+
+    public CreateGameModal()
+    {
+        AddClass("modal");
+
+        CurrentConfig = new LobbyConfig()
+            {
+                MaxPlayers = 1,
+                Name = $"{Steam.PersonaName}'s server"
+            };
+
+        LaunchArguments.Map = "gnomefig.office";
+    }
+
+    void CreateGame()
+    {
+	    Scene.LoadFromFile( "scenes/ph_map.scene" );
+        Networking.CreateLobby(CurrentConfig);
+    }
+
+    void OnMapClicked()
+    {
+        Game.Overlay.ShowPackageSelector("type:map +prophunt sort:trending", OnMapSelected);
+    }
+
+    void OnMapSelected(Package map)
+    {
+        LaunchArguments.Map = map.FullIdent;
+        StateHasChanged();
+    }
+
+    protected override int BuildHash() => HashCode.Combine(LaunchArguments.Map);
+}
