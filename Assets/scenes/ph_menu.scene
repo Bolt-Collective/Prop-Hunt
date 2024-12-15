@@ -1,0 +1,233 @@
+{
+  "__guid": "9a98c900-887e-4b39-bd67-e3e87659cc34",
+  "GameObjects": [
+    {
+      "__guid": "95f62c8a-98f1-4573-a97b-d7f259c3d35c",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "9d7c705a-07d8-415e-a28c-a6a49c78e4c5",
+          "Changes": "",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "Menu"
+        }
+      ]
+    },
+    {
+      "__guid": "f9386c16-db16-498d-bfdd-8d037c94567d",
+      "Flags": 0,
+      "Name": "radio",
+      "Position": "269.9513,74.74554,89.30762",
+      "Rotation": "0,0,-0.258819,0.9659259",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "54d30adb-f478-4479-a842-808ff46684de",
+          "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "Model": "models/electronics/radio/radio.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.SoundPointComponent",
+          "__guid": "241f47ee-2ba5-415f-8bb3-484a2d2f1615",
+          "__enabled": false,
+          "Distance": 512,
+          "DistanceAttenuation": false,
+          "DistanceAttenuationOverride": false,
+          "Falloff": [
+            {
+              "x": 0,
+              "y": 1,
+              "in": 3.1415927,
+              "out": -3.1415927,
+              "mode": "Mirrored"
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
+            }
+          ],
+          "Force2d": false,
+          "MaxRepeatTime": 1,
+          "MinRepeatTime": 1,
+          "Occlusion": false,
+          "OcclusionOverride": false,
+          "OcclusionRadius": 32,
+          "Pitch": 1,
+          "PlayOnStart": true,
+          "ReflectionOverride": false,
+          "Reflections": false,
+          "Repeat": false,
+          "SoundEvent": "sounds/menu/gsab_instrumental.sound",
+          "SoundOverride": false,
+          "StopOnNew": false,
+          "TargetMixer": {
+            "Name": "master",
+            "Id": "80060ebe-9477-4120-bba2-ac5f042da674"
+          },
+          "Volume": 1
+        }
+      ]
+    },
+    {
+      "__guid": "eef3ec14-bce2-40f4-92b8-c587ac168602",
+      "Flags": 0,
+      "Name": "Screen",
+      "Position": "74.06796,-165.9383,93.36504",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "0d1e8bd3-18c2-489c-9116-ad19f9523efc",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "ZIndex": 100
+        },
+        {
+          "__type": "PropHunt.Menu.MenuComponent",
+          "__guid": "e001da2a-91fd-4abb-8fcc-474cb0daa2bb",
+          "GameScene": "scenes/ph_map.scene"
+        }
+      ]
+    },
+    {
+      "__guid": "d774d09a-1d4d-4c12-997f-0b2f9a797bfc",
+      "Flags": 0,
+      "Name": "Main Camera",
+      "Position": "390.6201,35.88078,117.2364",
+      "Rotation": "-0.03851135,0.02048235,0.9554269,0.2919869",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "68db80de-2a75-433d-89cb-1f613033d541",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 89.38,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "f683814a-c8fc-4121-95f7-2a4da932fbd3",
+          "__version": 1,
+          "AutoExposureEnabled": true,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Mode": "Legacy",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "d7f060a7-5f82-4213-ab18-e3706202dd1c",
+          "__version": 1,
+          "DenoiseMode": "Temporal",
+          "FalloffRange": 0.75,
+          "Intensity": 0.15,
+          "Quality": "High",
+          "Radius": 128,
+          "ThinCompensation": 0
+        },
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "fb5c367a-3b98-4a04-965c-73a01df39196",
+          "Blur": 0,
+          "EndDistance": 4112.8994,
+          "FalloffExponent": 1.1000005,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 0,
+          "StartDistance": -1.9000149,
+          "Tint": "0.64186,0.64186,0.64186,1"
+        },
+        {
+          "__type": "MenuCamera",
+          "__guid": "b24feaa0-91ec-420f-bca1-4dc348c267e3",
+          "TargetPosition": "390.6201,35.88078,117.2364"
+        }
+      ]
+    },
+    {
+      "__guid": "fb706f66-fffa-4e3f-8515-6bd5e50063e6",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "-58.2237,7.148285,52.27657",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "93757432-bbaf-4210-8cc0-d6b68ed83bb1",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "moman.apartment",
+          "NoOrigin": false,
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "Menu"
+    },
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "ResourceVersion": 2,
+  "Title": "Menu",
+  "Description": null,
+  "__references": [
+    "frogpond.radio#12958"
+  ],
+  "__version": 2
+}
