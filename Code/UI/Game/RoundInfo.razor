@@ -1,0 +1,19 @@
+﻿@using Sandbox.UI;
+@inherits Panel
+
+<root>
+	@if ( GameManager.Instance.IsValid )
+	{
+		<div class="timer">@TimeSpan.FromSeconds(GameManager.Instance.RoundTimer.Passed.CeilToInt())</div>
+		<h1>@GameManager.Instance.RoundName</h1>
+	}
+</root>
+
+
+@code
+{
+	protected override int BuildHash()
+	{
+		return HashCode.Combine( GameManager.Instance.RoundTimer.Relative.CeilToInt() );
+	}
+}
